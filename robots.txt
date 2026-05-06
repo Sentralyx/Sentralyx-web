@@ -1,4 +1,24 @@
 User-agent: *
 Allow: /
 
+# Block sensitive directories and files
+Disallow: /components/
+Disallow: /scripts/
+Disallow: /assets/
+Disallow: /*.json$
+Disallow: /*.png$
+Disallow: /*.jpg$
+Disallow: /*.jpeg$
+Disallow: /*.gif$
+Disallow: /*.svg$
+Disallow: /*.ico$
+Disallow: /responsive-test*
+Disallow: /new.json
+
+# Allow specific assets if needed for SEO
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /sentralyx_logo_master.svg
+Allow: /sentralyx_favicon.ico
+
 Sitemap: https://www.sentralyx.com/sitemap.xml
