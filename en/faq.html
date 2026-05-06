@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Sentralyx | Sıkça Sorulan Sorular - Teknik Destek ve Kullanım Rehberi</title>
-    <meta name="description" content="Sentralyx trading terminali hakkında sıkça sorulan sorular. Güvenlik, teknik stabilite, Thread Watchdog, Atomic Write, HWID şifreleme ve daha fazlası.">
-    <meta name="keywords" content="sentralyx faq, sıkça sorulan sorular, güvenlik, teknik destek, thread watchdog, atomic write, hwid şifreleme, gtc emirleri">
+    <title>Sentralyx | Frequently Asked Questions - Technical Support and User Guide</title>
+    <meta name="description" content="Frequently asked questions about Sentralyx trading terminal. Security, technical stability, Thread Watchdog, Atomic Write, HWID encryption and more.">
+    <meta name="keywords" content="sentralyx faq, frequently asked questions, security, technical support, thread watchdog, atomic write, hwid encryption, gtc orders">
 
-    <link rel="icon" type="image/x-icon" href="sentralyx_favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     
     <style>
         /* Language Selector Styles */
@@ -229,6 +229,19 @@
             .accordion-body {
                 padding: 20px;
             }
+            
+            /* Language Selector Mobile */
+            .language-selector {
+                top: 10px;
+                right: 10px;
+                padding: 6px;
+            }
+            
+            .language-selector .btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+                margin: 0 1px;
+            }
         }
     </style>
 </head>
@@ -236,9 +249,9 @@
 
     <!-- Language Selector -->
     <div class="language-selector">
-        <a href="faq.html" class="btn active">TR</a>
-        <a href="en/faq.html" class="btn">EN</a>
-        <a href="ru/faq.html" class="btn">RU</a>
+        <a href="../faq.html" class="btn">TR</a>
+        <a href="faq.html" class="btn active">EN</a>
+        <a href="../ru/faq.html" class="btn">RU</a>
     </div>
 
     <header id="main-header"></header>
@@ -250,9 +263,9 @@
                 <div class="d-flex align-items-start">
                     <i class="fas fa-exclamation-triangle me-3" style="color: #ffc107; font-size: 1.5rem; margin-top: 2px;"></i>
                     <div>
-                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Yasal Uyarı</h5>
+                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Legal Disclaimer</h5>
                         <p class="mb-0 text-secondary">
-                            Sentralyx bir trading terminalidir, yatırım danışmanlığı hizmeti vermez. Burada yer alan bilgiler yalnızca yazılımın teknik özelliklerini açıklamak amacıyla sunulmuştur. Yatırım tavsiyesi niteliği taşımaz. Finansal kararlarınızdan yalnızca siz sorumlusunuz. Kripto para piyasaları yüksek risk içerir.
+                            Sentralyx is a trading terminal and does not provide investment advisory services. The information contained herein is provided solely to explain the technical features of the software. It does not constitute investment advice. You are solely responsible for your financial decisions. Cryptocurrency markets involve high risk.
                         </p>
                     </div>
                 </div>
@@ -263,10 +276,10 @@
     <section class="faq-hero">
         <div class="container">
             <div class="text-center">
-                <h1 class="display-3 mb-4">Sıkça Sorulan Sorular</h1>
+                <h1 class="display-3 mb-4">Frequently Asked Questions</h1>
                 <p class="lead text-secondary mb-5">
-                    Sentralyx trading terminali hakkında teknik ve operasyonel sorularınızın cevapları. 
-                    Güvenlik, stabilite ve kullanım rehberi.
+                    Technical and operational questions about Sentralyx trading terminal. 
+                    Security, stability, and user guide.
                 </p>
             </div>
         </div>
@@ -275,37 +288,37 @@
     <section class="faq-section">
         <div class="container">
             
-            <!-- Güvenlik & Gizlilik Kategorisi -->
+            <!-- Security & Privacy Category -->
             <div class="faq-category">
                 <div class="category-header">
                     <div class="category-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h2 class="category-title">Güvenlik & Gizlilik</h2>
+                    <h2 class="category-title">Security & Privacy</h2>
                 </div>
                 
                 <div class="accordion" id="securityAccordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#security1">
-                                İnternetim koparsa pozisyonlarım ne olur?
+                                What happens to my positions if my internet disconnects?
                             </button>
                         </h2>
                         <div id="security1" class="accordion-collapse collapse show" data-bs-parent="#securityAccordion">
                             <div class="accordion-body">
-                                <p>İnternet bağlantınız kesildiğinde pozisyonlarınız tamamen güvende kalır. Sentralyx, <span class="technical-term">GTC Emirleri</span> (Good Till Canceled) ve <span class="technical-term">Server-Side Protection</span> prensibiyle çalışır:</p>
+                                <p>When your internet connection is lost, your positions remain completely secure. Sentralyx operates with <span class="technical-term">GTC Orders</span> (Good Till Canceled) and <span class="technical-term">Server-Side Protection</span> principles:</p>
                                 
                                 <div class="security-highlight">
-                                    <strong>✅ SL/TP Koruma:</strong> Stop Loss ve Take Profit emirleri doğrudan borsa sunucusunda saklanır ve internet bağlantınız olsa da olmasa da aktif kalır.
+                                    <strong>✅ SL/TP Protection:</strong> Stop Loss and Take Profit orders are stored directly on the exchange server and remain active whether or not you have an internet connection.
                                 </div>
                                 
                                 <ul>
-                                    <li><strong>SL (Stop Loss):</strong> Fiyat belirlediğiniz stop seviyesine ulaştığında otomatik olarak pozisyon kapanır.</li>
-                                    <li><strong>TP (Take Profit):</strong> Hedef fiyata ulaşıldığında kârınız realize edilir.</li>
-                                    <li><strong>Global Stop:</strong> Acil durumlarda tüm pozisyonları güvenli bir şekilde kapatabilirsiniz.</li>
+                                    <li><strong>SL (Stop Loss):</strong> When price reaches your stop level, the position automatically closes.</li>
+                                    <li><strong>TP (Take Profit):</strong> When target price is reached, your profit is realized.</li>
+                                    <li><strong>Global Stop:</strong> In emergency situations, you can safely close all positions.</li>
                                 </ul>
                                 
-                                <p><strong>Önemli:</strong> İnternet kesintisi sırasında yeni emir gönderilemez (güvenlik önlemi), ancak mevcut pozisyonlarınız sunucu tarafında korunur.</p>
+                                <p><strong>Important:</strong> During internet outages, new orders cannot be sent (security measure), but existing positions are protected on the server side.</p>
                             </div>
                         </div>
                     </div>
@@ -313,25 +326,25 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#security2">
-                                API anahtarlarım nasıl korunuyor?
+                                How are my API keys protected?
                             </button>
                         </h2>
                         <div id="security2" class="accordion-collapse collapse" data-bs-parent="#securityAccordion">
                             <div class="accordion-body">
-                                <p>API anahtarlarınız <span class="technical-term">HWID şifreleme</span> ile maksimum güvenlikte korunur:</p>
+                                <p>Your API keys are protected with maximum security using <span class="technical-term">HWID encryption</span>:</p>
                                 
                                 <div class="security-highlight">
-                                    <strong>🔐 Çift Katmanlı Şifreleme:</strong> Donanım kimliği (HWID) ve Fernet simetrik şifreleme kombinasyonu.
+                                    <strong>🔐 Dual-Layer Encryption:</strong> Hardware ID (HWID) and Fernet symmetric encryption combination.
                                 </div>
                                 
                                 <ul>
-                                    <li><strong>HWID Bağlılığı:</strong> Her lisans sadece belirli bir donanıma özeldir. Farklı bir makinede çalışmaz.</li>
-                                    <li><strong>Lokal Depolama:</strong> API anahtarları hiçbir şekilde buluta veya üçüncü parti sunuculara gönderilmez.</li>
-                                    <li><strong>Fernet Şifreleme:</strong> AES-128 tabanlı, URL-güvenli şifreleme standardı kullanılır.</li>
-                                    <li><strong>Regülatör Uyumu:</strong> GDPR ve KVKK gibi veri koruma yasalarına tam uyum sağlar.</li>
+                                    <li><strong>HWID Binding:</strong> Each license is specific to a particular hardware. It won't work on different machines.</li>
+                                    <li><strong>Local Storage:</strong> API keys are never sent to cloud or third-party servers.</li>
+                                    <li><strong>Fernet Encryption:</strong> AES-128 based, URL-safe encryption standard is used.</li>
+                                    <li><strong>Regulatory Compliance:</strong> Fully compliant with GDPR and KVKK data protection laws.</li>
                                 </ul>
                                 
-                                <p><strong>Ek Güvenlik:</strong> API anahtarlarınız sadece sizin makinenizin <span class="technical-term">HWID</span> ile çözülebilir, bu da yetkisiz erişimi imkansız hale getirir.</p>
+                                <p><strong>Additional Security:</strong> Your API keys can only be decrypted with your machine's <span class="technical-term">HWID</span>, making unauthorized access impossible.</p>
                             </div>
                         </div>
                     </div>
@@ -339,22 +352,22 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#security3">
-                                Verilerim bulutta saklanıyor mu?
+                                Is my data stored in the cloud?
                             </button>
                         </h2>
                         <div id="security3" class="accordion-collapse collapse" data-bs-parent="#securityAccordion">
                             <div class="accordion-body">
-                                <p><strong>Hayır.</strong> Sentralyx <strong>Privacy-First</strong> tasarım prensibiyle çalışır:</p>
+                                <p><strong>No.</strong> Sentralyx operates with a <strong>Privacy-First</strong> design principle:</p>
                                 
                                 <ul>
-                                    <li><strong>Strateji Verileri:</strong> Kâr stratejileriniz ve indikatör ayarlarınız sadece lokalde saklanır.</li>
-                                    <li><strong>İşlem Geçmişi:</strong> Backtest sonuçları ve optimizasyon verileri gizli kalır.</li>
-                                    <li><strong>Rakip Koruma:</strong> Algoritmik trading mantığınız aracı kurumlara veya rakiplere sızdırılamaz.</li>
-                                    <li><strong>Veri Transferi:</strong> Kritik veriler hiçbir şekilde internet üzerinden gönderilmez.</li>
+                                    <li><strong>Strategy Data:</strong> Your profit strategies and indicator settings are stored only locally.</li>
+                                    <li><strong>Trade History:</strong> Backtest results and optimization data remain confidential.</li>
+                                    <li><strong>Competitor Protection:</strong> Your algorithmic trading logic cannot be leaked to brokers or competitors.</li>
+                                    <li><strong>Data Transfer:</strong> Critical data is never transmitted over the internet.</li>
                                 </ul>
                                 
                                 <div class="security-highlight">
-                                    <strong>🛡️ Sıfır Aracı Riski:</strong> Tüm kritik işlemler ve veriler lokalde tutularak maksimum güvenlik sağlanır.
+                                    <strong>🛡️ Zero Intermediary Risk:</strong> All critical operations and data are kept locally for maximum security.
                                 </div>
                             </div>
                         </div>
@@ -362,41 +375,41 @@
                 </div>
             </div>
 
-            <!-- Teknik Stabilite Kategorisi -->
+            <!-- Technical Stability Category -->
             <div class="faq-category">
                 <div class="category-header">
                     <div class="category-icon">
                         <i class="fas fa-heartbeat"></i>
                     </div>
-                    <h2 class="category-title">Teknik Stabilite (Self-Healing)</h2>
+                    <h2 class="category-title">Technical Stability (Self-Healing)</h2>
                 </div>
                 
                 <div class="accordion" id="stabilityAccordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#stability1">
-                                Sistem bir hata durumunda kendini nasıl toparlıyor?
+                                How does the system recover from error conditions?
                             </button>
                         </h2>
                         <div id="stability1" class="accordion-collapse collapse show" data-bs-parent="#stabilityAccordion">
                             <div class="accordion-body">
-                                <p>Sentralyx, <span class="technical-term">ThreadWatchdog</span> sistemi ile kendi kendini iyileştirme yeteneğine sahiptir:</p>
+                                <p>Sentralyx has self-healing capabilities with the <span class="technical-term">ThreadWatchdog</span> system:</p>
                                 
                                 <div class="stability-highlight">
-                                    <strong>🔄 7/24 Otomatik İzleme:</strong> Tüm kritik thread'ler 30 saniye arayla kontrol edilir.
+                                    <strong>🔄 24/7 Automatic Monitoring:</strong> All critical threads are checked every 30 seconds.
                                 </div>
                                 
                                 <ul>
-                                    <li><strong>Heartbeat Kontrolü:</strong> Scanner thread'i için özel heartbeat sistemi, 60 saniye veri gelmezse "frozen" alarmı.</li>
-                                    <li><strong>Otomatik Restart:</strong> Çökmüş thread tespit edilirse otomatik olarak yeniden başlatılır.</li>
-                                    <li><strong>Maksimum Deneme:</strong> Her thread için maksimum 3 restart denemesi hakkı vardır.</li>
-                                    <li><strong>State-Safe:</strong> Restart sırasında pozisyon verileri ve strateji durumu korunur.</li>
+                                    <li><strong>Heartbeat Control:</strong> Special heartbeat system for scanner thread, "frozen" alarm if no data for 60 seconds.</li>
+                                    <li><strong>Automatic Restart:</strong> If a crashed thread is detected, it's automatically restarted.</li>
+                                    <li><strong>Maximum Attempts:</strong> Each thread has a maximum of 3 restart attempts.</li>
+                                    <li><strong>State-Safe:</strong> Position data and strategy state are preserved during restarts.</li>
                                 </ul>
                                 
-                                <p><strong>Self-Healing Katmanları:</strong></p>
+                                <p><strong>Self-Healing Layers:</strong></p>
                                 <ol>
-                                    <li><strong>Pre-Trade Validation:</strong> Bakiye kontrolü, risk analizi, maksimum pozisyon limiti.</li>
-                                    <li><strong>Real-Time Monitoring:</strong> Fiyat spike tespiti, anomali tespiti, P&L takibi.</li>
+                                    <li><strong>Pre-Trade Validation:</strong> Balance check, risk analysis, maximum position limit.</li>
+                                    <li><strong>Real-Time Monitoring:</strong> Price spike detection, anomaly detection, P&L tracking.</li>
                                     <li><strong>Emergency Protocols:</strong> Global stop mechanism, force close capability.</li>
                                 </ol>
                             </div>
@@ -406,30 +419,30 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stability2">
-                                Dosya bozulmalarına karşı bir önlem var mı?
+                                Are there measures against file corruption?
                             </button>
                         </h2>
                         <div id="stability2" class="accordion-collapse collapse" data-bs-parent="#stabilityAccordion">
                             <div class="accordion-body">
-                                <p>Evet, <span class="technical-term">Atomic Write</span> I/O garantisi ile dosya bütünlüğü sağlanır:</p>
+                                <p>Yes, file integrity is ensured with <span class="technical-term">Atomic Write</span> I/O guarantee:</p>
                                 
                                 <div class="stability-highlight">
-                                    <strong>⚛️ Atomik İşlemler:</strong> Kritik işlemler ya tamamen başarılı olur ya da hiç yapılmamış gibi kabul edilir.
+                                    <strong>⚛️ Atomic Operations:</strong> Critical operations either completely succeed or are treated as if they never happened.
                                 </div>
                                 
                                 <ul>
-                                    <li><strong>Transactional Dosya İşlemleri:</strong> Geçici dosyaya yazma, doğrulama, ardından atomik değişim.</li>
-                                    <li><strong>Crash Recovery:</strong> Elektrik kesintisi veya sistem çökmesi anında bile veri tutarlılığı korunur.</li>
-                                    <li><strong>ACID Özellikleri:</strong> Atomicity, Consistency, Isolation, Durability garantisi.</li>
-                                    <li><strong>Sync Guarantee:</strong> Verilerin disk'e yazıldığından emin olmak için fsync kullanılır.</li>
+                                    <li><strong>Transactional File Operations:</strong> Write to temporary file, verify, then atomic swap.</li>
+                                    <li><strong>Crash Recovery:</strong> Data consistency is maintained even during power outages or system crashes.</li>
+                                    <li><strong>ACID Properties:</strong> Atomicity, Consistency, Isolation, Durability guarantee.</li>
+                                    <li><strong>Sync Guarantee:</strong> fsync is used to ensure data is written to disk.</li>
                                 </ul>
                                 
-                                <p><strong>Örnek Akış:</strong></p>
+                                <p><strong>Example Flow:</strong></p>
                                 <ol>
-                                    <li>Veri geçici dosyaya (.tmp) yazılır</li>
-                                    <li>Disk'e senkronizasyon yapılır (fsync)</li>
-                                    <li>Atomik olarak orijinal dosya ile değiştirilir (rename)</li>
-                                    <li>Hata durumunda geçici dosya silinir</li>
+                                    <li>Data is written to temporary file (.tmp)</li>
+                                    <li>Disk synchronization is performed (fsync)</li>
+                                    <li>Atomic replacement with original file (rename)</li>
+                                    <li>Temporary file is deleted on error</li>
                                 </ol>
                             </div>
                         </div>
@@ -438,22 +451,22 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stability3">
-                                Bağlantı kesintilerinde "orphan" pozisyonlar nasıl yönetiliyor?
+                                How are "orphan" positions managed during connection interruptions?
                             </button>
                         </h2>
                         <div id="stability3" class="accordion-collapse collapse" data-bs-parent="#stabilityAccordion">
                             <div class="accordion-body">
-                                <p><span class="technical-term">Orphan Recovery</span> sistemi bağlantı kesintilerinde oluşan sahipsiz pozisyonları otomatik olarak yönetir:</p>
+                                <p>The <span class="technical-term">Orphan Recovery</span> system automatically manages orphaned positions during connection interruptions:</p>
                                 
                                 <ul>
-                                    <li><strong>Hızlı Tespit:</strong> 5 saniye içinde bağlantı kopukluğu tespit edilir.</li>
-                                    <li><strong>Otomatik Senkronizasyon:</strong> Bağlantı geri geldiğinde pozisyon durumu otomatik olarak senkronize edilir.</li>
-                                    <li><strong>State Recovery:</strong> Çökme anındaki sistem durumu korunur ve geri yüklenebilir.</li>
-                                    <li><strong>Manual Override:</strong> Gerekirse manuel müdahale imkanı sunulur.</li>
+                                    <li><strong>Fast Detection:</strong> Connection disconnection is detected within 5 seconds.</li>
+                                    <li><strong>Automatic Synchronization:</strong> When connection returns, position status is automatically synchronized.</li>
+                                    <li><strong>State Recovery:</strong> System state at crash time is preserved and can be restored.</li>
+                                    <li><strong>Manual Override:</strong> Manual intervention is provided when necessary.</li>
                                 </ul>
                                 
                                 <div class="stability-highlight">
-                                    <strong>🛡️ %100 Kurtarma Başarısı:</strong> Bağlantı kesintilerinde pozisyon kaybı yaşanmaz.
+                                    <strong>🛡️ 100% Recovery Success:</strong> No position loss during connection interruptions.
                                 </div>
                             </div>
                         </div>
@@ -461,39 +474,39 @@
                 </div>
             </div>
 
-            <!-- Kullanım & Strateji Kategorisi -->
+            <!-- System Configuration & Technical Parameters Category -->
             <div class="faq-category">
                 <div class="category-header">
                     <div class="category-icon">
                         <i class="fas fa-cogs"></i>
                     </div>
-                    <h2 class="category-title">Sistem Konfigürasyonu & Teknik Parametreler</h2>
+                    <h2 class="category-title">System Configuration & Technical Parameters</h2>
                 </div>
                 
                 <div class="accordion" id="usageAccordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#usage1">
-                                Sentralyx zaman dilimi konfigürasyonları nelerdir?
+                                What are Sentralyx timeframe configurations?
                             </button>
                         </h2>
                         <div id="usage1" class="accordion-collapse collapse show" data-bs-parent="#usageAccordion">
                             <div class="accordion-body">
-                                <p>Sentralyx <strong>Multi-Timeframe (MTF)</strong> analiz motoru şu teknik konfigürasyonları destekler:</p>
+                                <p>Sentralyx <strong>Multi-Timeframe (MTF)</strong> analysis engine supports the following technical configurations:</p>
                                 
                                 <ul>
-                                    <li><strong>Scalping Modülleri (1m, 5m):</strong> Yüksek frekanslı veri işleme için optimize edilmiş, düşük gecikmeli analiz.</li>
-                                    <li><strong>Intraday Modülleri (15m, 1h):</strong> Dengeli sinyal yoğunluğu ve işlem frekansı için standart konfigürasyon.</li>
-                                    <li><strong>Swing Modülleri (4h, 1d):</strong> Uzun vadeli trend analizleri için yüksek doğruluklu hesaplamalar.</li>
+                                    <li><strong>Scalping Modules (1m, 5m):</strong> Optimized for high-frequency data processing with low latency analysis.</li>
+                                    <li><strong>Intraday Modules (15m, 1h):</strong> Standard configuration for balanced signal density and trading frequency.</li>
+                                    <li><strong>Swing Modules (4h, 1d):</strong> High accuracy calculations for long-term trend analysis.</li>
                                 </ul>
                                 
-                                <p><strong>MTF Onay Algoritması:</strong> Birden fazla zaman dilimindeki sinyallerin matematiksel korelasyonu, işlem kararının güven skorunu hesaplar.</p>
+                                <p><strong>MTF Confirmation Algorithm:</strong> Mathematical correlation of signals from multiple timeframes calculates the confidence score of trading decisions.</p>
                                 
                                 <div class="stability-highlight">
-                                    <strong>📊 Teknik Not:</strong> Sistem varsayılan olarak 15m ve 1h modüllerini senkronize çalıştırır.
+                                    <strong>📊 Technical Note:</strong> System defaults to running 15m and 1h modules synchronously.
                                 </div>
                                 
-                                <p class="text-muted mt-3"><em>Bu ayarlar piyasa koşullarına göre değişkenlik gösterir ve kullanıcının sorumluluğundadır.</em></p>
+                                <p class="text-muted mt-3"><em>These settings vary according to market conditions and are the user's responsibility.</em></p>
                             </div>
                         </div>
                     </div>
@@ -501,24 +514,24 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usage2">
-                                Risk yönetimi parametreleri nasıl yapılandırılır?
+                                How are risk management parameters configured?
                             </button>
                         </h2>
                         <div id="usage2" class="accordion-collapse collapse" data-bs-parent="#usageAccordion">
                             <div class="accordion-body">
-                                <p>Sentralyx risk yönetimi motoru için teknik literatürde kabul görmüş parametre aralıkları:</p>
+                                <p>Technical literature-accepted parameter ranges for Sentralyx risk management engine:</p>
                                 
                                 <ul>
-                                    <li><strong>Stop Loss Threshold:</strong> %1.5 - %3.0 (piyasa volatilitesi indeksine göre otomatik ayarlanabilir)</li>
-                                    <li><strong>Take Profit Threshold:</strong> %3.0 - %6.0 (Risk/Oran katsayısı min. 1:2)</li>
-                                    <li><strong>Position Size Algorithm:</strong> Toplam sermayenin %2-5'i (dinamik hesaplama)</li>
-                                    <li><strong>Daily Loss Limit:</strong> Günlük maksimum %5 sermaye koruma sınırı</li>
-                                    <li><strong>Max Duration:</strong> 240 dakika (4 saat) otomatik kapanış zamanlayıcısı</li>
+                                    <li><strong>Stop Loss Threshold:</strong> 1.5% - 3.0% (can be automatically adjusted according to market volatility index)</li>
+                                    <li><strong>Take Profit Threshold:</strong> 3.0% - 6.0% (Risk/Reward ratio minimum 1:2)</li>
+                                    <li><strong>Position Size Algorithm:</strong> 2-5% of total capital (dynamic calculation)</li>
+                                    <li><strong>Daily Loss Limit:</strong> Daily maximum 5% capital protection limit</li>
+                                    <li><strong>Max Duration:</strong> 240 minutes (4 hours) automatic closing timer</li>
                                 </ul>
                                 
-                                <p><strong>Sistem Validasyonu:</strong> Risk parametreleri her işlem öncesinde Pre-Trade Validation katmanı tarafından kontrol edilir.</p>
+                                <p><strong>System Validation:</strong> Risk parameters are checked by Pre-Trade Validation layer before each trade.</p>
                                 
-                                <p class="text-muted mt-3"><em>Bu ayarlar piyasa koşullarına göre değişkenlik gösterir ve kullanıcının sorumluluğundadır.</em></p>
+                                <p class="text-muted mt-3"><em>These settings vary according to market conditions and are the user's responsibility.</em></p>
                             </div>
                         </div>
                     </div>
@@ -526,38 +539,38 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usage3">
-                                Sentralyx ile Kullanılabilen Teknik Analiz Modülleri
+                                Technical Analysis Modules Available with Sentralyx
                             </button>
                         </h2>
                         <div id="usage3" class="accordion-collapse collapse" data-bs-parent="#usageAccordion">
                             <div class="accordion-body">
-                                <p>Sentralyx motorunda entegre edilen teknik analiz modüllerinin matematiksel karşılıkları:</p>
+                                <p>Mathematical equivalents of technical analysis modules integrated in Sentralyx engine:</p>
                                 
-                                <p><strong>Trend Analiz Modülleri:</strong></p>
+                                <p><strong>Trend Analysis Modules:</strong></p>
                                 <ul>
-                                    <li><span class="technical-term">MACD (12, 26, 9)</span> - Hareketli ortalama yakınsama/ıraksama algoritması</li>
-                                    <li><span class="technical-term">Moving Averages (20, 50)</span> - Üstel ve basit hareketli ortalama hesaplama motoru</li>
-                                    <li><span class="technical-term">ADX</span> - Average Directional Index trend gücü ölçüm algoritması</li>
+                                    <li><span class="technical-term">MACD (12, 26, 9)</span> - Moving average convergence/divergence algorithm</li>
+                                    <li><span class="technical-term">Moving Averages (20, 50)</span> - Exponential and simple moving average calculation engine</li>
+                                    <li><span class="technical-term">ADX</span> - Average Directional Index trend strength measurement algorithm</li>
                                 </ul>
                                 
-                                <p><strong>Mean Reversion Modülleri:</strong></p>
+                                <p><strong>Mean Reversion Modules:</strong></p>
                                 <ul>
-                                    <li><span class="technical-term">RSI (14)</span> - Relative Strength Index osilatörü (30/70 threshold)</li>
-                                    <li><span class="technical-term">Bollinger Bands</span> - Standart sapma tabanlı fiyat kanalı hesaplaması</li>
-                                    <li><span class="technical-term">Stochastic Oscillator</span> - %K ve %D çizgileri momentum analizi</li>
+                                    <li><span class="technical-term">RSI (14)</span> - Relative Strength Index oscillator (30/70 threshold)</li>
+                                    <li><span class="technical-term">Bollinger Bands</span> - Standard deviation based price channel calculation</li>
+                                    <li><span class="technical-term">Stochastic Oscillator</span> - %K and %D lines momentum analysis</li>
                                 </ul>
                                 
-                                <p><strong>Volume Analiz Modülleri:</strong></p>
+                                <p><strong>Volume Analysis Modules:</strong></p>
                                 <ul>
-                                    <li><span class="technical-term">Volume Profile</span> - Fiyat/volume dağılımı histogram algoritması</li>
-                                    <li><span class="technical-term">On-Balance Volume</span> - Akış yönü hesaplama motoru</li>
+                                    <li><span class="technical-term">Volume Profile</span> - Price/volume distribution histogram algorithm</li>
+                                    <li><span class="technical-term">On-Balance Volume</span> - Flow direction calculation engine</li>
                                 </ul>
                                 
                                 <div class="stability-highlight">
-                                    <strong>💡 Teknik Not:</strong> Modüller tek başına değil, sinyal korelasyon matrisi üzerinden çalışır.
+                                    <strong>💡 Technical Note:</strong> Modules work not individually, but through signal correlation matrix.
                                 </div>
                                 
-                                <p class="text-muted mt-3"><em>Bu ayarlar piyasa koşullarına göre değişkenlik gösterir ve kullanıcının sorumluluğundadır.</em></p>
+                                <p class="text-muted mt-3"><em>These settings vary according to market conditions and are the user's responsibility.</em></p>
                             </div>
                         </div>
                     </div>
@@ -565,30 +578,30 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usage4">
-                                Sentralyx backtest motoru nasıl çalışır?
+                                How does Sentralyx backtest engine work?
                             </button>
                         </h2>
                         <div id="usage4" class="accordion-collapse collapse" data-bs-parent="#usageAccordion">
                             <div class="accordion-body">
-                                <p>Sentralyx backtest motoru için teknik validasyon prosedürü:</p>
+                                <p>Technical validation procedure for Sentralyx backtest engine:</p>
                                 
                                 <ol>
-                                    <li><strong>Veri Seti Hazırlığı:</strong> Minimum 6 aylık OHLCV veri formatı (tick-by-tick destekli)</li>
-                                    <li><strong>Strateji Tanımlama:</strong> Giriş/çıkış kurallarının algoritmik tanımlanması</li>
-                                    <li><strong>Parametre Optimizasyonu:</strong> Grid search algoritması ile parametre uzayında tarama</li>
-                                    <li><strong>Walk-Forward Validasyon:</strong> Out-of-sample test ile overfitting kontrolü</li>
-                                    <li><strong>Risk Metrikleri:</strong> Maximum drawdown, Sharpe ratio, Sortino ratio hesaplamaları</li>
+                                    <li><strong>Data Set Preparation:</strong> Minimum 6-month OHLCV data format (tick-by-tick supported)</li>
+                                    <li><strong>Strategy Definition:</strong> Algorithmic definition of entry/exit rules</li>
+                                    <li><strong>Parameter Optimization:</strong> Grid search algorithm for scanning parameter space</li>
+                                    <li><strong>Walk-Forward Validation:</strong> Out-of-sample test for overfitting control</li>
+                                    <li><strong>Risk Metrics:</strong> Maximum drawdown, Sharpe ratio, Sortino ratio calculations</li>
                                 </ol>
                                 
-                                <p><strong>Performans Metrikleri (Teknik Referans):</strong></p>
+                                <p><strong>Performance Metrics (Technical Reference):</strong></p>
                                 <ul>
-                                    <li>Win Rate: %60+ (istatistiksel anlamlılık eşiği)</li>
-                                    <li>Profit Factor: 1.5+ (kar/zarar oranı)</li>
-                                    <li>Max Drawdown: %20 altı (risk toleransı)</li>
-                                    <li>Sharpe Ratio: 1.0+ (risk ayarlı getiri)</li>
+                                    <li>Win Rate: 60%+ (statistical significance threshold)</li>
+                                    <li>Profit Factor: 1.5+ (profit/loss ratio)</li>
+                                    <li>Max Drawdown: Below 20% (risk tolerance)</li>
+                                    <li>Sharpe Ratio: 1.0+ (risk-adjusted return)</li>
                                 </ul>
                                 
-                                <p class="text-muted mt-3"><em>Bu ayarlar piyasa koşullarına göre değişkenlik gösterir ve kullanıcının sorumluluğundadır.</em></p>
+                                <p class="text-muted mt-3"><em>These settings vary according to market conditions and are the user's responsibility.</em></p>
                             </div>
                         </div>
                     </div>
@@ -598,7 +611,7 @@
                 <div class="text-center mt-4">
                     <small class="text-muted">
                         <i class="fas fa-info-circle me-2"></i>
-                        Not: Bu bölümdeki tüm değerler örnek amaçlıdır. Sentralyx herhangi bir parametre önermez.
+                        Note: All values in this section are for example purposes. Sentralyx does not recommend any parameters.
                     </small>
                 </div>
             </div>
@@ -612,9 +625,9 @@
                 <div class="d-flex align-items-start">
                     <i class="fas fa-exclamation-triangle me-3" style="color: #ffc107; font-size: 1.5rem; margin-top: 2px;"></i>
                     <div>
-                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Yasal Uyarı</h5>
+                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Legal Disclaimer</h5>
                         <p class="mb-0 text-secondary">
-                            Sentralyx bir trading terminalidir, yatırım danışmanlığı hizmeti vermez. Burada yer alan bilgiler yalnızca yazılımın teknik özelliklerini açıklamak amacıyla sunulmuştur. Yatırım tavsiyesi niteliği taşımaz. Finansal kararlarınızdan yalnızca siz sorumlusunuz. Kripto para piyasaları yüksek risk içerir.
+                            Sentralyx is a trading terminal and does not provide investment advisory services. The information contained herein is provided solely to explain the technical features of the software. It does not constitute investment advice. You are solely responsible for your financial decisions. Cryptocurrency markets involve high risk.
                         </p>
                     </div>
                 </div>
@@ -626,13 +639,13 @@
     <section class="cta-section">
         <div class="container">
             <div class="text-center">
-                <h2 class="display-5 mb-4">Hala sorunuz mu var?</h2>
+                <h2 class="display-5 mb-4">Still have questions?</h2>
                 <p class="lead text-secondary mb-4">
-                    Teknik destek ve daha fazla bilgi için Telegram'dan bize ulaşabilirsiniz.
+                    For technical support and more information, reach us on Telegram.
                 </p>
                 <a href="https://t.me/sentralyx_bot" target="_blank" class="cta-button">
                     <i class="fab fa-telegram-plane"></i>
-                    Telegram'dan Ulaşın
+                    Contact on Telegram
                 </a>
             </div>
         </div>
@@ -645,9 +658,9 @@
                 <div class="d-flex align-items-start">
                     <i class="fas fa-exclamation-triangle me-3" style="color: #ffc107; font-size: 1.5rem; margin-top: 2px;"></i>
                     <div>
-                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Yasal Uyarı</h5>
+                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Legal Disclaimer</h5>
                         <p class="mb-0 text-secondary">
-                            Sentralyx bir trading terminalidir, yatırım danışmanlığı hizmeti vermez. Burada yer alan bilgiler yalnızca yazılımın teknik özelliklerini açıklamak amacıyla sunulmuştur. Yatırım tavsiyesi niteliği taşımaz. Finansal kararlarınızdan yalnızca siz sorumlusunuz. Kripto para piyasaları yüksek risk içerir.
+                            Sentralyx is a trading terminal and does not provide investment advisory services. The information contained herein is provided solely to explain the technical features of the software. It does not constitute investment advice. You are solely responsible for your financial decisions. Cryptocurrency markets involve high risk.
                         </p>
                     </div>
                 </div>
@@ -658,10 +671,10 @@
     <div id="footer-container"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
     <script>
         // Load header and footer
-        fetch('components/footer.html')
+        fetch('footer.html')
             .then(async (response) => {
                 const buffer = await response.arrayBuffer();
                 return new TextDecoder('utf-8').decode(buffer);
@@ -669,7 +682,7 @@
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
             })
-            .catch(error => console.error('Footer yuklenemedi:', error));
+            .catch(error => console.error('Footer loading failed:', error));
     </script>
 </body>
 </html>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Sentralyx | Часто задаваемые вопросы - Техническая поддержка и руководство пользователя</title>
+    <meta name="description" content="Часто задаваемые вопросы о торговом терминале Sentralyx. Безопасность, техническая стабильность, Thread Watchdog, Atomic Write, HWID шифрование и многое другое.">
+    <meta name="keywords" content="sentralyx faq, часто задаваемые вопросы, безопасность, техническая поддержка, thread watchdog, atomic write, hwid шифрование, gtc ордера">
+
+    <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        /* Language Selector Styles */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(11, 17, 27, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .language-selector .btn {
+            padding: 8px 16px;
+            margin: 0 2px;
+            border: 1px solid var(--border-color);
+            background: var(--panel-dark);
+            color: var(--text-secondary);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .language-selector .btn:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        .language-selector .btn.active {
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+            color: white;
+            border-color: var(--accent-blue);
+        }
+        
+        /* FAQ Page Specific Styles */
+        .faq-hero {
+            padding: 120px 0 60px;
+            background: radial-gradient(circle at top right, rgba(47, 177, 127, 0.12), transparent);
+            position: relative;
+        }
+        
+        .faq-section {
+            padding: 80px 0;
+        }
+        
+        .faq-category {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            margin-right: 20px;
+        }
+        
+        .category-title {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .accordion-item {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            margin-bottom: 10px;
+            border-radius: 10px !important;
+            overflow: hidden;
+        }
+        
+        .accordion-button {
+            background: var(--panel-dark);
+            color: var(--text-main);
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+            color: white;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+            border: none;
+        }
+        
+        .accordion-body {
+            background: var(--panel-dark);
+            color: var(--text-secondary);
+            padding: 25px;
+            line-height: 1.7;
+        }
+        
+        .technical-term {
+            background: rgba(52, 152, 219, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 6px;
+            padding: 3px 8px;
+            color: var(--accent-blue);
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .security-highlight {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .stability-highlight {
+            background: rgba(46, 204, 113, 0.1);
+            border-left: 4px solid #2ecc71;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(47, 177, 127, 0.1), rgba(52, 152, 219, 0.1));
+            text-align: center;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+            color: white;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-hero {
+                padding: 100px 0 40px;
+            }
+            
+            .faq-section {
+                padding: 60px 0;
+            }
+            
+            .faq-category {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .category-header {
+                margin-bottom: 20px;
+            }
+            
+            .category-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+                margin-right: 15px;
+            }
+            
+            .category-title {
+                font-size: 1.2rem;
+            }
+            
+            .accordion-button {
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+            
+            .accordion-body {
+                padding: 20px;
+            }
+            
+            /* Language Selector Mobile */
+            .language-selector {
+                top: 10px;
+                right: 10px;
+                padding: 6px;
+            }
+            
+            .language-selector .btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+                margin: 0 1px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <a href="../faq.html" class="btn">TR</a>
+        <a href="../en/faq.html" class="btn">EN</a>
+        <a href="faq.html" class="btn active">RU</a>
+    </div>
+
+    <header id="main-header"></header>
+
+    <!-- Legal Disclaimer -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="alert alert-warning" style="background: rgba(255, 193, 7, 0.1); border: 1px solid #ffc107; border-radius: 10px; padding: 20px;">
+                <div class="d-flex align-items-start">
+                    <i class="fas fa-exclamation-triangle me-3" style="color: #ffc107; font-size: 1.5rem; margin-top: 2px;"></i>
+                    <div>
+                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Юридическое предупреждение</h5>
+                        <p class="mb-0 text-secondary">
+                            Sentralyx является торговым терминалом и не предоставляет инвестиционно-консультационные услуги. Информация, содержащаяся здесь, предоставлена исключительно для объяснения технических характеристик программного обеспечения. Она не является инвестиционным советом. Вы несете полную ответственность за свои финансовые решения. Криптовалютные рынки сопряжены с высоким риском.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-hero">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-3 mb-4">Часто задаваемые вопросы</h1>
+                <p class="lead text-secondary mb-5">
+                    Технические и операционные вопросы о торговом терминале Sentralyx. 
+                    Безопасность, стабильность и руководство пользователя.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            
+            <!-- Security & Privacy Category -->
+            <div class="faq-category">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2 class="category-title">Безопасность и конфиденциальность</h2>
+                </div>
+                
+                <div class="accordion" id="securityAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#security1">
+                                Что произойдет с моими позициями, если интернет отключится?
+                            </button>
+                        </h2>
+                        <div id="security1" class="accordion-collapse collapse show" data-bs-parent="#securityAccordion">
+                            <div class="accordion-body">
+                                <p>При отключении интернет-соединения ваши позиции остаются полностью в безопасности. Sentralyx работает с принципами <span class="technical-term">GTC ордеров</span> (Good Till Canceled) и <span class="technical-term">Server-Side Protection</span>:</p>
+                                
+                                <div class="security-highlight">
+                                    <strong>✅ SL/TP защита:</strong> Ордера Stop Loss и Take Profit хранятся непосредственно на сервере биржи и остаются активными независимо от наличия интернет-соединения.
+                                </div>
+                                
+                                <ul>
+                                    <li><strong>SL (Stop Loss):</strong> Когда цена достигает вашего стоп-уровня, позиция автоматически закрывается.</li>
+                                    <li><strong>TP (Take Profit):</strong> При достижении целевой цены ваша прибыль реализуется.</li>
+                                    <li><strong>Global Stop:</strong> В экстренных ситуациях вы можете безопасно закрыть все позиции.</li>
+                                </ul>
+                                
+                                <p><strong>Важно:</strong> Во время перебоев с интернетом новые ордера отправлять нельзя (мера безопасности), но существующие позиции защищены на стороне сервера.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#security2">
+                                Как защищены мои API ключи?
+                            </button>
+                        </h2>
+                        <div id="security2" class="accordion-collapse collapse" data-bs-parent="#securityAccordion">
+                            <div class="accordion-body">
+                                <p>Ваши API ключи защищены с максимальной безопасностью с помощью <span class="technical-term">HWID шифрования</span>:</p>
+                                
+                                <div class="security-highlight">
+                                    <strong>🔐 Двойное шифрование:</strong> Комбинация идентификатора оборудования (HWID) и симметричного шифрования Fernet.
+                                </div>
+                                
+                                <ul>
+                                    <li><strong>Привязка к HWID:</strong> Каждая лицензия предназначена для конкретного оборудования. Не будет работать на разных машинах.</li>
+                                    <li><strong>Локальное хранение:</strong> API ключи никогда не отправляются в облако или на сторонние серверы.</li>
+                                    <li><strong>Fernet шифрование:</strong> Используется стандарт шифрования на основе AES-128, безопасенный для URL.</li>
+                                    <li><strong>Соответствие регуляторам:</strong> Полностью соответствует законам о защите данных GDPR и KVKK.</li>
+                                </ul>
+                                
+                                <p><strong>Дополнительная безопасность:</strong> Ваши API ключи могут быть расшифрованы только с помощью <span class="technical-term">HWID</span> вашей машины, что делает несанкционированный доступ невозможным.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#security3">
+                                Хранятся ли мои данные в облаке?
+                            </button>
+                        </h2>
+                        <div id="security3" class="accordion-collapse collapse" data-bs-parent="#securityAccordion">
+                            <div class="accordion-body">
+                                <p><strong>Нет.</strong> Sentralyx работает с принципом <strong>Privacy-First</strong> (Сначала конфиденциальность):</p>
+                                
+                                <ul>
+                                    <li><strong>Данные стратегий:</strong> Ваши прибыльные стратегии и настройки индикаторов хранятся только локально.</li>
+                                    <li><strong>История сделок:</strong> Результаты бэктестов и данные оптимизации остаются конфиденциальными.</li>
+                                    <li><strong>Защита от конкурентов:</strong> Ваша алгоритмическая торговая логика не может быть утечена брокерам или конкурентам.</li>
+                                    <li><strong>Передача данных:</strong> Критические данные никогда не передаются через интернет.</li>
+                                </ul>
+                                
+                                <div class="security-highlight">
+                                    <strong>🛡️ Нулевой риск посредника:</strong> Все критические операции и данные хранятся локально для максимальной безопасности.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Stability Category -->
+            <div class="faq-category">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h2 class="category-title">Техническая стабильность (Self-Healing)</h2>
+                </div>
+                
+                <div class="accordion" id="stabilityAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#stability1">
+                                Как система восстанавливается после ошибок?
+                            </button>
+                        </h2>
+                        <div id="stability1" class="accordion-collapse collapse show" data-bs-parent="#stabilityAccordion">
+                            <div class="accordion-body">
+                                <p>Sentralyx имеет возможности самовосстановления с системой <span class="technical-term">ThreadWatchdog</span>:</p>
+                                
+                                <div class="stability-highlight">
+                                    <strong>🔄 24/7 Автоматический мониторинг:</strong> Все критические потоки проверяются каждые 30 секунд.
+                                </div>
+                                
+                                <ul>
+                                    <li><strong>Контроль сердцебиения:</strong> Специальная система сердцебиения для потока сканера, сигнал "frozen" если нет данных 60 секунд.</li>
+                                    <li><strong>Автоматический перезапуск:</strong> Если обнаружен сбой потока, он автоматически перезапускается.</li>
+                                    <li><strong>Максимум попыток:</strong> Каждый поток имеет максимум 3 попыток перезапуска.</li>
+                                    <li><strong>State-Safe:</strong> Данные позиций и состояние стратегий сохраняются во время перезапусков.</li>
+                                </ul>
+                                
+                                <p><strong>Слои самовосстановления:</strong></p>
+                                <ol>
+                                    <li><strong>Pre-Trade Validation:</strong> Проверка баланса, анализ риска, лимит максимальной позиции.</li>
+                                    <li><strong>Real-Time Monitoring:</strong> Обнаружение скачков цен, обнаружение аномалий, отслеживание P&L.</li>
+                                    <li><strong>Emergency Protocols:</strong> Механизм глобальной остановки, возможность принудительного закрытия.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stability2">
+                                Есть ли меры против повреждения файлов?
+                            </button>
+                        </h2>
+                        <div id="stability2" class="accordion-collapse collapse" data-bs-parent="#stabilityAccordion">
+                            <div class="accordion-body">
+                                <p>Да, целостность файлов обеспечивается с гарантией <span class="technical-term">Atomic Write</span> I/O:</p>
+                                
+                                <div class="stability-highlight">
+                                    <strong>⚛️ Атомарные операции:</strong> Критические операции либо полностью успешны, либо считаются несостоявшимися.
+                                </div>
+                                
+                                <ul>
+                                    <li><strong>Транзакционные файловые операции:</strong> Запись во временный файл, проверка, затем атомарная замена.</li>
+                                    <li><strong>Crash Recovery:</strong> Целостность данных поддерживается даже во время отключений электроэнергии или сбоев системы.</li>
+                                    <li><strong>Свойства ACID:</strong> Гарантия Atomicity, Consistency, Isolation, Durability.</li>
+                                    <li><strong>Sync Guarantee:</strong> Используется fsync для обеспечения записи данных на диск.</li>
+                                </ul>
+                                
+                                <p><strong>Пример потока:</strong></p>
+                                <ol>
+                                    <li>Данные записываются во временный файл (.tmp)</li>
+                                    <li>Выполняется синхронизация с диском (fsync)</li>
+                                    <li>Атомарная замена с оригинальным файлом (rename)</li>
+                                    <li>Временный файл удаляется при ошибке</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stability3">
+                                Как управляются "осиротевшие" позиции при прерываниях соединения?
+                            </button>
+                        </h2>
+                        <div id="stability3" class="accordion-collapse collapse" data-bs-parent="#stabilityAccordion">
+                            <div class="accordion-body">
+                                <p>Система <span class="technical-term">Orphan Recovery</span> автоматически управляет осиротевшими позициями при прерываниях соединения:</p>
+                                
+                                <ul>
+                                    <li><strong>Быстрое обнаружение:</strong> Прерывание соединения обнаруживается в течение 5 секунд.</li>
+                                    <li><strong>Автоматическая синхронизация:</strong> При восстановлении соединения состояние позиций автоматически синхронизируется.</li>
+                                    <li><strong>State Recovery:</strong> Состояние системы в момент сбоя сохраняется и может быть восстановлено.</li>
+                                    <li><strong>Manual Override:</strong> При необходимости предоставляется возможность ручного вмешательства.</li>
+                                </ul>
+                                
+                                <div class="stability-highlight">
+                                    <strong>🛡️ 100% успешность восстановления:</strong> Потеря позиций при прерываниях соединения отсутствует.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Configuration & Technical Parameters Category -->
+            <div class="faq-category">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h2 class="category-title">Конфигурация системы и технические параметры</h2>
+                </div>
+                
+                <div class="accordion" id="usageAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#usage1">
+                                Какие конфигурации таймфреймов у Sentralyx?
+                            </button>
+                        </h2>
+                        <div id="usage1" class="accordion-collapse collapse show" data-bs-parent="#usageAccordion">
+                            <div class="accordion-body">
+                                <p>Движок анализа <strong>Multi-Timeframe (MTF)</strong> Sentralyx поддерживает следующие технические конфигурации:</p>
+                                
+                                <ul>
+                                    <li><strong>Модули скальпинга (1m, 5m):</strong> Оптимизированы для высокочастотной обработки данных с анализом низкой задержки.</li>
+                                    <li><strong>Внутридневные модули (15m, 1h):</strong> Стандартная конфигурация для сбалансированной плотности сигналов и частоты торговли.</li>
+                                    <li><strong>Свинг-модули (4h, 1d):</strong> Высокоточные вычисления для долгосрочного трендового анализа.</li>
+                                </ul>
+                                
+                                <p><strong>Алгоритм подтверждения MTF:</strong> Математическая корреляция сигналов из нескольких таймфреймов рассчитывает показатель уверенности торговых решений.</p>
+                                
+                                <div class="stability-highlight">
+                                    <strong>📊 Техническое примечание:</strong> Система по умолчанию синхронно запускает модули 15m и 1h.
+                                </div>
+                                
+                                <p class="text-muted mt-3"><em>Эти настройки варьируются в зависимости от рыночных условий и являются ответственностью пользователя.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usage2">
+                                Как настраиваются параметры управления рисками?
+                            </button>
+                        </h2>
+                        <div id="usage2" class="accordion-collapse collapse" data-bs-parent="#usageAccordion">
+                            <div class="accordion-body">
+                                <p>Принятые в технической литературе диапазоны параметров для движка управления рисками Sentralyx:</p>
+                                
+                                <ul>
+                                    <li><strong>Порог Stop Loss:</strong> 1.5% - 3.0% (может автоматически регулироваться в соответствии с индексом волатильности рынка)</li>
+                                    <li><strong>Порог Take Profit:</strong> 3.0% - 6.0% (коэффициент риск/прибыль минимум 1:2)</li>
+                                    <li><strong>Алгоритм размера позиции:</strong> 2-5% от общего капитала (динамический расчет)</li>
+                                    <li><strong>Лимит дневных убытков:</strong> Дневной максимум 5% защиты капитала</li>
+                                    <li><strong>Максимальная продолжительность:</strong> 240 минут (4 часа) таймер автоматического закрытия</li>
+                                </ul>
+                                
+                                <p><strong>Валидация системы:</strong> Параметры риска проверяются слоем Pre-Trade Validation перед каждой сделкой.</p>
+                                
+                                <p class="text-muted mt-3"><em>Эти настройки варьируются в зависимости от рыночных условий и являются ответственностью пользователя.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usage3">
+                                Модули технического анализа, доступные с Sentralyx
+                            </button>
+                        </h2>
+                        <div id="usage3" class="accordion-collapse collapse" data-bs-parent="#usageAccordion">
+                            <div class="accordion-body">
+                                <p>Математические эквиваленты модулей технического анализа, интегрированных в движок Sentralyx:</p>
+                                
+                                <p><strong>Модули трендового анализа:</strong></p>
+                                <ul>
+                                    <li><span class="technical-term">MACD (12, 26, 9)</span> - Алгоритм схождения/расхождения скользящих средних</li>
+                                    <li><span class="technical-term">Moving Averages (20, 50)</span> - Движок расчета экспоненциальных и простых скользящих средних</li>
+                                    <li><span class="technical-term">ADX</span> - Алгоритм измерения силы тренда Average Directional Index</li>
+                                </ul>
+                                
+                                <p><strong>Модули возврата к среднему:</strong></p>
+                                <ul>
+                                    <li><span class="technical-term">RSI (14)</span> - Осциллятор Relative Strength Index (порог 30/70)</li>
+                                    <li><span class="technical-term">Bollinger Bands</span> - Расчет ценового канала на основе стандартного отклонения</li>
+                                    <li><span class="technical-term">Stochastic Oscillator</span> - Анализ импульса линий %K и %D</li>
+                                </ul>
+                                
+                                <p><strong>Модули анализа объема:</strong></p>
+                                <ul>
+                                    <li><span class="technical-term">Volume Profile</span> - Алгоритм гистограммы распределения цены/объема</li>
+                                    <li><span class="technical-term">On-Balance Volume</span> - Движок расчета направления потока</li>
+                                </ul>
+                                
+                                <div class="stability-highlight">
+                                    <strong>💡 Техническое примечание:</strong> Модули работают не индивидуально, а через матрицу корреляции сигналов.
+                                </div>
+                                
+                                <p class="text-muted mt-3"><em>Эти настройки варьируются в зависимости от рыночных условий и являются ответственностью пользователя.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usage4">
+                                Как работает движок бэктестинга Sentralyx?
+                            </button>
+                        </h2>
+                        <div id="usage4" class="accordion-collapse collapse" data-bs-parent="#usageAccordion">
+                            <div class="accordion-body">
+                                <p>Процедура технической валидации для движка бэктестинга Sentralyx:</p>
+                                
+                                <ol>
+                                    <li><strong>Подготовка набора данных:</strong> Минимум 6-месячные данные OHLCV (поддерживается tick-by-tick)</li>
+                                    <li><strong>Определение стратегии:</strong> Алгоритмическое определение правил входа/выхода</li>
+                                    <li><strong>Оптимизация параметров:</strong> Алгоритм поиска по сетке для сканирования пространства параметров</li>
+                                    <li><strong>Walk-Forward валидация:</strong> Тест out-of-sample для контроля переобучения</li>
+                                    <li><strong>Метрики риска:</strong> Расчет максимальной просадки, коэффициента Шарпа, коэффициента Сортино</li>
+                                </ol>
+                                
+                                <p><strong>Метрики производительности (Техническая справка):</strong></p>
+                                <ul>
+                                    <li>Win Rate: 60%+ (порог статистической значимости)</li>
+                                    <li>Profit Factor: 1.5+ (коэффициент прибыль/убыток)</li>
+                                    <li>Max Drawdown: Ниже 20% (толерантность к риску)</li>
+                                    <li>Sharpe Ratio: 1.0+ (доходность с поправкой на риск)</li>
+                                </ul>
+                                
+                                <p class="text-muted mt-3"><em>Эти настройки варьируются в зависимости от рыночных условий и являются ответственностью пользователя.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mini Disclaimer -->
+                <div class="text-center mt-4">
+                    <small class="text-muted">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Примечание: Все значения в этом разделе предназначены для примера. Sentralyx не рекомендует никаких параметров.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Disclaimer -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="alert alert-warning" style="background: rgba(255, 193, 7, 0.1); border: 1px solid #ffc107; border-radius: 10px; padding: 20px;">
+                <div class="d-flex align-items-start">
+                    <i class="fas fa-exclamation-triangle me-3" style="color: #ffc107; font-size: 1.5rem; margin-top: 2px;"></i>
+                    <div>
+                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Юридическое предупреждение</h5>
+                        <p class="mb-0 text-secondary">
+                            Sentralyx является торговым терминалом и не предоставляет инвестиционно-консультационные услуги. Информация, содержащаяся здесь, предоставлена исключительно для объяснения технических характеристик программного обеспечения. Она не является инвестиционным советом. Вы несете полную ответственность за свои финансовые решения. Криптовалютные рынки сопряжены с высоким риском.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="display-5 mb-4">Все еще есть вопросы?</h2>
+                <p class="lead text-secondary mb-4">
+                    Для технической поддержки и дополнительной информации свяжитесь с нами в Telegram.
+                </p>
+                <a href="https://t.me/sentralyx_bot" target="_blank" class="cta-button">
+                    <i class="fab fa-telegram-plane"></i>
+                    Связаться в Telegram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Disclaimer -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="alert alert-warning" style="background: rgba(255, 193, 7, 0.1); border: 1px solid #ffc107; border-radius: 10px; padding: 20px;">
+                <div class="d-flex align-items-start">
+                    <i class="fas fa-exclamation-triangle me-3" style="color: #ffc107; font-size: 1.5rem; margin-top: 2px;"></i>
+                    <div>
+                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Юридическое предупреждение</h5>
+                        <p class="mb-0 text-secondary">
+                            Sentralyx является торговым терминалом и не предоставляет инвестиционно-консультационные услуги. Информация, содержащаяся здесь, предоставлена исключительно для объяснения технических характеристик программного обеспечения. Она не является инвестиционным советом. Вы несете полную ответственность за свои финансовые решения. Криптовалютные рынки сопряжены с высоким риском.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Load header and footer
+        fetch('footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Загрузка футера не удалась:', error));
+    </script>
+</body>
+</html>

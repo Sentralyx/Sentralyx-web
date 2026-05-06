@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Sentralyx | Quantitative Trading Platform with Market Regime Analysis and Portfolio Backtesting</title>
+    <meta name="description" content="Sentralyx provides advanced quantitative trading solutions for professional traders with real-time market scanning, algorithmic strategy creation, automated risk management, and comprehensive portfolio backtesting.">
+    <meta name="keywords" content="trading terminal, algorithmic trading, sentralyx, technical analysis, mtf confirmation, stock indicators, backtesting, quantitative trading, market regime analysis, portfolio backtesting, strategy creation, automated risk management">
+
+    <!-- JSON-LD Software Schema for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Sentralyx",
+        "description": "Professional quantitative trading terminal with real-time market scanning, algorithmic strategy creation, automated risk management, and comprehensive trading reporting",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": ["Web", "Windows", "macOS", "Linux"],
+        "featureList": [
+            "Real-Time Market Scanning",
+            "Algorithmic Strategy Creation",
+            "Automated Risk Management",
+            "Professional Trading Reports",
+            "Multi-Timeframe Analysis (MTF)",
+            "Portfolio Backtesting",
+            "Market Regime Analysis"
+        ],
+        "url": "https://www.sentralyx.com/",
+        "author": {
+            "@type": "Organization",
+            "name": "Sentralyx Architecture Team"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <meta property="og:title" content="Sentralyx Trading Terminal">
+    <meta property="og:description" content="Trading platform designed for speed and precision. Test your strategies, dominate the market.">
+    <meta property="og:url" content="https://www.sentralyx.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sentralyx.com/assets/logo.png">
+    
+    <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        /* Language Selector Styles */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(11, 17, 27, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .language-selector .btn {
+            padding: 8px 16px;
+            margin: 0 2px;
+            border: 1px solid var(--border-color);
+            background: var(--panel-dark);
+            color: var(--text-secondary);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .language-selector .btn:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        .language-selector .btn.active {
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+            color: white;
+            border-color: var(--accent-blue);
+        }
+        
+        /* Override Bootstrap with Sentralyx variables */
+        .navbar {
+            background: rgba(11, 17, 27, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 80px;
+            background: radial-gradient(circle at top right, rgba(47, 177, 127, 0.15), transparent);
+            text-align: center;
+            position: relative;
+        }
+        .hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0;
+        }
+
+        /* Screenshot Styling */
+        .terminal-img-wrapper {
+            position: relative;
+            display: inline-block;
+            margin: 50px auto 0;
+            max-width: 1000px;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+            background: var(--bg-dark);
+        }
+        
+        .terminal-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+        
+        .terminal-img-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, rgba(11, 17, 27, 0.8));
+            pointer-events: none;
+        }
+        
+        .terminal-img-wrapper:hover {
+            border-color: rgba(255,255,255,0.2);
+            box-shadow: 0 50px 120px rgba(0,0,0,0.7);
+        }
+        
+        .terminal-img-wrapper:hover .terminal-img {
+            transform: scale(1.03);
+        }
+
+        /* Sections */
+        .section-padding { padding: 80px 0; }
+        
+        /* Terminal Feature Cards */
+        .terminal-feature-card {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .terminal-feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
+            border-color: var(--accent-blue);
+        }
+        
+        .terminal-feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            transition: left 0.5s;
+        }
+        
+        .terminal-feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-icon { 
+            color: var(--accent-blue); 
+            font-size: 2.5rem; 
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .feature-title {
+            color: var(--text-main);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .feature-action-btn {
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .feature-action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+            color: white;
+        }
+        
+        .hero-main-btn {
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .hero-main-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
+            color: white;
+        }
+
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            color: var(--text-secondary);
+        }
+        
+        /* Footer Social Media Links */
+        .social-link-footer {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        .social-link-footer:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Telegram - Original Blue */
+        .telegram-link-footer:hover {
+            color: #0088cc;
+            filter: drop-shadow(0 0 10px rgba(0, 136, 204, 0.5));
+        }
+        
+        /* X (Twitter) - Electric Blue */
+        .x-link-footer:hover {
+            color: #1DA1F2;
+            filter: drop-shadow(0 0 10px rgba(29, 161, 242, 0.5));
+        }
+        
+        /* YouTube - Classic Red */
+        .youtube-link-footer:hover {
+            color: #ff0000;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+        }
+        
+        /* Instagram - Pink-Purple Gradient */
+        .instagram-link-footer:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            filter: drop-shadow(0 0 10px rgba(228, 64, 95, 0.5));
+        }
+        
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Hero Section Mobile */
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem !important;
+                line-height: 1.2;
+            }
+            
+            .hero .lead {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .hero-main-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+                margin-top: 1.5rem;
+            }
+            
+            .terminal-img-wrapper {
+                max-width: 95vw;
+                margin: 50px auto 0;
+                border-radius: 12px;
+            }
+            
+            .terminal-img-wrapper::after {
+                height: 60px;
+                background: linear-gradient(to bottom, transparent, rgba(11, 17, 27, 0.9));
+            }
+            
+            .terminal-img {
+                transform: scale(1.02);
+            }
+            
+            /* Sections Mobile */
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            /* Feature Cards Mobile */
+            .terminal-feature-card {
+                padding: 25px 20px;
+                margin-bottom: 1.5rem;
+            }
+            
+            .feature-icon {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+            
+            .feature-title {
+                font-size: 1.1rem;
+                margin-bottom: 12px;
+                line-height: 1.3;
+            }
+            
+            .feature-description {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 20px;
+            }
+            
+            .feature-action-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+            
+            /* Quick Navigation Mobile */
+            .panel-dark {
+                padding: 1.5rem;
+            }
+            
+            .btn-sentralyx-start,
+            .btn-sentralyx-pause,
+            .btn-sentralyx-stop {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                margin-bottom: 0.75rem;
+                display: block;
+                width: 100%;
+            }
+            
+            /* Language Selector Mobile */
+            .language-selector {
+                top: 10px;
+                right: 10px;
+                padding: 6px;
+            }
+            
+            .language-selector .btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+                margin: 0 1px;
+            }
+        }
+        
+        /* Prevent Horizontal Scroll */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+            min-width: 320px;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        /* Typography Mobile Optimizations */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                font-size: clamp(1.2rem, 4vw, 2rem);
+                line-height: 1.3;
+            }
+            
+            p, .lead {
+                font-size: clamp(0.9rem, 3vw, 1rem);
+                line-height: 1.6;
+            }
+            
+            .text-secondary {
+                font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+            }
+        }
+        
+        /* Touch Targets for Mobile */
+        @media (max-width: 768px) {
+            .btn, .nav-link, .dropdown-item, .feature-action-btn {
+                min-height: 44px;
+                min-width: 44px;
+                padding: 12px 16px;
+            }
+            
+            .navbar-toggler {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <a href="../index.html" class="btn">TR</a>
+        <a href="index.html" class="btn active">EN</a>
+        <a href="../ru/index.html" class="btn">RU</a>
+    </div>
+
+    <header id="main-header"></header>
+
+    <header class="hero">
+        <div class="container">
+            <h1 class="display-3">Automate Your Trading Processes</h1>
+            <p class="lead text-secondary mb-5">With Sentralyx, analyze market data in seconds, define your strategy, and increase your efficiency.</p>
+            <a href="../scanner/" class="hero-main-btn">
+                <i class="fas fa-rocket me-2"></i>Explore Terminal
+            </a>
+            <div class="terminal-img-wrapper">
+                <img src="../scanner.png" alt="Sentralyx Scanner" class="terminal-img">
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="text-main">Terminal Modules</h2>
+                <p class="text-secondary">All the tools a trader needs are gathered in a single terminal.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-search feature-icon"></i>
+                        <h4 class="feature-title">Market Scanner</h4>
+                        <p class="feature-description">Scan hundreds of market pairs simultaneously based on your technical criteria. Maximize signal quality with MTF confirmation.</p>
+                        <a href="../scanner/" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Explore
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-chart-line feature-icon"></i>
+                        <h4 class="feature-title">Performance Reports</h4>
+                        <p class="feature-description">Report all your trades in detail. Track your success rate, profit/loss charts, and strategy performance from a single screen.</p>
+                        <a href="../reports/" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Details
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-history feature-icon"></i>
+                        <h4 class="feature-title">Trade History</h4>
+                        <p class="feature-description">Analyze your closed positions in detail. Access data on entry/exit prices, profit/loss ratios, and trade durations.</p>
+                        <a href="../history/" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Explore
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-exchange-alt feature-icon"></i>
+                        <h4 class="feature-title">Active Positions</h4>
+                        <p class="feature-description">Track all your open trades with real-time P&L data. Manage Stop Loss and Take Profit levels.</p>
+                        <a href="../active-positions/" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Manage
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-layer-group feature-icon"></i>
+                        <h4 class="feature-title">Strategy Management</h4>
+                        <p class="feature-description">Build your own decision mechanism with Majority, Scoring, and Full Reconciliation methods. Create quick strategies with Wizard.</p>
+                        <a href="../strategies/" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Details
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-sliders-h feature-icon"></i>
+                        <h4 class="feature-title">Indicator Settings</h4>
+                        <p class="feature-description">Optimize the parameters of your indicators according to your strategy. Customize BUY/SELL rules.</p>
+                        <a href="../indicators/" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Configure
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-cog feature-icon"></i>
+                        <h4 class="feature-title">General Settings</h4>
+                        <p class="feature-description">Manage API connections, risk management, and system settings from a single place. Configure broker integrations.</p>
+                        <a href="../settings/" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Settings
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-microchip feature-icon"></i>
+                        <h4 class="feature-title">Engineering Manifesto</h4>
+                        <p class="feature-description">Discover 100% stability and security infrastructure with Thread Watchdog, Atomic Write, and Orphan Recovery technologies.</p>
+                        <a href="../technology.html" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Technology
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="text-main">Quick Access</h2>
+                <p class="text-secondary">Quickly access the most used terminal features</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <div class="panel-dark p-4 text-center">
+                        <h5 class="text-main mb-4">Terminal Control</h5>
+                        <div class="d-flex gap-3 justify-content-center flex-wrap">
+                            <a href="../scanner/" class="btn-sentralyx-start">
+                                <i class="fas fa-search me-2"></i>Scanner
+                            </a>
+                            <a href="../active-positions/" class="btn-sentralyx-pause">
+                                <i class="fas fa-exchange-alt me-2"></i>Positions
+                            </a>
+                            <a href="../settings/" class="btn-sentralyx-stop">
+                                <i class="fas fa-cog me-2"></i>Settings
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Load footer from en/footer.html
+        fetch('footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Footer loading failed:', error));
+    </script>
+</body>
+</html>
