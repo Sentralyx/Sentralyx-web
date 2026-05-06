@@ -2,13 +2,98 @@
 // Dynamic Header Loading System
 
 document.addEventListener('DOMContentLoaded', function() {
+    injectGlobalUiEnhancements();
     applyLanguagePreference();
     loadHeader();
     setActiveNavigation();
     patchLanguageSelector();
+    setupBackToTop();
 });
 
 const LANGUAGE_STORAGE_KEY = 'sentralyx_lang';
+const UI_STYLE_ID = 'sentralyx-ui-enhancements';
+const BACK_TO_TOP_ID = 'backToTop';
+const SCROLL_THRESHOLD_PX = 300;
+let stickyHeaderBound = false;
+let backToTopBound = false;
+
+function injectGlobalUiEnhancements() {
+    if (document.getElementById(UI_STYLE_ID)) return;
+
+    const style = document.createElement('style');
+    style.id = UI_STYLE_ID;
+    style.textContent = `
+        :root { --sentralyx-header-offset: 0px; }
+
+        body { padding-top: var(--sentralyx-header-offset); }
+
+        #main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: background 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        #main-header.sx-scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.28);
+            border-bottom-color: rgba(255, 255, 255, 0.10);
+        }
+
+        #main-header .navbar { background: transparent !important; }
+
+        .language-selector {
+            position: fixed !important;
+            top: 12px !important;
+            right: 12px !important;
+            z-index: 1105 !important;
+        }
+
+        #${BACK_TO_TOP_ID} {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 54px;
+            height: 54px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            background: linear-gradient(135deg, rgba(47, 177, 127, 1), rgba(46, 204, 113, 1));
+            color: #ffffff;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+            transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+            opacity: 0;
+            z-index: 1100;
+        }
+
+        #${BACK_TO_TOP_ID}.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        #${BACK_TO_TOP_ID}:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(47, 177, 127, 0.24);
+        }
+
+        #${BACK_TO_TOP_ID}:active { transform: translateY(-1px) scale(0.98); }
+
+        @media (max-width: 576px) {
+            #${BACK_TO_TOP_ID} { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+            .language-selector { top: 10px !important; right: 10px !important; }
+        }
+    `;
+    document.head.appendChild(style);
+}
 
 function getCurrentLanguageFromPath(pathname) {
     if (pathname.startsWith('/en/')) return 'en';
@@ -179,6 +264,9 @@ async function loadHeader() {
         
         // Re-initialize Bootstrap components after header load
         initializeBootstrap();
+
+        bindStickyHeader(headerElement);
+        updateHeaderOffset(headerElement);
         
         // Set active navigation
         setActiveNavigation();
@@ -196,7 +284,74 @@ async function loadHeader() {
                 </div>
             </nav>
         `;
+        bindStickyHeader(headerElement);
+        updateHeaderOffset(headerElement);
     }
+}
+
+function bindStickyHeader(headerElement) {
+    if (stickyHeaderBound) return;
+    if (!headerElement) return;
+
+    const onScroll = () => {
+        const scrolled = window.scrollY > 8;
+        headerElement.classList.toggle('sx-scrolled', scrolled);
+        toggleBackToTop();
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => updateHeaderOffset(headerElement), { passive: true });
+
+    // Initialize immediately
+    onScroll();
+    stickyHeaderBound = true;
+}
+
+function updateHeaderOffset(headerElement) {
+    try {
+        if (!headerElement) return;
+        const height = headerElement.getBoundingClientRect().height || 0;
+        document.documentElement.style.setProperty('--sentralyx-header-offset', `${Math.ceil(height)}px`);
+    } catch (e) {
+        // ignore
+    }
+}
+
+function setupBackToTop() {
+    if (backToTopBound) return;
+    ensureBackToTopButton();
+    toggleBackToTop();
+
+    // If sticky header not bound (e.g. pages without header), still track scroll for the button.
+    if (!stickyHeaderBound) {
+        window.addEventListener('scroll', toggleBackToTop, { passive: true });
+    }
+
+    backToTopBound = true;
+}
+
+function ensureBackToTopButton() {
+    if (document.getElementById(BACK_TO_TOP_ID)) return;
+
+    const btn = document.createElement('button');
+    btn.id = BACK_TO_TOP_ID;
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Back to top');
+    btn.setAttribute('title', 'Back to top');
+    btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    document.body.appendChild(btn);
+}
+
+function toggleBackToTop() {
+    const btn = document.getElementById(BACK_TO_TOP_ID);
+    if (!btn) return;
+    const show = window.scrollY > SCROLL_THRESHOLD_PX;
+    btn.classList.toggle('show', show);
 }
 
 // Initialize Bootstrap components after dynamic content load
