@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/ru/kvkk.html">
+    <title>Sentralyx | Уведомление о защите персональных данных (KVKK)</title>
+    <meta name="description" content="Уведомление о защите персональных данных (KVKK) для Sentralyx: какие данные обрабатываются, как они защищаются и какие права доступны пользователю.">
+
+    <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <style>
+        .legal-container { padding: 120px 0 80px; background: radial-gradient(circle at top right, rgba(52, 152, 219, 0.12), transparent); }
+        .legal-card { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; }
+        .legal-card h1 { color: var(--text-main); font-weight: 900; margin-bottom: 8px; }
+        .legal-card h2 { color: var(--text-main); font-weight: 900; font-size: 1.25rem; margin-top: 22px; }
+        .legal-card p, .legal-card li { color: var(--text-secondary); line-height: 1.75; }
+        .pill {
+            display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px;
+            border: 1px solid var(--border-color); background: rgba(42, 49, 66, 0.25); color: var(--text-secondary); font-size: 0.85rem;
+        }
+        .pill i { color: var(--accent-blue); }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <a href="../index.html" class="btn">TR</a>
+        <a href="index.html" class="btn active">RU</a>
+        <a href="../en/index.html" class="btn">EN</a>
+    </div>
+
+    <header id="main-header"></header>
+
+    <main class="legal-container">
+        <div class="container">
+            <div class="legal-card">
+                <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div>
+                        <h1>Уведомление о защите персональных данных (KVKK)</h1>
+                        <p class="mb-0">Краткое русскоязычное пояснение для удобства пользователей Sentralyx.</p>
+                    </div>
+                    <span class="pill" title="Статус документа" data-bs-toggle="tooltip">
+                        <i class="fas fa-shield-halved"></i>Сводка (не юридическая консультация)
+                    </span>
+                </div>
+
+                <h2>1) Область действия</h2>
+                <p>Этот документ описывает общие принципы обработки данных в веб‑интерфейсе и экосистеме Sentralyx. Для официального текста на турецком языке используйте турецкий документ KVKK.</p>
+
+                <h2>2) Какие данные могут обрабатываться</h2>
+                <ul>
+                    <li><strong>Контактные данные:</strong> имя и email при обращении в поддержку.</li>
+                    <li><strong>Технические данные (веб):</strong> настройки интерфейса (например, выбранный язык) и базовые параметры браузера для безопасной работы.</li>
+                    <li><strong>Данные продукта (local‑first):</strong> конфигурации стратегий и чувствительные параметры по возможности сохраняются локально у пользователя.</li>
+                </ul>
+
+                <h2>3) Безопасность и зашифрованное хранение</h2>
+                <p>Чувствительные данные (например, API‑учетные данные биржи) должны храниться в зашифрованном виде. Рекомендуется принцип наименьших привилегий: торговые права без вывода средств, IP‑whitelist и регулярная ротация ключей.</p>
+
+                <h2>4) Цели обработки</h2>
+                <ul>
+                    <li>Техническая поддержка и ответы на бизнес‑запросы.</li>
+                    <li>Обеспечение целостности и безопасности платформы.</li>
+                    <li>Отправка уведомлений и вебхуков по настройкам пользователя.</li>
+                </ul>
+
+                <h2>5) Ваши права</h2>
+                <p>Вы можете направлять запросы по вопросам обработки данных и реализации прав субъектов данных на адрес: <a href="mailto:support@sentralyx.com" class="text-accent-blue text-decoration-none">support@sentralyx.com</a>.</p>
+
+                <div class="mt-4 small text-secondary">Последнее обновление: 2026-05-06</div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        fetch('footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Не удалось загрузить футер:', error));
+    </script>
+</body>
+</html>

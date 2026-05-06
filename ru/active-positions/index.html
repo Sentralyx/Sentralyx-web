@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/ru/active-positions/">
+    <title>Sentralyx | Активные позиции и монитор экспозиции</title>
+    <meta name="description" content="Институциональный мониторинг активных позиций: обновления mark price в реальном времени, нереализованный P&L, экспозиция и статус риск-менеджмента.">
+    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+    <style>
+        .active-positions-container { padding: 20px; background: var(--bg-dark); min-height: 100vh; }
+
+        .summary-card {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
+            border-color: var(--accent-blue);
+        }
+
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            transition: left 0.5s;
+        }
+        .summary-card:hover::before { left: 100%; }
+
+        .summary-card .icon {
+            font-size: 1.9rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--signal-buy));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .summary-card .label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .summary-card .value {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.1;
+        }
+
+        .summary-card .sub { color: var(--text-secondary); font-size: 0.9rem; }
+
+        .summary-card.profit .value { color: var(--signal-buy); text-shadow: 0 0 20px rgba(46, 204, 113, 0.35); }
+        .summary-card.loss .value { color: var(--signal-sell); text-shadow: 0 0 20px rgba(231, 76, 60, 0.35); }
+
+        .live-table {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .table-custom { color: var(--text-main); margin-bottom: 0; }
+        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
+        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
+        .table-custom td { padding: 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
+        .table-custom tbody tr:hover { background: rgba(52, 152, 219, 0.05); box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.1); }
+
+        .pnl-live { font-weight: 700; animation: pulse 2s infinite; }
+        .pnl-positive { color: var(--signal-buy); }
+        .pnl-negative { color: var(--signal-sell); }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.65; } 100% { opacity: 1; } }
+
+        .side-long { background: rgba(46, 204, 113, 0.12); color: var(--signal-buy); border: 1px solid rgba(46, 204, 113, 0.35); }
+        .side-short { background: rgba(231, 76, 60, 0.12); color: var(--signal-sell); border: 1px solid rgba(231, 76, 60, 0.35); }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .chip i { color: var(--accent-blue); }
+
+        .risk-badge {
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-secondary);
+        }
+        .risk-badge.on { border-color: rgba(46, 204, 113, 0.35); color: var(--signal-buy); background: rgba(46, 204, 113, 0.08); }
+        .risk-badge.off { border-color: rgba(231, 76, 60, 0.35); color: var(--signal-sell); background: rgba(231, 76, 60, 0.08); }
+
+        .btn-action {
+            border-radius: 10px;
+            padding: 8px 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .btn-action:hover { transform: translateY(-2px); border-color: var(--accent-blue); box-shadow: 0 8px 16px rgba(52, 152, 219, 0.15); }
+
+        .empty-state {
+            border: 1px dashed rgba(52, 152, 219, 0.35);
+            border-radius: 14px;
+            padding: 28px;
+            background: rgba(52, 152, 219, 0.06);
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <a href="/" class="btn">TR</a>
+        <a href="/ru/" class="btn active">RU</a>
+        <a href="/en/" class="btn">EN</a>
+    </div>
+    <header id="main-header"></header>
+
+    <main class="active-positions-container">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3">
+                <div>
+                    <h1 class="text-main mb-1" style="font-weight: 900;">Активные позиции и монитор экспозиции</h1>
+                    <div class="text-secondary">P&amp;L (Нереализ.) · mark price · плечо · маржинальные метрики · риск-оверлей</div>
+                </div>
+
+                <div class="d-flex gap-2 flex-wrap">
+                    <button class="btn btn-action" onclick="exportPositionsCsv()" data-bs-toggle="tooltip" title="Экспортировать текущие позиции в CSV">
+                        <i class="fas fa-file-export me-2"></i>Экспорт CSV
+                    </button>
+                    <button class="btn btn-action" onclick="toggleEmptyState()" data-bs-toggle="tooltip" title="Переключить демонстрационные данные (пусто/заполнено)">
+                        <i class="fas fa-wand-magic-sparkles me-2"></i>Демо данные
+                    </button>
+                </div>
+            </div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-md-3">
+                    <div class="summary-card" id="card-equity">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="label">Общий капитал</div>
+                                <div class="value" id="total-equity">$0</div>
+                                <div class="sub" id="equity-sub">Баланс + нереализованный P&amp;L</div>
+                            </div>
+                            <div class="icon"><i class="fas fa-wallet"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="summary-card" id="card-pnl">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="label">P&amp;L (Нереализ.) (%)</div>
+                                <div class="value" id="active-pnl-pct">0.00%</div>
+                                <div class="sub" id="active-pnl-usd">$0.00</div>
+                            </div>
+                            <div class="icon"><i class="fas fa-chart-line"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="summary-card" id="card-dd">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="label">Текущая просадка</div>
+                                <div class="value" id="current-dd">0.00%</div>
+                                <div class="sub" id="peak-equity">Пик: $0</div>
+                            </div>
+                            <div class="icon"><i class="fas fa-triangle-exclamation"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="summary-card" id="card-count">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="label">Открытых сделок</div>
+                                <div class="value" id="open-trades">0</div>
+                                <div class="sub">Позиции под мониторингом</div>
+                            </div>
+                            <div class="icon"><i class="fas fa-layer-group"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="live-table">
+                <div class="p-3 d-flex flex-wrap justify-content-between align-items-center gap-2" style="border-bottom: 1px solid rgba(42, 49, 66, 0.4);">
+                    <div class="d-flex flex-wrap gap-2 align-items-center">
+                        <span class="chip" data-bs-toggle="tooltip" title="Обновления каждые ~2 секунды (демо-режим)">
+                            <i class="fas fa-satellite-dish"></i><span>Режим реального времени</span>
+                        </span>
+                        <span class="chip" data-bs-toggle="tooltip" title="Оценка использования маржи по позиции">
+                            <i class="fas fa-scale-balanced"></i><span>Маржинальный риск</span>
+                        </span>
+                        <span class="chip" data-bs-toggle="tooltip" title="Капитал = баланс + нереализованный P&amp;L">
+                            <i class="fas fa-circle-info"></i><span>Портфель</span>
+                        </span>
+                    </div>
+                    <div class="text-secondary small">Статус: <span class="text-main fw-bold" id="session-status">Мониторинг активен</span></div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th>Инструмент/Пара</th>
+                                <th>Сторона</th>
+                                <th>Размер/Номинал</th>
+                                <th>Цена входа</th>
+                                <th>Mark Price</th>
+                                <th>Цена ликвидации</th>
+                                <th>P&amp;L</th>
+                                <th>TP/SL статус</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="positions-body"></tbody>
+                    </table>
+                </div>
+
+                <div class="p-3" id="empty-state" style="display:none;">
+                    <div class="empty-state">
+                        <div class="text-main fw-bold mb-1"><i class="fas fa-search me-2" style="color: var(--accent-blue);"></i>Активные позиции не найдены</div>
+                        <div>Позиции отсутствуют. Система продолжает мониторинг рынков и ожидает новые возможности...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="closePositionModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 14px;">
+                <div class="modal-header" style="border-bottom: 1px solid rgba(42, 49, 66, 0.55);">
+                    <h5 class="modal-title text-main fw-bold"><i class="fas fa-triangle-exclamation me-2" style="color: var(--signal-sell);"></i>Подтверждение закрытия</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-secondary">
+                    Вы уверены, что хотите закрыть позицию по <span class="text-main fw-bold" id="close-symbol">—</span>? Это демонстрационное действие (UI-only).
+                </div>
+                <div class="modal-footer" style="border-top: 1px solid rgba(42, 49, 66, 0.55);">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-danger" id="confirm-close-btn"><i class="fas fa-xmark me-2"></i>Закрыть позицию</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        const state = {
+            positions: [],
+            timer: null,
+            closeTarget: null,
+            peakEquity: null,
+            baseEquity: 12500,
+        };
+
+        function initTooltips() {
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
+        }
+
+        function seedPositions() {
+            state.positions = [
+                {
+                    symbol: 'BTC/USDT',
+                    side: 'Long',
+                    qty: 0.12,
+                    notionalUsd: 8200,
+                    entry: 68000,
+                    mark: 68720,
+                    liq: 62050,
+                    leverage: '10x',
+                    marginRatio: 0.22,
+                    slEnabled: true,
+                    tpEnabled: true,
+                },
+                {
+                    symbol: 'ETH/USDT',
+                    side: 'Short',
+                    qty: 1.6,
+                    notionalUsd: 5100,
+                    entry: 3650,
+                    mark: 3588,
+                    liq: 4010,
+                    leverage: '8x',
+                    marginRatio: 0.28,
+                    slEnabled: false,
+                    tpEnabled: true,
+                },
+                {
+                    symbol: 'SOL/USDT',
+                    side: 'Long',
+                    qty: 35,
+                    notionalUsd: 5300,
+                    entry: 148.2,
+                    mark: 146.6,
+                    liq: 119.8,
+                    leverage: '12x',
+                    marginRatio: 0.31,
+                    slEnabled: true,
+                    tpEnabled: false,
+                },
+            ];
+        }
+
+        function calcPnl(p) {
+            const direction = p.side.toLowerCase() === 'long' ? 1 : -1;
+            const pnlUsd = (p.mark - p.entry) * (p.notionalUsd / p.entry) * direction;
+            const pnlPct = (pnlUsd / p.notionalUsd) * 100;
+            return { pnlUsd, pnlPct };
+        }
+
+        function formatMoney(v) {
+            return v.toLocaleString('ru-RU', { style: 'currency', currency: 'USD' });
+        }
+
+        function renderTable() {
+            const body = document.getElementById('positions-body');
+            const empty = document.getElementById('empty-state');
+
+            if (!state.positions.length) {
+                body.innerHTML = '';
+                empty.style.display = 'block';
+                return;
+            }
+
+            empty.style.display = 'none';
+
+            body.innerHTML = state.positions.map((p) => {
+                const { pnlUsd, pnlPct } = calcPnl(p);
+                const pnlCls = pnlUsd >= 0 ? 'pnl-positive' : 'pnl-negative';
+                const sideCls = p.side.toLowerCase() === 'long' ? 'side-long' : 'side-short';
+                const riskText = pnlUsd >= 0 ? 'В прибыли' : 'В убытке';
+                const riskBadge = pnlUsd >= 0 ? 'on' : 'off';
+
+                return `
+                    <tr>
+                        <td>
+                            <div class="d-flex flex-column">
+                                <span class="text-main fw-bold">${p.symbol}</span>
+                                <span class="text-secondary small">Leverage: <span class="text-main fw-bold">${p.leverage}</span> · Margin Ratio: <span class="text-main fw-bold">${(p.marginRatio * 100).toFixed(2)}%</span></span>
+                            </div>
+                        </td>
+                        <td><span class="badge ${sideCls}">${p.side.toUpperCase()}</span></td>
+                        <td>
+                            <div class="d-flex flex-column">
+                                <span class="text-main fw-bold">${p.qty}</span>
+                                <span class="text-secondary small">${formatMoney(p.notionalUsd)}</span>
+                            </div>
+                        </td>
+                        <td class="text-main fw-bold">${p.entry.toFixed(2)}</td>
+                        <td class="text-main fw-bold">${p.mark.toFixed(2)}</td>
+                        <td class="text-secondary">${p.liq.toFixed(2)}</td>
+                        <td>
+                            <div class="d-flex flex-column">
+                                <span class="pnl-live ${pnlCls}">${formatMoney(pnlUsd)}</span>
+                                <span class="text-secondary small">${pnlPct.toFixed(2)}%</span>
+                                <span class="risk-badge ${riskBadge} mt-1" style="width: fit-content;">${riskText}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-column gap-1">
+                                <span class="risk-badge ${p.slEnabled ? 'on' : 'off'}">SL: ${p.slEnabled ? 'ON' : 'OFF'}</span>
+                                <span class="risk-badge ${p.tpEnabled ? 'on' : 'off'}">TP: ${p.tpEnabled ? 'ON' : 'OFF'}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-action btn-sm" onclick="adjustMargin('${p.symbol}')" data-bs-toggle="tooltip" title="Корректировать маржу (демо)">
+                                    <i class="fas fa-sliders me-1"></i>Маржа
+                                </button>
+                                <button class="btn btn-action btn-sm" onclick="viewChart('${p.symbol}')" data-bs-toggle="tooltip" title="Открыть график (демо)">
+                                    <i class="fas fa-chart-area me-1"></i>График
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="openCloseModal('${p.symbol}')" data-bs-toggle="tooltip" title="Закрыть позицию (подтверждение)">
+                                    <i class="fas fa-xmark me-1"></i>Закрыть
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            initTooltips();
+        }
+
+        function updateSummary() {
+            const totalPnlUsd = state.positions.reduce((acc, p) => acc + calcPnl(p).pnlUsd, 0);
+            const equity = state.baseEquity + totalPnlUsd;
+            const pnlPct = (totalPnlUsd / state.baseEquity) * 100;
+            const openTrades = state.positions.length;
+
+            if (state.peakEquity == null) state.peakEquity = equity;
+            state.peakEquity = Math.max(state.peakEquity, equity);
+
+            const dd = state.peakEquity ? ((state.peakEquity - equity) / state.peakEquity) * 100 : 0;
+
+            document.getElementById('total-equity').textContent = formatMoney(equity);
+            document.getElementById('active-pnl-usd').textContent = formatMoney(totalPnlUsd);
+            document.getElementById('active-pnl-pct').textContent = `${pnlPct.toFixed(2)}%`;
+            document.getElementById('current-dd').textContent = `${dd.toFixed(2)}%`;
+            document.getElementById('peak-equity').textContent = `Пик: ${formatMoney(state.peakEquity)}`;
+            document.getElementById('open-trades').textContent = `${openTrades}`;
+
+            const pnlCard = document.getElementById('card-pnl');
+            pnlCard.classList.toggle('profit', totalPnlUsd > 0);
+            pnlCard.classList.toggle('loss', totalPnlUsd < 0);
+        }
+
+        function simulateMarks() {
+            state.positions.forEach((p) => {
+                const drift = (Math.random() - 0.5) * 0.004;
+                p.mark = Math.max(0.01, p.mark * (1 + drift));
+                if (Math.random() > 0.85) {
+                    p.marginRatio = Math.max(0.1, Math.min(0.9, p.marginRatio + (Math.random() - 0.5) * 0.03));
+                }
+            });
+        }
+
+        function adjustMargin(symbol) {
+            showToast(`Запрос на корректировку маржи для ${symbol} (демо).`, 'info');
+        }
+
+        function viewChart(symbol) {
+            showToast(`Открытие графика для ${symbol} (демо).`, 'success');
+        }
+
+        function openCloseModal(symbol) {
+            state.closeTarget = symbol;
+            document.getElementById('close-symbol').textContent = symbol;
+            const modal = new bootstrap.Modal(document.getElementById('closePositionModal'));
+            modal.show();
+        }
+
+        function confirmClose() {
+            if (!state.closeTarget) return;
+            const symbol = state.closeTarget;
+            showToast(`Закрытие ${symbol}...`, 'warning');
+
+            setTimeout(() => {
+                state.positions = state.positions.filter((p) => p.symbol !== symbol);
+                state.closeTarget = null;
+                renderTable();
+                updateSummary();
+                showToast(`${symbol} успешно закрыта.`, 'success');
+            }, 900);
+        }
+
+        function toggleEmptyState() {
+            if (state.positions.length) {
+                state.positions = [];
+            } else {
+                seedPositions();
+            }
+            state.peakEquity = null;
+            renderTable();
+            updateSummary();
+        }
+
+        function exportPositionsCsv() {
+            if (!state.positions.length) {
+                showToast('Нет активных позиций для экспорта.', 'warning');
+                return;
+            }
+
+            const header = ['Asset/Pair', 'Side', 'Qty', 'NotionalUSD', 'Entry', 'Mark', 'Liq', 'Leverage', 'MarginRatio', 'PnL_USD', 'PnL_Pct', 'SL', 'TP'];
+            const lines = [
+                header.join(','),
+                ...state.positions.map((p) => {
+                    const { pnlUsd, pnlPct } = calcPnl(p);
+                    const row = [
+                        p.symbol,
+                        p.side,
+                        p.qty,
+                        p.notionalUsd.toFixed(2),
+                        p.entry.toFixed(2),
+                        p.mark.toFixed(2),
+                        p.liq.toFixed(2),
+                        p.leverage,
+                        (p.marginRatio * 100).toFixed(2),
+                        pnlUsd.toFixed(2),
+                        pnlPct.toFixed(2),
+                        p.slEnabled ? 'ON' : 'OFF',
+                        p.tpEnabled ? 'ON' : 'OFF',
+                    ];
+                    return row.map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',');
+                }),
+            ];
+
+            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sentralyx-active-positions-ru-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        function showToast(message, type) {
+            const toast = document.createElement('div');
+            const bg = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
+            toast.className = `alert ${bg} position-fixed top-0 end-0 m-3`;
+            toast.style.zIndex = '9999';
+            toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>${message}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2600);
+        }
+
+        function startRealtime() {
+            clearInterval(state.timer);
+            state.timer = setInterval(() => {
+                simulateMarks();
+                renderTable();
+                updateSummary();
+            }, 2000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initTooltips();
+            seedPositions();
+            renderTable();
+            updateSummary();
+            startRealtime();
+
+            document.getElementById('confirm-close-btn')?.addEventListener('click', () => {
+                const modalEl = document.getElementById('closePositionModal');
+                const modal = bootstrap.Modal.getInstance(modalEl);
+                if (modal) modal.hide();
+                confirmClose();
+            });
+        });
+
+        fetch('../footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => { document.getElementById('footer-container').innerHTML = data; })
+            .catch(error => console.error('Footer loading failed:', error));
+    </script>
+</body>
+</html>
+

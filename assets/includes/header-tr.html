@@ -1,0 +1,223 @@
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/" style="text-decoration: none !important;">
+            <svg width="220" height="45" viewBox="0 0 220 45" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                <defs>
+                    <linearGradient id="planetGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#00D2FF" />
+                        <stop offset="100%" stop-color="#0033FF" />
+                    </linearGradient>
+                </defs>
+                <circle cx="20" cy="22" r="10" fill="url(#planetGrad)" />
+                <ellipse cx="20" cy="22" rx="16" ry="5" stroke="#4F46E5" stroke-width="2" fill="none" transform="rotate(-15 20 22)" />
+                <text x="45" y="32" fill="#FFFFFF" font-family="Arial, sans-serif" font-weight="800" font-size="26">Sentraly</text>
+                <text x="158" y="32" fill="#A855F7" font-family="Arial, sans-serif" font-weight="800" font-size="26">x</text>
+            </svg>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3" href="/">Ana Sayfa</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown">
+                        Özellikler
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" style="background: var(--panel-dark); border: 1px solid var(--border-color);">
+                        <li class="dropdown-header text-main">Canlı Takip</li>
+                        <li><a class="dropdown-item text-main" href="/scanner/">
+                            <i class="fas fa-search me-2"></i>Tarayıcı
+                        </a></li>
+                        <li><a class="dropdown-item text-main" href="/active-positions/">
+                            <i class="fas fa-chart-line me-2"></i>Açık Pozisyonlar
+                        </a></li>
+                        <li><hr class="dropdown-divider" style="border-color: var(--border-color);"></li>
+                        <li class="dropdown-header text-main">Analiz</li>
+                        <li><a class="dropdown-item text-main" href="/reports/">
+                            <i class="fas fa-file-alt me-2"></i>Raporlar
+                        </a></li>
+                        <li><a class="dropdown-item text-main" href="/history/">
+                            <i class="fas fa-history me-2"></i>Kapalı Pozisyonlar
+                        </a></li>
+                        <li><hr class="dropdown-divider" style="border-color: var(--border-color);"></li>
+                        <li class="dropdown-header text-main">Teknoloji</li>
+                        <li><a class="dropdown-item text-main" href="/technology.html">
+                            <i class="fas fa-microchip me-2"></i>Mühendislik Manifestosu
+                        </a></li>
+                        <li><hr class="dropdown-divider" style="border-color: var(--border-color);"></li>
+                        <li class="dropdown-header text-main">Strateji</li>
+                        <li><a class="dropdown-item text-main" href="/strategies/">
+                            <i class="fas fa-layer-group me-2"></i>Strateji Yönetimi
+                        </a></li>
+                        <li><a class="dropdown-item text-main" href="/indicators/">
+                            <i class="fas fa-sliders-h me-2"></i>İndikatör Ayarları
+                        </a></li>
+                        <li><a class="dropdown-item text-main" href="/settings/">
+                            <i class="fas fa-cog me-2"></i>Ayarlar
+                        </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3" href="#">Fiyatlandırma</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3" href="/faq.html">Sıkça Sorulan Sorular</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3" href="/contact/">İletişim</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+.navbar {
+    background: rgba(11, 17, 27, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.8rem 0;
+}
+
+.navbar-brand img, .navbar-brand svg {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Responsive Logo Sizing */
+@media (max-width: 768px) {
+    .navbar-brand svg {
+        width: 180px !important;
+        height: 36px !important;
+    }
+
+    .navbar-brand text {
+        font-size: 20px !important;
+    }
+}
+
+.nav-link {
+    color: var(--text-main) !important;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem !important;
+    font-size: 16px;
+}
+
+.nav-link:hover {
+    color: var(--accent-blue) !important;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+    box-shadow: 0 0 10px var(--accent-blue);
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .navbar-nav {
+        background: var(--panel-dark);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .nav-item {
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-link {
+        padding: 0.75rem 1rem !important;
+        border-radius: 6px;
+        display: block;
+    }
+
+    .nav-link:hover {
+        background: rgba(52, 152, 219, 0.1);
+    }
+
+    .dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        padding-left: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .dropdown-item {
+        padding: 0.5rem 1rem !important;
+        border-radius: 4px;
+        margin-bottom: 0.25rem;
+    }
+
+    .dropdown-header {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.dropdown-menu-dark {
+    background: var(--panel-dark) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.dropdown-item {
+    color: var(--text-main) !important;
+    transition: all 0.2s ease;
+    font-size: 15px;
+}
+
+.dropdown-item:hover {
+    background: rgba(52, 152, 219, 0.1) !important;
+    color: var(--accent-blue) !important;
+}
+
+.dropdown-header {
+    color: var(--accent-blue) !important;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar-toggler {
+    border-color: var(--text-main);
+    padding: 0.25rem 0.5rem;
+    font-size: 1.25rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(224, 224, 224, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 1.5em;
+    height: 1.5em;
+}
+
+/* Enhanced Mobile Toggler Animation */
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(224, 224, 224, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    transform: rotate(45deg);
+}
+</style>

@@ -4,69 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.sentralyx.com/ru/privacy.html">
-    
+
     <title>Политика конфиденциальности | Sentralyx</title>
-    <meta name="description" content="Политика конфиденциальности Sentralyx - Подробная информация об обработке и защите ваших личных данных и ваших прав.">
-    <meta name="keywords" content="политика конфиденциальности, gdpr, защита личных данных, безопасность данных, sentralyx, конфиденциальность">
+    <meta name="description" content="Политика конфиденциальности Sentralyx: как обрабатываются данные, какие меры безопасности применяются и какие права доступны пользователям.">
+    <meta name="keywords" content="политика конфиденциальности, GDPR, защита данных, безопасность данных, Sentralyx">
 
     <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    
+
     <style>
-        /* Language Selector Styles */
-        .language-selector {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(11, 17, 27, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .language-selector .btn {
-            padding: 8px 16px;
-            margin: 0 2px;
-            border: 1px solid var(--border-color);
-            background: var(--panel-dark);
-            color: var(--text-secondary);
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .language-selector .btn:hover {
-            background: var(--accent-blue);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-        }
-        
-        .language-selector .btn.active {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            color: white;
-            border-color: var(--accent-blue);
-        }
-        
-        /* Privacy Page Specific Styles */
         .privacy-hero {
             padding: 120px 0 60px;
             background: radial-gradient(circle at top right, rgba(47, 177, 127, 0.12), transparent);
             position: relative;
         }
-        
-        .privacy-section {
-            padding: 60px 0;
-        }
-        
+
+        .privacy-section { padding: 60px 0; }
+
         .privacy-card {
             background: var(--panel-dark);
             border: 1px solid var(--border-color);
@@ -75,13 +31,13 @@
             margin-bottom: 30px;
             transition: all 0.3s ease;
         }
-        
+
         .privacy-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(52, 152, 219, 0.1);
             border-color: var(--accent-blue);
         }
-        
+
         .section-header {
             display: flex;
             align-items: center;
@@ -89,7 +45,7 @@
             padding-bottom: 15px;
             border-bottom: 2px solid var(--accent-blue);
         }
-        
+
         .section-icon {
             width: 50px;
             height: 50px;
@@ -102,349 +58,114 @@
             font-size: 1.3rem;
             margin-right: 20px;
         }
-        
+
         .section-title {
             color: var(--text-main);
             font-size: 1.5rem;
             font-weight: 700;
             margin: 0;
         }
-        
-        .data-table {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
-        
-        .data-table table {
-            margin: 0;
-            color: var(--text-main);
-        }
-        
-        .data-table th {
-            background: rgba(52, 152, 219, 0.1);
-            color: var(--accent-blue);
-            font-weight: 600;
-            border: none;
-            padding: 15px;
-        }
-        
-        .data-table td {
-            border: none;
-            padding: 15px;
-            vertical-align: top;
-        }
-        
-        .data-table tr {
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .data-table tr:last-child {
-            border-bottom: none;
-        }
-        
-        .security-highlight {
-            background: rgba(231, 76, 60, 0.1);
-            border-left: 4px solid #e74c3c;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .security-highlight h5 {
-            color: #e74c3c;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
+
         .info-box {
             background: rgba(52, 152, 219, 0.1);
-            border: 1px solid var(--accent-blue);
+            border: 1px solid rgba(52, 152, 219, 0.3);
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             margin: 20px 0;
         }
-        
+
         .home-button {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            color: white;
-            padding: 15px 40px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+            color: white;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
         }
-        
+
         .home-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
             color: white;
-        }
-        
-        @media (max-width: 768px) {
-            .privacy-hero {
-                padding: 100px 0 40px;
-            }
-            
-            .privacy-section {
-                padding: 40px 0;
-            }
-            
-            .privacy-card {
-                padding: 20px;
-                margin-bottom: 20px;
-            }
-            
-            .section-header {
-                margin-bottom: 20px;
-            }
-            
-            .section-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-                margin-right: 15px;
-            }
-            
-            .section-title {
-                font-size: 1.2rem;
-            }
-            
-            .data-table {
-                font-size: 0.9rem;
-            }
-            
-            .data-table th,
-            .data-table td {
-                padding: 10px;
-            }
-            
-            /* Language Selector Mobile */
-            .language-selector {
-                top: 10px;
-                right: 10px;
-                padding: 6px;
-            }
-            
-            .language-selector .btn {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-                margin: 0 1px;
-            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Language Selector -->
     <div class="language-selector">
-        <a href="../kvkk.html" class="btn">TR</a>
-        <a href="../en/privacy.html" class="btn">EN</a>
-        <a href="privacy.html" class="btn active">RU</a>
+        <a href="../index.html" class="btn">TR</a>
+        <a href="index.html" class="btn active">RU</a>
+        <a href="../en/index.html" class="btn">EN</a>
     </div>
 
     <header id="main-header"></header>
 
     <section class="privacy-hero">
-        <div class="container">
-            <div class="text-center">
-                <h1 class="display-3 mb-4">Политика конфиденциальности</h1>
-                <p class="lead text-secondary mb-5">
-                    В Sentralyx безопасность и конфиденциальность ваших личных данных - наш приоритет. 
-                    Информация о ваших правах и обработке данных в соответствии с регуляциями GDPR.
-                </p>
-            </div>
+        <div class="container text-center">
+            <h1 class="display-4 text-main mb-3">Политика конфиденциальности</h1>
+            <p class="lead text-secondary mb-0">Прозрачность обработки данных, безопасность и контроль со стороны пользователя.</p>
         </div>
     </section>
 
     <section class="privacy-section">
         <div class="container">
-            
-            <!-- Data Controller Information -->
             <div class="privacy-card">
                 <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-user-shield"></i>
-                    </div>
-                    <h2 class="section-title">Контроллер данных</h2>
+                    <div class="section-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h2 class="section-title">1. Общие положения</h2>
                 </div>
-                
-                <div class="row">
-                    <div class="col-md-6">
-                        <p><strong>Название:</strong> Разработка программного обеспечения Sentralyx</p>
-                        <p><strong>Адрес:</strong> Стамбул / Бююкчекмедже</p>
-                    </div>
-                    <div class="col-md-6">
-                        <p><strong>Email:</strong> <a href="mailto:destek@sentralyx.com" class="text-accent-blue">destek@sentralyx.com</a></p>
-                    </div>
-                </div>
+                <p>Sentralyx стремится минимизировать сбор данных и обеспечивать высокую безопасность. Мы обрабатываем только те данные, которые необходимы для поддержки пользователей и корректной работы веб‑интерфейса.</p>
             </div>
 
-            <!-- What Data We Process -->
             <div class="privacy-card">
                 <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h2 class="section-title">1. Какие данные мы обрабатываем?</h2>
+                    <div class="section-icon"><i class="fas fa-database"></i></div>
+                    <h2 class="section-title">2. Какие данные могут обрабатываться</h2>
                 </div>
-                
-                <p>
-                    Sentralyx разработан с принципом "Privacy-First" (Сначала конфиденциальность). 
-                    Следующие ограниченные данные обрабатываются для технической необходимости работы системы:
-                </p>
-                
-                <div class="info-box">
-                    <p class="mb-0">
-                        <i class="fas fa-shield-alt me-2 text-accent-blue"></i>
-                        <strong>Важное примечание:</strong> Sentralyx никогда не отправляет логи и данные соединения, созданные для безопасности торговли пользователя, на центральный сервер; все технические записи хранятся только на машине пользователя.
-                    </p>
-                </div>
-                
-                <div class="data-table">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Тип данных</th>
-                                <th>Цель обработки</th>
-                                <th>Правовое основание</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>HWID (ID оборудования)</strong></td>
-                                <td>Проверка лицензии и предотвращение несанкционированного использования</td>
-                                <td>Исполнение договора (GDPR Ст. 6/1-b)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Telegram ID</strong></td>
-                                <td>Доставка лицензии и управление каналом технической поддержки</td>
-                                <td>Исполнение договора (GDPR Ст. 6/1-b)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Адрес электронной почты</strong></td>
-                                <td>Объявления об обновлениях и уведомления о лицензии</td>
-                                <td>Согласие (GDPR Ст. 6/1-a)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Critical Security and Data Privacy -->
-            <div class="privacy-card">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h2 class="section-title">2. Критическая безопасность и конфиденциальность данных</h2>
-                </div>
-                
-                <div class="security-highlight">
-                    <h5><i class="fas fa-exclamation-triangle me-2"></i>ВАЖНОЕ ПРЕДУПРЕЖДЕНИЕ О БЕЗОПАСНОСТИ</h5>
-                    <p>
-                        Sentralyx <strong>НИКОГДА</strong> не отправляет ваши API ключи, торговые стратегии или историю торговли 
-                        на свои серверы или делится с третьими лицами. 
-                        Эти данные хранятся полностью на локальной машине пользователя с шифрованием на основе Fernet и HWID, 
-                        и контроллер данных не имеет доступа к этим данным.
-                    </p>
-                    <p class="mb-0 mt-3">
-                        <i class="fas fa-atom me-2"></i>
-                        Ваши данные безопасно хранятся только на вашем диске с операцией <span class="technical-term">Atomic Write</span>, 
-                        в то время как система <span class="technical-term">Thread Watchdog</span> защищает целостность этих данных 24/7.
-                    </p>
-                </div>
-                
-                <h5 class="text-main mb-3">Ситуации ограниченного обмена:</h5>
-                
-                <div class="info-box">
-                    <ul class="mb-0">
-                        <li><strong>Хостинг/Инфраструктура:</strong> Используется инфраструктура GitHub Inc. (GitHub Pages) для хостинга веб-сайта (Только базовые логи доступа).</li>
-                        <li><strong>Связь:</strong> Используется инфраструктура Telegram для активации лицензии и операций поддержки.</li>
-                        <li><strong>Юридическое обязательство:</strong> В случае надлежащим образом поданного запроса уполномоченными судебными органами.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Data Retention Periods -->
-            <div class="privacy-card">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h2 class="section-title">3. Сроки хранения данных</h2>
-                </div>
-                
                 <ul>
-                    <li><strong>Данные лицензии:</strong> В течение срока действия лицензии и 1 год после истечения.</li>
-                    <li><strong>Записи поддержки:</strong> 2 года с момента решения запроса технической поддержки.</li>
-                    <li><strong>Системные логи:</strong> Максимум 6 месяцев для отладки и отслеживания безопасности.</li>
-                    <li><strong>IP-адреса:</strong> 1 год для требований политик безопасности.</li>
+                    <li><strong>Контактные данные:</strong> имя и email при обращении в поддержку.</li>
+                    <li><strong>Технические данные:</strong> язык интерфейса, базовые сведения о браузере для совместимости.</li>
+                    <li><strong>Данные продукта (local‑first):</strong> конфигурации стратегий и чувствительные параметры проектируются так, чтобы оставаться на устройстве пользователя.</li>
                 </ul>
             </div>
 
-            <!-- Your Rights and Contact -->
             <div class="privacy-card">
                 <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-user-cog"></i>
-                    </div>
+                    <div class="section-icon"><i class="fas fa-lock"></i></div>
+                    <h2 class="section-title">3. Безопасность</h2>
+                </div>
+                <p>Мы рекомендуем хранить биржевые API‑учетные данные в зашифрованном виде и использовать минимум прав доступа (только торговля, без вывода средств), а также IP‑whitelist.</p>
+                <div class="info-box">
+                    <p class="mb-0"><strong>Важно:</strong> Никогда не передавайте ключи третьим лицам и регулярно меняйте их в соответствии с политикой безопасности биржи.</p>
+                </div>
+            </div>
+
+            <div class="privacy-card">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-user-cog"></i></div>
                     <h2 class="section-title">4. Ваши права и контакт</h2>
                 </div>
-                
-                <p>
-                    В соответствии со статьей 15 GDPR; вы имеете право узнать, обрабатываются ли ваши данные, 
-                    запрашивать информацию, если обрабатываются, запрашивать исправление, если они неполны или неправильно обработаны.
-                </p>
-                
+                <p>Вы можете направить запрос по вопросам обработки данных и реализации прав субъектов данных на email:</p>
                 <div class="info-box">
-                    <p class="mb-0">
-                        <strong>Вы можете отправлять ваши запросы</strong> на адрес <a href="mailto:destek@sentralyx.com" class="text-accent-blue">destek@sentralyx.com</a> 
-                        . Ваши заявления будут завершены в течение 30 дней максимум.
-                    </p>
+                    <p class="mb-0"><strong>Контакт:</strong> <a href="mailto:support@sentralyx.com" class="text-accent-blue text-decoration-none">support@sentralyx.com</a></p>
                 </div>
             </div>
 
-            <!-- Cookie Policy -->
-            <div class="privacy-card">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-cookie-bite"></i>
-                    </div>
-                    <h2 class="section-title">5. Политика файлов cookie</h2>
-                </div>
-                
-                <p>
-                    Наш веб-сайт использует только технически обязательные файлы cookie для работы системы. 
-                    Файлы cookie сторонней рекламы или отслеживания не используются.
-                </p>
-            </div>
-
-            <!-- Last Update -->
             <div class="privacy-card">
                 <div class="text-center">
-                    <p class="text-secondary mb-0">
-                        <i class="fas fa-calendar-alt me-2"></i>
-                        Последнее обновление: 5 мая 2026 г.
-                    </p>
+                    <p class="text-secondary mb-0"><i class="fas fa-calendar-alt me-2"></i>Последнее обновление: 6 мая 2026 г.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Home Button -->
     <section class="privacy-section">
         <div class="container text-center">
             <a href="index.html" class="home-button">
-                <i class="fas fa-home"></i>
-                На главную
+                <i class="fas fa-home"></i>На главную
             </a>
         </div>
     </section>
@@ -454,7 +175,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        // Load header and footer
         fetch('footer.html')
             .then(async (response) => {
                 const buffer = await response.arrayBuffer();
@@ -463,7 +183,7 @@
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
             })
-            .catch(error => console.error('Загрузка футера не удалась:', error));
+            .catch(error => console.error('Не удалось загрузить футер:', error));
     </script>
 </body>
 </html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/ru/scanner/">
+    <title>Sentralyx | Сканер рынка и детектор возможностей</title>
+    <meta name="description" content="Сканер рынка Sentralyx с обновлениями в реальном времени, многотаймфреймным подтверждением тренда и скорингом сигналов на основе индикаторов.">
+    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+    <style>
+        .scanner-container { padding: 20px; background: var(--bg-dark); min-height: 100vh; }
+        .control-panel { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .results-table { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; }
+        .table-custom { color: var(--text-main); margin-bottom: 0; }
+        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
+        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
+        .table-custom td { padding: 10px 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
+        .table-custom tbody tr:hover { background: rgba(52, 152, 219, 0.05); }
+        .signal-buy { color: var(--signal-buy); font-weight: 600; text-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
+        .signal-sell { color: var(--signal-sell); font-weight: 600; text-shadow: 0 0 10px rgba(231, 76, 60, 0.5); }
+        .signal-none { color: var(--text-secondary); font-weight: 500; }
+        .info-card { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+        .info-card h6 { color: var(--accent-blue); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .progress-custom { background: rgba(42, 49, 66, 0.5); border-radius: 10px; height: 8px; }
+        .progress-bar-custom { background: linear-gradient(90deg, var(--accent-blue), var(--signal-buy)); border-radius: 10px; }
+        .filter-section { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .tab-custom { border-bottom: 2px solid var(--border-color); }
+        .tab-custom .nav-link { color: var(--text-main); border: none; padding: 10px 20px; background: transparent; }
+        .tab-custom .nav-link.active { color: var(--accent-blue); background: transparent; border-bottom: 2px solid var(--accent-blue); }
+        .form-control-custom { background: rgba(42, 49, 66, 0.3); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 6px; }
+        .form-control-custom:focus { background: rgba(42, 49, 66, 0.5); border-color: var(--accent-blue); color: var(--text-main); box-shadow: 0 0 10px rgba(52, 152, 219, 0.2); }
+        .accordion-custom .accordion-button { background: var(--panel-dark); color: var(--text-main); border: 1px solid var(--border-color); }
+        .accordion-custom .accordion-button:not(.collapsed) { background: rgba(52, 152, 219, 0.1); color: var(--accent-blue); }
+        .accordion-custom .accordion-body { background: var(--panel-dark); color: var(--text-secondary); border: 1px solid var(--border-color); border-top: none; }
+        .status-indicator { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+        .status-active { background: var(--signal-buy); box-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
+        .status-paused { background: #f39c12; box-shadow: 0 0 10px rgba(243, 156, 18, 0.5); }
+        .status-stopped { background: var(--signal-sell); box-shadow: 0 0 10px rgba(231, 76, 60, 0.5); }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
+            font-size: 0.85rem;
+        }
+        .chip i { color: var(--accent-blue); }
+
+        .strength-bar {
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(42, 49, 66, 0.55);
+            overflow: hidden;
+        }
+        .strength-fill {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--signal-sell), #f39c12, var(--signal-buy));
+        }
+
+        .indicator-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .indicator-tag {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .btn-action {
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
+            padding: 8px 12px;
+            transition: all 0.2s ease;
+        }
+        .btn-action:hover { transform: translateY(-2px); border-color: var(--accent-blue); box-shadow: 0 8px 16px rgba(52, 152, 219, 0.15); }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <a href="/" class="btn">TR</a>
+        <a href="/ru/" class="btn active">RU</a>
+        <a href="/en/" class="btn">EN</a>
+    </div>
+    <header id="main-header"></header>
+
+    <main class="scanner-container">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3">
+                <div>
+                    <h1 class="text-main mb-1" style="font-weight: 900;">Сканер рынка и детектор возможностей</h1>
+                    <div class="text-secondary">Скоринг сигналов · MTF подтверждение · статус индикаторов · экспорт отчётов</div>
+                </div>
+                <div class="d-flex gap-2 flex-wrap">
+                    <button class="btn btn-action" onclick="exportCsv()" data-bs-toggle="tooltip" title="Экспортировать результаты сканирования в CSV">
+                        <i class="fas fa-file-export me-2"></i>Экспорт CSV
+                    </button>
+                    <button class="btn btn-action" onclick="stopScanner()" data-bs-toggle="tooltip" title="Остановить и очистить таблицу">
+                        <i class="fas fa-stop me-2"></i>Сброс
+                    </button>
+                </div>
+            </div>
+
+            <div class="control-panel">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-3">
+                        <label class="text-secondary small mb-1">Интервал</label>
+                        <select class="form-select form-control-custom" id="interval-select">
+                            <option>1m</option>
+                            <option selected>5m</option>
+                            <option>15m</option>
+                            <option>1h</option>
+                            <option>4h</option>
+                            <option>1D</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-secondary small mb-1">Биржа</label>
+                        <select class="form-select form-control-custom" id="exchange-select">
+                            <option selected>OKX</option>
+                            <option>Binance</option>
+                            <option>Bybit</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-secondary small mb-1">Класс активов</label>
+                        <select class="form-select form-control-custom" id="asset-class-select">
+                            <option selected>USDT‑Margined</option>
+                            <option>COIN‑Margined</option>
+                            <option>Spot</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 d-flex gap-2">
+                        <button class="btn btn-action w-100" onclick="startScanner()" data-bs-toggle="tooltip" title="Запустить сканирование (демо)">
+                            <i class="fas fa-play me-2"></i>Старт
+                        </button>
+                        <button class="btn btn-action w-100" onclick="pauseScanner()" data-bs-toggle="tooltip" title="Пауза (демо)">
+                            <i class="fas fa-pause me-2"></i>Пауза
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h6><span class="status-indicator status-stopped" id="status-dot"></span>Статус сессии</h6>
+                        <div class="text-main fw-bold" id="scan-status">Ожидание</div>
+                        <div class="text-secondary small mt-1">Последнее обновление: <span class="text-main fw-bold" id="last-refresh">—</span></div>
+                        <div class="mt-3">
+                            <div class="d-flex justify-content-between text-secondary small mb-1">
+                                <span>Прогресс сканирования</span>
+                                <span class="text-main fw-bold" id="scan-progress-label">0%</span>
+                            </div>
+                            <div class="progress progress-custom">
+                                <div class="progress-bar progress-bar-custom" id="scan-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="filter-section">
+                        <ul class="nav nav-tabs tab-custom" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#filters" type="button" role="tab">Параметры</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#session" type="button" role="tab">Сессия</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-3">
+                            <div class="tab-pane fade show active" id="filters" role="tabpanel">
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="chip" id="chip-interval"><i class="fas fa-clock"></i><span>Интервал: 5m</span></span>
+                                    <span class="chip" id="chip-exchange"><i class="fas fa-building-columns"></i><span>Биржа: OKX</span></span>
+                                    <span class="chip" id="chip-asset"><i class="fas fa-layer-group"></i><span>Класс: USDT‑Margined</span></span>
+                                    <span class="chip" data-bs-toggle="tooltip" title="Скоринг агрегирует несколько индикаторов и фильтров">
+                                        <i class="fas fa-chart-simple"></i><span>Модель: Signal Scoring</span>
+                                    </span>
+                                </div>
+                                <div class="text-secondary small mt-3">Подсказка: используйте фильтрацию сигналов по силе, затем открывайте детали по индикаторам.</div>
+                            </div>
+                            <div class="tab-pane fade" id="session" role="tabpanel">
+                                <div class="accordion accordion-custom" id="session-accordion">
+                                    <div class="accordion-item" style="background: transparent; border: none;">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                                Параметры демо‑сканирования
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#session-accordion">
+                                            <div class="accordion-body">
+                                                <div class="row g-3">
+                                                    <div class="col-md-4">
+                                                        <div class="text-secondary small">Минимальная сила сигнала</div>
+                                                        <div class="text-main fw-bold">70+ (BUY) / 30− (SELL)</div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="text-secondary small">Refresh</div>
+                                                        <div class="text-main fw-bold">~2 сек</div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="text-secondary small">Фильтры индикаторов</div>
+                                                        <div class="text-main fw-bold">RSI · BB · CMF</div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-secondary small mt-2">Это демонстрационный интерфейс. Реальная интеграция подключается через backend/engine.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-table">
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th>Символ</th>
+                                <th>Цена</th>
+                                <th>Изм. 24ч</th>
+                                <th>Сила сигнала</th>
+                                <th>Статус индикаторов</th>
+                                <th>Действие</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scanner-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+
+    <script>
+        const state = {
+            status: 'stopped',
+            statusText: 'Ожидание',
+            progress: 0,
+            startedAt: null,
+            tickTimer: null,
+            elapsedTimer: null,
+            rows: [],
+        };
+
+        function initTooltips() {
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
+        }
+
+        function syncChips() {
+            const interval = document.getElementById('interval-select')?.value || '5m';
+            const exchange = document.getElementById('exchange-select')?.value || 'OKX';
+            const assetClass = document.getElementById('asset-class-select')?.value || 'USDT‑Margined';
+            document.getElementById('chip-interval').querySelector('span').textContent = `Интервал: ${interval}`;
+            document.getElementById('chip-exchange').querySelector('span').textContent = `Биржа: ${exchange}`;
+            document.getElementById('chip-asset').querySelector('span').textContent = `Класс: ${assetClass}`;
+        }
+
+        function updateStatus(next, text) {
+            state.status = next;
+            state.statusText = text;
+            document.getElementById('scan-status').textContent = text;
+            const dot = document.getElementById('status-dot');
+            dot.classList.remove('status-active', 'status-paused', 'status-stopped');
+            dot.classList.add(next === 'active' ? 'status-active' : next === 'paused' ? 'status-paused' : 'status-stopped');
+        }
+
+        function updateSessionUi() {
+            const pct = Math.round(state.progress);
+            document.getElementById('scan-progress-label').textContent = `${pct}%`;
+            document.getElementById('scan-progress').style.width = `${pct}%`;
+        }
+
+        function seedRows() {
+            state.rows = [
+                { symbol: 'BTC/USDT', price: 68500, change24h: 1.9, strength: 74, rsi: '57', bb: 'Inside', cmf: '+0.14', trend: 'Bullish' },
+                { symbol: 'ETH/USDT', price: 3620, change24h: -0.8, strength: 46, rsi: '49', bb: 'Inside', cmf: '+0.03', trend: 'Neutral' },
+                { symbol: 'SOL/USDT', price: 146.8, change24h: 3.2, strength: 82, rsi: '63', bb: 'Upper', cmf: '+0.22', trend: 'Bullish' },
+                { symbol: 'XRP/USDT', price: 0.52, change24h: -2.1, strength: 28, rsi: '36', bb: 'Lower', cmf: '-0.18', trend: 'Bearish' },
+            ].map((r) => ({ ...r, signal: r.strength >= 70 ? 'BUY' : r.strength <= 30 ? 'SELL' : 'NONE' }));
+        }
+
+        function renderRows() {
+            const body = document.getElementById('scanner-body');
+            if (!state.rows.length) {
+                body.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center text-secondary py-4">
+                            <i class="fas fa-radar me-2"></i>Сигналы не обнаружены. Запустите сканирование…
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            body.innerHTML = state.rows.map((r) => {
+                const signalClass = r.signal === 'BUY' ? 'signal-buy' : r.signal === 'SELL' ? 'signal-sell' : 'signal-none';
+                const tags = [
+                    `RSI: ${r.rsi}`,
+                    `BB: ${r.bb}`,
+                    `CMF: ${r.cmf}`,
+                    `Trend: ${r.trend}`,
+                ].map((t) => `<span class="indicator-tag">${t}</span>`).join('');
+
+                return `
+                    <tr>
+                        <td class="text-main fw-bold">${r.symbol}</td>
+                        <td>${r.price.toFixed(2)}</td>
+                        <td class="${r.change24h >= 0 ? 'signal-buy' : 'signal-sell'}">${r.change24h.toFixed(2)}%</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="strength-bar flex-grow-1"><div class="strength-fill" style="width:${r.strength}%"></div></div>
+                                <span class="text-main fw-bold" style="min-width: 42px;">${r.strength}</span>
+                                <span class="${signalClass}" style="min-width: 52px;">${r.signal}</span>
+                            </div>
+                        </td>
+                        <td><div class="indicator-tags">${tags}</div></td>
+                        <td class="text-nowrap">
+                            <button class="btn btn-sm btn-outline-light" onclick="openInTerminal('${r.symbol}')">
+                                <i class="fas fa-arrow-up-right-from-square me-2"></i>Открыть
+                            </button>
+                            <button class="btn btn-sm btn-outline-light ms-2" onclick="showDetails('${r.symbol}')">
+                                <i class="fas fa-circle-info me-2"></i>Детали
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function tick() {
+            if (state.status !== 'active') return;
+            state.progress = Math.min(100, state.progress + 3);
+            document.getElementById('last-refresh').textContent = new Date().toLocaleTimeString('ru-RU', { hour12: false });
+            if (!state.rows.length) seedRows();
+
+            const i = Math.floor(Math.random() * state.rows.length);
+            const row = state.rows[i];
+            row.price = Math.max(0.01, row.price + (Math.random() - 0.5) * row.price * 0.002);
+            row.change24h = Math.max(-25, Math.min(25, row.change24h + (Math.random() - 0.5) * 0.8));
+            row.strength = Math.max(0, Math.min(100, Math.round(row.strength + (Math.random() - 0.5) * 10)));
+            row.signal = row.strength >= 70 ? 'BUY' : row.strength <= 30 ? 'SELL' : 'NONE';
+
+            renderRows();
+            updateSessionUi();
+
+            if (state.progress >= 100) {
+                pauseScanner();
+                toast('Сканирование завершено. Ожидание следующего запуска.', 'info');
+            }
+        }
+
+        function startScanner() {
+            syncChips();
+            if (!state.startedAt) state.startedAt = Date.now();
+            state.progress = state.progress === 100 ? 0 : state.progress;
+            updateStatus('active', 'Сканирование выполняется…');
+            clearInterval(state.tickTimer);
+            state.tickTimer = setInterval(tick, 2000);
+            if (!state.rows.length) seedRows();
+            renderRows();
+            updateSessionUi();
+        }
+
+        function pauseScanner() {
+            updateStatus('paused', 'Пауза. Обновления остановлены.');
+            clearInterval(state.tickTimer);
+            state.tickTimer = null;
+        }
+
+        function stopScanner() {
+            updateStatus('stopped', 'Ожидание');
+            clearInterval(state.tickTimer);
+            state.tickTimer = null;
+            state.startedAt = null;
+            state.progress = 0;
+            state.rows = [];
+            document.getElementById('last-refresh').textContent = '—';
+            renderRows();
+            updateSessionUi();
+        }
+
+        function openInTerminal(symbol) {
+            const msg = `Открыть в терминале: ${symbol} (демо-действие)`;
+            const alertBox = document.createElement('div');
+            alertBox.className = 'alert alert-success mt-3';
+            alertBox.style.background = 'rgba(47, 177, 127, 0.08)';
+            alertBox.style.border = '1px solid rgba(47, 177, 127, 0.35)';
+            alertBox.style.borderRadius = '10px';
+            alertBox.innerHTML = `<i class="fas fa-check-circle me-2"></i>${msg}`;
+            document.querySelector('.results-table')?.after(alertBox);
+            setTimeout(() => alertBox.remove(), 2500);
+        }
+
+        function showDetails(symbol) {
+            const row = state.rows.find((r) => r.symbol === symbol);
+            const details = row
+                ? `RSI: ${row.rsi} · BB: ${row.bb} · CMF: ${row.cmf} · Trend: ${row.trend}`
+                : 'Данные недоступны.';
+            const alertBox = document.createElement('div');
+            alertBox.className = 'alert alert-secondary mt-3';
+            alertBox.style.background = 'rgba(42, 49, 66, 0.35)';
+            alertBox.style.border = '1px solid var(--border-color)';
+            alertBox.style.borderRadius = '10px';
+            alertBox.innerHTML = `<i class="fas fa-circle-info me-2"></i><strong>${symbol}</strong> — ${details}`;
+            document.querySelector('.results-table')?.after(alertBox);
+            setTimeout(() => alertBox.remove(), 3500);
+        }
+
+        function exportCsv() {
+            if (!state.rows.length) {
+                const alertBox = document.createElement('div');
+                alertBox.className = 'alert alert-warning mt-3';
+                alertBox.style.background = 'rgba(255, 193, 7, 0.08)';
+                alertBox.style.border = '1px solid rgba(255, 193, 7, 0.35)';
+                alertBox.style.borderRadius = '10px';
+                alertBox.innerHTML = `<i class="fas fa-triangle-exclamation me-2"></i>Нет данных для экспорта. Запустите сканирование.`;
+                document.querySelector('.results-table')?.after(alertBox);
+                setTimeout(() => alertBox.remove(), 2500);
+                return;
+            }
+
+            const header = ['Symbol', 'Price', '24h Change', 'Signal', 'Strength', 'RSI', 'BB', 'CMF', 'Trend'];
+            const lines = [
+                header.join(','),
+                ...state.rows.map((r) => [
+                    r.symbol,
+                    r.price.toFixed(2),
+                    r.change24h.toFixed(2),
+                    r.signal,
+                    r.strength,
+                    r.rsi,
+                    r.bb,
+                    r.cmf,
+                    r.trend,
+                ].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',')),
+            ];
+
+            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sentralyx-scanner-ru-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        function toast(message, type) {
+            const alert = document.createElement('div');
+            const bg = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
+            alert.className = `alert ${bg} position-fixed top-0 end-0 m-3`;
+            alert.style.zIndex = '9999';
+            alert.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>${message}`;
+            document.body.appendChild(alert);
+            setTimeout(() => alert.remove(), 2400);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTooltips();
+            syncChips();
+            renderRows();
+            updateSessionUi();
+            document.getElementById('interval-select')?.addEventListener('change', syncChips);
+            document.getElementById('exchange-select')?.addEventListener('change', syncChips);
+            document.getElementById('asset-class-select')?.addEventListener('change', syncChips);
+        });
+    </script>
+
+    <script>
+        fetch('../footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => { document.getElementById('footer-container').innerHTML = data; })
+            .catch(error => console.error('Footer loading failed:', error));
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/ru/strategies/">
+    <title>Sentralyx | Библиотека стратегий и логика исполнения</title>
+    <meta name="description" content="Каталог алгоритмических стратегий Sentralyx: логика входа/выхода, параметры, риск‑оверлей и статус оптимизации.">
+
+    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+    <style>
+        .strategies-container { padding: 20px; background: var(--bg-dark); min-height: 100vh; }
+        .panel { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 12px; }
+
+        .toolbar-btn {
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
+        }
+        .toolbar-btn:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
+
+        .form-control-custom {
+            background: rgba(42, 49, 66, 0.3);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 10px;
+        }
+        .form-control-custom:focus {
+            background: rgba(42, 49, 66, 0.5);
+            border-color: var(--accent-blue);
+            color: var(--text-main);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+        }
+
+        .filter-title { color: var(--text-main); font-weight: 900; font-size: 0.95rem; letter-spacing: 0.5px; }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .chip strong { color: var(--text-main); font-weight: 800; }
+        .chip i { color: var(--accent-blue); }
+
+        .strategy-card {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 18px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .strategy-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); box-shadow: 0 10px 30px rgba(52, 152, 219, 0.18); }
+        .strategy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            transition: left 0.5s;
+        }
+        .strategy-card:hover::before { left: 100%; }
+
+        .strategy-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(52, 152, 219, 0.12);
+            border: 1px solid rgba(52, 152, 219, 0.25);
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+        }
+
+        .strategy-name { color: var(--text-main); font-weight: 900; font-size: 1.1rem; margin: 0; line-height: 1.25; }
+        .strategy-desc { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .pill-active { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); color: var(--signal-buy); }
+        .pill-beta { border-color: rgba(255, 193, 7, 0.35); background: rgba(255, 193, 7, 0.10); color: #ffc107; }
+
+        .opt-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .opt-backtested { border-color: rgba(52, 152, 219, 0.35); background: rgba(52, 152, 219, 0.08); color: var(--accent-blue); }
+        .opt-live { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); color: var(--signal-buy); }
+
+        .indicator-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .indicator-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+        .indicator-tag i { color: var(--accent-blue); }
+
+        .kpis { display: flex; gap: 8px; flex-wrap: wrap; }
+        .kpi-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        .kpi-pill strong { color: var(--text-main); font-weight: 900; }
+
+        .card-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn-action {
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
+            font-weight: 700;
+        }
+        .btn-action:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
+
+        .empty-state {
+            background: rgba(42, 49, 66, 0.25);
+            border: 1px dashed rgba(52, 152, 219, 0.35);
+            border-radius: 12px;
+            padding: 22px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <a href="/" class="btn">TR</a>
+        <a href="/ru/" class="btn active">RU</a>
+        <a href="/en/" class="btn">EN</a>
+    </div>
+    <header id="main-header"></header>
+
+    <main class="strategies-container">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <div>
+                    <h1 class="text-main mb-1">Библиотека стратегий и логика исполнения</h1>
+                    <p class="text-secondary mb-0">Каталог алгоритмов с логикой входа/выхода, параметрами, риск‑оверлеями и статусом оптимизации</p>
+                </div>
+                <div class="d-flex gap-2 flex-wrap align-items-center">
+                    <span class="chip" title="Состояние библиотеки" data-bs-toggle="tooltip"><i class="fas fa-shield-halved"></i><span>Аудит:</span> <strong id="chip-audit">Стабильно</strong></span>
+                    <span class="chip" title="Количество стратегий" data-bs-toggle="tooltip"><i class="fas fa-layer-group"></i><span>Стратегий:</span> <strong id="chip-count">0</strong></span>
+                    <button class="toolbar-btn" onclick="exportStrategyCatalog()" title="Экспорт каталога (CSV)" data-bs-toggle="tooltip">
+                        <i class="fas fa-file-export me-2"></i>Экспорт каталога
+                    </button>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-xl-3">
+                    <div class="panel p-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="filter-title"><i class="fas fa-filter me-2" style="color: var(--accent-blue);"></i>Фильтры</div>
+                            <button class="toolbar-btn" onclick="resetFilters()" title="Сбросить фильтры" data-bs-toggle="tooltip">
+                                <i class="fas fa-rotate-left"></i>
+                            </button>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-main small mb-1">Поиск</label>
+                            <input id="search-input" type="text" class="form-control form-control-custom" placeholder="Название, индикатор или тег" oninput="applyFilters()">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-main small mb-1">Уровень риска</label>
+                            <select id="risk-filter" class="form-select form-control-custom" onchange="applyFilters()">
+                                <option value="all" selected>Все</option>
+                                <option value="low">Низкий</option>
+                                <option value="medium">Средний</option>
+                                <option value="high">Высокий</option>
+                            </select>
+                            <div class="text-secondary small mt-2">Риск оценивается по профилю плеча, дистанции стопа и чувствительности к режиму.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-main small mb-1">Рыночное состояние</label>
+                            <select id="condition-filter" class="form-select form-control-custom" onchange="applyFilters()">
+                                <option value="all" selected>Все</option>
+                                <option value="trending">Тренд</option>
+                                <option value="ranging">Флэт</option>
+                                <option value="volatile">Высокая волатильность</option>
+                            </select>
+                            <div class="text-secondary small mt-2">Помогает сопоставлять логику исполнения с режимом рынка.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-main small mb-1">Статус оптимизации</label>
+                            <select id="opt-filter" class="form-select form-control-custom" onchange="applyFilters()">
+                                <option value="all" selected>Все</option>
+                                <option value="backtested">Backtested</option>
+                                <option value="live">Live‑Ready</option>
+                            </select>
+                        </div>
+
+                        <div class="empty-state mt-3">
+                            <div class="d-flex align-items-start gap-3">
+                                <i class="fas fa-circle-info mt-1" style="color: var(--accent-blue);"></i>
+                                <div class="small">
+                                    Эта страница описывает намерение стратегии и структуру исполнения. Для проверенных метрик используйте
+                                    <a href="/ru/reports/" class="text-accent-blue text-decoration-none">отчёты Performance Analytics</a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-9">
+                    <div class="row g-3" id="strategy-grid"></div>
+                    <div id="empty-results" style="display:none;">
+                        <div class="empty-state mt-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="fas fa-wave-square"></i>
+                                <span>Нет стратегий, подходящих под фильтры. Попробуйте сбросить фильтры или расширить поиск.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="logicModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content" style="background: var(--panel-dark); border: 1px solid var(--border-color);">
+                <div class="modal-header" style="border-bottom: 1px solid var(--border-color);">
+                    <div>
+                        <h5 class="modal-title text-main mb-0" id="logic-title">Логика стратегии</h5>
+                        <div class="text-secondary small" id="logic-subtitle">Обзор исполнения</div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-lg-6">
+                            <div class="panel p-3 h-100">
+                                <h6 class="text-main mb-2"><i class="fas fa-diagram-project me-2" style="color: var(--accent-blue);"></i>Логика и параметры</h6>
+                                <div class="text-secondary" id="logic-params"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="panel p-3 h-100">
+                                <h6 class="text-main mb-2"><i class="fas fa-right-to-bracket me-2" style="color: var(--accent-blue);"></i>Условия входа/выхода</h6>
+                                <div class="text-secondary" id="logic-entry"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="panel p-3 h-100">
+                                <h6 class="text-main mb-2"><i class="fas fa-shield-halved me-2" style="color: var(--accent-blue);"></i>Риск‑оверлей</h6>
+                                <div class="text-secondary" id="logic-risk"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="panel p-3 h-100">
+                                <h6 class="text-main mb-2"><i class="fas fa-flask me-2" style="color: var(--accent-blue);"></i>Статус оптимизации</h6>
+                                <div class="text-secondary" id="logic-opt"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="border-top: 1px solid var(--border-color);">
+                    <button class="btn btn-outline-light" data-bs-dismiss="modal">Закрыть</button>
+                    <button class="btn btn-primary" onclick="configureFromModal()"><i class="fas fa-sliders-h me-2"></i>Настроить параметры</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        const state = { strategies: [], selected: null };
+
+        function initTooltips() { [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach((el) => new bootstrap.Tooltip(el)); }
+
+        function seedStrategies() {
+            state.strategies = [
+                {
+                    id: 'momentum-alpha',
+                    name: 'Sentralyx Momentum Alpha',
+                    status: 'active',
+                    risk: 'medium',
+                    condition: 'trending',
+                    opt: 'live',
+                    avgWin: 68,
+                    icon: 'fa-bolt',
+                    description: 'Мульти‑таймфрейм импульсный движок с нормализацией волатильности и адаптивной фильтрацией сигналов. Оптимизирован для продолжения тренда при контролируемой экспозиции.',
+                    indicators: ['VWAP', 'MACD', 'ATR', 'Market Regime'],
+                    logicParams: 'Базовые параметры: веса MTF, порог импульса, окно ATR‑нормализации и кворум подтверждения. Поддерживаются профили параметров по активам.',
+                    entryExit: 'Вход: согласование старшего ТФ + ускорение импульса + отклонение относительно VWAP. Выход: трейлинг‑полоса по волатильности + временная инвалидизация для устаревших сигналов.',
+                    riskOverlay: 'Ограничение плеча, волатильностное сайзинг‑правило и защита break‑even после R‑критерия. Опциональный cooldown для снижения overtrading.',
+                    optimization: 'Статус: Live‑Ready. Бэктест по трендовым режимам + стресс‑проверки на всплески волатильности и расширение спреда.',
+                },
+                {
+                    id: 'mean-reversion-bands',
+                    name: 'Sentralyx Mean‑Reversion Bands',
+                    status: 'beta',
+                    risk: 'medium',
+                    condition: 'ranging',
+                    opt: 'backtested',
+                    avgWin: 61,
+                    icon: 'fa-arrows-left-right',
+                    description: 'Статистическая стратегия возврата к среднему с использованием волатильностных огибающих и ликвидностных фильтров. Нацелена на короткие дислокации в диапазонах.',
+                    indicators: ['Bollinger Bands', 'RSI', 'CMF', 'Spread Filter'],
+                    logicParams: 'Параметры: ширина полос, уровни RSI, порог денежного потока и допуск по спреду. Встроен re‑entry lockout против “пилы”.',
+                    entryExit: 'Вход: выход за полосу + истощение по RSI + дивергенция CMF. Выход: цель по среднему + time‑stop; убыток ограничивается волатильностным стопом.',
+                    riskOverlay: 'Кап экспозиции при низкой ликвидности, строгая постановка стопа. Опционально — частичная фиксация по лестнице.',
+                    optimization: 'Статус: Backtested. Требуется forward‑валидация (paper/live) перед агрессивным сайзингом.',
+                },
+                {
+                    id: 'breakout-range-expansion',
+                    name: 'Sentralyx Range Expansion Breakout',
+                    status: 'active',
+                    risk: 'high',
+                    condition: 'volatile',
+                    opt: 'backtested',
+                    avgWin: 55,
+                    icon: 'fa-chart-column',
+                    description: 'Движок пробоя на расширении волатильности: переход от компрессии к экспансии. Использует структурные пробои и ATR‑подтверждение.',
+                    indicators: ['Fibonacci Levels', 'ATR', 'Volume Delta', 'Structure Break'],
+                    logicParams: 'Окно компрессии, множитель подтверждения пробоя, порог volume delta и ограничения по зонам Fibonacci.',
+                    entryExit: 'Вход: подтверждённый структурный пробой + импульс расширения. Выход: ATR‑трейл + инвалидизация при “failed follow‑through”.',
+                    riskOverlay: 'Жёсткий стоп + уменьшенный стартовый размер с масштабированием на подтверждении. Быстрая отмена при ложном пробое.',
+                    optimization: 'Статус: Backtested. Лучше работает в сессиях повышенной волатильности; не рекомендуется при низком объёме.',
+                },
+                {
+                    id: 'trend-follower-core',
+                    name: 'Sentralyx Trend‑Follower Core',
+                    status: 'active',
+                    risk: 'low',
+                    condition: 'trending',
+                    opt: 'live',
+                    avgWin: 64,
+                    icon: 'fa-compass',
+                    description: 'Консервативный trend‑follower с режимным гейтингом и строгим риск‑оверлеем. Приоритет: стабильность и низкий churn.',
+                    indicators: ['EMA Stack', 'ADX', 'VWAP', 'Regime Filter'],
+                    logicParams: 'Длины EMA, порог ADX, вес MTF‑смещения и чувствительность классификатора режима. Поддержка allowlist/denylist по символам.',
+                    entryExit: 'Вход: согласование структуры EMA и режим “trend persistence”. Выход: нарушение тренда + синхронизация трейлинга.',
+                    riskOverlay: 'Ограничение концентрации, волатильностное масштабирование и портфельный drawdown‑guard.',
+                    optimization: 'Статус: Live‑Ready. Консервативные дефолты и безопасные fallback‑режимы.',
+                },
+            ];
+        }
+
+        function statusPill(s) {
+            const cls = s.status === 'active' ? 'pill-active' : 'pill-beta';
+            const label = s.status === 'active' ? 'Active' : 'Beta';
+            return `<span class="status-pill ${cls}"><i class="fas fa-circle"></i>${label}</span>`;
+        }
+
+        function optPill(s) {
+            const cls = s.opt === 'live' ? 'opt-live' : 'opt-backtested';
+            const label = s.opt === 'live' ? 'Live‑Ready' : 'Backtested';
+            return `<span class="opt-pill ${cls}"><i class="fas fa-flask"></i>${label}</span>`;
+        }
+
+        function cardHtml(s) {
+            const riskLabel = s.risk === 'low' ? 'Низкий' : s.risk === 'medium' ? 'Средний' : 'Высокий';
+            const condLabel = s.condition === 'trending' ? 'Тренд' : s.condition === 'ranging' ? 'Флэт' : 'Волатильность';
+            const indicators = s.indicators.map((i) => `<span class="indicator-tag"><i class="fas fa-signal"></i>${i}</span>`).join('');
+
+            const kpis = `
+                <div class="kpis">
+                    <span class="kpi-pill"><i class="fas fa-percent" style="color: var(--accent-blue);"></i><span>Avg. Win Rate:</span> <strong>${s.avgWin}%</strong></span>
+                    <span class="kpi-pill"><i class="fas fa-triangle-exclamation" style="color: var(--accent-blue);"></i><span>Риск:</span> <strong>${riskLabel}</strong></span>
+                    <span class="kpi-pill"><i class="fas fa-wave-square" style="color: var(--accent-blue);"></i><span>Режим:</span> <strong>${condLabel}</strong></span>
+                </div>
+            `;
+
+            return `
+                <div class="col-lg-6">
+                    <div class="strategy-card" data-risk="${s.risk}" data-condition="${s.condition}" data-opt="${s.opt}" data-id="${s.id}">
+                        <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+                            <div class="d-flex gap-3 align-items-start">
+                                <div class="strategy-icon" title="Тип стратегии" data-bs-toggle="tooltip"><i class="fas ${s.icon}"></i></div>
+                                <div>
+                                    <p class="strategy-name mb-1">${s.name}</p>
+                                    <div class="d-flex gap-2 flex-wrap align-items-center">
+                                        ${statusPill(s)}
+                                        ${optPill(s)}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="strategy-desc mb-3">${s.description}</div>
+
+                        <div class="mb-3">
+                            <div class="text-secondary small mb-2">Ключевые индикаторы</div>
+                            <div class="indicator-list">${indicators}</div>
+                        </div>
+
+                        <div class="mb-3">${kpis}</div>
+
+                        <div class="card-actions">
+                            <button class="btn-action" onclick="viewLogic('${s.id}')" title="Открыть документацию логики" data-bs-toggle="tooltip">
+                                <i class="fas fa-book-open me-2"></i>Подробная логика
+                            </button>
+                            <button class="btn-action" onclick="configure('${s.id}')" title="Настроить параметры" data-bs-toggle="tooltip">
+                                <i class="fas fa-sliders-h me-2"></i>Параметры
+                            </button>
+                            <button class="btn-action" onclick="cloneStrategy('${s.id}')" title="Клонировать стратегию" data-bs-toggle="tooltip">
+                                <i class="fas fa-clone me-2"></i>Клонировать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGrid(list) {
+            const grid = document.getElementById('strategy-grid');
+            grid.innerHTML = list.map(cardHtml).join('');
+            document.getElementById('empty-results').style.display = list.length ? 'none' : 'block';
+            document.getElementById('chip-count').textContent = String(list.length);
+            initTooltips();
+        }
+
+        function applyFilters() {
+            const q = (document.getElementById('search-input').value || '').trim().toLowerCase();
+            const risk = document.getElementById('risk-filter').value;
+            const cond = document.getElementById('condition-filter').value;
+            const opt = document.getElementById('opt-filter').value;
+
+            const filtered = state.strategies.filter((s) => {
+                if (risk !== 'all' && s.risk !== risk) return false;
+                if (cond !== 'all' && s.condition !== cond) return false;
+                if (opt !== 'all' && s.opt !== opt) return false;
+                if (!q) return true;
+                const hay = `${s.name} ${s.description} ${s.indicators.join(' ')} ${s.status} ${s.opt} ${s.risk} ${s.condition}`.toLowerCase();
+                return hay.includes(q);
+            });
+            renderGrid(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('risk-filter').value = 'all';
+            document.getElementById('condition-filter').value = 'all';
+            document.getElementById('opt-filter').value = 'all';
+            applyFilters();
+        }
+
+        function viewLogic(id) {
+            const s = state.strategies.find((x) => x.id === id);
+            if (!s) return;
+            state.selected = s;
+            document.getElementById('logic-title').textContent = s.name;
+            document.getElementById('logic-subtitle').textContent = `${s.status.toUpperCase()} · ${s.opt === 'live' ? 'LIVE‑READY' : 'BACKTESTED'} · Risk: ${s.risk.toUpperCase()} · Regime: ${s.condition.toUpperCase()}`;
+            document.getElementById('logic-params').textContent = s.logicParams;
+            document.getElementById('logic-entry').textContent = s.entryExit;
+            document.getElementById('logic-risk').textContent = s.riskOverlay;
+            document.getElementById('logic-opt').textContent = s.optimization;
+            new bootstrap.Modal(document.getElementById('logicModal')).show();
+        }
+
+        function configure(id) {
+            const s = state.strategies.find((x) => x.id === id);
+            if (!s) return;
+            showToast(`Открываем панель параметров для «${s.name}» (демо).`, 'info');
+        }
+
+        function configureFromModal() {
+            if (!state.selected) return;
+            showToast(`Настройка параметров: «${state.selected.name}» (демо).`, 'info');
+        }
+
+        function cloneStrategy(id) {
+            const s = state.strategies.find((x) => x.id === id);
+            if (!s) return;
+            showToast(`Стратегия клонирована: «${s.name}» (демо).`, 'success');
+        }
+
+        function exportStrategyCatalog() {
+            const header = ['Strategy', 'Status', 'OptimizationStatus', 'RiskLevel', 'MarketCondition', 'AvgWinRate', 'Indicators'];
+            const lines = [
+                header.join(','),
+                ...state.strategies.map((s) => [
+                    s.name,
+                    s.status,
+                    s.opt === 'live' ? 'Live‑Ready' : 'Backtested',
+                    s.risk,
+                    s.condition,
+                    s.avgWin,
+                    s.indicators.join(' | '),
+                ].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',')),
+            ];
+
+            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sentralyx-strategy-library-ru-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        function showToast(message, type) {
+            const toast = document.createElement('div');
+            const bg = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
+            toast.className = `alert ${bg} position-fixed top-0 end-0 m-3`;
+            toast.style.zIndex = '9999';
+            toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>${message}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2400);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            seedStrategies();
+            renderGrid(state.strategies);
+            initTooltips();
+        });
+
+        fetch('../footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => { document.getElementById('footer-container').innerHTML = data; })
+            .catch(error => console.error('Не удалось загрузить футер:', error));
+    </script>
+</body>
+</html>

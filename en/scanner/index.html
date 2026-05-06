@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/en/scanner/">
+    <title>Sentralyx | Market Scanner & Opportunity Detector</title>
+    <meta name="description" content="Sentralyx Market Scanner & Opportunity Detector with real-time data, multi-timeframe trend alignment, and indicator-driven signal scoring.">
+    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+    <style>
+        .scanner-container { padding: 20px; background: var(--bg-dark); min-height: 100vh; }
+        .control-panel { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .results-table { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; }
+        .table-custom { color: var(--text-main); margin-bottom: 0; }
+        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
+        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
+        .table-custom td { padding: 10px 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
+        .table-custom tbody tr:hover { background: rgba(52, 152, 219, 0.05); }
+        .signal-buy { color: var(--signal-buy); font-weight: 600; text-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
+        .signal-sell { color: var(--signal-sell); font-weight: 600; text-shadow: 0 0 10px rgba(231, 76, 60, 0.5); }
+        .signal-none { color: var(--text-secondary); font-weight: 500; }
+        .info-card { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+        .info-card h6 { color: var(--accent-blue); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .progress-custom { background: rgba(42, 49, 66, 0.5); border-radius: 10px; height: 8px; }
+        .progress-bar-custom { background: linear-gradient(90deg, var(--accent-blue), var(--signal-buy)); border-radius: 10px; }
+        .filter-section { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .tab-custom { border-bottom: 2px solid var(--border-color); }
+        .tab-custom .nav-link { color: var(--text-main); border: none; padding: 10px 20px; background: transparent; }
+        .tab-custom .nav-link.active { color: var(--accent-blue); background: transparent; border-bottom: 2px solid var(--accent-blue); }
+        .form-control-custom { background: rgba(42, 49, 66, 0.3); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 6px; }
+        .form-control-custom:focus { background: rgba(42, 49, 66, 0.5); border-color: var(--accent-blue); color: var(--text-main); box-shadow: 0 0 10px rgba(52, 152, 219, 0.2); }
+        .accordion-custom .accordion-button { background: var(--panel-dark); color: var(--text-main); border: 1px solid var(--border-color); }
+        .accordion-custom .accordion-button:not(.collapsed) { background: rgba(52, 152, 219, 0.1); color: var(--accent-blue); }
+        .accordion-custom .accordion-body { background: var(--panel-dark); color: var(--text-secondary); border: 1px solid var(--border-color); border-top: none; }
+        .status-indicator { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+        .status-active { background: var(--signal-buy); box-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
+        .status-paused { background: #f39c12; box-shadow: 0 0 10px rgba(243, 156, 18, 0.5); }
+        .status-stopped { background: var(--signal-sell); box-shadow: 0 0 10px rgba(231, 76, 60, 0.5); }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
+            font-size: 0.85rem;
+        }
+
+        .chip i { color: var(--accent-blue); }
+
+        .strength-bar {
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(42, 49, 66, 0.55);
+            overflow: hidden;
+        }
+        .strength-fill {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--signal-sell), #f39c12, var(--signal-buy));
+        }
+
+        .indicator-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+        .indicator-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+            white-space: nowrap;
+        }
+        .indicator-tag strong { color: var(--text-main); font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <!-- Language Selector (links are patched by assets/js/main.js) -->
+    <div class="language-selector">
+        <a href="/" class="btn">TR</a>
+        <a href="/en/" class="btn active">EN</a>
+        <a href="/ru/" class="btn">RU</a>
+    </div>
+
+    <header id="main-header"></header>
+
+    <main class="scanner-container">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <div>
+                    <h1 class="text-main mb-1">Market Scanner &amp; Opportunity Detector</h1>
+                    <p class="text-secondary mb-0">Real-time data, trend alignment (MTF), and indicator-driven signal scoring</p>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center">
+                        <span class="status-indicator status-stopped"></span>
+                        <span class="text-secondary" id="status-text">Idle</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-sentralyx-start" onclick="startScanner()" title="Start scanning with the selected configuration" data-bs-toggle="tooltip">
+                            <i class="fas fa-play me-2"></i>Start
+                        </button>
+                        <button class="btn btn-sentralyx-pause" onclick="pauseScanner()" title="Pause scanning (data refresh stops)" data-bs-toggle="tooltip">
+                            <i class="fas fa-pause me-2"></i>Pause
+                        </button>
+                        <button class="btn btn-sentralyx-stop" onclick="stopScanner()" title="Stop scanning and reset status" data-bs-toggle="tooltip">
+                            <i class="fas fa-stop me-2"></i>Stop
+                        </button>
+                    </div>
+                    <button class="btn btn-outline-light btn-sm" onclick="exportCsv()" title="Export current table to CSV" data-bs-toggle="tooltip">
+                        <i class="fas fa-file-export me-2"></i>Export
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="control-panel">
+                        <h5 class="text-main mb-4"><i class="fas fa-sliders-h me-2"></i>Scanner Configuration</h5>
+
+                        <div class="info-card">
+                            <h6>Session Overview</h6>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-secondary">Progress</span>
+                                <span class="text-main" id="progress-value">0%</span>
+                            </div>
+                            <div class="progress progress-custom mb-3">
+                                <div class="progress-bar progress-bar-custom" id="progress-bar" style="width: 0%"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <div class="text-secondary small">Duration</div>
+                                    <div class="text-main fw-bold" id="elapsed-time">00:00</div>
+                                </div>
+                                <div class="text-end">
+                                    <div class="text-secondary small">Last refresh</div>
+                                    <div class="text-main fw-bold" id="last-refresh">—</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <ul class="nav nav-tabs tab-custom mb-3">
+                                <li class="nav-item">
+                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#basic">Basic</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#advanced">Advanced</button>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="basic">
+                                    <div class="mb-3">
+                                        <label class="form-label text-main small">Interval</label>
+                                        <select class="form-select form-control-custom" id="interval-select" title="Select the scanning interval" data-bs-toggle="tooltip">
+                                            <option value="1m">1m</option>
+                                            <option value="3m">3m</option>
+                                            <option value="5m" selected>5m</option>
+                                            <option value="15m">15m</option>
+                                            <option value="1h">1h</option>
+                                            <option value="4h">4h</option>
+                                            <option value="1d">1d</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-main small">Exchange</label>
+                                        <select class="form-select form-control-custom" id="exchange-select" title="Select an exchange connector" data-bs-toggle="tooltip">
+                                            <option>OKX</option>
+                                            <option>Binance</option>
+                                            <option>Bybit</option>
+                                            <option>Gate.io</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-main small">Asset Class</label>
+                                        <select class="form-select form-control-custom" id="asset-class-select" title="Select the market universe" data-bs-toggle="tooltip">
+                                            <option selected>USDT-Margined Perpetuals</option>
+                                            <option>Coin-Margined Perpetuals</option>
+                                            <option>Spot</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-main small">Signal Engine</label>
+                                        <select class="form-select form-control-custom">
+                                            <option selected>Consensus (Majority)</option>
+                                            <option>Weighted Scoring</option>
+                                            <option>Full Reconciliation</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-main small">Max Results</label>
+                                        <input type="number" class="form-control form-control-custom" value="0" placeholder="0 = unlimited" title="Limit results (0 means unlimited)" data-bs-toggle="tooltip">
+                                    </div>
+
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="show-rank" checked>
+                                        <label class="form-check-label text-main small" for="show-rank">Show Rank</label>
+                                    </div>
+
+                                    <h6 class="text-main small mb-3">Smart-Trend Filter (MTF Confirmation)</h6>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="mtf-filter" checked>
+                                        <label class="form-check-label text-main small" for="mtf-filter">Enable Higher Timeframe Filter</label>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-main small">Lookback Window</label>
+                                        <select class="form-select form-control-custom">
+                                            <option>30 days</option>
+                                            <option selected>60 days</option>
+                                            <option>90 days</option>
+                                            <option>180 days</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-main small">Scan Mode</label>
+                                        <select class="form-select form-control-custom">
+                                            <option selected>Fast Scan</option>
+                                            <option>Deep Scan</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-main small">Confidence Threshold (%)</label>
+                                        <input type="number" class="form-control form-control-custom" value="60" min="0" max="100">
+                                    </div>
+
+                                    <div class="mb-0">
+                                        <label class="form-label text-main small">Default Action</label>
+                                        <select class="form-select form-control-custom">
+                                            <option selected>Open in Terminal</option>
+                                            <option>Export List</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="advanced">
+                                    <div class="mb-3">
+                                        <label class="form-label text-main small">Volatility Filter</label>
+                                        <select class="form-select form-control-custom">
+                                            <option selected>Auto</option>
+                                            <option>Low</option>
+                                            <option>Medium</option>
+                                            <option>High</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-main small">Liquidity Filter</label>
+                                        <select class="form-select form-control-custom">
+                                            <option selected>Auto</option>
+                                            <option>Top 25%</option>
+                                            <option>Top 50%</option>
+                                            <option>All</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-0">
+                                        <label class="form-label text-main small">Timeframe Set</label>
+                                        <select class="form-select form-control-custom">
+                                            <option selected>15m + 1h</option>
+                                            <option>5m + 15m</option>
+                                            <option>1h + 4h</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mb-0" style="background: rgba(52, 152, 219, 0.08); border: 1px solid rgba(52, 152, 219, 0.35); border-radius: 10px;">
+                            <div class="d-flex align-items-start gap-3">
+                                <i class="fas fa-circle-info mt-1" style="color: var(--accent-blue);"></i>
+                                <div class="text-secondary small">
+                                    Signal strength is a composite score derived from indicator alignment, regime bias, and MTF confirmation.
+                                    Values shown are demonstrative for UI preview.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="results-table">
+                        <div class="p-3 border-bottom" style="border-color: var(--border-color) !important;">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                <h5 class="text-main mb-0"><i class="fas fa-search me-2"></i>Scanner Results</h5>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <span class="chip" title="Current exchange connector" data-bs-toggle="tooltip">
+                                        <i class="fas fa-building-columns"></i>
+                                        <span id="chip-exchange">OKX</span>
+                                    </span>
+                                    <span class="chip" title="Selected interval" data-bs-toggle="tooltip">
+                                        <i class="fas fa-clock"></i>
+                                        <span id="chip-interval">5m</span>
+                                    </span>
+                                    <span class="chip" title="Selected asset class" data-bs-toggle="tooltip">
+                                        <i class="fas fa-layer-group"></i>
+                                        <span id="chip-asset">USDT-Margined Perpetuals</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-custom">
+                                <thead>
+                                    <tr>
+                                        <th style="min-width: 120px;">Symbol</th>
+                                        <th style="min-width: 120px;">Price</th>
+                                        <th style="min-width: 120px;">24h Change</th>
+                                        <th style="min-width: 170px;">Signal Strength</th>
+                                        <th style="min-width: 260px;">Indicator Status</th>
+                                        <th style="min-width: 170px;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="results-tbody">
+                                    <tr class="text-secondary">
+                                        <td colspan="6">
+                                            <div class="d-flex align-items-center gap-2 py-2">
+                                                <i class="fas fa-wave-square"></i>
+                                                <span>No scan results yet. Click <strong class="text-main">Start</strong> to begin scanning.</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="accordion accordion-custom" id="infoAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mtfInfo">
+                                        What is Smart-Trend Filter (MTF Confirmation)?
+                                    </button>
+                                </h2>
+                                <div id="mtfInfo" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
+                                    <div class="accordion-body">
+                                        <p>Smart-Trend Filter aligns lower-timeframe signals with the prevailing higher-timeframe trend to reduce noise and improve execution quality.</p>
+                                        <ul>
+                                            <li>Detects higher-timeframe direction (1h, 4h, 1d) and market structure</li>
+                                            <li>Filters out counter-trend setups during low-conviction regimes</li>
+                                            <li>Improves signal quality by enforcing directional bias</li>
+                                            <li>Especially effective during high-volatility and range expansion periods</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#indicatorsInfo">
+                                        Indicators Used
+                                    </button>
+                                </h2>
+                                <div id="indicatorsInfo" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
+                                    <div class="accordion-body">
+                                        <ul class="mb-0">
+                                            <li><strong>RSI:</strong> Momentum regime and exhaustion detection (e.g., overbought/oversold zones).</li>
+                                            <li><strong>Bollinger Bands:</strong> Volatility envelope for mean reversion vs. breakout context.</li>
+                                            <li><strong>CMF:</strong> Capital flow bias (buy/sell pressure) from volume-weighted accumulation/distribution.</li>
+                                            <li><strong>Trend Layer:</strong> Higher-timeframe alignment for trend-following execution.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#strategiesInfo">
+                                        Strategy Types
+                                    </button>
+                                </h2>
+                                <div id="strategiesInfo" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h6 class="text-accent-blue">Consensus (Majority)</h6>
+                                                <p class="text-secondary small">Votes across indicators. Triggers when a majority aligns in one direction.</p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6 class="text-accent-blue">Weighted Scoring</h6>
+                                                <p class="text-secondary small">Assigns weights per indicator and aggregates a composite score.</p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6 class="text-accent-blue">Full Reconciliation</h6>
+                                                <p class="text-secondary small">Strict agreement across all layers (high selectivity, highest precision).</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        const state = {
+            status: 'stopped',
+            startedAt: null,
+            tickTimer: null,
+            elapsedTimer: null,
+            progress: 0,
+            rows: [],
+        };
+
+        const formatTime = (ms) => {
+            const total = Math.max(0, Math.floor(ms / 1000));
+            const minutes = String(Math.floor(total / 60)).padStart(2, '0');
+            const seconds = String(total % 60).padStart(2, '0');
+            return `${minutes}:${seconds}`;
+        };
+
+        const formatNumber = (n) => new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(n);
+
+        function initTooltips() {
+            const triggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            triggers.forEach((el) => new bootstrap.Tooltip(el));
+        }
+
+        function syncChips() {
+            const exchange = document.getElementById('exchange-select')?.value || 'OKX';
+            const interval = document.getElementById('interval-select')?.value || '5m';
+            const asset = document.getElementById('asset-class-select')?.value || 'USDT-Margined Perpetuals';
+            document.getElementById('chip-exchange').textContent = exchange;
+            document.getElementById('chip-interval').textContent = interval;
+            document.getElementById('chip-asset').textContent = asset;
+        }
+
+        function updateSessionUi() {
+            document.getElementById('progress-value').textContent = `${state.progress}%`;
+            document.getElementById('progress-bar').style.width = `${state.progress}%`;
+
+            if (state.startedAt) {
+                document.getElementById('elapsed-time').textContent = formatTime(Date.now() - state.startedAt);
+            } else {
+                document.getElementById('elapsed-time').textContent = '00:00';
+            }
+
+            syncChips();
+        }
+
+        function updateStatus(status, text) {
+            state.status = status;
+            const statusIndicator = document.querySelector('.status-indicator');
+            const statusText = document.getElementById('status-text');
+            statusIndicator.className = 'status-indicator status-' + status;
+            statusText.textContent = text;
+        }
+
+        function renderRows() {
+            const tbody = document.getElementById('results-tbody');
+            if (!state.rows.length) {
+                tbody.innerHTML = `
+                    <tr class="text-secondary">
+                        <td colspan="6">
+                            <div class="d-flex align-items-center gap-2 py-2">
+                                <i class="fas fa-wave-square"></i>
+                                <span>No signal detected. Adjust filters or increase the lookback window.</span>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = state.rows.map((r) => {
+                const changeClass = r.change24h >= 0 ? 'signal-buy' : 'signal-sell';
+                const changeText = `${r.change24h >= 0 ? '+' : ''}${formatNumber(r.change24h)}%`;
+                const strength = Math.max(0, Math.min(100, r.strength));
+                const signalClass = r.signal === 'BUY' ? 'signal-buy' : r.signal === 'SELL' ? 'signal-sell' : 'signal-none';
+
+                const tags = [
+                    { k: 'RSI', v: r.rsi },
+                    { k: 'BB', v: r.bb },
+                    { k: 'CMF', v: r.cmf },
+                    { k: 'Trend', v: r.trend },
+                ].map((t) => `<span class="indicator-tag" title="${t.k} status" data-bs-toggle="tooltip"><strong>${t.k}:</strong> ${t.v}</span>`).join('');
+
+                return `
+                    <tr>
+                        <td class="fw-bold">${r.symbol}</td>
+                        <td>$${formatNumber(r.price)}</td>
+                        <td class="${changeClass}">${changeText}</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="strength-bar flex-grow-1" title="Composite signal strength score" data-bs-toggle="tooltip">
+                                    <div class="strength-fill" style="width:${strength}%"></div>
+                                </div>
+                                <span class="text-main fw-bold" style="min-width: 42px;">${strength}</span>
+                                <span class="${signalClass}" title="Signal direction" data-bs-toggle="tooltip" style="min-width: 52px;">${r.signal}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="indicator-tags">${tags}</div>
+                        </td>
+                        <td>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button class="btn btn-sm btn-outline-light" onclick="openInTerminal('${r.symbol}')" title="Open ${r.symbol} in Sentralyx terminal" data-bs-toggle="tooltip">
+                                    <i class="fas fa-arrow-up-right-from-square me-2"></i>Open
+                                </button>
+                                <button class="btn btn-sm btn-outline-info" onclick="showDetails('${r.symbol}')" title="View indicator breakdown" data-bs-toggle="tooltip">
+                                    <i class="fas fa-circle-info me-2"></i>Details
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            initTooltips();
+        }
+
+        function seedRows() {
+            state.rows = [
+                { symbol: 'BTCUSDT', price: 43250.12, change24h: 2.4, strength: 84, signal: 'BUY', rsi: 'Bullish', bb: 'Expansion', cmf: 'Accum.', trend: 'Aligned' },
+                { symbol: 'ETHUSDT', price: 2680.55, change24h: -1.2, strength: 46, signal: 'NONE', rsi: 'Neutral', bb: 'Range', cmf: 'Flat', trend: 'Mixed' },
+                { symbol: 'SOLUSDT', price: 98.40, change24h: 5.8, strength: 77, signal: 'BUY', rsi: 'Momentum', bb: 'Breakout', cmf: 'Inflows', trend: 'Aligned' },
+            ];
+        }
+
+        function tick() {
+            if (state.status !== 'active') return;
+
+            state.progress = Math.min(100, state.progress + 3);
+            document.getElementById('last-refresh').textContent = new Date().toLocaleTimeString('en-US', { hour12: false });
+
+            if (!state.rows.length) seedRows();
+
+            const i = Math.floor(Math.random() * state.rows.length);
+            const row = state.rows[i];
+            const drift = (Math.random() - 0.5) * row.price * 0.002;
+            row.price = Math.max(0.01, row.price + drift);
+            row.change24h = Math.max(-25, Math.min(25, row.change24h + (Math.random() - 0.5) * 0.8));
+            row.strength = Math.max(0, Math.min(100, Math.round(row.strength + (Math.random() - 0.5) * 10)));
+            row.signal = row.strength >= 70 ? 'BUY' : row.strength <= 30 ? 'SELL' : 'NONE';
+
+            renderRows();
+            updateSessionUi();
+
+            if (state.progress >= 100) {
+                updateStatus('paused', 'Scan completed. Awaiting next run.');
+                pauseScanner();
+            }
+        }
+
+        function startScanner() {
+            syncChips();
+            if (!state.startedAt) state.startedAt = Date.now();
+            state.progress = state.progress === 100 ? 0 : state.progress;
+            updateStatus('active', 'Scanning in progress...');
+
+            clearInterval(state.tickTimer);
+            state.tickTimer = setInterval(tick, 2000);
+
+            clearInterval(state.elapsedTimer);
+            state.elapsedTimer = setInterval(updateSessionUi, 1000);
+
+            if (!state.rows.length) seedRows();
+            renderRows();
+            updateSessionUi();
+        }
+
+        function pauseScanner() {
+            updateStatus('paused', 'Paused. No refresh is running.');
+            clearInterval(state.tickTimer);
+            state.tickTimer = null;
+        }
+
+        function stopScanner() {
+            updateStatus('stopped', 'Idle');
+            clearInterval(state.tickTimer);
+            clearInterval(state.elapsedTimer);
+            state.tickTimer = null;
+            state.elapsedTimer = null;
+            state.startedAt = null;
+            state.progress = 0;
+            state.rows = [];
+            document.getElementById('last-refresh').textContent = '—';
+            renderRows();
+            updateSessionUi();
+        }
+
+        function openInTerminal(symbol) {
+            const msg = `Open in terminal: ${symbol} (demo action)`;
+            const alertBox = document.createElement('div');
+            alertBox.className = 'alert alert-success mt-3';
+            alertBox.style.background = 'rgba(47, 177, 127, 0.08)';
+            alertBox.style.border = '1px solid rgba(47, 177, 127, 0.35)';
+            alertBox.style.borderRadius = '10px';
+            alertBox.innerHTML = `<i class="fas fa-check-circle me-2"></i>${msg}`;
+            document.querySelector('.results-table')?.after(alertBox);
+            setTimeout(() => alertBox.remove(), 2500);
+        }
+
+        function showDetails(symbol) {
+            const row = state.rows.find((r) => r.symbol === symbol);
+            const details = row
+                ? `RSI: ${row.rsi} · BB: ${row.bb} · CMF: ${row.cmf} · Trend: ${row.trend}`
+                : 'No data available.';
+            const alertBox = document.createElement('div');
+            alertBox.className = 'alert alert-secondary mt-3';
+            alertBox.style.background = 'rgba(42, 49, 66, 0.35)';
+            alertBox.style.border = '1px solid var(--border-color)';
+            alertBox.style.borderRadius = '10px';
+            alertBox.innerHTML = `<i class="fas fa-circle-info me-2"></i><strong>${symbol}</strong> — ${details}`;
+            document.querySelector('.results-table')?.after(alertBox);
+            setTimeout(() => alertBox.remove(), 3500);
+        }
+
+        function exportCsv() {
+            if (!state.rows.length) {
+                const alertBox = document.createElement('div');
+                alertBox.className = 'alert alert-warning mt-3';
+                alertBox.style.background = 'rgba(255, 193, 7, 0.08)';
+                alertBox.style.border = '1px solid rgba(255, 193, 7, 0.35)';
+                alertBox.style.borderRadius = '10px';
+                alertBox.innerHTML = `<i class="fas fa-triangle-exclamation me-2"></i>No data to export. Start scanning first.`;
+                document.querySelector('.results-table')?.after(alertBox);
+                setTimeout(() => alertBox.remove(), 2500);
+                return;
+            }
+
+            const header = ['Symbol', 'Price', '24h Change', 'Signal', 'Strength', 'RSI', 'BB', 'CMF', 'Trend'];
+            const lines = [
+                header.join(','),
+                ...state.rows.map((r) => [
+                    r.symbol,
+                    r.price.toFixed(2),
+                    r.change24h.toFixed(2),
+                    r.signal,
+                    r.strength,
+                    r.rsi,
+                    r.bb,
+                    r.cmf,
+                    r.trend,
+                ].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',')),
+            ];
+
+            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sentralyx-scanner-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTooltips();
+            syncChips();
+            renderRows();
+            updateSessionUi();
+
+            document.getElementById('interval-select')?.addEventListener('change', syncChips);
+            document.getElementById('exchange-select')?.addEventListener('change', syncChips);
+            document.getElementById('asset-class-select')?.addEventListener('change', syncChips);
+        });
+    </script>
+
+    <div id="footer-container"></div>
+    <script>
+        fetch('../footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Footer loading failed:', error));
+    </script>
+</body>
+</html>

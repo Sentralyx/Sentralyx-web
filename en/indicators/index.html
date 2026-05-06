@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/en/indicators/">
+    <title>Sentralyx | Indicator Settings & Signal Rules</title>
+    <meta name="description" content="Indicator configuration and signal rules for Sentralyx: parameter tuning, rule templates, and execution-grade validation for algorithmic strategies.">
+    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+    <style>
+        .indicators-container {
+            padding: 20px;
+            background: var(--bg-dark);
+            min-height: 100vh;
+        }
+
+        .panel {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        .toolbar-btn {
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
+            font-weight: 700;
+        }
+        .toolbar-btn:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
+
+        .form-control-custom {
+            background: rgba(42, 49, 66, 0.3);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 10px;
+        }
+        .form-control-custom:focus {
+            background: rgba(42, 49, 66, 0.5);
+            border-color: var(--accent-blue);
+            color: var(--text-main);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+        }
+
+        .indicator-card {
+            background: rgba(42, 49, 66, 0.18);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 16px;
+            height: 100%;
+            transition: all 0.25s ease;
+        }
+        .indicator-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 26px rgba(52, 152, 219, 0.15);
+        }
+
+        .indicator-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(52, 152, 219, 0.12);
+            border: 1px solid rgba(52, 152, 219, 0.25);
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+        }
+
+        .indicator-name { color: var(--text-main); font-weight: 900; margin: 0; }
+        .indicator-desc { color: var(--text-secondary); margin: 6px 0 0 0; line-height: 1.6; }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .chip strong { color: var(--text-main); font-weight: 900; }
+        .chip i { color: var(--accent-blue); }
+
+        .table-custom { color: var(--text-main); margin-bottom: 0; }
+        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
+        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
+        .table-custom td { padding: 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
+
+        .rule-shell {
+            background: rgba(42, 49, 66, 0.18);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 14px;
+        }
+
+        .rule-line {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.22);
+        }
+
+        .rule-line .label { color: var(--text-main); font-weight: 900; }
+        .rule-line .hint { color: var(--text-secondary); font-size: 0.9rem; }
+
+        .pill-on {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(46, 204, 113, 0.35);
+            background: rgba(46, 204, 113, 0.08);
+            color: var(--signal-buy);
+            font-weight: 900;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <a href="/" class="btn">TR</a>
+        <a href="/en/" class="btn active">EN</a>
+        <a href="/ru/" class="btn">RU</a>
+    </div>
+    <header id="main-header"></header>
+
+    <main class="indicators-container">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <div>
+                    <h1 class="text-main mb-1">Indicator Settings &amp; Signal Rules</h1>
+                    <p class="text-secondary mb-0">Parameter tuning, rule templates, and execution-grade validations for strategy engines</p>
+                </div>
+                <div class="d-flex gap-2 flex-wrap align-items-center">
+                    <span class="chip" title="Rule engine" data-bs-toggle="tooltip"><i class="fas fa-diagram-project"></i><span>Engine:</span> <strong>Rule Composer</strong></span>
+                    <span class="chip" title="Validation state" data-bs-toggle="tooltip"><i class="fas fa-circle-check"></i><span>Status:</span> <strong id="chip-status">Ready</strong></span>
+                    <button class="toolbar-btn" onclick="exportConfig()" title="Export indicator configuration (CSV)" data-bs-toggle="tooltip">
+                        <i class="fas fa-file-export me-2"></i>Export Config
+                    </button>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <!-- Indicator Library -->
+                <div class="col-xl-7">
+                    <div class="panel p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                            <h5 class="text-main mb-0"><i class="fas fa-layer-group me-2" style="color: var(--accent-blue);"></i>Indicator Library</h5>
+                            <input id="indicator-search" class="form-control form-control-custom" style="max-width: 320px;" placeholder="Search indicators…" oninput="renderIndicators()">
+                        </div>
+                        <div class="row g-3" id="indicator-grid"></div>
+                    </div>
+
+                    <div class="panel p-3">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                            <h5 class="text-main mb-0"><i class="fas fa-sliders-h me-2" style="color: var(--accent-blue);"></i>Selected Indicator · Parameters</h5>
+                            <span class="pill-on" id="selected-pill"><i class="fas fa-check"></i>Active</span>
+                        </div>
+                        <div class="text-secondary small mb-3">Adjust parameters and validate against strategy requirements. Values shown are for UI preview.</div>
+                        <div class="table-responsive">
+                            <table class="table table-custom">
+                                <thead>
+                                    <tr>
+                                        <th style="min-width: 180px;">Parameter</th>
+                                        <th style="min-width: 220px;">Value</th>
+                                        <th style="min-width: 280px;">Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="params-tbody"></tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-end gap-2 mt-3 flex-wrap">
+                            <button class="btn btn-outline-light" onclick="resetParams()"><i class="fas fa-rotate-left me-2"></i>Reset</button>
+                            <button class="btn btn-primary" onclick="saveParams()"><i class="fas fa-floppy-disk me-2"></i>Save Parameters</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rule Templates / Preview -->
+                <div class="col-xl-5">
+                    <div class="panel p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                            <h5 class="text-main mb-0"><i class="fas fa-code-branch me-2" style="color: var(--accent-blue);"></i>Signal Rule Templates</h5>
+                            <button class="toolbar-btn" onclick="applyTemplate()" title="Apply template to rule composer" data-bs-toggle="tooltip">
+                                <i class="fas fa-wand-magic-sparkles me-2"></i>Apply Template
+                            </button>
+                        </div>
+                        <div class="text-secondary small mb-3">Use templates as a starting point for BUY/SELL triggers and regime filters.</div>
+                        <select id="template-select" class="form-select form-control-custom">
+                            <option selected>Momentum Confirmation (RSI + Trend)</option>
+                            <option>Mean Reversion Fade (Bands + RSI)</option>
+                            <option>Breakout Validation (ATR + Volume)</option>
+                        </select>
+                    </div>
+
+                    <div class="panel p-3">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                            <h5 class="text-main mb-0"><i class="fas fa-sitemap me-2" style="color: var(--accent-blue);"></i>Rule Composer Preview</h5>
+                            <button class="toolbar-btn" onclick="validateRules()" title="Run rule validation checks" data-bs-toggle="tooltip">
+                                <i class="fas fa-circle-check me-2"></i>Validate
+                            </button>
+                        </div>
+                        <div class="rule-shell">
+                            <div class="rule-line mb-2">
+                                <div>
+                                    <div class="label">BUY Trigger</div>
+                                    <div class="hint" id="buy-rule">RSI &lt; 30 AND Trend = Aligned</div>
+                                </div>
+                                <div class="text-secondary small">Priority: High</div>
+                            </div>
+                            <div class="rule-line mb-2">
+                                <div>
+                                    <div class="label">SELL Trigger</div>
+                                    <div class="hint" id="sell-rule">RSI &gt; 70 OR Trend = Misaligned</div>
+                                </div>
+                                <div class="text-secondary small">Priority: Medium</div>
+                            </div>
+                            <div class="rule-line">
+                                <div>
+                                    <div class="label">Regime Filter</div>
+                                    <div class="hint" id="regime-rule">Volatility = Normal AND Liquidity = OK</div>
+                                </div>
+                                <div class="text-secondary small">Safety Gate</div>
+                            </div>
+                        </div>
+                        <div class="mt-3 small text-secondary">
+                            For strategy-level controls, use <a class="text-accent-blue text-decoration-none" href="/en/strategies/">Strategy Library</a> and <a class="text-accent-blue text-decoration-none" href="/en/settings/">Risk Management</a>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        const state = {
+            indicators: [
+                { id: 'rsi', name: 'RSI (Relative Strength Index)', icon: 'fa-gauge-high', desc: 'Momentum oscillator for regime and exhaustion detection.', params: [
+                    { k: 'Period', v: 14, note: 'Standard lookback window for RSI calculation.' },
+                    { k: 'Oversold Threshold', v: 30, note: 'Below this level is treated as oversold (potential mean reversion).' },
+                    { k: 'Overbought Threshold', v: 70, note: 'Above this level is treated as overbought.' },
+                ]},
+                { id: 'bb', name: 'Bollinger Bands', icon: 'fa-arrows-left-right-to-line', desc: 'Volatility envelope for mean reversion vs breakout context.', params: [
+                    { k: 'Period', v: 20, note: 'Moving average period for band center.' },
+                    { k: 'Std. Dev Multiplier', v: 2, note: 'Band width multiplier.' },
+                ]},
+                { id: 'cmf', name: 'CMF (Chaikin Money Flow)', icon: 'fa-water', desc: 'Volume-weighted accumulation/distribution proxy for flow bias.', params: [
+                    { k: 'Period', v: 20, note: 'Lookback for money flow aggregation.' },
+                    { k: 'Buy Bias Threshold', v: 0.25, note: 'Above this indicates sustained inflows.' },
+                    { k: 'Sell Bias Threshold', v: -0.25, note: 'Below this indicates sustained outflows.' },
+                ]},
+                { id: 'atr', name: 'ATR (Average True Range)', icon: 'fa-wave-square', desc: 'Volatility normalization and risk sizing primitive.', params: [
+                    { k: 'Period', v: 14, note: 'Lookback used for volatility estimation.' },
+                    { k: 'Stop Multiplier', v: 2.0, note: 'Used for ATR-based trailing stop distance.' },
+                ]},
+                { id: 'trend', name: 'MTF Trend Layer', icon: 'fa-layer-group', desc: 'Higher-timeframe alignment gate for signal quality.', params: [
+                    { k: 'Higher Timeframe', v: '1h', note: 'HTF used to derive directional bias.' },
+                    { k: 'Alignment Strictness', v: 'Medium', note: 'Strictness of bias matching for entries.' },
+                ]},
+            ],
+            selectedId: 'rsi',
+        };
+
+        function initTooltips() {
+            const triggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            triggers.forEach((el) => new bootstrap.Tooltip(el));
+        }
+
+        function selectIndicator(id) {
+            state.selectedId = id;
+            renderIndicators();
+            renderParams();
+        }
+
+        function renderIndicators() {
+            const q = (document.getElementById('indicator-search')?.value || '').trim().toLowerCase();
+            const grid = document.getElementById('indicator-grid');
+            const list = state.indicators.filter((x) => !q || `${x.name} ${x.desc}`.toLowerCase().includes(q));
+
+            grid.innerHTML = list.map((x) => {
+                const active = x.id === state.selectedId;
+                return `
+                    <div class="col-md-6">
+                        <div class="indicator-card" style="${active ? 'border-color: var(--accent-blue);' : ''}" role="button" onclick="selectIndicator('${x.id}')">
+                            <div class="d-flex gap-3 align-items-start">
+                                <div class="indicator-icon"><i class="fas ${x.icon}"></i></div>
+                                <div>
+                                    <p class="indicator-name mb-1">${x.name}</p>
+                                    <p class="indicator-desc mb-0">${x.desc}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderParams() {
+            const tbody = document.getElementById('params-tbody');
+            const ind = state.indicators.find((x) => x.id === state.selectedId) || state.indicators[0];
+            tbody.innerHTML = ind.params.map((p, idx) => {
+                const input = typeof p.v === 'number'
+                    ? `<input class="form-control form-control-custom" type="number" step="any" value="${p.v}" data-idx="${idx}">`
+                    : `<input class="form-control form-control-custom" type="text" value="${p.v}" data-idx="${idx}">`;
+                return `
+                    <tr>
+                        <td class="text-main fw-bold">${p.k}</td>
+                        <td>${input}</td>
+                        <td class="text-secondary">${p.note}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function resetParams() {
+            // UI preview: just re-render from seeded defaults.
+            renderParams();
+            toast('Parameters reset.', 'warning');
+        }
+
+        function saveParams() {
+            const ind = state.indicators.find((x) => x.id === state.selectedId);
+            if (!ind) return;
+            const inputs = document.querySelectorAll('#params-tbody input');
+            inputs.forEach((el) => {
+                const idx = Number(el.getAttribute('data-idx'));
+                const val = el.value;
+                const num = Number(val);
+                ind.params[idx].v = Number.isFinite(num) && val.trim() !== '' && !isNaN(num) ? num : val;
+            });
+            toast('Indicator parameters saved (demo).', 'success');
+        }
+
+        function applyTemplate() {
+            const t = document.getElementById('template-select').value;
+            if (t.includes('Momentum')) {
+                document.getElementById('buy-rule').textContent = 'RSI < 35 AND Trend = Aligned AND CMF > 0.10';
+                document.getElementById('sell-rule').textContent = 'RSI > 65 OR Trend = Misaligned';
+                document.getElementById('regime-rule').textContent = 'Volatility = Normal AND Liquidity = OK';
+            } else if (t.includes('Mean')) {
+                document.getElementById('buy-rule').textContent = 'Price < Lower Band AND RSI < 30 AND CMF Divergence = Positive';
+                document.getElementById('sell-rule').textContent = 'Price > Upper Band OR Time Stop Hit';
+                document.getElementById('regime-rule').textContent = 'Regime = Ranging AND Spread < Threshold';
+            } else {
+                document.getElementById('buy-rule').textContent = 'Structure Break = Confirmed AND ATR Expansion = True';
+                document.getElementById('sell-rule').textContent = 'Failed Follow-through OR Volatility Spike';
+                document.getElementById('regime-rule').textContent = 'Liquidity = OK AND Slippage Model = Acceptable';
+            }
+            toast('Template applied to composer preview.', 'info');
+        }
+
+        function validateRules() {
+            document.getElementById('chip-status').textContent = 'Validated';
+            toast('Rule validation passed (demo).', 'success');
+        }
+
+        function exportConfig() {
+            const header = ['Indicator', 'Parameter', 'Value'];
+            const lines = [header.join(',')];
+            state.indicators.forEach((i) => {
+                i.params.forEach((p) => {
+                    lines.push([i.name, p.k, p.v].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(','));
+                });
+            });
+            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sentralyx-indicators-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        function toast(message, type) {
+            const alert = document.createElement('div');
+            const bg = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
+            alert.className = `alert ${bg} position-fixed top-0 end-0 m-3`;
+            alert.style.zIndex = '9999';
+            alert.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>${message}`;
+            document.body.appendChild(alert);
+            setTimeout(() => alert.remove(), 2400);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTooltips();
+            renderIndicators();
+            renderParams();
+        });
+
+        fetch('../footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Footer loading failed:', error));
+    </script>
+</body>
+</html>

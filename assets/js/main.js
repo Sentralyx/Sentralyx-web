@@ -2,9 +2,148 @@
 // Dynamic Header Loading System
 
 document.addEventListener('DOMContentLoaded', function() {
+    applyLanguagePreference();
     loadHeader();
     setActiveNavigation();
+    patchLanguageSelector();
 });
+
+const LANGUAGE_STORAGE_KEY = 'sentralyx_lang';
+
+function getCurrentLanguageFromPath(pathname) {
+    if (pathname.startsWith('/en/')) return 'en';
+    if (pathname.startsWith('/ru/')) return 'ru';
+    return 'tr';
+}
+
+function normalizePath(pathname) {
+    // Ensure trailing slash for directory-like module routes (e.g., /scanner)
+    // and preserve file routes (e.g., /faq.html).
+    if (!pathname) return '/';
+    if (pathname.endsWith('.html') || pathname.endsWith('/')) return pathname;
+    return pathname + '/';
+}
+
+function getLanguageRedirectTarget(desiredLang, currentPathname) {
+    const pathname = normalizePath(currentPathname);
+
+    const stripLangPrefix = (p) => {
+        if (p.startsWith('/en/')) return '/' + p.slice(4);
+        if (p.startsWith('/ru/')) return '/' + p.slice(4);
+        return p;
+    };
+
+    const basePath = stripLangPrefix(pathname);
+
+    // Known translated routes. Avoid redirecting to non-existent pages.
+    const translated = {
+        en: new Set([
+            '/',
+            '/faq.html',
+            '/privacy.html',
+            '/kvkk.html',
+            '/scanner/',
+            '/active-positions/',
+            '/reports/',
+            '/history/',
+            '/strategies/',
+            '/indicators/',
+            '/settings/',
+            '/contact/',
+            '/technology.html',
+        ]),
+        ru: new Set([
+            '/',
+            '/privacy.html',
+            '/faq.html',
+            '/kvkk.html',
+            '/scanner/',
+            '/active-positions/',
+            '/reports/',
+            '/history/',
+            '/strategies/',
+            '/indicators/',
+            '/settings/',
+            '/contact/',
+        ]),
+    };
+
+    if (desiredLang === 'tr') {
+        // Turkish lives at root (no prefix)
+        return basePath;
+    }
+
+    const allow = translated[desiredLang];
+    if (!allow || !allow.has(basePath)) return null;
+
+    // Ensure home maps to /<lang>/
+    if (basePath === '/') return `/${desiredLang}/`;
+
+    // Files like /faq.html -> /en/faq.html ; directories like /scanner/ -> /en/scanner/
+    return `/${desiredLang}${basePath}`;
+}
+
+function applyLanguagePreference() {
+    try {
+        const currentLang = getCurrentLanguageFromPath(window.location.pathname);
+
+        const existing = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+
+        // If no preference yet, initialize it from the current page.
+        if (!existing) {
+            localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang);
+        }
+
+        const preferredLang = existing || currentLang;
+
+        if (preferredLang !== currentLang) {
+            const targetPath = getLanguageRedirectTarget(preferredLang, window.location.pathname);
+            if (targetPath) {
+                const target = `${targetPath}${window.location.search || ''}${window.location.hash || ''}`;
+                window.location.replace(target);
+            }
+        }
+    } catch (e) {
+        // Ignore storage errors and continue without language routing.
+    }
+}
+
+function patchLanguageSelector() {
+    const selector = document.querySelector('.language-selector');
+    if (!selector) return;
+
+    const currentLang = getCurrentLanguageFromPath(window.location.pathname);
+    const pathname = normalizePath(window.location.pathname);
+
+    const stripLangPrefix = (p) => {
+        if (p.startsWith('/en/')) return '/' + p.slice(4);
+        if (p.startsWith('/ru/')) return '/' + p.slice(4);
+        return p;
+    };
+    const basePath = stripLangPrefix(pathname);
+
+    const buildHref = (lang) => {
+        if (lang === 'tr') return basePath;
+        if (basePath === '/') return `/${lang}/`;
+        return `/${lang}${basePath}`;
+    };
+
+    const buttons = selector.querySelectorAll('a.btn');
+    buttons.forEach((btn) => {
+        const label = (btn.textContent || '').trim().toLowerCase();
+        const lang =
+            label === 'en' ? 'en' :
+            label === 'ru' ? 'ru' :
+            'tr';
+
+        btn.classList.toggle('active', lang === currentLang);
+        btn.setAttribute('href', buildHref(lang));
+
+        btn.addEventListener('click', () => {
+            try { localStorage.setItem(LANGUAGE_STORAGE_KEY, lang); } catch (e) {}
+        }, { once: true });
+    });
+}
 
 // Load header content dynamically
 async function loadHeader() {
@@ -16,10 +155,16 @@ async function loadHeader() {
     }
 
     try {
+        const currentLang = getCurrentLanguageFromPath(window.location.pathname);
+        const headerFile =
+            currentLang === 'en' ? 'header-en.html' :
+            currentLang === 'ru' ? 'header-ru.html' :
+            'header-tr.html';
+
         // Determine the correct path to header.html based on current page depth
         const currentPath = window.location.pathname;
         const pathDepth = currentPath.split('/').length - 1;
-        const relativePath = '../'.repeat(pathDepth) + 'assets/includes/header.html';
+        const relativePath = '../'.repeat(pathDepth) + 'assets/includes/' + headerFile;
         
         const response = await fetch(relativePath);
         

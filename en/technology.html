@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/en/technology.html">
+    <title>Sentralyx | Engineering Manifesto</title>
+    <meta name="description" content="Engineering manifesto for Sentralyx: reliability primitives, data integrity guarantees, and operational resilience design.">
+
+    <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <style>
+        .tech-hero {
+            padding: 120px 0 60px;
+            background: radial-gradient(circle at top right, rgba(168, 85, 247, 0.12), transparent);
+        }
+        .tech-hero h1 { color: var(--text-main); font-weight: 900; }
+        .tech-hero p { color: var(--text-secondary); }
+
+        .panel {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+        }
+
+        .feature-card {
+            background: rgba(42, 49, 66, 0.18);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 18px;
+            height: 100%;
+            transition: all 0.25s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 26px rgba(52, 152, 219, 0.15);
+        }
+        .feature-card h5 { color: var(--text-main); font-weight: 900; }
+        .feature-card p, .feature-card li { color: var(--text-secondary); }
+        .feature-icon {
+            width: 46px; height: 46px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(168, 85, 247, 0.12);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            color: #A855F7;
+            font-size: 1.2rem;
+        }
+
+        .pill {
+            display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px;
+            border: 1px solid var(--border-color); background: rgba(42, 49, 66, 0.25); color: var(--text-secondary); font-size: 0.85rem;
+        }
+        .pill i { color: var(--accent-blue); }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <a href="../index.html" class="btn">TR</a>
+        <a href="index.html" class="btn active">EN</a>
+        <a href="../ru/index.html" class="btn">RU</a>
+    </div>
+
+    <header id="main-header"></header>
+
+    <header class="tech-hero">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                <div>
+                    <h1 class="display-5 mb-2">Engineering Manifesto</h1>
+                    <p class="lead mb-0">Reliability-first architecture for quantitative execution: deterministic state, resilient I/O, and operational safety primitives.</p>
+                </div>
+                <span class="pill" title="Design posture" data-bs-toggle="tooltip">
+                    <i class="fas fa-microchip"></i>Reliability: First-Class Feature
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="panel p-4 mb-4">
+                <h4 class="text-main mb-2"><i class="fas fa-shield-halved me-2" style="color: var(--accent-blue);"></i>Principles</h4>
+                <ul class="mb-0">
+                    <li><strong>Local-first security:</strong> keep sensitive strategy context and credentials on the user’s device whenever possible.</li>
+                    <li><strong>Deterministic recovery:</strong> define clear invariants and replayable state transitions.</li>
+                    <li><strong>Atomic persistence:</strong> avoid partial writes; guarantee consistency across interruptions.</li>
+                    <li><strong>Observable operations:</strong> track heartbeat, watchdogs, and error boundaries.</li>
+                </ul>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-lg-4">
+                    <div class="feature-card">
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="feature-icon"><i class="fas fa-eye"></i></div>
+                            <div>
+                                <h5 class="mb-1">Thread Watchdog</h5>
+                                <p class="mb-0">Continuous health monitoring for critical loops. Detects stalls, enforces timeouts, and triggers controlled recovery.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-card">
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="feature-icon"><i class="fas fa-atom"></i></div>
+                            <div>
+                                <h5 class="mb-1">Atomic Write</h5>
+                                <p class="mb-0">Write-then-swap persistence model to protect configuration and reporting artifacts against corruption and power loss.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-card">
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="feature-icon"><i class="fas fa-arrows-rotate"></i></div>
+                            <div>
+                                <h5 class="mb-1">Orphan Recovery</h5>
+                                <p class="mb-0">Detects orphaned processes/state and restores a consistent runtime snapshot, minimizing downtime during reconnect events.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel p-4 mt-4">
+                <h4 class="text-main mb-2"><i class="fas fa-lock me-2" style="color: var(--accent-blue);"></i>Security Posture</h4>
+                <p class="text-secondary mb-0">Sentralyx is designed around least privilege. API keys should be trade-only, IP-restricted, and stored using encrypted storage. Reporting and logs are intended to be audit-friendly without leaking secrets.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        fetch('footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Footer loading failed:', error));
+    </script>
+</body>
+</html>

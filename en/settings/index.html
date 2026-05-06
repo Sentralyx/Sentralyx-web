@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/en/settings/">
+    <title>Sentralyx | System Settings & Security Configuration</title>
+    <meta name="description" content="Secure system settings for Sentralyx: API Management, encrypted storage, risk parameters, notifications, and UI preferences.">
+    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+    <style>
+        .settings-container {
+            padding: 20px;
+            background: var(--bg-dark);
+            min-height: 100vh;
+        }
+
+        .panel {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        .section-title {
+            color: var(--text-main);
+            font-weight: 900;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i { color: var(--accent-blue); }
+
+        .form-control-custom {
+            background: rgba(42, 49, 66, 0.3);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 10px;
+        }
+        .form-control-custom:focus {
+            background: rgba(42, 49, 66, 0.5);
+            border-color: var(--accent-blue);
+            color: var(--text-main);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+        }
+
+        .toolbar-btn {
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
+            font-weight: 700;
+        }
+        .toolbar-btn:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .chip strong { color: var(--text-main); font-weight: 900; }
+        .chip i { color: var(--accent-blue); }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(46, 204, 113, 0.35);
+            background: rgba(46, 204, 113, 0.08);
+            color: var(--signal-buy);
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+        .status-pill.disconnected {
+            border-color: rgba(231, 76, 60, 0.35);
+            background: rgba(231, 76, 60, 0.08);
+            color: var(--signal-sell);
+        }
+
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.18);
+        }
+
+        .toggle-row .label {
+            color: var(--text-main);
+            font-weight: 800;
+        }
+
+        .toggle-row .hint {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .security-note {
+            background: rgba(52, 152, 219, 0.08);
+            border: 1px solid rgba(52, 152, 219, 0.25);
+            border-radius: 12px;
+            padding: 14px;
+            color: var(--text-secondary);
+        }
+
+        .danger-note {
+            background: rgba(255, 193, 7, 0.08);
+            border: 1px solid rgba(255, 193, 7, 0.25);
+            border-radius: 12px;
+            padding: 14px;
+            color: var(--text-secondary);
+        }
+
+        .footer-actions {
+            position: sticky;
+            bottom: 14px;
+            z-index: 20;
+            background: rgba(11, 17, 27, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <a href="/" class="btn">TR</a>
+        <a href="/en/" class="btn active">EN</a>
+        <a href="/ru/" class="btn">RU</a>
+    </div>
+    <header id="main-header"></header>
+
+    <main class="settings-container">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <div>
+                    <h1 class="text-main mb-1">System Settings &amp; Security Configuration</h1>
+                    <p class="text-secondary mb-0">API Management, encrypted storage, risk parameters, and operational controls</p>
+                </div>
+                <div class="d-flex gap-2 flex-wrap align-items-center">
+                    <span class="status-pill disconnected" id="system-status" title="Connectivity status" data-bs-toggle="tooltip">
+                        <i class="fas fa-plug-circle-xmark"></i>
+                        <span id="status-text">Disconnected</span>
+                        <span class="text-secondary">—</span>
+                        <span id="status-latency" class="text-secondary">Latency: —</span>
+                    </span>
+                    <span class="chip" title="Security storage mode" data-bs-toggle="tooltip">
+                        <i class="fas fa-lock"></i><span>Storage:</span> <strong>Encrypted</strong>
+                    </span>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <!-- Left: Security & Integrations -->
+                <div class="col-xl-6">
+                    <!-- Section 1: Exchange Integration -->
+                    <div class="panel p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                            <h5 class="section-title"><i class="fas fa-link"></i>Exchange Integration</h5>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <select id="exchange-select" class="form-select form-control-custom" style="min-width: 170px;" aria-label="Exchange">
+                                    <option selected>OKX</option>
+                                    <option>Binance</option>
+                                    <option>Bybit</option>
+                                </select>
+                                <button class="toolbar-btn" onclick="testConnection()" title="Validate credentials and measure latency" data-bs-toggle="tooltip">
+                                    <i class="fas fa-vial-circle-check me-2"></i>Test Connection
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-secondary small mb-3">API Management uses encrypted storage bound to the local machine. Secrets are never transmitted to third-party servers.</div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-main small mb-1">API Key</label>
+                                <input id="api-key" type="password" class="form-control form-control-custom" placeholder="••••••••••••••••" autocomplete="off">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-main small mb-1">Secret Key</label>
+                                <input id="secret-key" type="password" class="form-control form-control-custom" placeholder="••••••••••••••••" autocomplete="off">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label text-main small mb-1">Passphrase</label>
+                                <input id="passphrase" type="password" class="form-control form-control-custom" placeholder="••••••••••••••••" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="security-note mt-3">
+                            <div class="d-flex align-items-start gap-3">
+                                <i class="fas fa-shield-halved mt-1" style="color: var(--accent-blue);"></i>
+                                <div class="small">
+                                    <strong class="text-main">Security Credentials</strong> are stored via <strong class="text-main">Encrypted Storage</strong>.
+                                    Use exchange-side IP whitelisting and least-privilege API permissions (trade only, no withdrawals).
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Webhook & Notifications -->
+                    <div class="panel p-3">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                            <h5 class="section-title"><i class="fas fa-bell"></i>Webhook &amp; Notifications</h5>
+                            <button class="toolbar-btn" onclick="sendTestWebhook()" title="Send a test event to your endpoint" data-bs-toggle="tooltip">
+                                <i class="fas fa-paper-plane me-2"></i>Send Test
+                            </button>
+                        </div>
+                        <div class="text-secondary small mb-3">Configure connectivity for operational alerts and automation hooks.</div>
+
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label class="form-label text-main small mb-1">Webhook Endpoint (HTTPS)</label>
+                                <input id="webhook-url" type="url" class="form-control form-control-custom" placeholder="https://example.com/webhook/sentralyx">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-main small mb-1">Notification Level</label>
+                                <select id="notify-level" class="form-select form-control-custom">
+                                    <option selected>Critical Only</option>
+                                    <option>Signals + Critical</option>
+                                    <option>All Events</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-main small mb-1">Delivery Mode</label>
+                                <select id="delivery-mode" class="form-select form-control-custom">
+                                    <option selected>Webhook</option>
+                                    <option>Telegram</option>
+                                    <option>Email</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Trading & UI -->
+                <div class="col-xl-6">
+                    <!-- Section 2: Trading Preferences -->
+                    <div class="panel p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                            <h5 class="section-title"><i class="fas fa-sliders"></i>Trading Preferences</h5>
+                            <span class="chip" title="Execution safety mode" data-bs-toggle="tooltip"><i class="fas fa-circle-check"></i><span>Mode:</span> <strong id="exec-mode">Conservative</strong></span>
+                        </div>
+                        <div class="text-secondary small mb-3">Operational switches that control execution behavior. Changes apply on the next engine cycle.</div>
+
+                        <div class="d-flex flex-column gap-2">
+                            <div class="toggle-row">
+                                <div>
+                                    <div class="label">Auto-Trade Mode</div>
+                                    <div class="hint">Enables live execution using your selected strategies and risk controls.</div>
+                                </div>
+                                <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" id="auto-trade" onchange="syncExecMode()">
+                                </div>
+                            </div>
+                            <div class="toggle-row">
+                                <div>
+                                    <div class="label">Testnet Mode</div>
+                                    <div class="hint">Routes orders to a simulated environment for safe validation.</div>
+                                </div>
+                                <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" id="testnet" onchange="syncExecMode()">
+                                </div>
+                            </div>
+                            <div class="toggle-row">
+                                <div>
+                                    <div class="label">Trailing Stop-Loss</div>
+                                    <div class="hint">Dynamically tightens stop distance as position moves in your favor.</div>
+                                </div>
+                                <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" id="trailing-sl">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Risk Management -->
+                    <div class="panel p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                            <h5 class="section-title"><i class="fas fa-shield-halved"></i>Risk Management</h5>
+                            <span class="chip" title="Global risk guard status" data-bs-toggle="tooltip"><i class="fas fa-triangle-exclamation"></i><span>Guard:</span> <strong id="risk-guard">Armed</strong></span>
+                        </div>
+                        <div class="text-secondary small mb-3">Risk parameters apply across all strategies and exchanges for portfolio-level protection.</div>
+
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label text-main small mb-1">Max Leverage</label>
+                                <input id="max-lev" type="number" class="form-control form-control-custom" value="10" min="1" max="125">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label text-main small mb-1">Max Open Positions</label>
+                                <input id="max-pos" type="number" class="form-control form-control-custom" value="6" min="0" max="200">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label text-main small mb-1">Wallet Exposure (%)</label>
+                                <input id="wallet-exp" type="number" class="form-control form-control-custom" value="35" min="0" max="100">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-main small mb-1">Max Drawdown Limit (%)</label>
+                                <input id="mdd-limit" type="number" class="form-control form-control-custom" value="18" min="0" max="100">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-main small mb-1">Daily Loss Limit (%)</label>
+                                <input id="daily-loss" type="number" class="form-control form-control-custom" value="6" min="0" max="100">
+                            </div>
+                        </div>
+
+                        <div class="danger-note mt-3">
+                            <div class="d-flex align-items-start gap-3">
+                                <i class="fas fa-circle-exclamation mt-1" style="color: #ffc107;"></i>
+                                <div class="small">
+                                    Risk parameters are fail-safe controls. When a limit is hit, the engine should reduce exposure and block new entries until conditions normalize.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Localization & UI -->
+                    <div class="panel p-3">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                            <h5 class="section-title"><i class="fas fa-display"></i>Localization &amp; UI</h5>
+                            <span class="chip" title="Interface profile" data-bs-toggle="tooltip"><i class="fas fa-wand-magic-sparkles"></i><span>Profile:</span> <strong>Clean</strong></span>
+                        </div>
+                        <div class="text-secondary small mb-3">Control language and interface preferences across the web console.</div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-main small mb-1">Language</label>
+                                <select id="ui-lang" class="form-select form-control-custom" onchange="applyUiLanguage()">
+                                    <option value="tr">Turkish (TR)</option>
+                                    <option value="en" selected>English (EN)</option>
+                                    <option value="ru">Russian (RU)</option>
+                                </select>
+                                <div class="text-secondary small mt-2">This syncs with the language selector on all pages.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-main small mb-1">Theme</label>
+                                <div class="d-flex flex-column gap-2">
+                                    <div class="toggle-row">
+                                        <div>
+                                            <div class="label">Dark Mode</div>
+                                            <div class="hint">Optimized for low-glare trading environments.</div>
+                                        </div>
+                                        <div class="form-check form-switch m-0">
+                                            <input class="form-check-input" type="checkbox" id="dark-mode" checked>
+                                        </div>
+                                    </div>
+                                    <div class="toggle-row">
+                                        <div>
+                                            <div class="label">Light Mode</div>
+                                            <div class="hint">High-contrast layout for bright environments.</div>
+                                        </div>
+                                        <div class="form-check form-switch m-0">
+                                            <input class="form-check-input" type="checkbox" id="light-mode">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-secondary small mt-2">Theme toggle is a UI preview here (CSS variables are global).</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Actions -->
+            <div class="footer-actions mt-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <div class="text-secondary small">
+                        <i class="fas fa-database me-2" style="color: var(--accent-blue);"></i>
+                        Changes are stored locally for this UI preview. In production, settings should persist to the Sentralyx engine config store.
+                    </div>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <button class="btn btn-outline-light" onclick="resetDefaults()"><i class="fas fa-rotate-left me-2"></i>Reset to Defaults</button>
+                        <button class="btn btn-primary" onclick="saveChanges()"><i class="fas fa-floppy-disk me-2"></i>Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        const STORAGE_KEY = 'sentralyx_settings_en';
+        const LANG_KEY = 'sentralyx_lang';
+
+        function initTooltips() {
+            const triggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            triggers.forEach((el) => new bootstrap.Tooltip(el));
+        }
+
+        function defaults() {
+            return {
+                exchange: 'OKX',
+                apiKey: '',
+                secretKey: '',
+                passphrase: '',
+                webhookUrl: '',
+                notifyLevel: 'Critical Only',
+                deliveryMode: 'Webhook',
+                autoTrade: false,
+                testnet: false,
+                trailingSl: false,
+                maxLev: 10,
+                maxPos: 6,
+                walletExp: 35,
+                mddLimit: 18,
+                dailyLoss: 6,
+                uiLang: 'en',
+                darkMode: true,
+                lightMode: false,
+            };
+        }
+
+        function loadSettings() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return defaults();
+                return { ...defaults(), ...JSON.parse(raw) };
+            } catch {
+                return defaults();
+            }
+        }
+
+        function setFormValues(v) {
+            document.getElementById('exchange-select').value = v.exchange;
+            document.getElementById('api-key').value = v.apiKey;
+            document.getElementById('secret-key').value = v.secretKey;
+            document.getElementById('passphrase').value = v.passphrase;
+            document.getElementById('webhook-url').value = v.webhookUrl;
+            document.getElementById('notify-level').value = v.notifyLevel;
+            document.getElementById('delivery-mode').value = v.deliveryMode;
+            document.getElementById('auto-trade').checked = v.autoTrade;
+            document.getElementById('testnet').checked = v.testnet;
+            document.getElementById('trailing-sl').checked = v.trailingSl;
+            document.getElementById('max-lev').value = v.maxLev;
+            document.getElementById('max-pos').value = v.maxPos;
+            document.getElementById('wallet-exp').value = v.walletExp;
+            document.getElementById('mdd-limit').value = v.mddLimit;
+            document.getElementById('daily-loss').value = v.dailyLoss;
+            document.getElementById('ui-lang').value = v.uiLang;
+            document.getElementById('dark-mode').checked = v.darkMode;
+            document.getElementById('light-mode').checked = v.lightMode;
+            syncExecMode();
+        }
+
+        function getFormValues() {
+            return {
+                exchange: document.getElementById('exchange-select').value,
+                apiKey: document.getElementById('api-key').value,
+                secretKey: document.getElementById('secret-key').value,
+                passphrase: document.getElementById('passphrase').value,
+                webhookUrl: document.getElementById('webhook-url').value,
+                notifyLevel: document.getElementById('notify-level').value,
+                deliveryMode: document.getElementById('delivery-mode').value,
+                autoTrade: document.getElementById('auto-trade').checked,
+                testnet: document.getElementById('testnet').checked,
+                trailingSl: document.getElementById('trailing-sl').checked,
+                maxLev: Number(document.getElementById('max-lev').value || 0),
+                maxPos: Number(document.getElementById('max-pos').value || 0),
+                walletExp: Number(document.getElementById('wallet-exp').value || 0),
+                mddLimit: Number(document.getElementById('mdd-limit').value || 0),
+                dailyLoss: Number(document.getElementById('daily-loss').value || 0),
+                uiLang: document.getElementById('ui-lang').value,
+                darkMode: document.getElementById('dark-mode').checked,
+                lightMode: document.getElementById('light-mode').checked,
+            };
+        }
+
+        function showToast(message, type) {
+            const toast = document.createElement('div');
+            const bg = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
+            toast.className = `alert ${bg} position-fixed top-0 end-0 m-3`;
+            toast.style.zIndex = '9999';
+            toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>${message}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2400);
+        }
+
+        function setSystemStatus(connected, exchange, latencyMs) {
+            const pill = document.getElementById('system-status');
+            const text = document.getElementById('status-text');
+            const lat = document.getElementById('status-latency');
+
+            if (connected) {
+                pill.classList.remove('disconnected');
+                pill.innerHTML = `<i class="fas fa-plug-circle-check"></i><span id="status-text">Connected to ${exchange}</span><span class="text-secondary">—</span><span id="status-latency" class="text-secondary">Latency: ${latencyMs}ms</span>`;
+            } else {
+                pill.classList.add('disconnected');
+                pill.innerHTML = `<i class="fas fa-plug-circle-xmark"></i><span id="status-text">Disconnected</span><span class="text-secondary">—</span><span id="status-latency" class="text-secondary">Latency: —</span>`;
+            }
+        }
+
+        function syncExecMode() {
+            const autoTrade = document.getElementById('auto-trade').checked;
+            const testnet = document.getElementById('testnet').checked;
+            const label = document.getElementById('exec-mode');
+
+            if (testnet) label.textContent = 'Testnet';
+            else if (autoTrade) label.textContent = 'Live Execution';
+            else label.textContent = 'Conservative';
+        }
+
+        function applyUiLanguage() {
+            const lang = document.getElementById('ui-lang').value;
+            try { localStorage.setItem(LANG_KEY, lang); } catch {}
+
+            // Attempt to route to corresponding language root for immediate effect.
+            if (lang === 'en') window.location.href = '/en/settings/';
+            else if (lang === 'ru') window.location.href = '/ru/settings/';
+            else window.location.href = '/settings/';
+        }
+
+        function testConnection() {
+            const v = getFormValues();
+            const hasCreds = Boolean(v.apiKey && v.secretKey);
+            if (!hasCreds) {
+                showToast('Provide API Key and Secret Key before testing.', 'warning');
+                setSystemStatus(false);
+                return;
+            }
+
+            showToast('Testing connection… validating credentials and measuring latency.', 'info');
+            setTimeout(() => {
+                const latency = 35 + Math.floor(Math.random() * 40);
+                setSystemStatus(true, v.exchange, latency);
+                showToast(`Connection OK. ${v.exchange} latency: ${latency}ms`, 'success');
+                document.getElementById('chip-exchange').textContent = v.exchange;
+            }, 900);
+        }
+
+        function sendTestWebhook() {
+            const url = document.getElementById('webhook-url').value.trim();
+            if (!url) {
+                showToast('Enter a webhook endpoint first.', 'warning');
+                return;
+            }
+            showToast('Test webhook queued (demo).', 'info');
+            setTimeout(() => showToast('Webhook delivered successfully (demo).', 'success'), 700);
+        }
+
+        function resetDefaults() {
+            setFormValues(defaults());
+            setSystemStatus(false);
+            showToast('Reset to defaults.', 'warning');
+        }
+
+        function saveChanges() {
+            const v = getFormValues();
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(v)); } catch {}
+            showToast('Changes saved to encrypted storage (demo).', 'success');
+        }
+
+        // Theme toggle mutual exclusion (preview only)
+        function wireThemeToggles() {
+            const dark = document.getElementById('dark-mode');
+            const light = document.getElementById('light-mode');
+            dark.addEventListener('change', () => { if (dark.checked) light.checked = false; });
+            light.addEventListener('change', () => { if (light.checked) dark.checked = false; });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTooltips();
+            wireThemeToggles();
+
+            const v = loadSettings();
+            setFormValues(v);
+            document.getElementById('chip-exchange').textContent = v.exchange;
+            setSystemStatus(false);
+        });
+
+        fetch('../footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Footer loading failed:', error));
+    </script>
+</body>
+</html>

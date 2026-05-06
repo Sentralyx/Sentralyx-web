@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/en/history/">
+    <title>Sentralyx | Trade Execution History & Archives</title>
+    <meta name="description" content="Searchable execution history archive with realized P&L, trade duration, order identifiers, timestamps, and closing reasons for post-trade analysis.">
+    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+    <style>
+        .history-container {
+            padding: 20px;
+            background: var(--bg-dark);
+            min-height: 100vh;
+        }
+
+        .panel {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        .toolbar-btn {
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
+            font-weight: 700;
+        }
+        .toolbar-btn:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
+
+        .form-control-custom {
+            background: rgba(42, 49, 66, 0.3);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 10px;
+        }
+        .form-control-custom:focus {
+            background: rgba(42, 49, 66, 0.5);
+            border-color: var(--accent-blue);
+            color: var(--text-main);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+        }
+
+        .table-custom { color: var(--text-main); margin-bottom: 0; }
+        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
+        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
+        .table-custom td { padding: 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
+        .table-custom tbody tr:hover { background: rgba(52, 152, 219, 0.05); box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.08); }
+
+        .side-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            font-weight: 800;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .side-long { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); color: var(--signal-buy); }
+        .side-short { border-color: rgba(231, 76, 60, 0.35); background: rgba(231, 76, 60, 0.08); color: var(--signal-sell); }
+
+        .outcome-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            font-weight: 800;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .outcome-win { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); color: var(--signal-buy); }
+        .outcome-loss { border-color: rgba(231, 76, 60, 0.35); background: rgba(231, 76, 60, 0.08); color: var(--signal-sell); opacity: 0.9; }
+        .outcome-canceled { border-color: rgba(255, 193, 7, 0.35); background: rgba(255, 193, 7, 0.08); color: #ffc107; }
+
+        .pnl-positive { color: var(--signal-buy); font-weight: 900; }
+        .pnl-negative { color: rgba(231, 76, 60, 0.9); font-weight: 800; }
+
+        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+        .pager {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .empty-state {
+            background: rgba(42, 49, 66, 0.25);
+            border: 1px dashed rgba(52, 152, 219, 0.35);
+            border-radius: 12px;
+            padding: 22px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="language-selector">
+        <a href="/" class="btn">TR</a>
+        <a href="/en/" class="btn active">EN</a>
+        <a href="/ru/" class="btn">RU</a>
+    </div>
+    <header id="main-header"></header>
+
+    <main class="history-container">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <div>
+                    <h1 class="text-main mb-1">Trade Execution History &amp; Archives</h1>
+                    <p class="text-secondary mb-0">Post-trade analysis with realized P&amp;L, execution timestamps, order IDs, and closing rationale</p>
+                </div>
+                <div class="d-flex gap-2 flex-wrap align-items-center">
+                    <button class="toolbar-btn" onclick="downloadTradeLogTxt()" title="Download a plain-text audit log" data-bs-toggle="tooltip">
+                        <i class="fas fa-file-lines me-2"></i>Download Trade Log (.txt)
+                    </button>
+                    <button class="toolbar-btn" onclick="exportHistoryCsv()" title="Export current view to CSV" data-bs-toggle="tooltip">
+                        <i class="fas fa-file-export me-2"></i>Export to CSV
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search & Filters -->
+            <div class="panel p-3 mb-3">
+                <div class="row g-3 align-items-end">
+                    <div class="col-lg-3">
+                        <label class="form-label text-main small mb-1">Search by Symbol</label>
+                        <input id="symbol-search" type="text" class="form-control form-control-custom" placeholder="e.g., BTCUSDT" oninput="applyFilters()">
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label text-main small mb-1">Filter by Date (Start)</label>
+                        <input id="date-start" type="date" class="form-control form-control-custom" onchange="applyFilters()">
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label text-main small mb-1">Filter by Date (End)</label>
+                        <input id="date-end" type="date" class="form-control form-control-custom" onchange="applyFilters()">
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label text-main small mb-1">Filter by Outcome</label>
+                        <select id="outcome-filter" class="form-select form-control-custom" onchange="applyFilters()">
+                            <option value="all" selected>All</option>
+                            <option value="win">Win</option>
+                            <option value="loss">Loss</option>
+                            <option value="canceled">Canceled</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-secondary small mt-3">
+                    Tip: Use exports for audit trails and compliance reviews. Execution timestamps are in 24h format.
+                </div>
+            </div>
+
+            <!-- History Table -->
+            <div class="panel">
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th style="min-width: 190px;">Execution Timestamp</th>
+                                <th style="min-width: 140px;">Symbol</th>
+                                <th style="min-width: 120px;">Side</th>
+                                <th style="min-width: 120px;">Entry Price</th>
+                                <th style="min-width: 120px;">Exit Price</th>
+                                <th style="min-width: 120px;">Quantity</th>
+                                <th style="min-width: 220px;">Realized P&amp;L ($/%)</th>
+                                <th style="min-width: 190px;">Reason for Closing</th>
+                                <th style="min-width: 170px;">Order ID</th>
+                                <th style="min-width: 150px;">Outcome</th>
+                                <th style="min-width: 150px;">Trade Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-tbody"></tbody>
+                    </table>
+                </div>
+                <div class="pager">
+                    <div>
+                        <span id="pager-label">Showing 0-0 of 0 trades</span>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="toolbar-btn" onclick="prevPage()"><i class="fas fa-chevron-left me-2"></i>Prev</button>
+                        <button class="toolbar-btn" onclick="nextPage()">Next<i class="fas fa-chevron-right ms-2"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="empty-results" style="display:none;">
+                <div class="empty-state mt-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="fas fa-wave-square"></i>
+                        <span>No executions matched the selected filters. Adjust date range or clear the outcome filter.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        const fmtUsd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+        const fmtNum = new Intl.NumberFormat('en-US', { maximumFractionDigits: 4 });
+        const fmtPct = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 });
+
+        const state = {
+            all: [],
+            filtered: [],
+            page: 1,
+            pageSize: 20,
+        };
+
+        function initTooltips() {
+            const triggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            triggers.forEach((el) => new bootstrap.Tooltip(el));
+        }
+
+        function seedTrades() {
+            state.all = [
+                { ts: '2026-05-06 03:12:45', symbol: 'BTCUSDT', side: 'Long', entry: 43000, exit: 43610, qty: 0.15, pnlUsd: 91.50, pnlPct: 1.42, reason: 'Hit Take-Profit', orderId: 'OKX-84319201', outcome: 'win', duration: '02h 14m' },
+                { ts: '2026-05-06 01:44:10', symbol: 'ETHUSDT', side: 'Short', entry: 2685, exit: 2703, qty: 1.6, pnlUsd: -28.80, pnlPct: -0.68, reason: 'Stop-Loss Triggered', orderId: 'OKX-84317110', outcome: 'loss', duration: '00h 38m' },
+                { ts: '2026-05-05 22:26:33', symbol: 'SOLUSDT', side: 'Long', entry: 96.20, exit: 98.17, qty: 42, pnlUsd: 82.74, pnlPct: 2.05, reason: 'Hit Take-Profit', orderId: 'OKX-84300877', outcome: 'win', duration: '01h 02m' },
+                { ts: '2026-05-05 19:08:51', symbol: 'XRPUSDT', side: 'Long', entry: 0.5121, exit: 0.5159, qty: 4800, pnlUsd: 18.24, pnlPct: 0.74, reason: 'Manual Close', orderId: 'OKX-84290113', outcome: 'win', duration: '00h 51m' },
+                { ts: '2026-05-05 12:18:04', symbol: 'BNBUSDT', side: 'Short', entry: 585.10, exit: 591.66, qty: 7, pnlUsd: -45.92, pnlPct: -1.12, reason: 'Stop-Loss Triggered', orderId: 'OKX-84254099', outcome: 'loss', duration: '03h 26m' },
+                { ts: '2026-05-04 18:22:19', symbol: 'ADAUSDT', side: 'Long', entry: 0.4352, exit: 0.4400, qty: 12000, pnlUsd: 57.60, pnlPct: 1.10, reason: 'Hit Take-Profit', orderId: 'OKX-84189018', outcome: 'win', duration: '05h 09m' },
+                { ts: '2026-05-04 13:05:02', symbol: 'LINKUSDT', side: 'Long', entry: 15.44, exit: 15.58, qty: 350, pnlUsd: 49.00, pnlPct: 0.88, reason: 'Time-Based Exit', orderId: 'OKX-84170122', outcome: 'win', duration: '00h 44m' },
+                { ts: '2026-05-03 10:51:20', symbol: 'DOTUSDT', side: 'Short', entry: 6.82, exit: 6.845, qty: 980, pnlUsd: 24.50, pnlPct: 0.36, reason: 'Manual Close', orderId: 'OKX-84012014', outcome: 'win', duration: '01h 17m' },
+                { ts: '2026-05-03 09:15:02', symbol: 'AVAXUSDT', side: 'Long', entry: 34.50, exit: 34.49, qty: 120, pnlUsd: -1.20, pnlPct: -0.03, reason: 'Canceled (Spread Spike)', orderId: 'OKX-84008111', outcome: 'canceled', duration: '00h 05m' },
+            ];
+
+            // Duplicate with slight variations to populate pagination for UI preview
+            const base = [...state.all];
+            for (let i = 0; i < 55; i++) {
+                const t = base[i % base.length];
+                const ts = new Date(`${t.ts.replace(' ', 'T')}Z`);
+                ts.setMinutes(ts.getMinutes() - (i * 11));
+                const iso = ts.toISOString().slice(0, 16).replace('T', ' ');
+                state.all.push({
+                    ...t,
+                    ts: iso,
+                    orderId: `${t.orderId.split('-')[0]}-${Number(t.orderId.split('-')[1]) + i + 1}`,
+                    pnlUsd: Number((t.pnlUsd * (0.85 + Math.random() * 0.4)).toFixed(2)),
+                    pnlPct: Number((t.pnlPct * (0.9 + Math.random() * 0.3)).toFixed(2)),
+                });
+            }
+
+            // Sort descending by timestamp (string sortable in this format)
+            state.all.sort((a, b) => (a.ts < b.ts ? 1 : a.ts > b.ts ? -1 : 0));
+        }
+
+        function outcomeHtml(o) {
+            if (o === 'win') return `<span class="outcome-pill outcome-win"><i class="fas fa-circle-check"></i>Win</span>`;
+            if (o === 'loss') return `<span class="outcome-pill outcome-loss"><i class="fas fa-circle-xmark"></i>Loss</span>`;
+            return `<span class="outcome-pill outcome-canceled"><i class="fas fa-ban"></i>Canceled</span>`;
+        }
+
+        function sideHtml(side) {
+            if (side.toLowerCase() === 'long') return `<span class="side-badge side-long"><i class="fas fa-arrow-up"></i>Long</span>`;
+            return `<span class="side-badge side-short"><i class="fas fa-arrow-down"></i>Short</span>`;
+        }
+
+        function render() {
+            const total = state.filtered.length;
+            const startIdx = (state.page - 1) * state.pageSize;
+            const endIdx = Math.min(total, startIdx + state.pageSize);
+
+            document.getElementById('pager-label').textContent = total
+                ? `Showing ${startIdx + 1}-${endIdx} of ${total} trades`
+                : 'Showing 0-0 of 0 trades';
+
+            const tbody = document.getElementById('history-tbody');
+            const empty = document.getElementById('empty-results');
+
+            if (!total) {
+                tbody.innerHTML = `
+                    <tr class="text-secondary">
+                        <td colspan="11">
+                            <div class="py-2 d-flex align-items-center gap-2">
+                                <i class="fas fa-wave-square"></i>
+                                <span>No executions matched the selected filters.</span>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                empty.style.display = 'block';
+                return;
+            }
+
+            empty.style.display = 'none';
+
+            tbody.innerHTML = state.filtered.slice(startIdx, endIdx).map((t) => {
+                const pnlClass = t.pnlUsd >= 0 ? 'pnl-positive' : 'pnl-negative';
+                const pnlText = `${t.pnlUsd >= 0 ? '+' : ''}${fmtUsd.format(t.pnlUsd)} / ${t.pnlPct >= 0 ? '+' : ''}${fmtPct.format(t.pnlPct)}%`;
+                return `
+                    <tr>
+                        <td class="text-secondary mono">${t.ts}</td>
+                        <td class="fw-bold">${t.symbol}</td>
+                        <td>${sideHtml(t.side)}</td>
+                        <td class="text-main fw-bold">$${fmtNum.format(t.entry)}</td>
+                        <td class="text-main fw-bold">$${fmtNum.format(t.exit)}</td>
+                        <td class="text-secondary">${fmtNum.format(t.qty)}</td>
+                        <td class="${pnlClass}">${pnlText}</td>
+                        <td class="text-secondary">${t.reason}</td>
+                        <td class="text-secondary mono">${t.orderId}</td>
+                        <td>${outcomeHtml(t.outcome)}</td>
+                        <td class="text-secondary">${t.duration}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            initTooltips();
+        }
+
+        function applyFilters() {
+            const sym = (document.getElementById('symbol-search').value || '').trim().toUpperCase();
+            const start = document.getElementById('date-start').value;
+            const end = document.getElementById('date-end').value;
+            const outcome = document.getElementById('outcome-filter').value;
+
+            state.filtered = state.all.filter((t) => {
+                if (sym && !t.symbol.includes(sym)) return false;
+                if (outcome !== 'all' && t.outcome !== outcome) return false;
+
+                if (start) {
+                    const d = t.ts.slice(0, 10);
+                    if (d < start) return false;
+                }
+                if (end) {
+                    const d = t.ts.slice(0, 10);
+                    if (d > end) return false;
+                }
+                return true;
+            });
+
+            state.page = 1;
+            render();
+        }
+
+        function prevPage() {
+            state.page = Math.max(1, state.page - 1);
+            render();
+        }
+
+        function nextPage() {
+            const maxPage = Math.max(1, Math.ceil(state.filtered.length / state.pageSize));
+            state.page = Math.min(maxPage, state.page + 1);
+            render();
+        }
+
+        function exportHistoryCsv() {
+            if (!state.filtered.length) return;
+            const header = ['ExecutionTimestamp', 'Symbol', 'Side', 'EntryPrice', 'ExitPrice', 'Quantity', 'RealizedPnL_USD', 'RealizedPnL_Pct', 'ReasonForClosing', 'OrderId', 'Outcome', 'TradeDuration'];
+            const lines = [
+                header.join(','),
+                ...state.filtered.map((t) => [
+                    t.ts,
+                    t.symbol,
+                    t.side,
+                    t.entry,
+                    t.exit,
+                    t.qty,
+                    t.pnlUsd,
+                    t.pnlPct,
+                    t.reason,
+                    t.orderId,
+                    t.outcome,
+                    t.duration,
+                ].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',')),
+            ];
+
+            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sentralyx-execution-history-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadTradeLogTxt() {
+            const lines = state.filtered.map((t) => {
+                const pnl = `${t.pnlUsd >= 0 ? '+' : ''}${t.pnlUsd} USD (${t.pnlPct >= 0 ? '+' : ''}${t.pnlPct}%)`;
+                return [
+                    `[${t.ts}]`,
+                    `Symbol=${t.symbol}`,
+                    `Side=${t.side}`,
+                    `Entry=${t.entry}`,
+                    `Exit=${t.exit}`,
+                    `Qty=${t.qty}`,
+                    `RealizedPnL=${pnl}`,
+                    `Outcome=${t.outcome.toUpperCase()}`,
+                    `Reason="${t.reason}"`,
+                    `OrderID=${t.orderId}`,
+                    `Duration=${t.duration}`,
+                ].join(' ');
+            });
+
+            const blob = new Blob([lines.join('\n') + '\n'], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sentralyx-trade-log-${new Date().toISOString().slice(0, 10)}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            seedTrades();
+            state.filtered = [...state.all];
+            initTooltips();
+            render();
+        });
+
+        fetch('../footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Footer loading failed:', error));
+    </script>
+</body>
+</html>

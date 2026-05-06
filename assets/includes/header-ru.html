@@ -1,0 +1,112 @@
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/ru/" style="text-decoration: none !important;">
+            <svg width="220" height="45" viewBox="0 0 220 45" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                <defs>
+                    <linearGradient id="planetGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#00D2FF" />
+                        <stop offset="100%" stop-color="#0033FF" />
+                    </linearGradient>
+                </defs>
+                <circle cx="20" cy="22" r="10" fill="url(#planetGrad)" />
+                <ellipse cx="20" cy="22" rx="16" ry="5" stroke="#4F46E5" stroke-width="2" fill="none" transform="rotate(-15 20 22)" />
+                <text x="45" y="32" fill="#FFFFFF" font-family="Arial, sans-serif" font-weight="800" font-size="26">Sentraly</text>
+                <text x="158" y="32" fill="#A855F7" font-family="Arial, sans-serif" font-weight="800" font-size="26">x</text>
+            </svg>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3" href="/ru/">Главная</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown">
+                        Функции
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" style="background: var(--panel-dark); border: 1px solid var(--border-color);">
+                        <li class="dropdown-header text-main">Навигация</li>
+                        <li><a class="dropdown-item text-main" href="/ru/scanner/">
+                            <i class="fas fa-search me-2"></i>Сканер
+                        </a></li>
+                        <li><a class="dropdown-item text-main" href="/ru/active-positions/">
+                            <i class="fas fa-chart-line me-2"></i>Открытые позиции
+                        </a></li>
+                        <li><hr class="dropdown-divider" style="border-color: var(--border-color);"></li>
+                        <li class="dropdown-header text-main">Аналитика</li>
+                        <li><a class="dropdown-item text-main" href="/ru/reports/">
+                            <i class="fas fa-file-alt me-2"></i>Отчёты
+                        </a></li>
+                        <li><a class="dropdown-item text-main" href="/ru/history/">
+                            <i class="fas fa-history me-2"></i>Закрытые позиции
+                        </a></li>
+                        <li><hr class="dropdown-divider" style="border-color: var(--border-color);"></li>
+                        <li class="dropdown-header text-main">Технологии</li>
+                        <li><a class="dropdown-item text-main" href="/technology.html">
+                            <i class="fas fa-microchip me-2"></i>Манифест инженерии
+                        </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3" href="/ru/faq.html">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3" href="/ru/contact/">Контакты</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+.navbar {
+    background: rgba(11, 17, 27, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.8rem 0;
+}
+
+.navbar-brand img, .navbar-brand svg {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-link {
+    color: var(--text-main) !important;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem !important;
+    font-size: 16px;
+}
+
+.nav-link:hover { color: var(--accent-blue) !important; }
+
+.dropdown-menu-dark {
+    background: var(--panel-dark) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.dropdown-item {
+    color: var(--text-main) !important;
+    transition: all 0.2s ease;
+    font-size: 15px;
+}
+
+.dropdown-item:hover {
+    background: rgba(52, 152, 219, 0.1) !important;
+    color: var(--accent-blue) !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(224, 224, 224, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 1.5em;
+    height: 1.5em;
+}
+</style>
