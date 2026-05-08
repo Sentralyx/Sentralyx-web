@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://www.sentralyx.com/en/technology.html">
-    <title>Sentralyx | Engineering Manifesto</title>
-    <meta name="description" content="Engineering manifesto for Sentralyx: reliability primitives, data integrity guarantees, and operational resilience design.">
+    <link rel="canonical" href="https://www.sentralyx.com/ru/technology.html">
+    <title>Sentralyx | Инженерный манифест</title>
+    <meta name="description" content="Инженерный манифест Sentralyx: примитивы надежности, гарантии целостности данных и устойчивость операций.">
 
     <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -43,9 +43,14 @@
         }
         .feature-card h5 { color: var(--text-main); font-weight: 900; }
         .feature-card p, .feature-card li { color: var(--text-secondary); }
+
         .feature-icon {
-            width: 46px; height: 46px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: rgba(168, 85, 247, 0.12);
             border: 1px solid rgba(168, 85, 247, 0.25);
             color: #A855F7;
@@ -53,8 +58,15 @@
         }
 
         .pill {
-            display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px;
-            border: 1px solid var(--border-color); background: rgba(42, 49, 66, 0.25); color: var(--text-secondary); font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
         }
         .pill i { color: var(--accent-blue); }
 
@@ -154,8 +166,8 @@
 <body>
     <div class="language-selector">
         <a href="/technology.html" class="btn">TR</a>
-        <a href="/en/technology.html" class="btn active">EN</a>
-        <a href="/ru/technology.html" class="btn">RU</a>
+        <a href="/en/technology.html" class="btn">EN</a>
+        <a href="/ru/technology.html" class="btn active">RU</a>
     </div>
 
     <header id="main-header"></header>
@@ -164,11 +176,11 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
                 <div>
-                    <h1 class="display-5 mb-2">Engineering Manifesto</h1>
-                    <p class="lead mb-0">Reliability-first architecture for quantitative execution: deterministic state, resilient I/O, and operational safety primitives.</p>
+                    <h1 class="display-5 mb-2">Инженерный манифест</h1>
+                    <p class="lead mb-0">Архитектура reliability-first для количественного исполнения: детерминированное состояние, устойчивый I/O и примитивы операционной безопасности.</p>
                 </div>
-                <span class="pill" title="Design posture" data-bs-toggle="tooltip">
-                    <i class="fas fa-microchip"></i>Reliability: First-Class Feature
+                <span class="pill" title="Позиционирование" data-bs-toggle="tooltip">
+                    <i class="fas fa-microchip"></i>Надежность — первоклассная фича
                 </span>
             </div>
         </div>
@@ -177,12 +189,12 @@
     <section class="py-5">
         <div class="container">
             <div class="panel p-4 mb-4">
-                <h4 class="text-main mb-2"><i class="fas fa-shield-halved me-2" style="color: var(--accent-blue);"></i>Principles</h4>
+                <h4 class="text-main mb-2"><i class="fas fa-shield-halved me-2" style="color: var(--accent-blue);"></i>Принципы</h4>
                 <ul class="mb-0">
-                    <li><strong>Local-first security:</strong> keep sensitive strategy context and credentials on the user&apos;s device whenever possible.</li>
-                    <li><strong>Deterministic recovery:</strong> define clear invariants and replayable state transitions.</li>
-                    <li><strong>Atomic persistence:</strong> avoid partial writes; guarantee consistency across interruptions.</li>
-                    <li><strong>Observable operations:</strong> track heartbeat, watchdogs, and error boundaries.</li>
+                    <li><strong>Local-first безопасность:</strong> чувствительный контекст стратегий и ключи — по возможности на устройстве пользователя.</li>
+                    <li><strong>Детерминированное восстановление:</strong> четкие инварианты и воспроизводимые переходы состояния.</li>
+                    <li><strong>Атомарная запись:</strong> никаких частичных файлов; согласованность даже при сбоях.</li>
+                    <li><strong>Наблюдаемость:</strong> heartbeat, watchdog и строгие границы ошибок.</li>
                 </ul>
             </div>
 
@@ -193,7 +205,7 @@
                             <div class="feature-icon"><i class="fas fa-eye"></i></div>
                             <div>
                                 <h5 class="mb-1">Thread Watchdog</h5>
-                                <p class="mb-0">Continuous health monitoring for critical loops. Detects stalls, enforces timeouts, and triggers controlled recovery.</p>
+                                <p class="mb-0">Непрерывный контроль здоровья критических циклов. Обнаруживает зависания, применяет таймауты и запускает контролируемое восстановление.</p>
                             </div>
                         </div>
                     </div>
@@ -204,7 +216,7 @@
                             <div class="feature-icon"><i class="fas fa-atom"></i></div>
                             <div>
                                 <h5 class="mb-1">Atomic Write</h5>
-                                <p class="mb-0">Write-then-swap persistence model to protect configuration and reporting artifacts against corruption and power loss.</p>
+                                <p class="mb-0">Модель write-then-swap защищает конфигурации и отчеты от повреждений при падении процесса или отключении питания.</p>
                             </div>
                         </div>
                     </div>
@@ -215,13 +227,12 @@
                             <div class="feature-icon"><i class="fas fa-arrows-rotate"></i></div>
                             <div>
                                 <h5 class="mb-1">Orphan Recovery</h5>
-                                <p class="mb-0">Detects orphaned processes/state and restores a consistent runtime snapshot, minimizing downtime during reconnect events.</p>
+                                <p class="mb-0">Выявляет “сиротские” состояния/процессы после разрыва соединения и восстанавливает согласованный runtime-снимок.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -232,9 +243,9 @@
                     <div class="tech-card">
                         <div class="tech-icon"><i class="fas fa-eye"></i></div>
                         <h3 class="text-main mb-3">Thread Watchdog</h3>
-                        <p class="text-secondary mb-3">A health supervisor for critical loops (data feed, signal engine, order pipeline). It enforces heartbeat checks, detects stalls, and triggers controlled recovery with invariant validation.</p>
+                        <p class="text-secondary mb-3">Супервизор для критических контуров (data feed, signal engine, order pipeline). Проверяет heartbeat, фиксирует “stalls” и инициирует восстановление с проверкой инвариантов.</p>
                         <div class="code-block">
-<span class="comment"># Watchdog loop (simplified)</span>
+<span class="comment"># Watchdog loop (упрощенно)</span>
 <span class="keyword">while</span> <span class="keyword">True</span>:
     <span class="keyword">for</span> worker <span class="keyword">in</span> critical_workers:
         <span class="keyword">if</span> now() - worker.last_heartbeat &gt; timeout_s:
@@ -243,25 +254,25 @@
     sleep(<span class="number">30</span>)
                         </div>
                         <ul class="text-secondary mb-0">
-                            <li>Heartbeat-based stall detection</li>
-                            <li>Timeouts + quarantine for degraded components</li>
-                            <li>Crash-safe restart with state validation</li>
-                            <li>Audit-friendly event trail (no secrets)</li>
+                            <li>Детект зависаний по heartbeat</li>
+                            <li>Карантин для деградации/аномалий</li>
+                            <li>Безопасный рестарт со валидацией состояния</li>
+                            <li>Событийный трейл без утечек секретов</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="tech-stat">
                         <div class="tech-stat-number">30s</div>
-                        <div class="tech-stat-label">Health Check Interval</div>
+                        <div class="tech-stat-label">Интервал health-check</div>
                     </div>
                     <div class="tech-stat mt-4">
                         <div class="tech-stat-number">3×</div>
-                        <div class="tech-stat-label">Max Restart Attempts</div>
+                        <div class="tech-stat-label">Макс. попыток рестарта</div>
                     </div>
                     <div class="tech-stat mt-4">
                         <div class="tech-stat-number">Deterministic</div>
-                        <div class="tech-stat-label">Recovery Posture</div>
+                        <div class="tech-stat-label">Постура восстановления</div>
                     </div>
                 </div>
             </div>
@@ -274,10 +285,10 @@
                 <div class="col-lg-6 order-lg-2">
                     <div class="tech-card">
                         <div class="tech-icon"><i class="fas fa-atom"></i></div>
-                        <h3 class="text-main mb-3">Atomic Write Guarantees</h3>
-                        <p class="text-secondary mb-3">For configuration, catalogs, and reports, Sentralyx uses a write-then-swap pattern. Critical artifacts are either fully written or unchanged—no partial states.</p>
+                        <h3 class="text-main mb-3">Гарантии Atomic Write</h3>
+                        <p class="text-secondary mb-3">Для конфигураций, каталогов и отчетов применяется паттерн write-then-swap: артефакт либо полностью записан, либо остается прежним.</p>
                         <div class="code-block">
-<span class="comment"># Atomic write (concept)</span>
+<span class="comment"># Atomic write (идея)</span>
 <span class="keyword">def</span> <span class="string">atomic_write</span>(payload, path):
     tmp = path + <span class="string">".tmp"</span>
     <span class="keyword">with</span> open(tmp, <span class="string">"wb"</span>) <span class="keyword">as</span> f:
@@ -287,25 +298,25 @@
     rename(tmp, path)
                         </div>
                         <ul class="text-secondary mb-0">
-                            <li>Crash-safe persistence for critical artifacts</li>
-                            <li>Prevents file corruption under interruption</li>
-                            <li>Supports consistent recovery after restart</li>
-                            <li>Makes state replay reliable and inspectable</li>
+                            <li>Устойчивость к сбоям и отключению питания</li>
+                            <li>Защита от частичных/битых файлов</li>
+                            <li>Согласованное восстановление после рестарта</li>
+                            <li>Воспроизводимые переходы состояния</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-6 order-lg-1">
                     <div class="tech-stat">
                         <div class="tech-stat-number">0%</div>
-                        <div class="tech-stat-label">Partial Write Tolerance</div>
+                        <div class="tech-stat-label">Частичных записей</div>
                     </div>
                     <div class="tech-stat mt-4">
                         <div class="tech-stat-number">ACID-like</div>
-                        <div class="tech-stat-label">Artifact Consistency</div>
+                        <div class="tech-stat-label">Согласованность артефактов</div>
                     </div>
                     <div class="tech-stat mt-4">
                         <div class="tech-stat-number">Replayable</div>
-                        <div class="tech-stat-label">State Transitions</div>
+                        <div class="tech-stat-label">Состояние системы</div>
                     </div>
                 </div>
             </div>
@@ -319,24 +330,24 @@
                     <div class="tech-card">
                         <div class="tech-icon"><i class="fas fa-life-ring"></i></div>
                         <h3 class="text-main mb-3">Orphan Recovery</h3>
-                        <p class="text-secondary mb-0">Disconnects happen. Orphan recovery reconciles open orders/positions after reconnect, restores a consistent snapshot, and prevents duplicate intent under uncertain network conditions.</p>
+                        <p class="text-secondary mb-0">После reconnection система сверяет открытые ордера/позиции, восстанавливает согласованный снимок и предотвращает дублирование намерений при нестабильной сети.</p>
                         <div class="row mt-4 g-3">
                             <div class="col-md-4">
                                 <div class="tech-stat">
                                     <div class="tech-stat-number">5s</div>
-                                    <div class="tech-stat-label">Reconcile Target</div>
+                                    <div class="tech-stat-label">Цель reconciliation</div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="tech-stat">
                                     <div class="tech-stat-number">24/7</div>
-                                    <div class="tech-stat-label">Monitoring</div>
+                                    <div class="tech-stat-label">Мониторинг</div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="tech-stat">
                                     <div class="tech-stat-number">Idempotent</div>
-                                    <div class="tech-stat-label">Order Intent</div>
+                                    <div class="tech-stat-label">Intent ордеров</div>
                                 </div>
                             </div>
                         </div>
@@ -344,12 +355,12 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="panel p-4">
-                        <h4 class="text-main mb-2"><i class="fas fa-arrows-rotate me-2" style="color: var(--accent-blue);"></i>Recovery Flow</h4>
+                        <h4 class="text-main mb-2"><i class="fas fa-arrows-rotate me-2" style="color: var(--accent-blue);"></i>Поток восстановления</h4>
                         <ul class="text-secondary mb-0">
-                            <li>Fetch exchange state (orders, positions, balances)</li>
-                            <li>Compare against last persisted runtime snapshot</li>
-                            <li>Resolve conflicts (cancel/replace) with safety checks</li>
-                            <li>Resume execution only after invariants pass</li>
+                            <li>Запрос состояния биржи (ордера, позиции, балансы)</li>
+                            <li>Сравнение с последним persisted runtime-снимком</li>
+                            <li>Разрешение конфликтов (cancel/replace) с safety-check</li>
+                            <li>Продолжение исполнения только после проверки инвариантов</li>
                         </ul>
                     </div>
                 </div>
@@ -361,22 +372,22 @@
         <div class="container">
             <div class="security-shield">
                 <h3 class="text-main mb-3"><i class="fas fa-lock me-3" style="color: var(--accent-blue);"></i>Security Posture</h3>
-                <p class="text-secondary mb-4">Designed around least privilege and local-first secret handling. Use trade-only keys, IP restrictions, and encrypted storage. Logs and exports remain audit-friendly without leaking sensitive credentials.</p>
+                <p class="text-secondary mb-4">Минимальные привилегии и local-first хранение секретов. Используйте trade-only ключи, IP-ограничения и зашифрованное хранилище. Логи и экспорт остаются аудит-пригодными и не раскрывают ключи.</p>
                 <div class="row text-start g-4">
                     <div class="col-md-6">
-                        <h5 class="text-main mb-2">Credential Hygiene</h5>
+                        <h5 class="text-main mb-2">Гигиена ключей</h5>
                         <ul class="text-secondary mb-0">
-                            <li>Trade-only permissions (no withdrawals)</li>
-                            <li>IP allowlisting / restrictions</li>
-                            <li>Rotation-ready storage patterns</li>
+                            <li>Trade-only permissions (без выводов)</li>
+                            <li>IP allowlist / ограничения</li>
+                            <li>Ротация ключей и минимизация поверхности</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h5 class="text-main mb-2">Audit-Friendly Outputs</h5>
+                        <h5 class="text-main mb-2">Аудит и наблюдаемость</h5>
                         <ul class="text-secondary mb-0">
-                            <li>No secrets in logs or exported reports</li>
-                            <li>Clear error boundaries for incident review</li>
-                            <li>Deterministic state for traceability</li>
+                            <li>Никаких секретов в логах/экспортах</li>
+                            <li>Ясные error boundaries для incident review</li>
+                            <li>Детерминированное состояние для трассировки</li>
                         </ul>
                     </div>
                 </div>
@@ -387,15 +398,15 @@
     <section class="tech-section">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="text-main">Rule Engine: Execution Examples</h2>
-                <p class="text-secondary mb-0">Illustrative snippets showing how signals and confirmations are expressed.</p>
+                <h2 class="text-main">Rule Engine: примеры</h2>
+                <p class="text-secondary mb-0">Иллюстративные фрагменты: как задаются сигналы и подтверждения.</p>
             </div>
 
             <div class="accordion" id="ruleEngineAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#rule1" aria-expanded="true" aria-controls="rule1">
-                            <i class="fas fa-gauge-high me-3"></i>ADX + RSI Threshold Gate
+                            <i class="fas fa-gauge-high me-3"></i>Пороговый фильтр ADX + RSI
                         </button>
                     </h2>
                     <div id="rule1" class="accordion-collapse collapse show" data-bs-parent="#ruleEngineAccordion">
@@ -406,7 +417,7 @@
     <span class="keyword">return</span> <span class="string">"ALLOW_LONG"</span>, <span class="number">0.9</span>
 <span class="keyword">return</span> <span class="string">"NO_TRADE"</span>, <span class="number">0.0</span>
                             </div>
-                            <p class="text-secondary mb-0">A simple gate that favors directional regimes (ADX) and avoids overheated entries (RSI).</p>
+                            <p class="text-secondary mb-0">Фильтр предпочитает направленные режимы (ADX) и избегает перегретых входов (RSI).</p>
                         </div>
                     </div>
                 </div>
@@ -414,7 +425,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rule2" aria-expanded="false" aria-controls="rule2">
-                            <i class="fas fa-code-branch me-3"></i>MACD Cross Confirmation
+                            <i class="fas fa-code-branch me-3"></i>Подтверждение MACD Cross
                         </button>
                     </h2>
                     <div id="rule2" class="accordion-collapse collapse" data-bs-parent="#ruleEngineAccordion">
@@ -426,7 +437,7 @@
 <span class="keyword">if</span> macd &lt; signal <span class="keyword">and</span> prev_macd &gt;= prev_signal:
     <span class="keyword">return</span> <span class="string">"SELL"</span>, <span class="number">0.7</span>
                             </div>
-                            <p class="text-secondary mb-0">Cross events add structure to momentum shifts while keeping the rule expressive and inspectable.</p>
+                            <p class="text-secondary mb-0">События пересечения добавляют структуру смене импульса и остаются легко интерпретируемыми.</p>
                         </div>
                     </div>
                 </div>
@@ -434,7 +445,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rule3" aria-expanded="false" aria-controls="rule3">
-                            <i class="fas fa-layer-group me-3"></i>Multi-Timeframe Alignment
+                            <i class="fas fa-layer-group me-3"></i>Согласование по таймфреймам (MTF)
                         </button>
                     </h2>
                     <div id="rule3" class="accordion-collapse collapse" data-bs-parent="#ruleEngineAccordion">
@@ -446,7 +457,7 @@ signals = [analyze(<span class="string">"15m"</span>), analyze(<span class="stri
     <span class="keyword">return</span> <span class="string">"CONFIRMED"</span>
 <span class="keyword">return</span> <span class="string">"WEAK"</span>
                             </div>
-                            <p class="text-secondary mb-0">Multi-timeframe confirmation reduces false positives by requiring alignment across regimes.</p>
+                            <p class="text-secondary mb-0">MTF-подтверждение снижает ложные срабатывания, требуя согласованности между режимами.</p>
                         </div>
                     </div>
                 </div>
@@ -458,31 +469,31 @@ signals = [analyze(<span class="string">"15m"</span>), analyze(<span class="stri
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="text-main">Operational Metrics</h2>
-                <p class="text-secondary mb-0">High-level reliability and quality posture indicators.</p>
+                <p class="text-secondary mb-0">Высокоуровневые индикаторы надежности и качества.</p>
             </div>
             <div class="row">
                 <div class="col-md-3 col-6 mb-4">
                     <div class="tech-stat">
                         <div class="tech-stat-number">99.9%</div>
-                        <div class="tech-stat-label">Uptime Target</div>
+                        <div class="tech-stat-label">Цель по uptime</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4">
                     <div class="tech-stat">
                         <div class="tech-stat-number">&lt;1ms</div>
-                        <div class="tech-stat-label">UI Response Target</div>
+                        <div class="tech-stat-label">Цель по UI latency</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4">
                     <div class="tech-stat">
                         <div class="tech-stat-number">119/119</div>
-                        <div class="tech-stat-label">Unit Tests (Example)</div>
+                        <div class="tech-stat-label">Unit tests (пример)</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4">
                     <div class="tech-stat">
                         <div class="tech-stat-number">0</div>
-                        <div class="tech-stat-label">Known Critical Issues</div>
+                        <div class="tech-stat-label">Критические инциденты</div>
                     </div>
                 </div>
             </div>
@@ -506,3 +517,4 @@ signals = [analyze(<span class="string">"15m"</span>), analyze(<span class="stri
     </script>
 </body>
 </html>
+

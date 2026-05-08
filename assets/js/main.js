@@ -150,6 +150,7 @@ function getLanguageRedirectTarget(desiredLang, currentPathname) {
             '/indicators/',
             '/settings/',
             '/contact/',
+            '/technology.html',
         ]),
     };
 
@@ -209,8 +210,11 @@ function patchLanguageSelector() {
 
     const buildHref = (lang) => {
         if (lang === 'tr') return basePath;
-        if (basePath === '/') return `/${lang}/`;
-        return `/${lang}${basePath}`;
+
+        const target = getLanguageRedirectTarget(lang, window.location.pathname);
+        if (target) return target;
+
+        return `/${lang}/`;
     };
 
     const buttons = selector.querySelectorAll('a.btn');
