@@ -664,7 +664,7 @@ signals = []
         }
 
         // Load header and footer
-        fetch('components/header.html')
+        fetch('assets/includes/header.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('main-header').innerHTML = data;
