@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/backtest/">
+    
+    <title>Sentralyx | Backtest & Strateji Analizi - Geçmiş Verilerle Strateji Test Etme</title>
+    <meta name="description" content="Sentralyx Backtest modülü ile stratejilerinizi geçmiş verilerle test edin. Detaylı grafikler, istatistikler ve performans analizleriyle en kârlı stratejileri belirleyin.">
+    <meta name="keywords" content="backtest, strateji testi, geçmiş veri analizi, trading backtest, portföy backtesting, strateji optimizasyonu, performans analizi">
+
+    <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        .hero-section {
+            padding: 120px 0 80px;
+            background: radial-gradient(circle at top right, rgba(47, 177, 127, 0.15), transparent);
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .screenshot-card {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .screenshot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.2);
+            border-color: var(--accent-blue);
+        }
+        
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .screenshot-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .screenshot-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(11, 17, 27, 0.95), transparent);
+            padding: 20px;
+            color: white;
+        }
+        
+        .feature-box {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.15);
+        }
+        
+        .feature-icon {
+            color: var(--accent-blue);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .section-padding { padding: 80px 0; }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 0 60px;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <a href="../index.html" class="btn">TR</a>
+        <a href="../en/backtest/" class="btn">EN</a>
+        <a href="../ru/backtest/" class="btn">RU</a>
+    </div>
+
+    <header id="main-header"></header>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1>Stratejilerinizi Geçmiş Verilerle Test Edin</h1>
+            <p class="lead text-secondary mb-4">Gelişmiş backtest motoru ile stratejilerinizin performansını analiz edin, en kârlı kuralları belirleyin ve yatırım kararlarınızı optimize edin.</p>
+            <a href="../scanner/" class="hero-main-btn">
+                <i class="fas fa-rocket me-2"></i>Terminali Keşfet
+            </a>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="text-main">Backtest Arayüzü</h2>
+                <p class="text-secondary">Kapsamlı analiz araçları ve detaylı raporlama özellikleri</p>
+            </div>
+            
+            <div class="screenshot-grid">
+                <div class="screenshot-card">
+                    <img src="../backtest-main.png" alt="Backtest Ana Ekran">
+                    <div class="screenshot-overlay">
+                        <h5>Ana Backtest Paneli</h5>
+                        <p class="mb-0">Strateji ayarları ve test konfigürasyonu</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="../backtest-islemler.png" alt="Backtest İşlemleri">
+                    <div class="screenshot-overlay">
+                        <h5>İşlem Detayları</h5>
+                        <p class="mb-0">Tüm al/sat işlemlerinin kronolojik analizi</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="../backtest-grafik.png" alt="Backtest Grafikler">
+                    <div class="screenshot-overlay">
+                        <h5>Performans Grafikleri</h5>
+                        <p class="mb-0">Kâr/zarar eğrileri ve performans metrikleri</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="../backtest-analiz.png" alt="Backtest Analiz">
+                    <div class="screenshot-overlay">
+                        <h5>Detaylı Analiz</h5>
+                        <p class="mb-0">İstatistiksel analiz ve başarı oranları</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="text-main">Backtest Özellikleri</h2>
+                <p class="text-secondary">Strateji testiniz için ihtiyacınız olan tüm araçlar</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-calendar-alt feature-icon"></i>
+                        <h4 class="text-main">Tarih Aralığı Seçimi</h4>
+                        <p class="text-secondary">İstediğiniz tarih aralığında stratejinizi test edin. Günlük, haftalık veya aylık periyotlarla analiz yapın.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-coins feature-icon"></i>
+                        <h4 class="text-main">Portföy Backtesting</h4>
+                        <p class="text-secondary">Birden fazla varlık için aynı anda portföy stratejileri test edin. Çeşitlendirme avantajlarını görün.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-chart-pie feature-icon"></i>
+                        <h4 class="text-main">Detaylı İstatistikler</h4>
+                        <p class="text-secondary">Sharpe oranı, maksimum drawdown, kâr faktörü gibi profesyonel metriklerle analiz edin.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-sliders-h feature-icon"></i>
+                        <h4 class="text-main">Parametre Optimizasyonu</h4>
+                        <p class="text-secondary">Strateji parametrelerinizi otomatik olarak optimize edin. En iyi ayarları bulun.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-file-export feature-icon"></i>
+                        <h4 class="text-main">Raporlama</h4>
+                        <p class="text-secondary">Detaylı raporları CSV, PDF formatlarında dışa aktarın. Analiz sonuçlarınızı paylaşın.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <i class="fas fa-bolt feature-icon"></i>
+                        <h4 class="text-main">Hızlı Test</h4>
+                        <p class="text-secondary">Optimize edilmiş motor ile binlerce veri noktasını saniyeler içinde analiz edin.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="text-main mb-4">Stratejinizi Bugün Test Edin</h2>
+                <p class="text-secondary mb-4">Geçmiş performans gelecek sonuçların garantisi değildir, ancak stratejinizi anlamak için en iyi yoldur.</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="../scanner/" class="btn-sentralyx-start">
+                        <i class="fas fa-search me-2"></i>Terminali Başlat
+                    </a>
+                    <a href="../strategies/" class="btn-sentralyx-pause">
+                        <i class="fas fa-layer-group me-2"></i>Stratejiler
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Load header and footer
+        fetch('../components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('main-header').innerHTML = data;
+            })
+            .catch(error => console.error('Header yüklenemedi:', error));
+
+        fetch('../components/footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Footer yüklenemedi:', error));
+    </script>
+</body>
+</html>
