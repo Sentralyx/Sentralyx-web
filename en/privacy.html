@@ -16,46 +16,6 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     
     <style>
-        /* Language Selector Styles */
-        .language-selector {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(11, 17, 27, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .language-selector .btn {
-            padding: 8px 16px;
-            margin: 0 2px;
-            border: 1px solid var(--border-color);
-            background: var(--panel-dark);
-            color: var(--text-secondary);
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .language-selector .btn:hover {
-            background: var(--accent-blue);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-        }
-        
-        .language-selector .btn.active {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            color: white;
-            border-color: var(--accent-blue);
-        }
-        
         /* Privacy Page Specific Styles */
         .privacy-hero {
             padding: 120px 0 60px;
@@ -225,30 +185,10 @@
             .data-table td {
                 padding: 10px;
             }
-            
-            /* Language Selector Mobile */
-            .language-selector {
-                top: 10px;
-                right: 10px;
-                padding: 6px;
-            }
-            
-            .language-selector .btn {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-                margin: 0 1px;
-            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Language Selector -->
-    <div class="language-selector">
-        <a href="/privacy.html" class="btn">TR</a>
-        <a href="/en/privacy.html" class="btn active">EN</a>
-        <a href="/ru/privacy.html" class="btn">RU</a>
-    </div>
 
     <header id="main-header"></header>
 

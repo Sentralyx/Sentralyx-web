@@ -14,48 +14,9 @@
     <style>
         .page { padding: 20px; background: var(--bg-dark); min-height: 100vh; }
         .panel { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; }
-
-        .language-selector {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(11, 17, 27, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 8px;
-        }
-        .language-selector .btn {
-            padding: 8px 16px;
-            margin: 0 2px;
-            border: 1px solid var(--border-color);
-            background: var(--panel-dark);
-            color: var(--text-secondary);
-            border-radius: 6px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        .language-selector .btn:hover {
-            background: var(--accent-blue);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-        }
-        .language-selector .btn.active {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            color: white;
-            border-color: var(--accent-blue);
-        }
     </style>
 </head>
 <body>
-    <div class="language-selector">
-        <a href="/privacy.html" class="btn active">TR</a>
-        <a href="/en/privacy.html" class="btn">EN</a>
-        <a href="/ru/privacy.html" class="btn">RU</a>
-    </div>
-
     <header id="main-header"></header>
 
     <main class="page">
