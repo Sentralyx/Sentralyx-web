@@ -602,6 +602,118 @@
 
 
 
+        /* Supported Exchanges Section */
+
+        .supported-exchanges {
+
+            padding: 60px 0;
+
+            background: linear-gradient(180deg, rgba(11, 17, 27, 0) 0%, rgba(11, 17, 27, 0.3) 50%, rgba(11, 17, 27, 0) 100%);
+
+            text-align: center;
+
+        }
+
+
+
+        .supported-exchanges h2 {
+
+            font-size: 2rem;
+
+            font-weight: 700;
+
+            color: var(--text-main);
+
+            margin-bottom: 40px;
+
+            background: linear-gradient(45deg, var(--accent-green), var(--accent-blue));
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+
+
+        .exchanges-logos {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 60px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+
+        .exchange-logo {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 15px;
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .exchange-logo img {
+
+            width: 180px;
+
+            height: auto;
+
+            filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+
+            transition: all 0.3s ease;
+
+            opacity: 0.8;
+
+        }
+
+
+
+        .exchange-logo:hover img {
+
+            filter: brightness(0) invert(1) drop-shadow(0 0 30px rgba(61, 217, 201, 0.6));
+
+            transform: translateY(-5px) scale(1.05);
+
+            opacity: 1;
+
+        }
+
+
+
+        .exchange-logo span {
+
+            font-size: 0.9rem;
+
+            color: var(--text-secondary);
+
+            font-weight: 500;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+        }
+
+
+
         .footer {
 
             border-top: 1px solid var(--border-color);
@@ -773,6 +885,50 @@
                 width: 100%;
 
                 justify-content: center;
+
+            }
+
+
+
+            /* Supported Exchanges Mobile */
+
+            .supported-exchanges {
+
+                padding: 40px 0;
+
+            }
+
+
+
+            .supported-exchanges h2 {
+
+                font-size: 1.5rem;
+
+                margin-bottom: 30px;
+
+            }
+
+
+
+            .exchanges-logos {
+
+                gap: 40px;
+
+            }
+
+
+
+            .exchange-logo img {
+
+                width: 140px;
+
+            }
+
+
+
+            .exchange-logo span {
+
+                font-size: 0.8rem;
 
             }
 
@@ -1068,6 +1224,23 @@
         </div>
 
     </header>
+
+    <!-- Supported Exchanges Section -->
+    <section class="supported-exchanges">
+        <div class="container">
+            <h2>Desteklenen Borsalar</h2>
+            <div class="exchanges-logos">
+                <div class="exchange-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Binance_logo.svg" alt="Binance">
+                    <span>Binance</span>
+                </div>
+                <div class="exchange-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/OKX_Logo.svg" alt="OKX">
+                    <span>OKX</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
