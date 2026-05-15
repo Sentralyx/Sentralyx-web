@@ -84,44 +84,6 @@
             font-size: 0.85rem;
             overflow-x: auto;
             margin: 20px 0;
-            position: relative;
-        }
-        
-        .code-block-header {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            opacity: 0.3;
-            transition: opacity 0.3s ease;
-        }
-        
-        .code-block:hover .code-block-header {
-            opacity: 0.8;
-        }
-        
-        .python-logo {
-            width: 20px;
-            height: 20px;
-            filter: grayscale(100%);
-        }
-        
-        .copy-btn {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-size: 14px;
-            padding: 4px 8px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        
-        .copy-btn:hover {
-            background: var(--accent-blue);
-            color: white;
         }
         
         .code-block .comment {
@@ -182,23 +144,6 @@
             background: var(--panel-dark);
             border-radius: 15px;
             border: 1px solid var(--border-color);
-            position: relative;
-        }
-        
-        .tech-stat-icon {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 24px;
-            height: 24px;
-            background: var(--accent-blue);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
         }
         
         .tech-stat-number {
@@ -211,44 +156,6 @@
         .tech-stat-label {
             color: var(--text-secondary);
             font-size: 0.9rem;
-        }
-        
-        /* Custom Bullet Points */
-        .tech-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .tech-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 12px;
-            color: var(--text-secondary);
-        }
-        
-        .tech-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 2px;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .tech-list li::after {
-            content: '✓';
-            position: absolute;
-            left: 6px;
-            top: 6px;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
         }
         
         @media (max-width: 768px) {
@@ -307,16 +214,6 @@
                             Bu sistem, tüm kritik thread'leri 7/24 izler ve otomatik olarak yeniden başlatır.
                         </p>
                         <div class="code-block">
-                            <div class="code-block-header">
-                                <svg class="python-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="#3776AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 22V12" stroke="#3776AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M22 7L12 12L2 7" stroke="#3776AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <button class="copy-btn" onclick="copyCode(this)">
-                                    <i class="fas fa-copy"></i>
-                                </button>
-                            </div>
 <span class="keyword">class</span> <span class="string">ThreadWatchdog</span>:
     <span class="keyword">def</span> <span class="string">__init__</span>(self):
         self.monitored_threads = {}      <span class="comment"># İzlenen thread'ler</span>
@@ -324,7 +221,7 @@
         self.check_interval = <span class="number">30s</span>       <span class="comment"># Kontrol aralığı</span>
         self.max_restart_attempts = <span class="number">3</span>   <span class="comment"># Maksimum restart</span>
                         </div>
-                        <ul class="tech-list">
+                        <ul class="text-secondary">
                             <li>Heartbeat kontrolü ile donmuş thread tespiti</li>
                             <li>Otomatik restart mekanizması</li>
                             <li>State-safe restart ile veri koruması</li>
@@ -334,23 +231,14 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="tech-stat">
-                        <div class="tech-stat-icon">
-                            <i class="fas fa-clock" style="font-size: 10px;"></i>
-                        </div>
                         <div class="tech-stat-number">30s</div>
                         <div class="tech-stat-label">Kontrol Aralığı</div>
                     </div>
                     <div class="tech-stat mt-4">
-                        <div class="tech-stat-icon">
-                            <i class="fas fa-redo" style="font-size: 10px;"></i>
-                        </div>
                         <div class="tech-stat-number">3x</div>
                         <div class="tech-stat-label">Maksimum Restart Denemesi</div>
                     </div>
                     <div class="tech-stat mt-4">
-                        <div class="tech-stat-icon">
-                            <i class="fas fa-check" style="font-size: 10px;"></i>
-                        </div>
                         <div class="tech-stat-number">100%</div>
                         <div class="tech-stat-label">Thread Kurtarma Başarısı</div>
                     </div>
@@ -374,16 +262,6 @@
                             ya tamamen başarılı olur ya da hiç yapılmamış gibi kabul edilir.
                         </p>
                         <div class="code-block">
-                            <div class="code-block-header">
-                                <svg class="python-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="#3776AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 22V12" stroke="#3776AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M22 7L12 12L2 7" stroke="#3776AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <button class="copy-btn" onclick="copyCode(this)">
-                                    <i class="fas fa-copy"></i>
-                                </button>
-                            </div>
 <span class="comment"># Atomic Write Mimarisi</span>
 <span class="keyword">def</span> <span class="string">atomic_write</span>(data, file_path):
     temp_file = file_path + <span class="string">'.tmp'</span>
@@ -397,7 +275,7 @@
     <span class="comment"># Atomik değişim</span>
     os.rename(temp_file, file_path)
                         </div>
-                        <ul class="tech-list">
+                        <ul class="text-secondary">
                             <li>Kesinti anında veri koruması</li>
                             <li>Transactional dosya işlemleri</li>
                             <li>Crash recovery desteği</li>
@@ -407,23 +285,14 @@
                 </div>
                 <div class="col-lg-6 order-lg-1">
                     <div class="tech-stat">
-                        <div class="tech-stat-icon">
-                            <i class="fas fa-database" style="font-size: 10px;"></i>
-                        </div>
                         <div class="tech-stat-number">0%</div>
                         <div class="tech-stat-label">Veri Kayıp Oranı</div>
                     </div>
                     <div class="tech-stat mt-4">
-                        <div class="tech-stat-icon">
-                            <i class="fas fa-shield-alt" style="font-size: 10px;"></i>
-                        </div>
                         <div class="tech-stat-number">ACID</div>
                         <div class="tech-stat-label">Transactional Özellikler</div>
                     </div>
                     <div class="tech-stat mt-4">
-                        <div class="tech-stat-icon">
-                            <i class="fas fa-check-circle" style="font-size: 10px;"></i>
-                        </div>
                         <div class="tech-stat-number">100%</div>
                         <div class="tech-stat-label">Veri Bütünlüğü</div>
                     </div>
@@ -484,7 +353,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h5 class="text-main mb-3">Lokal Şifreleme</h5>
-                        <ul class="tech-list">
+                        <ul class="text-secondary text-start">
                             <li>HWID bazlı anahtar üretimi</li>
                             <li>AES-256 şifreleme</li>
                             <li>Donanım bağımlılığı</li>
@@ -493,7 +362,7 @@
                     </div>
                     <div class="col-md-6">
                         <h5 class="text-main mb-3">Sunucu Tarafı Koruma</h5>
-                        <ul class="tech-list">
+                        <ul class="text-secondary text-start">
                             <li>SL/TP emirleri sunucuda</li>
                             <li>Kesinti anında koruma</li>
                             <li>Global stop mekanizması</li>
@@ -609,11 +478,8 @@ signals = []
             <div class="row">
                 <div class="col-md-3 col-6 mb-4">
                     <div class="tech-stat">
-                        <div class="tech-stat-icon">
-                            <i class="fas fa-search" style="font-size: 10px;"></i>
-                        </div>
-                        <div class="tech-stat-number">5sn</div>
-                        <div class="tech-stat-label">Tespit Süresi</div>
+                        <div class="tech-stat-number">99.9%</div>
+                        <div class="tech-stat-label">Uptime</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4">
@@ -624,17 +490,14 @@ signals = []
                 </div>
                 <div class="col-md-3 col-6 mb-4">
                     <div class="tech-stat">
-                        <div class="tech-stat-icon">
-                            <i class="fas fa-check-circle" style="font-size: 10px;"></i>
-                        </div>
-                        <div class="tech-stat-number">100%</div>
-                        <div class="tech-stat-label">Kurtarma Başarısı</div>
+                        <div class="tech-stat-number">119/119</div>
+                        <div class="tech-stat-label">Tests Passed</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4">
                     <div class="tech-stat">
-                        <div class="tech-stat-number">119/119</div>
-                        <div class="tech-stat-label">Tests Passed</div>
+                        <div class="tech-stat-number">0</div>
+                        <div class="tech-stat-label">Critical Bugs</div>
                     </div>
                 </div>
             </div>
@@ -643,34 +506,10 @@ signals = []
 
     <div id="footer-container"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
     <script>
-        // Copy code function
-        function copyCode(button) {
-            const codeBlock = button.closest('.code-block');
-            const codeText = codeBlock.textContent.replace(/^[^\n]*\n/, '').replace(/\n[^\n]*$/, '');
-            
-            navigator.clipboard.writeText(codeText).then(() => {
-                const originalHTML = button.innerHTML;
-                button.innerHTML = '<i class="fas fa-check"></i>';
-                button.style.background = 'var(--signal-buy)';
-                
-                setTimeout(() => {
-                    button.innerHTML = originalHTML;
-                    button.style.background = 'none';
-                }, 2000);
-            }).catch(err => {
-                console.error('Kopyalama başarısız:', err);
-            });
-        }
-
         // Load header and footer
-        fetch('assets/includes/header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('main-header').innerHTML = data;
-            })
-            .catch(error => console.error('Header yüklenemedi:', error));
-
         fetch('components/footer.html')
             .then(async (response) => {
                 const buffer = await response.arrayBuffer();
@@ -679,7 +518,7 @@ signals = []
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
             })
-            .catch(error => console.error('Footer yüklenemedi:', error));
+            .catch(error => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>
