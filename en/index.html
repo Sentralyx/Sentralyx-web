@@ -54,44 +54,99 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     
     <style>
-        /* Language Selector Styles */
+        /* Language Selector Styles - Modern Dropdown */
         .language-selector {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
+        }
+
+        .language-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
             background: rgba(11, 17, 27, 0.95);
             backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .language-selector .btn {
-            padding: 8px 16px;
-            margin: 0 2px;
-            border: 1px solid var(--border-color);
-            background: var(--panel-dark);
-            color: var(--text-secondary);
-            border-radius: 6px;
-            font-size: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.95rem;
             font-weight: 600;
+            cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             text-decoration: none;
         }
-        
-        .language-selector .btn:hover {
-            background: var(--accent-blue);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-        }
-        
-        .language-selector .btn.active {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            color: white;
+
+        .language-toggle:hover {
             border-color: var(--accent-blue);
+            box-shadow: 0 4px 20px rgba(52, 152, 219, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .language-toggle i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .language-dropdown:hover .language-toggle i {
+            transform: rotate(180deg);
+        }
+
+        .language-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 120px;
+            background: rgba(11, 17, 27, 0.98);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 8px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .language-dropdown:hover .language-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-menu a {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .language-menu a:hover {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--accent-blue);
+            border-left-color: var(--accent-blue);
+            padding-left: 24px;
+        }
+
+        .language-menu a.active {
+            color: var(--accent-blue);
+            background: rgba(52, 152, 219, 0.15);
+            border-left-color: var(--accent-blue);
+            font-weight: 600;
         }
         
         /* Override Bootstrap with Sentralyx variables */
@@ -413,15 +468,18 @@
             
             /* Language Selector Mobile */
             .language-selector {
-                top: 10px;
-                right: 10px;
-                padding: 6px;
+                top: 15px;
+                right: 15px;
             }
-            
-            .language-selector .btn {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-                margin: 0 1px;
+
+            .language-toggle {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+
+            .language-menu {
+                min-width: 100px;
+                right: 0;
             }
         }
         
@@ -483,9 +541,18 @@
 
     <!-- Language Selector -->
     <div class="language-selector">
-        <a href="/" class="btn">TR</a>
-        <a href="/en/" class="btn active">EN</a>
-        <a href="/ru/" class="btn">RU</a>
+        <div class="language-dropdown">
+            <a href="/en/" class="language-toggle">
+                <i class="fas fa-globe"></i>
+                <span>EN</span>
+                <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="language-menu">
+                <a href="/">TR</a>
+                <a href="/en/" class="active">EN</a>
+                <a href="/ru/">RU</a>
+            </div>
+        </div>
     </div>
 
     <header id="main-header"></header>
