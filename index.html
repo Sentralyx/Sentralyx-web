@@ -418,25 +418,19 @@
 
         
 
-        .hero-main-btn {
+        /* Hero Buttons Common Styles */
+        .hero-main-btn,
+        .hero-secondary-btn {
 
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-
-            border: none;
-
-            color: white;
-
-            padding: 15px 40px;
+            padding: 0;
 
             border-radius: 10px;
 
             font-weight: 700;
 
-            font-size: 1.1rem;
+            font-size: 1rem;
 
             transition: all 0.3s ease;
-
-            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
 
             text-decoration: none;
 
@@ -446,21 +440,50 @@
 
             justify-content: center;
 
-            min-width: 220px;
+            width: 360px;
 
-            height: 54px;
+            height: 56px;
+
+            box-sizing: border-box;
+
+            white-space: nowrap;
+
+        }
+
+        .hero-main-btn i,
+        .hero-secondary-btn i {
+
+            font-size: 1.1rem;
+
+            margin-right: 12px;
+
+            flex-shrink: 0;
+
+            width: 24px;
+
+            text-align: center;
+
+        }
+
+        .hero-main-btn {
+
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+
+            border: none;
+
+            color: white;
+
+            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
 
             margin-top: 20px;
 
         }
 
-        
+        .hero-secondary-btn {
 
-        .hero-main-btn:hover {
+            background: transparent;
 
-            transform: translateY(-3px);
-
-            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
+            border: 1px solid #3DD9C9;
 
             color: white;
 
@@ -484,43 +507,15 @@
 
         }
 
+        .hero-main-btn:hover {
 
+            transform: translateY(-3px);
 
-        /* Hero Secondary Button (Outline/Ghost) */
-
-        .hero-secondary-btn {
-
-            background: transparent;
-
-            border: 1px solid #3DD9C9;
+            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
 
             color: white;
 
-            padding: 15px 40px;
-
-            border-radius: 10px;
-
-            font-weight: 700;
-
-            font-size: 1.1rem;
-
-            transition: all 0.3s ease;
-
-            text-decoration: none;
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            min-width: 220px;
-
-            height: 54px;
-
         }
-
-
 
         .hero-secondary-btn:hover {
 
@@ -792,15 +787,17 @@
 
             .hero-main-btn {
 
-                padding: 12px 30px;
+                padding: 0;
 
                 font-size: 1rem;
 
                 margin-top: 0;
 
-                min-width: 220px;
+                width: 360px;
 
                 height: 50px;
+
+                white-space: nowrap;
 
             }
 
@@ -821,13 +818,15 @@
             .hero-main-btn,
             .hero-secondary-btn {
 
-                width: 100%;
+                width: 360px;
 
                 justify-content: center;
 
-                min-width: 220px;
-
                 height: 50px;
+
+                padding: 0;
+
+                white-space: nowrap;
 
             }
 
@@ -1138,10 +1137,10 @@
 
             <div class="hero-buttons-wrapper">
                 <a href="scanner/" class="hero-main-btn">
-                    <i class="fas fa-rocket me-2"></i>Terminali Keşfet
+                    <i class="fas fa-rocket"></i> Terminali Keşfet
                 </a>
                 <a href="https://t.me/Sentralyx" target="_blank" rel="noopener" class="hero-secondary-btn">
-                    <i class="fab fa-telegram-plane me-2"></i>Telegram Topluluğuna Katıl
+                    <i class="fab fa-telegram-plane"></i> Telegram Topluluğuna Katıl
                 </a>
             </div>
 
