@@ -434,11 +434,15 @@
 
             text-decoration: none;
 
-            display: inline-flex;
+            display: grid;
+
+            grid-template-columns: 30px 1fr;
 
             align-items: center;
 
-            justify-content: center;
+            justify-items: start;
+
+            gap: 12px;
 
             width: 360px;
 
@@ -455,13 +459,20 @@
 
             font-size: 1.1rem;
 
-            margin-right: 12px;
+            justify-self: center;
 
-            flex-shrink: 0;
+            grid-column: 1;
 
-            width: 24px;
+        }
 
-            text-align: center;
+        .hero-main-btn::after,
+        .hero-secondary-btn::after {
+
+            content: attr(data-text);
+
+            grid-column: 2;
+
+            justify-self: start;
 
         }
 
@@ -799,6 +810,34 @@
 
                 white-space: nowrap;
 
+                display: grid;
+
+                grid-template-columns: 30px 1fr;
+
+                align-items: center;
+
+                justify-items: start;
+
+                gap: 12px;
+
+            }
+
+            .hero-main-btn i {
+
+                justify-self: center;
+
+                grid-column: 1;
+
+            }
+
+            .hero-main-btn::after {
+
+                content: attr(data-text);
+
+                grid-column: 2;
+
+                justify-self: start;
+
             }
 
 
@@ -827,6 +866,36 @@
                 padding: 0;
 
                 white-space: nowrap;
+
+                display: grid;
+
+                grid-template-columns: 30px 1fr;
+
+                align-items: center;
+
+                justify-items: start;
+
+                gap: 12px;
+
+            }
+
+            .hero-main-btn i,
+            .hero-secondary-btn i {
+
+                justify-self: center;
+
+                grid-column: 1;
+
+            }
+
+            .hero-main-btn::after,
+            .hero-secondary-btn::after {
+
+                content: attr(data-text);
+
+                grid-column: 2;
+
+                justify-self: start;
 
             }
 
@@ -1136,11 +1205,11 @@
             <p class="lead text-secondary mb-5">Sentralyx, OKX ve Binance üzerinde MTF onaylı sinyallerle piyasayı tarar, stratejilerini backtestler ve pozisyonlarını 7/24 yönetir. Tek terminalde.</p>
 
             <div class="hero-buttons-wrapper">
-                <a href="scanner/" class="hero-main-btn">
-                    <i class="fas fa-rocket"></i> Terminali Keşfet
+                <a href="scanner/" class="hero-main-btn" data-text="Terminali Keşfet">
+                    <i class="fas fa-rocket"></i>
                 </a>
-                <a href="https://t.me/Sentralyx" target="_blank" rel="noopener" class="hero-secondary-btn">
-                    <i class="fab fa-telegram-plane"></i> Telegram Topluluğuna Katıl
+                <a href="https://t.me/Sentralyx" target="_blank" rel="noopener" class="hero-secondary-btn" data-text="Telegram Topluluğuna Katıl">
+                    <i class="fab fa-telegram-plane"></i>
                 </a>
             </div>
 
