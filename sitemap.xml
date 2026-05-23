@@ -194,6 +194,18 @@
 
   <url>
 
+    <loc>https://www.sentralyx.com/en/technology.html</loc>
+
+    <lastmod>2026-05-24</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.85</priority>
+
+  </url>
+
+  <url>
+
     <loc>https://www.sentralyx.com/en/privacy.html</loc>
 
     <lastmod>2026-05-06</lastmod>
@@ -225,6 +237,18 @@
     <loc>https://www.sentralyx.com/ru/faq.html</loc>
 
     <lastmod>2026-05-06</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.80</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/technology.html</loc>
+
+    <lastmod>2026-05-24</lastmod>
 
     <changefreq>monthly</changefreq>
 
