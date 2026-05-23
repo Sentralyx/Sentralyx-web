@@ -171,19 +171,23 @@ function getLanguageRedirectTarget(desiredLang, currentPathname) {
 
 function applyLanguagePreference() {
     try {
-        const currentLang = getCurrentLanguageFromPath(window.location.pathname);
+        const pathname = window.location.pathname;
+        const currentLang = getCurrentLanguageFromPath(pathname);
+        const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
 
-        const existing = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-
-        // If no preference yet, initialize it from the current page.
-        if (!existing) {
+        // URL prefix (/en/, /ru/) is authoritative — user picked that locale in the nav.
+        if (pathname.startsWith('/en/') || pathname.startsWith('/ru/')) {
             localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang);
+            return;
         }
 
-        const preferredLang = existing || currentLang;
+        if (!stored) {
+            localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang);
+            return;
+        }
 
-        if (preferredLang !== currentLang) {
-            const targetPath = getLanguageRedirectTarget(preferredLang, window.location.pathname);
+        if (stored !== currentLang) {
+            const targetPath = getLanguageRedirectTarget(stored, pathname);
             if (targetPath) {
                 const target = `${targetPath}${window.location.search || ''}${window.location.hash || ''}`;
                 window.location.replace(target);
@@ -194,9 +198,15 @@ function applyLanguagePreference() {
     }
 }
 
-function patchLanguageSelector() {
-    const selector = document.querySelector('.language-selector');
-    if (!selector) return;
+function langFromLinkLabel(text) {
+    const label = (text || '').trim().toLowerCase();
+    if (label === 'en' || label.startsWith('en')) return 'en';
+    if (label === 'ru' || label.startsWith('ru')) return 'ru';
+    return 'tr';
+}
+
+function patchLanguageLinks(root) {
+    if (!root) return;
 
     const currentLang = getCurrentLanguageFromPath(window.location.pathname);
     const pathname = normalizePath(window.location.pathname);
@@ -210,27 +220,53 @@ function patchLanguageSelector() {
 
     const buildHref = (lang) => {
         if (lang === 'tr') return basePath;
-
         const target = getLanguageRedirectTarget(lang, window.location.pathname);
         if (target) return target;
-
         return `/${lang}/`;
     };
 
-    const buttons = selector.querySelectorAll('a.btn');
-    buttons.forEach((btn) => {
-        const label = (btn.textContent || '').trim().toLowerCase();
-        const lang =
-            label === 'en' ? 'en' :
-            label === 'ru' ? 'ru' :
-            'tr';
+    const links = root.querySelectorAll('.language-menu a, a.language-toggle');
+    links.forEach((link) => {
+        const lang = langFromLinkLabel(link.textContent);
+        link.classList.toggle('active', lang === currentLang);
+        link.setAttribute('href', buildHref(lang));
+        link.addEventListener('click', () => {
+            try { localStorage.setItem(LANGUAGE_STORAGE_KEY, lang); } catch (e) {}
+        });
+    });
+}
 
+function patchLanguageSelector() {
+    const selector = document.querySelector('.language-selector');
+    if (selector) patchLanguageLinks(selector);
+
+    const buttons = selector ? selector.querySelectorAll('a.btn') : [];
+    if (!buttons.length) return;
+
+    const currentLang = getCurrentLanguageFromPath(window.location.pathname);
+    const pathname = normalizePath(window.location.pathname);
+
+    const stripLangPrefix = (p) => {
+        if (p.startsWith('/en/')) return '/' + p.slice(4);
+        if (p.startsWith('/ru/')) return '/' + p.slice(4);
+        return p;
+    };
+    const basePath = stripLangPrefix(pathname);
+
+    const buildHref = (lang) => {
+        if (lang === 'tr') return basePath;
+        const target = getLanguageRedirectTarget(lang, window.location.pathname);
+        if (target) return target;
+        return `/${lang}/`;
+    };
+
+    buttons.forEach((btn) => {
+        const lang = langFromLinkLabel(btn.textContent);
         btn.classList.toggle('active', lang === currentLang);
         btn.setAttribute('href', buildHref(lang));
-
         btn.addEventListener('click', () => {
             try { localStorage.setItem(LANGUAGE_STORAGE_KEY, lang); } catch (e) {}
-        }, { once: true });
+        });
     });
 }
 
@@ -274,6 +310,8 @@ async function loadHeader() {
         
         // Set active navigation
         setActiveNavigation();
+
+        patchLanguageLinks(headerElement);
         
     } catch (error) {
         console.error('Error loading header:', error);
