@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/ru/backtest/">
+    <title>Портфельное Бэктестирование | Тестирование Стратегий и Анализ Производительности</title>
+    <meta name="description" content="Продвинутое портфельное бэктестирование для тестирования стратегий на исторических данных. Анализ производительности, графики капитала и детальные отчеты по сделкам.">
+    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    
+    <style>
+        .backtest-container {
+            padding: 20px;
+            background: var(--bg-dark);
+            min-height: 100vh;
+        }
+        
+        .settings-panel {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .results-panel {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 600px;
+        }
+        
+        .panel-title {
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .panel-title i {
+            margin-right: 10px;
+        }
+        
+        .form-section {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-label {
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-control-custom {
+            background: rgba(42, 49, 66, 0.3);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 6px;
+        }
+        
+        .form-control-custom:focus {
+            background: rgba(42, 49, 66, 0.5);
+            border-color: var(--accent-blue);
+            color: var(--text-main);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+        }
+        
+        .tab-custom {
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .tab-custom .nav-link {
+            color: var(--text-main);
+            border: none;
+            padding: 10px 20px;
+            background: transparent;
+        }
+        
+        .tab-custom .nav-link.active {
+            color: var(--accent-blue);
+            background: transparent;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        
+        .info-box {
+            background: rgba(52, 152, 219, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .info-box h6 {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .info-box p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+        
+        .summary-card {
+            background: rgba(42, 49, 66, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .summary-card h6 {
+            color: var(--text-main);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .summary-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+        
+        .summary-value.positive {
+            color: var(--signal-buy);
+        }
+        
+        .summary-value.negative {
+            color: var(--signal-sell);
+        }
+        
+        .btn-sentralyx {
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-sentralyx:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+            color: white;
+        }
+        
+        .btn-sentralyx-secondary {
+            background: rgba(42, 49, 66, 0.5);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-sentralyx-secondary:hover {
+            background: rgba(52, 152, 219, 0.2);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+        
+        .table-custom {
+            color: var(--text-main);
+            margin-bottom: 0;
+        }
+        
+        .table-custom thead {
+            background: rgba(52, 152, 219, 0.1);
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        
+        .table-custom th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            padding: 10px;
+            border: none;
+        }
+        
+        .table-custom td {
+            padding: 8px 10px;
+            border: none;
+            border-bottom: 1px solid rgba(42, 49, 66, 0.3);
+            vertical-align: middle;
+            font-size: 0.85rem;
+        }
+        
+        .table-custom tbody tr:hover {
+            background: rgba(52, 152, 219, 0.05);
+        }
+        
+        .chart-placeholder {
+            background: rgba(42, 49, 66, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .backtest-container {
+                padding: 20px 15px;
+            }
+            
+            .settings-panel,
+            .results-panel {
+                padding: 15px;
+            }
+            
+            .panel-title {
+                font-size: 1rem;
+            }
+            
+            .btn-sentralyx,
+            .btn-sentralyx-secondary {
+                padding: 12px 20px;
+                font-size: 14px;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .lead {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+        }
+        
+        /* Prevent Horizontal Scroll */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+            min-width: 320px;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        /* Touch Targets for Mobile */
+        @media (max-width: 768px) {
+            .btn, .form-control, .form-select {
+                min-height: 44px;
+                min-width: 44px;
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header"></header>
+    
+    <main class="backtest-container">
+        <div class="text-center mb-4">
+            <h1 class="text-main">Портфельное Бэктестирование</h1>
+            <p class="text-secondary">Тестируйте стратегии на исторических данных, анализируйте производительность</p>
+        </div>
+        
+        <div class="row">
+            <!-- Left Panel: Backtest Settings -->
+            <div class="col-lg-4">
+                <div class="settings-panel">
+                    <h5 class="panel-title">
+                        <i class="fas fa-cog"></i>Настройки Бэктеста
+                    </h5>
+                    
+                    <!-- Symbol Section -->
+                    <div class="form-section">
+                        <label class="section-label">Символ</label>
+                        <select class="form-control form-control-custom mb-2">
+                            <option value="BTCUSDT">BTCUSDT</option>
+                            <option value="ETHUSDT">ETHUSDT</option>
+                            <option value="BNBUSDT">BNBUSDT</option>
+                            <option value="SOLUSDT">SOLUSDT</option>
+                            <option value="ADAUSDT">ADAUSDT</option>
+                            <option value="DOTUSDT">DOTUSDT</option>
+                            <option value="MATICUSDT">MATICUSDT</option>
+                            <option value="LINKUSDT">LINKUSDT</option>
+                        </select>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="allSymbols">
+                            <label class="form-check-label text-secondary small" for="allSymbols">
+                                Тестировать все символы
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Strategy Section -->
+                    <div class="form-section">
+                        <label class="section-label">Стратегия</label>
+                        <select class="form-control form-control-custom">
+                            <option value="majority">Консенсус Большинства</option>
+                            <option value="scoring">Система Оценки</option>
+                            <option value="full">Полный Консенсус</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Time Interval Section -->
+                    <div class="form-section">
+                        <label class="section-label">Временной Интервал</label>
+                        <select class="form-control form-control-custom">
+                            <option value="1m">1m</option>
+                            <option value="5m">5m</option>
+                            <option value="15m" selected>15m</option>
+                            <option value="1h">1h</option>
+                            <option value="4h">4h</option>
+                            <option value="1d">1d</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Lookback Section -->
+                    <div class="form-section">
+                        <label class="section-label">Период</label>
+                        <select class="form-control form-control-custom">
+                            <option value="30">30 дней</option>
+                            <option value="60" selected>60 дней</option>
+                            <option value="90">90 дней</option>
+                            <option value="180">180 дней</option>
+                            <option value="365">1 год</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Date Range Section -->
+                    <div class="form-section">
+                        <label class="section-label">Диапазон Дат</label>
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="text-secondary small">Начало</label>
+                                <input type="date" class="form-control form-control-custom" value="2024-01-01">
+                            </div>
+                            <div class="col-6">
+                                <label class="text-secondary small">Конец</label>
+                                <input type="date" class="form-control form-control-custom" value="2024-03-01">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Risk Management Section -->
+                    <div class="form-section">
+                        <label class="section-label">Управление Рисками</label>
+                        <div class="mb-2">
+                            <label class="text-secondary small">Стоп-Лосс (%)</label>
+                            <input type="number" class="form-control form-control-custom" value="2" min="0" max="50">
+                        </div>
+                        <div class="mb-2">
+                            <label class="text-secondary small">Тейк-Профит (%)</label>
+                            <input type="number" class="form-control form-control-custom" value="4" min="0" max="100">
+                        </div>
+                        <div>
+                            <label class="text-secondary small">Размер Позиции (USDT)</label>
+                            <input type="number" class="form-control form-control-custom" value="100" min="10">
+                        </div>
+                    </div>
+                    
+                    <!-- Simulation Section -->
+                    <div class="form-section">
+                        <label class="section-label">Симуляция</label>
+                        <div class="mb-2">
+                            <label class="text-secondary small">Начальный Капитал (USDT)</label>
+                            <input type="number" class="form-control form-control-custom" value="10000" min="100">
+                        </div>
+                        <div class="mb-2">
+                            <label class="text-secondary small">Комиссия (%)</label>
+                            <input type="number" class="form-control form-control-custom" value="0.1" min="0" max="1" step="0.01">
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="slippage" checked>
+                            <label class="form-check-label text-secondary small" for="slippage">
+                                Симуляция проскальзывания (0.1%)
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="d-flex gap-2">
+                        <button class="btn-sentralyx flex-grow-1" onclick="runBacktest()">
+                            <i class="fas fa-play me-2"></i>Запустить
+                        </button>
+                        <button class="btn-sentralyx-secondary flex-grow-1" onclick="resetBacktest()">
+                            <i class="fas fa-redo me-2"></i>Сброс
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Panel: Backtest Results -->
+            <div class="col-lg-8">
+                <div class="results-panel">
+                    <h5 class="panel-title">
+                        <i class="fas fa-chart-bar"></i>Результаты Бэктеста
+                    </h5>
+                    
+                    <!-- Result Tabs -->
+                    <ul class="nav nav-tabs tab-custom mb-3" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#summary-tab">Сводка</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#analysis-tab">Анализ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#trades-tab">Сделки</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#equity-tab">График Капитала</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#history-tab">История</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content">
+                        <!-- Summary Tab -->
+                        <div class="tab-pane fade show active" id="summary-tab">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="summary-card">
+                                        <h6>Общая Прибыль</h6>
+                                        <div class="summary-value positive">+$2,450</div>
+                                        <div class="text-secondary small">+24.5%</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="summary-card">
+                                        <h6>Всего Сделок</h6>
+                                        <div class="summary-value">47</div>
+                                        <div class="text-secondary small">32 Выигрышей / 15 Потерь</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="summary-card">
+                                        <h6>Win Rate</h6>
+                                        <div class="summary-value">68.1%</div>
+                                        <div class="text-secondary small">Успешность</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-3">
+                                <div class="col-md-4">
+                                    <div class="summary-card">
+                                        <h6>Макс. Просадка</h6>
+                                        <div class="summary-value negative">-8.2%</div>
+                                        <div class="text-secondary small">Максимальное падение</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="summary-card">
+                                        <h6>Коэффициент Шарпа</h6>
+                                        <div class="summary-value">2.34</div>
+                                        <div class="text-secondary small">Доходность с учетом риска</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="summary-card">
+                                        <h6>Средняя Прибыль</h6>
+                                        <div class="summary-value positive">+$52.1</div>
+                                        <div class="text-secondary small">На сделку</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-box mt-3">
+                                <h6><i class="fas fa-lightbulb me-2"></i>Советы для Хорошего Бэктеста</h6>
+                                <p>• Используйте минимум 100 сделок • Период должен соответствовать стратегии • Тестируйте в разных рыночных условиях • Избегайте переобучения • Симулируйте реальные условия торговли</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Analysis Tab -->
+                        <div class="tab-pane fade" id="analysis-tab">
+                            <div class="summary-card">
+                                <h6>Анализ Производительности</h6>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="text-secondary">Прибыльные Сделки</span>
+                                        <span class="text-main">68.1%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background: rgba(42, 49, 66, 0.5);">
+                                        <div class="progress-bar" style="width: 68.1%; background: var(--signal-buy);"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="text-secondary">Убыточные Сделки</span>
+                                        <span class="text-main">31.9%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px; background: rgba(42, 49, 66, 0.5);">
+                                        <div class="progress-bar" style="width: 31.9%; background: var(--signal-sell);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="summary-card">
+                                <h6>Метрики Риска</h6>
+                                <table class="table table-custom">
+                                    <tbody>
+                                        <tr>
+                                            <td>Макс. Просадка</td>
+                                            <td class="text-end">-8.2%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Коэффициент Шарпа</td>
+                                            <td class="text-end">2.34</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Коэффициент Сортино</td>
+                                            <td class="text-end">3.12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Коэффициент Калмара</td>
+                                            <td class="text-end">2.99</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Коэффициент Прибыли</td>
+                                            <td class="text-end">2.45</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <!-- Trades Tab -->
+                        <div class="tab-pane fade" id="trades-tab">
+                            <div class="table-responsive">
+                                <table class="table table-custom">
+                                    <thead>
+                                        <tr>
+                                            <th>Дата</th>
+                                            <th>Символ</th>
+                                            <th>Направление</th>
+                                            <th>Вход</th>
+                                            <th>Выход</th>
+                                            <th>PnL</th>
+                                            <th>Длительность</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2024-02-28</td>
+                                            <td><strong>BTCUSDT</strong></td>
+                                            <td><span class="text-success">LONG</span></td>
+                                            <td>43,250</td>
+                                            <td>44,100</td>
+                                            <td class="text-success">+$850</td>
+                                            <td>2д 4ч</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2024-02-27</td>
+                                            <td><strong>ETHUSDT</strong></td>
+                                            <td><span class="text-success">LONG</span></td>
+                                            <td>2,240</td>
+                                            <td>2,310</td>
+                                            <td class="text-success">+$700</td>
+                                            <td>1д 8ч</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2024-02-26</td>
+                                            <td><strong>SOLUSDT</strong></td>
+                                            <td><span class="text-danger">SHORT</span></td>
+                                            <td>98.50</td>
+                                            <td>96.20</td>
+                                            <td class="text-danger">-$230</td>
+                                            <td>12ч</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2024-02-25</td>
+                                            <td><strong>BNBUSDT</strong></td>
+                                            <td><span class="text-success">LONG</span></td>
+                                            <td>310</td>
+                                            <td>325</td>
+                                            <td class="text-success">+$1,500</td>
+                                            <td>3д</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2024-02-24</td>
+                                            <td><strong>ADAUSDT</strong></td>
+                                            <td><span class="text-success">LONG</span></td>
+                                            <td>0.58</td>
+                                            <td>0.62</td>
+                                            <td class="text-success">+$400</td>
+                                            <td>3д</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <!-- Equity Chart Tab -->
+                        <div class="tab-pane fade" id="equity-tab">
+                            <div class="summary-card">
+                                <h6>Кривая Капитала</h6>
+                                <div class="chart-placeholder">
+                                    <div class="text-center">
+                                        <i class="fas fa-chart-line fa-3x mb-3" style="color: var(--accent-blue);"></i>
+                                        <p>График капитала будет отображен здесь</p>
+                                        <small class="text-secondary">График будет создан при запуске бэктеста</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- History Tab -->
+                        <div class="tab-pane fade" id="history-tab">
+                            <div class="summary-card">
+                                <h6>История Бэктестов</h6>
+                                <table class="table table-custom">
+                                    <thead>
+                                        <tr>
+                                            <th>Дата</th>
+                                            <th>Стратегия</th>
+                                            <th>Символ</th>
+                                            <th>Результат</th>
+                                            <th>Сделки</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2024-02-28</td>
+                                            <td>Консенсус Большинства</td>
+                                            <td>BTCUSDT</td>
+                                            <td class="text-success">+24.5%</td>
+                                            <td>47</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2024-02-25</td>
+                                            <td>Система Оценки</td>
+                                            <td>ETHUSDT</td>
+                                            <td class="text-success">+18.2%</td>
+                                            <td>35</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2024-02-20</td>
+                                            <td>Полный Консенсус</td>
+                                            <td>SOLUSDT</td>
+                                            <td class="text-success">+12.8%</td>
+                                            <td>22</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        function runBacktest() {
+            // Simulate backtest execution
+            const btn = document.querySelector('.btn-sentralyx');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Выполняется...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check me-2"></i>Завершено';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-play me-2"></i>Запустить';
+                    btn.disabled = false;
+                }, 2000);
+            }, 3000);
+        }
+        
+        function resetBacktest() {
+            // Reset form fields
+            document.querySelectorAll('.form-control-custom').forEach(input => {
+                if (input.type === 'checkbox') {
+                    input.checked = false;
+                } else if (input.type !== 'date') {
+                    input.value = input.defaultValue;
+                }
+            });
+        }
+    </script>
+
+    <div id="footer-container"></div>
+
+    <script>
+        // Load footer from components/footer.html
+        fetch('../../components/footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Ошибка загрузки футера:', error));
+    </script>
+</body>
+</html>
