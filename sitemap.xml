@@ -8,7 +8,7 @@
 
     <loc>https://www.sentralyx.com/</loc>
 
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-26</lastmod>
 
     <changefreq>weekly</changefreq>
 
@@ -20,7 +20,7 @@
 
     <loc>https://www.sentralyx.com/faq.html</loc>
 
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-16</lastmod>
 
     <changefreq>monthly</changefreq>
 
@@ -32,7 +32,7 @@
 
     <loc>https://www.sentralyx.com/technology.html</loc>
 
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-24</lastmod>
 
     <changefreq>monthly</changefreq>
 
@@ -44,7 +44,19 @@
 
     <loc>https://www.sentralyx.com/kvkk.html</loc>
 
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>yearly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/privacy.html</loc>
+
+    <lastmod>2026-05-16</lastmod>
 
     <changefreq>yearly</changefreq>
 
@@ -61,18 +73,6 @@
     <changefreq>yearly</changefreq>
 
     <priority>0.60</priority>
-
-  </url>
-
-  <url>
-
-    <loc>https://www.sentralyx.com/404.html</loc>
-
-    <lastmod>2026-05-06</lastmod>
-
-    <changefreq>never</changefreq>
-
-    <priority>0.10</priority>
 
   </url>
 
@@ -109,6 +109,18 @@
     <loc>https://www.sentralyx.com/strategies/</loc>
 
     <lastmod>2026-05-06</lastmod>
+
+    <changefreq>weekly</changefreq>
+
+    <priority>0.85</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/backtest/</loc>
+
+    <lastmod>2026-05-26</lastmod>
 
     <changefreq>weekly</changefreq>
 
@@ -172,7 +184,7 @@
 
     <loc>https://www.sentralyx.com/en/</loc>
 
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-28</lastmod>
 
     <changefreq>weekly</changefreq>
 
@@ -184,7 +196,7 @@
 
     <loc>https://www.sentralyx.com/en/faq.html</loc>
 
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-16</lastmod>
 
     <changefreq>monthly</changefreq>
 
@@ -206,13 +218,133 @@
 
   <url>
 
-    <loc>https://www.sentralyx.com/en/privacy.html</loc>
+    <loc>https://www.sentralyx.com/en/kvkk.html</loc>
 
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-16</lastmod>
 
     <changefreq>yearly</changefreq>
 
     <priority>0.65</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/backtest/</loc>
+
+    <lastmod>2026-05-28</lastmod>
+
+    <changefreq>weekly</changefreq>
+
+    <priority>0.85</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/privacy.html</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>yearly</changefreq>
+
+    <priority>0.65</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/contact/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>yearly</changefreq>
+
+    <priority>0.60</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/scanner/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>weekly</changefreq>
+
+    <priority>0.90</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/active-positions/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>daily</changefreq>
+
+    <priority>0.85</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/strategies/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>weekly</changefreq>
+
+    <priority>0.80</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/reports/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>daily</changefreq>
+
+    <priority>0.75</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/history/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>daily</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/indicators/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>weekly</changefreq>
+
+    <priority>0.65</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/settings/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.60</priority>
 
   </url>
 
@@ -224,7 +356,7 @@
 
     <loc>https://www.sentralyx.com/ru/</loc>
 
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-28</lastmod>
 
     <changefreq>weekly</changefreq>
 
@@ -236,7 +368,7 @@
 
     <loc>https://www.sentralyx.com/ru/faq.html</loc>
 
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-16</lastmod>
 
     <changefreq>monthly</changefreq>
 
@@ -258,13 +390,133 @@
 
   <url>
 
-    <loc>https://www.sentralyx.com/ru/privacy.html</loc>
+    <loc>https://www.sentralyx.com/ru/kvkk.html</loc>
 
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-16</lastmod>
 
     <changefreq>yearly</changefreq>
 
     <priority>0.60</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/backtest/</loc>
+
+    <lastmod>2026-05-28</lastmod>
+
+    <changefreq>weekly</changefreq>
+
+    <priority>0.85</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/privacy.html</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>yearly</changefreq>
+
+    <priority>0.60</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/contact/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>yearly</changefreq>
+
+    <priority>0.55</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/scanner/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>weekly</changefreq>
+
+    <priority>0.85</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/active-positions/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>daily</changefreq>
+
+    <priority>0.80</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/strategies/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>weekly</changefreq>
+
+    <priority>0.75</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/reports/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>daily</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/history/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>daily</changefreq>
+
+    <priority>0.65</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/indicators/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>weekly</changefreq>
+
+    <priority>0.60</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/settings/</loc>
+
+    <lastmod>2026-05-16</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.55</priority>
 
   </url>
 
