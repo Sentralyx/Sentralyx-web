@@ -208,25 +208,68 @@
             color: white;
         }
         
+        /* Hero Buttons Common Styles */
+        .hero-main-btn,
+        .hero-secondary-btn {
+            padding: 0 30px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            width: 360px;
+            max-width: 100%;
+            height: 56px;
+            box-sizing: border-box;
+            white-space: nowrap;
+        }
+
+        .hero-main-btn i,
+        .hero-secondary-btn i {
+            font-size: 1.1rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
         .hero-main-btn {
             background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
             border: none;
             color: white;
-            padding: 15px 40px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
             box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
-            text-decoration: none;
-            display: inline-block;
+        }
+
+        .hero-secondary-btn {
+            background: transparent;
+            border: 1px solid #3DD9C9;
+            color: white;
+        }
+
+        /* Hero Buttons Wrapper */
+        .hero-buttons-wrapper {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
             margin-top: 20px;
         }
-        
+
         .hero-main-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
             color: white;
+        }
+
+        .hero-secondary-btn:hover {
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+            border-color: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(61, 217, 201, 0.4);
         }
 
         .footer {
@@ -299,10 +342,29 @@
                 margin-bottom: 2rem;
             }
             
-            .hero-main-btn {
-                padding: 12px 30px;
-                font-size: 1rem;
-                margin-top: 1.5rem;
+            .hero-buttons-wrapper {
+                flex-direction: column;
+                gap: 12px;
+                width: 100%;
+            }
+
+            .hero-main-btn,
+            .hero-secondary-btn {
+                width: 100%;
+                max-width: 360px;
+                height: 50px;
+                padding: 0 30px;
+                white-space: nowrap;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                line-height: 1;
+            }
+
+            .hero-main-btn i,
+            .hero-secondary-btn i {
+                margin-right: 12px;
+                flex-shrink: 0;
             }
             
             .terminal-img-wrapper {
@@ -434,9 +496,17 @@
         <div class="container">
             <h1 class="display-3">Automate Your Trading Processes</h1>
             <p class="lead text-secondary mb-5">With Sentralyx, analyze market data in seconds, define your strategy, and increase your efficiency.</p>
-            <a href="scanner/" class="hero-main-btn">
-                <i class="fas fa-rocket me-2"></i>Explore Terminal
-            </a>
+            <div class="hero-buttons-wrapper">
+                <a href="scanner/" class="hero-main-btn">
+                    <i class="fas fa-rocket"></i> Explore Terminal
+                </a>
+                <a href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener" class="hero-secondary-btn">
+                    <i class="fas fa-download"></i> Download Beta
+                </a>
+                <a href="https://t.me/Sentralyx" target="_blank" rel="noopener" class="hero-secondary-btn">
+                    <i class="fab fa-telegram-plane"></i> Join Telegram Community
+                </a>
+            </div>
             <div class="terminal-img-wrapper">
                 <img src="../scanner.png" alt="Sentralyx Scanner" class="terminal-img">
             </div>
