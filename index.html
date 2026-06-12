@@ -845,6 +845,28 @@
 
 
 
+            .beta-trust-indicators {
+
+                flex-direction: column;
+
+                gap: 8px;
+
+                font-size: 0.75rem;
+
+            }
+
+
+
+            .beta-trust-indicators span {
+
+                display: block;
+
+                margin: 4px 0 !important;
+
+            }
+
+
+
             .hero-main-btn,
             .hero-secondary-btn {
 
@@ -1178,20 +1200,27 @@
 
         <div class="container">
 
-            <h1 class="display-3">Yüzlerce Pariteyi Eşzamanlı Tara,<br>Stratejini Otomatik Çalıştır</h1>
+            <h1 class="display-3">Kripto İşlem Terminali: Scanner, Backtest ve Strateji Otomasyonu Tek Ekranda</h1>
 
-            <p class="lead text-secondary mb-0">Sentralyx; Binance ve OKX üzerinde asenkron altyapısıyla yüzlerce pariteyi anlık olarak analiz eder. MTF onaylı sinyallerle stratejilerinizi test edin, pozisyonlarınızı 7/24 tek terminalden otomatik yönetin.</p>
+            <p class="lead text-secondary mb-0">Gerçek zamanlı piyasa tarama, kodsuz strateji oluşturma, Multi Time Frame (MTF) filtreleme, profesyonel backtest, risk yönetimi ve açık/kapalı pozisyon takibi ile gelişmiş bir işlem deneyimi.</p>
 
             <div class="hero-buttons-wrapper">
                 <a href="scanner/" class="hero-main-btn">
                     <i class="fas fa-rocket"></i> Terminali Keşfet
                 </a>
-                <a href="https://github.com/hanifi111/sentralyx-beta/releases/download/v0.9.0-beta/Sentralyx.zip" target="_blank" rel="noopener" class="hero-secondary-btn">
+                <a href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener" class="hero-secondary-btn">
                     <i class="fas fa-download"></i> Beta İndir
                 </a>
                 <a href="https://t.me/Sentralyx" target="_blank" rel="noopener" class="hero-secondary-btn">
                     <i class="fab fa-telegram-plane"></i> Telegram Topluluğuna Katıl
                 </a>
+            </div>
+
+            <div class="beta-trust-indicators" style="margin-top: 15px; text-align: center; font-size: 0.85rem; color: var(--text-secondary);">
+                <span style="margin: 0 10px;">• Windows Masaüstü Uygulaması</span>
+                <span style="margin: 0 10px;">• Beta Sürüm</span>
+                <span style="margin: 0 10px;">• GitHub Release Üzerinden İndirme</span>
+                <span style="margin: 0 10px;">• Test Kullanıcıları İçin Yayında</span>
             </div>
 
             <div class="terminal-img-wrapper">
@@ -1243,9 +1272,9 @@
 
                         <i class="fas fa-search feature-icon"></i>
 
-                        <h4 class="feature-title">Piyasa Tarayıcı</h4>
+                        <h4 class="feature-title">Gerçek Zamanlı Scanner</h4>
 
-                        <p class="feature-description">Piyasadaki yüzlerce pariteyi aynı anda, belirlediğiniz teknik kriterlere göre tarayın. MTF onaylı ile sinyal kalitesini en üst seviyeye taşıyın.</p>
+                        <p class="feature-description">Binance ve OKX üzerinde yüzlerce pariteyi eşzamanlı tarayın. Teknik kriterlere göre filtreleme ve anlık sinyal üretimi.</p>
 
                         <a href="scanner/" class="feature-action-btn">
 
@@ -1261,71 +1290,11 @@
 
                     <div class="terminal-feature-card">
 
-                        <i class="fas fa-chart-line feature-icon"></i>
-
-                        <h4 class="feature-title">Performans Raporları</h4>
-
-                        <p class="feature-description">Tüm işlemlerinizi detaylı olarak raporlayın. Başarı oranınızı, kâr/zarar grafiklerinizi ve strateji performansınızı tek ekrandan izleyin.</p>
-
-                        <a href="reports/" class="feature-action-btn">
-
-                            <i class="fas fa-arrow-right me-2"></i>Detaylı Bilgi
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <div class="terminal-feature-card">
-
-                        <i class="fas fa-history feature-icon"></i>
-
-                        <h4 class="feature-title">İşlem Geçmişi</h4>
-
-                        <p class="feature-description">Kapalı pozisyonlarınızın detaylı analizini yapın. Giriş/çıkış fiyatları, kâr/zarar oranları ve işlem süreleri hakkında veriye erişim.</p>
-
-                        <a href="history/" class="feature-action-btn">
-
-                            <i class="fas fa-arrow-right me-2"></i>İncele
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <div class="terminal-feature-card">
-
-                        <i class="fas fa-exchange-alt feature-icon"></i>
-
-                        <h4 class="feature-title">Aktif Pozisyonlar</h4>
-
-                        <p class="feature-description">Tüm açık işlemlerinizi anlık PnL verileriyle takip edin. Stop Loss ve Take Profit seviyelerini yönetin.</p>
-
-                        <a href="active-positions/" class="feature-action-btn">
-
-                            <i class="fas fa-arrow-right me-2"></i>Yönet
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <div class="terminal-feature-card">
-
                         <i class="fas fa-layer-group feature-icon"></i>
 
-                        <h4 class="feature-title">Strateji Yönetimi</h4>
+                        <h4 class="feature-title">Kodsuz Strateji Oluşturma</h4>
 
-                        <p class="feature-description">Çoğunluk, Skorlama ve Tam Mutabakat yöntemleriyle kendi karar mekanizmanızı kurun. Wizard ile hızlı strateji oluşturun.</p>
+                        <p class="feature-description">Programlama bilgisi gerektirmeden görsel arayüzle strateji oluşturun. Çoğunluk, skorlama ve mutabakat yöntemleri.</p>
 
                         <a href="strategies/" class="feature-action-btn">
 
@@ -1341,31 +1310,11 @@
 
                     <div class="terminal-feature-card">
 
-                        <i class="fas fa-sliders-h feature-icon"></i>
-
-                        <h4 class="feature-title">İndikatör Ayarları</h4>
-
-                        <p class="feature-description">Kullandığınız indikatörlerin parametrelerini stratejinize göre optimize edin. AL/SAT kurallarını özelleştirin.</p>
-
-                        <a href="indicators/" class="feature-action-btn">
-
-                            <i class="fas fa-arrow-right me-2"></i>Yapılandır
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <div class="terminal-feature-card">
-
                         <i class="fas fa-chart-line feature-icon"></i>
 
-                        <h4 class="feature-title">Portföy Backtesting</h4>
+                        <h4 class="feature-title">Profesyonel Backtest Motoru</h4>
 
-                        <p class="feature-description">Stratejilerinizi geçmiş verilerle test edin. Performans analizi, equity grafikleri ve detaylı işlem raporları ile optimize edin.</p>
+                        <p class="feature-description">Geçmiş verilerle strateji testi. Komisyon, slippage simülasyonu ve detaylı performans metrikleri.</p>
 
                         <a href="backtest/" class="feature-action-btn">
 
@@ -1381,15 +1330,15 @@
 
                     <div class="terminal-feature-card">
 
-                        <i class="fas fa-cog feature-icon"></i>
+                        <i class="fas fa-wave-square feature-icon"></i>
 
-                        <h4 class="feature-title">Genel Ayarlar</h4>
+                        <h4 class="feature-title">MTF Trend Filtresi</h4>
 
-                        <p class="feature-description">API bağlantılar, risk yönetimi ve sistem ayarlarınızı tek bir yerden yönetin. Borsa entegrasyonlarını yapılandırın.</p>
+                        <p class="feature-description">Multi Time Frame analizi ile trend doğrulaması. Farklı zaman dilimlerinde sinyal onayı.</p>
 
-                        <a href="settings/" class="feature-action-btn">
+                        <a href="scanner/" class="feature-action-btn">
 
-                            <i class="fas fa-arrow-right me-2"></i>Ayarlar
+                            <i class="fas fa-arrow-right me-2"></i>İncele
 
                         </a>
 
@@ -1401,17 +1350,172 @@
 
                     <div class="terminal-feature-card">
 
-                        <i class="fas fa-microchip feature-icon"></i>
+                        <i class="fas fa-shield-alt feature-icon"></i>
 
-                        <h4 class="feature-title">Mühendislik Manifestosu</h4>
+                        <h4 class="feature-title">Risk Yönetimi</h4>
 
-                        <p class="feature-description">Thread Watchdog, Atomic Write ve Orphan Recovery teknolojileriyle %100 stabilite ve güvenlik altyapısını keşfedin.</p>
+                        <p class="feature-description">Stop loss, take profit seviyeleri ve pozisyon boyutu yönetimi. Otomatik risk kontrol mekanizmaları.</p>
 
-                        <a href="technology.html" class="feature-action-btn">
+                        <a href="settings/" class="feature-action-btn">
 
-                            <i class="fas fa-arrow-right me-2"></i>Teknoloji
+                            <i class="fas fa-arrow-right me-2"></i>Yapılandır
 
                         </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="terminal-feature-card">
+
+                        <i class="fas fa-exchange-alt feature-icon"></i>
+
+                        <h4 class="feature-title">Açık / Kapalı Pozisyon Takibi</h4>
+
+                        <p class="feature-description">Tüm pozisyonlarınızı anlık PnL ile takip edin. Giriş/çıkış fiyatları ve işlem geçmişi analizi.</p>
+
+                        <a href="active-positions/" class="feature-action-btn">
+
+                            <i class="fas fa-arrow-right me-2"></i>Yönet
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="terminal-feature-card">
+
+                        <i class="fas fa-file-alt feature-icon"></i>
+
+                        <h4 class="feature-title">Raporlama ve CSV Kayıtları</h4>
+
+                        <p class="feature-description">Detaylı işlem raporları ve CSV dışa aktarma. Performans analizi ve kâr/zarar takibi.</p>
+
+                        <a href="reports/" class="feature-action-btn">
+
+                            <i class="fas fa-arrow-right me-2"></i>Detaylı Bilgi
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="terminal-feature-card">
+
+                        <i class="fas fa-desktop feature-icon"></i>
+
+                        <h4 class="feature-title">Yerel Masaüstü Terminal</h4>
+
+                        <p class="feature-description">Web panel değil, tamamen yerel çalışan masaüstü uygulaması. API anahtarları cihazınızda güvende.</p>
+
+                        <a href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener" class="feature-action-btn">
+
+                            <i class="fas fa-download me-2"></i>İndir
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Screenshot Section -->
+    <section class="section-padding">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <h2 class="text-main">Terminalden Görüntüler</h2>
+
+                <p class="text-secondary">Sentralyx terminalinin arayüzünden örnekler</p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-6">
+
+                    <div class="terminal-feature-card">
+
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('scanner.webp')">
+
+                            <img src="scanner.webp" alt="Scanner" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+
+                        </div>
+
+                        <h4 class="feature-title">Scanner</h4>
+
+                        <p class="feature-description">Gerçek zamanlı piyasa tarama ve sinyal üretimi.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="terminal-feature-card">
+
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('backtest.webp')">
+
+                            <img src="backtest.webp" alt="Backtest" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+
+                        </div>
+
+                        <h4 class="feature-title">Backtest</h4>
+
+                        <p class="feature-description">Strateji testleri, equity eğrisi ve Monte Carlo analizi.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="terminal-feature-card">
+
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('acik-pozisyon.webp')">
+
+                            <img src="acik-pozisyon.webp" alt="Açık Pozisyonlar" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+
+                        </div>
+
+                        <h4 class="feature-title">Açık Pozisyonlar</h4>
+
+                        <p class="feature-description">Pozisyon yönetimi, stop-loss ve take-profit kontrolü.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="terminal-feature-card">
+
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('raporlar.webp')">
+
+                            <img src="raporlar.webp" alt="Raporlar" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+
+                        </div>
+
+                        <h4 class="feature-title">Raporlar</h4>
+
+                        <p class="feature-description">Performans istatistikleri ve işlem geçmişi analizi.</p>
 
                     </div>
 
@@ -1483,7 +1587,11 @@
 
     <div id="footer-container"></div>
 
-
+    <!-- Image Preview Modal -->
+    <div id="imagePreviewModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 9999; align-items: center; justify-content: center; cursor: pointer;" onclick="closeImagePreview()">
+        <img id="previewImage" src="" alt="Preview" style="max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 10px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);">
+        <div style="position: absolute; top: 20px; right: 30px; color: white; font-size: 30px; cursor: pointer;">&times;</div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -1510,6 +1618,28 @@
             })
 
             .catch(error => console.error('Footer yuklenemedi:', error));
+
+        // Image Preview Functions
+        function openImagePreview(imageSrc) {
+            const modal = document.getElementById('imagePreviewModal');
+            const previewImage = document.getElementById('previewImage');
+            previewImage.src = imageSrc;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImagePreview() {
+            const modal = document.getElementById('imagePreviewModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImagePreview();
+            }
+        });
 
     </script>
 

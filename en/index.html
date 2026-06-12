@@ -348,6 +348,17 @@
                 width: 100%;
             }
 
+            .beta-trust-indicators {
+                flex-direction: column;
+                gap: 8px;
+                font-size: 0.75rem;
+            }
+
+            .beta-trust-indicators span {
+                display: block;
+                margin: 4px 0 !important;
+            }
+
             .hero-main-btn,
             .hero-secondary-btn {
                 width: 100%;
@@ -494,19 +505,27 @@
 
     <header class="hero">
         <div class="container">
-            <h1 class="display-3">Automate Your Trading Processes</h1>
-            <p class="lead text-secondary mb-5">With Sentralyx, analyze market data in seconds, define your strategy, and increase your efficiency.</p>
+            <h1 class="display-3">Crypto Trading Terminal: Scanner, Backtest and Strategy Automation on One Screen</h1>
+            <p class="lead text-secondary mb-5">Real-time market scanning, no-code strategy creation, Multi Time Frame (MTF) filtering, professional backtest, risk management, and open/closed position tracking for an advanced trading experience.</p>
             <div class="hero-buttons-wrapper">
                 <a href="scanner/" class="hero-main-btn">
                     <i class="fas fa-rocket"></i> Explore Terminal
                 </a>
-                <a href="https://github.com/hanifi111/sentralyx-beta/releases/download/v0.9.0-beta/Sentralyx.zip" target="_blank" rel="noopener" class="hero-secondary-btn">
+                <a href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener" class="hero-secondary-btn">
                     <i class="fas fa-download"></i> Download Beta
                 </a>
                 <a href="https://t.me/Sentralyx" target="_blank" rel="noopener" class="hero-secondary-btn">
                     <i class="fab fa-telegram-plane"></i> Join Telegram Community
                 </a>
             </div>
+
+            <div class="beta-trust-indicators" style="margin-top: 15px; text-align: center; font-size: 0.85rem; color: var(--text-secondary);">
+                <span style="margin: 0 10px;">• Windows Desktop Application</span>
+                <span style="margin: 0 10px;">• Beta Version</span>
+                <span style="margin: 0 10px;">• Download via GitHub Release</span>
+                <span style="margin: 0 10px;">• Released for Test Users</span>
+            </div>
+
             <div class="terminal-img-wrapper">
                 <img src="../scanner.png" alt="Sentralyx Scanner" class="terminal-img">
             </div>
@@ -523,8 +542,8 @@
                 <div class="col-md-4">
                     <div class="terminal-feature-card">
                         <i class="fas fa-search feature-icon"></i>
-                        <h4 class="feature-title">Market Scanner</h4>
-                        <p class="feature-description">Scan hundreds of market pairs simultaneously based on your technical criteria. Maximize signal quality with MTF confirmation.</p>
+                        <h4 class="feature-title">Real-Time Scanner</h4>
+                        <p class="feature-description">Scan hundreds of market pairs simultaneously on Binance and OKX. Filter by technical criteria and generate real-time signals.</p>
                         <a href="scanner/" class="feature-action-btn">
                             <i class="fas fa-arrow-right me-2"></i>Explore
                         </a>
@@ -532,39 +551,9 @@
                 </div>
                 <div class="col-md-4">
                     <div class="terminal-feature-card">
-                        <i class="fas fa-chart-line feature-icon"></i>
-                        <h4 class="feature-title">Performance Reports</h4>
-                        <p class="feature-description">Report all your trades in detail. Track your success rate, profit/loss charts, and strategy performance from a single screen.</p>
-                        <a href="reports/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Details
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
-                        <i class="fas fa-history feature-icon"></i>
-                        <h4 class="feature-title">Trade History</h4>
-                        <p class="feature-description">Analyze your closed positions in detail. Access data on entry/exit prices, profit/loss ratios, and trade durations.</p>
-                        <a href="history/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Explore
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
-                        <i class="fas fa-exchange-alt feature-icon"></i>
-                        <h4 class="feature-title">Active Positions</h4>
-                        <p class="feature-description">Track all your open trades with real-time P&L data. Manage Stop Loss and Take Profit levels.</p>
-                        <a href="active-positions/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Manage
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
                         <i class="fas fa-layer-group feature-icon"></i>
-                        <h4 class="feature-title">Strategy Management</h4>
-                        <p class="feature-description">Build your own decision mechanism with Majority, Scoring, and Full Reconciliation methods. Create quick strategies with Wizard.</p>
+                        <h4 class="feature-title">No-Code Strategy Creation</h4>
+                        <p class="feature-description">Create strategies visually without programming knowledge. Use Majority, Scoring, and Full Reconciliation methods.</p>
                         <a href="strategies/" class="feature-action-btn">
                             <i class="fas fa-arrow-right me-2"></i>Details
                         </a>
@@ -572,42 +561,110 @@
                 </div>
                 <div class="col-md-4">
                     <div class="terminal-feature-card">
-                        <i class="fas fa-sliders-h feature-icon"></i>
-                        <h4 class="feature-title">Indicator Settings</h4>
-                        <p class="feature-description">Optimize the parameters of your indicators according to your strategy. Customize BUY/SELL rules.</p>
-                        <a href="indicators/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Configure
-                        </a>
-                    </div>
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
                         <i class="fas fa-chart-line feature-icon"></i>
-                        <h4 class="feature-title">Portfolio Backtesting</h4>
-                        <p class="feature-description">Test your strategies with historical data. Performance analysis, equity charts, and detailed trade reports for optimization.</p>
+                        <h4 class="feature-title">Professional Backtest Engine</h4>
+                        <p class="feature-description">Test strategies with historical data. Commission, slippage simulation, and detailed performance metrics.</p>
                         <a href="backtest/" class="feature-action-btn">
                             <i class="fas fa-arrow-right me-2"></i>Test
                         </a>
                     </div>
                 </div>
-                </div>
                 <div class="col-md-4">
                     <div class="terminal-feature-card">
-                        <i class="fas fa-cog feature-icon"></i>
-                        <h4 class="feature-title">General Settings</h4>
-                        <p class="feature-description">Manage API connections, risk management, and system settings from a single place. Configure broker integrations.</p>
-                        <a href="settings/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Settings
+                        <i class="fas fa-wave-square feature-icon"></i>
+                        <h4 class="feature-title">MTF Trend Filter</h4>
+                        <p class="feature-description">Multi Time Frame analysis for trend confirmation. Signal validation across different timeframes.</p>
+                        <a href="scanner/" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Explore
                         </a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="terminal-feature-card">
-                        <i class="fas fa-microchip feature-icon"></i>
-                        <h4 class="feature-title">Engineering Manifesto</h4>
-                        <p class="feature-description">Discover 100% stability and security infrastructure with Thread Watchdog, Atomic Write, and Orphan Recovery technologies.</p>
-                        <a href="technology.html" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Technology
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <h4 class="feature-title">Risk Management</h4>
+                        <p class="feature-description">Stop loss, take profit levels, and position size management. Automated risk control mechanisms.</p>
+                        <a href="settings/" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Configure
                         </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-exchange-alt feature-icon"></i>
+                        <h4 class="feature-title">Open / Closed Position Tracking</h4>
+                        <p class="feature-description">Track all positions with real-time P&L. Entry/exit prices and trade history analysis.</p>
+                        <a href="active-positions/" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Manage
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-file-alt feature-icon"></i>
+                        <h4 class="feature-title">Reporting and CSV Records</h4>
+                        <p class="feature-description">Detailed trade reports and CSV export. Performance analysis and profit/loss tracking.</p>
+                        <a href="reports/" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Details
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-desktop feature-icon"></i>
+                        <h4 class="feature-title">Local Desktop Terminal</h4>
+                        <p class="feature-description">Not a web panel, but a fully local desktop application. API keys stay secure on your device.</p>
+                        <a href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener" class="feature-action-btn">
+                            <i class="fas fa-download me-2"></i>Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshot Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="text-main">Terminal Screenshots</h2>
+                <p class="text-secondary">Examples from the Sentralyx terminal interface</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="terminal-feature-card">
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../scanner.webp')">
+                            <img src="../scanner.webp" alt="Scanner" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+                        </div>
+                        <h4 class="feature-title">Scanner</h4>
+                        <p class="feature-description">Real-time market scanning and signal generation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="terminal-feature-card">
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../backtest.webp')">
+                            <img src="../backtest.webp" alt="Backtest" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+                        </div>
+                        <h4 class="feature-title">Backtest</h4>
+                        <p class="feature-description">Strategy tests, equity curve and Monte Carlo analysis.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="terminal-feature-card">
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../acik-pozisyon.webp')">
+                            <img src="../acik-pozisyon.webp" alt="Open Positions" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+                        </div>
+                        <h4 class="feature-title">Open Positions</h4>
+                        <p class="feature-description">Position management, stop-loss and take-profit control.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="terminal-feature-card">
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../raporlar.webp')">
+                            <img src="../raporlar.webp" alt="Reports" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+                        </div>
+                        <h4 class="feature-title">Reports</h4>
+                        <p class="feature-description">Performance statistics and trade history analysis.</p>
                     </div>
                 </div>
             </div>
@@ -644,6 +701,12 @@
 
     <div id="footer-container"></div>
 
+    <!-- Image Preview Modal -->
+    <div id="imagePreviewModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 9999; align-items: center; justify-content: center; cursor: pointer;" onclick="closeImagePreview()">
+        <img id="previewImage" src="" alt="Preview" style="max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 10px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);">
+        <div style="position: absolute; top: 20px; right: 30px; color: white; font-size: 30px; cursor: pointer;">&times;</div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
@@ -657,6 +720,28 @@
                 document.getElementById('footer-container').innerHTML = data;
             })
             .catch(error => console.error('Footer loading failed:', error));
+
+        // Image Preview Functions
+        function openImagePreview(imageSrc) {
+            const modal = document.getElementById('imagePreviewModal');
+            const previewImage = document.getElementById('previewImage');
+            previewImage.src = imageSrc;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImagePreview() {
+            const modal = document.getElementById('imagePreviewModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImagePreview();
+            }
+        });
     </script>
 </body>
 </html>

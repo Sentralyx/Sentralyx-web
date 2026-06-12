@@ -204,6 +204,17 @@
                 width: 100%;
             }
 
+            .beta-trust-indicators {
+                flex-direction: column;
+                gap: 8px;
+                font-size: 0.75rem;
+            }
+
+            .beta-trust-indicators span {
+                display: block;
+                margin: 4px 0 !important;
+            }
+
             .hero-main-btn,
             .hero-secondary-btn {
                 width: 100%;
@@ -223,19 +234,27 @@
 
     <header class="hero">
         <div class="container">
-            <h1>Автоматизируйте торговый процесс</h1>
-            <p class="lead text-secondary mb-4">Анализируйте рынок за секунды, определяйте логику стратегии и повышайте эффективность исполнения.</p>
+            <h1>Криптовалютный торговый терминал: Сканер, Бэктест и Автоматизация Стратегий на Одном Экране</h1>
+            <p class="lead text-secondary mb-4">Сканирование рынка в реальном времени, создание стратегий без кода, фильтрация MTF, профессиональный бэктест, риск-менеджмент и отслеживание открытых/закрытых позиций для продвинутого торгового опыта.</p>
             <div class="hero-buttons-wrapper">
                 <a href="../scanner/" class="hero-main-btn">
                     <i class="fas fa-rocket"></i>Открыть терминал
                 </a>
-                <a href="https://github.com/hanifi111/sentralyx-beta/releases/download/v0.9.0-beta/Sentralyx.zip" target="_blank" rel="noopener" class="hero-secondary-btn">
+                <a href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener" class="hero-secondary-btn">
                     <i class="fas fa-download"></i> Скачать бета
                 </a>
                 <a href="https://t.me/Sentralyx" target="_blank" rel="noopener" class="hero-secondary-btn">
                     <i class="fab fa-telegram-plane"></i> Telegram-сообщество
                 </a>
             </div>
+
+            <div class="beta-trust-indicators" style="margin-top: 15px; text-align: center; font-size: 0.85rem; color: var(--text-secondary);">
+                <span style="margin: 0 10px;">• Приложение для Windows</span>
+                <span style="margin: 0 10px;">• Бета-версия</span>
+                <span style="margin: 0 10px;">• Загрузка через GitHub Release</span>
+                <span style="margin: 0 10px;">• Доступно для тестовых пользователей</span>
+            </div>
+
             <div class="terminal-img-wrapper">
                 <img src="../scanner.png" alt="Sentralyx Scanner" class="terminal-img">
             </div>
@@ -253,75 +272,117 @@
                 <div class="col-md-4">
                     <div class="terminal-feature-card">
                         <i class="fas fa-search feature-icon"></i>
-                        <h4 class="feature-title">Сканер рынка</h4>
-                        <p class="feature-description">Одновременное сканирование множества торговых пар по техническим критериям и подтверждению MTF.</p>
+                        <h4 class="feature-title">Сканер в реальном времени</h4>
+                        <p class="feature-description">Одновременное сканирование сотен торговых пар на Binance и OKX. Фильтрация по техническим критериям и генерация сигналов в реальном времени.</p>
                         <a href="../scanner/" class="feature-action-btn"><i class="fas fa-arrow-right"></i>Открыть</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="terminal-feature-card">
-                        <i class="fas fa-file-alt feature-icon"></i>
-                        <h4 class="feature-title">Отчёты</h4>
-                        <p class="feature-description">Метрики стратегии, кумулятивная доходность, распределения сделок и пост‑анализ исполнения.</p>
-                        <a href="../reports/" class="feature-action-btn"><i class="fas fa-arrow-right"></i>Подробнее</a>
+                        <i class="fas fa-layer-group feature-icon"></i>
+                        <h4 class="feature-title">Создание стратегий без кода</h4>
+                        <p class="feature-description">Визуальное создание стратегий без программирования. Используйте методы Majority, Scoring и Full Reconciliation.</p>
+                        <a href="../strategies/" class="feature-action-btn"><i class="fas fa-arrow-right"></i>Подробнее</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="terminal-feature-card">
-                        <i class="fas fa-history feature-icon"></i>
-                        <h4 class="feature-title">История сделок</h4>
-                        <p class="feature-description">Анализ закрытых позиций: вход/выход, P&amp;L, длительность удержания и причина закрытия.</p>
-                        <a href="../history/" class="feature-action-btn"><i class="fas fa-arrow-right"></i>Смотреть</a>
+                        <i class="fas fa-chart-line feature-icon"></i>
+                        <h4 class="feature-title">Профессиональный бэктест-движок</h4>
+                        <p class="feature-description">Тестирование стратегий на исторических данных. Симуляция комиссии, slippage и детальные метрики производительности.</p>
+                        <a href="../backtest/" class="feature-action-btn">
+                            <i class="fas fa-arrow-right me-2"></i>Тест
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-wave-square feature-icon"></i>
+                        <h4 class="feature-title">MTF фильтр тренда</h4>
+                        <p class="feature-description">Мульти-таймфрейм анализ для подтверждения тренда. Валидация сигналов на разных таймфреймах.</p>
+                        <a href="../scanner/" class="feature-action-btn"><i class="fas fa-arrow-right"></i>Открыть</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="terminal-feature-card">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <h4 class="feature-title">Риск-менеджмент</h4>
+                        <p class="feature-description">Уровни stop loss, take profit и управление размером позиции. Автоматические механизмы контроля риска.</p>
+                        <a href="../settings/" class="feature-action-btn"><i class="fas fa-arrow-right"></i>Настроить</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="terminal-feature-card">
                         <i class="fas fa-exchange-alt feature-icon"></i>
-                        <h4 class="feature-title">Активные позиции</h4>
-                        <p class="feature-description">Реальное время: P&amp;L, маржа, кредитное плечо, уровни SL/TP и контроль риска.</p>
+                        <h4 class="feature-title">Отслеживание открытых/закрытых позиций</h4>
+                        <p class="feature-description">Отслеживание всех позиций с P&L в реальном времени. Цены входа/выхода и анализ истории сделок.</p>
                         <a href="../active-positions/" class="feature-action-btn"><i class="fas fa-arrow-right"></i>Управление</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="terminal-feature-card">
-                        <i class="fas fa-layer-group feature-icon"></i>
-                        <h4 class="feature-title">Библиотека стратегий</h4>
-                        <p class="feature-description">Каталог алгоритмов с логикой входа/выхода, параметрами и статусом оптимизации.</p>
-                        <a href="../strategies/" class="feature-action-btn"><i class="fas fa-arrow-right"></i>Открыть</a>
+                        <i class="fas fa-file-alt feature-icon"></i>
+                        <h4 class="feature-title">Отчёты и CSV записи</h4>
+                        <p class="feature-description">Детальные отчёты по сделкам и экспорт CSV. Анализ производительности и отслеживание прибыли/убытка.</p>
+                        <a href="../reports/" class="feature-action-btn"><i class="fas fa-arrow-right"></i>Подробнее</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="terminal-feature-card">
-                        <i class="fas fa-sliders-h feature-icon"></i>
-                        <h4 class="feature-title">Настройка индикаторов</h4>
-                        <p class="feature-description">Тонкая настройка параметров индикаторов и правил сигналов BUY/SELL для выбранной логики.</p>
-                        <a href="../indicators/" class="feature-action-btn"><i class="fas fa-arrow-right"></i>Настроить</a>
-                    </div>
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
-                        <i class="fas fa-chart-line feature-icon"></i>
-                        <h4 class="feature-title">Портфельное Бэктестирование</h4>
-                        <p class="feature-description">Тестируйте стратегии на исторических данных. Анализ производительности, графики капитала и детальные отчеты по сделкам для оптимизации.</p>
-                        <a href="backtest/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Тест
+                        <i class="fas fa-desktop feature-icon"></i>
+                        <h4 class="feature-title">Локальный десктопный терминал</h4>
+                        <p class="feature-description">Не веб-панель, а полностью локальное десктопное приложение. API-ключи остаются в безопасности на вашем устройстве.</p>
+                        <a href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener" class="feature-action-btn">
+                            <i class="fas fa-download me-2"></i>Скачать
                         </a>
                     </div>
                 </div>
-                </div>
-                <div class="col-md-4">
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshot Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="text-main">Скриншоты терминала</h2>
+                <p class="text-secondary">Примеры интерфейса терминала Sentralyx</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6">
                     <div class="terminal-feature-card">
-                        <i class="fas fa-cog feature-icon"></i>
-                        <h4 class="feature-title">Системные настройки</h4>
-                        <p class="feature-description">API‑подключения, уведомления, параметры риска и конфигурация исполнения.</p>
-                        <a href="../settings/" class="feature-action-btn"><i class="fas fa-arrow-right"></i>Открыть</a>
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../scanner.webp')">
+                            <img src="../scanner.webp" alt="Сканер" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+                        </div>
+                        <h4 class="feature-title">Сканер</h4>
+                        <p class="feature-description">Сканирование рынка в реальном времени и генерация сигналов.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="terminal-feature-card">
-                        <i class="fas fa-microchip feature-icon"></i>
-                        <h4 class="feature-title">Инженерный манифест</h4>
-                        <p class="feature-description">Надёжность и безопасность: watchdog, atomic write, восстановление после сбоев и защита состояния.</p>
-                        <a href="technology.html" class="feature-action-btn"><i class="fas fa-arrow-right"></i>Технологии</a>
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../backtest.webp')">
+                            <img src="../backtest.webp" alt="Бэктест" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+                        </div>
+                        <h4 class="feature-title">Бэктест</h4>
+                        <p class="feature-description">Тестирование стратегий, кривая капитала и анализ Монте-Карло.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="terminal-feature-card">
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../acik-pozisyon.webp')">
+                            <img src="../acik-pozisyon.webp" alt="Открытые позиции" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+                        </div>
+                        <h4 class="feature-title">Открытые позиции</h4>
+                        <p class="feature-description">Управление позициями, контроль stop-loss и take-profit.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="terminal-feature-card">
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../raporlar.webp')">
+                            <img src="../raporlar.webp" alt="Отчёты" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+                        </div>
+                        <h4 class="feature-title">Отчёты</h4>
+                        <p class="feature-description">Статистика производительности и анализ истории сделок.</p>
                     </div>
                 </div>
             </div>
@@ -329,6 +390,12 @@
     </section>
 
     <div id="footer-container"></div>
+
+    <!-- Image Preview Modal -->
+    <div id="imagePreviewModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 9999; align-items: center; justify-content: center; cursor: pointer;" onclick="closeImagePreview()">
+        <img id="previewImage" src="" alt="Preview" style="max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 10px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);">
+        <div style="position: absolute; top: 20px; right: 30px; color: white; font-size: 30px; cursor: pointer;">&times;</div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
@@ -342,6 +409,28 @@
                 document.getElementById('footer-container').innerHTML = data;
             })
             .catch(error => console.error('Не удалось загрузить футер:', error));
+
+        // Image Preview Functions
+        function openImagePreview(imageSrc) {
+            const modal = document.getElementById('imagePreviewModal');
+            const previewImage = document.getElementById('previewImage');
+            previewImage.src = imageSrc;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImagePreview() {
+            const modal = document.getElementById('imagePreviewModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImagePreview();
+            }
+        });
     </script>
 </body>
 </html>
