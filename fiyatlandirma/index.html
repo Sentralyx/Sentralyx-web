@@ -1,805 +1,272 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.sentralyx.com/fiyatlandirma/">
-    <title>Fiyatlandırma | Sentralyx Trading Terminali</title>
-    <meta name="description" content="Sentralyx trading terminali fiyatlandırma seçenekleri. Starter, PRO ve Elite paketler ile profesyonel kripto trading deneyimi.">
+    <title>Fiyatlandirma | Sentralyx Trading Terminali</title>
+    <meta name="description" content="Sentralyx Trading Terminali paketleri. Lisans talebi uygulama icinden, cihaz kimligi ile yapilir.">
     <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    
     <style>
         .pricing-container {
-            padding: 40px 20px;
+            padding: 48px 20px 72px;
             background: var(--bg-dark);
             min-height: 100vh;
         }
-        
-        /* Custom Toggle Switch */
-        .pricing-toggle-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
+
+        .page-intro {
+            max-width: 860px;
+            margin: 0 auto 32px;
+            text-align: center;
         }
-        
-        .pricing-toggle-label {
+
+        .page-intro h1 {
             color: var(--text-main);
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: color 0.3s ease;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 12px;
         }
-        
-        .pricing-toggle-label.active {
-            color: var(--accent-blue);
+
+        .page-intro p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 0;
         }
-        
-        .pricing-toggle-label:hover {
-            color: var(--accent-blue);
-        }
-        
-        .custom-toggle-switch {
-            position: relative;
-            width: 60px;
-            height: 32px;
-            background: var(--border-color);
+
+        .app-note {
+            max-width: 920px;
+            margin: 0 auto 40px;
+            padding: 20px 24px;
+            border: 1px solid var(--accent-blue);
             border-radius: 16px;
-            cursor: pointer;
-            transition: background 0.3s ease;
+            background: rgba(52, 152, 219, 0.08);
         }
-        
-        .custom-toggle-switch.active {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-        }
-        
-        .custom-toggle-switch::after {
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 26px;
-            height: 26px;
-            background: white;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        
-        .custom-toggle-switch.active::after {
-            transform: translateX(28px);
-        }
-        
-        /* Blinking Badge */
-        .yearly-badge {
-            display: none;
-            background: linear-gradient(135deg, #f39c12, #e74c3c);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+
+        .app-note h2 {
+            color: var(--text-main);
+            font-size: 1.2rem;
             font-weight: 700;
-            animation: blink 1.5s ease-in-out infinite;
-            margin-left: 10px;
+            margin-bottom: 8px;
         }
-        
-        .yearly-badge.show {
-            display: inline-block;
+
+        .app-note p {
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.7;
         }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.05); }
+
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
-        /* Pricing Cards */
+
         .pricing-card {
             background: var(--panel-dark);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 30px;
             height: 100%;
+            display: flex;
+            flex-direction: column;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
-        
+
         .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
+            transform: translateY(-4px);
             border-color: var(--accent-blue);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.18);
         }
-        
-        /* PRO Card Highlight */
-        .pricing-card.pro-card {
+
+        .pricing-card.featured {
             border: 2px solid var(--accent-blue);
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(52, 152, 219, 0.3);
-            z-index: 10;
+            box-shadow: 0 0 30px rgba(52, 152, 219, 0.2);
         }
-        
-        .pricing-card.pro-card:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 40px rgba(52, 152, 219, 0.4);
-        }
-        
-        .pricing-card.pro-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--signal-buy), var(--accent-blue));
-            animation: shimmer 2s ease-in-out infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            color: white;
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
-        }
-        
+
         .card-title {
             color: var(--text-main);
             font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-weight: 800;
+            margin-bottom: 8px;
         }
-        
+
         .card-subtitle {
             color: var(--text-secondary);
-            font-size: 0.9rem;
             margin-bottom: 20px;
+            min-height: 48px;
         }
-        
+
         .price-display {
-            margin: 25px 0;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            gap: 10px;
-        }
-        
-        .price-row {
             display: flex;
             align-items: baseline;
             gap: 10px;
-            flex-wrap: wrap;
+            margin-bottom: 24px;
         }
-        
+
         .price-amount {
-            font-size: 3.4rem;
-            font-weight: 900;
             color: var(--accent-blue);
+            font-size: 3rem;
+            font-weight: 900;
             line-height: 1;
         }
-        
-        .price-unit {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-        }
-        
+
         .price-note {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .original-price {
-            text-decoration: line-through;
-            color: var(--text-secondary);
             font-size: 1rem;
-            margin-left: 10px;
+            font-weight: 700;
         }
-        
-        img {
-            color: transparent;
-            text-indent: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-        
-        .original-price {
-            text-decoration: line-through;
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            margin-right: 10px;
-        }
-        
-        /* Feature List */
+
         .feature-list {
             list-style: none;
             padding: 0;
-            margin: 25px 0;
+            margin: 0 0 28px;
+            flex: 1;
         }
-        
+
         .feature-list li {
             color: var(--text-main);
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(42, 49, 66, 0.3);
             display: flex;
-            align-items: center;
             gap: 12px;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
-        
+
         .feature-list li:last-child {
             border-bottom: none;
         }
-        
-        .feature-list li i {
+
+        .feature-list i {
             color: var(--signal-buy);
-            font-size: 1.1rem;
+            margin-top: 4px;
             flex-shrink: 0;
         }
-        
-        .feature-list li strong {
-            color: var(--accent-blue);
-            font-weight: 700;
-        }
-        
-        /* Affiliate Banner */
-        .affiliate-banner {
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(46, 204, 113, 0.1));
-            border: 2px solid var(--accent-blue);
-            border-radius: 16px;
-            padding: 30px;
-            margin-top: 50px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .affiliate-banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
-            animation: rotate 10s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .affiliate-banner:hover {
-            box-shadow: 0 10px 40px rgba(52, 152, 219, 0.3);
-            transform: translateY(-3px);
-        }
-        
-        .affiliate-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .affiliate-banner h3 {
-            color: var(--text-main);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .affiliate-banner p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-        }
-        
-        .affiliate-btn {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            color: white;
-            border: none;
-            padding: 14px 35px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(52, 152, 219, 0.4);
+
+        .download-btn {
+            width: 100%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
             text-decoration: none;
-            display: inline-block;
         }
-        
-        .affiliate-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.5);
-            color: white;
+
+        .followup-box {
+            max-width: 1200px;
+            margin: 32px auto 0;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            background: rgba(255,255,255,0.02);
         }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .pricing-container {
-                padding: 30px 15px;
-            }
-            
-            .pricing-card.pro-card {
-                transform: scale(1);
-            }
-            
-            .pricing-card.pro-card:hover {
-                transform: translateY(-5px);
-            }
-            
-            .current-price {
-                font-size: 2rem;
-            }
-            
-            .card-title {
-                font-size: 1.3rem;
-            }
-            
-            .pricing-toggle-wrapper {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .affiliate-banner {
-                padding: 25px 20px;
-            }
-            
-            .affiliate-banner h3 {
-                font-size: 1.3rem;
-            }
-            
-            .affiliate-banner p {
-                font-size: 1rem;
-            }
-            
-            .affiliate-btn {
-                width: 100%;
-                padding: 12px 20px;
-            }
+
+        .followup-box h3 {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
-        
-        /* Prevent Horizontal Scroll */
-        * {
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-        
-        body {
-            overflow-x: hidden;
-            min-width: 320px;
-        }
-        
-        .container {
-            max-width: 100%;
-            padding-left: 15px;
-            padding-right: 15px;
+
+        .followup-box p {
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.7;
         }
     </style>
 </head>
 <body>
     <header id="main-header"></header>
-    <script>
-        const supportedLangs = ['tr','en','ru'];
-        const translations = {
-            tr: {
-                page: { title: 'Fiyatlandırma', description: 'Size en uygun Sentralyx sürümünü seçin.' },
-                monthly: 'Aylık',
-                yearly: 'Yıllık',
-                yearlyBadge: 'Yıllıkta 2 ay avantaj',
-                periodMonth: '/ay',
-                periodYear: '/yıl',
-                cards: {
-                    free: {
-                        title: 'Free Sürüm',
-                        subtitle: 'Ücretsiz kullanım için temel sürüm',
-                        button: 'ÜCRETSİZ İNDİR',
-                        price: '0 USD',
-                        note: 'Süresiz ücretsiz',
-                        feature_1: 'Sınırlı canlı tarayıcı',
-                        feature_2: 'Standart backtest (1 ay)',
-                        feature_3: 'Yerel terminal kurulumu',
-                        feature_4: 'Tek cihaz kullanımı'
-                    },
-                    trial: {
-                        title: '7 Gün Trial',
-                        subtitle: 'Full sürümü 7 gün ücretsiz deneyin',
-                        button: '7 GÜN ÜCRETSİZ DENE',
-                        price: '0 USD',
-                        note: '7 gün ücretsiz deneme',
-                        feature_1: 'Kredi kartı gerekmez',
-                        feature_2: 'PRO özelliklerini deneme',
-                        feature_3: 'Sınırsız MTF Trend Filtresi',
-                        feature_4: 'Gelişmiş Monte Carlo Analizi',
-                        feature_5: 'Tek cihaz kullanımı'
-                    },
-                    full: {
-                        title: 'Full / PRO',
-                        subtitle: 'Profesyonel kullanım için tam sürüm',
-                        button: 'FULL SÜRÜME GEÇ',
-                        popular: 'En Popüler',
-                        price: '49 USD',
-                        price_note_monthly: 'aylık',
-                        price_note_yearly: 'yıllık',
-                        original_price: '89 USD',
-                        feature_1: 'PRO paketteki her şey',
-                        feature_2: 'Ultra düşük gecikmeli veri akışı',
-                        feature_3: 'Sınırsız MTF Trend Filtresi',
-                        feature_4: 'Gelişmiş Monte Carlo Analizi',
-                        feature_5: 'Tek cihaz lisansı',
-                        feature_6: '7/24 öncelikli destek'
-                    }
-                },
-                modal: {
-                    title: 'Talep Oluştur', version: 'Sürüm', delivery: 'Teslimat yöntemi', emailDelivery: 'Email ile gönder', telegramDelivery: 'Telegram ile gönder', directDelivery: 'Direkt indirme linki', emailLabel: 'Email adresi', telegramLabel: 'Telegram kullanıcı adı', kvkk: 'KVKK Aydınlatma Metni ve Gizlilik Politikası kapsamında kişisel verilerimin lisans teslimatı ve kullanıcı hesabı işlemleri için işlenmesini kabul ediyorum.', marketing: 'Sentralyx kampanya, ürün güncellemesi ve bilgilendirme mesajlarını almak istiyorum.', submit: 'Gönder', cancel: 'İptal', success: 'Talebiniz alındı.', validation: 'Lütfen zorunlu alanları doldurun.', comingSoon: 'Talep sistemi yakında aktif olacak.'
-                }
-            },
-            en: {
-                page: { title: 'Pricing', description: 'Choose the Sentralyx version that fits you best.' },
-                monthly: 'Monthly',
-                yearly: 'Yearly',
-                yearlyBadge: '2 months free on annual',
-                periodMonth: '/mo',
-                periodYear: '/yr',
-                cards: {
-                    free: {
-                        title: 'Free Version',
-                        subtitle: 'Basic version for free use',
-                        button: 'DOWNLOAD FREE',
-                        price: '0 USD',
-                        note: 'Unlimited free',
-                        feature_1: 'Limited live scanner',
-                        feature_2: 'Standard backtest (1 month)',
-                        feature_3: 'Local terminal installation',
-                        feature_4: 'Single-device usage'
-                    },
-                    trial: {
-                        title: '7-Day Trial',
-                        subtitle: 'Try the full version free for 7 days',
-                        button: 'START 7-DAY FREE TRIAL',
-                        price: '0 USD',
-                        note: '7-day free trial',
-                        feature_1: 'No credit card required',
-                        feature_2: 'Try PRO features',
-                        feature_3: 'Unlimited MTF Trend Filter',
-                        feature_4: 'Advanced Monte Carlo Analysis',
-                        feature_5: 'Single-device usage'
-                    },
-                    full: {
-                        title: 'Full / PRO',
-                        subtitle: 'Full version for professional use',
-                        button: 'UPGRADE TO FULL',
-                        popular: 'Most Popular',
-                        price: '49 USD',
-                        price_note_monthly: 'monthly',
-                        price_note_yearly: 'yearly',
-                        original_price: '89 USD',
-                        feature_1: 'Everything in the PRO package',
-                        feature_2: 'Ultra low-latency data flow',
-                        feature_3: 'MTF trend, volatility and market regime filters',
-                        feature_4: 'Advanced backtesting and Monte Carlo analysis',
-                        feature_5: 'Single-device license',
-                        feature_6: '24/7 priority support'
-                    }
-                },
-                modal: {
-                    title: 'Create Request', version: 'Version', delivery: 'Delivery method', emailDelivery: 'Send by email', telegramDelivery: 'Send by Telegram', directDelivery: 'Direct download link', emailLabel: 'Email address', telegramLabel: 'Telegram username', kvkk: 'I accept the processing of my personal data for license delivery and account operations under the Privacy Policy and data protection notice.', marketing: 'I want to receive Sentralyx campaigns, product updates, and informational messages.', submit: 'Submit', cancel: 'Cancel', success: 'Your request has been received.', validation: 'Please fill in the required fields.', comingSoon: 'Request system will be activated soon.'
-                }
-            },
-            ru: {
-                page: { title: 'Цены', description: 'Выберите подходящую версию Sentralyx.' },
-                monthly: 'Месяц',
-                yearly: 'Год',
-                yearlyBadge: '2 месяца бесплатно при годовой оплате',
-                periodMonth: '/мес',
-                periodYear: '/год',
-                cards: {
-                    free: {
-                        title: 'Бесплатная версия',
-                        subtitle: 'Базовая версия для бесплатного использования',
-                        button: 'СКАЧАТЬ БЕСПЛАТНО',
-                        price: '0 USD',
-                        note: 'Неограниченно бесплатно',
-                        feature_1: 'Ограниченный живой сканер',
-                        feature_2: 'Стандартный бэктест (1 месяц)',
-                        feature_3: 'Локальная установка терминала',
-                        feature_4: 'Использование на одном устройстве'
-                    },
-                    trial: {
-                        title: '7-дневная пробная версия',
-                        subtitle: 'Попробуйте полную версию бесплатно в течение 7 дней',
-                        button: 'ПОПРОБОВАТЬ 7 ДНЕЙ БЕСПЛАТНО',
-                        price: '0 USD',
-                        note: '7-дневная бесплатная пробная версия',
-                        feature_1: 'Банковская карта не требуется',
-                        feature_2: 'Попробуйте функции PRO',
-                        feature_3: 'Неограниченный MTF Trend Filter',
-                        feature_4: 'Продвинутый анализ Монте-Карло',
-                        feature_5: 'Использование на одном устройстве'
-                    },
-                    full: {
-                        title: 'Full / PRO',
-                        subtitle: 'Полная версия для профессионального использования',
-                        button: 'ПЕРЕЙТИ НА FULL',
-                        popular: 'Самый популярный',
-                        price: '49 USD',
-                        price_note_monthly: 'в месяц',
-                        price_note_yearly: 'в год',
-                        original_price: '89 USD',
-                        feature_1: 'Всё из пакета PRO',
-                        feature_2: 'Поток данных с ультранизкой задержкой',
-                        feature_3: 'Фильтры MTF-тренда, волатильности и рыночного режима',
-                        feature_4: 'Расширенный бэктест и анализ Монте-Карло',
-                        feature_5: 'Лицензия на одно устройство',
-                        feature_6: 'Приоритетная поддержка 24/7'
-                    }
-                },
-                modal: {
-                    title: 'Создать заявку', version: 'Версия', delivery: 'Способ доставки', emailDelivery: 'Отправить по email', telegramDelivery: 'Отправить через Telegram', directDelivery: 'Прямая ссылка для скачивания', emailLabel: 'Email адрес', telegramLabel: 'Имя пользователя Telegram', kvkk: 'Я принимаю обработку моих персональных данных для доставки лицензии и операций с аккаунтом в соответствии с Политикой конфиденциальности и уведомлением о защите данных.', marketing: 'Я хочу получать кампании Sentralyx, обновления продукта и информационные сообщения.', submit: 'Отправить', cancel: 'Отмена', success: 'Ваша заявка получена.', validation: 'Пожалуйста, заполните обязательные поля.', comingSoon: 'Система заявок скоро будет доступна.'
-                }
-            }
-        };
 
-        function detectLanguage() {
-            let lang = localStorage.getItem('sentralyx-site-language');
-            if (!lang) {
-                const htmlLang = document.documentElement.lang && document.documentElement.lang.slice(0,2);
-                if (htmlLang && supportedLangs.includes(htmlLang)) lang = htmlLang;
-            }
-            if (!lang) lang = 'tr';
-            if (!supportedLangs.includes(lang)) lang = 'tr';
-            return lang;
-        }
-
-        function setLanguage(lang) {
-            if (!supportedLangs.includes(lang)) lang = 'tr';
-            localStorage.setItem('sentralyx-site-language', lang);
-            document.documentElement.lang = lang;
-            loadHeader(lang);
-            translatePage(lang);
-        }
-
-        function loadHeader(lang) {
-            const headerPath = `../assets/includes/header-${lang}.html`;
-            fetch(headerPath)
-                .then(async (response) => {
-                    if (!response.ok) throw new Error('not found');
-                    const buffer = await response.arrayBuffer();
-                    return new TextDecoder('utf-8').decode(buffer);
-                })
-                .then(data => {
-                    document.getElementById('main-header').innerHTML = data;
-                })
-                .catch(() => {
-                    fetch('../assets/includes/header.html')
-                        .then(async (response) => {
-                            const buffer = await response.arrayBuffer();
-                            return new TextDecoder('utf-8').decode(buffer);
-                        })
-                        .then(data => {
-                            document.getElementById('main-header').innerHTML = data;
-                        })
-                        .catch(error => console.error('Header yüklenemedi:', error));
-                });
-        }
-
-        function translatePage(lang) {
-            const t = translations[lang] || translations.tr;
-            // Title and meta
-            document.title = `${t.page.title} | Sentralyx Trading Terminali`;
-            const descMeta = document.querySelector('meta[name="description"]');
-            if (descMeta) descMeta.content = t.page.description || descMeta.content;
-
-            // simple mapping by data-i18n attribute
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                const parts = key.split('.');
-                let val = t;
-                for (const p of parts) { if (val && p in val) val = val[p]; else { val = null; break; } }
-                if (val !== null && val !== undefined) el.innerText = val;
-            });
-
-            // handle special price suffixes
-            document.querySelectorAll('[data-i18n-suffix="periodMonth"]').forEach(el => el.innerText = t.periodMonth || '');
-            document.querySelectorAll('[data-i18n-suffix="periodYear"]').forEach(el => el.innerText = t.periodYear || '');
-        }
-
-        // initialize
-        const currentLang = detectLanguage();
-        document.addEventListener('DOMContentLoaded', () => {
-            loadHeader(currentLang);
-            translatePage(currentLang);
-            // attach language setter to any future controls (if header has language switcher it can call setLanguage)
-            window.setSiteLanguage = setLanguage;
-        });
-    </script>
-    
     <main class="pricing-container">
         <div class="container">
-            <div class="text-center mb-5">
-                <h1 class="text-main" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 15px;" data-i18n="page.title">Fiyatlandırma</h1>
-                <p class="text-secondary" style="font-size: 1.1rem; max-width: 600px; margin: 0 auto;" data-i18n="page.description">
-                    Size en uygun Sentralyx sürümünü seçin.
-                </p>
+            <div class="page-intro">
+                <h1>Sentralyx Paketleri</h1>
+                <p>Website uzerinden lisans talebi alinmaz. Uygulamayi indirip kurulumu tamamladiktan sonra lisans talebini uygulama icinden gonderebilirsin.</p>
             </div>
-            
-            <!-- Toggle Switch -->
-            <div class="pricing-toggle-wrapper">
-                <span class="pricing-toggle-label active" id="monthly-label" data-i18n="monthly">Aylık</span>
-                <div class="custom-toggle-switch" id="pricing-toggle"></div>
-                <span class="pricing-toggle-label" id="yearly-label" data-i18n="yearly">Yıllık</span>
-                <span class="yearly-badge" id="yearly-badge" data-i18n="yearlyBadge">Yıllıkta 2 ay avantaj</span>
-            </div>
-            
-            <!-- Pricing Cards -->
-            <div class="row g-4">
-                <!-- Free Card -->
-                <div class="col-md-4">
-                    <div class="pricing-card">
-                        <h3 class="card-title" data-i18n="cards.free.title">Free Sürüm <span style="font-size: 0.8rem; background: var(--signal-buy); color: white; padding: 2px 8px; border-radius: 10px; margin-left: 8px;">Beta</span></h3>
-                        <p class="card-subtitle" data-i18n="cards.free.subtitle">Ücretsiz kullanım için temel sürüm</p>
+
+            <section class="app-note" aria-label="Lisans talebi notu">
+                <h2>Lisans talebi uygulama icinden yapilir</h2>
+                <p>Lisans talebi Sentralyx Ultra uygulamasi icinden, cihaz kimligi ile yapilir.</p>
+            </section>
+
+            <div class="pricing-grid row g-4">
+                <div class="col-lg-4">
+                    <article class="pricing-card">
+                        <h2 class="card-title">Free Surum</h2>
+                        <p class="card-subtitle">Temel ozelliklerle ucretsiz baslangic.</p>
                         <div class="price-display">
-                            <span class="price-amount" data-i18n="cards.free.price">0 USD</span>
-                            <span class="price-note" data-i18n="cards.free.note">Süresiz ücretsiz</span>
+                            <span class="price-amount">0 USD</span>
+                            <span class="price-note">ucretsiz</span>
                         </div>
                         <ul class="feature-list">
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.free.feature_1">Sınırlı canlı tarayıcı</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.free.feature_2">Standart backtest (1 ay)</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.free.feature_3">Yerel terminal kurulumu</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.free.feature_4">Tek cihaz kullanımı</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Canli tarama</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Temel backtest</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Yerel masaustu kurulum</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Tek cihaz kullanimi</span></li>
                         </ul>
-                        <button class="btn-sentralyx-start" data-version="free" style="width: 100%;">
-                            <i class="fas fa-download me-2"></i><span data-i18n="cards.free.button">ÜCRETSİZ İNDİR</span>
-                        </button>
-                    </div>
+                        <a class="btn-sentralyx-start download-btn" href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener">
+                            <i class="fas fa-download"></i>
+                            <span>Uygulamayi indir</span>
+                        </a>
+                    </article>
                 </div>
-                
-                <!-- Full Card -->
-                <div class="col-md-4">
-                    <div class="pricing-card pro-card">
-                        <div class="popular-badge" data-i18n="cards.full.popular">En Popüler</div>
-                        <h3 class="card-title" data-i18n="cards.full.title">Full / PRO</h3>
-                        <p class="card-subtitle" data-i18n="cards.full.subtitle" style="color: var(--accent-blue); font-weight: 600;">Profesyonel kullanım için tam sürüm</p>
-                        <div class="price-display" id="pro-price">
-                            <div class="price-row">
-                                <span class="price-amount"><span class="pro-amount" data-i18n="cards.full.price">49 USD</span></span>
-                                <span class="price-unit" data-i18n-suffix="periodMonth">/ay</span>
-                                <span class="price-note" data-i18n="cards.full.price_note_monthly">aylık</span>
-                            </div>
-                            <span class="original-price" data-i18n="cards.full.original_price">89 USD</span>
-                        </div>
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.full.feature_1">PRO paketteki her şey</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.full.feature_2">Ultra düşük gecikmeli veri akışı</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.full.feature_3">MTF trend, volatilite ve market rejim filtreleri</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.full.feature_4">Gelişmiş backtest ve Monte Carlo analizi</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.full.feature_5">Tek cihaz lisansı</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.full.feature_6">7/24 öncelikli destek</span></li>
-                        </ul>
-                        <button class="btn-sentralyx-start" data-version="full" style="width: 100%;">
-                            <i class="fas fa-crown me-2"></i><span data-i18n="cards.full.button">FULL SÜRÜME GEÇ</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Trial Card -->
-                <div class="col-md-4">
-                    <div class="pricing-card">
-                        <h3 class="card-title" data-i18n="cards.trial.title">7 Gün Trial</h3>
-                        <p class="card-subtitle" data-i18n="cards.trial.subtitle">Full sürümü 7 gün ücretsiz deneyin</p>
+
+                <div class="col-lg-4">
+                    <article class="pricing-card featured">
+                        <h2 class="card-title">Full Surum</h2>
+                        <p class="card-subtitle">Tum profesyonel modullerle tam kullanim.</p>
                         <div class="price-display">
-                            <span class="price-amount" data-i18n="cards.trial.price">0 USD</span>
-                            <span class="price-note" data-i18n="cards.trial.note">7 gün ücretsiz deneme</span>
+                            <span class="price-amount">49 USD</span>
+                            <span class="price-note">/ ay</span>
                         </div>
                         <ul class="feature-list">
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.trial.feature_1">Kredi kartı gerekmez</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.trial.feature_2">PRO özelliklerini deneme</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.trial.feature_3">Sınırsız MTF Trend Filtresi</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.trial.feature_4">Gelişmiş Monte Carlo Analizi</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-i18n="cards.trial.feature_5">Tek cihaz kullanımı</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Gelismis scanner ve MTF filtreleri</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Gelismis backtest ve Monte Carlo</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Pozisyon ve raporlama modulleri</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Uygulama ici lisans talebi</span></li>
                         </ul>
-                        <button class="btn-sentralyx-start" data-version="trial" style="width: 100%;">
-                            <i class="fas fa-rocket me-2"></i><span data-i18n="cards.trial.button">7 GÜN ÜCRETSİZ DENE</span>
-                        </button>
-                    </div>
+                        <a class="btn-sentralyx-start download-btn" href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener">
+                            <i class="fas fa-download"></i>
+                            <span>Uygulamayi indir</span>
+                        </a>
+                    </article>
+                </div>
+
+                <div class="col-lg-4">
+                    <article class="pricing-card">
+                        <h2 class="card-title">7 Gun Trial</h2>
+                        <p class="card-subtitle">Full surumu sinirli sureyle dene.</p>
+                        <div class="price-display">
+                            <span class="price-amount">0 USD</span>
+                            <span class="price-note">7 gun deneme</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i><span>Full ozellikleri test et</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Kredi karti gerekmez</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Tek cihaz kullanimi</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Uygulama ici lisans talebi</span></li>
+                        </ul>
+                        <a class="btn-sentralyx-start download-btn" href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener">
+                            <i class="fas fa-download"></i>
+                            <span>Uygulamayi indir</span>
+                        </a>
+                    </article>
                 </div>
             </div>
-            <div class="affiliate-banner">
-                <div class="affiliate-content">
-                    <h3><i class="fas fa-handshake me-2" style="color: var(--accent-blue);"></i>Affiliate (Satış Ortaklığı) Programı</h3>
-                    <p>Affiliate linkiniz üzerinden gelen kullanıcı ilk satın alma işlemini tamamladığında, belirlenen oran üzerinden komisyon kazanırsınız.</p>
-                    <a href="/contact/" class="affiliate-btn">
-                        <i class="fas fa-users me-2"></i>Ortak Ol
-                    </a>
-                </div>
-            </div>
+
+            <section class="followup-box" aria-label="Satis notu">
+                <h3>Talep akisi uygulama icine tasindi</h3>
+                <p>Free, Trial ve Full lisans talepleri website uzerinden alinmaz. Tum talepler Sentralyx Ultra uygulamasi icinden, cihaz kimligi ile baslatilir.</p>
+            </section>
         </div>
     </main>
-
-    <!-- Request Modal -->
-    <div class="modal fade" id="requestModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="background: var(--panel-dark); border: 1px solid var(--border-color);">
-                <div class="modal-header" style="border-bottom: 1px solid var(--border-color);">
-                    <h5 class="modal-title text-main" data-i18n="modal.title">Talep Oluştur</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="requestForm">
-                        <div class="mb-3">
-                            <label class="form-label" data-i18n="modal.version">Sürüm</label>
-                            <select id="req-version" class="form-select">
-                                <option value="free" data-i18n="cards.free.title">Free</option>
-                                <option value="trial" data-i18n="cards.trial.title">Trial</option>
-                                <option value="full" data-i18n="cards.full.title">Full / PRO</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" data-i18n="modal.delivery">Teslimat yöntemi</label>
-                            <div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="delivery" id="del-email" value="email" checked>
-                                    <label class="form-check-label" for="del-email" data-i18n="modal.emailDelivery">Email ile gönder</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="delivery" id="del-telegram" value="telegram">
-                                    <label class="form-check-label" for="del-telegram" data-i18n="modal.telegramDelivery">Telegram ile gönder</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="delivery" id="del-direct" value="direct">
-                                    <label class="form-check-label" for="del-direct" data-i18n="modal.directDelivery">Direkt indirme linki</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3" id="field-email">
-                            <label class="form-label" data-i18n="modal.emailLabel">Email adresi</label>
-                            <input type="email" id="fieldEmail" class="form-control" placeholder="you@example.com">
-                        </div>
-                        <div class="mb-3" id="field-telegram" style="display:none;">
-                            <label class="form-label" data-i18n="modal.telegramLabel">Telegram kullanıcı adı</label>
-                            <input type="text" id="fieldTelegram" class="form-control" placeholder="@username">
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input class="form-check-input" type="checkbox" id="kvkkCheck" checked>
-                            <label class="form-check-label" for="kvkkCheck" data-i18n="modal.kvkk">KVKK Aydınlatma Metni...</label>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input class="form-check-input" type="checkbox" id="marketingCheck">
-                            <label class="form-check-label" for="marketingCheck" data-i18n="modal.marketing">Sentralyx kampanya...</label>
-                        </div>
-                        <input type="hidden" id="req-language" name="language" value="tr">
-                    </form>
-                </div>
-                <div class="modal-footer" style="border-top: 1px solid var(--border-color);">
-                    <button class="btn btn-outline-light" data-bs-dismiss="modal" data-i18n="modal.cancel">İptal</button>
-                    <button class="btn btn-primary" id="req-submit"><i class="fas fa-paper-plane me-2"></i><span data-i18n="modal.submit">Gönder</span></button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        // Footer loader
         const footerDiv = document.createElement('div');
         footerDiv.id = 'footer-container';
         document.body.appendChild(footerDiv);
@@ -808,131 +275,10 @@
                 const buffer = await response.arrayBuffer();
                 return new TextDecoder('utf-8').decode(buffer);
             })
-            .then(data => {
+            .then((data) => {
                 document.getElementById('footer-container').innerHTML = data;
             })
-            .catch(error => console.error('Footer yüklenemedi:', error));
-
-        // Toggle Switch Logic
-        const toggleSwitch = document.getElementById('pricing-toggle');
-        const monthlyLabel = document.getElementById('monthly-label');
-        const yearlyLabel = document.getElementById('yearly-label');
-        const yearlyBadge = document.getElementById('yearly-badge');
-        const proPrice = document.getElementById('pro-price');
-        const proAmount = proPrice ? proPrice.querySelector('.pro-amount') : null;
-        let isYearly = false;
-
-        toggleSwitch.addEventListener('click', () => {
-            isYearly = !isYearly;
-            const lang = localStorage.getItem('sentralyx-site-language') || document.documentElement.lang || 'tr';
-            if (isYearly) {
-                toggleSwitch.classList.add('active');
-                monthlyLabel.classList.remove('active');
-                yearlyLabel.classList.add('active');
-                yearlyBadge.classList.add('show');
-                if (proAmount) proAmount.innerText = '490 USD';
-                // suffix is managed by data-i18n-suffix and price note by data-i18n
-                proPrice.querySelector('[data-i18n-suffix]')?.setAttribute('data-i18n-suffix','periodYear');
-                proPrice.querySelector('.price-note')?.setAttribute('data-i18n','cards.full.price_note_yearly');
-            } else {
-                toggleSwitch.classList.remove('active');
-                monthlyLabel.classList.add('active');
-                yearlyLabel.classList.remove('active');
-                yearlyBadge.classList.remove('show');
-                if (proAmount) proAmount.innerText = '49 USD';
-                proPrice.querySelector('[data-i18n-suffix]')?.setAttribute('data-i18n-suffix','periodMonth');
-                proPrice.querySelector('.price-note')?.setAttribute('data-i18n','cards.full.price_note_monthly');
-            }
-            translatePage(lang);
-        });
-
-        // Modal behaviour
-        const requestModalEl = document.getElementById('requestModal');
-        const requestModal = new bootstrap.Modal(requestModalEl);
-        document.querySelectorAll('.btn-sentralyx-start').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const ver = btn.dataset.version || 'free';
-                const sel = document.getElementById('req-version');
-                if (sel) sel.value = ver;
-                const lang = localStorage.getItem('sentralyx-site-language') || document.documentElement.lang || 'tr';
-                document.getElementById('req-language').value = lang;
-                translatePage(lang); // ensure modal texts are translated
-                requestModal.show();
-            });
-        });
-
-        // Delivery field toggle
-        document.querySelectorAll('input[name="delivery"]').forEach(r => r.addEventListener('change', () => {
-            const val = document.querySelector('input[name="delivery"]:checked').value;
-            document.getElementById('field-email').style.display = val === 'email' ? 'block' : 'none';
-            document.getElementById('field-telegram').style.display = val === 'telegram' ? 'block' : 'none';
-        }));
-
-        // Submit
-        const REQUEST_ENDPOINT = "https://qpyphzabiyqzitqtqxex.supabase.co/functions/v1/submit-license-request-v1";
-
-        function submitLicenseRequest(payload) {
-            if (!REQUEST_ENDPOINT) {
-                console.log('Request payload (not sent):', payload);
-                return Promise.resolve({ ok: false, reason: 'endpoint_missing' });
-            }
-
-            return fetch(REQUEST_ENDPOINT, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            })
-            .then(async (res) => {
-                if (res.ok) {
-                    // try parse json, but accept empty
-                    try { await res.json(); } catch(e){}
-                    return { ok: true };
-                }
-                return { ok: false, reason: 'network', status: res.status };
-            })
-            .catch((err) => {
-                console.error('Request failed:', err);
-                return { ok: false, reason: 'network' };
-            });
-        }
-
-        document.getElementById('req-submit').addEventListener('click', (ev) => {
-            ev.preventDefault();
-            const version = document.getElementById('req-version').value;
-            const delivery = document.querySelector('input[name="delivery"]:checked').value;
-            const email = document.getElementById('fieldEmail').value.trim();
-            const telegram = document.getElementById('fieldTelegram').value.trim();
-            const kvkk = document.getElementById('kvkkCheck').checked;
-            const marketing = document.getElementById('marketingCheck').checked;
-            const language = document.getElementById('req-language').value || (localStorage.getItem('sentralyx-site-language') || document.documentElement.lang || 'tr');
-
-            if (!version || !delivery || !kvkk) {
-                alert(translations[language].modal.validation);
-                return;
-            }
-            if (delivery === 'email' && !email) { alert(translations[language].modal.validation); return; }
-            if (delivery === 'telegram' && !telegram) { alert(translations[language].modal.validation); return; }
-
-            // Map plan: free→free, trial→trial, full→pro
-            const plan = version === 'full' ? 'pro' : version;
-            const payload = { version, plan, request_type: version, delivery, email, telegram, kvkk, marketing, language };
-
-            submitLicenseRequest(payload).then(result => {
-                if (result.ok) {
-                    requestModal.hide();
-                    alert(translations[language].modal.success);
-                } else if (result.reason === 'endpoint_missing') {
-                    // do not show success; inform user that system is not active yet
-                    console.log('Request payload (not sent):', payload);
-                    alert(translations[language].modal.comingSoon);
-                } else {
-                    // network or other failure — show generic error (no success)
-                    console.error('Request failed:', result);
-                    alert(translations[language].modal.validation);
-                }
-            });
-        });
+            .catch((error) => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>
-
