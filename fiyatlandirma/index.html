@@ -16,20 +16,17 @@
             background: var(--bg-dark);
             min-height: 100vh;
         }
-
         .page-intro {
             max-width: 860px;
             margin: 0 auto 32px;
             text-align: center;
         }
-
         .page-intro h1 {
             color: var(--text-main);
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
             margin-bottom: 12px;
         }
-
         .page-intro p,
         .app-note p,
         .followup-box p {
@@ -37,11 +34,7 @@
             line-height: 1.7;
             margin: 0;
         }
-
-        .page-intro p {
-            font-size: 1.05rem;
-        }
-
+        .page-intro p { font-size: 1.05rem; }
         .app-note,
         .followup-box {
             max-width: 1200px;
@@ -49,18 +42,15 @@
             padding: 20px 24px;
             border-radius: 16px;
         }
-
         .app-note {
             border: 1px solid var(--accent-blue);
             background: rgba(52, 152, 219, 0.08);
         }
-
         .followup-box {
             border: 1px solid var(--border-color);
             background: rgba(255,255,255,0.02);
             margin-bottom: 0;
         }
-
         .app-note h2,
         .followup-box h3 {
             color: var(--text-main);
@@ -68,12 +58,13 @@
             font-weight: 700;
             margin-bottom: 8px;
         }
-
         .pricing-grid {
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        .pricing-grid-secondary {
+            margin-top: 8px;
+        }
         .pricing-card {
             background: var(--panel-dark);
             border: 1px solid var(--border-color);
@@ -84,46 +75,47 @@
             flex-direction: column;
             transition: all 0.3s ease;
         }
-
         .pricing-card:hover {
             transform: translateY(-4px);
             border-color: var(--accent-blue);
             box-shadow: 0 10px 30px rgba(52, 152, 219, 0.18);
         }
-
         .pricing-card.featured {
             border: 2px solid var(--accent-blue);
-            box-shadow: 0 0 30px rgba(52, 152, 219, 0.2);
+            box-shadow: 0 0 30px rgba(52, 152, 219, 0.20);
+            background: linear-gradient(180deg, rgba(52, 152, 219, 0.10), rgba(255,255,255,0.02));
         }
-
+        .card-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            margin-bottom: 14px;
+            padding: 6px 12px;
+            border: 1px solid rgba(52, 152, 219, 0.34);
+            border-radius: 999px;
+            background: rgba(52, 152, 219, 0.10);
+            color: #9fd3ff;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.01em;
+        }
+        .pricing-card.featured .card-label {
+            border-color: rgba(125, 208, 255, 0.48);
+            background: rgba(52, 152, 219, 0.16);
+            color: #d9f1ff;
+        }
         .card-title {
             color: var(--text-main);
             font-size: 1.45rem;
             font-weight: 800;
             margin-bottom: 8px;
         }
-
         .card-subtitle {
             color: var(--text-secondary);
             margin-bottom: 20px;
             min-height: 48px;
         }
-
-        .plan-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            width: fit-content;
-            margin-bottom: 16px;
-            padding: 6px 12px;
-            border: 1px solid rgba(52, 152, 219, 0.3);
-            border-radius: 999px;
-            background: rgba(52, 152, 219, 0.08);
-            color: var(--accent-blue);
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-
         .price-display {
             display: flex;
             align-items: baseline;
@@ -131,32 +123,27 @@
             margin-bottom: 12px;
             flex-wrap: wrap;
         }
-
         .price-amount {
             color: var(--accent-blue);
             font-size: 3rem;
             font-weight: 900;
             line-height: 1;
         }
-
         .price-note,
         .payment-note {
             color: var(--text-secondary);
             font-weight: 700;
         }
-
         .payment-note {
             font-size: 0.9rem;
             margin-bottom: 24px;
         }
-
         .feature-list {
             list-style: none;
             padding: 0;
             margin: 0 0 28px;
             flex: 1;
         }
-
         .feature-list li {
             color: var(--text-main);
             display: flex;
@@ -165,17 +152,12 @@
             padding: 10px 0;
             border-bottom: 1px solid rgba(255,255,255,0.06);
         }
-
-        .feature-list li:last-child {
-            border-bottom: none;
-        }
-
+        .feature-list li:last-child { border-bottom: none; }
         .feature-list i {
             color: var(--signal-buy);
             margin-top: 4px;
             flex-shrink: 0;
         }
-
         .download-btn {
             width: 100%;
             display: inline-flex;
@@ -183,6 +165,9 @@
             align-items: center;
             gap: 10px;
             text-decoration: none;
+        }
+        @media (max-width: 991.98px) {
+            .pricing-grid-secondary { margin-top: 0; }
         }
     </style>
 </head>
@@ -202,7 +187,7 @@
             </section>
 
             <div class="pricing-grid row g-4">
-                <div class="col-xl-4 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <article class="pricing-card">
                         <h2 class="card-title">Free S&#252;r&#252;m</h2>
                         <p class="card-subtitle">Temel &#246;zelliklerle &#252;cretsiz ba&#351;lang&#305;&#231;.</p>
@@ -223,9 +208,9 @@
                     </article>
                 </div>
 
-                <div class="col-xl-4 col-md-6">
+                <div class="col-lg-4 col-md-6 order-lg-2">
                     <article class="pricing-card featured">
-                        <div class="plan-chip">Monthly Full</div>
+                        <div class="card-label">Ba&#351;lamak &#304;&#231;in &#304;deal</div>
                         <h2 class="card-title">Full S&#252;r&#252;m</h2>
                         <p class="card-subtitle">Ayl&#305;k Full eri&#351;imi ile t&#252;m profesyonel mod&#252;ller.</p>
                         <div class="price-display">
@@ -246,9 +231,32 @@
                     </article>
                 </div>
 
-                <div class="col-xl-4 col-md-6">
+                <div class="col-lg-4 col-md-6 order-lg-3">
                     <article class="pricing-card">
-                        <div class="plan-chip">6 Month Full</div>
+                        <h2 class="card-title">7 G&#252;n Trial</h2>
+                        <p class="card-subtitle">Full s&#252;r&#252;m&#252; s&#305;n&#305;rl&#305; s&#252;reyle dene.</p>
+                        <div class="price-display">
+                            <span class="price-amount">0 USD</span>
+                            <span class="price-note">7 g&#252;n deneme</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i><span>Full &#246;zellikleri test et</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Kredi kart&#305; gerekmez</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Tek cihaz kullan&#305;m&#305;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Uygulama i&#231;i lisans talebi</span></li>
+                        </ul>
+                        <a class="btn-sentralyx-start download-btn" href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener">
+                            <i class="fas fa-download"></i>
+                            <span>Uygulamay&#305; indir</span>
+                        </a>
+                    </article>
+                </div>
+            </div>
+
+            <div class="pricing-grid pricing-grid-secondary row justify-content-center g-4">
+                <div class="col-lg-5 col-md-6">
+                    <article class="pricing-card">
+                        <div class="card-label">Pop&#252;ler</div>
                         <h2 class="card-title">6 Ayl&#305;k Full</h2>
                         <p class="card-subtitle">180 g&#252;nl&#252;k Full eri&#351;imi ile daha uzun s&#252;reli paket.</p>
                         <div class="price-display">
@@ -269,9 +277,9 @@
                     </article>
                 </div>
 
-                <div class="col-xl-4 col-md-6">
+                <div class="col-lg-5 col-md-6">
                     <article class="pricing-card">
-                        <div class="plan-chip">Yearly Full</div>
+                        <div class="card-label">En Avantajl&#305;</div>
                         <h2 class="card-title">Y&#305;ll&#305;k Full</h2>
                         <p class="card-subtitle">365 g&#252;nl&#252;k Full eri&#351;imi ile y&#305;ll&#305;k paket.</p>
                         <div class="price-display">
@@ -288,27 +296,6 @@
                         <a class="btn-sentralyx-start download-btn" href="https://app.sentralyx.com/" target="_blank" rel="noopener">
                             <i class="fas fa-arrow-up-right-from-square"></i>
                             <span>Y&#305;ll&#305;k Full Sat&#305;n Al</span>
-                        </a>
-                    </article>
-                </div>
-
-                <div class="col-xl-4 col-md-6">
-                    <article class="pricing-card">
-                        <h2 class="card-title">7 G&#252;n Trial</h2>
-                        <p class="card-subtitle">Full s&#252;r&#252;m&#252; s&#305;n&#305;rl&#305; s&#252;reyle dene.</p>
-                        <div class="price-display">
-                            <span class="price-amount">0 USD</span>
-                            <span class="price-note">7 g&#252;n deneme</span>
-                        </div>
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check-circle"></i><span>Full &#246;zellikleri test et</span></li>
-                            <li><i class="fas fa-check-circle"></i><span>Kredi kart&#305; gerekmez</span></li>
-                            <li><i class="fas fa-check-circle"></i><span>Tek cihaz kullan&#305;m&#305;</span></li>
-                            <li><i class="fas fa-check-circle"></i><span>Uygulama i&#231;i lisans talebi</span></li>
-                        </ul>
-                        <a class="btn-sentralyx-start download-btn" href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener">
-                            <i class="fas fa-download"></i>
-                            <span>Uygulamay&#305; indir</span>
                         </a>
                     </article>
                 </div>
