@@ -27,15 +27,15 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown">
-                        Özellikler
+                        &Ouml;zellikler
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" style="background: var(--panel-dark); border: 1px solid var(--border-color);">
-                        <li class="dropdown-header text-main">Canlı Takip</li>
+                        <li class="dropdown-header text-main">Canl&#305; Takip</li>
                         <li><a class="dropdown-item text-main" href="/scanner/">
-                            <i class="fas fa-search me-2"></i>Tarayıcı
+                            <i class="fas fa-search me-2"></i>Taray&#305;c&#305;
                         </a></li>
                         <li><a class="dropdown-item text-main" href="/active-positions/">
-                            <i class="fas fa-chart-line me-2"></i>Açık Pozisyonlar
+                            <i class="fas fa-chart-line me-2"></i>A&ccedil;&#305;k Pozisyonlar
                         </a></li>
                         <li><hr class="dropdown-divider" style="border-color: var(--border-color);"></li>
                         <li class="dropdown-header text-main">Analiz</li>
@@ -43,20 +43,20 @@
                             <i class="fas fa-file-alt me-2"></i>Raporlar
                         </a></li>
                         <li><a class="dropdown-item text-main" href="/history/">
-                            <i class="fas fa-history me-2"></i>Kapalı Pozisyonlar
+                            <i class="fas fa-history me-2"></i>Kapal&#305; Pozisyonlar
                         </a></li>
                         <li><hr class="dropdown-divider" style="border-color: var(--border-color);"></li>
                         <li class="dropdown-header text-main">Teknoloji</li>
                         <li><a class="dropdown-item text-main" href="/technology.html">
-                            <i class="fas fa-microchip me-2"></i>Mühendislik Manifestosu
+                            <i class="fas fa-microchip me-2"></i>M&uuml;hendislik Manifestosu
                         </a></li>
                         <li><hr class="dropdown-divider" style="border-color: var(--border-color);"></li>
                         <li class="dropdown-header text-main">Strateji</li>
                         <li><a class="dropdown-item text-main" href="/strategies/">
-                            <i class="fas fa-layer-group me-2"></i>Strateji Yönetimi
+                            <i class="fas fa-layer-group me-2"></i>Strateji Y&ouml;netimi
                         </a></li>
                         <li><a class="dropdown-item text-main" href="/indicators/">
-                            <i class="fas fa-sliders-h me-2"></i>İndikatör Ayarları
+                            <i class="fas fa-sliders-h me-2"></i>&#304;ndikat&ouml;r Ayarlar&#305;
                         </a></li>
                         <li><a class="dropdown-item text-main" href="/settings/">
                             <i class="fas fa-cog me-2"></i>Ayarlar
@@ -65,18 +65,17 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white px-3" href="/fiyatlandirma/">Fiyatlandırma</a>
+                    <a class="nav-link text-white px-3" href="/fiyatlandirma/">Fiyatland&#305;rma</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link text-white px-3" href="/faq.html">SSS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white px-3" href="/contact/">İletişim</a>
+                    <a class="nav-link text-white px-3" href="/contact/">&#304;leti&#351;im</a>
                 </li>
             </ul>
 
-            <!-- Language Selector in Navbar -->
             <div class="navbar-language ms-3">
                 <div class="language-dropdown">
                     <a href="/" class="language-toggle">
@@ -108,7 +107,6 @@
     margin-right: 10px;
 }
 
-/* Responsive Logo Sizing */
 @media (max-width: 768px) {
     .navbar-brand svg {
         width: 180px !important;
@@ -145,16 +143,8 @@
     box-shadow: 0 0 10px var(--accent-blue);
 }
 
-/* Language Selector in Navbar */
-.navbar-language {
-    position: relative;
-}
-
-.language-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
+.navbar-language { position: relative; }
+.language-dropdown { position: relative; display: inline-block; }
 .language-toggle {
     display: flex;
     align-items: center;
@@ -172,22 +162,13 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     text-decoration: none;
 }
-
 .language-toggle:hover {
     border-color: var(--accent-blue);
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
     transform: translateY(-1px);
 }
-
-.language-toggle i {
-    font-size: 0.75rem;
-    transition: transform 0.3s ease;
-}
-
-.language-dropdown:hover .language-toggle i {
-    transform: rotate(180deg);
-}
-
+.language-toggle i { font-size: 0.75rem; transition: transform 0.3s ease; }
+.language-dropdown:hover .language-toggle i { transform: rotate(180deg); }
 .language-menu {
     position: absolute;
     top: calc(100% + 8px);
@@ -205,13 +186,7 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
 }
-
-.language-dropdown:hover .language-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
+.language-dropdown:hover .language-menu { opacity: 1; visibility: visible; transform: translateY(0); }
 .language-menu a {
     display: flex;
     align-items: center;
@@ -223,14 +198,12 @@
     transition: all 0.2s ease;
     border-left: 3px solid transparent;
 }
-
 .language-menu a:hover {
     background: rgba(52, 152, 219, 0.1);
     color: var(--accent-blue);
     border-left-color: var(--accent-blue);
     padding-left: 20px;
 }
-
 .language-menu a.active {
     color: var(--accent-blue);
     background: rgba(52, 152, 219, 0.15);
@@ -238,7 +211,6 @@
     font-weight: 600;
 }
 
-/* Mobile Navigation */
 @media (max-width: 768px) {
     .navbar-nav {
         background: var(--panel-dark);
@@ -247,21 +219,9 @@
         padding: 1rem;
         margin-top: 1rem;
     }
-
-    .nav-item {
-        margin-bottom: 0.5rem;
-    }
-
-    .nav-link {
-        padding: 0.75rem 1rem !important;
-        border-radius: 6px;
-        display: block;
-    }
-
-    .nav-link:hover {
-        background: rgba(52, 152, 219, 0.1);
-    }
-
+    .nav-item { margin-bottom: 0.5rem; }
+    .nav-link { padding: 0.75rem 1rem !important; border-radius: 6px; display: block; }
+    .nav-link:hover { background: rgba(52, 152, 219, 0.1); }
     .dropdown-menu {
         position: static !important;
         transform: none !important;
@@ -271,32 +231,11 @@
         padding-left: 1rem;
         margin-top: 0.5rem;
     }
-
-    .dropdown-item {
-        padding: 0.5rem 1rem !important;
-        border-radius: 4px;
-        margin-bottom: 0.25rem;
-    }
-
-    .dropdown-header {
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .navbar-language {
-        margin-top: 1rem;
-        width: 100%;
-    }
-
-    .language-dropdown {
-        width: 100%;
-    }
-
-    .language-toggle {
-        width: 100%;
-        justify-content: center;
-    }
-
+    .dropdown-item { padding: 0.5rem 1rem !important; border-radius: 4px; margin-bottom: 0.25rem; }
+    .dropdown-header { margin-top: 1rem; margin-bottom: 0.5rem; }
+    .navbar-language { margin-top: 1rem; width: 100%; }
+    .language-dropdown { width: 100%; }
+    .language-toggle { width: 100%; justify-content: center; }
     .language-menu {
         position: static;
         opacity: 1;
@@ -308,11 +247,7 @@
         padding: 0;
         margin-top: 0.5rem;
     }
-
-    .language-menu a {
-        padding: 8px 12px;
-        border-radius: 4px;
-    }
+    .language-menu a { padding: 8px 12px; border-radius: 4px; }
 }
 
 .dropdown-menu-dark {
@@ -320,43 +255,16 @@
     border: 1px solid var(--border-color) !important;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-
-.dropdown-item {
-    color: var(--text-main) !important;
-    transition: all 0.2s ease;
-    font-size: 15px;
-}
-
-.dropdown-item:hover {
-    background: rgba(52, 152, 219, 0.1) !important;
-    color: var(--accent-blue) !important;
-}
-
-.dropdown-header {
-    color: var(--accent-blue) !important;
-    font-weight: 600;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.navbar-toggler {
-    border-color: var(--text-main);
-    padding: 0.25rem 0.5rem;
-    font-size: 1.25rem;
-}
-
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
-}
-
+.dropdown-item { color: var(--text-main) !important; transition: all 0.2s ease; font-size: 15px; }
+.dropdown-item:hover { background: rgba(52, 152, 219, 0.1) !important; color: var(--accent-blue) !important; }
+.dropdown-header { color: var(--accent-blue) !important; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+.navbar-toggler { border-color: var(--text-main); padding: 0.25rem 0.5rem; font-size: 1.25rem; }
+.navbar-toggler:focus { box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25); }
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(224, 224, 224, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     width: 1.5em;
     height: 1.5em;
 }
-
-/* Enhanced Mobile Toggler Animation */
 .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(224, 224, 224, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     transform: rotate(45deg);

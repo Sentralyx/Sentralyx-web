@@ -111,10 +111,15 @@ function normalizePath(pathname) {
 
 function getLanguageRedirectTarget(desiredLang, currentPathname) {
     const pathname = normalizePath(currentPathname);
-    const routeMap = {
-        '/fiyatlandirma/': { tr: '/fiyatlandirma/', en: '/pricing/', ru: '/pricing/' },
-        '/pricing/': { tr: '/fiyatlandirma/', en: '/pricing/', ru: '/pricing/' },
+    const exactRouteMap = {
+        '/fiyatlandirma/': { tr: '/fiyatlandirma/', en: '/en/pricing/', ru: '/ru/pricing/' },
+        '/en/pricing/': { tr: '/fiyatlandirma/', en: '/en/pricing/', ru: '/ru/pricing/' },
+        '/ru/pricing/': { tr: '/fiyatlandirma/', en: '/en/pricing/', ru: '/ru/pricing/' },
     };
+
+    if (exactRouteMap[pathname]) {
+        return exactRouteMap[pathname][desiredLang] || null;
+    }
 
     const stripLangPrefix = (p) => {
         if (p.startsWith('/en/')) return '/' + p.slice(4);
@@ -123,8 +128,6 @@ function getLanguageRedirectTarget(desiredLang, currentPathname) {
     };
 
     const basePath = stripLangPrefix(pathname);
-    const mappedBasePath = routeMap[basePath]?.[desiredLang] || basePath;
-
     const translated = {
         en: new Set([
             '/',
@@ -161,13 +164,13 @@ function getLanguageRedirectTarget(desiredLang, currentPathname) {
     };
 
     if (desiredLang === 'tr') {
-        return mappedBasePath;
+        return basePath;
     }
 
     const allow = translated[desiredLang];
-    if (!allow || !allow.has(mappedBasePath)) return null;
-    if (mappedBasePath === '/') return '/' + desiredLang + '/';
-    return `/${desiredLang}${mappedBasePath}`;
+    if (!allow || !allow.has(basePath)) return null;
+    if (basePath === '/') return '/' + desiredLang + '/';
+    return '/' + desiredLang + basePath;
 }
 
 function applyLanguagePreference() {
@@ -176,7 +179,7 @@ function applyLanguagePreference() {
         const currentLang = getCurrentLanguageFromPath(pathname);
         const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
 
-        // URL prefix (/en/, /ru/) is authoritative â€” user picked that locale in the nav.
+        // URL prefix (/en/, /ru/) is authoritative Ã¢â‚¬â€ user picked that locale in the nav.
         if (pathname.startsWith('/en/') || pathname.startsWith('/ru/')) {
             localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang);
             return;
