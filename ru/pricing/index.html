@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/ru/pricing/">
+    <title>&#1062;&#1077;&#1085;&#1099; | Sentralyx Trading Terminal</title>
+    <meta name="description" content="&#1055;&#1072;&#1082;&#1077;&#1090;&#1099; Sentralyx Trading Terminal: Free, Trial &#1080; Full beta crypto packages.">
+    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .pricing-container {
+            padding: 48px 20px 72px;
+            background: var(--bg-dark);
+            min-height: 100vh;
+        }
+
+        .page-intro {
+            max-width: 860px;
+            margin: 0 auto 32px;
+            text-align: center;
+        }
+
+        .page-intro h1 {
+            color: var(--text-main);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .page-intro p,
+        .app-note p,
+        .followup-box p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .page-intro p {
+            font-size: 1.05rem;
+        }
+
+        .app-note,
+        .followup-box {
+            max-width: 1200px;
+            margin: 0 auto 32px;
+            padding: 20px 24px;
+            border-radius: 16px;
+        }
+
+        .app-note {
+            border: 1px solid var(--accent-blue);
+            background: rgba(52, 152, 219, 0.08);
+        }
+
+        .followup-box {
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.02);
+            margin-bottom: 0;
+        }
+
+        .app-note h2,
+        .followup-box h3 {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.18);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 0 30px rgba(52, 152, 219, 0.2);
+        }
+
+        .card-title {
+            color: var(--text-main);
+            font-size: 1.45rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .card-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            min-height: 48px;
+        }
+
+        .plan-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            margin-bottom: 16px;
+            padding: 6px 12px;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            border-radius: 999px;
+            background: rgba(52, 152, 219, 0.08);
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .price-display {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .price-amount {
+            color: var(--accent-blue);
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .price-note,
+        .payment-note {
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
+
+        .payment-note {
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 28px;
+            flex: 1;
+        }
+
+        .feature-list li {
+            color: var(--text-main);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list i {
+            color: var(--signal-buy);
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .download-btn {
+            width: 100%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header"></header>
+
+    <main class="pricing-container">
+        <div class="container">
+            <div class="page-intro">
+                <h1>&#1055;&#1072;&#1082;&#1077;&#1090;&#1099; Sentralyx</h1>
+                <p>&#1047;&#1072;&#1087;&#1088;&#1086;&#1089;&#1099; &#1085;&#1072; &#1083;&#1080;&#1094;&#1077;&#1085;&#1079;&#1080;&#1102; &#1085;&#1077; &#1087;&#1088;&#1080;&#1085;&#1080;&#1084;&#1072;&#1102;&#1090;&#1089;&#1103; &#1085;&#1072; &#1089;&#1072;&#1081;&#1090;&#1077;. &#1055;&#1086;&#1089;&#1083;&#1077; &#1079;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1080; &#1080; &#1091;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1080; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; &#1074;&#1099; &#1084;&#1086;&#1078;&#1077;&#1090;&#1077; &#1086;&#1090;&#1087;&#1088;&#1072;&#1074;&#1080;&#1090;&#1100; &#1079;&#1072;&#1087;&#1088;&#1086;&#1089; &#1080;&#1079; &#1085;&#1077;&#1075;&#1086;.</p>
+            </div>
+
+            <section class="app-note" aria-label="License request note">
+                <h2>&#1047;&#1072;&#1087;&#1088;&#1086;&#1089; &#1085;&#1072; &#1083;&#1080;&#1094;&#1077;&#1085;&#1079;&#1080;&#1102; &#1086;&#1092;&#1086;&#1088;&#1084;&#1083;&#1103;&#1077;&#1090;&#1089;&#1103; &#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1080;</h2>
+                <p>&#1040;&#1082;&#1090;&#1080;&#1074;&#1072;&#1094;&#1080;&#1103; Free, Trial &#1080; Full &#1079;&#1072;&#1087;&#1091;&#1089;&#1082;&#1072;&#1077;&#1090;&#1089;&#1103; &#1074;&#1085;&#1091;&#1090;&#1088;&#1080; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; Sentralyx &#1089; &#1087;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1086;&#1081; &#1082; ID &#1091;&#1089;&#1090;&#1088;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;.</p>
+            </section>
+
+            <div class="pricing-grid row g-4">
+                <div class="col-xl-4 col-md-6">
+                    <article class="pricing-card">
+                        <h2 class="card-title">Free</h2>
+                        <p class="card-subtitle">&#1041;&#1077;&#1089;&#1087;&#1083;&#1072;&#1090;&#1085;&#1099;&#1081; &#1089;&#1090;&#1072;&#1088;&#1090; &#1089; &#1086;&#1089;&#1085;&#1086;&#1074;&#1085;&#1099;&#1084;&#1080; &#1084;&#1086;&#1076;&#1091;&#1083;&#1103;&#1084;&#1080;.</p>
+                        <div class="price-display">
+                            <span class="price-amount">0 USD</span>
+                            <span class="price-note">&#1073;&#1077;&#1089;&#1087;&#1083;&#1072;&#1090;&#1085;&#1086;</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i><span>&#1057;&#1082;&#1072;&#1085;&#1077;&#1088; &#1074; &#1088;&#1077;&#1072;&#1083;&#1100;&#1085;&#1086;&#1084; &#1074;&#1088;&#1077;&#1084;&#1077;&#1085;&#1080;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1041;&#1072;&#1079;&#1086;&#1074;&#1099;&#1081; backtest</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1051;&#1086;&#1082;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; desktop &#1091;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1048;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1085;&#1072; &#1086;&#1076;&#1085;&#1086;&#1084; &#1091;&#1089;&#1090;&#1088;&#1086;&#1081;&#1089;&#1090;&#1074;&#1077;</span></li>
+                        </ul>
+                        <a class="btn-sentralyx-start download-btn" href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener">
+                            <i class="fas fa-download"></i>
+                            <span>&#1057;&#1082;&#1072;&#1095;&#1072;&#1090;&#1100; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1077;</span>
+                        </a>
+                    </article>
+                </div>
+
+                <div class="col-xl-4 col-md-6">
+                    <article class="pricing-card featured">
+                        <div class="plan-chip">Monthly Full</div>
+                        <h2 class="card-title">Full</h2>
+                        <p class="card-subtitle">&#1045;&#1078;&#1077;&#1084;&#1077;&#1089;&#1103;&#1095;&#1085;&#1099;&#1081; Full &#1076;&#1086;&#1089;&#1090;&#1091;&#1087; &#1082;&#1086; &#1074;&#1089;&#1077;&#1084; &#1087;&#1088;&#1086;&#1092;&#1077;&#1089;&#1089;&#1080;&#1086;&#1085;&#1072;&#1083;&#1100;&#1085;&#1099;&#1084; &#1084;&#1086;&#1076;&#1091;&#1083;&#1103;&#1084;.</p>
+                        <div class="price-display">
+                            <span class="price-amount">49 USDT</span>
+                            <span class="price-note">/ 30 &#1076;&#1085;&#1077;&#1081;</span>
+                        </div>
+                        <p class="payment-note">&#1054;&#1087;&#1083;&#1072;&#1090;&#1072; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1089;&#1103; &#1095;&#1077;&#1088;&#1077;&#1079; USDT TRC20.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i><span>&#1056;&#1072;&#1089;&#1096;&#1080;&#1088;&#1077;&#1085;&#1085;&#1099;&#1081; &#1089;&#1082;&#1072;&#1085;&#1077;&#1088; &#1080; MTF &#1092;&#1080;&#1083;&#1100;&#1090;&#1088;&#1099;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1056;&#1072;&#1089;&#1096;&#1080;&#1088;&#1077;&#1085;&#1085;&#1099;&#1081; backtest &#1080; Monte Carlo</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1052;&#1086;&#1076;&#1091;&#1083;&#1080; &#1087;&#1086;&#1079;&#1080;&#1094;&#1080;&#1081; &#1080; &#1086;&#1090;&#1095;&#1077;&#1090;&#1086;&#1074;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1047;&#1072;&#1087;&#1088;&#1086;&#1089; &#1083;&#1080;&#1094;&#1077;&#1085;&#1079;&#1080;&#1080; &#1074;&#1085;&#1091;&#1090;&#1088;&#1080; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103;</span></li>
+                        </ul>
+                        <a class="btn-sentralyx-start download-btn" href="https://app.sentralyx.com/" target="_blank" rel="noopener">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                            <span>&#1050;&#1091;&#1087;&#1080;&#1090;&#1100; Full</span>
+                        </a>
+                    </article>
+                </div>
+
+                <div class="col-xl-4 col-md-6">
+                    <article class="pricing-card">
+                        <div class="plan-chip">6 Month Full</div>
+                        <h2 class="card-title">6 Month Full</h2>
+                        <p class="card-subtitle">&#1055;&#1072;&#1082;&#1077;&#1090; Full &#1085;&#1072; 180 &#1076;&#1085;&#1077;&#1081; &#1076;&#1083;&#1103; &#1073;&#1086;&#1083;&#1077;&#1077; &#1076;&#1083;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1075;&#1086; beta &#1076;&#1086;&#1089;&#1090;&#1091;&#1087;&#1072;.</p>
+                        <div class="price-display">
+                            <span class="price-amount">279 USDT</span>
+                            <span class="price-note">/ 180 &#1076;&#1085;&#1077;&#1081;</span>
+                        </div>
+                        <p class="payment-note">&#1054;&#1087;&#1083;&#1072;&#1090;&#1072; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1089;&#1103; &#1095;&#1077;&#1088;&#1077;&#1079; USDT TRC20.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i><span>&#1042;&#1089;&#1077; &#1084;&#1086;&#1076;&#1091;&#1083;&#1080; Full &#1087;&#1072;&#1082;&#1077;&#1090;&#1072;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1052;&#1077;&#1085;&#1100;&#1096;&#1077; &#1087;&#1088;&#1086;&#1076;&#1083;&#1077;&#1085;&#1080;&#1081;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1040;&#1082;&#1090;&#1080;&#1074;&#1072;&#1094;&#1080;&#1103; &#1083;&#1080;&#1094;&#1077;&#1085;&#1079;&#1080;&#1080; &#1074;&#1085;&#1091;&#1090;&#1088;&#1080; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Beta &#1076;&#1086;&#1089;&#1090;&#1091;&#1087; &#1076;&#1083;&#1103; &#1086;&#1076;&#1085;&#1086;&#1075;&#1086; &#1091;&#1089;&#1090;&#1088;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;</span></li>
+                        </ul>
+                        <a class="btn-sentralyx-start download-btn" href="https://app.sentralyx.com/" target="_blank" rel="noopener">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                            <span>&#1050;&#1091;&#1087;&#1080;&#1090;&#1100; Full &#1085;&#1072; 6 &#1084;&#1077;&#1089;&#1103;&#1094;&#1077;&#1074;</span>
+                        </a>
+                    </article>
+                </div>
+
+                <div class="col-xl-4 col-md-6">
+                    <article class="pricing-card">
+                        <div class="plan-chip">Yearly Full</div>
+                        <h2 class="card-title">Yearly Full</h2>
+                        <p class="card-subtitle">&#1043;&#1086;&#1076;&#1086;&#1074;&#1086;&#1081; Full &#1087;&#1072;&#1082;&#1077;&#1090; &#1089; &#1076;&#1086;&#1089;&#1090;&#1091;&#1087;&#1086;&#1084; &#1085;&#1072; 365 &#1076;&#1085;&#1077;&#1081;.</p>
+                        <div class="price-display">
+                            <span class="price-amount">399 USDT</span>
+                            <span class="price-note">/ 365 &#1076;&#1085;&#1077;&#1081;</span>
+                        </div>
+                        <p class="payment-note">&#1054;&#1087;&#1083;&#1072;&#1090;&#1072; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1089;&#1103; &#1095;&#1077;&#1088;&#1077;&#1079; USDT TRC20.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i><span>&#1042;&#1089;&#1077; &#1084;&#1086;&#1076;&#1091;&#1083;&#1080; Full &#1087;&#1072;&#1082;&#1077;&#1090;&#1072;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1044;&#1086;&#1083;&#1075;&#1086;&#1089;&#1088;&#1086;&#1095;&#1085;&#1099;&#1081; &#1076;&#1086;&#1089;&#1090;&#1091;&#1087;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1047;&#1072;&#1087;&#1088;&#1086;&#1089; &#1083;&#1080;&#1094;&#1077;&#1085;&#1079;&#1080;&#1080; &#1074;&#1085;&#1091;&#1090;&#1088;&#1080; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Beta &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1085;&#1072; &#1086;&#1076;&#1085;&#1086;&#1084; &#1091;&#1089;&#1090;&#1088;&#1086;&#1081;&#1089;&#1090;&#1074;&#1077;</span></li>
+                        </ul>
+                        <a class="btn-sentralyx-start download-btn" href="https://app.sentralyx.com/" target="_blank" rel="noopener">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                            <span>&#1050;&#1091;&#1087;&#1080;&#1090;&#1100; Full &#1085;&#1072; &#1075;&#1086;&#1076;</span>
+                        </a>
+                    </article>
+                </div>
+
+                <div class="col-xl-4 col-md-6">
+                    <article class="pricing-card">
+                        <h2 class="card-title">7-&#1076;&#1085;&#1077;&#1074;&#1085;&#1099;&#1081; &#1087;&#1088;&#1086;&#1073;&#1085;&#1099;&#1081; &#1076;&#1086;&#1089;&#1090;&#1091;&#1087;</h2>
+                        <p class="card-subtitle">&#1055;&#1086;&#1087;&#1088;&#1086;&#1073;&#1091;&#1081;&#1090;&#1077; Full &#1074;&#1077;&#1088;&#1089;&#1080;&#1102; &#1074; &#1090;&#1077;&#1095;&#1077;&#1085;&#1080;&#1077; &#1086;&#1075;&#1088;&#1072;&#1085;&#1080;&#1095;&#1077;&#1085;&#1085;&#1086;&#1075;&#1086; &#1089;&#1088;&#1086;&#1082;&#1072;.</p>
+                        <div class="price-display">
+                            <span class="price-amount">0 USD</span>
+                            <span class="price-note">7 &#1076;&#1085;&#1077;&#1081; &#1087;&#1088;&#1086;&#1073;&#1085;&#1086;&#1075;&#1086; &#1076;&#1086;&#1089;&#1090;&#1091;&#1087;&#1072;</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i><span>&#1055;&#1088;&#1086;&#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1091;&#1081;&#1090;&#1077; Full &#1092;&#1091;&#1085;&#1082;&#1094;&#1080;&#1080;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1041;&#1077;&#1079; &#1082;&#1088;&#1077;&#1076;&#1080;&#1090;&#1085;&#1086;&#1081; &#1082;&#1072;&#1088;&#1090;&#1099;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1048;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1085;&#1072; &#1086;&#1076;&#1085;&#1086;&#1084; &#1091;&#1089;&#1090;&#1088;&#1086;&#1081;&#1089;&#1090;&#1074;&#1077;</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>&#1047;&#1072;&#1087;&#1088;&#1086;&#1089; &#1083;&#1080;&#1094;&#1077;&#1085;&#1079;&#1080;&#1080; &#1074;&#1085;&#1091;&#1090;&#1088;&#1080; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103;</span></li>
+                        </ul>
+                        <a class="btn-sentralyx-start download-btn" href="https://github.com/hanifi111/sentralyx-beta/releases" target="_blank" rel="noopener">
+                            <i class="fas fa-download"></i>
+                            <span>&#1057;&#1082;&#1072;&#1095;&#1072;&#1090;&#1100; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1077;</span>
+                        </a>
+                    </article>
+                </div>
+            </div>
+
+            <section class="followup-box" aria-label="Sales note">
+                <h3>&#1054;&#1092;&#1086;&#1088;&#1084;&#1083;&#1077;&#1085;&#1080;&#1077; &#1087;&#1077;&#1088;&#1077;&#1085;&#1077;&#1089;&#1077;&#1085;&#1086; &#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1077;</h3>
+                <p>Free, Trial &#1080; Full &#1079;&#1072;&#1087;&#1088;&#1086;&#1089;&#1099; &#1085;&#1077; &#1086;&#1073;&#1088;&#1072;&#1073;&#1072;&#1090;&#1099;&#1074;&#1072;&#1102;&#1090;&#1089;&#1103; &#1085;&#1072; &#1089;&#1072;&#1081;&#1090;&#1077;. &#1042;&#1089;&#1077; &#1079;&#1072;&#1087;&#1091;&#1089;&#1082;&#1080; &#1076;&#1077;&#1083;&#1072;&#1102;&#1090;&#1089;&#1103; &#1074;&#1085;&#1091;&#1090;&#1088;&#1080; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; Sentralyx &#1089; ID &#1091;&#1089;&#1090;&#1088;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;.</p>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        const footerDiv = document.createElement('div');
+        footerDiv.id = 'footer-container';
+        document.body.appendChild(footerDiv);
+        fetch('../footer.html')
+            .then(async (response) => {
+                const buffer = await response.arrayBuffer();
+                return new TextDecoder('utf-8').decode(buffer);
+            })
+            .then((data) => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch((error) => console.error('Footer loading failed:', error));
+    </script>
+</body>
+</html>

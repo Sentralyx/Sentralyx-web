@@ -111,6 +111,10 @@ function normalizePath(pathname) {
 
 function getLanguageRedirectTarget(desiredLang, currentPathname) {
     const pathname = normalizePath(currentPathname);
+    const routeMap = {
+        '/fiyatlandirma/': { tr: '/fiyatlandirma/', en: '/pricing/', ru: '/pricing/' },
+        '/pricing/': { tr: '/fiyatlandirma/', en: '/pricing/', ru: '/pricing/' },
+    };
 
     const stripLangPrefix = (p) => {
         if (p.startsWith('/en/')) return '/' + p.slice(4);
@@ -119,11 +123,12 @@ function getLanguageRedirectTarget(desiredLang, currentPathname) {
     };
 
     const basePath = stripLangPrefix(pathname);
+    const mappedBasePath = routeMap[basePath]?.[desiredLang] || basePath;
 
-    // Known translated routes. Avoid redirecting to non-existent pages.
     const translated = {
         en: new Set([
             '/',
+            '/pricing/',
             '/faq.html',
             '/privacy.html',
             '/kvkk.html',
@@ -139,6 +144,7 @@ function getLanguageRedirectTarget(desiredLang, currentPathname) {
         ]),
         ru: new Set([
             '/',
+            '/pricing/',
             '/privacy.html',
             '/faq.html',
             '/kvkk.html',
@@ -155,18 +161,13 @@ function getLanguageRedirectTarget(desiredLang, currentPathname) {
     };
 
     if (desiredLang === 'tr') {
-        // Turkish lives at root (no prefix)
-        return basePath;
+        return mappedBasePath;
     }
 
     const allow = translated[desiredLang];
-    if (!allow || !allow.has(basePath)) return null;
-
-    // Ensure home maps to /<lang>/
-    if (basePath === '/') return `/${desiredLang}/`;
-
-    // Files like /faq.html -> /en/faq.html ; directories like /scanner/ -> /en/scanner/
-    return `/${desiredLang}${basePath}`;
+    if (!allow || !allow.has(mappedBasePath)) return null;
+    if (mappedBasePath === '/') return '/' + desiredLang + '/';
+    return `/${desiredLang}${mappedBasePath}`;
 }
 
 function applyLanguagePreference() {
@@ -175,7 +176,7 @@ function applyLanguagePreference() {
         const currentLang = getCurrentLanguageFromPath(pathname);
         const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
 
-        // URL prefix (/en/, /ru/) is authoritative — user picked that locale in the nav.
+        // URL prefix (/en/, /ru/) is authoritative â€” user picked that locale in the nav.
         if (pathname.startsWith('/en/') || pathname.startsWith('/ru/')) {
             localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang);
             return;
@@ -219,9 +220,9 @@ function patchLanguageLinks(root) {
     const basePath = stripLangPrefix(pathname);
 
     const buildHref = (lang) => {
-        if (lang === 'tr') return basePath;
         const target = getLanguageRedirectTarget(lang, window.location.pathname);
         if (target) return target;
+        if (lang === 'tr') return basePath;
         return `/${lang}/`;
     };
 
@@ -254,9 +255,9 @@ function patchLanguageSelector() {
     const basePath = stripLangPrefix(pathname);
 
     const buildHref = (lang) => {
-        if (lang === 'tr') return basePath;
         const target = getLanguageRedirectTarget(lang, window.location.pathname);
         if (target) return target;
+        if (lang === 'tr') return basePath;
         return `/${lang}/`;
     };
 
