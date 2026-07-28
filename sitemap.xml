@@ -76,8 +76,6 @@
 
   </url>
 
-
-
   <!-- Terminal Module Pages -->
 
   <url>
@@ -175,8 +173,6 @@
     <priority>0.65</priority>
 
   </url>
-
-
 
   <!-- English Pages -->
 
@@ -348,8 +344,6 @@
 
   </url>
 
-
-
   <!-- Russian Pages -->
 
   <url>
@@ -520,7 +514,6 @@
 
   </url>
 
-
   <!-- Turkish Informational Pages -->
 
   <url>
@@ -556,6 +549,120 @@
     <changefreq>monthly</changefreq>
 
     <priority>0.80</priority>
+
+  </url>
+
+  <!-- English Informational Pages (New) -->
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/what-is-sentralyx/</loc>
+
+    <lastmod>2026-07-28</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.80</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/what-sentralyx-does/</loc>
+
+    <lastmod>2026-07-28</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.75</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/security/</loc>
+
+    <lastmod>2026-07-28</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.75</priority>
+
+  </url>
+
+  <!-- Russian Informational Pages (New) -->
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/chto-takoe-sentralyx/</loc>
+
+    <lastmod>2026-07-28</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.80</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/chto-delaet-sentralyx/</loc>
+
+    <lastmod>2026-07-28</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.75</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/bezopasnost/</loc>
+
+    <lastmod>2026-07-28</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.75</priority>
+
+  </url>
+
+  <!-- Pricing Pages -->
+
+  <url>
+
+    <loc>https://www.sentralyx.com/fiyatlandirma/</loc>
+
+    <lastmod>2026-07-28</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/pricing/</loc>
+
+    <lastmod>2026-07-28</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.65</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/pricing/</loc>
+
+    <lastmod>2026-07-28</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.65</priority>
 
   </url>
 
