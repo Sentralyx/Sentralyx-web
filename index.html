@@ -1181,6 +1181,98 @@
 
         }
 
+    
+
+        /* Unified multilingual hero layout */
+        .hero {
+            padding: 124px 0 64px;
+            text-align: center;
+            position: relative;
+        }
+        .hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;
+        }
+        .hero h1 {
+            max-width: 980px;
+            font-size: clamp(2.4rem, 4.4vw, 3rem);
+            line-height: 1.15;
+            margin: 0 auto;
+            text-align: center;
+            font-weight: 700;
+        }
+        .hero .lead {
+            max-width: 720px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin: 0 auto;
+        }
+        .hero-buttons-wrapper {
+            display: flex;
+            gap: 16px;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .hero-main-btn,
+        .hero-secondary-btn {
+            width: 360px;
+            max-width: 100%;
+            min-height: 56px;
+            height: auto;
+            padding: 0 24px;
+            line-height: 1.2;
+            text-align: center;
+            white-space: normal;
+            box-sizing: border-box;
+        }
+        .terminal-img-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            margin: 50px auto 0;
+        }
+        @media (max-width: 768px) {
+            .hero {
+                padding: 96px 0 56px;
+            }
+            .hero h1 {
+                max-width: 100%;
+                font-size: 1.9rem !important;
+                line-height: 1.2;
+                margin: 0 auto;
+            }
+            .hero .lead {
+                max-width: 100%;
+                font-size: 1.05rem;
+                line-height: 1.7;
+                margin: 0 auto;
+            }
+            .hero-buttons-wrapper {
+                flex-direction: column;
+                gap: 12px;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+            .hero-main-btn,
+            .hero-secondary-btn {
+                width: 100%;
+                max-width: 360px;
+                min-height: 50px;
+                padding: 0 24px;
+                white-space: normal;
+            }
+            .terminal-img-wrapper {
+                max-width: 95vw;
+                margin: 50px auto 0;
+                border-radius: 12px;
+            }
+        }
+
     </style>
 
 </head>
@@ -1204,9 +1296,6 @@
                 </a>
                 <a href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download class="hero-secondary-btn">
                     <i class="fas fa-download"></i> Windows i&#231;in &#304;ndir
-                </a>
-                <a href="backtest/" class="hero-secondary-btn">
-                    <i class="fas fa-chart-line"></i> Backtest &#214;zelli&#287;ini &#304;ncele
                 </a>
                 <a href="https://t.me/Sentralyx" target="_blank" rel="noopener" class="hero-secondary-btn">
                     <i class="fab fa-telegram-plane"></i> Telegram Toplulu&#287;una Kat&#305;l
