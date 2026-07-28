@@ -4,218 +4,674 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.sentralyx.com/ru/scanner/">
-    <title>Sentralyx | Сканер рынка и детектор возможностей</title>
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/scanner/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/scanner/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/scanner/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/scanner/">
+<title>Sentralyx | Сканер рынка и детектор возможностей</title>
     <meta name="description" content="Сканер рынка Sentralyx с обновлениями в реальном времени, многотаймфреймным подтверждением тренда и скорингом сигналов на основе индикаторов.">
-    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <meta property="og:title" content="Sentralyx | Сканер рынка и детектор возможностей">
+    <meta property="og:description" content="Сканер рынка Sentralyx с обновлениями в реальном времени, многотаймфреймным подтверждением тренда и скорингом сигналов на основе индикаторов.">
+    <meta property="og:url" content="https://www.sentralyx.com/ru/scanner/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sentralyx.com/assets/logo.png">
+<link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
 
     <style>
-        .scanner-container { padding: 20px; background: var(--bg-dark); min-height: 100vh; }
-        .control-panel { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        .results-table { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; }
-        .table-custom { color: var(--text-main); margin-bottom: 0; }
-        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
-        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
-        .table-custom td { padding: 10px 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
-        .table-custom tbody tr:hover { background: rgba(52, 152, 219, 0.05); }
-        .signal-buy { color: var(--signal-buy); font-weight: 600; text-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
-        .signal-sell { color: var(--signal-sell); font-weight: 600; text-shadow: 0 0 10px rgba(231, 76, 60, 0.5); }
-        .signal-none { color: var(--text-secondary); font-weight: 500; }
-        .info-card { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
-        .info-card h6 { color: var(--accent-blue); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-        .progress-custom { background: rgba(42, 49, 66, 0.5); border-radius: 10px; height: 8px; }
-        .progress-bar-custom { background: linear-gradient(90deg, var(--accent-blue), var(--signal-buy)); border-radius: 10px; }
-        .filter-section { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        .tab-custom { border-bottom: 2px solid var(--border-color); }
-        .tab-custom .nav-link { color: var(--text-main); border: none; padding: 10px 20px; background: transparent; }
-        .tab-custom .nav-link.active { color: var(--accent-blue); background: transparent; border-bottom: 2px solid var(--accent-blue); }
-        .form-control-custom { background: rgba(42, 49, 66, 0.3); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 6px; }
-        .form-control-custom:focus { background: rgba(42, 49, 66, 0.5); border-color: var(--accent-blue); color: var(--text-main); box-shadow: 0 0 10px rgba(52, 152, 219, 0.2); }
-        .accordion-custom .accordion-button { background: var(--panel-dark); color: var(--text-main); border: 1px solid var(--border-color); }
-        .accordion-custom .accordion-button:not(.collapsed) { background: rgba(52, 152, 219, 0.1); color: var(--accent-blue); }
-        .accordion-custom .accordion-body { background: var(--panel-dark); color: var(--text-secondary); border: 1px solid var(--border-color); border-top: none; }
-        .status-indicator { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; }
-        .status-active { background: var(--signal-buy); box-shadow: 0 0 10px rgba(46, 204, 113, 0.5); }
-        .status-paused { background: #f39c12; box-shadow: 0 0 10px rgba(243, 156, 18, 0.5); }
-        .status-stopped { background: var(--signal-sell); box-shadow: 0 0 10px rgba(231, 76, 60, 0.5); }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-main);
-            font-size: 0.85rem;
+        .scanner-container {
+            padding: 20px;
+            background: var(--bg-dark);
+            min-height: 100vh;
         }
-        .chip i { color: var(--accent-blue); }
-
-        .strength-bar {
-            height: 8px;
-            border-radius: 999px;
-            background: rgba(42, 49, 66, 0.55);
+        
+        .control-panel {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .results-table {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             overflow: hidden;
         }
-        .strength-fill {
-            height: 100%;
-            border-radius: 999px;
-            background: linear-gradient(90deg, var(--signal-sell), #f39c12, var(--signal-buy));
-        }
-
-        .indicator-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-        .indicator-tag {
-            font-size: 0.75rem;
-            padding: 3px 8px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-secondary);
-            white-space: nowrap;
-        }
-
-        .btn-action {
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
+        
+        .table-custom {
             color: var(--text-main);
-            padding: 8px 12px;
-            transition: all 0.2s ease;
+            margin-bottom: 0;
         }
-        .btn-action:hover { transform: translateY(-2px); border-color: var(--accent-blue); box-shadow: 0 8px 16px rgba(52, 152, 219, 0.15); }
+        
+        .table-custom thead {
+            background: rgba(52, 152, 219, 0.1);
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        
+        .table-custom th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            padding: 12px;
+            border: none;
+        }
+        
+        .table-custom td {
+            padding: 10px 12px;
+            border: none;
+            border-bottom: 1px solid rgba(42, 49, 66, 0.3);
+            vertical-align: middle;
+        }
+        
+        .table-custom tbody tr:hover {
+            background: rgba(52, 152, 219, 0.05);
+        }
+        
+        .signal-buy {
+            color: var(--signal-buy);
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+        }
+        
+        .signal-sell {
+            color: var(--signal-sell);
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+        }
+        
+        .signal-none {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .info-card {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .info-card h6 {
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .progress-custom {
+            background: rgba(42, 49, 66, 0.5);
+            border-radius: 10px;
+            height: 8px;
+        }
+        
+        .progress-bar-custom {
+            background: linear-gradient(90deg, var(--accent-blue), var(--signal-buy));
+            border-radius: 10px;
+        }
+        
+        .filter-section {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .tab-custom {
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .tab-custom .nav-link {
+            color: var(--text-main);
+            border: none;
+            padding: 10px 20px;
+            background: transparent;
+        }
+        
+        .tab-custom .nav-link.active {
+            color: var(--accent-blue);
+            background: transparent;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        
+        .form-control-custom {
+            background: rgba(42, 49, 66, 0.3);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 6px;
+        }
+        
+        .form-control-custom:focus {
+            background: rgba(42, 49, 66, 0.5);
+            border-color: var(--accent-blue);
+            color: var(--text-main);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+        }
+        
+        .accordion-custom .accordion-button {
+            background: var(--panel-dark);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+        
+        .accordion-custom .accordion-button:not(.collapsed) {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--accent-blue);
+        }
+        
+        .accordion-custom .accordion-body {
+            background: var(--bg-dark);
+            color: var(--text-main);
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-active { background: var(--signal-buy); }
+        .status-paused { background: #f39c12; }
+        .status-stopped { background: var(--signal-sell); }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .scanner-container {
+                padding: 20px 15px;
+            }
+            
+            .control-panel {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+            }
+            
+            .filter-section {
+                margin-bottom: 20px;
+            }
+            
+            .table-custom {
+                font-size: 14px;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            
+            .table-custom th,
+            .table-custom td {
+                padding: 8px 6px;
+                font-size: 13px;
+            }
+            
+            .info-card {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .btn-sentralyx {
+                padding: 12px 20px;
+                font-size: 14px;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+            
+            .progress-custom {
+                height: 6px;
+                margin-bottom: 10px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .lead {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+        }
+        
+        /* Prevent Horizontal Scroll */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+            min-width: 320px;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        /* Touch Targets for Mobile */
+        @media (max-width: 768px) {
+            .btn, .form-control, .form-select {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            .table-custom tbody tr {
+                cursor: pointer;
+            }
+            
+            .table-custom td {
+                padding: 12px 8px;
+            }
+        }
     </style>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Ana Sayfa",
+      "item": "https://www.sentralyx.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Kripto Scanner",
+      "item": "https://www.sentralyx.com/scanner/"
+    }
+  ]
+}
+    </script>
+
 </head>
 <body>
-
     <header id="main-header"></header>
-
+    
     <main class="scanner-container">
-        <div class="container">
-            <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3">
-                <div>
-                    <h1 class="text-main mb-1" style="font-weight: 900;">Сканер рынка и детектор возможностей</h1>
-                    <div class="text-secondary">Скоринг сигналов · MTF подтверждение · статус индикаторов · экспорт отчётов</div>
+        <div class="text-center mb-4">
+            <h1 class="text-main">Крипто-сканер и инструмент анализа рынка</h1>
+            <p class="text-secondary">Binance ve OKX &#252;zerinde kripto sinyal tarama, Binance coin tarama ve MTF analiz ile piyasa ko&#351;ullar&#305;n&#305; tek ekrandan takip edin.</p>
+        </div>
+        
+        <!-- Control Buttons -->
+        <div class="control-panel">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div class="d-flex gap-2">
+                    <button class="btn-sentralyx-start" onclick="startScanner()">
+                        <i class="fas fa-play me-2"></i>BAŞLAT
+                    </button>
+                    <button class="btn-sentralyx-pause" onclick="pauseScanner()">
+                        <i class="fas fa-pause me-2"></i>DURAKLAT
+                    </button>
+                    <button class="btn-sentralyx-stop" onclick="stopScanner()">
+                        <i class="fas fa-stop me-2"></i>DURDUR
+                    </button>
                 </div>
-                <div class="d-flex gap-2 flex-wrap">
-                    <button class="btn btn-action" onclick="exportCsv()" data-bs-toggle="tooltip" title="Экспортировать результаты сканирования в CSV">
-                        <i class="fas fa-file-export me-2"></i>Экспорт CSV
-                    </button>
-                    <button class="btn btn-action" onclick="stopScanner()" data-bs-toggle="tooltip" title="Остановить и очистить таблицу">
-                        <i class="fas fa-stop me-2"></i>Сброс
-                    </button>
+                <div class="d-flex gap-2 align-items-center">
+                    <span class="status-indicator status-stopped"></span>
+                    <span class="text-main">Статус: <span id="status-text">Остановлено</span></span>
                 </div>
             </div>
+        </div>
 
-            <div class="control-panel">
-                <div class="row g-3 align-items-end">
-                    <div class="col-md-3">
-                        <label class="text-secondary small mb-1">Интервал</label>
-                        <select class="form-select form-control-custom" id="interval-select">
-                            <option>1m</option>
-                            <option selected>5m</option>
-                            <option>15m</option>
-                            <option>1h</option>
-                            <option>4h</option>
-                            <option>1D</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="text-secondary small mb-1">Биржа</label>
-                        <select class="form-select form-control-custom" id="exchange-select">
-                            <option selected>OKX</option>
-                            <option>Binance</option>
-                            <option>Bybit</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="text-secondary small mb-1">Класс активов</label>
-                        <select class="form-select form-control-custom" id="asset-class-select">
-                            <option selected>USDT‑Margined</option>
-                            <option>COIN‑Margined</option>
-                            <option>Spot</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 d-flex gap-2">
-                        <button class="btn btn-action w-100" onclick="startScanner()" data-bs-toggle="tooltip" title="Запустить сканирование (демо)">
-                            <i class="fas fa-play me-2"></i>Старт
-                        </button>
-                        <button class="btn btn-action w-100" onclick="pauseScanner()" data-bs-toggle="tooltip" title="Пауза (демо)">
-                            <i class="fas fa-pause me-2"></i>Пауза
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row g-3 mb-3">
-                <div class="col-md-4">
-                    <div class="info-card">
-                        <h6><span class="status-indicator status-stopped" id="status-dot"></span>Статус сессии</h6>
-                        <div class="text-main fw-bold" id="scan-status">Ожидание</div>
-                        <div class="text-secondary small mt-1">Последнее обновление: <span class="text-main fw-bold" id="last-refresh">—</span></div>
-                        <div class="mt-3">
-                            <div class="d-flex justify-content-between text-secondary small mb-1">
-                                <span>Прогресс сканирования</span>
-                                <span class="text-main fw-bold" id="scan-progress-label">0%</span>
+        <div class="row">
+            <!-- Results Table Section (Left/Wide) -->
+            <div class="col-lg-8">
+                <!-- Summary Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <h6>Сканирование Özeti</h6>
+                            <div class="row text-center">
+                                <div class="col-4">
+                                    <div class="text-main fw-bold">247</div>
+                                    <div class="text-secondary small">Sembol</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="text-main fw-bold">12</div>
+                                    <div class="text-secondary small">Sinyal</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="text-main fw-bold">3</div>
+                                    <div class="text-secondary small">Tur</div>
+                                </div>
                             </div>
-                            <div class="progress progress-custom">
-                                <div class="progress-bar progress-bar-custom" id="scan-progress" style="width: 0%"></div>
+                            <div class="mt-3">
+                                <div class="d-flex justify-content-between small mb-1">
+                                    <span class="text-secondary">İlerleme</span>
+                                    <span class="text-main">75%</span>
+                                </div>
+                                <div class="progress progress-custom">
+                                    <div class="progress-bar progress-bar-custom" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <h6>Son Tur Bilgisi</h6>
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <div class="text-main fw-bold">2.3s</div>
+                                    <div class="text-secondary small">Süre</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-main fw-bold">107</div>
+                                    <div class="text-secondary small">Coin/sn</div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <div class="small text-secondary">
+                                    <i class="fas fa-clock me-1"></i>
+                                    Son güncelleme: 14:32:15
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-8">
-                    <div class="filter-section">
-                        <ul class="nav nav-tabs tab-custom" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#filters" type="button" role="tab">Параметры</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#session" type="button" role="tab">Сессия</button>
-                            </li>
-                        </ul>
-                        <div class="tab-content pt-3">
-                            <div class="tab-pane fade show active" id="filters" role="tabpanel">
-                                <div class="d-flex flex-wrap gap-2">
-                                    <span class="chip" id="chip-interval"><i class="fas fa-clock"></i><span>Интервал: 5m</span></span>
-                                    <span class="chip" id="chip-exchange"><i class="fas fa-building-columns"></i><span>Биржа: OKX</span></span>
-                                    <span class="chip" id="chip-asset"><i class="fas fa-layer-group"></i><span>Класс: USDT‑Margined</span></span>
-                                    <span class="chip" data-bs-toggle="tooltip" title="Скоринг агрегирует несколько индикаторов и фильтров">
-                                        <i class="fas fa-chart-simple"></i><span>Модель: Signal Scoring</span>
-                                    </span>
-                                </div>
-                                <div class="text-secondary small mt-3">Подсказка: используйте фильтрацию сигналов по силе, затем открывайте детали по индикаторам.</div>
+                <!-- Results Table -->
+                <div class="results-table">
+                    <div class="p-3 border-bottom border-custom">
+                        <h5 class="mb-0 text-main">
+                            <i class="fas fa-search me-2"></i>Сканирование Sonuçları
+                        </h5>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-custom">
+                            <thead>
+                                <tr>
+                                    <th>Sembol</th>
+                                    <th>Fiyat</th>
+                                    <th>CMF</th>
+                                    <th>RSI</th>
+                                    <th>SMI</th>
+                                    <th>Sinyal</th>
+                                    <th>Sebep</th>
+                                </tr>
+                            </thead>
+                            <tbody id="results-tbody">
+                                <tr>
+                                    <td><strong>BTCUSDT</strong></td>
+                                    <td>43,256.78</td>
+                                    <td>0.23</td>
+                                    <td>65.4</td>
+                                    <td>42.1</td>
+                                    <td><span class="signal-buy">BUY</span></td>
+                                    <td class="text-secondary small">RSI oversold + CMF pozitif</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ETHUSDT</strong></td>
+                                    <td>2,245.32</td>
+                                    <td>-0.15</td>
+                                    <td>72.8</td>
+                                    <td>58.3</td>
+                                    <td><span class="signal-sell">SELL</span></td>
+                                    <td class="text-secondary small">RSI overbought + CMF negatif</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ADAUSDT</strong></td>
+                                    <td>0.582</td>
+                                    <td>0.08</td>
+                                    <td>54.2</td>
+                                    <td>35.7</td>
+                                    <td><span class="signal-none">NONE</span></td>
+                                    <td class="text-secondary small">Indikatörler nötr</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SOLUSDT</strong></td>
+                                    <td>98.45</td>
+                                    <td>0.31</td>
+                                    <td>68.9</td>
+                                    <td>45.2</td>
+                                    <td><span class="signal-buy">BUY</span></td>
+                                    <td class="text-secondary small">SMI dip + CMF güçlü</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AVAXUSDT</strong></td>
+                                    <td>35.67</td>
+                                    <td>-0.22</td>
+                                    <td>76.3</td>
+                                    <td>62.8</td>
+                                    <td><span class="signal-sell">SELL</span></td>
+                                    <td class="text-secondary small">RSI extreme + CMF zayıf</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters and Settings Section (Right/Narrow) -->
+            <div class="col-lg-4">
+                <!-- Filter Tabs -->
+                <div class="filter-section">
+                    <ul class="nav nav-tabs tab-custom" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#scan-tab">Сканирование</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#backtest-tab">Backtest</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content mt-3">
+                        <!-- Scan Tab -->
+                        <div class="tab-pane fade show active" id="scan-tab">
+                            <div class="mb-3">
+	                                <label class="form-label text-main small">Стратегия</label>
+	                                <select class="form-control form-control-custom">
+	                                    <option value="Majority Consensus">Çoğunluk Подтверждениеı</option>
+	                                    <option value="Scoring System">Skorlama Sistemi</option>
+	                                    <option value="Full Consensus">Tam Mutabakat</option>
+	                                </select>
                             </div>
-                            <div class="tab-pane fade" id="session" role="tabpanel">
-                                <div class="accordion accordion-custom" id="session-accordion">
-                                    <div class="accordion-item" style="background: transparent; border: none;">
-                                        <h2 class="accordion-header" id="headingOne">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                                                Параметры демо‑сканирования
-                                            </button>
-                                        </h2>
-                                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#session-accordion">
-                                            <div class="accordion-body">
-                                                <div class="row g-3">
-                                                    <div class="col-md-4">
-                                                        <div class="text-secondary small">Минимальная сила сигнала</div>
-                                                        <div class="text-main fw-bold">70+ (BUY) / 30− (SELL)</div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="text-secondary small">Refresh</div>
-                                                        <div class="text-main fw-bold">~2 сек</div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="text-secondary small">Фильтры индикаторов</div>
-                                                        <div class="text-main fw-bold">RSI · BB · CMF</div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-secondary small mt-2">Это демонстрационный интерфейс. Реальная интеграция подключается через backend/engine.</div>
-                                            </div>
-                                        </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label text-main small">Период (таймфрейм)</label>
+                                <select class="form-control form-control-custom">
+                                    <option>1m</option>
+                                    <option>5m</option>
+                                    <option selected>15m</option>
+                                    <option>1h</option>
+                                    <option>4h</option>
+                                    <option>1d</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label text-main small">Max Round</label>
+                                <input type="number" class="form-control form-control-custom" value="0" placeholder="0 = sınırsız">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="show-row" checked>
+                                    <label class="form-check-label text-main small" for="show-row">
+                                        Sıra göster
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Smart-Trend Filter -->
+                            <div class="mb-3">
+                                <h6 class="text-main small mb-3">Smart-Trend Filter (MTF Подтверждениеı)</h6>
+                                <div class="mb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="mtf-filter">
+                                        <label class="form-check-label text-main small" for="mtf-filter">
+                                            Использовать фильтр старшего таймфрейма
+                                        </label>
+                                    </div>
+                                </div>
+                                <select class="form-control form-control-custom">
+                                    <option>1h</option>
+                                    <option selected>4h</option>
+                                    <option>1d</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Backtest Tab -->
+                        <div class="tab-pane fade" id="backtest-tab">
+                            <div class="mb-3">
+                                <label class="form-label text-main small">Süre</label>
+                                <select class="form-control form-control-custom">
+                                    <option>30 gün</option>
+                                    <option selected>60 gün</option>
+                                    <option>90 gün</option>
+                                    <option>180 gün</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label text-main small">Сканирование</label>
+                                <select class="form-control form-control-custom">
+                                    <option selected>Hızlı Сканирование</option>
+                                    <option>Detaylı Сканирование</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label text-main small">Başarı %</label>
+                                <input type="number" class="form-control form-control-custom" value="65" min="0" max="100">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label text-main small">İşlem</label>
+                                <input type="number" class="form-control form-control-custom" value="10" min="1">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label text-main small">Candle</label>
+                                <input type="number" class="form-control form-control-custom" value="24" min="1">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="candidate-only">
+                                    <label class="form-check-label text-main small" for="candidate-only">
+                                        Sadece aday coinler
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Panel -->
+                <div class="info-card">
+                    <h6>Durum Paneli</h6>
+                    <div class="mb-2">
+                        <div class="d-flex justify-content-between small">
+                            <span class="text-secondary">Сканирование hızı</span>
+                            <span class="text-main">107 coin/sn</span>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="d-flex justify-content-between small">
+                            <span class="text-secondary">Bulunan sinyal</span>
+                            <span class="text-main">12 (5 BUY, 7 SELL)</span>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="d-flex justify-content-between small">
+                            <span class="text-secondary">Açık pozisyon</span>
+                            <span class="text-main">3 (+2.45%)</span>
+                        </div>
+                    </div>
+                    <div class="mt-3 p-2 bg-dark bg-opacity-25 rounded">
+                        <div class="small text-secondary">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Активная стратегия: Çoğunluk Подтверждениеı
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Information Cards Section -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h5 class="text-main mb-3">
+                    <i class="fas fa-question-circle me-2"></i>Teknik Bilgiler
+                </h5>
+                <div class="accordion accordion-custom" id="infoAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#smartTrend">
+                                Smart-Trend Filter (MTF Подтверждениеı) Nedir?
+                            </button>
+                        </h2>
+                        <div id="smartTrend" class="accordion-collapse collapse show" data-bs-parent="#infoAccordion">
+                            <div class="accordion-body">
+                                <p>Smart-Trend Filter, üst zaman dilimindeki trend yönünü analiz ederek mevcut sinyalleri filtreleyen gelişmiş bir sistemdir.</p>
+                                <ul class="text-secondary">
+                                    <li>Üst zaman dilimi (1h, 4h, 1d) trendini otomatik olarak algılar</li>
+                                    <li>Ancak trend yönüyle uyumlu sinyallere izin verir</li>
+                                    <li>Yanlış sinyal oranını %60'a kadar azaltabilir</li>
+                                    <li>Özellikle volatil piyasalarda etkili koruma sağlar</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#indicators">
+                                Kullanılan İndikatörler
+                            </button>
+                        </h2>
+                        <div id="indicators" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6 class="text-accent-blue">CMF (Chaikin Money Flow)</h6>
+                                        <p class="text-secondary small">Hacim aırlıklı akış göstergesi. 0.25 üzeri alış, -0.25 altı satış sinyali.</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="text-accent-blue">RSI (Relative Strength Index)</h6>
+                                        <p class="text-secondary small">Momentum göstergesi. 70 üzeri overbought, 30 altı oversold.</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="text-accent-blue">SMI (Stochastic Momentum Index)</h6>
+                                        <p class="text-secondary small">Hızlı momentum göstergesi. +40 üzeri alış, -40 altı satış.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#strategies">
+                                Стратегия Türleri
+                            </button>
+                        </h2>
+                        <div id="strategies" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6 class="text-accent-blue">Çoğunluk Подтверждениеı</h6>
+                                        <p class="text-secondary small">Çoğunluk oylaması sistemi. 3 indikatörden 2'si aynı yönde sinyal verirse tetiklenir.</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="text-accent-blue">Skorlama Sistemi</h6>
+                                        <p class="text-secondary small">Puanlama sistemi. Her indikatöre ağırlık verilir, toplam puan eşik değerini geçerse sinyal.</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="text-accent-blue">Tam Mutabakat</h6>
+                                        <p class="text-secondary small">Tam konsensüs. Tüm indikatörler aynı yönde sinyal vermelidir. En yüksek doğruluk.</p>
                                     </div>
                                 </div>
                             </div>
@@ -223,277 +679,73 @@
                     </div>
                 </div>
             </div>
-
-            <div class="results-table">
-                <div class="table-responsive">
-                    <table class="table table-custom">
-                        <thead>
-                            <tr>
-                                <th>Символ</th>
-                                <th>Цена</th>
-                                <th>Изм. 24ч</th>
-                                <th>Сила сигнала</th>
-                                <th>Статус индикаторов</th>
-                                <th>Действие</th>
-                            </tr>
-                        </thead>
-                        <tbody id="scanner-body"></tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </main>
 
-    <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/main.js"></script>
-
     <script>
-        const state = {
-            status: 'stopped',
-            statusText: 'Ожидание',
-            progress: 0,
-            startedAt: null,
-            tickTimer: null,
-            elapsedTimer: null,
-            rows: [],
-        };
-
-        function initTooltips() {
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
-        }
-
-        function syncChips() {
-            const interval = document.getElementById('interval-select')?.value || '5m';
-            const exchange = document.getElementById('exchange-select')?.value || 'OKX';
-            const assetClass = document.getElementById('asset-class-select')?.value || 'USDT‑Margined';
-            document.getElementById('chip-interval').querySelector('span').textContent = `Интервал: ${interval}`;
-            document.getElementById('chip-exchange').querySelector('span').textContent = `Биржа: ${exchange}`;
-            document.getElementById('chip-asset').querySelector('span').textContent = `Класс: ${assetClass}`;
-        }
-
-        function updateStatus(next, text) {
-            state.status = next;
-            state.statusText = text;
-            document.getElementById('scan-status').textContent = text;
-            const dot = document.getElementById('status-dot');
-            dot.classList.remove('status-active', 'status-paused', 'status-stopped');
-            dot.classList.add(next === 'active' ? 'status-active' : next === 'paused' ? 'status-paused' : 'status-stopped');
-        }
-
-        function updateSessionUi() {
-            const pct = Math.round(state.progress);
-            document.getElementById('scan-progress-label').textContent = `${pct}%`;
-            document.getElementById('scan-progress').style.width = `${pct}%`;
-        }
-
-        function seedRows() {
-            state.rows = [
-                { symbol: 'BTC/USDT', price: 68500, change24h: 1.9, strength: 74, rsi: '57', bb: 'Inside', cmf: '+0.14', trend: 'Bullish' },
-                { symbol: 'ETH/USDT', price: 3620, change24h: -0.8, strength: 46, rsi: '49', bb: 'Inside', cmf: '+0.03', trend: 'Neutral' },
-                { symbol: 'SOL/USDT', price: 146.8, change24h: 3.2, strength: 82, rsi: '63', bb: 'Upper', cmf: '+0.22', trend: 'Bullish' },
-                { symbol: 'XRP/USDT', price: 0.52, change24h: -2.1, strength: 28, rsi: '36', bb: 'Lower', cmf: '-0.18', trend: 'Bearish' },
-            ].map((r) => ({ ...r, signal: r.strength >= 70 ? 'BUY' : r.strength <= 30 ? 'SELL' : 'NONE' }));
-        }
-
-        function renderRows() {
-            const body = document.getElementById('scanner-body');
-            if (!state.rows.length) {
-                body.innerHTML = `
-                    <tr>
-                        <td colspan="6" class="text-center text-secondary py-4">
-                            <i class="fas fa-radar me-2"></i>Сигналы не обнаружены. Запустите сканирование…
-                        </td>
-                    </tr>
-                `;
-                return;
-            }
-
-            body.innerHTML = state.rows.map((r) => {
-                const signalClass = r.signal === 'BUY' ? 'signal-buy' : r.signal === 'SELL' ? 'signal-sell' : 'signal-none';
-                const tags = [
-                    `RSI: ${r.rsi}`,
-                    `BB: ${r.bb}`,
-                    `CMF: ${r.cmf}`,
-                    `Trend: ${r.trend}`,
-                ].map((t) => `<span class="indicator-tag">${t}</span>`).join('');
-
-                return `
-                    <tr>
-                        <td class="text-main fw-bold">${r.symbol}</td>
-                        <td>${r.price.toFixed(2)}</td>
-                        <td class="${r.change24h >= 0 ? 'signal-buy' : 'signal-sell'}">${r.change24h.toFixed(2)}%</td>
-                        <td>
-                            <div class="d-flex align-items-center gap-2">
-                                <div class="strength-bar flex-grow-1"><div class="strength-fill" style="width:${r.strength}%"></div></div>
-                                <span class="text-main fw-bold" style="min-width: 42px;">${r.strength}</span>
-                                <span class="${signalClass}" style="min-width: 52px;">${r.signal}</span>
-                            </div>
-                        </td>
-                        <td><div class="indicator-tags">${tags}</div></td>
-                        <td class="text-nowrap">
-                            <button class="btn btn-sm btn-outline-light" onclick="openInTerminal('${r.symbol}')">
-                                <i class="fas fa-arrow-up-right-from-square me-2"></i>Открыть
-                            </button>
-                            <button class="btn btn-sm btn-outline-light ms-2" onclick="showDetails('${r.symbol}')">
-                                <i class="fas fa-circle-info me-2"></i>Детали
-                            </button>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
-        }
-
-        function tick() {
-            if (state.status !== 'active') return;
-            state.progress = Math.min(100, state.progress + 3);
-            document.getElementById('last-refresh').textContent = new Date().toLocaleTimeString('ru-RU', { hour12: false });
-            if (!state.rows.length) seedRows();
-
-            const i = Math.floor(Math.random() * state.rows.length);
-            const row = state.rows[i];
-            row.price = Math.max(0.01, row.price + (Math.random() - 0.5) * row.price * 0.002);
-            row.change24h = Math.max(-25, Math.min(25, row.change24h + (Math.random() - 0.5) * 0.8));
-            row.strength = Math.max(0, Math.min(100, Math.round(row.strength + (Math.random() - 0.5) * 10)));
-            row.signal = row.strength >= 70 ? 'BUY' : row.strength <= 30 ? 'SELL' : 'NONE';
-
-            renderRows();
-            updateSessionUi();
-
-            if (state.progress >= 100) {
-                pauseScanner();
-                toast('Сканирование завершено. Ожидание следующего запуска.', 'info');
-            }
-        }
-
+        // Scanner control functions
         function startScanner() {
-            syncChips();
-            if (!state.startedAt) state.startedAt = Date.now();
-            state.progress = state.progress === 100 ? 0 : state.progress;
-            updateStatus('active', 'Сканирование выполняется…');
-            clearInterval(state.tickTimer);
-            state.tickTimer = setInterval(tick, 2000);
-            if (!state.rows.length) seedRows();
-            renderRows();
-            updateSessionUi();
+            updateStatus('active', 'Сканирование yapılıyor...');
+            simulateScanning();
         }
-
+        
         function pauseScanner() {
-            updateStatus('paused', 'Пауза. Обновления остановлены.');
-            clearInterval(state.tickTimer);
-            state.tickTimer = null;
+            updateStatus('paused', 'Паузаıldı');
         }
-
+        
         function stopScanner() {
-            updateStatus('stopped', 'Ожидание');
-            clearInterval(state.tickTimer);
-            state.tickTimer = null;
-            state.startedAt = null;
-            state.progress = 0;
-            state.rows = [];
-            document.getElementById('last-refresh').textContent = '—';
-            renderRows();
-            updateSessionUi();
+            updateStatus('stopped', 'Остановлено');
         }
-
-        function openInTerminal(symbol) {
-            const msg = `Открыть в терминале: ${symbol} (демо-действие)`;
-            const alertBox = document.createElement('div');
-            alertBox.className = 'alert alert-success mt-3';
-            alertBox.style.background = 'rgba(47, 177, 127, 0.08)';
-            alertBox.style.border = '1px solid rgba(47, 177, 127, 0.35)';
-            alertBox.style.borderRadius = '10px';
-            alertBox.innerHTML = `<i class="fas fa-check-circle me-2"></i>${msg}`;
-            document.querySelector('.results-table')?.after(alertBox);
-            setTimeout(() => alertBox.remove(), 2500);
+        
+        function updateStatus(status, text) {
+            const statusIndicator = document.querySelector('.status-indicator');
+            const statusText = document.getElementById('status-text');
+            
+            statusIndicator.className = 'status-indicator status-' + status;
+            statusText.textContent = text;
         }
-
-        function showDetails(symbol) {
-            const row = state.rows.find((r) => r.symbol === symbol);
-            const details = row
-                ? `RSI: ${row.rsi} · BB: ${row.bb} · CMF: ${row.cmf} · Trend: ${row.trend}`
-                : 'Данные недоступны.';
-            const alertBox = document.createElement('div');
-            alertBox.className = 'alert alert-secondary mt-3';
-            alertBox.style.background = 'rgba(42, 49, 66, 0.35)';
-            alertBox.style.border = '1px solid var(--border-color)';
-            alertBox.style.borderRadius = '10px';
-            alertBox.innerHTML = `<i class="fas fa-circle-info me-2"></i><strong>${symbol}</strong> — ${details}`;
-            document.querySelector('.results-table')?.after(alertBox);
-            setTimeout(() => alertBox.remove(), 3500);
+        
+        function simulateScanning() {
+            const tbody = document.getElementById('results-tbody');
+            const symbols = ['DOTUSDT', 'LINKUSDT', 'MATICUSDT', 'UNIUSDT', 'ATOMUSDT'];
+            
+            setInterval(() => {
+                if (document.getElementById('status-text').textContent === 'Сканирование yapılıyor...') {
+                    // Simulate new scan results
+                    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+                    const randomPrice = (Math.random() * 100 + 1).toFixed(2);
+                    const signals = ['BUY', 'SELL', 'NONE'];
+                    const randomSignal = signals[Math.floor(Math.random() * signals.length)];
+                    
+                    // Update first row with new data
+                    if (tbody.firstChild) {
+                        const firstRow = tbody.firstChild;
+                        firstRow.cells[0].textContent = randomSymbol;
+                        firstRow.cells[1].textContent = randomPrice;
+                        
+                        const signalCell = firstRow.cells[5];
+                        signalCell.innerHTML = `<span class="signal-${randomSignal.toLowerCase()}">${randomSignal}</span>`;
+                    }
+                }
+            }, 3000);
         }
-
-        function exportCsv() {
-            if (!state.rows.length) {
-                const alertBox = document.createElement('div');
-                alertBox.className = 'alert alert-warning mt-3';
-                alertBox.style.background = 'rgba(255, 193, 7, 0.08)';
-                alertBox.style.border = '1px solid rgba(255, 193, 7, 0.35)';
-                alertBox.style.borderRadius = '10px';
-                alertBox.innerHTML = `<i class="fas fa-triangle-exclamation me-2"></i>Нет данных для экспорта. Запустите сканирование.`;
-                document.querySelector('.results-table')?.after(alertBox);
-                setTimeout(() => alertBox.remove(), 2500);
-                return;
-            }
-
-            const header = ['Symbol', 'Price', '24h Change', 'Signal', 'Strength', 'RSI', 'BB', 'CMF', 'Trend'];
-            const lines = [
-                header.join(','),
-                ...state.rows.map((r) => [
-                    r.symbol,
-                    r.price.toFixed(2),
-                    r.change24h.toFixed(2),
-                    r.signal,
-                    r.strength,
-                    r.rsi,
-                    r.bb,
-                    r.cmf,
-                    r.trend,
-                ].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',')),
-            ];
-
-            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `sentralyx-scanner-ru-${new Date().toISOString().slice(0, 10)}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            URL.revokeObjectURL(url);
-        }
-
-        function toast(message, type) {
-            const alert = document.createElement('div');
-            const bg = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
-            alert.className = `alert ${bg} position-fixed top-0 end-0 m-3`;
-            alert.style.zIndex = '9999';
-            alert.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>${message}`;
-            document.body.appendChild(alert);
-            setTimeout(() => alert.remove(), 2400);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initTooltips();
-            syncChips();
-            renderRows();
-            updateSessionUi();
-            document.getElementById('interval-select')?.addEventListener('change', syncChips);
-            document.getElementById('exchange-select')?.addEventListener('change', syncChips);
-            document.getElementById('asset-class-select')?.addEventListener('change', syncChips);
-        });
     </script>
 
+    <div id="footer-container"></div>
+
     <script>
+        // Load footer from components/footer.html
         fetch('../footer.html')
             .then(async (response) => {
                 const buffer = await response.arrayBuffer();
                 return new TextDecoder('utf-8').decode(buffer);
             })
-            .then(data => { document.getElementById('footer-container').innerHTML = data; })
-            .catch(error => console.error('Footer loading failed:', error));
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>
-

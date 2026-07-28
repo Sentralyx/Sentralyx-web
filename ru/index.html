@@ -1,174 +1,1548 @@
 <!DOCTYPE html>
+
 <html lang="ru">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.sentralyx.com/ru/">
     <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/">
     <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/">
     <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/">
     <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/">
+
+    
+
     <title>Sentralyx | Криптовалютный бот, автоматическая торговля и бэктестинг</title>
-    <meta name="description" content="Sentralyx — настольный терминал для сканирования рынков Binance и OKX, создания стратегий без программирования, бэктестинга, управления рисками и отслеживания позиций.">
+
+    <meta name="description" content="Sentralyx — настольный терминал для рынков Binance и OKX: сканирование криптовалютного рынка, создание стратегий без программирования, бэктестинг, настройка риск-параметров и отслеживание позиций.">
+
+    <meta name="keywords" content="криптовалютный бот, автоматический торговый бот, бот Binance, криптовалютный бот для покупки и продажи, торговый терминал, алгоритмическая торговля, бэктестинг, MTF-анализ, управление рисками, сканирование рынка, тестирование стратегий">
+
+
+
+    <!-- JSON-LD Software Schema for SEO -->
+
     <script type="application/ld+json">
-    {
+{
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Sentralyx",
-        "description": "Настольный терминал для сканирования криптовалютного рынка, создания торговых стратегий без программирования, управления рисками, отслеживания позиций и бэктестинга.",
+        "description": "Настольный терминал для сканирования криптовалютного рынка, создания торговых стратегий без программирования, настройки риск-параметров, отслеживания позиций и бэктестинга.",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Windows",
         "featureList": [
-            "Сканирование криптовалютного рынка",
-            "Создание стратегий без программирования",
-            "Управление рисками",
-            "Бэктестинг",
-            "MTF-анализ",
-            "Отслеживание открытых позиций"
+                "Сканирование криптовалютного рынка",
+                "Создание стратегий без программирования",
+                "Настройка риск-параметров",
+                "Бэктестинг",
+                "MTF-анализ",
+                "Отслеживание открытых позиций",
+                "Отчёты по сделкам"
         ],
         "url": "https://www.sentralyx.com/ru/",
-        "author": { "@type": "Organization", "name": "Sentralyx" },
+        "author": {
+                "@type": "Organization",
+                "name": "Sentralyx"
+        },
         "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
+                "@type": "Offer",
+                "name": "Sentralyx Free",
+                "price": "0",
+                "priceCurrency": "USD"
         }
-    }
+}
     </script>
-    <meta property="og:title" content="Sentralyx | Криптовалютный бот и терминал автоматической торговли">
-    <meta property="og:description" content="Сканирование рынков Binance и OKX, стратегии без программирования, бэктестинг, риск-менеджмент и отслеживание позиций в одном Windows-терминале.">
+
+
+
+    <meta property="og:title" content="Торговый терминал Sentralyx">
+
+    <meta property="og:description" content="Сканируйте рынки, тестируйте стратегии и управляйте торговыми правилами в одном настольном терминале.">
+
     <meta property="og:url" content="https://www.sentralyx.com/ru/">
+
     <meta property="og:type" content="website">
+
     <meta property="og:image" content="https://www.sentralyx.com/scanner.png">
+
+    
+
     <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
+
+    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="stylesheet" href="../assets/css/style.css">
+
+    
+
     <style>
-        .hero { padding: 140px 0 80px; background: radial-gradient(circle at top right, rgba(47, 177, 127, 0.15), transparent); text-align: center; position: relative; }
-        .hero .container { display: flex; flex-direction: column; align-items: center; gap: 30px; }
-        .hero h1 { font-size: 3.3rem; font-weight: 800; background: linear-gradient(45deg, var(--accent-green), var(--accent-blue)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0; }
-        .hero .lead { max-width: 920px; line-height: 1.7; }
+
+        
+
+        /* Override Bootstrap with Sentralyx variables */
+
+        .navbar {
+
+            background: rgba(11, 17, 27, 0.95);
+
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid var(--border-color);
+
+        }
+
+        .navbar-brand img {
+
+            height: 40px;
+
+            margin-right: 10px;
+
+        }
+
+
+
+        /* Hero Section */
+
+        .hero {
+
+            padding: 124px 0 64px;
+
+            background: radial-gradient(circle at top right, rgba(47, 177, 127, 0.15), transparent);
+
+            text-align: center;
+
+            position: relative;
+
+        }
+
+        .hero .container {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 22px;
+
+        }
+
+        .hero h1 {
+
+            font-size: clamp(2.4rem, 4.4vw, 3rem);
+
+            font-weight: 700;
+
+            background: linear-gradient(45deg, var(--accent-green), var(--accent-blue));
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            margin-bottom: 0;
+
+        }
+
+        .hero .lead {
+
+            font-size: 1.05rem;
+
+            line-height: 1.7;
+
+            max-width: 720px;
+
+            margin-bottom: 0;
+
+        }
+
+
+
+        /* Screenshot Styling */
+
+        .terminal-img-wrapper {
+
+            position: relative;
+
+            display: inline-block;
+
+            margin: 50px auto 0;
+
+            max-width: 1000px;
+
+            width: 100%;
+
+            overflow: hidden;
+
+            border-radius: 15px;
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+
+            background: var(--bg-dark);
+
+        }
+
+        
+
+        .terminal-img {
+
+            width: 100%;
+
+            height: auto;
+
+            object-fit: cover;
+
+            display: block;
+
+            transform: scale(1.02);
+
+            transition: transform 0.3s ease;
+
+        }
+
+        
+
+        .terminal-img-wrapper::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 0;
+
+            right: 0;
+
+            height: 80px;
+
+            background: linear-gradient(to bottom, transparent, rgba(11, 17, 27, 0.8));
+
+            pointer-events: none;
+
+        }
+
+        
+
+ .terminal-img-wrapper:hover {
+
+            border-color: rgba(255,255,255,0.2);
+
+            box-shadow: 0 50px 120px rgba(0,0,0,0.7);
+
+        }
+
+        
+
+        .terminal-img-wrapper:hover .terminal-img {
+
+            transform: scale(1.03);
+
+        }
+
+
+
+        /* Sections */
+
         .section-padding { padding: 80px 0; }
-        .hero-buttons-wrapper { display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 6px; }
-        .hero-main-btn, .hero-secondary-btn { padding: 0 30px; border-radius: 10px; font-weight: 700; font-size: 1rem; transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; line-height: 1; width: 300px; max-width: 100%; height: 56px; box-sizing: border-box; white-space: nowrap; }
-        .hero-main-btn { background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy)); border: none; color: white; box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4); }
-        .hero-secondary-btn { background: transparent; border: 1px solid #3DD9C9; color: white; }
-        .hero-main-btn:hover, .hero-secondary-btn:hover { transform: translateY(-3px); color: white; }
-        .hero-secondary-btn:hover { background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy)); border-color: transparent; }
-        .terminal-img-wrapper { position: relative; display: inline-block; margin: 40px auto 0; max-width: 1000px; width: 100%; overflow: hidden; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 40px 100px rgba(0,0,0,0.6); background: var(--bg-dark); }
-        .terminal-img { width: 100%; height: auto; object-fit: cover; display: block; transform: scale(1.02); transition: transform 0.3s ease; }
-        .terminal-img-wrapper::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to bottom, transparent, rgba(11,17,27,0.8)); pointer-events: none; }
-        .terminal-img-wrapper:hover .terminal-img { transform: scale(1.03); }
-        .exchange-row { display: flex; gap: 18px; align-items: center; justify-content: center; flex-wrap: wrap; color: var(--text-secondary); font-weight: 600; }
-        .exchange-badge { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid var(--border-color); border-radius: 10px; background: rgba(255,255,255,0.03); }
-        .exchange-badge img { width: 28px; height: 28px; }
-        .terminal-feature-card { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 15px; padding: 30px; height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden; }
-        .terminal-feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(52,152,219,0.2); border-color: var(--accent-blue); }
-        .feature-icon { color: var(--accent-blue); font-size: 2.4rem; margin-bottom: 20px; display: block; }
-        .feature-title { color: var(--text-main); font-size: 1.25rem; font-weight: 700; margin-bottom: 14px; }
-        .feature-description { color: var(--text-secondary); font-size: 0.94rem; line-height: 1.6; margin-bottom: 20px; }
-        .feature-action-btn { background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy)); border: none; color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; }
-        .feature-action-btn:hover { transform: translateY(-2px); color: white; }
-        .info-band { background: rgba(255,255,255,0.03); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
-        .screen-thumb { background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer; }
-        .screen-thumb img { width: 100%; height: 250px; object-fit: cover; display: block; }
-        .note-list { color: var(--text-secondary); line-height: 1.8; margin: 0; padding-left: 20px; }
-        .quick-panel { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 15px; padding: 32px; }
-        #imagePreviewModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; align-items: center; justify-content: center; cursor: pointer; }
-        #previewImage { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 10px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
-        @media (max-width: 768px) { .hero { padding: 100px 0 60px; } .hero h1 { font-size: 2rem; line-height: 1.2; } .hero-main-btn, .hero-secondary-btn { width: 100%; max-width: 360px; height: 50px; } .section-padding { padding: 60px 0; } }
+
+        
+
+        /* Terminal Feature Cards */
+
+        .terminal-feature-card {
+
+            background: var(--panel-dark);
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 15px;
+
+            padding: 30px;
+
+            height: 100%;
+
+            transition: all 0.3s ease;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+        
+
+        .terminal-feature-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
+
+            border-color: var(--accent-blue);
+
+        }
+
+        
+
+        .terminal-feature-card::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+
+            left: -100%;
+
+            width: 100%;
+
+            height: 2px;
+
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+
+            transition: left 0.5s;
+
+        }
+
+        
+
+        .terminal-feature-card:hover::before {
+
+            left: 100%;
+
+        }
+
+        
+
+        .feature-icon { 
+
+            color: var(--accent-blue); 
+
+            font-size: 2.5rem; 
+
+            margin-bottom: 20px;
+
+            display: block;
+
+        }
+
+        
+
+        .feature-title {
+
+            color: var(--text-main);
+
+            font-size: 1.3rem;
+
+            font-weight: 600;
+
+            margin-bottom: 15px;
+
+        }
+
+        
+
+        .feature-description {
+
+            color: var(--text-secondary);
+
+            font-size: 0.9rem;
+
+            line-height: 1.5;
+
+            margin-bottom: 20px;
+
+        }
+
+        
+
+        .feature-action-btn {
+
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+
+            border: none;
+
+            color: white;
+
+            padding: 10px 20px;
+
+            border-radius: 8px;
+
+            font-weight: 600;
+
+            transition: all 0.3s ease;
+
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+
+            text-decoration: none;
+
+            display: inline-flex;
+
+            align-items: center;
+
+        }
+
+        
+
+        .feature-action-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+
+            color: white;
+
+        }
+
+        
+
+        /* Hero Buttons Common Styles */
+
+        .hero-main-btn,
+
+        .hero-secondary-btn {
+
+            padding: 0 30px;
+
+            border-radius: 10px;
+
+            font-weight: 700;
+
+            font-size: 1rem;
+
+            transition: all 0.3s ease;
+
+            text-decoration: none;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            line-height: 1;
+
+            width: 360px;
+
+            max-width: 100%;
+
+            height: 56px;
+
+            box-sizing: border-box;
+
+            white-space: nowrap;
+
+        }
+
+        .hero-main-btn i,
+
+        .hero-secondary-btn i {
+
+            font-size: 1.1rem;
+
+            margin-right: 12px;
+
+            flex-shrink: 0;
+
+        }
+
+        .hero-main-btn {
+
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+
+            border: none;
+
+            color: white;
+
+            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
+
+        }
+
+        .hero-secondary-btn {
+
+            background: transparent;
+
+            border: 1px solid #3DD9C9;
+
+            color: white;
+
+        }
+
+
+
+        /* Hero Buttons Wrapper */
+
+        .hero-buttons-wrapper {
+
+            display: flex;
+
+            gap: 16px;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            margin-top: 10px;
+
+        }
+
+        .hero-main-btn:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
+
+            color: white;
+
+        }
+
+        .hero-secondary-btn:hover {
+
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+
+            border-color: transparent;
+
+            color: white;
+
+            transform: translateY(-3px);
+
+            box-shadow: 0 8px 30px rgba(61, 217, 201, 0.4);
+
+        }
+
+
+
+        /* Supported Exchanges Section */
+
+        .supported-exchanges {
+
+            padding: 60px 0;
+
+            background: linear-gradient(180deg, rgba(11, 17, 27, 0) 0%, rgba(11, 17, 27, 0.3) 50%, rgba(11, 17, 27, 0) 100%);
+
+            text-align: center;
+
+        }
+
+        .supported-exchanges h2 {
+
+            font-size: 2rem;
+
+            font-weight: 700;
+
+            color: var(--text-main);
+
+            margin-bottom: 40px;
+
+            background: linear-gradient(45deg, var(--accent-green), var(--accent-blue));
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        .exchanges-logos {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 60px;
+
+            flex-wrap: wrap;
+
+        }
+
+        .exchange-logo {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 15px;
+
+            transition: all 0.3s ease;
+
+        }
+
+        .exchange-logo img {
+
+            width: 180px;
+
+            height: auto;
+
+            filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+
+            transition: all 0.3s ease;
+
+            opacity: 0.8;
+
+        }
+
+        .exchange-logo:hover img {
+
+            filter: brightness(0) invert(1) drop-shadow(0 0 30px rgba(61, 217, 201, 0.6));
+
+            transform: translateY(-5px) scale(1.05);
+
+            opacity: 1;
+
+        }
+
+        .exchange-logo span {
+
+            font-size: 0.9rem;
+
+            color: var(--text-secondary);
+
+            font-weight: 500;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+        }
+
+        .footer {
+
+            border-top: 1px solid var(--border-color);
+
+            padding: 40px 0;
+
+            color: var(--text-secondary);
+
+        }
+
+        
+
+        /* Footer Social Media Links */
+
+        .social-link-footer {
+
+            font-size: 1.5rem;
+
+            color: var(--text-secondary);
+
+            transition: all 0.3s ease;
+
+            text-decoration: none;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 50%;
+
+        }
+
+        
+
+        .social-link-footer:hover {
+
+            transform: translateY(-3px);
+
+        }
+
+        
+
+        /* Telegram - Original Blue */
+
+        .telegram-link-footer:hover {
+
+            color: #0088cc;
+
+            filter: drop-shadow(0 0 10px rgba(0, 136, 204, 0.5));
+
+        }
+
+        
+
+        /* X (Twitter) - Electric Blue */
+
+        .x-link-footer:hover {
+
+            color: #1DA1F2;
+
+            filter: drop-shadow(0 0 10px rgba(29, 161, 242, 0.5));
+
+        }
+
+        
+
+        /* YouTube - Classic Red */
+
+        .youtube-link-footer:hover {
+
+            color: #ff0000;
+
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+
+        }
+
+        
+
+        /* Instagram - Pink-Purple Gradient */
+
+        .instagram-link-footer:hover {
+
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            filter: drop-shadow(0 0 10px rgba(228, 64, 95, 0.5));
+
+        }
+
+        
+
+        /* Smooth Scroll */
+
+        html { scroll-behavior: smooth; }
+
+        
+
+        /* Responsive Design */
+
+        @media (max-width: 768px) {
+
+            /* Hero Section Mobile */
+
+            .hero {
+
+                padding: 96px 0 56px;
+
+            }
+
+            
+
+            .hero h1 {
+
+                font-size: 1.9rem !important;
+
+                line-height: 1.2;
+
+            }
+
+            
+
+            .hero .lead {
+
+            font-size: 1.05rem;
+
+            line-height: 1.7;
+
+            max-width: 720px;
+
+            margin-bottom: 0;
+
+        }
+
+            
+
+            .hero-main-btn {
+
+                padding: 0 30px;
+
+                font-size: 1rem;
+
+                margin-top: 0;
+
+                width: 100%;
+
+                max-width: 360px;
+
+                height: 50px;
+
+                white-space: nowrap;
+
+                display: inline-flex;
+
+                align-items: center;
+
+                justify-content: center;
+
+                line-height: 1;
+
+            }
+
+            .hero-main-btn i {
+
+                margin-right: 12px;
+
+                flex-shrink: 0;
+
+            }
+
+            .hero-buttons-wrapper {
+
+                flex-direction: column;
+
+                gap: 12px;
+
+                width: 100%;
+
+            }
+
+            .beta-trust-indicators {
+
+                flex-direction: column;
+
+                gap: 8px;
+
+                font-size: 0.75rem;
+
+            }
+
+            .beta-trust-indicators span {
+
+                display: block;
+
+                margin: 4px 0 !important;
+
+            }
+
+            .hero-main-btn,
+
+            .hero-secondary-btn {
+
+                width: 100%;
+
+                max-width: 360px;
+
+                height: 50px;
+
+                padding: 0 30px;
+
+                white-space: nowrap;
+
+                display: inline-flex;
+
+                align-items: center;
+
+                justify-content: center;
+
+                line-height: 1;
+
+            }
+
+            .hero-main-btn i,
+
+            .hero-secondary-btn i {
+
+                margin-right: 12px;
+
+                flex-shrink: 0;
+
+            }
+
+            /* Supported Exchanges Mobile */
+
+            .supported-exchanges {
+
+                padding: 40px 0;
+
+            }
+
+            .supported-exchanges h2 {
+
+                font-size: 1.5rem;
+
+                margin-bottom: 30px;
+
+            }
+
+            .exchanges-logos {
+
+                gap: 40px;
+
+            }
+
+            .exchange-logo img {
+
+                width: 140px;
+
+            }
+
+            .exchange-logo span {
+
+                font-size: 0.8rem;
+
+            }
+
+            .terminal-img-wrapper {
+
+                max-width: 95vw;
+
+                margin: 50px auto 0;
+
+                border-radius: 12px;
+
+            }
+
+            .terminal-img-wrapper::after {
+
+                height: 60px;
+
+                background: linear-gradient(to bottom, transparent, rgba(11, 17, 27, 0.9));
+
+            }
+
+            .terminal-img {
+
+                transform: scale(1.02);
+
+            }
+
+            /* Sections Mobile */
+
+            .section-padding {
+
+                padding: 60px 0;
+
+            }
+
+            /* Feature Cards Mobile */
+
+            .terminal-feature-card {
+
+                padding: 25px 20px;
+
+                margin-bottom: 1.5rem;
+
+            }
+
+            .feature-icon {
+
+                font-size: 2rem;
+
+                margin-bottom: 15px;
+
+            }
+
+            .feature-title {
+
+                font-size: 1.1rem;
+
+                margin-bottom: 12px;
+
+                line-height: 1.3;
+
+            }
+
+            .feature-description {
+
+                font-size: 0.9rem;
+
+                line-height: 1.5;
+
+                margin-bottom: 20px;
+
+            }
+
+            .feature-action-btn {
+
+                padding: 12px 20px;
+
+                font-size: 0.9rem;
+
+                display: block;
+
+                width: 100%;
+
+                text-align: center;
+
+            }
+
+            /* Quick Navigation Mobile */
+
+            .panel-dark {
+
+                padding: 1.5rem;
+
+            }
+
+            .btn-sentralyx-start,
+
+            .btn-sentralyx-pause,
+
+            .btn-sentralyx-stop {
+
+                padding: 12px 20px;
+
+                font-size: 0.9rem;
+
+                margin-bottom: 0.75rem;
+
+                display: block;
+
+                width: 100%;
+
+            }
+
+        }
+
+        
+
+        /* Prevent Horizontal Scroll */
+
+        * {
+
+            max-width: 100%;
+
+            box-sizing: border-box;
+
+        }
+
+        
+
+        body {
+
+            overflow-x: hidden;
+
+            min-width: 320px;
+
+        }
+
+        
+
+        .container {
+
+            max-width: 100%;
+
+            padding-left: 15px;
+
+            padding-right: 15px;
+
+        }
+
+        
+
+        /* Typography Mobile Optimizations */
+
+        @media (max-width: 768px) {
+
+            body {
+
+                font-size: 16px;
+
+                line-height: 1.5;
+
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+
+                font-size: clamp(1.2rem, 4vw, 2rem);
+
+                line-height: 1.3;
+
+            }
+
+            p, .lead {
+
+                font-size: clamp(0.9rem, 3vw, 1rem);
+
+                line-height: 1.6;
+
+            }
+
+            .text-secondary {
+
+                font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+
+            }
+
+        }
+
+        
+
+        /* Touch Targets for Mobile */
+
+        @media (max-width: 768px) {
+
+            .btn, .nav-link, .dropdown-item, .feature-action-btn {
+
+                min-height: 44px;
+
+                min-width: 44px;
+
+                padding: 12px 16px;
+
+            }
+
+            .navbar-toggler {
+
+                min-height: 44px;
+
+                min-width: 44px;
+
+            }
+
+        }
+
     </style>
+
 </head>
+
 <body>
+
     <header id="main-header"></header>
 
     <header class="hero">
         <div class="container">
             <h1 class="display-3">Криптовалютный бот и терминал автоматической торговли</h1>
-            <p class="lead text-secondary mb-4">Сканируйте рынки Binance и OKX, создавайте торговые стратегии без программирования, тестируйте их на исторических данных и управляйте рисками в одном настольном терминале.</p>
+            <p class="lead text-secondary mb-0">Сканируйте рынки Binance и OKX, создавайте торговые стратегии без программирования, тестируйте их на исторических данных и управляйте рисками в одном настольном терминале.</p>
             <div class="hero-buttons-wrapper">
-                <a href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download class="hero-main-btn"><i class="fas fa-download me-2"></i>Скачать для Windows</a>
-                <a href="/ru/scanner/" class="hero-secondary-btn"><i class="fas fa-search me-2"></i>Открыть сканер</a>
+                <a href="/ru/scanner/" class="hero-main-btn">
+                    <i class="fas fa-rocket"></i> Открыть терминал
+                </a>
+                <a href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download class="hero-secondary-btn">
+                    <i class="fas fa-download"></i> Скачать для Windows
+                </a>
+                <a href="/ru/backtest/" class="hero-secondary-btn">
+                    <i class="fas fa-chart-line"></i> Изучить бэктестинг
+                </a>
+                <a href="https://t.me/Sentralyx" target="_blank" rel="noopener" class="hero-secondary-btn">
+                    <i class="fab fa-telegram-plane"></i> Присоединиться к сообществу Telegram
+                </a>
             </div>
-            <div class="exchange-row">
-                <span>Поддерживаемые рынки:</span>
-                <span class="exchange-badge"><img src="../Binance.svg" alt="Binance">Binance</span>
-                <span class="exchange-badge"><img src="../OKX.svg" alt="OKX">OKX</span>
-                <span class="exchange-badge"><i class="fas fa-desktop"></i>Windows Desktop</span>
-            </div>
+
             <div class="terminal-img-wrapper">
-                <img src="../scanner.png" alt="Интерфейс криптовалютного сканера Sentralyx" class="terminal-img">
+                <img src="../scanner.png" alt="Сканер Sentralyx" class="terminal-img">
             </div>
         </div>
     </header>
 
+    <!-- Supported Exchanges Section -->
+    <section class="supported-exchanges">
+        <div class="container">
+            <h2>Поддерживаемые биржи</h2>
+            <div class="exchanges-logos">
+                <div class="exchange-logo">
+                    <img src="../Binance.svg" alt="Binance">
+                    <span>Binance</span>
+                </div>
+                <div class="exchange-logo">
+                    <img src="../OKX.svg" alt="OKX">
+                    <span>OKX</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="features" class="section-padding">
+
         <div class="container">
+
             <div class="text-center mb-5">
-                <h2 class="text-main">Возможности терминала</h2>
-                <p class="text-secondary">Инструменты для сканирования криптовалютного рынка, создания стратегий, бэктестинга и управления рисками.</p>
+
+                <h2 class="text-main">Модули терминала</h2>
+
+                <p class="text-secondary">Все инструменты, необходимые трейдеру, собраны в одном терминале.</p>
+
             </div>
+
             <div class="row g-4">
-                <div class="col-md-4"><div class="terminal-feature-card"><i class="fas fa-search feature-icon"></i><h3 class="feature-title">Сканер криптовалютного рынка</h3><p class="feature-description">Поиск торговых сигналов и анализ криптовалютных пар на Binance и OKX.</p><a href="/ru/scanner/" class="feature-action-btn"><i class="fas fa-arrow-right me-2"></i>Открыть</a></div></div>
-                <div class="col-md-4"><div class="terminal-feature-card"><i class="fas fa-layer-group feature-icon"></i><h3 class="feature-title">Стратегии без программирования</h3><p class="feature-description">Настройка правил входа и выхода, индикаторов и MTF-фильтров в одном интерфейсе.</p><a href="/ru/strategies/" class="feature-action-btn"><i class="fas fa-arrow-right me-2"></i>Настроить</a></div></div>
-                <div class="col-md-4"><div class="terminal-feature-card"><i class="fas fa-chart-line feature-icon"></i><h3 class="feature-title">Бэктестинг стратегий</h3><p class="feature-description">Проверка торговых стратегий на исторических данных с анализом результатов и показателей риска.</p><a href="/ru/backtest/" class="feature-action-btn"><i class="fas fa-arrow-right me-2"></i>Тестировать</a></div></div>
-                <div class="col-md-4"><div class="terminal-feature-card"><i class="fas fa-wave-square feature-icon"></i><h3 class="feature-title">MTF-анализ</h3><p class="feature-description">Проверка сигналов на нескольких таймфреймах, чтобы видеть контекст тренда перед открытием сделки.</p><a href="/ru/scanner/" class="feature-action-btn"><i class="fas fa-arrow-right me-2"></i>Проверить</a></div></div>
-                <div class="col-md-4"><div class="terminal-feature-card"><i class="fas fa-shield-alt feature-icon"></i><h3 class="feature-title">Управление рисками</h3><p class="feature-description">Настройка stop loss, take profit, размера позиции и лимитов риска для дисциплинированной автоматической торговли.</p><a href="/ru/settings/" class="feature-action-btn"><i class="fas fa-arrow-right me-2"></i>Настроить</a></div></div>
-                <div class="col-md-4"><div class="terminal-feature-card"><i class="fas fa-exchange-alt feature-icon"></i><h3 class="feature-title">Открытые позиции</h3><p class="feature-description">Отслеживание открытых и закрытых сделок, PnL, цен входа и выхода, истории операций и текущего статуса.</p><a href="/ru/active-positions/" class="feature-action-btn"><i class="fas fa-arrow-right me-2"></i>Смотреть</a></div></div>
-                <div class="col-md-4"><div class="terminal-feature-card"><i class="fas fa-file-alt feature-icon"></i><h3 class="feature-title">Отчёты и история</h3><p class="feature-description">Анализ результатов стратегий, журнал сделок, статистика доходности и выгрузка данных для дальнейшего market-анализа.</p><a href="/ru/reports/" class="feature-action-btn"><i class="fas fa-arrow-right me-2"></i>Открыть</a></div></div>
-                <div class="col-md-4"><div class="terminal-feature-card"><i class="fas fa-desktop feature-icon"></i><h3 class="feature-title">Настольный терминал</h3><p class="feature-description">Sentralyx работает как Windows-приложение: ключи API и торговые настройки остаются на вашем устройстве.</p><a href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download class="feature-action-btn"><i class="fas fa-download me-2"></i>Скачать</a></div></div>
-                <div class="col-md-4"><div class="terminal-feature-card"><i class="fas fa-cogs feature-icon"></i><h3 class="feature-title">Алгоритмическая торговля</h3><p class="feature-description">Правила стратегии задаются в интерфейсе: индикаторы, фильтры, условия входа, выхода и параметры автоматического исполнения.</p><a href="/ru/settings/" class="feature-action-btn"><i class="fas fa-arrow-right me-2"></i>Параметры</a></div></div>
+
+                <div class="col-md-4">
+
+                    <div class="terminal-feature-card">
+
+                        <i class="fas fa-search feature-icon"></i>
+
+                        <h4 class="feature-title">Сканер криптовалютного рынка</h4>
+
+                        <p class="feature-description">Терминал предназначен для сканирования криптовалютных пар на Binance и OKX, фильтрации по техническим критериям и работы с торговыми сигналами.</p>
+
+                        <a href="/ru/scanner/" class="feature-action-btn">
+
+                            <i class="fas fa-arrow-right me-2"></i>Открыть
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="terminal-feature-card">
+
+                        <i class="fas fa-layer-group feature-icon"></i>
+
+                        <h4 class="feature-title">Создание стратегий без кода</h4>
+
+                        <p class="feature-description">Создавайте стратегии через визуальный интерфейс без программирования. Методы консенсуса, скоринга и валидации.</p>
+
+                        <a href="/ru/strategies/" class="feature-action-btn">
+
+                            <i class="fas fa-arrow-right me-2"></i>Подробнее
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="terminal-feature-card">
+
+                        <i class="fas fa-chart-line feature-icon"></i>
+
+                        <h4 class="feature-title">Бэктестинг стратегий</h4>
+
+                        <p class="feature-description">Терминал предлагает тестирование стратегий на исторических данных и просмотр ключевых метрик результата. Комиссии и проскальзывание учитывайте только если они настроены в выбранном сценарии теста.</p>
+
+                        <a href="/ru/backtest/" class="feature-action-btn">
+
+                            <i class="fas fa-arrow-right me-2"></i>Тестировать
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="terminal-feature-card">
+
+                        <i class="fas fa-wave-square feature-icon"></i>
+
+                        <h4 class="feature-title">MTF-фильтр тренда</h4>
+
+                        <p class="feature-description">Подтверждение тренда с помощью многотаймфреймового анализа. Подтверждение сигналов на разных временных интервалах.</p>
+
+                        <a href="/ru/scanner/" class="feature-action-btn">
+
+                            <i class="fas fa-arrow-right me-2"></i>Открыть
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="terminal-feature-card">
+
+                        <i class="fas fa-shield-alt feature-icon"></i>
+
+                        <h4 class="feature-title">Управление рисками</h4>
+
+                        <p class="feature-description">Параметры stop loss, take profit и размера позиции настраиваются пользователем и помогают контролировать торговый риск.</p>
+
+                        <a href="/ru/settings/" class="feature-action-btn">
+
+                            <i class="fas fa-arrow-right me-2"></i>Настроить
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="terminal-feature-card">
+
+                        <i class="fas fa-exchange-alt feature-icon"></i>
+
+                        <h4 class="feature-title">Отслеживание позиций</h4>
+
+                        <p class="feature-description">Раздел помогает отслеживать открытые и закрытые позиции, PnL, цены входа и выхода, а также историю сделок.</p>
+
+                        <a href="/ru/active-positions/" class="feature-action-btn">
+
+                            <i class="fas fa-arrow-right me-2"></i>Управлять
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="terminal-feature-card">
+
+                        <i class="fas fa-file-alt feature-icon"></i>
+
+                        <h4 class="feature-title">Отчёты и CSV-записи</h4>
+
+                        <p class="feature-description">Раздел отчётов помогает анализировать сделки, экспортировать данные в CSV и отслеживать прибыль или убыток.</p>
+
+                        <a href="/ru/reports/" class="feature-action-btn">
+
+                            <i class="fas fa-arrow-right me-2"></i>Подробнее
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="terminal-feature-card">
+
+                        <i class="fas fa-desktop feature-icon"></i>
+
+                        <h4 class="feature-title">Настольный терминал</h4>
+
+                        <p class="feature-description">Sentralyx работает как настольное приложение для Windows. Хранение и использование API-ключей зависит от настроек пользователя и среды запуска.</p>
+
+                        <a href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download class="feature-action-btn">
+
+                            <i class="fas fa-download me-2"></i>Скачать для Windows
+
+                        </a>
+
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <section class="section-padding info-band">
+    <!-- Screenshot Section -->
+    <section class="section-padding">
+
         <div class="container">
-            <div class="row g-4 align-items-stretch">
-                <div class="col-lg-6"><div class="terminal-feature-card"><i class="fas fa-route feature-icon"></i><h2 class="feature-title">Как строится рабочий процесс</h2><ul class="note-list"><li>Сначала сканер находит пары и сигналы по выбранным условиям.</li><li>Затем стратегия собирается без кода: индикаторы, MTF-фильтры, вход и выход.</li><li>Перед использованием стратегия проходит backtest и проверку на исторических данных.</li><li>После проверки трейдер контролирует риск, открытые позиции и отчёты.</li></ul></div></div>
-                <div class="col-lg-6"><div class="terminal-feature-card"><i class="fas fa-lock feature-icon"></i><h2 class="feature-title">Безопасность и ограничения</h2><ul class="note-list"><li>Sentralyx не обещает гарантированную прибыль и не предсказывает цену с помощью искусственного интеллекта.</li><li>Бэктестинг показывает исторический результат, но не гарантирует будущую доходность.</li><li>Риск-менеджмент помогает ограничивать убытки, но не удаляет рыночный риск полностью.</li><li>Торговые решения остаются за пользователем; терминал помогает анализировать и исполнять правила.</li></ul></div></div>
+
+            <div class="text-center mb-5">
+
+                <h2 class="text-main">Скриншоты терминала</h2>
+
+                <p class="text-secondary">Примеры интерфейса терминала Sentralyx</p>
+
             </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-6">
+
+                    <div class="terminal-feature-card">
+
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../scanner.webp')">
+
+                            <img src="../scanner.webp" alt="Сканер" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+
+                        </div>
+
+                        <h4 class="feature-title">Сканер</h4>
+
+                        <p class="feature-description">Сканирование рынка и работа с торговыми сигналами.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="terminal-feature-card">
+
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../backtest.webp')">
+
+                            <img src="../backtest.webp" alt="Бэктестинг" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+                        </div>
+
+                        <h4 class="feature-title">Бэктестинг</h4>
+
+                        <p class="feature-description">Тестирование стратегий на исторических данных и просмотр результатов.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="terminal-feature-card">
+
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../acik-pozisyon.webp')">
+
+                            <img src="../acik-pozisyon.webp" alt="Открытые позиции" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+
+                        </div>
+
+                        <h4 class="feature-title">Открытые позиции</h4>
+
+                        <p class="feature-description">Отслеживание позиций и настройка stop loss / take profit.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="terminal-feature-card">
+
+                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../raporlar.webp')">
+
+                            <img src="../raporlar.webp" alt="Отчёты" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
+
+                        </div>
+
+                        <h4 class="feature-title">Отчёты</h4>
+
+                        <p class="feature-description">Статистика результатов и анализ истории сделок.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
+
     </section>
+
+    <!-- Quick Navigation Section -->
 
     <section class="section-padding">
+
         <div class="container">
-            <div class="text-center mb-5"><h2 class="text-main">Экраны терминала</h2><p class="text-secondary">Основные разделы Sentralyx: сканер, backtest, позиции и отчёты.</p></div>
-            <div class="row g-4">
-                <div class="col-md-6"><div class="terminal-feature-card"><div class="screen-thumb" onclick="openImagePreview('../scanner.webp')"><img src="../scanner.webp" alt="Сканер криптовалютного рынка Sentralyx" loading="lazy"></div><h3 class="feature-title">Market Scanner</h3><p class="feature-description">Поиск сигналов, фильтрация криптопар и market анализ в реальном времени.</p></div></div>
-                <div class="col-md-6"><div class="terminal-feature-card"><div class="screen-thumb" onclick="openImagePreview('../backtest.webp')"><img src="../backtest.webp" alt="Бэктестинг торговой стратегии в Sentralyx" loading="lazy"></div><h3 class="feature-title">Backtest</h3><p class="feature-description">Проверка стратегии, equity curve, метрики сделок и анализ риска на исторических данных.</p></div></div>
-                <div class="col-md-6"><div class="terminal-feature-card"><div class="screen-thumb" onclick="openImagePreview('../acik-pozisyon.webp')"><img src="../acik-pozisyon.webp" alt="Открытые позиции и управление рисками" loading="lazy"></div><h3 class="feature-title">Открытые позиции</h3><p class="feature-description">Контроль активных сделок, стопов, целей, PnL и текущего состояния автоматической торговли.</p></div></div>
-                <div class="col-md-6"><div class="terminal-feature-card"><div class="screen-thumb" onclick="openImagePreview('../raporlar.webp')"><img src="../raporlar.webp" alt="Отчёты и история сделок Sentralyx" loading="lazy"></div><h3 class="feature-title">Отчёты</h3><p class="feature-description">История сделок, показатели стратегии, CSV-выгрузка и сравнение результатов.</p></div></div>
+
+            <div class="text-center mb-5">
+
+                <h2 class="text-main">Быстрый доступ</h2>
+
+                <p class="text-secondary">Быстро получите доступ к наиболее часто используемым функциям терминала</p>
+
             </div>
-        </div>
-    </section>
 
-    <section class="section-padding">
-        <div class="container">
-            <div class="text-center mb-5"><h2 class="text-main">Быстрый доступ</h2><p class="text-secondary">Откройте ключевые разделы терминала без лишних шагов.</p></div>
-            <div class="row justify-content-center"><div class="col-auto"><div class="quick-panel text-center"><h3 class="feature-title mb-4">Управление терминалом</h3><div class="d-flex gap-3 justify-content-center flex-wrap"><a href="/ru/scanner/" class="btn-sentralyx-start"><i class="fas fa-search me-2"></i>Сканер</a><a href="/ru/active-positions/" class="btn-sentralyx-pause"><i class="fas fa-exchange-alt me-2"></i>Позиции</a><a href="/ru/settings/" class="btn-sentralyx-stop"><i class="fas fa-cog me-2"></i>Настройки</a><a href="/ru/reports/" class="btn-sentralyx-start"><i class="fas fa-file-alt me-2"></i>Отчёты</a></div></div></div></div>
-        </div>
-    </section>
+            <div class="row justify-content-center">
 
-    <section class="section-padding info-band">
-        <div class="container text-center">
-            <h2 class="text-main">Начните с анализа рынка</h2>
-            <p class="text-secondary mb-4">Откройте сканер криптовалютного рынка или скачайте Windows-терминал, чтобы собрать стратегию, проверить её через backtest и настроить риск-менеджмент.</p>
-            <div class="hero-buttons-wrapper"><a href="/ru/scanner/" class="hero-main-btn"><i class="fas fa-search me-2"></i>Открыть сканер</a><a href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download class="hero-secondary-btn"><i class="fas fa-download me-2"></i>Скачать для Windows</a></div>
+                <div class="col-auto">
+
+                    <div class="panel-dark p-4 text-center">
+
+                        <h5 class="text-main mb-4">Управление терминалом</h5>
+
+                        <div class="d-flex gap-3 justify-content-center flex-wrap">
+
+                            <a href="/ru/scanner/" class="btn-sentralyx-start">
+
+                                <i class="fas fa-search me-2"></i>Сканер
+
+                            </a>
+
+                            <a href="/ru/active-positions/" class="btn-sentralyx-pause">
+
+                                <i class="fas fa-exchange-alt me-2"></i>Позиции
+
+                            </a>
+
+                            <a href="/ru/settings/" class="btn-sentralyx-stop">
+
+                                <i class="fas fa-cog me-2"></i>Настройки
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
+
     </section>
 
     <div id="footer-container"></div>
-    <div id="imagePreviewModal" onclick="closeImagePreview()"><img id="previewImage" src="" alt="Предпросмотр изображения"><div style="position: absolute; top: 20px; right: 30px; color: white; font-size: 30px; cursor: pointer;">×</div></div>
+
+    <!-- Image Preview Modal -->
+    <div id="imagePreviewModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 9999; align-items: center; justify-content: center; cursor: pointer;" onclick="closeImagePreview()">
+        <img id="previewImage" src="" alt="Предпросмотр" style="max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 10px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);">
+        <div style="position: absolute; top: 20px; right: 30px; color: white; font-size: 30px; cursor: pointer;">x</div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="../assets/js/main.js"></script>
+
     <script>
-        fetch('../ru/footer.html').then(async function(response) { const buffer = await response.arrayBuffer(); return new TextDecoder('utf-8').decode(buffer); }).then(function(data) { document.getElementById('footer-container').innerHTML = data; }).catch(function(error) { console.error('Footer loading failed:', error); });
-        function openImagePreview(imageSrc) { const modal = document.getElementById('imagePreviewModal'); const previewImage = document.getElementById('previewImage'); previewImage.src = imageSrc; modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        function closeImagePreview() { const modal = document.getElementById('imagePreviewModal'); modal.style.display = 'none'; document.body.style.overflow = 'auto'; }
-        document.addEventListener('keydown', function(event) { if (event.key === 'Escape') { closeImagePreview(); } });
+
+        // Load Russian footer
+
+        fetch('../ru/footer.html')
+
+            .then(async (response) => {
+
+                const buffer = await response.arrayBuffer();
+
+                return new TextDecoder('utf-8').decode(buffer);
+
+            })
+
+            .then(data => {
+
+                document.getElementById('footer-container').innerHTML = data;
+
+            })
+
+            .catch(error => console.error('Footer loading failed:', error));
+
+        // Image Preview Functions
+        function openImagePreview(imageSrc) {
+            const modal = document.getElementById('imagePreviewModal');
+            const previewImage = document.getElementById('previewImage');
+            previewImage.src = imageSrc;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImagePreview() {
+            const modal = document.getElementById('imagePreviewModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImagePreview();
+            }
+        });
+
     </script>
+
+    <script src="../assets/js/affiliate-tracking.js"></script>
+
 </body>
+
 </html>
 

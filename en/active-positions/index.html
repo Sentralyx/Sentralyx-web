@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.sentralyx.com/en/active-positions/">
-    <title>Sentralyx | Active Positions & Exposure Monitor</title>
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/active-positions/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/active-positions/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/active-positions/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/active-positions/">
+<title>Sentralyx | Active Positions & Exposure Monitor</title>
     <meta name="description" content="Institutional-grade active position monitoring: real-time mark price updates, unrealized P&L, exposure overview, and risk management status.">
-    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <meta property="og:title" content="Sentralyx | Active Positions &amp; Exposure Monitor">
+    <meta property="og:description" content="Institutional-grade active position monitoring: real-time mark price updates, unrealized P&amp;L, exposure overview, and risk management status.">
+    <meta property="og:url" content="https://www.sentralyx.com/en/active-positions/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sentralyx.com/assets/logo.png">
+<link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
@@ -17,23 +26,24 @@
             background: var(--bg-dark);
             min-height: 100vh;
         }
-
+        
         .summary-card {
             background: var(--panel-dark);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 22px;
+            padding: 25px;
+            text-align: center;
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
         }
-
+        
         .summary-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
             border-color: var(--accent-blue);
         }
-
+        
         .summary-card::before {
             content: '';
             position: absolute;
@@ -44,562 +54,637 @@
             background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
             transition: left 0.5s;
         }
-
-        .summary-card:hover::before { left: 100%; }
-
+        
+        .summary-card:hover::before {
+            left: 100%;
+        }
+        
         .summary-card .icon {
-            font-size: 1.9rem;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             background: linear-gradient(45deg, var(--accent-blue), var(--signal-buy));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        .summary-card .label {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-
+        
         .summary-card .value {
-            font-size: 1.9rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: 700;
             color: var(--text-main);
-            line-height: 1.1;
+            margin-bottom: 5px;
         }
-
-        .summary-card .sub {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        
+        .summary-card.profit .value {
+            color: var(--signal-buy);
+            text-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
         }
-
-        .summary-card.profit .value { color: var(--signal-buy); text-shadow: 0 0 20px rgba(46, 204, 113, 0.35); }
-        .summary-card.loss .value { color: var(--signal-sell); text-shadow: 0 0 20px rgba(231, 76, 60, 0.35); }
-
+        
+        .summary-card.loss .value {
+            color: var(--signal-sell);
+            text-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+        }
+        
         .live-table {
             background: var(--panel-dark);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             overflow: hidden;
         }
-
-        .table-custom { color: var(--text-main); margin-bottom: 0; }
-        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
-        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
-        .table-custom td { padding: 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
-        .table-custom tbody tr:hover { background: rgba(52, 152, 219, 0.05); box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.1); }
-
-        .pnl-live { font-weight: 700; animation: pulse 2s infinite; }
-        .pnl-positive { color: var(--signal-buy); }
-        .pnl-negative { color: var(--signal-sell); }
-
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.65; } 100% { opacity: 1; } }
-
-        .side-long { background: rgba(46, 204, 113, 0.12); color: var(--signal-buy); border: 1px solid rgba(46, 204, 113, 0.35); }
-        .side-short { background: rgba(231, 76, 60, 0.12); color: var(--signal-sell); border: 1px solid rgba(231, 76, 60, 0.35); }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
+        
+        .table-custom {
             color: var(--text-main);
+            margin-bottom: 0;
+        }
+        
+        .table-custom thead {
+            background: rgba(52, 152, 219, 0.1);
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        
+        .table-custom th {
+            font-weight: 600;
+            text-transform: uppercase;
             font-size: 0.85rem;
-            white-space: nowrap;
+            letter-spacing: 0.5px;
+            padding: 12px;
+            border: none;
         }
-
-        .chip i { color: var(--accent-blue); }
-
-        .risk-badge {
-            padding: 3px 8px;
-            border-radius: 999px;
+        
+        .table-custom td {
+            padding: 12px;
+            border: none;
+            border-bottom: 1px solid rgba(42, 49, 66, 0.3);
+            vertical-align: middle;
+        }
+        
+        .table-custom tbody tr:hover {
+            background: rgba(52, 152, 219, 0.05);
+            box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.1);
+        }
+        
+        .pnl-live {
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        
+        .pnl-positive {
+            color: var(--signal-buy);
+        }
+        
+        .pnl-negative {
+            color: var(--signal-sell);
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+        
+        .direction-buy {
+            color: var(--signal-buy);
+            font-weight: 600;
+        }
+        
+        .direction-sell {
+            color: var(--signal-sell);
+            font-weight: 600;
+        }
+        
+        .sl-tp-badge {
+            padding: 2px 6px;
+            border-radius: 4px;
             font-size: 0.75rem;
-            font-weight: 700;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-secondary);
+            font-weight: 600;
+            margin: 0 2px;
         }
-
-        .risk-badge.on { border-color: rgba(46, 204, 113, 0.35); color: var(--signal-buy); background: rgba(46, 204, 113, 0.08); }
-        .risk-badge.off { border-color: rgba(231, 76, 60, 0.35); color: var(--signal-sell); background: rgba(231, 76, 60, 0.08); }
-
-        .btn-compact {
-            padding: 8px 12px;
-            border-radius: 10px;
+        
+        .sl-badge {
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--signal-sell);
+        }
+        
+        .tp-badge {
+            background: rgba(46, 204, 113, 0.2);
+            color: var(--signal-buy);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            padding: 4px 8px;
             border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
+            background: rgba(42, 49, 66, 0.3);
             color: var(--text-main);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
-        .btn-compact:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
-
-        .empty-state {
-            background: rgba(42, 49, 66, 0.25);
-            border: 1px dashed rgba(52, 152, 219, 0.35);
+        
+        .action-btn:hover {
+            background: rgba(52, 152, 219, 0.2);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+        
+        .action-btn.danger:hover {
+            background: rgba(231, 76, 60, 0.2);
+            border-color: var(--signal-sell);
+            color: var(--signal-sell);
+        }
+        
+        .section-title {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: var(--accent-blue);
+        }
+        
+        .control-panel {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 24px;
-            color: var(--text-secondary);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: blink 1s infinite;
+        }
+        
+        .status-live { background: var(--signal-buy); }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        .profit-row {
+            background: rgba(46, 204, 113, 0.05);
+        }
+        
+        .loss-row {
+            background: rgba(231, 76, 60, 0.05);
+        }
+        
+        .live-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--signal-buy);
+        }
+        
+        .live-indicator .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--signal-buy);
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .active-positions-container {
+                padding: 20px 15px;
+            }
+            
+            .summary-cards {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .summary-card {
+                padding: 20px 15px;
+            }
+            
+            .table-custom {
+                font-size: 14px;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            
+            .table-custom th,
+            .table-custom td {
+                padding: 8px 6px;
+                font-size: 13px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .lead {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+        }
+        
+        /* Prevent Horizontal Scroll */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+            min-width: 320px;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        /* Touch Targets for Mobile */
+        @media (max-width: 768px) {
+            .btn, .form-control, .form-select {
+                min-height: 44px;
+                min-width: 44px;
+                padding: 12px 16px;
+            }
         }
     </style>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Ana Sayfa",
+      "item": "https://www.sentralyx.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "A\u00e7\u0131k Positions",
+      "item": "https://www.sentralyx.com/active-positions/"
+    }
+  ]
+}
+    </script>
+
 </head>
 <body>
-
     <header id="main-header"></header>
-
+    
     <main class="active-positions-container">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                <div>
-                    <h1 class="text-main mb-1">Active Positions &amp; Exposure Monitor</h1>
-                    <p class="text-secondary mb-0">Real-time mark pricing, P&amp;L (Unrealized), leverage, and risk management status</p>
+        <div class="text-center mb-4">
+            <h1 class="text-main">Open Position Tracking</h1>
+            <p class="text-secondary">A&#231;&#305;k pozisyon takibi, stop loss takibi ve otomatik risk y&#246;netimi kontrollerini anl&#305;k P&L verileriyle birlikte izleyin.</p>
+        </div>
+        <!-- Summary Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="summary-card">
+                    <div class="live-indicator">
+                        <div class="dot"></div>
+                        <span>CANLI</span>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="value">12</div>
+                    <div class="text-secondary">Total Açik</div>
                 </div>
-                <div class="d-flex gap-2 flex-wrap align-items-center">
-                    <span class="chip" title="Exchange connector" data-bs-toggle="tooltip"><i class="fas fa-building-columns"></i><span id="chip-exchange">OKX</span></span>
-                    <span class="chip" title="Account mode" data-bs-toggle="tooltip"><i class="fas fa-layer-group"></i><span id="chip-mode">USDT-Margined</span></span>
-                    <span class="chip" title="Last mark refresh" data-bs-toggle="tooltip"><i class="fas fa-rotate"></i><span id="chip-refresh">—</span></span>
-                    <button class="btn-compact" onclick="refreshMarks()" title="Refresh mark prices and recalculations" data-bs-toggle="tooltip">
-                        <i class="fas fa-arrows-rotate me-2"></i>Refresh
+            </div>
+            <div class="col-md-3">
+                <div class="summary-card profit">
+                    <div class="icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="value">+1,234.56</div>
+                    <div class="text-secondary">Total PnL</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="summary-card">
+                    <div class="icon">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="value">8 / 4</div>
+                    <div class="text-secondary">BUY / SELL</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="summary-card">
+                    <div class="icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="value">+2.45%</div>
+                    <div class="text-secondary">Mediumlama Getiri</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div class="d-flex gap-2">
+                    <button class="btn-sentralyx-stop" onclick="closeAllPositions()">
+                        <i class="fas fa-times me-2"></i>Tümünü Close
+                    </button>
+                    <button class="btn-sentralyx-pause" onclick="refreshPositions()">
+                        <i class="fas fa-sync me-2"></i>Refresh
+                    </button>
+                    <button class="btn-sentralyx-start" onclick="addSpotPosition()">
+                        <i class="fas fa-plus me-2"></i>Spot Position Tanımla
                     </button>
                 </div>
-            </div>
-
-            <!-- Summary Cards -->
-            <div class="row g-3 mb-4">
-                <div class="col-md-3">
-                    <div class="summary-card">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <div class="label mb-1">Total Equity</div>
-                                <div class="value" id="sum-equity">$0.00</div>
-                                <div class="sub">Estimated account equity</div>
-                            </div>
-                            <div class="icon"><i class="fas fa-wallet"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="summary-card" id="sum-pnl-card">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <div class="label mb-1">Active P&amp;L (%)</div>
-                                <div class="value" id="sum-pnl">0.00%</div>
-                                <div class="sub">Aggregate unrealized return</div>
-                            </div>
-                            <div class="icon"><i class="fas fa-chart-line"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="summary-card loss">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <div class="label mb-1">Current Drawdown</div>
-                                <div class="value" id="sum-dd">0.00%</div>
-                                <div class="sub">Peak-to-trough (session)</div>
-                            </div>
-                            <div class="icon"><i class="fas fa-shield-halved"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="summary-card">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <div class="label mb-1">Open Trades</div>
-                                <div class="value" id="sum-open">0</div>
-                                <div class="sub">Positions currently tracked</div>
-                            </div>
-                            <div class="icon"><i class="fas fa-layer-group"></i></div>
-                        </div>
-                    </div>
+                <div class="d-flex gap-2 align-items-center">
+                    <span class="status-indicator status-live"></span>
+                    <span class="text-main">Veri akışı aktif</span>
                 </div>
             </div>
+        </div>
 
-            <!-- Positions Table -->
-            <div class="live-table">
-                <div class="p-3 border-bottom" style="border-color: var(--border-color) !important;">
-                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-                        <h5 class="text-main mb-0"><i class="fas fa-list-check me-2"></i>Positions</h5>
-                        <div class="d-flex gap-2 flex-wrap align-items-center">
-                            <button class="btn-compact" onclick="toggleEmptyState()" title="Toggle empty state preview" data-bs-toggle="tooltip">
-                                <i class="fas fa-eye me-2"></i>Empty State
-                            </button>
-                            <button class="btn-compact" onclick="exportPositionsCsv()" title="Export positions to CSV" data-bs-toggle="tooltip">
-                                <i class="fas fa-file-export me-2"></i>Export
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-custom">
-                        <thead>
-                            <tr>
-                                <th style="min-width: 140px;">Asset/Pair</th>
-                                <th style="min-width: 120px;">Side</th>
-                                <th style="min-width: 190px;">Size/Notional</th>
-                                <th style="min-width: 120px;">Entry Price</th>
-                                <th style="min-width: 130px;">Mark Price</th>
-                                <th style="min-width: 150px;">Liquidation Price</th>
-                                <th style="min-width: 170px;">P&amp;L (Unrealized)</th>
-                                <th style="min-width: 190px;">Risk Management</th>
-                                <th style="min-width: 240px;">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="positions-tbody">
-                            <tr class="text-secondary">
-                                <td colspan="9">
-                                    <div class="empty-state d-flex align-items-center gap-2">
-                                        <i class="fas fa-wave-square"></i>
-                                        <span>No active positions found. Monitoring markets for new opportunities...</span>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        <!-- Live Tracking Table -->
+        <div class="live-table">
+            <div class="p-3 border-bottom border-custom">
+                <h5 class="mb-0 section-title">
+                    <i class="fas fa-broadcast-tower"></i>Canlı Position Takibi
+                </h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-custom mb-0">
+                    <thead>
+                        <tr>
+                            <th>Sembol</th>
+                            <th>Yön</th>
+                            <th>Giriş Priceı</th>
+                            <th>Güncel Price</th>
+                            <th>PnL ($)</th>
+                            <th>PnL (%)</th>
+                            <th>SL/TP</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody id="positionsTable">
+                        <tr class="profit-row">
+                            <td><strong>BTCUSDT</strong></td>
+                            <td class="direction-buy">BUY</td>
+                            <td>42,156.78</td>
+                            <td class="pnl-live pnl-positive">43,245.12</td>
+                            <td class="pnl-live pnl-positive">+1,088.34</td>
+                            <td class="pnl-live pnl-positive">+2.58%</td>
+                            <td>
+                                <span class="sl-tp-badge sl-badge">SL: 41,500</span>
+                                <span class="sl-tp-badge tp-badge">TP: 44,000</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn danger" onclick="closePosition('BTCUSDT')">Close</button>
+                                    <button class="action-btn" onclick="halfClose('BTCUSDT')">%50</button>
+                                    <button class="action-btn" onclick="moveSLToMarket('BTCUSDT')">SL Market</button>
+                                    <button class="action-btn" onclick="moveSLToEntry('BTCUSDT')">SL Giriş</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="loss-row">
+                            <td><strong>ETHUSDT</strong></td>
+                            <td class="direction-sell">SELL</td>
+                            <td>2,245.32</td>
+                            <td class="pnl-live pnl-negative">2,267.89</td>
+                            <td class="pnl-live pnl-negative">-45.14</td>
+                            <td class="pnl-live pnl-negative">-2.01%</td>
+                            <td>
+                                <span class="sl-tp-badge sl-badge">SL: 2,280</span>
+                                <span class="sl-tp-badge tp-badge">TP: 2,200</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn danger" onclick="closePosition('ETHUSDT')">Close</button>
+                                    <button class="action-btn" onclick="halfClose('ETHUSDT')">%50</button>
+                                    <button class="action-btn" onclick="moveSLToMarket('ETHUSDT')">SL Market</button>
+                                    <button class="action-btn" onclick="moveSLToEntry('ETHUSDT')">SL Giriş</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="profit-row">
+                            <td><strong>SOLUSDT</strong></td>
+                            <td class="direction-buy">BUY</td>
+                            <td>98.45</td>
+                            <td class="pnl-live pnl-positive">102.34</td>
+                            <td class="pnl-live pnl-positive">+38.90</td>
+                            <td class="pnl-live pnl-positive">+3.95%</td>
+                            <td>
+                                <span class="sl-tp-badge sl-badge">SL: 95.00</span>
+                                <span class="sl-tp-badge tp-badge">TP: 105.00</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn danger" onclick="closePosition('SOLUSDT')">Close</button>
+                                    <button class="action-btn" onclick="halfClose('SOLUSDT')">%50</button>
+                                    <button class="action-btn" onclick="moveSLToMarket('SOLUSDT')">SL Market</button>
+                                    <button class="action-btn" onclick="moveSLToEntry('SOLUSDT')">SL Giriş</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="profit-row">
+                            <td><strong>ADAUSDT</strong></td>
+                            <td class="direction-sell">SELL</td>
+                            <td>0.582</td>
+                            <td class="pnl-live pnl-positive">0.571</td>
+                            <td class="pnl-live pnl-positive">+55.00</td>
+                            <td class="pnl-live pnl-positive">+9.45%</td>
+                            <td>
+                                <span class="sl-tp-badge sl-badge">SL: 0.590</span>
+                                <span class="sl-tp-badge tp-badge">TP: 0.560</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn danger" onclick="closePosition('ADAUSDT')">Close</button>
+                                    <button class="action-btn" onclick="halfClose('ADAUSDT')">%50</button>
+                                    <button class="action-btn" onclick="moveSLToMarket('ADAUSDT')">SL Market</button>
+                                    <button class="action-btn" onclick="moveSLToEntry('ADAUSDT')">SL Giriş</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="loss-row">
+                            <td><strong>AVAXUSDT</strong></td>
+                            <td class="direction-buy">BUY</td>
+                            <td>35.67</td>
+                            <td class="pnl-live pnl-negative">35.12</td>
+                            <td class="pnl-live pnl-negative">-82.50</td>
+                            <td class="pnl-live pnl-negative">-2.31%</td>
+                            <td>
+                                <span class="sl-tp-badge sl-badge">SL: 34.50</span>
+                                <span class="sl-tp-badge tp-badge">TP: 38.00</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn danger" onclick="closePosition('AVAXUSDT')">Close</button>
+                                    <button class="action-btn" onclick="halfClose('AVAXUSDT')">%50</button>
+                                    <button class="action-btn" onclick="moveSLToMarket('AVAXUSDT')">SL Market</button>
+                                    <button class="action-btn" onclick="moveSLToEntry('AVAXUSDT')">SL Giriş</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </main>
 
-    <!-- Close Position Confirmation Modal -->
-    <div class="modal fade" id="closePositionModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="background: var(--panel-dark); border: 1px solid var(--border-color);">
-                <div class="modal-header" style="border-bottom: 1px solid var(--border-color);">
-                    <h5 class="modal-title text-main"><i class="fas fa-triangle-exclamation me-2" style="color: #ffc107;"></i>Confirm Close</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-secondary">
-                    You are about to close <strong class="text-main" id="close-symbol">—</strong>.
-                    This action is executed immediately on the connected exchange.
-                    <div class="mt-3 small text-secondary">
-                        Tip: Use <span class="text-main fw-bold">Adjust Margin</span> to manage liquidation risk before closing into volatile moves.
-                    </div>
-                </div>
-                <div class="modal-footer" style="border-top: 1px solid var(--border-color);">
-                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" id="confirm-close-btn">
-                        <i class="fas fa-xmark me-2"></i>Close Position
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="footer-container"></div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/main.js"></script>
     <script>
-        const fmtUsd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
-        const fmtCompactUsd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', notation: 'compact', maximumFractionDigits: 2 });
-        const fmtNum = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 });
-
-        const state = {
-            positions: [],
-            timer: null,
-            peakEquity: null,
-            closeTarget: null,
-        };
-
-        function initTooltips() {
-            const triggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            triggers.forEach((el) => new bootstrap.Tooltip(el));
+        // Live price simulation
+        function simulateLivePrices() {
+            const positions = document.querySelectorAll('#positionsTable tr');
+            
+            setInterval(() => {
+                positions.forEach(row => {
+                    const currentPriceCell = row.cells[3];
+                    const pnlUsdCell = row.cells[4];
+                    const pnlPercentCell = row.cells[5];
+                    
+                    if (currentPriceCell && pnlUsdCell && pnlPercentCell) {
+                        // Simulate small price changes
+                        const currentPrice = parseFloat(currentPriceCell.textContent.replace(',', ''));
+                        const change = (Math.random() - 0.5) * 0.002; // ±0.2% change
+                        const newPrice = currentPrice * (1 + change);
+                        
+                        currentPriceCell.textContent = newPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                        
+                        // Update PnL based on price change
+                        const entryPrice = parseFloat(row.cells[2].textContent.replace(',', ''));
+                        const direction = row.cells[1].textContent;
+                        const isBuy = direction === 'BUY';
+                        
+                        let pnlUsd, pnlPercent;
+                        if (isBuy) {
+                            pnlUsd = (newPrice - entryPrice) * 1; // Simplified calculation
+                            pnlPercent = ((newPrice - entryPrice) / entryPrice) * 100;
+                        } else {
+                            pnlUsd = (entryPrice - newPrice) * 1;
+                            pnlPercent = ((entryPrice - newPrice) / entryPrice) * 100;
+                        }
+                        
+                        pnlUsdCell.textContent = (pnlUsd >= 0 ? '+' : '') + pnlUsd.toFixed(2);
+                        pnlPercentCell.textContent = (pnlPercent >= 0 ? '+' : '') + pnlPercent.toFixed(2) + '%';
+                        
+                        // Update color classes
+                        const pnlClass = pnlUsd >= 0 ? 'pnl-positive' : 'pnl-negative';
+                        currentPriceCell.className = 'pnl-live ' + pnlClass;
+                        pnlUsdCell.className = 'pnl-live ' + pnlClass;
+                        pnlPercentCell.className = 'pnl-live ' + pnlClass;
+                        
+                        // Update row class
+                        row.className = pnlUsd >= 0 ? 'profit-row' : 'loss-row';
+                    }
+                });
+            }, 2000); // Update every 2 seconds
         }
 
-        function seedPositions() {
-            state.positions = [
-                {
-                    symbol: 'BTCUSDT',
-                    side: 'LONG',
-                    qty: 0.15,
-                    notionalUsd: 6450,
-                    entry: 43000,
-                    mark: 43250,
-                    liq: 38500,
-                    leverage: 10,
-                    marginRatio: 0.42,
-                    slEnabled: true,
-                    tpEnabled: true,
-                },
-                {
-                    symbol: 'ETHUSDT',
-                    side: 'SHORT',
-                    qty: 1.6,
-                    notionalUsd: 4200,
-                    entry: 2685,
-                    mark: 2674,
-                    liq: 3020,
-                    leverage: 8,
-                    marginRatio: 0.51,
-                    slEnabled: false,
-                    tpEnabled: true,
-                },
-            ];
-        }
-
-        function calcPnl(pos) {
-            const direction = pos.side === 'LONG' ? 1 : -1;
-            const pnlUsd = (pos.mark - pos.entry) * pos.qty * direction;
-            const pnlPct = pos.entry > 0 ? ((pos.mark - pos.entry) / pos.entry) * 100 * direction : 0;
-            return { pnlUsd, pnlPct };
-        }
-
-        function equityEstimate() {
-            // Demo equity model for UI: base equity + unrealized P&L
-            const base = 25000;
-            const unrealized = state.positions.reduce((acc, p) => acc + calcPnl(p).pnlUsd, 0);
-            return base + unrealized;
-        }
-
-        function drawdownPct(currentEquity) {
-            if (state.peakEquity === null) state.peakEquity = currentEquity;
-            state.peakEquity = Math.max(state.peakEquity, currentEquity);
-            const dd = state.peakEquity > 0 ? ((state.peakEquity - currentEquity) / state.peakEquity) * 100 : 0;
-            return Math.max(0, dd);
-        }
-
-        function updateSummary() {
-            const equity = equityEstimate();
-            const dd = drawdownPct(equity);
-            const unrealized = state.positions.reduce((acc, p) => acc + calcPnl(p).pnlUsd, 0);
-            const pnlPct = equity > 0 ? (unrealized / equity) * 100 : 0;
-
-            document.getElementById('sum-equity').textContent = fmtUsd.format(equity);
-            document.getElementById('sum-open').textContent = String(state.positions.length);
-            document.getElementById('sum-pnl').textContent = `${pnlPct >= 0 ? '+' : ''}${fmtNum.format(pnlPct)}%`;
-            document.getElementById('sum-dd').textContent = `${fmtNum.format(dd)}%`;
-
-            const pnlCard = document.getElementById('sum-pnl-card');
-            pnlCard.classList.remove('profit', 'loss');
-            pnlCard.classList.add(pnlPct >= 0 ? 'profit' : 'loss');
-
-            document.getElementById('chip-refresh').textContent = new Date().toLocaleTimeString('en-US', { hour12: false });
-        }
-
-        function renderTable() {
-            const tbody = document.getElementById('positions-tbody');
-
-            if (!state.positions.length) {
-                tbody.innerHTML = `
-                    <tr class="text-secondary">
-                        <td colspan="9">
-                            <div class="empty-state d-flex align-items-center gap-2">
-                                <i class="fas fa-wave-square"></i>
-                                <span>No active positions found. Monitoring markets for new opportunities...</span>
-                            </div>
-                        </td>
-                    </tr>
-                `;
-                return;
+        // Position action functions
+        function closePosition(symbol) {
+            if (confirm(`${symbol} pozisyonunu kapatmak istediğinizden emin misiniz?`)) {
+                showNotification(`${symbol} pozisyonu kapatılıyor...`, 'info');
+                setTimeout(() => {
+                    showNotification(`${symbol} pozisyonu başarıyla kapatıldı`, 'success');
+                }, 1500);
             }
-
-            tbody.innerHTML = state.positions.map((p) => {
-                const { pnlUsd, pnlPct } = calcPnl(p);
-                const pnlClass = pnlUsd >= 0 ? 'pnl-positive' : 'pnl-negative';
-                const sideBadge = p.side === 'LONG'
-                    ? `<span class="badge side-long">Long</span>`
-                    : `<span class="badge side-short">Short</span>`;
-
-                const moneyBadge = pnlUsd >= 0
-                    ? `<span class="badge bg-success">In the Money</span>`
-                    : `<span class="badge bg-danger">Out of the Money</span>`;
-
-                const sl = p.slEnabled ? `<span class="risk-badge on" title="Stop Loss configured" data-bs-toggle="tooltip">SL: ON</span>` : `<span class="risk-badge off" title="Stop Loss not set" data-bs-toggle="tooltip">SL: OFF</span>`;
-                const tp = p.tpEnabled ? `<span class="risk-badge on" title="Take Profit configured" data-bs-toggle="tooltip">TP: ON</span>` : `<span class="risk-badge off" title="Take Profit not set" data-bs-toggle="tooltip">TP: OFF</span>`;
-
-                return `
-                    <tr data-symbol="${p.symbol}">
-                        <td class="fw-bold">
-                            ${p.symbol}
-                            <div class="small text-secondary">Cross · Perpetual</div>
-                        </td>
-                        <td>
-                            ${sideBadge}
-                            <div class="small text-secondary mt-1">Leverage: <span class="text-main fw-bold">${p.leverage}x</span></div>
-                        </td>
-                        <td>
-                            <div class="text-main fw-bold">${fmtNum.format(p.qty)} <span class="text-secondary">contracts</span></div>
-                            <div class="small text-secondary">Notional: <span class="text-main fw-bold">${fmtCompactUsd.format(p.notionalUsd)}</span> · Margin Ratio: <span class="text-main fw-bold">${fmtNum.format(p.marginRatio * 100)}%</span></div>
-                        </td>
-                        <td class="text-main fw-bold">$${fmtNum.format(p.entry)}</td>
-                        <td class="pnl-live ${pnlClass}">$${fmtNum.format(p.mark)}</td>
-                        <td class="text-secondary">$${fmtNum.format(p.liq)}</td>
-                        <td>
-                            <div class="pnl-live ${pnlClass}">${pnlUsd >= 0 ? '+' : ''}${fmtUsd.format(pnlUsd)}</div>
-                            <div class="small ${pnlClass}">${pnlPct >= 0 ? '+' : ''}${fmtNum.format(pnlPct)}%</div>
-                            <div class="mt-1">${moneyBadge}</div>
-                        </td>
-                        <td>
-                            <div class="d-flex gap-2 flex-wrap">
-                                ${sl}
-                                ${tp}
-                            </div>
-                        </td>
-                        <td>
-                            <div class="d-flex gap-2 flex-wrap">
-                                <button class="btn btn-sm btn-outline-light" onclick="adjustMargin('${p.symbol}')" title="Adjust margin and manage liquidation risk" data-bs-toggle="tooltip">
-                                    <i class="fas fa-scale-balanced me-2"></i>Adjust Margin
-                                </button>
-                                <button class="btn btn-sm btn-outline-info" onclick="viewChart('${p.symbol}')" title="Open chart view (demo)" data-bs-toggle="tooltip">
-                                    <i class="fas fa-chart-area me-2"></i>View Chart
-                                </button>
-                                <button class="btn btn-sm btn-danger" onclick="openCloseModal('${p.symbol}')" title="Close this position" data-bs-toggle="tooltip">
-                                    <i class="fas fa-xmark me-2"></i>Close Position
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
-
-            initTooltips();
         }
 
-        function simulateMarks() {
-            if (!state.positions.length) return;
-
-            state.positions.forEach((p) => {
-                const drift = (Math.random() - 0.5) * p.entry * 0.002;
-                p.mark = Math.max(0.01, p.mark + drift);
-
-                // Keep liquidation price loosely coupled to margin ratio for demo
-                const liqShift = (Math.random() - 0.5) * p.entry * 0.001;
-                p.liq = Math.max(0.01, p.liq + liqShift);
-
-                // Margin ratio fluctuates slightly
-                p.marginRatio = Math.max(0.05, Math.min(0.95, p.marginRatio + (Math.random() - 0.5) * 0.02));
-
-                // Notional follows mark price
-                p.notionalUsd = p.mark * p.qty;
-            });
+        function halfClose(symbol) {
+            if (confirm(`${symbol} pozisyonunun %50'sini kapatmak istediğinizden emin misiniz?`)) {
+                showNotification(`${symbol} pozisyonunun %50'si kapatılıyor...`, 'info');
+                setTimeout(() => {
+                    showNotification(`${symbol} pozisyonunun %50'si başarıyla kapatıldı`, 'success');
+                }, 1500);
+            }
         }
 
-        function refreshMarks() {
-            simulateMarks();
-            renderTable();
-            updateSummary();
-            showToast('Mark prices refreshed. Portfolio metrics recalculated.', 'info');
-        }
-
-        function adjustMargin(symbol) {
-            showToast(`Adjust Margin requested for ${symbol} (demo action).`, 'info');
-        }
-
-        function viewChart(symbol) {
-            showToast(`Opening chart for ${symbol} (demo action).`, 'success');
-        }
-
-        function openCloseModal(symbol) {
-            state.closeTarget = symbol;
-            document.getElementById('close-symbol').textContent = symbol;
-            const modal = new bootstrap.Modal(document.getElementById('closePositionModal'));
-            modal.show();
-        }
-
-        function confirmClose() {
-            if (!state.closeTarget) return;
-            const symbol = state.closeTarget;
-            showToast(`Closing ${symbol}...`, 'warning');
-
+        function moveSLToMarket(symbol) {
+            showNotification(`${symbol} SL seviyesi piyasa fiyatına taşınıyor...`, 'info');
             setTimeout(() => {
-                state.positions = state.positions.filter((p) => p.symbol !== symbol);
-                state.closeTarget = null;
-                renderTable();
-                updateSummary();
-                showToast(`${symbol} closed successfully.`, 'success');
-            }, 900);
+                showNotification(`${symbol} SL seviyesi başarıyla güncellendi`, 'success');
+            }, 1000);
         }
 
-        function toggleEmptyState() {
-            if (state.positions.length) {
-                state.positions = [];
-            } else {
-                seedPositions();
+        function moveSLToEntry(symbol) {
+            showNotification(`${symbol} SL seviyesi giriş fiyatına taşınıyor...`, 'info');
+            setTimeout(() => {
+                showNotification(`${symbol} SL seviyesi başarıyla giriş fiyatına taşındı`, 'success');
+            }, 1000);
+        }
+
+        function closeAllPositions() {
+            if (confirm('Tüm pozisyonları kapatmak istediğinizden emin misiniz? Bu işlem geri alınamaz!')) {
+                showNotification('Tüm pozisyonlar kapatılıyor...', 'warning');
+                setTimeout(() => {
+                    showNotification('Tüm pozisyonlar başarıyla kapatıldı', 'success');
+                }, 2000);
             }
-            state.peakEquity = null;
-            renderTable();
-            updateSummary();
         }
 
-        function exportPositionsCsv() {
-            if (!state.positions.length) {
-                showToast('No active positions to export.', 'warning');
-                return;
-            }
-
-            const header = ['Asset/Pair', 'Side', 'Qty', 'NotionalUSD', 'Entry', 'Mark', 'Liq', 'Leverage', 'MarginRatio', 'PnL_USD', 'PnL_Pct', 'SL', 'TP'];
-            const lines = [
-                header.join(','),
-                ...state.positions.map((p) => {
-                    const { pnlUsd, pnlPct } = calcPnl(p);
-                    const row = [
-                        p.symbol,
-                        p.side,
-                        p.qty,
-                        p.notionalUsd.toFixed(2),
-                        p.entry.toFixed(2),
-                        p.mark.toFixed(2),
-                        p.liq.toFixed(2),
-                        p.leverage,
-                        (p.marginRatio * 100).toFixed(2),
-                        pnlUsd.toFixed(2),
-                        pnlPct.toFixed(2),
-                        p.slEnabled ? 'ON' : 'OFF',
-                        p.tpEnabled ? 'ON' : 'OFF',
-                    ];
-                    return row.map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',');
-                }),
-            ];
-
-            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `sentralyx-active-positions-${new Date().toISOString().slice(0, 10)}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            URL.revokeObjectURL(url);
+        function refreshPositions() {
+            showNotification('Refreshing positions...', 'info');
+            setTimeout(() => {
+                showNotification('Positions başarıyla güncellendi', 'success');
+            }, 1000);
         }
 
-        function showToast(message, type) {
-            const toast = document.createElement('div');
-            const bg = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
-            toast.className = `alert ${bg} position-fixed top-0 end-0 m-3`;
-            toast.style.zIndex = '9999';
-            toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>${message}`;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2600);
+        function addSpotPosition() {
+            showNotification('Spot pozisyon ekleme paneli açılıyor...', 'info');
+            // Here you would open a modal for adding spot positions
         }
 
-        function startRealtime() {
-            clearInterval(state.timer);
-            state.timer = setInterval(() => {
-                simulateMarks();
-                renderTable();
-                updateSummary();
-            }, 2000);
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
+            notification.className = `alert ${bgColor} position-fixed top-0 end-0 m-3`;
+            notification.style.zIndex = '9999';
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>
+                ${message}
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
         }
 
+        // Start live price simulation
         document.addEventListener('DOMContentLoaded', function() {
-            initTooltips();
-            seedPositions();
-            renderTable();
-            updateSummary();
-            startRealtime();
-
-            document.getElementById('confirm-close-btn')?.addEventListener('click', () => {
-                const modalEl = document.getElementById('closePositionModal');
-                const modal = bootstrap.Modal.getInstance(modalEl);
-                if (modal) modal.hide();
-                confirmClose();
-            });
+            simulateLivePrices();
         });
+    </script>
 
+    <div id="footer-container"></div>
+
+    <script>
+        // Load footer from components/footer.html
         fetch('../footer.html')
             .then(async (response) => {
                 const buffer = await response.arrayBuffer();
@@ -608,7 +693,7 @@
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
             })
-            .catch(error => console.error('Footer loading failed:', error));
+            .catch(error => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>

@@ -4,669 +4,446 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.sentralyx.com/history/">
-    <title>&#304;&#351;lem Ge&#231;mi&#351;i Analizi | Kar Zarar ve Trade Performans Raporu</title>
-    <meta name="description" content="Kapal&#305; pozisyonlar i&#231;in i&#351;lem ge&#231;mi&#351;i analizi, kar zarar raporu ve trade performans raporu; portf&#246;y backtesting ve performans metrikleriyle birlikte.">
-    <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/history/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/history/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/history/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/history/">
+<title>Sentralyx | İşlem Geçmişi ve Arşivler</title>
+    <meta name="description" content="Aranabilir işlem geçmişi arşivi, gerçekleşmiş P&L, işlem süresi, sipariş tanımlayıcıları, zaman damgaları ve kapanış gerekçeleri ile işlem sonrası analiz.">
+    <meta property="og:title" content="Sentralyx | İşlem Geçmişi ve Arşivler">
+    <meta property="og:description" content="Aranabilir işlem geçmişi arşivi, gerçekleşmiş P&amp;L, işlem süresi, sipariş tanımlayıcıları, zaman damgaları ve kapanış gerekçeleri ile işlem sonrası analiz.">
+    <meta property="og:url" content="https://www.sentralyx.com/history/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sentralyx.com/assets/logo.png">
+<link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    
+
     <style>
         .history-container {
             padding: 20px;
             background: var(--bg-dark);
             min-height: 100vh;
         }
-        
-        .summary-card {
+
+        .panel {
             background: var(--panel-dark);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
         }
-        
-        .summary-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
-            border-color: var(--accent-blue);
-        }
-        
-        .summary-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
-            transition: left 0.5s;
-        }
-        
-        .summary-card:hover::before {
-            left: 100%;
-        }
-        
-        .summary-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, var(--accent-blue), var(--signal-buy));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .summary-card .value {
-            font-size: 2.5rem;
+
+        .toolbar-btn {
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
             font-weight: 700;
+        }
+        .toolbar-btn:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
+
+        .form-control-custom {
+            background: rgba(42, 49, 66, 0.3);
+            border: 1px solid var(--border-color);
             color: var(--text-main);
-            margin-bottom: 5px;
+            border-radius: 10px;
         }
-        
-        .summary-card.profit .value {
-            color: var(--signal-buy);
-            text-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+        .form-control-custom:focus {
+            background: rgba(42, 49, 66, 0.5);
+            border-color: var(--accent-blue);
+            color: var(--text-main);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
         }
-        
-        .summary-card.loss .value {
-            color: var(--signal-sell);
-            text-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
-        }
-        
-        .filter-panel {
-            background: var(--panel-dark);
+
+        .table-custom { color: var(--text-main); margin-bottom: 0; }
+        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
+        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
+        .table-custom td { padding: 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
+        .table-custom tbody tr:hover { background: rgba(52, 152, 219, 0.05); box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.08); }
+
+        .side-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 999px;
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-        
-        .table-custom {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .table-custom thead {
-            background: rgba(52, 152, 219, 0.1);
-            border-bottom: 2px solid var(--accent-blue);
-        }
-        
-        .table-custom th {
-            font-weight: 600;
-            text-transform: uppercase;
+            background: rgba(42, 49, 66, 0.25);
+            font-weight: 800;
             font-size: 0.85rem;
-            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        .side-long { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); color: var(--signal-buy); }
+        .side-short { border-color: rgba(231, 76, 60, 0.35); background: rgba(231, 76, 60, 0.08); color: var(--signal-sell); }
+
+        .outcome-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            font-weight: 800;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .outcome-win { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); color: var(--signal-buy); }
+        .outcome-loss { border-color: rgba(231, 76, 60, 0.35); background: rgba(231, 76, 60, 0.08); color: var(--signal-sell); opacity: 0.9; }
+        .outcome-canceled { border-color: rgba(255, 193, 7, 0.35); background: rgba(255, 193, 7, 0.08); color: #ffc107; }
+
+        .pnl-positive { color: var(--signal-buy); font-weight: 900; }
+        .pnl-negative { color: rgba(231, 76, 60, 0.9); font-weight: 800; }
+
+        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+        .pager {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
             padding: 12px;
-            border: none;
-            color: var(--text-main);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
         }
-        
-        .table-custom td {
-            padding: 12px;
-            border: none;
-            border-bottom: 1px solid rgba(42, 49, 66, 0.3);
-            color: var(--text-main);
+
+        .empty-state {
+            background: rgba(42, 49, 66, 0.25);
+            border: 1px dashed rgba(52, 152, 219, 0.35);
+            border-radius: 12px;
+            padding: 22px;
+            color: var(--text-secondary);
         }
-        
-        .table-custom tbody tr:hover {
-            background: rgba(52, 152, 219, 0.05);
-            box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.1);
-        }
-        
-        .pnl-positive {
-            color: var(--signal-buy);
-            font-weight: 600;
-        }
-        
-        .pnl-negative {
-            color: var(--signal-sell);
-            font-weight: 600;
-        }
-        
-        .direction-buy {
-            color: var(--signal-buy);
-            font-weight: 600;
-        }
-        
-        .direction-sell {
-            color: var(--signal-sell);
-            font-weight: 600;
-        }
-        
-        .close-reason {
+
+        .demo-badge {
+            background: rgba(255, 193, 7, 0.15);
+            border: 1px solid rgba(255, 193, 7, 0.4);
+            color: #ffc107;
             padding: 4px 8px;
             border-radius: 4px;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
         }
-        
-        .reason-sl {
-            background: rgba(231, 76, 60, 0.2);
-            color: var(--signal-sell);
-        }
-        
-        .reason-tp {
-            background: rgba(46, 204, 113, 0.2);
-            color: var(--signal-buy);
-        }
-        
-        .reason-manual {
-            background: rgba(52, 152, 219, 0.2);
-            color: var(--accent-blue);
-        }
-        
-        .duration-badge {
-            background: rgba(42, 49, 66, 0.5);
-            color: var(--text-secondary);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-        }
-        
-        .export-btn {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .export-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-        }
-        
-        .section-title {
-            color: var(--text-main);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .section-title i {
-            margin-right: 10px;
-            color: var(--accent-blue);
-        }
-        
-        .profit-row {
-            background: rgba(46, 204, 113, 0.05);
-        }
-        
-        .loss-row {
-            background: rgba(231, 76, 60, 0.05);
-        }
-        
-        .date-filter {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-radius: 6px;
-            padding: 8px 12px;
-        }
-        
-        .date-filter:focus {
-            background: rgba(42, 49, 66, 0.5);
-            border-color: var(--accent-blue);
-            color: var(--text-main);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
-        }
-        
-        .filter-select {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-radius: 6px;
-            padding: 8px 12px;
-        }
-        
-        .filter-select:focus {
-            background: rgba(42, 49, 66, 0.5);
-            border-color: var(--accent-blue);
-            color: var(--text-main);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .history-container {
-                padding: 20px 15px;
-            }
-            
-            .date-filters {
-                flex-direction: column;
-                gap: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .summary-cards {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .summary-card {
-                padding: 20px 15px;
-            }
-            
-            .table-custom {
-                font-size: 14px;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-            
-            .table-custom th,
-            .table-custom td {
-                padding: 8px 6px;
-                font-size: 13px;
-            }
-            
-            h1 {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .lead {
-                font-size: 1rem;
-                margin-bottom: 20px;
-            }
-        }
-        
-        /* Prevent Horizontal Scroll */
-        * {
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-        
-        body {
-            overflow-x: hidden;
-            min-width: 320px;
-        }
-        
-        .container {
-            max-width: 100%;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        
-        /* Touch Targets for Mobile */
-        @media (max-width: 768px) {
-            .btn, .form-control, .form-select {
-                min-height: 44px;
-                min-width: 44px;
-                padding: 12px 16px;
-            }
-        }
     </style>
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Ana Sayfa",
-      "item": "https://www.sentralyx.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "\u0130\u015flem Ge\u00e7mi\u015fi",
-      "item": "https://www.sentralyx.com/history/"
-    }
-  ]
-}
-    </script>
-
 </head>
 <body>
+
     <header id="main-header"></header>
-    
+
     <main class="history-container">
-        <div class="text-center mb-4">
-            <h1 class="text-main">İşlem Geçmişi Analizi</h1>
-            <p class="text-secondary">Kapal&#305; pozisyonlar&#305;, kar zarar raporunu ve trade performans raporunu i&#351;lem ge&#231;mi&#351;i analizi i&#231;in tek tabloda inceleyin.</p>
-        </div>
-        <!-- Summary Cards -->
-        <div class="row mb-4">
-            <div class="col-md-3">
-                <div class="summary-card">
-                    <div class="icon">
-                        <i class="fas fa-history"></i>
-                    </div>
-                    <div class="value">287</div>
-                    <div class="text-secondary">Toplam Kapali</div>
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <div>
+                    <h1 class="text-main mb-1">İşlem Geçmişi ve Arşivler</h1>
+                    <p class="text-secondary mb-0">İşlem sonrası analiz: gerçekleşmiş P&L, işlem zaman damgaları, sipariş ID'leri ve kapanış gerekçeleri <span class="demo-badge">DEMO VERİ</span></p>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="summary-card profit">
-                    <div class="icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <div class="value">189 / 98</div>
-                    <div class="text-secondary">Kârlı / Zararlı</div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="summary-card profit">
-                    <div class="icon">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <div class="value">+5,234.56</div>
-                    <div class="text-secondary">Toplam PnL (USDT)</div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="summary-card">
-                    <div class="icon">
-                        <i class="fas fa-percentage"></i>
-                    </div>
-                    <div class="value">65.8%</div>
-                    <div class="text-secondary">Başarı Oranı</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Filter Panel -->
-        <div class="filter-panel">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <div class="d-flex flex-wrap gap-2 align-items-center">
-                        <span class="text-main me-2">Filtreler:</span>
-                        <input type="date" class="form-control date-filter" id="startDate" style="max-width: 150px;">
-                        <input type="date" class="form-control date-filter" id="endDate" style="max-width: 150px;">
-                        <select class="form-select filter-select" style="max-width: 120px;">
-                            <option>Sembol: Tümü</option>
-                            <option>BTCUSDT</option>
-                            <option>ETHUSDT</option>
-                            <option>SOLUSDT</option>
-                        </select>
-                        <select class="form-select filter-select" style="max-width: 120px;">
-                            <option>Yön: Tümü</option>
-                            <option>BUY</option>
-                            <option>SELL</option>
-                        </select>
-                        <select class="form-select filter-select" style="max-width: 120px;">
-                            <option>Neden: Tümü</option>
-                            <option>SL</option>
-                            <option>TP</option>
-                            <option>Manuel</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4 text-end">
-                    <button class="btn btn-sm btn-primary me-2" onclick="applyFilters()">
-                        <i class="fas fa-filter me-1"></i>Filtrele
+                <div class="d-flex gap-2 flex-wrap align-items-center">
+                    <button class="toolbar-btn" onclick="downloadTradeLogTxt()" title="Düz metin denetim günlüğü indir" data-bs-toggle="tooltip">
+                        <i class="fas fa-file-lines me-2"></i>İşlem Günlüğü İndir (.txt)
                     </button>
-                    <button class="export-btn" onclick="exportToCSV()">
-                        <i class="fas fa-download me-2"></i>CSV Dışa Aktar
+                    <button class="toolbar-btn" onclick="exportHistoryCsv()" title="Geçerli görünümü CSV olarak dışa aktar" data-bs-toggle="tooltip">
+                        <i class="fas fa-file-export me-2"></i>CSV Dışa Aktar
                     </button>
                 </div>
             </div>
-        </div>
 
-        <!-- Closed Positions Table -->
-        <div class="table-custom">
-            <div class="p-3 border-bottom border-custom">
-                <h5 class="mb-0 section-title">
-                    <i class="fas fa-times-circle"></i>Kapali Pozisyonlar
-                </h5>
+            <!-- Arama & Filtreler -->
+            <div class="panel p-3 mb-3">
+                <div class="row g-3 align-items-end">
+                    <div class="col-lg-3">
+                        <label class="form-label text-main small mb-1">Sembol ile Ara</label>
+                        <input id="symbol-search" type="text" class="form-control form-control-custom" placeholder="örn: BTCUSDT" oninput="applyFilters()">
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label text-main small mb-1">Tarih Filtresi (Başlangıç)</label>
+                        <input id="date-start" type="date" class="form-control form-control-custom" onchange="applyFilters()">
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label text-main small mb-1">Tarih Filtresi (Bitiş)</label>
+                        <input id="date-end" type="date" class="form-control form-control-custom" onchange="applyFilters()">
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="form-label text-main small mb-1">Sonuç Filtresi</label>
+                        <select id="outcome-filter" class="form-select form-control-custom" onchange="applyFilters()">
+                            <option value="all" selected>Tümü</option>
+                            <option value="win">Kazanç</option>
+                            <option value="loss">Kayıp</option>
+                            <option value="canceled">İptal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-secondary small mt-3">
+                    İpucu: Dışa aktarmaları denetim izleri ve uyumluluk incelemeleri için kullanın. İşlem zaman damgaları 24 saat formatındadır.
+                </div>
             </div>
-            <div class="table-responsive">
-                <table class="table table-custom mb-0">
-                    <thead>
-                        <tr>
-                            <th>Sembol</th>
-                            <th>Yön</th>
-                            <th>Giriş Fiyatı</th>
-                            <th>Kapanış Fiyatı</th>
-                            <th>Kâr/Zarar ($)</th>
-                            <th>Kâr/Zarar (%)</th>
-                            <th>Kapanış Nedeni</th>
-                            <th>Toplam Süre</th>
-                            <th>Tarih</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="profit-row">
-                            <td><strong>BTCUSDT</strong></td>
-                            <td class="direction-buy">BUY</td>
-                            <td>42,156.78</td>
-                            <td>43,890.45</td>
-                            <td class="pnl-positive">+1,733.67</td>
-                            <td class="pnl-positive">+4.11%</td>
-                            <td><span class="close-reason reason-tp">TP</span></td>
-                            <td><span class="duration-badge">2s 45d</span></td>
-                            <td>18.04.2026 14:32</td>
-                        </tr>
-                        <tr class="loss-row">
-                            <td><strong>ETHUSDT</strong></td>
-                            <td class="direction-sell">SELL</td>
-                            <td>2,245.32</td>
-                            <td>2,289.67</td>
-                            <td class="pnl-negative">-44.35</td>
-                            <td class="pnl-negative">-1.98%</td>
-                            <td><span class="close-reason reason-sl">SL</span></td>
-                            <td><span class="duration-badge">1s 12d</span></td>
-                            <td>18.04.2026 15:45</td>
-                        </tr>
-                        <tr class="profit-row">
-                            <td><strong>SOLUSDT</strong></td>
-                            <td class="direction-buy">BUY</td>
-                            <td>98.45</td>
-                            <td>105.23</td>
-                            <td class="pnl-positive">+678.00</td>
-                            <td class="pnl-positive">+6.88%</td>
-                            <td><span class="close-reason reason-manuel">Manuel</span></td>
-                            <td><span class="duration-badge">3s 2d</span></td>
-                            <td>17.04.2026 16:12</td>
-                        </tr>
-                        <tr class="profit-row">
-                            <td><strong>ADAUSDT</strong></td>
-                            <td class="direction-sell">SELL</td>
-                            <td>0.582</td>
-                            <td>0.568</td>
-                            <td class="pnl-positive">+70.00</td>
-                            <td class="pnl-positive">+12.03%</td>
-                            <td><span class="close-reason reason-tp">TP</span></td>
-                            <td><span class="duration-badge">4s 18d</span></td>
-                            <td>17.04.2026 17:28</td>
-                        </tr>
-                        <tr class="loss-row">
-                            <td><strong>AVAXUSDT</strong></td>
-                            <td class="direction-buy">BUY</td>
-                            <td>35.67</td>
-                            <td>34.89</td>
-                            <td class="pnl-negative">-117.00</td>
-                            <td class="pnl-negative">-3.28%</td>
-                            <td><span class="close-reason reason-sl">SL</span></td>
-                            <td><span class="duration-badge">2s 5d</span></td>
-                            <td>16.04.2026 18:55</td>
-                        </tr>
-                        <tr class="profit-row">
-                            <td><strong>DOTUSDT</strong></td>
-                            <td class="direction-sell">SELL</td>
-                            <td>7.50</td>
-                            <td>7.25</td>
-                            <td class="pnl-positive">+125.00</td>
-                            <td class="pnl-positive">+3.33%</td>
-                            <td><span class="close-reason reason-tp">TP</span></td>
-                            <td><span class="duration-badge">1s 22d</span></td>
-                            <td>16.04.2026 13:22</td>
-                        </tr>
-                        <tr class="loss-row">
-                            <td><strong>LINKUSDT</strong></td>
-                            <td class="direction-buy">BUY</td>
-                            <td>13.92</td>
-                            <td>13.45</td>
-                            <td class="pnl-negative">-94.00</td>
-                            <td class="pnl-negative">-6.75%</td>
-                            <td><span class="close-reason reason-manuel">Manuel</span></td>
-                            <td><span class="duration-badge">5s 8d</span></td>
-                            <td>15.04.2026 14:18</td>
-                        </tr>
-                        <tr class="profit-row">
-                            <td><strong>MATICUSDT</strong></td>
-                            <td class="direction-sell">SELL</td>
-                            <td>0.59</td>
-                            <td>0.57</td>
-                            <td class="pnl-positive">+40.00</td>
-                            <td class="pnl-positive">+6.78%</td>
-                            <td><span class="close-reason reason-tp">TP</span></td>
-                            <td><span class="duration-badge">3s 14d</span></td>
-                            <td>15.04.2026 15:33</td>
-                        </tr>
-                        <tr class="profit-row">
-                            <td><strong>UNIUSDT</strong></td>
-                            <td class="direction-buy">BUY</td>
-                            <td>8.23</td>
-                            <td>8.67</td>
-                            <td class="pnl-positive">+440.00</td>
-                            <td class="pnl-positive">+5.34%</td>
-                            <td><span class="close-reason reason-manuel">Manuel</span></td>
-                            <td><span class="duration-badge">2s 19d</span></td>
-                            <td>14.04.2026 11:45</td>
-                        </tr>
-                        <tr class="loss-row">
-                            <td><strong>ATOMUSDT</strong></td>
-                            <td class="direction-sell">SELL</td>
-                            <td>6.78</td>
-                            <td>6.95</td>
-                            <td class="pnl-negative">-170.00</td>
-                            <td class="pnl-negative">-2.51%</td>
-                            <td><span class="close-reason reason-sl">SL</span></td>
-                            <td><span class="duration-badge">4s 3d</span></td>
-                            <td>14.04.2026 16:20</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
-        <!-- Pagination -->
-        <div class="d-flex justify-content-between align-items-center mt-3">
-            <div class="text-secondary">
-                Gösterilen: 1-10 / 287 kayıt
+            <!-- Geçmiş Tablosu -->
+            <div class="panel">
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th style="min-width: 190px;">İşlem Zaman Damgası</th>
+                                <th style="min-width: 140px;">Sembol</th>
+                                <th style="min-width: 120px;">Yön</th>
+                                <th style="min-width: 120px;">Giriş Fiyatı</th>
+                                <th style="min-width: 120px;">Çıkış Fiyatı</th>
+                                <th style="min-width: 120px;">Miktar</th>
+                                <th style="min-width: 220px;">Gerçekleşmiş P&L ($/%)</th>
+                                <th style="min-width: 190px;">Kapanış Nedeni</th>
+                                <th style="min-width: 170px;">Sipariş ID</th>
+                                <th style="min-width: 150px;">Sonuç</th>
+                                <th style="min-width: 150px;">İşlem Süresi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-tbody"></tbody>
+                    </table>
+                </div>
+                <div class="pager">
+                    <div>
+                        <span id="pager-label">0-0 / 0 işlem gösteriliyor</span>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="toolbar-btn" onclick="prevPage()"><i class="fas fa-chevron-left me-2"></i>Önceki</button>
+                        <button class="toolbar-btn" onclick="nextPage()">Sonraki<i class="fas fa-chevron-right ms-2"></i></button>
+                    </div>
+                </div>
             </div>
-            <nav>
-                <ul class="pagination pagination-sm mb-0">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">
-                            <i class="fas fa-chevron-left"></i>
-                        </a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+
+            <div id="empty-results" style="display:none;">
+                <div class="empty-state mt-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="fas fa-wave-square"></i>
+                        <span>Seçilen filtrelerle eşleşen işlem bulunamadı. Tarih aralığını ayarlayın veya sonuç filtresini temizleyin.</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
+    <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
+        const fmtUsd = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+        const fmtNum = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 4 });
+        const fmtPct = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
+
+        const state = {
+            all: [],
+            filtered: [],
+            page: 1,
+            pageSize: 20,
+        };
+
+        function initTooltips() {
+            const triggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            triggers.forEach((el) => new bootstrap.Tooltip(el));
+        }
+
+        function seedTrades() {
+            // DEMO VERİ - Üretim ortamında Sentralyx rapor motoru tarafından oluşturulur
+            state.all = [
+                { ts: '2026-05-06 03:12:45', symbol: 'BTCUSDT', side: 'Long', entry: 43000, exit: 43610, qty: 0.15, pnlUsd: 91.50, pnlPct: 1.42, reason: 'Take-Profit Hedefi', orderId: 'OKX-84319201', outcome: 'win', duration: '02s 14d' },
+                { ts: '2026-05-06 01:44:10', symbol: 'ETHUSDT', side: 'Short', entry: 2685, exit: 2703, qty: 1.6, pnlUsd: -28.80, pnlPct: -0.68, reason: 'Stop-Loss Tetiklendi', orderId: 'OKX-84317110', outcome: 'loss', duration: '00s 38d' },
+                { ts: '2026-05-05 22:26:33', symbol: 'SOLUSDT', side: 'Long', entry: 96.20, exit: 98.17, qty: 42, pnlUsd: 82.74, pnlPct: 2.05, reason: 'Take-Profit Hedefi', orderId: 'OKX-84300877', outcome: 'win', duration: '01s 02d' },
+                { ts: '2026-05-05 19:08:51', symbol: 'XRPUSDT', side: 'Long', entry: 0.5121, exit: 0.5159, qty: 4800, pnlUsd: 18.24, pnlPct: 0.74, reason: 'Manuel Kapanış', orderId: 'OKX-84290113', outcome: 'win', duration: '00s 51d' },
+                { ts: '2026-05-05 12:18:04', symbol: 'BNBUSDT', side: 'Short', entry: 585.10, exit: 591.66, qty: 7, pnlUsd: -45.92, pnlPct: -1.12, reason: 'Stop-Loss Tetiklendi', orderId: 'OKX-84254099', outcome: 'loss', duration: '03s 26d' },
+                { ts: '2026-05-04 18:22:19', symbol: 'ADAUSDT', side: 'Long', entry: 0.4352, exit: 0.4400, qty: 12000, pnlUsd: 57.60, pnlPct: 1.10, reason: 'Take-Profit Hedefi', orderId: 'OKX-84189018', outcome: 'win', duration: '05s 09d' },
+                { ts: '2026-05-04 13:05:02', symbol: 'LINKUSDT', side: 'Long', entry: 15.44, exit: 15.58, qty: 350, pnlUsd: 49.00, pnlPct: 0.88, reason: 'Zaman Bazlı Çıkış', orderId: 'OKX-84170122', outcome: 'win', duration: '00s 44d' },
+                { ts: '2026-05-03 10:51:20', symbol: 'DOTUSDT', side: 'Short', entry: 6.82, exit: 6.845, qty: 980, pnlUsd: 24.50, pnlPct: 0.36, reason: 'Manuel Kapanış', orderId: 'OKX-84012014', outcome: 'win', duration: '01s 17d' },
+                { ts: '2026-05-03 09:15:02', symbol: 'AVAXUSDT', side: 'Long', entry: 34.50, exit: 34.49, qty: 120, pnlUsd: -1.20, pnlPct: -0.03, reason: 'İptal (Spread Artışı)', orderId: 'OKX-84008111', outcome: 'canceled', duration: '00s 05d' },
+            ];
+
+            // Sayfalama için varyasyonlarla çoğalt (UI önizlemesi için)
+            const base = [...state.all];
+            for (let i = 0; i < 55; i++) {
+                const t = base[i % base.length];
+                const ts = new Date(`${t.ts.replace(' ', 'T')}Z`);
+                ts.setMinutes(ts.getMinutes() - (i * 11));
+                const iso = ts.toISOString().slice(0, 16).replace('T', ' ');
+                state.all.push({
+                    ...t,
+                    ts: iso,
+                    orderId: `${t.orderId.split('-')[0]}-${Number(t.orderId.split('-')[1]) + i + 1}`,
+                    pnlUsd: Number((t.pnlUsd * (0.85 + Math.random() * 0.4)).toFixed(2)),
+                    pnlPct: Number((t.pnlPct * (0.9 + Math.random() * 0.3)).toFixed(2)),
+                });
+            }
+
+            // Zaman damgasına göre azalan sırala
+            state.all.sort((a, b) => (a.ts < b.ts ? 1 : a.ts > b.ts ? -1 : 0));
+        }
+
+        function outcomeHtml(o) {
+            if (o === 'win') return `<span class="outcome-pill outcome-win"><i class="fas fa-circle-check"></i>Kazanç</span>`;
+            if (o === 'loss') return `<span class="outcome-pill outcome-loss"><i class="fas fa-circle-xmark"></i>Kayıp</span>`;
+            return `<span class="outcome-pill outcome-canceled"><i class="fas fa-ban"></i>İptal</span>`;
+        }
+
+        function sideHtml(side) {
+            if (side.toLowerCase() === 'long') return `<span class="side-badge side-long"><i class="fas fa-arrow-up"></i>Long</span>`;
+            return `<span class="side-badge side-short"><i class="fas fa-arrow-down"></i>Short</span>`;
+        }
+
+        function render() {
+            const total = state.filtered.length;
+            const startIdx = (state.page - 1) * state.pageSize;
+            const endIdx = Math.min(total, startIdx + state.pageSize);
+
+            document.getElementById('pager-label').textContent = total
+                ? `${startIdx + 1}-${endIdx} / ${total} işlem gösteriliyor`
+                : '0-0 / 0 işlem gösteriliyor';
+
+            const tbody = document.getElementById('history-tbody');
+            const empty = document.getElementById('empty-results');
+
+            if (!total) {
+                tbody.innerHTML = `
+                    <tr class="text-secondary">
+                        <td colspan="11">
+                            <div class="py-2 d-flex align-items-center gap-2">
+                                <i class="fas fa-wave-square"></i>
+                                <span>Seçilen filtrelerle eşleşen işlem bulunamadı.</span>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                empty.style.display = 'block';
+                return;
+            }
+
+            empty.style.display = 'none';
+
+            tbody.innerHTML = state.filtered.slice(startIdx, endIdx).map((t) => {
+                const pnlClass = t.pnlUsd >= 0 ? 'pnl-positive' : 'pnl-negative';
+                const pnlText = `${t.pnlUsd >= 0 ? '+' : ''}${fmtUsd.format(t.pnlUsd)} / ${t.pnlPct >= 0 ? '+' : ''}${fmtPct.format(t.pnlPct)}%`;
+                return `
+                    <tr>
+                        <td class="text-secondary mono">${t.ts}</td>
+                        <td class="fw-bold">${t.symbol}</td>
+                        <td>${sideHtml(t.side)}</td>
+                        <td class="text-main fw-bold">$${fmtNum.format(t.entry)}</td>
+                        <td class="text-main fw-bold">$${fmtNum.format(t.exit)}</td>
+                        <td class="text-secondary">${fmtNum.format(t.qty)}</td>
+                        <td class="${pnlClass}">${pnlText}</td>
+                        <td class="text-secondary">${t.reason}</td>
+                        <td class="text-secondary mono">${t.orderId}</td>
+                        <td>${outcomeHtml(t.outcome)}</td>
+                        <td class="text-secondary">${t.duration}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            initTooltips();
+        }
+
         function applyFilters() {
-            const startDate = document.getElementById('startDate').value;
-            const endDate = document.getElementById('endDate').value;
-            
-            console.log('Filters applied:', { startDate, endDate });
-            
-            // Add filter logic here
-            // For demo purposes, just show a message
-            const tbody = document.querySelector('.table-custom tbody');
-            const originalContent = tbody.innerHTML;
-            
-            // Show loading state
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="9" class="text-center py-4">
-                        <i class="fas fa-spinner fa-spin me-2"></i>
-                        Filtreler uygulanıyor...
-                    </td>
-                </tr>
-            `;
-            
-            // Simulate filtering
-            setTimeout(() => {
-                tbody.innerHTML = originalContent;
-                showNotification('Filtreler başarıyla uygulandı', 'success');
-            }, 1000);
+            const sym = (document.getElementById('symbol-search').value || '').trim().toUpperCase();
+            const start = document.getElementById('date-start').value;
+            const end = document.getElementById('date-end').value;
+            const outcome = document.getElementById('outcome-filter').value;
+
+            state.filtered = state.all.filter((t) => {
+                if (sym && !t.symbol.includes(sym)) return false;
+                if (outcome !== 'all' && t.outcome !== outcome) return false;
+
+                if (start) {
+                    const d = t.ts.slice(0, 10);
+                    if (d < start) return false;
+                }
+                if (end) {
+                    const d = t.ts.slice(0, 10);
+                    if (d > end) return false;
+                }
+                return true;
+            });
+
+            state.page = 1;
+            render();
         }
 
-        function exportToCSV() {
-            // Create CSV content
-            let csvContent = "Sembol,Yön,Giriş Fiyatı,Kapanış Fiyatı,Kâr/Zarar ($),Kâr/Zarar (%),Kapanış Nedeni,Toplam Süre,Tarih\n";
-            
-            // Add sample data
-            csvContent += "BTCUSDT,BUY,42156.78,43890.45,+1733.67,+4.11%,TP,2s 45d,18.04.2026 14:32\n";
-            csvContent += "ETHUSDT,SELL,2245.32,2289.67,-44.35,-1.98%,SL,1s 12d,18.04.2026 15:45\n";
-            csvContent += "SOLUSDT,BUY,98.45,105.23,+678.00,+6.88%,Manuel,3s 2d,17.04.2026 16:12\n";
-            csvContent += "ADAUSDT,SELL,0.582,0.568,+70.00,+12.03%,TP,4s 18d,17.04.2026 17:28\n";
-            csvContent += "AVAXUSDT,BUY,35.67,34.89,-117.00,-3.28%,SL,2s 5d,16.04.2026 18:55\n";
-            
-            // Create download link
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
+        function prevPage() {
+            state.page = Math.max(1, state.page - 1);
+            render();
+        }
+
+        function nextPage() {
+            const maxPage = Math.max(1, Math.ceil(state.filtered.length / state.pageSize));
+            state.page = Math.min(maxPage, state.page + 1);
+            render();
+        }
+
+        function exportHistoryCsv() {
+            if (!state.filtered.length) return;
+            const header = ['İşlemZamanDamgası', 'Sembol', 'Yön', 'GirişFiyatı', 'ÇıkışFiyatı', 'Miktar', 'GerçekleşmişPnL_USD', 'GerçekleşmişPnL_Yüzde', 'KapanışNedeni', 'SiparişId', 'Sonuç', 'İşlemSüresi'];
+            const lines = [
+                header.join(','),
+                ...state.filtered.map((t) => [
+                    t.ts,
+                    t.symbol,
+                    t.side,
+                    t.entry,
+                    t.exit,
+                    t.qty,
+                    t.pnlUsd,
+                    t.pnlPct,
+                    t.reason,
+                    t.orderId,
+                    t.outcome,
+                    t.duration,
+                ].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',')),
+            ];
+
+            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
             const url = URL.createObjectURL(blob);
-            link.setAttribute('href', url);
-            link.setAttribute('download', `sentralyx_kapali_pozisyonlar_${new Date().toISOString().split('T')[0]}.csv`);
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            showNotification('CSV dosyası başarıyla indirildi', 'success');
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sentralyx-islem-gecmisi-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
         }
 
-        function showNotification(message, type) {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = `alert alert-${type === 'success' ? 'success' : 'danger'} position-fixed top-0 end-0 m-3`;
-            notification.style.zIndex = '9999';
-            notification.innerHTML = `
-                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
-                ${message}
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
+        function downloadTradeLogTxt() {
+            const lines = state.filtered.map((t) => {
+                const pnl = `${t.pnlUsd >= 0 ? '+' : ''}${t.pnlUsd} USD (${t.pnlPct >= 0 ? '+' : ''}${t.pnlPct}%)`;
+                return [
+                    `[${t.ts}]`,
+                    `Sembol=${t.symbol}`,
+                    `Yön=${t.side}`,
+                    `Giriş=${t.entry}`,
+                    `Çıkış=${t.exit}`,
+                    `Miktar=${t.qty}`,
+                    `GerçekleşmişPnL=${pnl}`,
+                    `Sonuç=${t.outcome.toUpperCase()}`,
+                    `Neden="${t.reason}"`,
+                    `SiparişID=${t.orderId}`,
+                    `Süre=${t.duration}`,
+                ].join(' ');
+            });
+
+            const blob = new Blob([lines.join('\n') + '\n'], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sentralyx-islem-gunlugu-${new Date().toISOString().slice(0, 10)}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
         }
 
-        // Initialize with today's date
-        document.addEventListener('DOMContentLoaded', function() {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('endDate').value = today;
-            
-            const monthAgo = new Date();
-            monthAgo.setMonth(monthAgo.getMonth() - 1);
-            document.getElementById('startDate').value = monthAgo.toISOString().split('T')[0];
+        document.addEventListener('DOMContentLoaded', () => {
+            seedTrades();
+            state.filtered = [...state.all];
+            initTooltips();
+            render();
         });
-    </script>
 
-    <div id="footer-container"></div>
-
-    <script>
-        // Load footer from components/footer.html
         fetch('../components/footer.html')
             .then(async (response) => {
                 const buffer = await response.arrayBuffer();
@@ -675,7 +452,7 @@
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
             })
-            .catch(error => console.error('Footer yuklenemedi:', error));
+            .catch(error => console.error('Footer yüklenemedi:', error));
     </script>
 </body>
 </html>

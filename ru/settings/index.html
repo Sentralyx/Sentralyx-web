@@ -4,537 +4,946 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.sentralyx.com/ru/settings/">
-    <title>Sentralyx | Системные настройки и конфигурация безопасности</title>
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/settings/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/settings/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/settings/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/settings/">
+<title>Sentralyx | Системные настройки и конфигурация безопасности</title>
     <meta name="description" content="Безопасные настройки Sentralyx: управление API, зашифрованное хранение, параметры риска, уведомления и UI‑предпочтения.">
-
-    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <meta property="og:title" content="Sentralyx | Системные настройки и конфигурация безопасности">
+    <meta property="og:description" content="Безопасные настройки Sentralyx: управление API, зашифрованное хранение, параметры риска, уведомления и UI‑предпочтения.">
+    <meta property="og:url" content="https://www.sentralyx.com/ru/settings/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sentralyx.com/assets/logo.png">
+<link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
 
     <style>
-        .settings-container { padding: 20px; background: var(--bg-dark); min-height: 100vh; }
-        .panel { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 12px; }
-
+        .settings-container {
+            padding: 20px;
+            background: var(--bg-dark);
+            min-height: 100vh;
+        }
+        
         .section-title {
             color: var(--text-main);
-            font-weight: 900;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: var(--accent-blue);
+        }
+        
+        .settings-card {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .settings-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.1);
+            border-color: var(--accent-blue);
+        }
+        
+        .settings-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            transition: left 0.5s;
+        }
+        
+        .settings-card:hover::before {
+            left: 100%;
+        }
+        
+        .card-header-custom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .card-title {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            font-weight: 600;
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 10px;
         }
-        .section-title i { color: var(--accent-blue); }
-
-        .form-control-custom {
+        
+        .card-title i {
+            margin-right: 10px;
+            color: var(--accent-blue);
+        }
+        
+        .help-button {
+            background: rgba(52, 152, 219, 0.1);
+            border: 1px solid var(--border-color);
+            color: var(--accent-blue);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .help-button:hover {
+            background: rgba(52, 152, 219, 0.2);
+            border-color: var(--accent-blue);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            color: var(--text-main);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .form-control, .form-select {
             background: rgba(42, 49, 66, 0.3);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            border-radius: 10px;
+            border-radius: 6px;
         }
-        .form-control-custom:focus {
+        
+        .form-control:focus, .form-select:focus {
             background: rgba(42, 49, 66, 0.5);
             border-color: var(--accent-blue);
             color: var(--text-main);
             box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
         }
-
-        .toolbar-btn {
-            padding: 10px 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-main);
-            font-weight: 800;
+        
+        .form-control[type="password"] {
+            font-family: monospace;
+            letter-spacing: 2px;
         }
-        .toolbar-btn:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
+        
+        .info-text {
             color: var(--text-secondary);
             font-size: 0.85rem;
-            white-space: nowrap;
+            margin-top: 5px;
+            font-style: italic;
         }
-        .chip strong { color: var(--text-main); font-weight: 900; }
-        .chip i { color: var(--accent-blue); }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            border-radius: 999px;
-            border: 1px solid rgba(46, 204, 113, 0.35);
-            background: rgba(46, 204, 113, 0.08);
-            color: var(--signal-buy);
-            font-weight: 900;
-            font-size: 0.9rem;
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
         }
-        .status-pill.disconnected {
-            border-color: rgba(231, 76, 60, 0.35);
-            background: rgba(231, 76, 60, 0.08);
-            color: var(--signal-sell);
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
         }
-
-        .toggle-row {
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border-color);
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: var(--accent-blue);
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .radio-option {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 12px;
-            border-radius: 12px;
+            background: rgba(42, 49, 66, 0.3);
             border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.18);
+            border-radius: 6px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
-        .toggle-row .label { color: var(--text-main); font-weight: 900; }
-        .toggle-row .hint { color: var(--text-secondary); font-size: 0.9rem; }
-
-        .security-note {
-            background: rgba(52, 152, 219, 0.08);
-            border: 1px solid rgba(52, 152, 219, 0.25);
-            border-radius: 12px;
-            padding: 14px;
-            color: var(--text-secondary);
+        
+        .radio-option:hover {
+            background: rgba(52, 152, 219, 0.1);
+            border-color: var(--accent-blue);
         }
-        .danger-note {
-            background: rgba(255, 193, 7, 0.08);
-            border: 1px solid rgba(255, 193, 7, 0.25);
-            border-radius: 12px;
-            padding: 14px;
-            color: var(--text-secondary);
+        
+        .radio-option input[type="radio"] {
+            margin-right: 8px;
         }
-
-        .footer-actions {
-            position: sticky;
-            bottom: 14px;
-            z-index: 20;
-            background: rgba(11, 17, 27, 0.85);
-            backdrop-filter: blur(10px);
+        
+        .radio-option.selected {
+            background: rgba(52, 152, 219, 0.2);
+            border-color: var(--accent-blue);
+        }
+        
+        .btn-save {
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--panel-dark);
+            border: 1px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: 15px 20px;
+            color: var(--text-main);
+            box-shadow: 0 4px 20px rgba(52, 152, 219, 0.3);
+            z-index: 9999;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .notification.success {
+            border-color: var(--signal-buy);
+            box-shadow: 0 4px 20px rgba(46, 204, 113, 0.3);
+        }
+        
+        .notification i {
+            margin-right: 10px;
+            color: var(--signal-buy);
+        }
+        
+        .okx-settings {
+            background: rgba(42, 49, 66, 0.2);
             border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 14px;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .okx-settings h6 {
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .settings-container {
+                padding: 20px 15px;
+            }
+            
+            .settings-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .setting-card {
+                padding: 20px 15px;
+            }
+            
+            .setting-header {
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            
+            .setting-title {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            
+            .setting-description {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+            }
+            
+            .form-control, .form-select {
+                padding: 12px 16px;
+                font-size: 16px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .lead {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+        }
+        
+        /* Prevent Horizontal Scroll */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+            min-width: 320px;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        /* Touch Targets for Mobile */
+        @media (max-width: 768px) {
+            .btn, .form-control, .form-select {
+                min-height: 44px;
+                min-width: 44px;
+                padding: 12px 16px;
+            }
         }
     </style>
 </head>
 <body>
-
     <header id="main-header"></header>
-
+    
     <main class="settings-container">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                <div>
-                    <h1 class="text-main mb-1">Системные настройки и конфигурация безопасности</h1>
-                    <p class="text-secondary mb-0">Управление API, зашифрованное хранение, параметры риска и операционные переключатели</p>
-                </div>
-                <div class="d-flex gap-2 flex-wrap align-items-center">
-                    <span class="status-pill disconnected" id="system-status" title="Статус подключения" data-bs-toggle="tooltip">
-                        <i class="fas fa-plug-circle-xmark"></i>
-                        <span id="status-text">Нет подключения</span>
-                        <span class="text-secondary">—</span>
-                        <span id="status-latency" class="text-secondary">Latency: —</span>
-                    </span>
-                    <span class="chip" title="Режим хранения" data-bs-toggle="tooltip"><i class="fas fa-lock"></i><span>Хранилище:</span> <strong>Encrypted</strong></span>
-                </div>
+        <div class="text-center mb-4">
+            <h1 class="text-main">Trading Sistemi Yapılandırması</h1>
+            <p class="text-secondary">Optimum performans için API entegrasyonu ve otomatik risk yönetimi ayarları</p>
+        </div>
+        <h2 class="section-title">
+            <i class="fas fa-cog"></i>Настройки
+        </h2>
+
+        <!-- Genel Settings -->
+        <div class="settings-card">
+            <div class="card-header-custom">
+                <h5 class="card-title">
+                    <i class="fas fa-globe"></i>Genel
+                </h5>
             </div>
-
-            <div class="row g-3">
-                <div class="col-xl-6">
-                    <div class="panel p-3 mb-3">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                            <h5 class="section-title"><i class="fas fa-link"></i>Интеграция с биржей</h5>
-                            <div class="d-flex gap-2 flex-wrap">
-                                <select id="exchange-select" class="form-select form-control-custom" style="min-width: 170px;" aria-label="Биржа">
-                                    <option selected>OKX</option>
-                                    <option>Binance</option>
-                                    <option>Bybit</option>
-                                </select>
-                                <button class="toolbar-btn" onclick="testConnection()" title="Проверить учётные данные и измерить задержку" data-bs-toggle="tooltip">
-                                    <i class="fas fa-vial-circle-check me-2"></i>Тест соединения
-                                </button>
-                            </div>
-                        </div>
-                        <div class="text-secondary small mb-3">API Management использует зашифрованное хранение. Секреты не отправляются на сторонние сервисы.</div>
-
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label text-main small mb-1">API Key</label>
-                                <input id="api-key" type="password" class="form-control form-control-custom" placeholder="••••••••••••••••" autocomplete="off">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label text-main small mb-1">Secret Key</label>
-                                <input id="secret-key" type="password" class="form-control form-control-custom" placeholder="••••••••••••••••" autocomplete="off">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="form-label text-main small mb-1">Passphrase</label>
-                                <input id="passphrase" type="password" class="form-control form-control-custom" placeholder="••••••••••••••••" autocomplete="off">
-                            </div>
-                        </div>
-
-                        <div class="security-note mt-3">
-                            <div class="d-flex align-items-start gap-3">
-                                <i class="fas fa-shield-halved mt-1" style="color: var(--accent-blue);"></i>
-                                <div class="small">
-                                    <strong class="text-main">Security Credentials</strong> должны храниться в <strong class="text-main">Encrypted Storage</strong>.
-                                    Рекомендуется IP‑whitelist и минимум прав: торговля без вывода средств.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel p-3">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                            <h5 class="section-title"><i class="fas fa-bell"></i>Webhook и уведомления</h5>
-                            <button class="toolbar-btn" onclick="sendTestWebhook()" title="Отправить тестовое событие" data-bs-toggle="tooltip">
-                                <i class="fas fa-paper-plane me-2"></i>Тест отправки
-                            </button>
-                        </div>
-                        <div class="text-secondary small mb-3">Конфигурация операционных алертов и интеграций.</div>
-
-                        <div class="row g-3">
-                            <div class="col-md-12">
-                                <label class="form-label text-main small mb-1">Webhook Endpoint (HTTPS)</label>
-                                <input id="webhook-url" type="url" class="form-control form-control-custom" placeholder="https://example.com/webhook/sentralyx">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label text-main small mb-1">Уровень уведомлений</label>
-                                <select id="notify-level" class="form-select form-control-custom">
-                                    <option selected>Только критические</option>
-                                    <option>Сигналы + критические</option>
-                                    <option>Все события</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label text-main small mb-1">Канал доставки</label>
-                                <select id="delivery-mode" class="form-select form-control-custom">
-                                    <option selected>Webhook</option>
-                                    <option>Telegram</option>
-                                    <option>Email</option>
-                                </select>
-                            </div>
-                        </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Tema</label>
+                        <select class="form-select">
+                            <option>dark</option>
+                            <option>light</option>
+                        </select>
                     </div>
                 </div>
-
-                <div class="col-xl-6">
-                    <div class="panel p-3 mb-3">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                            <h5 class="section-title"><i class="fas fa-sliders"></i>Торговые предпочтения</h5>
-                            <span class="chip" title="Режим исполнения" data-bs-toggle="tooltip"><i class="fas fa-circle-check"></i><span>Mode:</span> <strong id="exec-mode">Conservative</strong></span>
-                        </div>
-                        <div class="text-secondary small mb-3">Переключатели, влияющие на режим исполнения. Изменения применяются на следующем цикле движка.</div>
-
-                        <div class="d-flex flex-column gap-2">
-                            <div class="toggle-row">
-                                <div>
-                                    <div class="label">Auto‑Trade Mode</div>
-                                    <div class="hint">Включает автоматическое исполнение по выбранным стратегиям и риск‑контролям.</div>
-                                </div>
-                                <div class="form-check form-switch m-0">
-                                    <input class="form-check-input" type="checkbox" id="auto-trade" onchange="syncExecMode()">
-                                </div>
-                            </div>
-                            <div class="toggle-row">
-                                <div>
-                                    <div class="label">Testnet Mode</div>
-                                    <div class="hint">Маршрутизирует заявки в симуляционную среду для безопасной проверки.</div>
-                                </div>
-                                <div class="form-check form-switch m-0">
-                                    <input class="form-check-input" type="checkbox" id="testnet" onchange="syncExecMode()">
-                                </div>
-                            </div>
-                            <div class="toggle-row">
-                                <div>
-                                    <div class="label">Trailing Stop‑Loss</div>
-                                    <div class="hint">Динамически подтягивает стоп по мере движения позиции в вашу пользу.</div>
-                                </div>
-                                <div class="form-check form-switch m-0">
-                                    <input class="form-check-input" type="checkbox" id="trailing-sl">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel p-3 mb-3">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                            <h5 class="section-title"><i class="fas fa-shield-halved"></i>Risk Management</h5>
-                            <span class="chip" title="Статус защитных ограничений" data-bs-toggle="tooltip"><i class="fas fa-triangle-exclamation"></i><span>Guard:</span> <strong id="risk-guard">Armed</strong></span>
-                        </div>
-                        <div class="text-secondary small mb-3">Параметры риска применяются на портфельном уровне для защиты капитала.</div>
-
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <label class="form-label text-main small mb-1">Max Leverage</label>
-                                <input id="max-lev" type="number" class="form-control form-control-custom" value="10" min="1" max="125">
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label text-main small mb-1">Max Open Positions</label>
-                                <input id="max-pos" type="number" class="form-control form-control-custom" value="6" min="0" max="200">
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label text-main small mb-1">Wallet Exposure (%)</label>
-                                <input id="wallet-exp" type="number" class="form-control form-control-custom" value="35" min="0" max="100">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label text-main small mb-1">Max Drawdown Limit (%)</label>
-                                <input id="mdd-limit" type="number" class="form-control form-control-custom" value="18" min="0" max="100">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label text-main small mb-1">Daily Loss Limit (%)</label>
-                                <input id="daily-loss" type="number" class="form-control form-control-custom" value="6" min="0" max="100">
-                            </div>
-                        </div>
-
-                        <div class="danger-note mt-3">
-                            <div class="d-flex align-items-start gap-3">
-                                <i class="fas fa-circle-exclamation mt-1" style="color: #ffc107;"></i>
-                                <div class="small">Risk Parameters — fail‑safe ограничения. При срабатывании лимита движок должен снизить экспозицию и блокировать новые входы.</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel p-3">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                            <h5 class="section-title"><i class="fas fa-display"></i>Локализация и UI</h5>
-                            <span class="chip" title="Профиль интерфейса" data-bs-toggle="tooltip"><i class="fas fa-wand-magic-sparkles"></i><span>Profile:</span> <strong>Clean</strong></span>
-                        </div>
-                        <div class="text-secondary small mb-3">Язык и интерфейсные предпочтения для веб‑консоли.</div>
-
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label text-main small mb-1">Язык</label>
-                                <select id="ui-lang" class="form-select form-control-custom" onchange="applyUiLanguage()">
-                                    <option value="tr">Turkish (TR)</option>
-                                    <option value="en">English (EN)</option>
-                                    <option value="ru" selected>Russian (RU)</option>
-                                </select>
-                                <div class="text-secondary small mt-2">Синхронизируется с выбором языка на всех страницах.</div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label text-main small mb-1">Тема</label>
-                                <div class="d-flex flex-column gap-2">
-                                    <div class="toggle-row">
-                                        <div>
-                                            <div class="label">Dark Mode</div>
-                                            <div class="hint">Оптимально для трейдинга при низкой яркости.</div>
-                                        </div>
-                                        <div class="form-check form-switch m-0">
-                                            <input class="form-check-input" type="checkbox" id="dark-mode" checked>
-                                        </div>
-                                    </div>
-                                    <div class="toggle-row">
-                                        <div>
-                                            <div class="label">Light Mode</div>
-                                            <div class="hint">Контрастный вариант для ярких условий.</div>
-                                        </div>
-                                        <div class="form-check form-switch m-0">
-                                            <input class="form-check-input" type="checkbox" id="light-mode">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-secondary small mt-2">Переключение темы — превью (глобальные CSS переменные задаются в стиле).</div>
-                            </div>
-                        </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Log Seviyesi</label>
+                        <select class="form-select">
+                            <option>DEBUG</option>
+                            <option>INFO</option>
+                            <option>WARNING</option>
+                            <option>ERROR</option>
+                        </select>
                     </div>
                 </div>
-            </div>
-
-            <div class="footer-actions mt-4">
-                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-                    <div class="text-secondary small">
-                        <i class="fas fa-database me-2" style="color: var(--accent-blue);"></i>
-                        Для превью настройки сохраняются локально. В продакшене параметры должны сохраняться в конфиг‑хранилище движка Sentralyx.
-                    </div>
-                    <div class="d-flex gap-2 flex-wrap">
-                        <button class="btn btn-outline-light" onclick="resetDefaults()"><i class="fas fa-rotate-left me-2"></i>Сбросить</button>
-                        <button class="btn btn-primary" onclick="saveChanges()"><i class="fas fa-floppy-disk me-2"></i>Сохранить</button>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">PnL Gösterimi</label>
+                        <select class="form-select">
+                            <option>PARITE</option>
+                            <option>USDT</option>
+                        </select>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Tarayıcı Settings -->
+        <div class="settings-card">
+            <div class="card-header-custom">
+                <h5 class="card-title">
+                    <i class="fas fa-search"></i>Tarayıcı
+                </h5>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Сканирование Aralığı (sn)</label>
+                        <input type="number" class="form-control" value="5" min="1" max="300" />
+                        <div class="info-text">Сканированиеlar arasındaki bekleme süresi</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Диапазон времени</label>
+                        <select class="form-select">
+                            <option>1m</option>
+                            <option>5m</option>
+                            <option>15m</option>
+                            <option>1h</option>
+                            <option>4h</option>
+                            <option>1d</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Coin Başına Gecikme (sn)</label>
+                        <input type="number" class="form-control" value="0.5" min="0.1" max="10" step="0.1" />
+                        <div class="info-text">Her coin sorgusu arasında bekleme süresi</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label">Время сигнала</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" name="signalTiming" id="candleClose" checked />
+                                <label for="candleClose">Mum Kapanışı (Önerilen)</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="signalTiming" id="instantPrice" />
+                                <label for="instantPrice">Anlık Fiyat</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Стратегия Settings -->
+        <div class="settings-card">
+            <div class="card-header-custom">
+                <h5 class="card-title">
+                    <i class="fas fa-layer-group"></i>Стратегия
+                </h5>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+	                        <label class="form-label">Активная стратегия</label>
+	                        <select class="form-select">
+	                            <option value="Majority Consensus">Çoğunluk Подтверждениеı</option>
+	                            <option value="Scoring System">Skorlama Sistemi</option>
+	                            <option value="Full Consensus">Tam Mutabakat</option>
+	                        </select>
+	                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trade Settings -->
+        <div class="settings-card">
+            <div class="card-header-custom">
+                <h5 class="card-title">
+                    <i class="fas fa-exchange-alt"></i>Trade
+                    <button class="help-button" onclick="showHelp('trade')">
+                        <i class="fas fa-question-circle me-1"></i>Yardım
+                    </button>
+                </h5>
+            </div>
+            
+            <div class="info-text mb-3">İşlemlerin nasıl açılıp kapanacağını anlatan kısa açıklama.</div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Emir Типi</label>
+                        <select class="form-select">
+                            <option>market</option>
+                            <option>limit</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Закрыть при обратном сигнале</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked />
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Ters Sinyal Gecikmesi (saniye)</label>
+                        <input type="number" class="form-control" value="5" min="0" max="300" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">İşlem Sonrası Bekleme (dk)</label>
+                        <input type="number" class="form-control" value="10" min="0" max="1440" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Risk Settings -->
+        <div class="settings-card">
+            <div class="card-header-custom">
+                <h5 class="card-title">
+                    <i class="fas fa-shield-alt"></i>Risk
+                    <button class="help-button" onclick="showHelp('risk')">
+                        <i class="fas fa-question-circle me-1"></i>Yardım
+                    </button>
+                </h5>
+            </div>
+            
+            <div class="info-text mb-3">Risk ve sermaye yönetimi hakkında kısa açıklama.</div>
+            
+            <h6 class="text-main mb-3">Риск позиции</h6>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Stop Loss (%)</label>
+                        <input type="number" class="form-control" value="2.0" min="0.1" max="50" step="0.1" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Take Profit (%)</label>
+                        <input type="number" class="form-control" value="4.0" min="0.1" max="100" step="0.1" />
+                    </div>
+                </div>
+            </div>
+            
+            <h6 class="text-main mb-3 mt-4">Çıkış & Koruma</h6>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="form-label">Kısmi TP Tetik (%)</label>
+                        <input type="number" class="form-control" value="2.0" min="0.1" max="50" step="0.1" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="form-label">Kısmi Satış Oranı (%)</label>
+                        <input type="number" class="form-control" value="50" min="10" max="90" step="10" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="form-label">Break Even Offset (%)</label>
+                        <input type="number" class="form-control" value="1.0" min="0.1" max="10" step="0.1" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="form-label">Trailing Stop (%)</label>
+                        <input type="number" class="form-control" value="1.5" min="0.1" max="20" step="0.1" />
+                    </div>
+                </div>
+            </div>
+            
+            <h6 class="text-main mb-3 mt-4">Limitler</h6>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="form-label">Günlük Zarar (USDT)</label>
+                        <input type="number" class="form-control" value="100" min="10" max="10000" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="form-label">Макс. позиций</label>
+                        <input type="number" class="form-control" value="5" min="1" max="50" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="form-label">Max Süre (dk)</label>
+                        <input type="number" class="form-control" value="1440" min="60" max="10080" />
+                    </div>
+                </div>
+            </div>
+            
+            <h6 class="text-main mb-3 mt-4">Sermaye Yönetimi</h6>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Manuel Tutar (USDT)</label>
+                        <input type="number" class="form-control" value="100" min="10" max="10000" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Kullanılabilir Bakiye (%)</label>
+                        <input type="number" class="form-control" value="80" min="10" max="100" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Settings -->
+        <div class="settings-card">
+            <div class="card-header-custom">
+                <h5 class="card-title">
+                    <i class="fas fa-key"></i>API
+                    <button class="help-button" onclick="showHelp('api')">
+                        <i class="fas fa-question-circle me-1"></i>Yardım
+                    </button>
+                </h5>
+            </div>
+            
+            <div class="info-text mb-3">Биржа bağlantısı ve işlem modu hakkında kısa açıklama.</div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">API Key</label>
+                        <input type="password" class="form-control" placeholder="API anahtarınızı girin" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">API Secret</label>
+                        <input type="password" class="form-control" placeholder="Введите API secret" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">API Token</label>
+                        <input type="password" class="form-control" placeholder="API token'ınızı girin" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">OKX Passphrase</label>
+                        <input type="password" class="form-control" placeholder="OKX passphrase'ınızı girin" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Çalışma Modu</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" name="workMode" id="realMode" />
+                                <label for="realMode">real</label>
+                            </div>
+                            <div class="radio-option selected">
+                                <input type="radio" name="workMode" id="demoMode" checked />
+                                <label for="demoMode">demo</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Биржа</label>
+                        <select class="form-select" id="exchangeSelect" onchange="toggleOKXSettings()">
+                            <option>binance</option>
+                            <option>okx</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Kaldıraç</label>
+                        <select class="form-select">
+                            <option>1x</option>
+                            <option>2x</option>
+                            <option>3x</option>
+                            <option>5x</option>
+                            <option>10x</option>
+                            <option>20x</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <h6 class="text-main mb-3 mt-4">İşlem Modu</h6>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-option selected">
+                                <input type="radio" name="tradeMode" id="spotOnly" checked />
+                                <label for="spotOnly">Spot Only</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="tradeMode" id="hybrid" />
+                                <label for="hybrid">Hybrid (Spot BUY / Futures SELL)</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="tradeMode" id="fullFutures" />
+                                <label for="fullFutures">Full Futures</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- OKX Specific Settings -->
+            <div class="okx-settings" id="okxSettings" style="display: none;">
+                <h6>OKX Настройкиı</h6>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">Sözleşme Türü</label>
+                            <select class="form-select">
+                                <option>SWAP</option>
+                                <option>FUTURES</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">Режим позиции</label>
+                            <select class="form-select">
+                                <option>net</option>
+                                <option>long_short</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">Marjin Modu</label>
+                            <select class="form-select">
+                                <option>isolated</option>
+                                <option>cross</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">İşlem Marjin Türü</label>
+                            <select class="form-select">
+                                <option>isolated</option>
+                                <option>cross</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">Zarar Стоп / Kâr Al Aktif</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked />
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">Manuel Закрытьma Davranışı</label>
+                            <select class="form-select">
+                                <option>fail_fast</option>
+                                <option>cancel_then_close</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Raporlar Settings -->
+        <div class="settings-card">
+            <div class="card-header-custom">
+                <h5 class="card-title">
+                    <i class="fas fa-file-alt"></i>Raporlar
+                </h5>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Log Klasörü</label>
+                        <input type="text" class="form-control" value="./logs" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">CSV Dosyası</label>
+                        <input type="text" class="form-control" value="./reports" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Log Saklama Süresi (gün)</label>
+                        <input type="number" class="form-control" value="30" min="1" max="365" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="text-center mt-4">
+            <button class="btn-save" onclick="saveSettings()">
+                <i class="fas fa-save me-2"></i>Сохранить
+            </button>
+        </div>
     </main>
 
-    <div id="footer-container"></div>
+    <!-- Notification -->
+    <div class="notification success" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">✓ Настройки başarıyla kaydedildi</span>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/main.js"></script>
     <script>
-        const STORAGE_KEY = 'sentralyx_settings_ru';
-        const LANG_KEY = 'sentralyx_lang';
-
-        function initTooltips() { [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach((el) => new bootstrap.Tooltip(el)); }
-
-        function defaults() {
-            return {
-                exchange: 'OKX',
-                apiKey: '',
-                secretKey: '',
-                passphrase: '',
-                webhookUrl: '',
-                notifyLevel: 'Только критические',
-                deliveryMode: 'Webhook',
-                autoTrade: false,
-                testnet: false,
-                trailingSl: false,
-                maxLev: 10,
-                maxPos: 6,
-                walletExp: 35,
-                mddLimit: 18,
-                dailyLoss: 6,
-                uiLang: 'ru',
-                darkMode: true,
-                lightMode: false,
-            };
-        }
-
-        function loadSettings() {
-            try {
-                const raw = localStorage.getItem(STORAGE_KEY);
-                if (!raw) return defaults();
-                return { ...defaults(), ...JSON.parse(raw) };
-            } catch {
-                return defaults();
-            }
-        }
-
-        function setFormValues(v) {
-            document.getElementById('exchange-select').value = v.exchange;
-            document.getElementById('api-key').value = v.apiKey;
-            document.getElementById('secret-key').value = v.secretKey;
-            document.getElementById('passphrase').value = v.passphrase;
-            document.getElementById('webhook-url').value = v.webhookUrl;
-            document.getElementById('notify-level').value = v.notifyLevel;
-            document.getElementById('delivery-mode').value = v.deliveryMode;
-            document.getElementById('auto-trade').checked = v.autoTrade;
-            document.getElementById('testnet').checked = v.testnet;
-            document.getElementById('trailing-sl').checked = v.trailingSl;
-            document.getElementById('max-lev').value = v.maxLev;
-            document.getElementById('max-pos').value = v.maxPos;
-            document.getElementById('wallet-exp').value = v.walletExp;
-            document.getElementById('mdd-limit').value = v.mddLimit;
-            document.getElementById('daily-loss').value = v.dailyLoss;
-            document.getElementById('ui-lang').value = v.uiLang;
-            document.getElementById('dark-mode').checked = v.darkMode;
-            document.getElementById('light-mode').checked = v.lightMode;
-            syncExecMode();
-        }
-
-        function getFormValues() {
-            return {
-                exchange: document.getElementById('exchange-select').value,
-                apiKey: document.getElementById('api-key').value,
-                secretKey: document.getElementById('secret-key').value,
-                passphrase: document.getElementById('passphrase').value,
-                webhookUrl: document.getElementById('webhook-url').value,
-                notifyLevel: document.getElementById('notify-level').value,
-                deliveryMode: document.getElementById('delivery-mode').value,
-                autoTrade: document.getElementById('auto-trade').checked,
-                testnet: document.getElementById('testnet').checked,
-                trailingSl: document.getElementById('trailing-sl').checked,
-                maxLev: Number(document.getElementById('max-lev').value || 0),
-                maxPos: Number(document.getElementById('max-pos').value || 0),
-                walletExp: Number(document.getElementById('wallet-exp').value || 0),
-                mddLimit: Number(document.getElementById('mdd-limit').value || 0),
-                dailyLoss: Number(document.getElementById('daily-loss').value || 0),
-                uiLang: document.getElementById('ui-lang').value,
-                darkMode: document.getElementById('dark-mode').checked,
-                lightMode: document.getElementById('light-mode').checked,
-            };
-        }
-
-        function showToast(message, type) {
-            const toast = document.createElement('div');
-            const bg = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
-            toast.className = `alert ${bg} position-fixed top-0 end-0 m-3`;
-            toast.style.zIndex = '9999';
-            toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>${message}`;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2400);
-        }
-
-        function setSystemStatus(connected, exchange, latencyMs) {
-            const pill = document.getElementById('system-status');
-            if (connected) {
-                pill.classList.remove('disconnected');
-                pill.innerHTML = `<i class="fas fa-plug-circle-check"></i><span id="status-text">Подключено к ${exchange}</span><span class="text-secondary">—</span><span id="status-latency" class="text-secondary">Latency: ${latencyMs}ms</span>`;
+        function toggleOKXSettings() {
+            const exchangeSelect = document.getElementById('exchangeSelect');
+            const okxSettings = document.getElementById('okxSettings');
+            
+            if (exchangeSelect.value === 'okx') {
+                okxSettings.style.display = 'block';
             } else {
-                pill.classList.add('disconnected');
-                pill.innerHTML = `<i class="fas fa-plug-circle-xmark"></i><span id="status-text">Нет подключения</span><span class="text-secondary">—</span><span id="status-latency" class="text-secondary">Latency: —</span>`;
+                okxSettings.style.display = 'none';
             }
         }
 
-        function syncExecMode() {
-            const autoTrade = document.getElementById('auto-trade').checked;
-            const testnet = document.getElementById('testnet').checked;
-            const label = document.getElementById('exec-mode');
-            if (testnet) label.textContent = 'Testnet';
-            else if (autoTrade) label.textContent = 'Live Execution';
-            else label.textContent = 'Conservative';
-        }
-
-        function applyUiLanguage() {
-            const lang = document.getElementById('ui-lang').value;
-            try { localStorage.setItem(LANG_KEY, lang); } catch {}
-            if (lang === 'en') window.location.href = '/en/settings/';
-            else if (lang === 'ru') window.location.href = '/ru/settings/';
-            else window.location.href = '/settings/';
-        }
-
-        function testConnection() {
-            const v = getFormValues();
-            const hasCreds = Boolean(v.apiKey && v.secretKey);
-            if (!hasCreds) {
-                showToast('Перед тестом укажите API Key и Secret Key.', 'warning');
-                setSystemStatus(false);
-                return;
-            }
-
-            showToast('Проверяем соединение… валидация учётных данных и измерение задержки.', 'info');
+        function saveSettings() {
+            // Show loading state
+            const saveButton = document.querySelector('.btn-save');
+            const originalText = saveButton.innerHTML;
+            saveButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Kaydediliyor...';
+            saveButton.disabled = true;
+            
+            // Simulate save process
             setTimeout(() => {
-                const latency = 35 + Math.floor(Math.random() * 40);
-                setSystemStatus(true, v.exchange, latency);
-                showToast(`Соединение OK. ${v.exchange} latency: ${latency}ms`, 'success');
-            }, 900);
+                // Restore button
+                saveButton.innerHTML = originalText;
+                saveButton.disabled = false;
+                
+                // Show notification
+                showNotification('✓ Настройки başarıyla kaydedildi');
+            }, 1500);
         }
 
-        function sendTestWebhook() {
-            const url = document.getElementById('webhook-url').value.trim();
-            if (!url) { showToast('Сначала укажите webhook endpoint.', 'warning'); return; }
-            showToast('Тестовый webhook поставлен в очередь (демо).', 'info');
-            setTimeout(() => showToast('Webhook доставлен (демо).', 'success'), 700);
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.style.display = 'block';
+            
+            // Auto hide after 3 seconds
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
         }
 
-        function resetDefaults() { setFormValues(defaults()); setSystemStatus(false); showToast('Сброс к значениям по умолчанию.', 'warning'); }
-        function saveChanges() { const v = getFormValues(); try { localStorage.setItem(STORAGE_KEY, JSON.stringify(v)); } catch {} showToast('Изменения сохранены (демо).', 'success'); }
-
-        function wireThemeToggles() {
-            const dark = document.getElementById('dark-mode');
-            const light = document.getElementById('light-mode');
-            dark.addEventListener('change', () => { if (dark.checked) light.checked = false; });
-            light.addEventListener('change', () => { if (light.checked) dark.checked = false; });
+        function showHelp(section) {
+            const helpMessages = {
+                trade: 'İşlem ayarları, pozisyonların nasıl açılacağını ve kapanacağını belirler. Emir tipi (market/limit), ters sinyalde kapatma ve zamanlama ayarlarını buradan yapabilirsiniz.',
+                risk: 'Risk yönetimi ayarları, kayıplarınızı korumak için önlemler belirler. Stop Loss, Take Profit ve pozisyon limitleri gibi önemli güvenlik ayarlarını içerir.',
+                api: 'API ayarları, borsa ile bağlantı kurmak için gereklidir. Güvenliğiniz için API anahtarlarınızı doğru girdiğinizden emin olun. Demo modunda test etmenizi öneririz.'
+            };
+            
+            showNotification(helpMessages[section] || 'Yardım içeriı hazırlanıyor...');
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            initTooltips();
-            wireThemeToggles();
-            const v = loadSettings();
-            setFormValues(v);
-            setSystemStatus(false);
+        // Initialize radio button interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Radio option interactions
+            document.querySelectorAll('.radio-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const radioName = this.querySelector('input[type="radio"]').name;
+                    
+                    // Remove selected class from all options in the same group
+                    document.querySelectorAll(`input[name="${radioName}"]`).forEach(radio => {
+                        radio.closest('.radio-option').classList.remove('selected');
+                    });
+                    
+                    // Имяd selected class to clicked option
+                    this.classList.add('selected');
+                    this.querySelector('input[type="radio"]').checked = true;
+                });
+            });
         });
+    </script>
 
+    <div id="footer-container"></div>
+
+    <script>
+        // Load footer from components/footer.html
         fetch('../footer.html')
             .then(async (response) => {
                 const buffer = await response.arrayBuffer();
                 return new TextDecoder('utf-8').decode(buffer);
             })
-            .then(data => { document.getElementById('footer-container').innerHTML = data; })
-            .catch(error => console.error('Не удалось загрузить футер:', error));
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>
-

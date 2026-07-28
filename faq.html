@@ -3,676 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kripto Botu ve Otomatik Trade Hakkında Sık Sorulan Sorular | Sentralyx</title>
+    <meta name="description" content="Kripto botu, otomatik trade, Binance ve OKX bağlantısı, backtest, API anahtarları, risk yönetimi, ücretsiz sürüm ve Sentralyx lisansı hakkında sık sorulan sorular.">
     <link rel="canonical" href="https://www.sentralyx.com/faq.html">
-    
-    <title>Sentralyx | S&#305;k&#231;a Sorulan Sorular - Teknik Destek ve Kullan&#305;m Rehberi</title>
-    <meta name="description" content="Sentralyx hakk&#305;nda s&#305;k&#231;a sorulan sorular: kripto botu, kod bilmeden kullan&#305;m, Binance ve OKX kapsam&#305;, API anahtarlar&#305;, backtest ve g&#252;venlik.">
-    <meta name="keywords" content="sentralyx faq, sıkça sorulan sorular, güvenlik, teknik destek, thread watchdog, atomic write, hwid şifreleme, gtc emirleri">
-
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/faq.html">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/faq.html">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/faq.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/faq.html">
+    <meta property="og:title" content="Kripto Botu ve Otomatik Trade Hakkında Sık Sorulan Sorular | Sentralyx">
+    <meta property="og:description" content="Kripto botu, otomatik trade, Binance ve OKX bağlantısı, backtest, API anahtarları, risk yönetimi, ücretsiz sürüm ve Sentralyx lisansı hakkında sık sorulan sorular.">
+    <meta property="og:url" content="https://www.sentralyx.com/faq.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sentralyx.com/assets/logo.png">
     <link rel="icon" type="image/x-icon" href="sentralyx_favicon.ico">
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    
-    <style>
-        
-        /* FAQ Page Specific Styles */
-        .faq-hero {
-            padding: 120px 0 60px;
-            background: radial-gradient(circle at top right, rgba(47, 177, 127, 0.12), transparent);
-            position: relative;
-        }
-        
-        .faq-section {
-            padding: 80px 0;
-        }
-        
-        .faq-category {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .category-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--accent-blue);
-        }
-        
-        .category-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-            margin-right: 20px;
-        }
-        
-        .category-title {
-            color: var(--text-main);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0;
-        }
-        
-        .accordion-item {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            margin-bottom: 10px;
-            border-radius: 10px !important;
-            overflow: hidden;
-        }
-        
-        .accordion-button {
-            background: var(--panel-dark);
-            color: var(--text-main);
-            border: none;
-            font-weight: 600;
-            font-size: 1rem;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .accordion-button:not(.collapsed) {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            color: white;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-        }
-        
-        .accordion-button:focus {
-            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
-            border: none;
-        }
-        
-        .accordion-body {
-            background: var(--panel-dark);
-            color: var(--text-secondary);
-            padding: 25px;
-            line-height: 1.7;
-        }
-        
-        .technical-term {
-            background: rgba(52, 152, 219, 0.1);
-            border: 1px solid var(--accent-blue);
-            border-radius: 6px;
-            padding: 3px 8px;
-            color: var(--accent-blue);
-            font-weight: 600;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-        }
-        
-        .security-highlight {
-            background: rgba(231, 76, 60, 0.1);
-            border-left: 4px solid #e74c3c;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .stability-highlight {
-            background: rgba(46, 204, 113, 0.1);
-            border-left: 4px solid #2ecc71;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .cta-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, rgba(47, 177, 127, 0.1), rgba(52, 152, 219, 0.1));
-            text-align: center;
-        }
-        
-        .cta-button {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            color: white;
-            padding: 15px 40px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
-            color: white;
-        }
-        
-        @media (max-width: 768px) {
-            .faq-hero {
-                padding: 100px 0 40px;
-            }
-            
-            .faq-section {
-                padding: 60px 0;
-            }
-            
-            .faq-category {
-                padding: 20px;
-                margin-bottom: 20px;
-            }
-            
-            .category-header {
-                margin-bottom: 20px;
-            }
-            
-            .category-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-                margin-right: 15px;
-            }
-            
-            .category-title {
-                font-size: 1.2rem;
-            }
-            
-            .accordion-button {
-                padding: 15px;
-                font-size: 0.9rem;
-            }
-            
-            .accordion-body {
-                padding: 20px;
-            }
-        }
-    </style>
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Sentralyx nedir?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sentralyx; kripto piyasalar\u0131n\u0131 taramak, kod bilmeden strateji kurmak, backtest yapmak, a\u00e7\u0131k pozisyonlar\u0131 izlemek ve risk y\u00f6netimi ayarlar\u0131n\u0131 takip etmek i\u00e7in geli\u015ftirilen masa\u00fcst\u00fc trading terminalidir."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Sentralyx bir kripto botu mudur?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sentralyx otomatik trade kurallar\u0131, scanner, backtest ve pozisyon takibi sa\u011flayan bir trading terminalidir. Kullan\u0131c\u0131 taraf\u0131ndan tan\u0131mlanan kurallar d\u0131\u015f\u0131nda k\u00e2r garantisi veya yat\u0131r\u0131m tavsiyesi sunmaz."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Kod bilmeden kullan\u0131labilir mi?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Evet. Strateji ve indikat\u00f6r kurallar\u0131 g\u00f6rsel aray\u00fczden olu\u015fturulabilir. Teknik terimler korunur; ancak i\u015flem kurallar\u0131n\u0131 yaz\u0131l\u0131m kodu yazmadan y\u00f6netmek hedeflenir."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Binance ve OKX ile \u00e7al\u0131\u015f\u0131r m\u0131?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sitede belirtilen kapsam Binance ve OKX piyasalar\u0131d\u0131r. Kullan\u0131c\u0131 kendi borsa hesab\u0131, API izinleri ve ba\u011flant\u0131 ayarlar\u0131ndan sorumludur."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Sentralyx yapay zeka trade botu mudur?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Hay\u0131r. Sentralyx bu sayfada yapay zeka ile fiyat tahmini yapt\u0131\u011f\u0131n\u0131 iddia etmez. Scanner, algoritmik strateji kurallar\u0131, backtest, risk y\u00f6netimi ve raporlama ara\u00e7lar\u0131 sa\u011flar."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "API anahtarlar\u0131 nerede saklan\u0131r?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Mevcut site a\u00e7\u0131klamas\u0131na g\u00f6re Sentralyx yerel masa\u00fcst\u00fc terminal yakla\u015f\u0131m\u0131yla \u00e7al\u0131\u015f\u0131r ve API anahtarlar\u0131n\u0131n buluta g\u00f6nderilmedi\u011fi belirtilir. Kullan\u0131c\u0131 API anahtarlar\u0131n\u0131 sadece gerekli i\u015flem izinleriyle olu\u015fturmal\u0131 ve para \u00e7ekme izni vermemelidir."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Backtest ile canl\u0131 i\u015flem ayn\u0131 sonucu verir mi?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Hay\u0131r. Backtest ge\u00e7mi\u015f veriyle strateji testi yapar. Canl\u0131 piyasada likidite, slippage, komisyon, ba\u011flant\u0131 durumu ve volatilite farkl\u0131 olabilece\u011fi i\u00e7in ayn\u0131 sonu\u00e7 garanti edilmez."
-      }
-    }
-  ]
-}
-    </script>
-
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Sentralyx nedir?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx kripto piyasaları için geliştirilmiş bir Windows trading terminalidir. Kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. Sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. Yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır."}}, {"@type": "Question", "name": "Sentralyx bir kripto botu mudur?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx kripto piyasaları için geliştirilmiş bir Windows trading terminalidir. Kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. Sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. Yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır."}}, {"@type": "Question", "name": "Otomatik trade botu nasıl çalışır?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx kripto piyasaları için geliştirilmiş bir Windows trading terminalidir. Kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. Sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. Yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır."}}, {"@type": "Question", "name": "Kod bilmeden algoritmik trade yapılabilir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx kripto piyasaları için geliştirilmiş bir Windows trading terminalidir. Kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. Sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. Yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır."}}, {"@type": "Question", "name": "Sentralyx yapay zekâ trade botu mudur?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx kripto piyasaları için geliştirilmiş bir Windows trading terminalidir. Kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. Sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. Yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır."}}, {"@type": "Question", "name": "Sentralyx kesin al-sat sinyali verir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx kripto piyasaları için geliştirilmiş bir Windows trading terminalidir. Kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. Sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. Yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır."}}, {"@type": "Question", "name": "Sentralyx hangi borsalarla çalışır?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir."}}, {"@type": "Question", "name": "Binance veya OKX hesabı nasıl bağlanır?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir."}}, {"@type": "Question", "name": "API anahtarı nedir?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir."}}, {"@type": "Question", "name": "Hangi API izinleri açılmalıdır?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir."}}, {"@type": "Question", "name": "Para çekme izni gerekli midir?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir."}}, {"@type": "Question", "name": "API bağlantısı kesilirse ne olur?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir."}}, {"@type": "Question", "name": "API anahtarları nasıl korunmalıdır?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir."}}, {"@type": "Question", "name": "Backtest nedir?", "acceptedAnswer": {"@type": "Answer", "text": "Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir."}}, {"@type": "Question", "name": "Sentralyx ile kripto stratejisi nasıl test edilir?", "acceptedAnswer": {"@type": "Answer", "text": "Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir."}}, {"@type": "Question", "name": "Backtest sonucu canlı işlemle aynı olur mu?", "acceptedAnswer": {"@type": "Answer", "text": "Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir."}}, {"@type": "Question", "name": "Komisyon ve slipaj sonuçları nasıl etkiler?", "acceptedAnswer": {"@type": "Answer", "text": "Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir."}}, {"@type": "Question", "name": "MTF analiz nedir?", "acceptedAnswer": {"@type": "Answer", "text": "Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir."}}, {"@type": "Question", "name": "Kod yazmadan strateji oluşturulabilir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir."}}, {"@type": "Question", "name": "Backtest için kaç işlem daha anlamlıdır?", "acceptedAnswer": {"@type": "Answer", "text": "Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir."}}, {"@type": "Question", "name": "Geçmişte başarılı strateji gelecekte de başarılı olur mu?", "acceptedAnswer": {"@type": "Answer", "text": "Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir."}}, {"@type": "Question", "name": "Otomatik işlem açmak zorunlu mudur?", "acceptedAnswer": {"@type": "Answer", "text": "Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur."}}, {"@type": "Question", "name": "Kripto botu kullanmak risksiz midir?", "acceptedAnswer": {"@type": "Answer", "text": "Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur."}}, {"@type": "Question", "name": "Sentralyx kâr garantisi verir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur."}}, {"@type": "Question", "name": "Stop-loss ve hedef seviyeleri nasıl çalışır?", "acceptedAnswer": {"@type": "Answer", "text": "Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur."}}, {"@type": "Question", "name": "Açık pozisyonlar nasıl takip edilir?", "acceptedAnswer": {"@type": "Answer", "text": "Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur."}}, {"@type": "Question", "name": "İnternet bağlantısı kesilirse ne olur?", "acceptedAnswer": {"@type": "Answer", "text": "Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur."}}, {"@type": "Question", "name": "Aynı anda kaç işlem açılabilir?", "acceptedAnswer": {"@type": "Answer", "text": "Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur."}}, {"@type": "Question", "name": "Risk ayarlarını kullanıcı değiştirebilir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur."}}, {"@type": "Question", "name": "Sentralyx ücretsiz midir?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir."}}, {"@type": "Question", "name": "Free, Trial ve Full sürüm arasındaki farklar nelerdir?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir."}}, {"@type": "Question", "name": "Sentralyx hangi işletim sisteminde çalışır?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir."}}, {"@type": "Question", "name": "Sentralyx nasıl indirilir ve kurulur?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir."}}, {"@type": "Question", "name": "Lisans dosyası nasıl alınır?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir."}}, {"@type": "Question", "name": "Lisans e-posta veya Telegram ile alınabilir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir."}}, {"@type": "Question", "name": "Lisans başka bilgisayara taşınabilir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir."}}, {"@type": "Question", "name": "Bilgisayar veya cihaz değiştirildiğinde ne yapılır?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir."}}, {"@type": "Question", "name": "Lisans dosyası gelmezse ne yapılmalıdır?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir."}}, {"@type": "Question", "name": "Sentralyx yatırım tavsiyesi verir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir."}}, {"@type": "Question", "name": "Yeni başlayanlar Sentralyx kullanabilir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir."}}, {"@type": "Question", "name": "Canlı işlemden önce ne yapılmalıdır?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir."}}, {"@type": "Question", "name": "Demo veya test verileri gerçek işlem sonucu mudur?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir."}}, {"@type": "Question", "name": "Teknik destek nasıl alınır?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir."}}, {"@type": "Question", "name": "Sentralyx mobil cihazlarda çalışır mı?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir."}}, {"@type": "Question", "name": "Kullanıcı hangi güvenlik önlemlerini almalıdır?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir."}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Ana sayfa", "item": "https://www.sentralyx.com/"}, {"@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://www.sentralyx.com/faq.html"}]}</script>
+    <style>.faq-hero{padding:110px 0 44px;background:radial-gradient(circle at top right,rgba(47,177,127,.12),transparent 44%);}.faq-section{padding:48px 0 72px;}.faq-tools{display:grid;gap:16px;margin:28px 0;}.faq-search{width:100%;padding:14px 16px;border:1px solid var(--border-color);border-radius:8px;background:var(--panel-dark);color:var(--text-main);}.faq-filters{display:flex;flex-wrap:wrap;gap:10px;}.faq-filter{border:1px solid var(--border-color);background:var(--panel-dark);color:var(--text-main);border-radius:8px;padding:10px 14px;}.faq-filter.active{border-color:var(--accent-blue);color:#fff;background:var(--accent-blue);}.accordion-item{background:var(--panel-dark);border:1px solid var(--border-color);border-radius:8px!important;margin-bottom:10px;overflow:hidden;}.accordion-button,.accordion-button:not(.collapsed){background:var(--panel-dark);color:var(--text-main);box-shadow:none;}.accordion-body{color:var(--text-muted);line-height:1.7;}.faq-note,.faq-cta{border:1px solid var(--border-color);border-radius:8px;background:var(--panel-dark);padding:22px;margin-top:28px;}.related-links,.faq-cta-actions{display:flex;flex-wrap:wrap;gap:10px;}.related-links a,.faq-cta-actions a{display:inline-flex;align-items:center;gap:8px;padding:10px 13px;border:1px solid var(--border-color);border-radius:8px;text-decoration:none;}.no-results{display:none;color:var(--text-muted);padding:18px 0;}</style>
 </head>
 <body>
-
-    <header id="main-header"></header>
-
-    <section class="faq-section">
-        <div class="container">
-            <div class="alert alert-warning" style="background: rgba(255, 193, 7, 0.1); border: 1px solid #ffc107; border-radius: 10px; padding: 20px;">
-                <div class="d-flex align-items-start">
-                    <i class="fas fa-exclamation-triangle me-3" style="color: #ffc107; font-size: 1.5rem; margin-top: 2px;"></i>
-                    <div>
-                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Yasal Uyarı</h5>
-                        <p class="mb-0 text-secondary">
-                            Sentralyx bir trading terminalidir, yatırım danışmanlığı hizmeti vermez. Burada yer alan bilgiler yalnızca yazılımın teknik özelliklerini açıklamak amacıyla sunulmuştur. Yatırım tavsiyesi niteliği taşımaz. Finansal kararlarınızdan yalnızca siz sorumlusunuz. Kripto para piyasaları yüksek risk içerir.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq-hero">
-        <div class="container">
-            <div class="text-center">
-                <h1 class="display-3 mb-4">Sıkça Sorulan Sorular</h1>
-                <p class="lead text-secondary mb-5">
-                    Sentralyx trading terminali hakkında teknik ve operasyonel sorularınızın cevapları. 
-                    Güvenlik, stabilite ve kullanım rehberi.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq-section">
-        <div class="container">
-            
-            <!-- Güvenlik & Gizlilik Kategorisi -->
-            <div class="faq-category">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h2 class="category-title">Güvenlik & Gizlilik</h2>
-                </div>
-                
-                <div class="accordion" id="securityAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#security1">
-                                İnternetim koparsa pozisyonlarım ne olur?
-                            </button>
-                        </h2>
-                        <div id="security1" class="accordion-collapse collapse show" data-bs-parent="#securityAccordion">
-                            <div class="accordion-body">
-                                <p>İnternet bağlantınız kesildiğinde pozisyonlarınız tamamen güvende kalır. Sentralyx, <span class="technical-term">GTC Emirleri</span> (Good Till Canceled) ve <span class="technical-term">Server-Side Protection</span> prensibiyle çalışır:</p>
-                                
-                                <div class="security-highlight">
-                                    <strong>✅ SL/TP Koruma:</strong> Stop Loss ve Take Profit emirleri doğrudan borsa sunucusunda saklanır ve internet bağlantınız olsa da olmasa da aktif kalır.
-                                </div>
-                                
-                                <ul>
-                                    <li><strong>SL (Stop Loss):</strong> Fiyat belirlediğiniz stop seviyesine ulaştığında otomatik olarak pozisyon kapanır.</li>
-                                    <li><strong>TP (Take Profit):</strong> Hedef fiyata ulaşıldığında kârınız realize edilir.</li>
-                                    <li><strong>Global Stop:</strong> Acil durumlarda tüm pozisyonları güvenli bir şekilde kapatabilirsiniz.</li>
-                                </ul>
-                                
-                                <p><strong>Önemli:</strong> İnternet kesintisi sırasında yeni emir gönderilemez (güvenlik önlemi), ancak mevcut pozisyonlarınız sunucu tarafında korunur.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#security2">
-                                API anahtarlarım nasıl korunuyor?
-                            </button>
-                        </h2>
-                        <div id="security2" class="accordion-collapse collapse" data-bs-parent="#securityAccordion">
-                            <div class="accordion-body">
-                                <p>API anahtarlarınız <span class="technical-term">HWID şifreleme</span> ile maksimum güvenlikte korunur:</p>
-                                
-                                <div class="security-highlight">
-                                    <strong>🔐 Çift Katmanlı Şifreleme:</strong> Donanım kimliği (HWID) ve Fernet simetrik şifreleme kombinasyonu.
-                                </div>
-                                
-                                <ul>
-                                    <li><strong>HWID Bağlılığı:</strong> Her lisans sadece belirli bir donanıma özeldir. Farklı bir makinede çalışmaz.</li>
-                                    <li><strong>Lokal Depolama:</strong> API anahtarları hiçbir şekilde buluta veya üçüncü parti sunuculara gönderilmez.</li>
-                                    <li><strong>Fernet Şifreleme:</strong> AES-128 tabanlı, URL-güvenli şifreleme standardı kullanılır.</li>
-                                    <li><strong>Regülatör Uyumu:</strong> GDPR ve KVKK gibi veri koruma yasalarına tam uyum sağlar.</li>
-                                </ul>
-                                
-                                <p><strong>Ek Güvenlik:</strong> API anahtarlarınız sadece sizin makinenizin <span class="technical-term">HWID</span> ile çözülebilir, bu da yetkisiz erişimi imkansız hale getirir.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#security3">
-                                Verilerim bulutta saklanıyor mu?
-                            </button>
-                        </h2>
-                        <div id="security3" class="accordion-collapse collapse" data-bs-parent="#securityAccordion">
-                            <div class="accordion-body">
-                                <p><strong>Hayır.</strong> Sentralyx <strong>Privacy-First</strong> tasarım prensibiyle çalışır:</p>
-                                
-                                <ul>
-                                    <li><strong>Strateji Verileri:</strong> Kâr stratejileriniz ve indikatör ayarlarınız sadece lokalde saklanır.</li>
-                                    <li><strong>İşlem Geçmişi:</strong> Backtest sonuçları ve optimizasyon verileri gizli kalır.</li>
-                                    <li><strong>Rakip Koruma:</strong> Algoritmik trading mantığınız aracı kurumlara veya rakiplere sızdırılamaz.</li>
-                                    <li><strong>Veri Transferi:</strong> Kritik veriler hiçbir şekilde internet üzerinden gönderilmez.</li>
-                                </ul>
-                                
-                                <div class="security-highlight">
-                                    <strong>🛡️ Sıfır Aracı Riski:</strong> Tüm kritik işlemler ve veriler lokalde tutularak maksimum güvenlik sağlanır.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Teknik Stabilite Kategorisi -->
-            <div class="faq-category">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h2 class="category-title">Teknik Stabilite (Self-Healing)</h2>
-                </div>
-                
-                <div class="accordion" id="stabilityAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#stability1">
-                                Sistem bir hata durumunda kendini nasıl toparlıyor?
-                            </button>
-                        </h2>
-                        <div id="stability1" class="accordion-collapse collapse show" data-bs-parent="#stabilityAccordion">
-                            <div class="accordion-body">
-                                <p>Sentralyx, <span class="technical-term">ThreadWatchdog</span> sistemi ile kendi kendini iyileştirme yeteneğine sahiptir:</p>
-                                
-                                <div class="stability-highlight">
-                                    <strong>🔄 7/24 Otomatik İzleme:</strong> Tüm kritik thread'ler 30 saniye arayla kontrol edilir.
-                                </div>
-                                
-                                <ul>
-                                    <li><strong>Heartbeat Kontrolü:</strong> Scanner thread'i için özel heartbeat sistemi, 60 saniye veri gelmezse "frozen" alarmı.</li>
-                                    <li><strong>Otomatik Restart:</strong> Çökmüş thread tespit edilirse otomatik olarak yeniden başlatılır.</li>
-                                    <li><strong>Maksimum Deneme:</strong> Her thread için maksimum 3 restart denemesi hakkı vardır.</li>
-                                    <li><strong>State-Safe:</strong> Restart sırasında pozisyon verileri ve strateji durumu korunur.</li>
-                                </ul>
-                                
-                                <p><strong>Self-Healing Katmanları:</strong></p>
-                                <ol>
-                                    <li><strong>Pre-Trade Validation:</strong> Bakiye kontrolü, risk analizi, maksimum pozisyon limiti.</li>
-                                    <li><strong>Real-Time Monitoring:</strong> Fiyat spike tespiti, anomali tespiti, P&L takibi.</li>
-                                    <li><strong>Emergency Protocols:</strong> Global stop mechanism, force close capability.</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stability2">
-                                Dosya bozulmalarına karşı bir önlem var mı?
-                            </button>
-                        </h2>
-                        <div id="stability2" class="accordion-collapse collapse" data-bs-parent="#stabilityAccordion">
-                            <div class="accordion-body">
-                                <p>Evet, <span class="technical-term">Atomic Write</span> I/O garantisi ile dosya bütünlüğü sağlanır:</p>
-                                
-                                <div class="stability-highlight">
-                                    <strong>⚛️ Atomik İşlemler:</strong> Kritik işlemler ya tamamen başarılı olur ya da hiç yapılmamış gibi kabul edilir.
-                                </div>
-                                
-                                <ul>
-                                    <li><strong>Transactional Dosya İşlemleri:</strong> Geçici dosyaya yazma, doğrulama, ardından atomik değişim.</li>
-                                    <li><strong>Crash Recovery:</strong> Elektrik kesintisi veya sistem çökmesi anında bile veri tutarlılığı korunur.</li>
-                                    <li><strong>ACID Özellikleri:</strong> Atomicity, Consistency, Isolation, Durability garantisi.</li>
-                                    <li><strong>Sync Guarantee:</strong> Verilerin disk'e yazıldığından emin olmak için fsync kullanılır.</li>
-                                </ul>
-                                
-                                <p><strong>Örnek Akış:</strong></p>
-                                <ol>
-                                    <li>Veri geçici dosyaya (.tmp) yazılır</li>
-                                    <li>Disk'e senkronizasyon yapılır (fsync)</li>
-                                    <li>Atomik olarak orijinal dosya ile değiştirilir (rename)</li>
-                                    <li>Hata durumunda geçici dosya silinir</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stability3">
-                                Bağlantı kesintilerinde "orphan" pozisyonlar nasıl yönetiliyor?
-                            </button>
-                        </h2>
-                        <div id="stability3" class="accordion-collapse collapse" data-bs-parent="#stabilityAccordion">
-                            <div class="accordion-body">
-                                <p><span class="technical-term">Orphan Recovery</span> sistemi bağlantı kesintilerinde oluşan sahipsiz pozisyonları otomatik olarak yönetir:</p>
-                                
-                                <ul>
-                                    <li><strong>Hızlı Tespit:</strong> 5 saniye içinde bağlantı kopukluğu tespit edilir.</li>
-                                    <li><strong>Otomatik Senkronizasyon:</strong> Bağlantı geri geldiğinde pozisyon durumu otomatik olarak senkronize edilir.</li>
-                                    <li><strong>State Recovery:</strong> Çökme anındaki sistem durumu korunur ve geri yüklenebilir.</li>
-                                    <li><strong>Manual Override:</strong> Gerekirse manuel müdahale imkanı sunulur.</li>
-                                </ul>
-                                
-                                <div class="stability-highlight">
-                                    <strong>🛡️ %100 Kurtarma Başarısı:</strong> Bağlantı kesintilerinde pozisyon kaybı yaşanmaz.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kullanım & Strateji Kategorisi -->
-            <div class="faq-category">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h2 class="category-title">Sistem Konfigürasyonu & Teknik Parametreler</h2>
-                </div>
-                
-                <div class="accordion" id="usageAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#usage1">
-                                Sentralyx zaman dilimi konfigürasyonları nelerdir?
-                            </button>
-                        </h2>
-                        <div id="usage1" class="accordion-collapse collapse show" data-bs-parent="#usageAccordion">
-                            <div class="accordion-body">
-                                <p>Sentralyx <strong>Multi-Timeframe (MTF)</strong> analiz motoru şu teknik konfigürasyonları destekler:</p>
-                                
-                                <ul>
-                                    <li><strong>Scalping Modülleri (1m, 5m):</strong> Yüksek frekanslı veri işleme için optimize edilmiş, düşük gecikmeli analiz.</li>
-                                    <li><strong>Intraday Modülleri (15m, 1h):</strong> Dengeli sinyal yoğunluğu ve işlem frekansı için standart konfigürasyon.</li>
-                                    <li><strong>Swing Modülleri (4h, 1d):</strong> Uzun vadeli trend analizleri için yüksek doğruluklu hesaplamalar.</li>
-                                </ul>
-                                
-                                <p><strong>MTF Onay Algoritması:</strong> Birden fazla zaman dilimindeki sinyallerin matematiksel korelasyonu, işlem kararının güven skorunu hesaplar.</p>
-                                
-                                <div class="stability-highlight">
-                                    <strong>📊 Teknik Not:</strong> Sistem varsayılan olarak 15m ve 1h modüllerini senkronize çalıştırır.
-                                </div>
-                                
-                                <p class="text-muted mt-3"><em>Bu ayarlar piyasa koşullarına göre değişkenlik gösterir ve kullanıcının sorumluluğundadır.</em></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usage2">
-                                Risk yönetimi parametreleri nasıl yapılandırılır?
-                            </button>
-                        </h2>
-                        <div id="usage2" class="accordion-collapse collapse" data-bs-parent="#usageAccordion">
-                            <div class="accordion-body">
-                                <p>Sentralyx risk yönetimi motoru için teknik literatürde kabul görmüş parametre aralıkları:</p>
-                                
-                                <ul>
-                                    <li><strong>Stop Loss Threshold:</strong> %1.5 - %3.0 (piyasa volatilitesi indeksine göre otomatik ayarlanabilir)</li>
-                                    <li><strong>Take Profit Threshold:</strong> %3.0 - %6.0 (Risk/Oran katsayısı min. 1:2)</li>
-                                    <li><strong>Position Size Algorithm:</strong> Toplam sermayenin %2-5'i (dinamik hesaplama)</li>
-                                    <li><strong>Daily Loss Limit:</strong> Günlük maksimum %5 sermaye koruma sınırı</li>
-                                    <li><strong>Max Duration:</strong> 240 dakika (4 saat) otomatik kapanış zamanlayıcısı</li>
-                                </ul>
-                                
-                                <p><strong>Sistem Validasyonu:</strong> Risk parametreleri her işlem öncesinde Pre-Trade Validation katmanı tarafından kontrol edilir.</p>
-                                
-                                <p class="text-muted mt-3"><em>Bu ayarlar piyasa koşullarına göre değişkenlik gösterir ve kullanıcının sorumluluğundadır.</em></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usage3">
-                                Sentralyx ile Kullanılabilen Teknik Analiz Modülleri
-                            </button>
-                        </h2>
-                        <div id="usage3" class="accordion-collapse collapse" data-bs-parent="#usageAccordion">
-                            <div class="accordion-body">
-                                <p>Sentralyx motorunda entegre edilen teknik analiz modüllerinin matematiksel karşılıkları:</p>
-                                
-                                <p><strong>Trend Analiz Modülleri:</strong></p>
-                                <ul>
-                                    <li><span class="technical-term">MACD (12, 26, 9)</span> - Hareketli ortalama yakınsama/ıraksama algoritması</li>
-                                    <li><span class="technical-term">Moving Averages (20, 50)</span> - Üstel ve basit hareketli ortalama hesaplama motoru</li>
-                                    <li><span class="technical-term">ADX</span> - Average Directional Index trend gücü ölçüm algoritması</li>
-                                </ul>
-                                
-                                <p><strong>Mean Reversion Modülleri:</strong></p>
-                                <ul>
-                                    <li><span class="technical-term">RSI (14)</span> - Relative Strength Index osilatörü (30/70 threshold)</li>
-                                    <li><span class="technical-term">Bollinger Bands</span> - Standart sapma tabanlı fiyat kanalı hesaplaması</li>
-                                    <li><span class="technical-term">Stochastic Oscillator</span> - %K ve %D çizgileri momentum analizi</li>
-                                </ul>
-                                
-                                <p><strong>Volume Analiz Modülleri:</strong></p>
-                                <ul>
-                                    <li><span class="technical-term">Volume Profile</span> - Fiyat/volume dağılımı histogram algoritması</li>
-                                    <li><span class="technical-term">On-Balance Volume</span> - Akış yönü hesaplama motoru</li>
-                                </ul>
-                                
-                                <div class="stability-highlight">
-                                    <strong>💡 Teknik Not:</strong> Modüller tek başına değil, sinyal korelasyon matrisi üzerinden çalışır.
-                                </div>
-                                
-                                <p class="text-muted mt-3"><em>Bu ayarlar piyasa koşullarına göre değişkenlik gösterir ve kullanıcının sorumluluğundadır.</em></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usage4">
-                                Sentralyx backtest motoru nasıl çalışır?
-                            </button>
-                        </h2>
-                        <div id="usage4" class="accordion-collapse collapse" data-bs-parent="#usageAccordion">
-                            <div class="accordion-body">
-                                <p>Sentralyx backtest motoru için teknik validasyon prosedürü:</p>
-                                
-                                <ol>
-                                    <li><strong>Veri Seti Hazırlığı:</strong> Minimum 6 aylık OHLCV veri formatı (tick-by-tick destekli)</li>
-                                    <li><strong>Strateji Tanımlama:</strong> Giriş/çıkış kurallarının algoritmik tanımlanması</li>
-                                    <li><strong>Parametre Optimizasyonu:</strong> Grid search algoritması ile parametre uzayında tarama</li>
-                                    <li><strong>Walk-Forward Validasyon:</strong> Out-of-sample test ile overfitting kontrolü</li>
-                                    <li><strong>Risk Metrikleri:</strong> Maximum drawdown, Sharpe ratio, Sortino ratio hesaplamaları</li>
-                                </ol>
-                                
-                                <p><strong>Performans Metrikleri (Teknik Referans):</strong></p>
-                                <ul>
-                                    <li>Win Rate: %60+ (istatistiksel anlamlılık eşiği)</li>
-                                    <li>Profit Factor: 1.5+ (kar/zarar oranı)</li>
-                                    <li>Max Drawdown: %20 altı (risk toleransı)</li>
-                                    <li>Sharpe Ratio: 1.0+ (risk ayarlı getiri)</li>
-                                </ul>
-                                
-                                <p class="text-muted mt-3"><em>Bu ayarlar piyasa koşullarına göre değişkenlik gösterir ve kullanıcının sorumluluğundadır.</em></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Mini Disclaimer -->
-                <div class="text-center mt-4">
-                    <small class="text-muted">
-                        <i class="fas fa-info-circle me-2"></i>
-                        Not: Bu bölümdeki tüm değerler örnek amaçlıdır. Sentralyx herhangi bir parametre önermez.
-                    </small>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="display-5 mb-4">Hala sorunuz mu var?</h2>
-                <p class="lead text-secondary mb-4">
-                    Teknik destek ve daha fazla bilgi için Telegram'dan bize ulaşabilirsiniz.
-                </p>
-                <a href="https://t.me/sentralyx_bot" target="_blank" class="cta-button">
-                    <i class="fab fa-telegram-plane"></i>
-                    Telegram'dan Ulaşın
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Legal Disclaimer -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="alert alert-warning" style="background: rgba(255, 193, 7, 0.1); border: 1px solid #ffc107; border-radius: 10px; padding: 20px;">
-                <div class="d-flex align-items-start">
-                    <i class="fas fa-exclamation-triangle me-3" style="color: #ffc107; font-size: 1.5rem; margin-top: 2px;"></i>
-                    <div>
-                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Yasal Uyarı</h5>
-                        <p class="mb-0 text-secondary">
-                            Sentralyx bir trading terminalidir, yatırım danışmanlığı hizmeti vermez. Burada yer alan bilgiler yalnızca yazılımın teknik özelliklerini açıklamak amacıyla sunulmuştur. Yatırım tavsiyesi niteliği taşımaz. Finansal kararlarınızdan yalnızca siz sorumlusunuz. Kripto para piyasaları yüksek risk içerir.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="footer-container"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script>
-        // Load header and footer
-        fetch('components/footer.html')
-            .then(async (response) => {
-                const buffer = await response.arrayBuffer();
-                return new TextDecoder('utf-8').decode(buffer);
-            })
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Footer yuklenemedi:', error));
-    </script>
-</body>
-</html>
+<section class="faq-hero"><div class="container"><h1>Kripto Botu ve Otomatik Trade Hakkında Sık Sorulan Sorular</h1><p class="lead">Sentralyx, Windows üzerinde çalışan bir trading terminalidir. Bu sayfa kripto botu, Binance ve OKX bağlantısı, backtest, API anahtarı, risk ayarları ve lisans konularını sade biçimde açıklar.</p></div></section>
+<main class="faq-section"><div class="container"><div class="faq-tools"><label for="faqSearch" class="visually-hidden">FAQ içinde ara</label><input id="faqSearch" class="faq-search" type="search" aria-label="FAQ içinde ara" placeholder="FAQ içinde ara"><div class="faq-filters" aria-label="FAQ categories"><button type="button" class="faq-filter active" data-category="all">Tümü</button><button type="button" class="faq-filter" data-category="bot">Sentralyx ve kripto botları</button>
+<button type="button" class="faq-filter" data-category="api">Binance, OKX ve API bağlantısı</button>
+<button type="button" class="faq-filter" data-category="backtest">Strateji ve backtest</button>
+<button type="button" class="faq-filter" data-category="risk">Otomatik işlem ve risk yönetimi</button>
+<button type="button" class="faq-filter" data-category="license">Ücretsiz sürüm, lisans ve kurulum</button>
+<button type="button" class="faq-filter" data-category="support">Kullanım, destek ve sorumluluk</button></div></div><div class="accordion" id="faqAccordion"><div class="accordion-item faq-item" data-category="bot" data-text="sentralyx nedir? sentralyx kripto piyasaları için geliştirilmiş bir windows trading terminalidir. kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır. sentralyx ve kripto botları">
+<h3 class="accordion-header" id="heading-tr-1"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-1" aria-expanded="false" aria-controls="faq-tr-1">1. Sentralyx nedir?</button></h3>
+<div id="faq-tr-1" class="accordion-collapse collapse" aria-labelledby="heading-tr-1" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx kripto piyasaları için geliştirilmiş bir Windows trading terminalidir. Kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. Sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. Yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="bot" data-text="sentralyx bir kripto botu mudur? sentralyx kripto piyasaları için geliştirilmiş bir windows trading terminalidir. kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır. sentralyx ve kripto botları">
+<h3 class="accordion-header" id="heading-tr-2"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-2" aria-expanded="false" aria-controls="faq-tr-2">2. Sentralyx bir kripto botu mudur?</button></h3>
+<div id="faq-tr-2" class="accordion-collapse collapse" aria-labelledby="heading-tr-2" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx kripto piyasaları için geliştirilmiş bir Windows trading terminalidir. Kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. Sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. Yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="bot" data-text="otomatik trade botu nasıl çalışır? sentralyx kripto piyasaları için geliştirilmiş bir windows trading terminalidir. kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır. sentralyx ve kripto botları">
+<h3 class="accordion-header" id="heading-tr-3"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-3" aria-expanded="false" aria-controls="faq-tr-3">3. Otomatik trade botu nasıl çalışır?</button></h3>
+<div id="faq-tr-3" class="accordion-collapse collapse" aria-labelledby="heading-tr-3" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx kripto piyasaları için geliştirilmiş bir Windows trading terminalidir. Kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. Sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. Yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="bot" data-text="kod bilmeden algoritmik trade yapılabilir mi? sentralyx kripto piyasaları için geliştirilmiş bir windows trading terminalidir. kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır. sentralyx ve kripto botları">
+<h3 class="accordion-header" id="heading-tr-4"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-4" aria-expanded="false" aria-controls="faq-tr-4">4. Kod bilmeden algoritmik trade yapılabilir mi?</button></h3>
+<div id="faq-tr-4" class="accordion-collapse collapse" aria-labelledby="heading-tr-4" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx kripto piyasaları için geliştirilmiş bir Windows trading terminalidir. Kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. Sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. Yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="bot" data-text="sentralyx yapay zekâ trade botu mudur? sentralyx kripto piyasaları için geliştirilmiş bir windows trading terminalidir. kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır. sentralyx ve kripto botları">
+<h3 class="accordion-header" id="heading-tr-5"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-5" aria-expanded="false" aria-controls="faq-tr-5">5. Sentralyx yapay zekâ trade botu mudur?</button></h3>
+<div id="faq-tr-5" class="accordion-collapse collapse" aria-labelledby="heading-tr-5" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx kripto piyasaları için geliştirilmiş bir Windows trading terminalidir. Kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. Sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. Yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="bot" data-text="sentralyx kesin al-sat sinyali verir mi? sentralyx kripto piyasaları için geliştirilmiş bir windows trading terminalidir. kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır. sentralyx ve kripto botları">
+<h3 class="accordion-header" id="heading-tr-6"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-6" aria-expanded="false" aria-controls="faq-tr-6">6. Sentralyx kesin al-sat sinyali verir mi?</button></h3>
+<div id="faq-tr-6" class="accordion-collapse collapse" aria-labelledby="heading-tr-6" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx kripto piyasaları için geliştirilmiş bir Windows trading terminalidir. Kullanıcı; piyasa tarama, kripto al sat botu mantığına uygun kural tanımlama, algoritmik trade denemeleri ve strateji testi gibi araçları aynı arayüzde kullanabilir. Sistem, kullanıcı adına yatırım kararı vermek yerine seçilen kuralları ve verileri daha okunabilir hale getirmeyi hedefler. Yapay zekâ trade botu beklentisi olan kullanıcılar için önemli nokta şudur: kararlar doğrulanabilir kurallara, backtest sonuçlarına ve kullanıcı ayarlarına dayanmalıdır.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="sentralyx hangi borsalarla çalışır? sentralyx binance ve okx piyasalarıyla çalışmaya yönelik araçlar sunar. api anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. i̇şlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. bağlantı kesintisi, internet, borsa api durumu veya kullanıcı ayarlarından etkilenebilir. api anahtarlarını korumak için izinleri sınırlamak, 2fa kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir. binance, okx ve api bağlantısı">
+<h3 class="accordion-header" id="heading-tr-7"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-7" aria-expanded="false" aria-controls="faq-tr-7">7. Sentralyx hangi borsalarla çalışır?</button></h3>
+<div id="faq-tr-7" class="accordion-collapse collapse" aria-labelledby="heading-tr-7" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="binance veya okx hesabı nasıl bağlanır? sentralyx binance ve okx piyasalarıyla çalışmaya yönelik araçlar sunar. api anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. i̇şlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. bağlantı kesintisi, internet, borsa api durumu veya kullanıcı ayarlarından etkilenebilir. api anahtarlarını korumak için izinleri sınırlamak, 2fa kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir. binance, okx ve api bağlantısı">
+<h3 class="accordion-header" id="heading-tr-8"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-8" aria-expanded="false" aria-controls="faq-tr-8">8. Binance veya OKX hesabı nasıl bağlanır?</button></h3>
+<div id="faq-tr-8" class="accordion-collapse collapse" aria-labelledby="heading-tr-8" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="api anahtarı nedir? sentralyx binance ve okx piyasalarıyla çalışmaya yönelik araçlar sunar. api anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. i̇şlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. bağlantı kesintisi, internet, borsa api durumu veya kullanıcı ayarlarından etkilenebilir. api anahtarlarını korumak için izinleri sınırlamak, 2fa kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir. binance, okx ve api bağlantısı">
+<h3 class="accordion-header" id="heading-tr-9"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-9" aria-expanded="false" aria-controls="faq-tr-9">9. API anahtarı nedir?</button></h3>
+<div id="faq-tr-9" class="accordion-collapse collapse" aria-labelledby="heading-tr-9" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="hangi api izinleri açılmalıdır? sentralyx binance ve okx piyasalarıyla çalışmaya yönelik araçlar sunar. api anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. i̇şlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. bağlantı kesintisi, internet, borsa api durumu veya kullanıcı ayarlarından etkilenebilir. api anahtarlarını korumak için izinleri sınırlamak, 2fa kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir. binance, okx ve api bağlantısı">
+<h3 class="accordion-header" id="heading-tr-10"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-10" aria-expanded="false" aria-controls="faq-tr-10">10. Hangi API izinleri açılmalıdır?</button></h3>
+<div id="faq-tr-10" class="accordion-collapse collapse" aria-labelledby="heading-tr-10" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="para çekme izni gerekli midir? sentralyx binance ve okx piyasalarıyla çalışmaya yönelik araçlar sunar. api anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. i̇şlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. bağlantı kesintisi, internet, borsa api durumu veya kullanıcı ayarlarından etkilenebilir. api anahtarlarını korumak için izinleri sınırlamak, 2fa kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir. binance, okx ve api bağlantısı">
+<h3 class="accordion-header" id="heading-tr-11"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-11" aria-expanded="false" aria-controls="faq-tr-11">11. Para çekme izni gerekli midir?</button></h3>
+<div id="faq-tr-11" class="accordion-collapse collapse" aria-labelledby="heading-tr-11" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="api bağlantısı kesilirse ne olur? sentralyx binance ve okx piyasalarıyla çalışmaya yönelik araçlar sunar. api anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. i̇şlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. bağlantı kesintisi, internet, borsa api durumu veya kullanıcı ayarlarından etkilenebilir. api anahtarlarını korumak için izinleri sınırlamak, 2fa kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir. binance, okx ve api bağlantısı">
+<h3 class="accordion-header" id="heading-tr-12"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-12" aria-expanded="false" aria-controls="faq-tr-12">12. API bağlantısı kesilirse ne olur?</button></h3>
+<div id="faq-tr-12" class="accordion-collapse collapse" aria-labelledby="heading-tr-12" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="api anahtarları nasıl korunmalıdır? sentralyx binance ve okx piyasalarıyla çalışmaya yönelik araçlar sunar. api anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. i̇şlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. bağlantı kesintisi, internet, borsa api durumu veya kullanıcı ayarlarından etkilenebilir. api anahtarlarını korumak için izinleri sınırlamak, 2fa kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir. binance, okx ve api bağlantısı">
+<h3 class="accordion-header" id="heading-tr-13"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-13" aria-expanded="false" aria-controls="faq-tr-13">13. API anahtarları nasıl korunmalıdır?</button></h3>
+<div id="faq-tr-13" class="accordion-collapse collapse" aria-labelledby="heading-tr-13" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Binance ve OKX piyasalarıyla çalışmaya yönelik araçlar sunar. API anahtarı, borsa hesabının belirli izinlerle masaüstü terminale bağlanmasını sağlar. İşlem izni gerekiyorsa yalnız gerekli yetkiler açılmalı, para çekme izni kapalı tutulmalıdır. Bağlantı kesintisi, internet, borsa API durumu veya kullanıcı ayarlarından etkilenebilir. API anahtarlarını korumak için izinleri sınırlamak, 2FA kullanmak, cihaz güvenliğini sağlamak ve anahtarları düzenli kontrol etmek gerekir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="backtest nedir? backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, mtf analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir. strateji ve backtest">
+<h3 class="accordion-header" id="heading-tr-14"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-14" aria-expanded="false" aria-controls="faq-tr-14">14. Backtest nedir?</button></h3>
+<div id="faq-tr-14" class="accordion-collapse collapse" aria-labelledby="heading-tr-14" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="sentralyx ile kripto stratejisi nasıl test edilir? backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, mtf analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir. strateji ve backtest">
+<h3 class="accordion-header" id="heading-tr-15"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-15" aria-expanded="false" aria-controls="faq-tr-15">15. Sentralyx ile kripto stratejisi nasıl test edilir?</button></h3>
+<div id="faq-tr-15" class="accordion-collapse collapse" aria-labelledby="heading-tr-15" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="backtest sonucu canlı işlemle aynı olur mu? backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, mtf analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir. strateji ve backtest">
+<h3 class="accordion-header" id="heading-tr-16"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-16" aria-expanded="false" aria-controls="faq-tr-16">16. Backtest sonucu canlı işlemle aynı olur mu?</button></h3>
+<div id="faq-tr-16" class="accordion-collapse collapse" aria-labelledby="heading-tr-16" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="komisyon ve slipaj sonuçları nasıl etkiler? backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, mtf analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir. strateji ve backtest">
+<h3 class="accordion-header" id="heading-tr-17"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-17" aria-expanded="false" aria-controls="faq-tr-17">17. Komisyon ve slipaj sonuçları nasıl etkiler?</button></h3>
+<div id="faq-tr-17" class="accordion-collapse collapse" aria-labelledby="heading-tr-17" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="mtf analiz nedir? backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, mtf analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir. strateji ve backtest">
+<h3 class="accordion-header" id="heading-tr-18"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-18" aria-expanded="false" aria-controls="faq-tr-18">18. MTF analiz nedir?</button></h3>
+<div id="faq-tr-18" class="accordion-collapse collapse" aria-labelledby="heading-tr-18" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="kod yazmadan strateji oluşturulabilir mi? backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, mtf analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir. strateji ve backtest">
+<h3 class="accordion-header" id="heading-tr-19"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-19" aria-expanded="false" aria-controls="faq-tr-19">19. Kod yazmadan strateji oluşturulabilir mi?</button></h3>
+<div id="faq-tr-19" class="accordion-collapse collapse" aria-labelledby="heading-tr-19" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="backtest için kaç işlem daha anlamlıdır? backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, mtf analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir. strateji ve backtest">
+<h3 class="accordion-header" id="heading-tr-20"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-20" aria-expanded="false" aria-controls="faq-tr-20">20. Backtest için kaç işlem daha anlamlıdır?</button></h3>
+<div id="faq-tr-20" class="accordion-collapse collapse" aria-labelledby="heading-tr-20" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="geçmişte başarılı strateji gelecekte de başarılı olur mu? backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, mtf analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir. strateji ve backtest">
+<h3 class="accordion-header" id="heading-tr-21"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-21" aria-expanded="false" aria-controls="faq-tr-21">21. Geçmişte başarılı strateji gelecekte de başarılı olur mu?</button></h3>
+<div id="faq-tr-21" class="accordion-collapse collapse" aria-labelledby="heading-tr-21" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtest, bir stratejinin geçmiş piyasa verileri üzerinde denenmesidir. Sentralyx içinde kullanıcı, kod bilmeden trade kuralları tanımlamayı, MTF analiz gibi piyasa koşullarını değerlendirmeyi ve kripto strateji testi yapmayı hedefleyen araçları kullanabilir. Sonuçlar canlı işlemle birebir aynı kabul edilmemelidir; komisyon, slipaj, likidite, gecikme ve piyasa değişimi sonucu etkiler. Daha anlamlı değerlendirme için tek bir işlem yerine yeterli sayıda örnek ve farklı piyasa koşulları incelenmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="otomatik işlem açmak zorunlu mudur? otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur. otomatik işlem ve risk yönetimi">
+<h3 class="accordion-header" id="heading-tr-22"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-22" aria-expanded="false" aria-controls="faq-tr-22">22. Otomatik işlem açmak zorunlu mudur?</button></h3>
+<div id="faq-tr-22" class="accordion-collapse collapse" aria-labelledby="heading-tr-22" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="kripto botu kullanmak risksiz midir? otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur. otomatik işlem ve risk yönetimi">
+<h3 class="accordion-header" id="heading-tr-23"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-23" aria-expanded="false" aria-controls="faq-tr-23">23. Kripto botu kullanmak risksiz midir?</button></h3>
+<div id="faq-tr-23" class="accordion-collapse collapse" aria-labelledby="heading-tr-23" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="sentralyx kâr garantisi verir mi? otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur. otomatik işlem ve risk yönetimi">
+<h3 class="accordion-header" id="heading-tr-24"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-24" aria-expanded="false" aria-controls="faq-tr-24">24. Sentralyx kâr garantisi verir mi?</button></h3>
+<div id="faq-tr-24" class="accordion-collapse collapse" aria-labelledby="heading-tr-24" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="stop-loss ve hedef seviyeleri nasıl çalışır? otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur. otomatik işlem ve risk yönetimi">
+<h3 class="accordion-header" id="heading-tr-25"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-25" aria-expanded="false" aria-controls="faq-tr-25">25. Stop-loss ve hedef seviyeleri nasıl çalışır?</button></h3>
+<div id="faq-tr-25" class="accordion-collapse collapse" aria-labelledby="heading-tr-25" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="açık pozisyonlar nasıl takip edilir? otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur. otomatik işlem ve risk yönetimi">
+<h3 class="accordion-header" id="heading-tr-26"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-26" aria-expanded="false" aria-controls="faq-tr-26">26. Açık pozisyonlar nasıl takip edilir?</button></h3>
+<div id="faq-tr-26" class="accordion-collapse collapse" aria-labelledby="heading-tr-26" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="i̇nternet bağlantısı kesilirse ne olur? otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur. otomatik işlem ve risk yönetimi">
+<h3 class="accordion-header" id="heading-tr-27"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-27" aria-expanded="false" aria-controls="faq-tr-27">27. İnternet bağlantısı kesilirse ne olur?</button></h3>
+<div id="faq-tr-27" class="accordion-collapse collapse" aria-labelledby="heading-tr-27" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="aynı anda kaç işlem açılabilir? otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur. otomatik işlem ve risk yönetimi">
+<h3 class="accordion-header" id="heading-tr-28"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-28" aria-expanded="false" aria-controls="faq-tr-28">28. Aynı anda kaç işlem açılabilir?</button></h3>
+<div id="faq-tr-28" class="accordion-collapse collapse" aria-labelledby="heading-tr-28" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="risk ayarlarını kullanıcı değiştirebilir mi? otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur. otomatik işlem ve risk yönetimi">
+<h3 class="accordion-header" id="heading-tr-29"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-29" aria-expanded="false" aria-controls="faq-tr-29">29. Risk ayarlarını kullanıcı değiştirebilir mi?</button></h3>
+<div id="faq-tr-29" class="accordion-collapse collapse" aria-labelledby="heading-tr-29" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Otomatik işlem kullanımı zorunlu değildir ve kripto botu kullanımı risk içerir. Sentralyx, stop-loss, hedef seviyesi, pozisyon limiti ve risk parametrelerinin kullanıcı tarafından yapılandırılmasına yardımcı olur. Açık pozisyon takibi ve raporlama ekranları karar sürecini destekler, ancak piyasa hareketi, bağlantı kesintisi veya yanlış ayar sonucu etkileyebilir. Otomatik risk yönetimi ifadesi, kullanıcı kurallarının uygulanmasına yardımcı olan ayarlar olarak anlaşılmalıdır; sonuçtan kullanıcı sorumludur.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="sentralyx ücretsiz midir? sentralyx windows üzerinde çalışır ve free, trial veya full lisans modelleri sunulabilir. ücretsiz kripto botu arayan kullanıcılar için free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, telegram veya doğrudan dosya olarak teslim edilebilir. lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir. ücretsiz sürüm, lisans ve kurulum">
+<h3 class="accordion-header" id="heading-tr-30"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-30" aria-expanded="false" aria-controls="faq-tr-30">30. Sentralyx ücretsiz midir?</button></h3>
+<div id="faq-tr-30" class="accordion-collapse collapse" aria-labelledby="heading-tr-30" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="free, trial ve full sürüm arasındaki farklar nelerdir? sentralyx windows üzerinde çalışır ve free, trial veya full lisans modelleri sunulabilir. ücretsiz kripto botu arayan kullanıcılar için free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, telegram veya doğrudan dosya olarak teslim edilebilir. lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir. ücretsiz sürüm, lisans ve kurulum">
+<h3 class="accordion-header" id="heading-tr-31"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-31" aria-expanded="false" aria-controls="faq-tr-31">31. Free, Trial ve Full sürüm arasındaki farklar nelerdir?</button></h3>
+<div id="faq-tr-31" class="accordion-collapse collapse" aria-labelledby="heading-tr-31" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="sentralyx hangi işletim sisteminde çalışır? sentralyx windows üzerinde çalışır ve free, trial veya full lisans modelleri sunulabilir. ücretsiz kripto botu arayan kullanıcılar için free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, telegram veya doğrudan dosya olarak teslim edilebilir. lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir. ücretsiz sürüm, lisans ve kurulum">
+<h3 class="accordion-header" id="heading-tr-32"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-32" aria-expanded="false" aria-controls="faq-tr-32">32. Sentralyx hangi işletim sisteminde çalışır?</button></h3>
+<div id="faq-tr-32" class="accordion-collapse collapse" aria-labelledby="heading-tr-32" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="sentralyx nasıl indirilir ve kurulur? sentralyx windows üzerinde çalışır ve free, trial veya full lisans modelleri sunulabilir. ücretsiz kripto botu arayan kullanıcılar için free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, telegram veya doğrudan dosya olarak teslim edilebilir. lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir. ücretsiz sürüm, lisans ve kurulum">
+<h3 class="accordion-header" id="heading-tr-33"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-33" aria-expanded="false" aria-controls="faq-tr-33">33. Sentralyx nasıl indirilir ve kurulur?</button></h3>
+<div id="faq-tr-33" class="accordion-collapse collapse" aria-labelledby="heading-tr-33" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="lisans dosyası nasıl alınır? sentralyx windows üzerinde çalışır ve free, trial veya full lisans modelleri sunulabilir. ücretsiz kripto botu arayan kullanıcılar için free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, telegram veya doğrudan dosya olarak teslim edilebilir. lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir. ücretsiz sürüm, lisans ve kurulum">
+<h3 class="accordion-header" id="heading-tr-34"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-34" aria-expanded="false" aria-controls="faq-tr-34">34. Lisans dosyası nasıl alınır?</button></h3>
+<div id="faq-tr-34" class="accordion-collapse collapse" aria-labelledby="heading-tr-34" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="lisans e-posta veya telegram ile alınabilir mi? sentralyx windows üzerinde çalışır ve free, trial veya full lisans modelleri sunulabilir. ücretsiz kripto botu arayan kullanıcılar için free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, telegram veya doğrudan dosya olarak teslim edilebilir. lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir. ücretsiz sürüm, lisans ve kurulum">
+<h3 class="accordion-header" id="heading-tr-35"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-35" aria-expanded="false" aria-controls="faq-tr-35">35. Lisans e-posta veya Telegram ile alınabilir mi?</button></h3>
+<div id="faq-tr-35" class="accordion-collapse collapse" aria-labelledby="heading-tr-35" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="lisans başka bilgisayara taşınabilir mi? sentralyx windows üzerinde çalışır ve free, trial veya full lisans modelleri sunulabilir. ücretsiz kripto botu arayan kullanıcılar için free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, telegram veya doğrudan dosya olarak teslim edilebilir. lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir. ücretsiz sürüm, lisans ve kurulum">
+<h3 class="accordion-header" id="heading-tr-36"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-36" aria-expanded="false" aria-controls="faq-tr-36">36. Lisans başka bilgisayara taşınabilir mi?</button></h3>
+<div id="faq-tr-36" class="accordion-collapse collapse" aria-labelledby="heading-tr-36" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="bilgisayar veya cihaz değiştirildiğinde ne yapılır? sentralyx windows üzerinde çalışır ve free, trial veya full lisans modelleri sunulabilir. ücretsiz kripto botu arayan kullanıcılar için free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, telegram veya doğrudan dosya olarak teslim edilebilir. lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir. ücretsiz sürüm, lisans ve kurulum">
+<h3 class="accordion-header" id="heading-tr-37"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-37" aria-expanded="false" aria-controls="faq-tr-37">37. Bilgisayar veya cihaz değiştirildiğinde ne yapılır?</button></h3>
+<div id="faq-tr-37" class="accordion-collapse collapse" aria-labelledby="heading-tr-37" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="lisans dosyası gelmezse ne yapılmalıdır? sentralyx windows üzerinde çalışır ve free, trial veya full lisans modelleri sunulabilir. ücretsiz kripto botu arayan kullanıcılar için free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, telegram veya doğrudan dosya olarak teslim edilebilir. lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir. ücretsiz sürüm, lisans ve kurulum">
+<h3 class="accordion-header" id="heading-tr-38"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-38" aria-expanded="false" aria-controls="faq-tr-38">38. Lisans dosyası gelmezse ne yapılmalıdır?</button></h3>
+<div id="faq-tr-38" class="accordion-collapse collapse" aria-labelledby="heading-tr-38" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx Windows üzerinde çalışır ve Free, Trial veya Full lisans modelleri sunulabilir. Ücretsiz kripto botu arayan kullanıcılar için Free sürüm, mevcut kapsamına göre deneme ve temel kullanım amacıyla değerlendirilebilir; tüm ücretli özelliklerin açık olduğu anlamına gelmez. Kurulum dosyası gerçek indirme bağlantısından alınmalı, lisans dosyası e-posta, Telegram veya doğrudan dosya olarak teslim edilebilir. Lisans cihazla ilişkilendirilebildiği için cihaz değişiminde eşleştirme sıfırlaması gerekebilir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="sentralyx yatırım tavsiyesi verir mi? sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. teknik destek için iletişim veya telegram kanalları kullanılabilir. mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün windows masaüstü terminali olarak ele alınmalıdır. kullanıcı api izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir. kullanım, destek ve sorumluluk">
+<h3 class="accordion-header" id="heading-tr-39"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-39" aria-expanded="false" aria-controls="faq-tr-39">39. Sentralyx yatırım tavsiyesi verir mi?</button></h3>
+<div id="faq-tr-39" class="accordion-collapse collapse" aria-labelledby="heading-tr-39" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="yeni başlayanlar sentralyx kullanabilir mi? sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. teknik destek için iletişim veya telegram kanalları kullanılabilir. mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün windows masaüstü terminali olarak ele alınmalıdır. kullanıcı api izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir. kullanım, destek ve sorumluluk">
+<h3 class="accordion-header" id="heading-tr-40"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-40" aria-expanded="false" aria-controls="faq-tr-40">40. Yeni başlayanlar Sentralyx kullanabilir mi?</button></h3>
+<div id="faq-tr-40" class="accordion-collapse collapse" aria-labelledby="heading-tr-40" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="canlı işlemden önce ne yapılmalıdır? sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. teknik destek için iletişim veya telegram kanalları kullanılabilir. mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün windows masaüstü terminali olarak ele alınmalıdır. kullanıcı api izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir. kullanım, destek ve sorumluluk">
+<h3 class="accordion-header" id="heading-tr-41"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-41" aria-expanded="false" aria-controls="faq-tr-41">41. Canlı işlemden önce ne yapılmalıdır?</button></h3>
+<div id="faq-tr-41" class="accordion-collapse collapse" aria-labelledby="heading-tr-41" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="demo veya test verileri gerçek işlem sonucu mudur? sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. teknik destek için iletişim veya telegram kanalları kullanılabilir. mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün windows masaüstü terminali olarak ele alınmalıdır. kullanıcı api izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir. kullanım, destek ve sorumluluk">
+<h3 class="accordion-header" id="heading-tr-42"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-42" aria-expanded="false" aria-controls="faq-tr-42">42. Demo veya test verileri gerçek işlem sonucu mudur?</button></h3>
+<div id="faq-tr-42" class="accordion-collapse collapse" aria-labelledby="heading-tr-42" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="teknik destek nasıl alınır? sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. teknik destek için iletişim veya telegram kanalları kullanılabilir. mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün windows masaüstü terminali olarak ele alınmalıdır. kullanıcı api izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir. kullanım, destek ve sorumluluk">
+<h3 class="accordion-header" id="heading-tr-43"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-43" aria-expanded="false" aria-controls="faq-tr-43">43. Teknik destek nasıl alınır?</button></h3>
+<div id="faq-tr-43" class="accordion-collapse collapse" aria-labelledby="heading-tr-43" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="sentralyx mobil cihazlarda çalışır mı? sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. teknik destek için iletişim veya telegram kanalları kullanılabilir. mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün windows masaüstü terminali olarak ele alınmalıdır. kullanıcı api izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir. kullanım, destek ve sorumluluk">
+<h3 class="accordion-header" id="heading-tr-44"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-44" aria-expanded="false" aria-controls="faq-tr-44">44. Sentralyx mobil cihazlarda çalışır mı?</button></h3>
+<div id="faq-tr-44" class="accordion-collapse collapse" aria-labelledby="heading-tr-44" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="kullanıcı hangi güvenlik önlemlerini almalıdır? sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. teknik destek için iletişim veya telegram kanalları kullanılabilir. mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün windows masaüstü terminali olarak ele alınmalıdır. kullanıcı api izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir. kullanım, destek ve sorumluluk">
+<h3 class="accordion-header" id="heading-tr-45"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-tr-45" aria-expanded="false" aria-controls="faq-tr-45">45. Kullanıcı hangi güvenlik önlemlerini almalıdır?</button></h3>
+<div id="faq-tr-45" class="accordion-collapse collapse" aria-labelledby="heading-tr-45" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx yatırım tavsiyesi vermez; kullanıcı kararını kendi risk değerlendirmesiyle vermelidir. Yeni başlayanlar arayüzü inceleyebilir, ancak canlı işlemden önce demo veya küçük kapsamlı testler, backtest ve risk ayarlarıyla ilerlemelidir. Demo veriler gerçek işlem sonucu olarak değerlendirilmemelidir. Teknik destek için iletişim veya Telegram kanalları kullanılabilir. Mobil cihazlarda ana kullanım hedefi belirtilmemiştir; ürün Windows masaüstü terminali olarak ele alınmalıdır. Kullanıcı API izinlerini, cihaz güvenliğini ve borsa hesabını düzenli kontrol etmelidir.</p></div></div>
+</div></div><p id="noResults" class="no-results">Aramanızla eşleşen soru bulunamadı.</p><section class="faq-note"><h2>Risk ve sorumluluk notu</h2><p>Sentralyx yatırım tavsiyesi vermez ve sonuç garantisi sunmaz. Kripto piyasaları değişkendir; komisyon, slipaj, likidite, gecikme ve kullanıcı ayarları sonuçları etkileyebilir. Canlı işlemden önce küçük kapsamlı testler, backtest ve kontrollü risk ayarları kullanılmalıdır.</p></section><section class="faq-note"><h2>İlgili sayfalar</h2><div class="related-links"><a href="/sentralyx-nedir/">Sentralyx nedir</a>
+<a href="/ne-yapar-ne-yapmaz/">Ne yapar / ne yapmaz</a>
+<a href="/guvenlik/">Güvenlik</a>
+<a href="/scanner/">Scanner</a>
+<a href="/strategies/">Stratejiler</a>
+<a href="/backtest/">Backtest</a>
+<a href="/fiyatlandirma/">Fiyatlandırma</a>
+<a href="/contact/">İletişim</a></div></section><section class="faq-cta"><h2>Sentralyx</h2><div class="faq-cta-actions"><a href="/scanner/">Terminal özelliklerini incele</a><a href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip">Windows sürümünü indir</a><a href="https://t.me/Sentralyx">Telegram topluluğuna katıl</a></div></section></div></main>
+<div id="footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><script src="assets/js/main.js"></script>
+<script>const searchInput=document.getElementById('faqSearch');const filterButtons=Array.from(document.querySelectorAll('.faq-filter'));const items=Array.from(document.querySelectorAll('.faq-item'));const noResults=document.getElementById('noResults');let activeCategory='all';function applyFaqFilters(){const term=searchInput.value.trim().toLowerCase();let visibleCount=0;items.forEach((item)=>{const categoryMatch=activeCategory==='all'||item.dataset.category===activeCategory;const textMatch=!term||item.dataset.text.includes(term);const show=categoryMatch&&textMatch;item.style.display=show?'':'none';if(show)visibleCount+=1;});noResults.style.display=visibleCount?'none':'block';}filterButtons.forEach((button)=>{button.addEventListener('click',()=>{activeCategory=button.dataset.category;filterButtons.forEach((item)=>item.classList.toggle('active',item===button));applyFaqFilters();});});searchInput.addEventListener('input',applyFaqFilters);fetch('components/footer.html').then(response=>response.text()).then(html=>{document.getElementById('footer').innerHTML=html;}).catch(()=>{});</script>
+</body></html>

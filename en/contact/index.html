@@ -4,290 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.sentralyx.com/en/contact/">
-    <title>Sentralyx | Get in Touch & Support Center</title>
-    <meta name="description" content="Contact Sentralyx for technical support and business inquiries. Our team typically responds within 24 hours.">
-    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/contact/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/contact/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/contact/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/contact/">
+<title>Contact & Social Media | Sentralyx Trading Terminal</title>
+    <meta name="description" content="Join the Sentralyx community through our social media channels; stay connected with real-time analysis, educational content, and trading updates.">
+    <meta property="og:title" content="Contact &amp; Social Media | Sentralyx Trading Terminal">
+    <meta property="og:description" content="Join the Sentralyx community through our social media channels; stay connected with real-time analysis, educational content, and trading updates.">
+    <meta property="og:url" content="https://www.sentralyx.com/en/contact/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sentralyx.com/assets/logo.png">
+<link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
-
+    
     <style>
         .contact-container {
             padding: 20px;
             background: var(--bg-dark);
             min-height: 100vh;
         }
-
-        .panel {
+        
+        .social-card {
             background: var(--panel-dark);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-
-        .hero-card {
-            padding: 26px;
-            border-radius: 14px;
-            background: radial-gradient(circle at top right, rgba(47, 177, 127, 0.12), transparent);
-            border: 1px solid var(--border-color);
-        }
-
-        .hero-card h1 {
-            color: var(--text-main);
-            font-weight: 900;
-            margin-bottom: 6px;
-        }
-
-        .hero-card p { color: var(--text-secondary); margin: 0; }
-
-        .form-control-custom {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-radius: 10px;
-        }
-        .form-control-custom:focus {
-            background: rgba(42, 49, 66, 0.5);
+        
+        .social-card:hover {
+            transform: translateY(-5px);
             border-color: var(--accent-blue);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
+        }
+        
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            transition: left 0.5s;
+        }
+        
+        .social-card:hover::before {
+            left: 100%;
+        }
+        
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link {
             color: var(--text-main);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
-        }
-
-        .send-btn {
-            padding: 12px 16px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            color: white;
-            font-weight: 800;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-        }
-        .send-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 22px rgba(52, 152, 219, 0.25);
-            opacity: 0.98;
-        }
-
-        .info-card {
-            background: rgba(42, 49, 66, 0.18);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 16px;
-            height: 100%;
-            transition: all 0.25s ease;
-        }
-        .info-card:hover {
-            border-color: var(--accent-blue);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 26px rgba(52, 152, 219, 0.15);
-        }
-
-        .info-card .icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
+            text-decoration: none;
             display: flex;
             align-items: center;
-            justify-content: center;
-            background: rgba(52, 152, 219, 0.12);
-            border: 1px solid rgba(52, 152, 219, 0.25);
-            color: var(--accent-blue);
-            font-size: 1.2rem;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
         }
-
-        .info-card .title { color: var(--text-main); font-weight: 900; margin: 0; }
-        .info-card .desc { color: var(--text-secondary); margin: 0; }
-
-        .shortcut {
-            background: rgba(52, 152, 219, 0.08);
-            border: 1px solid rgba(52, 152, 219, 0.25);
-            border-radius: 12px;
-            padding: 14px;
-            color: var(--text-secondary);
+        
+        .social-link:hover {
+            color: white;
+            transform: translateX(5px);
         }
-
-        .toast-success {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            min-width: 320px;
-            background: rgba(47, 177, 127, 0.10);
-            border: 1px solid rgba(47, 177, 127, 0.35);
+        
+        /* Telegram - Original Blue */
+        .telegram-icon {
+            color: #0088cc;
+        }
+        
+        .telegram-link:hover .telegram-icon {
+            color: #00a8e8;
+            filter: drop-shadow(0 0 10px rgba(0, 136, 204, 0.5));
+        }
+        
+        /* X (Twitter) - Electric Blue */
+        .x-icon {
+            color: #1DA1F2;
+        }
+        
+        .x-link:hover .x-icon {
+            color: #4ab8f5;
+            filter: drop-shadow(0 0 10px rgba(29, 161, 242, 0.5));
+        }
+        
+        /* YouTube - Classic Red */
+        .youtube-icon {
+            color: #ff0000;
+        }
+        
+        .youtube-link:hover .youtube-icon {
+            color: #ff3333;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+        }
+        
+        /* Instagram - Pink-Purple Gradient */
+        .instagram-icon {
+            color: #E4405F;
+        }
+        
+        .instagram-link:hover .instagram-icon {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 10px rgba(228, 64, 95, 0.5));
+        }
+        
+        .social-title {
             color: var(--text-main);
-            border-radius: 14px;
-            padding: 14px 16px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-            transform: translateX(20px);
-            opacity: 0;
-            transition: transform 0.25s ease, opacity 0.25s ease;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
-
-        .toast-success.show {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .toast-success .title {
-            font-weight: 900;
-            margin: 0;
-        }
-
-        .toast-success .msg {
-            margin: 4px 0 0 0;
+        
+        .social-description {
             color: var(--text-secondary);
-        }
-
-        .simple-footer {
-            color: var(--text-secondary);
-            text-align: center;
-            margin-top: 22px;
             font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .social-url {
+            color: var(--accent-blue);
+            font-family: monospace;
+            font-size: 0.85rem;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 20px 15px;
+            }
+            
+            .social-cards {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .social-card {
+                padding: 25px 20px;
+            }
+            
+            .social-icon {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .social-title {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+            }
+            
+            .social-description {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+            
+            .social-url {
+                font-size: 0.9rem;
+                padding: 8px 12px;
+            }
+        }
+        
+        /* Prevent Horizontal Scroll */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+            min-width: 320px;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        /* Touch Targets for Mobile */
+        @media (max-width: 768px) {
+            .btn, .form-control, .form-select {
+                min-height: 44px;
+                min-width: 44px;
+                padding: 12px 16px;
+            }
         }
     </style>
 </head>
 <body>
-
     <header id="main-header"></header>
-
+    
     <main class="contact-container">
-        <div class="container-fluid">
-            <div class="hero-card mb-4">
-                <h1>Get in Touch &amp; Support Center</h1>
-                <p>For <strong class="text-main">Technical Support</strong> and <strong class="text-main">Business Inquiries</strong>, send us a message below. Our team typically responds within <strong class="text-main">24 hours</strong>.</p>
-            </div>
-
-            <div class="row g-3">
-                <!-- Contact Form -->
-                <div class="col-lg-7">
-                    <div class="panel p-3">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                            <h5 class="text-main mb-0"><i class="fas fa-envelope-open-text me-2" style="color: var(--accent-blue);"></i>Contact Form</h5>
-                            <div class="text-secondary small">Response Time: typically within 24 hours</div>
+        <div class="text-center mb-4">
+            <h1 class="text-main">Contact & Social Media</h1>
+            <p class="text-secondary">Connect with us on Social Media</p>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Telegram -->
+            <div class="col-md-6">
+                <div class="social-card">
+                    <a href="https://t.me/Sentralyx" target="_blank" class="social-link telegram-link">
+                        <i class="fab fa-telegram social-icon telegram-icon"></i>
+                        <div>
+                            <h3 class="social-title">Telegram</h3>
+                            <p class="social-description">Community & Announcements</p>
+                            <span class="social-url">t.me/Sentralyx</span>
                         </div>
-
-                        <form id="contact-form" onsubmit="handleSubmit(event)">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label text-main small mb-1">Full Name</label>
-                                    <input class="form-control form-control-custom" id="full-name" required placeholder="Your name">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label text-main small mb-1">Email Address</label>
-                                    <input class="form-control form-control-custom" id="email" type="email" required placeholder="you@company.com">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label text-main small mb-1">Subject</label>
-                                    <select class="form-select form-control-custom" id="subject" required>
-                                        <option value="" disabled selected>Select a subject</option>
-                                        <option>Support</option>
-                                        <option>Partnership</option>
-                                        <option>Feedback</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label text-main small mb-1">Social Channels</label>
-                                    <div class="text-secondary small">Prefer community support? Use Telegram for faster responses.</div>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label text-main small mb-1">Message</label>
-                                    <textarea class="form-control form-control-custom" id="message" rows="6" required placeholder="Describe your request in detail (steps, environment, screenshots if applicable)"></textarea>
-                                </div>
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button class="send-btn" type="submit">
-                                        <i class="fas fa-paper-plane me-2"></i>Send Message
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-
-                        <div class="shortcut mt-3">
-                            <div class="d-flex align-items-start gap-3">
-                                <i class="fas fa-circle-info mt-1" style="color: var(--accent-blue);"></i>
-                                <div class="small">
-                                    Have a quick question? Check our <a class="text-accent-blue text-decoration-none" href="/en/faq.html">Documentation</a> or user manual (FAQ).
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-
-                <!-- Direct Contact Cards -->
-                <div class="col-lg-5">
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <div class="info-card">
-                                <div class="d-flex gap-3 align-items-start">
-                                    <div class="icon"><i class="fas fa-at"></i></div>
-                                    <div>
-                                        <p class="title mb-1">Direct Email</p>
-                                        <p class="desc mb-2">For formal support tickets and business requests.</p>
-                                        <a class="text-accent-blue text-decoration-none" href="mailto:support@sentralyx.com">support@sentralyx.com</a>
-                                    </div>
-                                </div>
-                            </div>
+            </div>
+            
+            <!-- X (Twitter) -->
+            <div class="col-md-6">
+                <div class="social-card">
+                    <a href="https://x.com/Sentralyx" target="_blank" class="social-link x-link">
+                        <i class="fab fa-x-twitter social-icon x-icon"></i>
+                        <div>
+                            <h3 class="social-title">X (Twitter)</h3>
+                            <p class="social-description">Real-time Analysis</p>
+                            <span class="social-url">x.com/Sentralyx</span>
                         </div>
-
-                        <div class="col-12">
-                            <div class="info-card">
-                                <div class="d-flex gap-3 align-items-start">
-                                    <div class="icon"><i class="fab fa-telegram-plane"></i></div>
-                                    <div>
-                                        <p class="title mb-1">Telegram Community</p>
-                                        <p class="desc mb-2">Social Channels for community updates and quick support.</p>
-                                        <a class="text-accent-blue text-decoration-none" href="https://t.me/Sentralyx" target="_blank" rel="noopener">t.me/Sentralyx</a>
-                                    </div>
-                                </div>
-                            </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- YouTube -->
+            <div class="col-md-6">
+                <div class="social-card">
+                    <a href="https://youtube.com/@Sentralyx" target="_blank" class="social-link youtube-link">
+                        <i class="fab fa-youtube social-icon youtube-icon"></i>
+                        <div>
+                            <h3 class="social-title">YouTube</h3>
+                            <p class="social-description">Educational Videos</p>
+                            <span class="social-url">youtube.com/@Sentralyx</span>
                         </div>
-
-                        <div class="col-12">
-                            <div class="info-card">
-                                <div class="d-flex gap-3 align-items-start">
-                                    <div class="icon"><i class="fab fa-github"></i></div>
-                                    <div>
-                                        <p class="title mb-1">GitHub Repository</p>
-                                        <p class="desc mb-2">For issues, documentation, and engineering transparency.</p>
-                                        <a class="text-accent-blue text-decoration-none" href="https://github.com/" target="_blank" rel="noopener">github.com (repository link)</a>
-                                    </div>
-                                </div>
-                            </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Instagram -->
+            <div class="col-md-6">
+                <div class="social-card">
+                    <a href="https://instagram.com/sentralyx/" target="_blank" class="social-link instagram-link">
+                        <i class="fab fa-instagram social-icon instagram-icon"></i>
+                        <div>
+                            <h3 class="social-title">Instagram</h3>
+                            <p class="social-description">Visual Updates</p>
+                            <span class="social-url">instagram.com/sentralyx/</span>
                         </div>
-
-                        <div class="col-12">
-                            <div class="panel p-3">
-                                <div class="text-main fw-bold mb-1"><i class="fas fa-headset me-2" style="color: var(--accent-blue);"></i>Technical Support</div>
-                                <div class="text-secondary small">Please include your OS, exchange, timeframe, and any error messages. This helps us reproduce and resolve issues quickly.</div>
-                            </div>
-                            <div class="simple-footer">© 2026 Sentralyx - All rights reserved.</div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
     </main>
 
-    <div class="toast-success" id="success-toast" role="status" aria-live="polite">
-        <p class="title mb-0"><i class="fas fa-check-circle me-2" style="color: var(--signal-buy);"></i>Thank you!</p>
-        <p class="msg mb-0">Your message has been sent to the Sentralyx team.</p>
-    </div>
-
     <div id="footer-container"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/main.js"></script>
     <script>
-        function handleSubmit(e) {
-            e.preventDefault();
-            // UI-only demo submission
-            const toast = document.getElementById('success-toast');
-            toast.classList.add('show');
-
-            // Reset form
-            document.getElementById('contact-form').reset();
-
-            setTimeout(() => toast.classList.remove('show'), 2600);
-        }
-
+        // Load footer from ../footer.html
         fetch('../footer.html')
             .then(async (response) => {
                 const buffer = await response.arrayBuffer();

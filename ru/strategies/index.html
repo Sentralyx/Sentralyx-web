@@ -4,68 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.sentralyx.com/ru/strategies/">
-    <title>Sentralyx | Библиотека стратегий и логика исполнения</title>
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/strategies/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/strategies/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/strategies/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/strategies/">
+<title>Sentralyx | Библиотека стратегий и логика исполнения</title>
     <meta name="description" content="Каталог алгоритмических стратегий Sentralyx: логика входа/выхода, параметры, риск‑оверлей и статус оптимизации.">
-
-    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <meta property="og:title" content="Sentralyx | Библиотека стратегий и логика исполнения">
+    <meta property="og:description" content="Каталог алгоритмических стратегий Sentralyx: логика входа/выхода, параметры, риск‑оверлей и статус оптимизации.">
+    <meta property="og:url" content="https://www.sentralyx.com/ru/strategies/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sentralyx.com/assets/logo.png">
+<link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
 
     <style>
-        .strategies-container { padding: 20px; background: var(--bg-dark); min-height: 100vh; }
-        .panel { background: var(--panel-dark); border: 1px solid var(--border-color); border-radius: 12px; }
-
-        .toolbar-btn {
-            padding: 9px 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-main);
+        .strategies-container {
+            padding: 20px;
+            background: var(--bg-dark);
+            min-height: 100vh;
         }
-        .toolbar-btn:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
-
-        .form-control-custom {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-radius: 10px;
-        }
-        .form-control-custom:focus {
-            background: rgba(42, 49, 66, 0.5);
-            border-color: var(--accent-blue);
-            color: var(--text-main);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
-        }
-
-        .filter-title { color: var(--text-main); font-weight: 900; font-size: 0.95rem; letter-spacing: 0.5px; }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-        .chip strong { color: var(--text-main); font-weight: 800; }
-        .chip i { color: var(--accent-blue); }
-
+        
         .strategy-card {
             background: var(--panel-dark);
             border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 18px;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
-            height: 100%;
         }
-        .strategy-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); box-shadow: 0 10px 30px rgba(52, 152, 219, 0.18); }
+        
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
+            border-color: var(--accent-blue);
+        }
+        
         .strategy-card::before {
             content: '';
             position: absolute;
@@ -76,500 +54,939 @@
             background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
             transition: left 0.5s;
         }
-        .strategy-card:hover::before { left: 100%; }
-
-        .strategy-icon {
-            width: 46px;
-            height: 46px;
+        
+        .strategy-card:hover::before {
+            left: 100%;
+        }
+        
+        .strategy-card.active {
+            border-color: var(--accent-blue);
+            background: rgba(52, 152, 219, 0.05);
+        }
+        
+        .strategy-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .strategy-title {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .strategy-badge {
+            background: var(--accent-blue);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .indicators-list {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .indicator-tag {
+            background: rgba(46, 204, 113, 0.2);
+            color: var(--signal-buy);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .strategy-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn-action {
+            background: rgba(42, 49, 66, 0.3);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-action:hover {
+            background: rgba(52, 152, 219, 0.2);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+        
+        .btn-action.danger:hover {
+            background: rgba(231, 76, 60, 0.2);
+            border-color: var(--signal-sell);
+            color: var(--signal-sell);
+        }
+        
+        .wizard-trigger {
+            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .wizard-trigger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .logic-card {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .logic-card h5 {
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logic-card h5 i {
+            margin-right: 10px;
+        }
+        
+        .logic-content {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .market-regime {
+            background: rgba(42, 49, 66, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .regime-title {
+            color: var(--text-main);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .regime-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .regime-option {
+            background: rgba(52, 152, 219, 0.1);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+        
+        .regime-option:hover {
+            background: rgba(52, 152, 219, 0.2);
+            border-color: var(--accent-blue);
+        }
+        
+        /* Wizard Modal Styles */
+        .wizard-modal .modal-content {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+        }
+        
+        .wizard-modal .modal-header {
+            background: rgba(52, 152, 219, 0.1);
+            border-bottom: 2px solid var(--accent-blue);
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .wizard-modal .modal-title {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        
+        .wizard-modal .btn-close {
+            color: var(--text-main);
+        }
+        
+        .wizard-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .wizard-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--border-color);
+            z-index: 0;
+        }
+        
+        .wizard-step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--border-color);
+            color: var(--text-secondary);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(52, 152, 219, 0.12);
-            border: 1px solid rgba(52, 152, 219, 0.25);
+            margin: 0 auto 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .wizard-step.active .step-circle {
+            background: var(--accent-blue);
+            color: white;
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
+        }
+        
+        .wizard-step.completed .step-circle {
+            background: var(--signal-buy);
+            color: white;
+        }
+        
+        .step-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .wizard-step.active .step-label {
             color: var(--accent-blue);
-            font-size: 1.2rem;
+            font-weight: 600;
         }
-
-        .strategy-name { color: var(--text-main); font-weight: 900; font-size: 1.1rem; margin: 0; line-height: 1.25; }
-        .strategy-desc { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 10px;
-            border-radius: 999px;
-            font-size: 0.78rem;
-            font-weight: 800;
-            letter-spacing: 0.4px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-secondary);
-            white-space: nowrap;
+        
+        .wizard-content {
+            min-height: 300px;
         }
-        .pill-active { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); color: var(--signal-buy); }
-        .pill-beta { border-color: rgba(255, 193, 7, 0.35); background: rgba(255, 193, 7, 0.10); color: #ffc107; }
-
-        .opt-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 10px;
-            border-radius: 999px;
-            font-size: 0.78rem;
-            font-weight: 800;
+        
+        .form-control-wizard {
+            background: rgba(42, 49, 66, 0.3);
             border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-secondary);
-            white-space: nowrap;
-        }
-        .opt-backtested { border-color: rgba(52, 152, 219, 0.35); background: rgba(52, 152, 219, 0.08); color: var(--accent-blue); }
-        .opt-live { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); color: var(--signal-buy); }
-
-        .indicator-list { display: flex; flex-wrap: wrap; gap: 8px; }
-        .indicator-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
             color: var(--text-main);
-            font-size: 0.82rem;
-            white-space: nowrap;
+            border-radius: 6px;
         }
-        .indicator-tag i { color: var(--accent-blue); }
-
-        .kpis { display: flex; gap: 8px; flex-wrap: wrap; }
-        .kpi-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-        .kpi-pill strong { color: var(--text-main); font-weight: 900; }
-
-        .card-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-        .btn-action {
-            padding: 9px 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
+        
+        .form-control-wizard:focus {
+            background: rgba(42, 49, 66, 0.5);
+            border-color: var(--accent-blue);
             color: var(--text-main);
-            font-weight: 700;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
         }
-        .btn-action:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
-
-        .empty-state {
-            background: rgba(42, 49, 66, 0.25);
-            border: 1px dashed rgba(52, 152, 219, 0.35);
-            border-radius: 12px;
-            padding: 22px;
-            color: var(--text-secondary);
+        
+        .indicator-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: rgba(42, 49, 66, 0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .indicator-checkbox:hover {
+            background: rgba(52, 152, 219, 0.1);
+            border-color: var(--accent-blue);
+        }
+        
+        .indicator-checkbox input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        
+        .section-title {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: var(--accent-blue);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .strategies-container {
+                padding: 20px 15px;
+            }
+            
+            .strategies-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .strategy-card {
+                padding: 20px 15px;
+            }
+            
+            .strategy-header {
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            
+            .strategy-title {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            
+            .strategy-description {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn-sentralyx {
+                padding: 12px 20px;
+                font-size: 14px;
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .lead {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+        }
+        
+        /* Prevent Horizontal Scroll */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+            min-width: 320px;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        /* Touch Targets for Mobile */
+        @media (max-width: 768px) {
+            .btn, .form-control, .form-select {
+                min-height: 44px;
+                min-width: 44px;
+                padding: 12px 16px;
+            }
         }
     </style>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Ana Sayfa",
+      "item": "https://www.sentralyx.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Стратегия Y\u00f6netimi",
+      "item": "https://www.sentralyx.com/strategies/"
+    }
+  ]
+}
+    </script>
+
 </head>
 <body>
-
     <header id="main-header"></header>
-
+    
     <main class="strategies-container">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                <div>
-                    <h1 class="text-main mb-1">Библиотека стратегий и логика исполнения</h1>
-                    <p class="text-secondary mb-0">Каталог алгоритмов с логикой входа/выхода, параметрами, риск‑оверлеями и статусом оптимизации</p>
+        <div class="text-center mb-4">
+            <h1 class="text-main">Создание trade-стратегий без кода</h1>
+            <p class="text-secondary">Kripto al sat botu mant&#305;&#287;&#305;na uygun otomatik trade kurallar&#305; olu&#351;turun; algoritmik trade stratejilerini teknik indikat&#246;rler ve piyasa rejimiyle y&#246;netin.</p>
+        </div>
+        <!-- Header Section -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="section-title mb-0">
+                <i class="fas fa-layer-group"></i>Стратегия Yönetimi
+            </h2>
+            <button class="wizard-trigger" onclick="openWizard()">
+                <i class="fas fa-magic me-2"></i>✓ Hızlı Стратегия Oluştur
+            </button>
+        </div>
+
+        <!-- Current Strategies -->
+        <div class="row">
+            <div class="col-lg-6">
+                <h4 class="text-main mb-3">Текущие стратегии</h4>
+                
+                <div class="strategy-card active">
+                    <div class="strategy-header">
+                        <h5 class="strategy-title">Çoğunluk Oylaması</h5>
+                        <span class="strategy-badge">AKTİF</span>
+                    </div>
+                    <div class="indicators-list">
+                        <span class="indicator-tag">RSI</span>
+                        <span class="indicator-tag">MACD</span>
+                        <span class="indicator-tag">SMI</span>
+                    </div>
+                    <div class="strategy-description">
+                        3 indikatörden 2'sinin aynı yönde sinyal vermesi durumunda işlem tetiklenir. Dengeli ve güvenilir yaklaşım ile trend takibi ve mean reverting stratejilerinde etkili performans gösterir.
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-action" onclick="editStrategy('majority')">
+                            <i class="fas fa-edit me-1"></i>Düzenle
+                        </button>
+                        <button class="btn-action" onclick="testStrategy('majority')">
+                            <i class="fas fa-play me-1"></i>Тест
+                        </button>
+                        <button class="btn-action danger" onclick="deleteStrategy('majority')">
+                            <i class="fas fa-trash me-1"></i>Удалить
+                        </button>
+                    </div>
                 </div>
-                <div class="d-flex gap-2 flex-wrap align-items-center">
-                    <span class="chip" title="Состояние библиотеки" data-bs-toggle="tooltip"><i class="fas fa-shield-halved"></i><span>Аудит:</span> <strong id="chip-audit">Стабильно</strong></span>
-                    <span class="chip" title="Количество стратегий" data-bs-toggle="tooltip"><i class="fas fa-layer-group"></i><span>Стратегий:</span> <strong id="chip-count">0</strong></span>
-                    <button class="toolbar-btn" onclick="exportStrategyCatalog()" title="Экспорт каталога (CSV)" data-bs-toggle="tooltip">
-                        <i class="fas fa-file-export me-2"></i>Экспорт каталога
-                    </button>
+
+                <div class="strategy-card">
+                    <div class="strategy-header">
+                        <h5 class="strategy-title">Puanlama Sistemi</h5>
+                        <span class="strategy-badge">PASİF</span>
+                    </div>
+                    <div class="indicators-list">
+                        <span class="indicator-tag">CMF</span>
+                        <span class="indicator-tag">RSI</span>
+                        <span class="indicator-tag">ADX</span>
+                        <span class="indicator-tag">ATR</span>
+                    </div>
+                    <div class="strategy-description">
+                        Her indikatöre ağırlık atan puanlama sistemi. Toplam puan eşik değerini geçtiğinde sinyal üretir. Volatilite ve trend gücü filtreleri ile zenginleştirilmiş yapı.
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-action" onclick="editStrategy('scoring')">
+                            <i class="fas fa-edit me-1"></i>Düzenle
+                        </button>
+                        <button class="btn-action" onclick="testStrategy('scoring')">
+                            <i class="fas fa-play me-1"></i>Тест
+                        </button>
+                        <button class="btn-action danger" onclick="deleteStrategy('scoring')">
+                            <i class="fas fa-trash me-1"></i>Удалить
+                        </button>
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <div class="strategy-header">
+                        <h5 class="strategy-title">Tam Uyum</h5>
+                        <span class="strategy-badge">PASİF</span>
+                    </div>
+                    <div class="indicators-list">
+                        <span class="indicator-tag">RSI</span>
+                        <span class="indicator-tag">MACD</span>
+                        <span class="indicator-tag">SMI</span>
+                        <span class="indicator-tag">CMF</span>
+                    </div>
+                    <div class="strategy-description">
+                        Tüm indikatörlerin aynı yönde sinyal vermesi gerektiren en katı kurallı strateji. Düşük sinyal frekansı ama yüksek doğruluk oransı sağlar.
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-action" onclick="editStrategy('full')">
+                            <i class="fas fa-edit me-1"></i>Düzenle
+                        </button>
+                        <button class="btn-action" onclick="testStrategy('full')">
+                            <i class="fas fa-play me-1"></i>Тест
+                        </button>
+                        <button class="btn-action danger" onclick="deleteStrategy('full')">
+                            <i class="fas fa-trash me-1"></i>Удалить
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="row g-3">
-                <div class="col-xl-3">
-                    <div class="panel p-3">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <div class="filter-title"><i class="fas fa-filter me-2" style="color: var(--accent-blue);"></i>Фильтры</div>
-                            <button class="toolbar-btn" onclick="resetFilters()" title="Сбросить фильтры" data-bs-toggle="tooltip">
-                                <i class="fas fa-rotate-left"></i>
-                            </button>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label text-main small mb-1">Поиск</label>
-                            <input id="search-input" type="text" class="form-control form-control-custom" placeholder="Название, индикатор или тег" oninput="applyFilters()">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label text-main small mb-1">Уровень риска</label>
-                            <select id="risk-filter" class="form-select form-control-custom" onchange="applyFilters()">
-                                <option value="all" selected>Все</option>
-                                <option value="low">Низкий</option>
-                                <option value="medium">Средний</option>
-                                <option value="high">Высокий</option>
-                            </select>
-                            <div class="text-secondary small mt-2">Риск оценивается по профилю плеча, дистанции стопа и чувствительности к режиму.</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label text-main small mb-1">Рыночное состояние</label>
-                            <select id="condition-filter" class="form-select form-control-custom" onchange="applyFilters()">
-                                <option value="all" selected>Все</option>
-                                <option value="trending">Тренд</option>
-                                <option value="ranging">Флэт</option>
-                                <option value="volatile">Высокая волатильность</option>
-                            </select>
-                            <div class="text-secondary small mt-2">Помогает сопоставлять логику исполнения с режимом рынка.</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label text-main small mb-1">Статус оптимизации</label>
-                            <select id="opt-filter" class="form-select form-control-custom" onchange="applyFilters()">
-                                <option value="all" selected>Все</option>
-                                <option value="backtested">Backtested</option>
-                                <option value="live">Live‑Ready</option>
-                            </select>
-                        </div>
-
-                        <div class="empty-state mt-3">
-                            <div class="d-flex align-items-start gap-3">
-                                <i class="fas fa-circle-info mt-1" style="color: var(--accent-blue);"></i>
-                                <div class="small">
-                                    Эта страница описывает намерение стратегии и структуру исполнения. Для проверенных метрик используйте
-                                    <a href="/ru/reports/" class="text-accent-blue text-decoration-none">отчёты Performance Analytics</a>.
-                                </div>
-                            </div>
+            <!-- Strategy Logic Cards -->
+            <div class="col-lg-6">
+                <h4 class="text-main mb-3">Стратегия Mantıı</h4>
+                
+                <div class="logic-card">
+                    <h5><i class="fas fa-percentage"></i>Puanlama Sistemi</h5>
+                    <div class="logic-content">
+                        Her indikatör belirli bir puanlama sistemiyle değerlendirilir. RSI oversold/overbought seviyelerine, MACD crossover sinyallerine, SMI momentum seviyelerine göre puan alır. Toplam puan 70'den yüksekse AL, 30'dan düşükse SAT sinyali üretir.
+                    </div>
+                    <div class="market-regime">
+                        <div class="regime-title">Рыночный режим Uyumluluğu</div>
+                        <div class="regime-options">
+                            <div class="regime-option">TREND</div>
+                            <div class="regime-option">RANGE</div>
+                            <div class="regime-option">VOLATILE</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-xl-9">
-                    <div class="row g-3" id="strategy-grid"></div>
-                    <div id="empty-results" style="display:none;">
-                        <div class="empty-state mt-3">
-                            <div class="d-flex align-items-center gap-2">
-                                <i class="fas fa-wave-square"></i>
-                                <span>Нет стратегий, подходящих под фильтры. Попробуйте сбросить фильтры или расширить поиск.</span>
-                            </div>
+                <div class="logic-card">
+                    <h5><i class="fas fa-users"></i>Çoğunluk Oylaması</h5>
+                    <div class="logic-content">
+                        3 indikatörden 2'sinin aynı yönde sinyal vermesi yeterlidir. Esnek yaklaşım sayesinde daha fazla sinyal üretir. Yanlış sinyal riski daha yüksek ama fırsat kaçırma oransı düşüktür.
+                    </div>
+                    <div class="market-regime">
+                        <div class="regime-title">Рыночный режим Uyumluluğu</div>
+                        <div class="regime-options">
+                            <div class="regime-option">TREND</div>
+                            <div class="regime-option">RANGE</div>
+                            <div class="regime-option">ANY</div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="logic-card">
+                    <h5><i class="fas fa-shield-alt"></i>Tam Uyum</h5>
+                    <div class="logic-content">
+                        Tüm indikatörlerin aynı yönde sinyal vermesi gerekir. En yüksek doğruluk oranı sağlar ancak sinyal frekansı düşüktür. Özellikle uzun vadeli ve yüksek sermaye işlemleri için uygundur.
+                    </div>
+                    <div class="market-regime">
+                        <div class="regime-title">Рыночный режим Uyumluluğu</div>
+                        <div class="regime-options">
+                            <div class="regime-option">TREND</div>
+                            <div class="regime-option">ANY</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="logic-card">
+                    <h5><i class="fas fa-info-circle"></i>Что такое рыночный режим?</h5>
+                    <div class="logic-content">
+                        Рыночный режим описывает текущее состояние рынка:
+                        <ul class="mt-2">
+                            <li><strong>TREND:</strong> Yönü belirgin piyasa (yukarı/aşağı)</li>
+                            <li><strong>RANGE:</strong> Yatay seyreden piyasa</li>
+                            <li><strong>VOLATILE:</strong> Yüksek volatiliteli piyasa</li>
+                            <li><strong>ANY:</strong> Tüm piyasa koşulları</li>
+                        </ul>
+                        Стратегияnin piyasa rejimine uygunluı, başarı oranını doğrudan etkiler.
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <div class="modal fade" id="logicModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content" style="background: var(--panel-dark); border: 1px solid var(--border-color);">
-                <div class="modal-header" style="border-bottom: 1px solid var(--border-color);">
-                    <div>
-                        <h5 class="modal-title text-main mb-0" id="logic-title">Логика стратегии</h5>
-                        <div class="text-secondary small" id="logic-subtitle">Обзор исполнения</div>
-                    </div>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Wizard Modal -->
+    <div class="modal fade wizard-modal" id="wizardModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-magic me-2"></i>Стратегия Sihirbazı
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row g-3">
-                        <div class="col-lg-6">
-                            <div class="panel p-3 h-100">
-                                <h6 class="text-main mb-2"><i class="fas fa-diagram-project me-2" style="color: var(--accent-blue);"></i>Логика и параметры</h6>
-                                <div class="text-secondary" id="logic-params"></div>
-                            </div>
+                    <!-- Wizard Steps -->
+                    <div class="wizard-steps">
+                        <div class="wizard-step active" data-step="1">
+                            <div class="step-circle">1</div>
+                            <div class="step-label">Temel Bilgiler</div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="panel p-3 h-100">
-                                <h6 class="text-main mb-2"><i class="fas fa-right-to-bracket me-2" style="color: var(--accent-blue);"></i>Условия входа/выхода</h6>
-                                <div class="text-secondary" id="logic-entry"></div>
-                            </div>
+                        <div class="wizard-step" data-step="2">
+                            <div class="step-circle">2</div>
+                            <div class="step-label">Тип стратегии</div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="panel p-3 h-100">
-                                <h6 class="text-main mb-2"><i class="fas fa-shield-halved me-2" style="color: var(--accent-blue);"></i>Риск‑оверлей</h6>
-                                <div class="text-secondary" id="logic-risk"></div>
-                            </div>
+                        <div class="wizard-step" data-step="3">
+                            <div class="step-circle">3</div>
+                            <div class="step-label">Фильтрler</div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="panel p-3 h-100">
-                                <h6 class="text-main mb-2"><i class="fas fa-flask me-2" style="color: var(--accent-blue);"></i>Статус оптимизации</h6>
-                                <div class="text-secondary" id="logic-opt"></div>
-                            </div>
+                        <div class="wizard-step" data-step="4">
+                            <div class="step-circle">4</div>
+                            <div class="step-label">İndikatörler</div>
+                        </div>
+                        <div class="wizard-step" data-step="5">
+                            <div class="step-circle">5</div>
+                            <div class="step-label">Özet</div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer" style="border-top: 1px solid var(--border-color);">
-                    <button class="btn btn-outline-light" data-bs-dismiss="modal">Закрыть</button>
-                    <button class="btn btn-primary" onclick="configureFromModal()"><i class="fas fa-sliders-h me-2"></i>Настроить параметры</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div id="footer-container"></div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/main.js"></script>
-    <script>
-        const state = { strategies: [], selected: null };
+                    <!-- Wizard Content -->
+                    <div class="wizard-content">
+                        <!-- Step 1: Basic Info -->
+                        <div class="wizard-step-content" data-step="1">
+                            <h6 class="text-main mb-3">Стратегия Имяı</h6>
+                            <input type="text" class="form-control form-control-wizard mb-3" id="strategyName" placeholder="Yeni strateji adını girin...">
+                            
+                            <h6 class="text-main mb-3">Açıklama</h6>
+                            <textarea class="form-control form-control-wizard" id="strategyDescription" rows="3" placeholder="Стратегия hakkında kısa açıklama..."></textarea>
+                        </div>
 
-        function initTooltips() { [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach((el) => new bootstrap.Tooltip(el)); }
-
-        function seedStrategies() {
-            state.strategies = [
-                {
-                    id: 'momentum-alpha',
-                    name: 'Sentralyx Momentum Alpha',
-                    status: 'active',
-                    risk: 'medium',
-                    condition: 'trending',
-                    opt: 'live',
-                    avgWin: 68,
-                    icon: 'fa-bolt',
-                    description: 'Мульти‑таймфрейм импульсный движок с нормализацией волатильности и адаптивной фильтрацией сигналов. Оптимизирован для продолжения тренда при контролируемой экспозиции.',
-                    indicators: ['VWAP', 'MACD', 'ATR', 'Market Regime'],
-                    logicParams: 'Базовые параметры: веса MTF, порог импульса, окно ATR‑нормализации и кворум подтверждения. Поддерживаются профили параметров по активам.',
-                    entryExit: 'Вход: согласование старшего ТФ + ускорение импульса + отклонение относительно VWAP. Выход: трейлинг‑полоса по волатильности + временная инвалидизация для устаревших сигналов.',
-                    riskOverlay: 'Ограничение плеча, волатильностное сайзинг‑правило и защита break‑even после R‑критерия. Опциональный cooldown для снижения overtrading.',
-                    optimization: 'Статус: Live‑Ready. Бэктест по трендовым режимам + стресс‑проверки на всплески волатильности и расширение спреда.',
-                },
-                {
-                    id: 'mean-reversion-bands',
-                    name: 'Sentralyx Mean‑Reversion Bands',
-                    status: 'beta',
-                    risk: 'medium',
-                    condition: 'ranging',
-                    opt: 'backtested',
-                    avgWin: 61,
-                    icon: 'fa-arrows-left-right',
-                    description: 'Статистическая стратегия возврата к среднему с использованием волатильностных огибающих и ликвидностных фильтров. Нацелена на короткие дислокации в диапазонах.',
-                    indicators: ['Bollinger Bands', 'RSI', 'CMF', 'Spread Filter'],
-                    logicParams: 'Параметры: ширина полос, уровни RSI, порог денежного потока и допуск по спреду. Встроен re‑entry lockout против “пилы”.',
-                    entryExit: 'Вход: выход за полосу + истощение по RSI + дивергенция CMF. Выход: цель по среднему + time‑stop; убыток ограничивается волатильностным стопом.',
-                    riskOverlay: 'Кап экспозиции при низкой ликвидности, строгая постановка стопа. Опционально — частичная фиксация по лестнице.',
-                    optimization: 'Статус: Backtested. Требуется forward‑валидация (paper/live) перед агрессивным сайзингом.',
-                },
-                {
-                    id: 'breakout-range-expansion',
-                    name: 'Sentralyx Range Expansion Breakout',
-                    status: 'active',
-                    risk: 'high',
-                    condition: 'volatile',
-                    opt: 'backtested',
-                    avgWin: 55,
-                    icon: 'fa-chart-column',
-                    description: 'Движок пробоя на расширении волатильности: переход от компрессии к экспансии. Использует структурные пробои и ATR‑подтверждение.',
-                    indicators: ['Fibonacci Levels', 'ATR', 'Volume Delta', 'Structure Break'],
-                    logicParams: 'Окно компрессии, множитель подтверждения пробоя, порог volume delta и ограничения по зонам Fibonacci.',
-                    entryExit: 'Вход: подтверждённый структурный пробой + импульс расширения. Выход: ATR‑трейл + инвалидизация при “failed follow‑through”.',
-                    riskOverlay: 'Жёсткий стоп + уменьшенный стартовый размер с масштабированием на подтверждении. Быстрая отмена при ложном пробое.',
-                    optimization: 'Статус: Backtested. Лучше работает в сессиях повышенной волатильности; не рекомендуется при низком объёме.',
-                },
-                {
-                    id: 'trend-follower-core',
-                    name: 'Sentralyx Trend‑Follower Core',
-                    status: 'active',
-                    risk: 'low',
-                    condition: 'trending',
-                    opt: 'live',
-                    avgWin: 64,
-                    icon: 'fa-compass',
-                    description: 'Консервативный trend‑follower с режимным гейтингом и строгим риск‑оверлеем. Приоритет: стабильность и низкий churn.',
-                    indicators: ['EMA Stack', 'ADX', 'VWAP', 'Regime Filter'],
-                    logicParams: 'Длины EMA, порог ADX, вес MTF‑смещения и чувствительность классификатора режима. Поддержка allowlist/denylist по символам.',
-                    entryExit: 'Вход: согласование структуры EMA и режим “trend persistence”. Выход: нарушение тренда + синхронизация трейлинга.',
-                    riskOverlay: 'Ограничение концентрации, волатильностное масштабирование и портфельный drawdown‑guard.',
-                    optimization: 'Статус: Live‑Ready. Консервативные дефолты и безопасные fallback‑режимы.',
-                },
-            ];
-        }
-
-        function statusPill(s) {
-            const cls = s.status === 'active' ? 'pill-active' : 'pill-beta';
-            const label = s.status === 'active' ? 'Active' : 'Beta';
-            return `<span class="status-pill ${cls}"><i class="fas fa-circle"></i>${label}</span>`;
-        }
-
-        function optPill(s) {
-            const cls = s.opt === 'live' ? 'opt-live' : 'opt-backtested';
-            const label = s.opt === 'live' ? 'Live‑Ready' : 'Backtested';
-            return `<span class="opt-pill ${cls}"><i class="fas fa-flask"></i>${label}</span>`;
-        }
-
-        function cardHtml(s) {
-            const riskLabel = s.risk === 'low' ? 'Низкий' : s.risk === 'medium' ? 'Средний' : 'Высокий';
-            const condLabel = s.condition === 'trending' ? 'Тренд' : s.condition === 'ranging' ? 'Флэт' : 'Волатильность';
-            const indicators = s.indicators.map((i) => `<span class="indicator-tag"><i class="fas fa-signal"></i>${i}</span>`).join('');
-
-            const kpis = `
-                <div class="kpis">
-                    <span class="kpi-pill"><i class="fas fa-percent" style="color: var(--accent-blue);"></i><span>Avg. Win Rate:</span> <strong>${s.avgWin}%</strong></span>
-                    <span class="kpi-pill"><i class="fas fa-triangle-exclamation" style="color: var(--accent-blue);"></i><span>Риск:</span> <strong>${riskLabel}</strong></span>
-                    <span class="kpi-pill"><i class="fas fa-wave-square" style="color: var(--accent-blue);"></i><span>Режим:</span> <strong>${condLabel}</strong></span>
-                </div>
-            `;
-
-            return `
-                <div class="col-lg-6">
-                    <div class="strategy-card" data-risk="${s.risk}" data-condition="${s.condition}" data-opt="${s.opt}" data-id="${s.id}">
-                        <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
-                            <div class="d-flex gap-3 align-items-start">
-                                <div class="strategy-icon" title="Тип стратегии" data-bs-toggle="tooltip"><i class="fas ${s.icon}"></i></div>
-                                <div>
-                                    <p class="strategy-name mb-1">${s.name}</p>
-                                    <div class="d-flex gap-2 flex-wrap align-items-center">
-                                        ${statusPill(s)}
-                                        ${optPill(s)}
+                        <!-- Step 2: Strategy Type -->
+                        <div class="wizard-step-content" data-step="2" style="display: none;">
+                            <h6 class="text-main mb-3">Тип стратегии Seçin</h6>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="indicator-checkbox">
+                                        <input type="radio" name="strategyType" value="scoring" id="typeScoring">
+                                        <label for="typeScoring">
+                                            <strong>Puanlama Sistemi</strong><br>
+                                            <small class="text-secondary">Her indikatöre ağırlık atan sistem</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="indicator-checkbox">
+                                        <input type="radio" name="strategyType" value="majority" id="typeMajority">
+                                        <label for="typeMajority">
+                                            <strong>Çoğunluk Oylaması</strong><br>
+                                            <small class="text-secondary">çoğunluk oylaması sistemi</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="indicator-checkbox">
+                                        <input type="radio" name="strategyType" value="strong_majority" id="typeStrong">
+                                        <label for="typeStrong">
+                                            <strong>Güçlü Çoğunluk</strong><br>
+                                            <small class="text-secondary">Yüksek eşik değerli çoğunluk</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="indicator-checkbox">
+                                        <input type="radio" name="strategyType" value="majority_none_safe" id="typeFull">
+                                        <label for="typeFull">
+                                            <strong>Tam Uyum</strong><br>
+                                            <small class="text-secondary">Tüm indikatörler uyumlu olmalı</small>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="strategy-desc mb-3">${s.description}</div>
-
-                        <div class="mb-3">
-                            <div class="text-secondary small mb-2">Ключевые индикаторы</div>
-                            <div class="indicator-list">${indicators}</div>
+                        <!-- Step 3: Filters -->
+                        <div class="wizard-step-content" data-step="3" style="display: none;">
+                            <h6 class="text-main mb-3">Фильтрler</h6>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="indicator-checkbox">
+                                        <input type="checkbox" id="trendFilter">
+                                        <label for="trendFilter">
+                                            <strong>Trend Gücü Uygun mu? (ADX)</strong><br>
+                                            <small class="text-secondary">ADX tabanlı trend filtresi</small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="indicator-checkbox">
+                                        <input type="checkbox" id="volatilityFilter">
+                                        <label for="volatilityFilter">
+                                            <strong>Volatilite Yeterli mi? (ATR)</strong><br>
+                                            <small class="text-secondary">ATR tabanlı volatilite filtresi</small>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h6 class="text-main mb-3 mt-4">Рыночный режим</h6>
+                            <select class="form-select form-control-wizard" id="marketRegime">
+                                <option value="ANY">Tümü</option>
+                                <option value="TREND">Trend</option>
+                                <option value="RANGE">Range</option>
+                                <option value="VOLATILE">Volatile</option>
+                            </select>
                         </div>
 
-                        <div class="mb-3">${kpis}</div>
+                        <!-- Step 4: Indicators -->
+                        <div class="wizard-step-content" data-step="4" style="display: none;">
+                            <h6 class="text-main mb-3">İndikatör Seçimi</h6>
+                            <div class="indicator-checkbox">
+                                <input type="checkbox" id="rsiIndicator">
+                                <label for="rsiIndicator">
+                                    <strong>RSI (Relative Strength Index)</strong><br>
+                                    <small class="text-secondary">Momentum ve overbought/oversold seviyeleri</small>
+                                </label>
+                            </div>
+                            <div class="indicator-checkbox">
+                                <input type="checkbox" id="macdIndicator">
+                                <label for="macdIndicator">
+                                    <strong>MACD</strong><br>
+                                    <small class="text-secondary">Trend ve momentum crossover sinyalleri</small>
+                                </label>
+                            </div>
+                            <div class="indicator-checkbox">
+                                <input type="checkbox" id="smiIndicator">
+                                <label for="smiIndicator">
+                                    <strong>SMI (Stochastic Momentum Index)</strong><br>
+                                    <small class="text-secondary">Hızlı momentum göstergesi</small>
+                                </label>
+                            </div>
+                            <div class="indicator-checkbox">
+                                <input type="checkbox" id="cmfIndicator">
+                                <label for="cmfIndicator">
+                                    <strong>CMF (Chaikin Money Flow)</strong><br>
+                                    <small class="text-secondary">Hacim ağırlıklı akış göstergesi</small>
+                                </label>
+                            </div>
+                            <div class="indicator-checkbox">
+                                <input type="checkbox" id="adxIndicator">
+                                <label for="adxIndicator">
+                                    <strong>ADX</strong><br>
+                                    <small class="text-secondary">Trend gücü ölçüsü</small>
+                                </label>
+                            </div>
+                            <div class="indicator-checkbox">
+                                <input type="checkbox" id="atrIndicator">
+                                <label for="atrIndicator">
+                                    <strong>ATR</strong><br>
+                                    <small class="text-secondary">Volatilite ve ortalama true range</small>
+                                </label>
+                            </div>
+                        </div>
 
-                        <div class="card-actions">
-                            <button class="btn-action" onclick="viewLogic('${s.id}')" title="Открыть документацию логики" data-bs-toggle="tooltip">
-                                <i class="fas fa-book-open me-2"></i>Подробная логика
-                            </button>
-                            <button class="btn-action" onclick="configure('${s.id}')" title="Настроить параметры" data-bs-toggle="tooltip">
-                                <i class="fas fa-sliders-h me-2"></i>Параметры
-                            </button>
-                            <button class="btn-action" onclick="cloneStrategy('${s.id}')" title="Клонировать стратегию" data-bs-toggle="tooltip">
-                                <i class="fas fa-clone me-2"></i>Клонировать
-                            </button>
+                        <!-- Step 5: Summary -->
+                        <div class="wizard-step-content" data-step="5" style="display: none;">
+                            <h6 class="text-main mb-3">Стратегия Özeti</h6>
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <span id="summaryContent">Стратегия bilgileri burada gösterilecek...</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            `;
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="previousStep()" id="prevBtn">Önceki</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()" id="nextBtn">Далее</button>
+                    <button type="button" class="btn btn-success" onclick="createStrategy()" id="createBtn" style="display: none;">
+                        <i class="fas fa-check me-2"></i>Oluştur
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+        const wizardModal = new bootstrap.Modal(document.getElementById('wizardModal'));
+
+        function openWizard() {
+            currentStep = 1;
+            updateWizardStep();
+            wizardModal.show();
         }
 
-        function renderGrid(list) {
-            const grid = document.getElementById('strategy-grid');
-            grid.innerHTML = list.map(cardHtml).join('');
-            document.getElementById('empty-results').style.display = list.length ? 'none' : 'block';
-            document.getElementById('chip-count').textContent = String(list.length);
-            initTooltips();
-        }
-
-        function applyFilters() {
-            const q = (document.getElementById('search-input').value || '').trim().toLowerCase();
-            const risk = document.getElementById('risk-filter').value;
-            const cond = document.getElementById('condition-filter').value;
-            const opt = document.getElementById('opt-filter').value;
-
-            const filtered = state.strategies.filter((s) => {
-                if (risk !== 'all' && s.risk !== risk) return false;
-                if (cond !== 'all' && s.condition !== cond) return false;
-                if (opt !== 'all' && s.opt !== opt) return false;
-                if (!q) return true;
-                const hay = `${s.name} ${s.description} ${s.indicators.join(' ')} ${s.status} ${s.opt} ${s.risk} ${s.condition}`.toLowerCase();
-                return hay.includes(q);
+        function updateWizardStep() {
+            // Hide all step contents
+            document.querySelectorAll('.wizard-step-content').forEach(content => {
+                content.style.display = 'none';
             });
-            renderGrid(filtered);
+            
+            // Show current step content
+            document.querySelector(`.wizard-step-content[data-step="${currentStep}"]`).style.display = 'block';
+            
+            // Update step indicators
+            document.querySelectorAll('.wizard-step').forEach((step, index) => {
+                const stepNum = index + 1;
+                step.classList.remove('active', 'completed');
+                
+                if (stepNum === currentStep) {
+                    step.classList.add('active');
+                } else if (stepNum < currentStep) {
+                    step.classList.add('completed');
+                }
+            });
+            
+            // Update buttons
+            document.getElementById('prevBtn').style.display = currentStep === 1 ? 'none' : 'inline-block';
+            document.getElementById('nextBtn').style.display = currentStep === totalSteps ? 'none' : 'inline-block';
+            document.getElementById('createBtn').style.display = currentStep === totalSteps ? 'inline-block' : 'none';
+            
+            // Update summary on last step
+            if (currentStep === totalSteps) {
+                updateSummary();
+            }
         }
 
-        function resetFilters() {
-            document.getElementById('search-input').value = '';
-            document.getElementById('risk-filter').value = 'all';
-            document.getElementById('condition-filter').value = 'all';
-            document.getElementById('opt-filter').value = 'all';
-            applyFilters();
+        function nextStep() {
+            if (validateCurrentStep()) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateWizardStep();
+                }
+            }
         }
 
-        function viewLogic(id) {
-            const s = state.strategies.find((x) => x.id === id);
-            if (!s) return;
-            state.selected = s;
-            document.getElementById('logic-title').textContent = s.name;
-            document.getElementById('logic-subtitle').textContent = `${s.status.toUpperCase()} · ${s.opt === 'live' ? 'LIVE‑READY' : 'BACKTESTED'} · Risk: ${s.risk.toUpperCase()} · Regime: ${s.condition.toUpperCase()}`;
-            document.getElementById('logic-params').textContent = s.logicParams;
-            document.getElementById('logic-entry').textContent = s.entryExit;
-            document.getElementById('logic-risk').textContent = s.riskOverlay;
-            document.getElementById('logic-opt').textContent = s.optimization;
-            new bootstrap.Modal(document.getElementById('logicModal')).show();
+        function previousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateWizardStep();
+            }
         }
 
-        function configure(id) {
-            const s = state.strategies.find((x) => x.id === id);
-            if (!s) return;
-            showToast(`Открываем панель параметров для «${s.name}» (демо).`, 'info');
+        function validateCurrentStep() {
+            if (currentStep === 1) {
+                const name = document.getElementById('strategyName').value.trim();
+                if (!name) {
+                    showNotification('Lütfen strateji adını girin', 'warning');
+                    return false;
+                }
+            } else if (currentStep === 2) {
+                const type = document.querySelector('input[name="strategyType"]:checked');
+                if (!type) {
+                    showNotification('Lütfen strateji tipi seçin', 'warning');
+                    return false;
+                }
+            } else if (currentStep === 4) {
+                const indicators = document.querySelectorAll('.wizard-step-content[data-step="4"] input[type="checkbox"]:checked');
+                if (indicators.length === 0) {
+                    showNotification('Lütfen en az bir indikatör seçin', 'warning');
+                    return false;
+                }
+            }
+            return true;
         }
 
-        function configureFromModal() {
-            if (!state.selected) return;
-            showToast(`Настройка параметров: «${state.selected.name}» (демо).`, 'info');
+        function updateSummary() {
+            const name = document.getElementById('strategyName').value || 'İsimsiz Стратегия';
+            const description = document.getElementById('strategyDescription').value || 'Açıklama yok';
+            const type = document.querySelector('input[name="strategyType"]:checked')?.value || 'Belirtilmemiş';
+            const regime = document.getElementById('marketRegime').value;
+            const indicators = Array.from(document.querySelectorAll('.wizard-step-content[data-step="4"] input[type="checkbox"]:checked'))
+                .map(cb => cb.labels[0].textContent.trim());
+            
+            const summary = `
+                <strong>Имя:</strong> ${name}<br>
+                <strong>Açıklama:</strong> ${description}<br>
+                <strong>Тип:</strong> ${type}<br>
+                <strong>Рыночный режим:</strong> ${regime}<br>
+                <strong>İndikatörler:</strong> ${indicators.join(', ') || 'Seçilmedi'}
+            `;
+            
+            document.getElementById('summaryContent').innerHTML = summary;
         }
 
-        function cloneStrategy(id) {
-            const s = state.strategies.find((x) => x.id === id);
-            if (!s) return;
-            showToast(`Стратегия клонирована: «${s.name}» (демо).`, 'success');
+        function createStrategy() {
+            const name = document.getElementById('strategyName').value;
+            showNotification(`"${name}" stratejisi oluşturuluyor...`, 'info');
+            
+            setTimeout(() => {
+                wizardModal.hide();
+                showNotification(`"${name}" stratejisi başarıyla oluşturuldu`, 'success');
+                // Here you would normally save the strategy and refresh the list
+            }, 1500);
         }
 
-        function exportStrategyCatalog() {
-            const header = ['Strategy', 'Status', 'OptimizationStatus', 'RiskLevel', 'MarketCondition', 'AvgWinRate', 'Indicators'];
-            const lines = [
-                header.join(','),
-                ...state.strategies.map((s) => [
-                    s.name,
-                    s.status,
-                    s.opt === 'live' ? 'Live‑Ready' : 'Backtested',
-                    s.risk,
-                    s.condition,
-                    s.avgWin,
-                    s.indicators.join(' | '),
-                ].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',')),
-            ];
-
-            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `sentralyx-strategy-library-ru-${new Date().toISOString().slice(0, 10)}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            URL.revokeObjectURL(url);
+        function editStrategy(type) {
+            showNotification(`${type} stratejisi düzenleniyor...`, 'info');
         }
 
-        function showToast(message, type) {
-            const toast = document.createElement('div');
-            const bg = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
-            toast.className = `alert ${bg} position-fixed top-0 end-0 m-3`;
-            toast.style.zIndex = '9999';
-            toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>${message}`;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2400);
+        function testStrategy(type) {
+            showNotification(`${type} stratejisi test ediliyor...`, 'info');
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            seedStrategies();
-            renderGrid(state.strategies);
-            initTooltips();
+        function deleteStrategy(type) {
+            if (confirm(`${type} stratejisini silmek istediğinizden emin misiniz?`)) {
+                showNotification(`${type} stratejisi siliniyor...`, 'warning');
+                setTimeout(() => {
+                    showNotification(`${type} stratejisi başarıyla silindi`, 'success');
+                }, 1000);
+            }
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
+            notification.className = `alert ${bgColor} position-fixed top-0 end-0 m-3`;
+            notification.style.zIndex = '9999';
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>
+                ${message}
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Имяd click handlers to strategy cards
+            document.querySelectorAll('.strategy-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (!e.target.closest('.action-buttons')) {
+                        document.querySelectorAll('.strategy-card').forEach(c => c.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
         });
+    </script>
 
+    <div id="footer-container"></div>
+
+    <script>
+        // Load footer from components/footer.html
         fetch('../footer.html')
             .then(async (response) => {
                 const buffer = await response.arrayBuffer();
                 return new TextDecoder('utf-8').decode(buffer);
             })
-            .then(data => { document.getElementById('footer-container').innerHTML = data; })
-            .catch(error => console.error('Не удалось загрузить футер:', error));
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>

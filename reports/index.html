@@ -4,618 +4,687 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://www.sentralyx.com/reports/">
-    <title>Trade Performans Raporu | Kar Zarar Raporu ve Portf&#246;y Analiti&#287;i</title>
-    <meta name="description" content="&#304;&#351;lem ge&#231;mi&#351;i analizi, kar zarar raporu ve trade performans raporu ile portf&#246;y analiti&#287;i, risk y&#246;netimi ve strateji optimizasyonu.">
-    <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/reports/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/reports/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/reports/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/reports/">
+<title>Sentralyx | Performans Analitiği ve Strateji Raporları</title>
+    <meta name="description" content="Detayl&#305; nicel performans analiti&#287;i: kazanma oranı, kâr faktörü, Sharpe oranı, maksimum düşüş, kümülatif getiriler ve strateji düzeyi raporlama.">
+    <meta property="og:title" content="Sentralyx | Performans Analitiği ve Strateji Raporları">
+    <meta property="og:description" content="Detayl&#305; nicel performans analiti&#287;i: kazanma oranı, kâr faktörü, Sharpe oranı, maksimum düşüş, kümülatif getiriler ve strateji düzeyi raporlama.">
+    <meta property="og:url" content="https://www.sentralyx.com/reports/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sentralyx.com/assets/logo.png">
+<link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    
+
     <style>
         .reports-container {
             padding: 20px;
             background: var(--bg-dark);
             min-height: 100vh;
         }
-        
-        .summary-card {
+
+        .panel {
             background: var(--panel-dark);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 25px;
-            text-align: center;
+        }
+
+        .focus-card {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px;
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
+            height: 100%;
         }
-        
-        .summary-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
+
+        .focus-card:hover {
+            transform: translateY(-4px);
             border-color: var(--accent-blue);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.18);
         }
-        
-        .summary-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
-            transition: left 0.5s;
-        }
-        
-        .summary-card:hover::before {
-            left: 100%;
-        }
-        
-        .summary-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, var(--accent-blue), var(--signal-buy));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .summary-card .value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 5px;
-        }
-        
-        .summary-card.profit .value {
-            color: var(--signal-buy);
-            text-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
-        }
-        
-        .summary-card.loss .value {
-            color: var(--signal-sell);
-            text-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
-        }
-        
-        .filter-panel {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-        
-        .quick-filter-btn {
-            background: rgba(52, 152, 219, 0.1);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 8px 16px;
-            border-radius: 6px;
+
+        .focus-card .label {
+            color: var(--text-secondary);
             font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-        
-        .quick-filter-btn:hover {
-            background: rgba(52, 152, 219, 0.2);
-            border-color: var(--accent-blue);
-            color: var(--accent-blue);
-            transform: translateY(-2px);
-        }
-        
-        .quick-filter-btn.active {
-            background: var(--accent-blue);
-            color: white;
-            border-color: var(--accent-blue);
-        }
-        
-        .table-custom {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .table-custom thead {
-            background: rgba(52, 152, 219, 0.1);
-            border-bottom: 2px solid var(--accent-blue);
-        }
-        
-        .table-custom th {
-            font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 0.9px;
+            margin-bottom: 6px;
+        }
+
+        .focus-card .value {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.1;
+        }
+
+        .focus-card .meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 6px;
+        }
+
+        .focus-card .icon {
+            position: absolute;
+            right: 14px;
+            top: 14px;
+            font-size: 1.4rem;
+            color: var(--accent-blue);
+            opacity: 0.9;
+        }
+
+        .metric-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-secondary);
             font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            padding: 12px;
-            border: none;
+            white-space: nowrap;
+        }
+
+        .metric-badge strong { color: var(--text-main); font-weight: 800; }
+        .metric-badge i { color: var(--accent-blue); }
+
+        .toolbar-btn {
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
             color: var(--text-main);
         }
-        
-        .table-custom td {
-            padding: 12px;
-            border: none;
-            border-bottom: 1px solid rgba(42, 49, 66, 0.3);
-            color: var(--text-main);
-        }
-        
-        .table-custom tbody tr:hover {
-            background: rgba(52, 152, 219, 0.05);
-            box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.1);
-        }
-        
-        .pnl-positive {
-            color: var(--signal-buy);
-            font-weight: 600;
-        }
-        
-        .pnl-negative {
-            color: var(--signal-sell);
-            font-weight: 600;
-        }
-        
-        .pnl-arrow {
-            font-size: 0.8rem;
-            margin-right: 3px;
-        }
-        
-        .date-filter {
+        .toolbar-btn:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
+
+        .form-control-custom {
             background: rgba(42, 49, 66, 0.3);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            border-radius: 6px;
-            padding: 8px 12px;
+            border-radius: 10px;
         }
-        
-        .date-filter:focus {
+        .form-control-custom:focus {
             background: rgba(42, 49, 66, 0.5);
             border-color: var(--accent-blue);
             color: var(--text-main);
             box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
         }
-        
-        .export-btn {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .export-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-        }
-        
-        .section-title {
-            color: var(--text-main);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: flex;
+
+        .table-custom { color: var(--text-main); margin-bottom: 0; }
+        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
+        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
+        .table-custom td { padding: 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
+        .table-custom tbody tr:hover { background: rgba(52, 152, 219, 0.05); box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.08); }
+
+        .strategy-badge {
+            display: inline-flex;
             align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(42, 49, 66, 0.25);
+            color: var(--text-main);
+            font-size: 0.85rem;
+            white-space: nowrap;
         }
-        
-        .section-title i {
-            margin-right: 10px;
-            color: var(--accent-blue);
-        }
-        
-        .details-table {
-            background: var(--panel-dark);
+
+        .tag-trend { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); }
+        .tag-mean { border-color: rgba(52, 152, 219, 0.35); background: rgba(52, 152, 219, 0.08); }
+        .tag-break { border-color: rgba(168, 85, 247, 0.35); background: rgba(168, 85, 247, 0.08); }
+
+        .outcome-win { color: var(--signal-buy); font-weight: 800; }
+        .outcome-loss { color: var(--signal-sell); font-weight: 800; }
+
+        .chart-shell {
+            background: rgba(42, 49, 66, 0.25);
             border: 1px solid var(--border-color);
             border-radius: 12px;
+            padding: 16px;
+            height: 100%;
+        }
+
+        .chart-title {
+            color: var(--text-main);
+            font-weight: 800;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chart-subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 14px; }
+
+        .svg-frame {
+            width: 100%;
+            height: 260px;
+            border-radius: 10px;
+            border: 1px solid rgba(52, 152, 219, 0.18);
+            background:
+                linear-gradient(to right, rgba(52, 152, 219, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(52, 152, 219, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
             overflow: hidden;
-            margin-top: 25px;
         }
-        
-        .profit-row {
-            background: rgba(46, 204, 113, 0.05);
+
+        .disclaimer {
+            background: rgba(255, 193, 7, 0.08);
+            border: 1px solid rgba(255, 193, 7, 0.25);
+            border-radius: 12px;
+            padding: 14px;
+            color: var(--text-secondary);
         }
-        
-        .loss-row {
-            background: rgba(231, 76, 60, 0.05);
-        }
-        
-        .direction-buy {
-            color: var(--signal-buy);
-            font-weight: 600;
-        }
-        
-        .direction-sell {
-            color: var(--signal-sell);
-            font-weight: 600;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .reports-container {
-                padding: 20px 15px;
-            }
-            
-            .date-filters {
-                flex-direction: column;
-                gap: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .summary-cards {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .summary-card {
-                padding: 20px 15px;
-            }
-            
-            .table-custom {
-                font-size: 14px;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-            
-            .table-custom th,
-            .table-custom td {
-                padding: 8px 6px;
-                font-size: 13px;
-            }
-            
-            h1 {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .lead {
-                font-size: 1rem;
-                margin-bottom: 20px;
-            }
-        }
-        
-        /* Prevent Horizontal Scroll */
-        * {
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-        
-        body {
-            overflow-x: hidden;
-            min-width: 320px;
-        }
-        
-        .container {
-            max-width: 100%;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        
-        /* Touch Targets for Mobile */
-        @media (max-width: 768px) {
-            .btn, .form-control, .form-select {
-                min-height: 44px;
-                min-width: 44px;
-                padding: 12px 16px;
-            }
+
+        .demo-badge {
+            background: rgba(255, 193, 7, 0.15);
+            border: 1px solid rgba(255, 193, 7, 0.4);
+            color: #ffc107;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
         }
     </style>
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Ana Sayfa",
-      "item": "https://www.sentralyx.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Raporlar",
-      "item": "https://www.sentralyx.com/reports/"
-    }
-  ]
-}
-    </script>
-
 </head>
 <body>
-    <header id="main-header"></header>
-    
-    <main class="reports-container">
-        <div class="text-center mb-4">
-            <h1 class="text-main">Trade Performans Raporu ve Portf&#246;y Analiti&#287;i</h1>
-            <p class="text-secondary">&#304;&#351;lem ge&#231;mi&#351;i analizi, kar zarar raporu ve trade performans raporu ile strateji sonu&#231;lar&#305;n&#305; nicel metriklerle takip edin.</p>
-        </div>
-        
-        <!-- Summary Cards -->
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <div class="summary-card">
-                    <div class="icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="value">156</div>
-                    <div class="text-secondary">Toplam İşlem</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="summary-card profit">
-                    <div class="icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <div class="value">98 / 58</div>
-                    <div class="text-secondary">Kârlı / Zararlı</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="summary-card profit">
-                    <div class="icon">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <div class="value">+2,456.78</div>
-                    <div class="text-secondary">Toplam PnL (USDT)</div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Filter Panel -->
-        <div class="filter-panel">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <div class="d-flex flex-wrap gap-2 align-items-center">
-                        <span class="text-main me-2">Hızlı Filtre:</span>
-                        <button class="quick-filter-btn" onclick="setQuickFilter('1h')">Son 1s</button>
-                        <button class="quick-filter-btn" onclick="setQuickFilter('24h')">Son 24s</button>
-                        <button class="quick-filter-btn active" onclick="setQuickFilter('7d')">Son 7 Gün</button>
-                        <button class="quick-filter-btn" onclick="setQuickFilter('30d')">Son 30 Gün</button>
-                    </div>
+    <header id="main-header"></header>
+
+    <main class="reports-container">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <div>
+                    <h1 class="text-main mb-1">Performans Analitiği ve Strateji Raporları</h1>
+                    <p class="text-secondary mb-0">Nicel performans metrikleri, kümülatif getiriler ve yürütme düzeyi raporlama <span class="demo-badge">DEMO VERİ</span></p>
                 </div>
-                <div class="col-md-4">
-                    <div class="d-flex gap-2">
-                        <input type="date" class="form-control date-filter" id="startDate">
-                        <input type="date" class="form-control date-filter" id="endDate">
-                        <button class="btn btn-sm btn-primary" onclick="applyDateFilter()">Uygula</button>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-6">
-                    <div class="d-flex gap-2">
-                        <select class="form-select form-select-sm date-filter" style="max-width: 150px;">
-                            <option>Yön: Tümü</option>
-                            <option>AL</option>
-                            <option>SAT</option>
-                        </select>
-                        <select class="form-select form-select-sm date-filter" style="max-width: 150px;">
-                            <option>PnL: Tümü</option>
-                            <option>Kârlı</option>
-                            <option>Zararlı</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6 text-end">
-                    <button class="export-btn" onclick="exportToCSV()">
-                        <i class="fas fa-download me-2"></i>CSV Dışa Aktar
+                <div class="d-flex gap-2 flex-wrap align-items-center">
+                    <button class="toolbar-btn" onclick="downloadPdfReport()" title="Tarayıcı yazdırma ile PDF oluştur" data-bs-toggle="tooltip">
+                        <i class="fas fa-file-pdf me-2"></i>PDF Rapor İndir
+                    </button>
+                    <button class="toolbar-btn" onclick="exportExcelData()" title="Rapor verisini dışa aktar (CSV uyumlu)" data-bs-toggle="tooltip">
+                        <i class="fas fa-file-excel me-2"></i>Excel Verisi Dışa Aktar
                     </button>
                 </div>
             </div>
-        </div>
 
-        <!-- Daily Summary Table -->
-        <div class="table-custom">
-            <div class="p-3 border-bottom border-custom">
-                <h5 class="mb-0 section-title">
-                    <i class="fas fa-calendar-alt"></i>Günlük Özet
-                </h5>
+            <!-- Filtreler / Tarih Aralığı -->
+            <div class="panel p-3 mb-4">
+                <div class="row g-3 align-items-end">
+                    <div class="col-lg-4">
+                        <label class="form-label text-main small mb-1">Tarih Aralığı</label>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button class="toolbar-btn" onclick="setRangePreset('24h')">Son 24s</button>
+                            <button class="toolbar-btn" onclick="setRangePreset('7d')">Son 7 Gün</button>
+                            <button class="toolbar-btn" onclick="setRangePreset('30d')">Son 30 Gün</button>
+                            <button class="toolbar-btn" onclick="toggleCustomRange()">Özel Aralık</button>
+                        </div>
+                        <div class="d-flex gap-2 mt-2 flex-wrap" id="custom-range" style="display:none;">
+                            <input type="date" class="form-control form-control-custom" id="start-date" aria-label="Başlangıç tarihi">
+                            <input type="date" class="form-control form-control-custom" id="end-date" aria-label="Bitiş tarihi">
+                            <button class="toolbar-btn" onclick="applyCustomRange()"><i class="fas fa-filter me-2"></i>Uygula</button>
+                        </div>
+                        <div class="text-secondary small mt-2">
+                            Aktif aralık: <strong class="text-main" id="range-label">Son 30 Gün</strong>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label text-main small mb-1">Filtre: Strateji</label>
+                        <select class="form-select form-control-custom" id="strategy-filter" onchange="applyFilters()">
+                            <option value="all" selected>Tüm Stratejiler</option>
+                            <option value="trend">[Trend-Follower]</option>
+                            <option value="mean">[Mean-Reversion]</option>
+                            <option value="break">[Breakout]</option>
+                        </select>
+                        <div class="text-secondary small mt-2">Strateji etiketlerini performans rejimlerini ve yürütme davranışını izole etmek için kullanın.</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label text-main small mb-1">Filtre: Varlık Sınıfı</label>
+                        <select class="form-select form-control-custom" id="asset-filter" onchange="applyFilters()">
+                            <option value="all" selected>Tümü</option>
+                            <option value="perp">USDT-Marjinal Perpetuals</option>
+                            <option value="spot">Spot</option>
+                        </select>
+                        <div class="text-secondary small mt-2">Raporlar araştırma sınıfı karşılaştırması için piyasa evrenine göre bölünebilir.</div>
+                    </div>
+                </div>
             </div>
-            <div class="table-responsive">
-                <table class="table table-custom mb-0">
-                    <thead>
-                        <tr>
-                            <th>Tarih</th>
-                            <th>İşlem Sayısı</th>
-                            <th>Başarı Oranı (%)</th>
-                            <th>Toplam PnL (USDT)</th>
-                            <th>Ortalama PnL</th>
-                            <th>En İyi İşlem</th>
-                            <th>En Kötü İşlem</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr onclick="showDayDetails('2026-04-18')" style="cursor: pointer;">
-                            <td><strong>18.04.2026</strong></td>
-                            <td>24</td>
-                            <td class="pnl-positive">67.5%</td>
-                            <td class="pnl-positive"><span class="pnl-arrow">â²</span>+456.32</td>
-                            <td class="pnl-positive">+19.01</td>
-                            <td class="pnl-positive">+125.50</td>
-                            <td class="pnl-negative">-23.80</td>
-                        </tr>
-                        <tr onclick="showDayDetails('2026-04-17')" style="cursor: pointer;">
-                            <td><strong>17.04.2026</strong></td>
-                            <td>18</td>
-                            <td class="pnl-negative">55.6%</td>
-                            <td class="pnl-negative"><span class="pnl-arrow">â¼</span>-89.45</td>
-                            <td class="pnl-negative">-4.97</td>
-                            <td class="pnl-positive">+67.20</td>
-                            <td class="pnl-negative">-45.30</td>
-                        </tr>
-                        <tr onclick="showDayDetails('2026-04-16')" style="cursor: pointer;">
-                            <td><strong>16.04.2026</strong></td>
-                            <td>31</td>
-                            <td class="pnl-positive">71.0%</td>
-                            <td class="pnl-positive"><span class="pnl-arrow">â²</span>+789.12</td>
-                            <td class="pnl-positive">+25.46</td>
-                            <td class="pnl-positive">+156.80</td>
-                            <td class="pnl-negative">-34.20</td>
-                        </tr>
-                        <tr onclick="showDayDetails('2026-04-15')" style="cursor: pointer;">
-                            <td><strong>15.04.2026</strong></td>
-                            <td>22</td>
-                            <td class="pnl-positive">63.6%</td>
-                            <td class="pnl-positive"><span class="pnl-arrow">â²</span>+234.67</td>
-                            <td class="pnl-positive">+10.67</td>
-                            <td class="pnl-positive">+89.40</td>
-                            <td class="pnl-negative">-28.90</td>
-                        </tr>
-                        <tr onclick="showDayDetails('2026-04-14')" style="cursor: pointer;">
-                            <td><strong>14.04.2026</strong></td>
-                            <td>19</td>
-                            <td class="pnl-negative">52.6%</td>
-                            <td class="pnl-negative"><span class="pnl-arrow">â¼</span>-156.23</td>
-                            <td class="pnl-negative">-8.23</td>
-                            <td class="pnl-positive">+45.60</td>
-                            <td class="pnl-negative">-67.80</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
-        <!-- Transaction Details Table -->
-        <div class="details-table" id="detailsTable" style="display: none;">
-            <div class="p-3 border-bottom border-custom">
-                <h5 class="mb-0 section-title">
-                    <i class="fas fa-list"></i>İşlem Detayları - <span id="selectedDate">18.04.2026</span>
-                </h5>
+            <!-- Nicel Metrikler -->
+            <div class="panel p-3 mb-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                    <h5 class="text-main mb-0"><i class="fas fa-microscope me-2"></i>Performans Metrikleri</h5>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <span class="metric-badge"><i class="fas fa-percent"></i><span>Kazanma Oranı:</span> <strong id="m-winrate">—</strong></span>
+                        <span class="metric-badge"><i class="fas fa-scale-balanced"></i><span>Kâr Faktörü:</span> <strong id="m-pf">—</strong></span>
+                        <span class="metric-badge"><i class="fas fa-wave-square"></i><span>Sharpe Oranı:</span> <strong id="m-sharpe">—</strong></span>
+                        <span class="metric-badge"><i class="fas fa-chart-area"></i><span>Maksimum Düşüş:</span> <strong id="m-mdd">—</strong></span>
+                    </div>
+                </div>
+                <div class="row g-3 mt-1">
+                    <div class="col-md-3">
+                        <div class="focus-card">
+                            <div class="icon"><i class="fas fa-sack-dollar"></i></div>
+                            <div class="label">Net Kâr</div>
+                            <div class="value" id="k-net">$0</div>
+                            <div class="meta">Seçilen aralıkta toplam</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="focus-card">
+                            <div class="icon"><i class="fas fa-layer-group"></i></div>
+                            <div class="label">Toplam İşlem</div>
+                            <div class="value" id="k-trades">0</div>
+                            <div class="meta">Kaydedilen yürütmeler</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="focus-card">
+                            <div class="icon"><i class="fas fa-shield-halved"></i></div>
+                            <div class="label">İyileşme Faktörü</div>
+                            <div class="value" id="k-recovery">0.00</div>
+                            <div class="meta">Net Kâr / Maksimum Düşüş</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="focus-card">
+                            <div class="icon"><i class="fas fa-calculator"></i></div>
+                            <div class="label">Beklenti</div>
+                            <div class="value" id="k-exp">0.00%</div>
+                            <div class="meta">İşlem başına ortalama avantaj</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="table-responsive">
-                <table class="table table-custom mb-0">
-                    <thead>
-                        <tr>
-                            <th>Tarih</th>
-                            <th>Sembol</th>
-                            <th>Yön</th>
-                            <th>Miktar</th>
-                            <th>USDT</th>
-                            <th>Giriş</th>
-                            <th>Çıkış</th>
-                            <th>PnL (USDT)</th>
-                            <th>%</th>
-                        </tr>
-                    </thead>
-                    <tbody id="detailsBody">
-                        <!-- Details will be populated by JavaScript -->
-                    </tbody>
-                </table>
+
+            <!-- Grafikler -->
+            <div class="row g-3 mb-4">
+                <div class="col-lg-8">
+                    <div class="chart-shell">
+                        <div class="chart-title">
+                            <span><i class="fas fa-chart-line me-2"></i>Özserbest Eğrisi</span>
+                            <span class="text-secondary small">Kümülatif Getiriler</span>
+                        </div>
+                        <div class="chart-subtitle">Seçilen aralıktaki gerçekleşmiş işlem sonuçlarına dayalı özserbestin zaman içindeki büyümesi.</div>
+                        <div class="svg-frame" aria-label="Özserbest eğrisi grafik yer tutucusu">
+                            <svg id="equity-svg" viewBox="0 0 1000 260" width="100%" height="260" role="img" aria-label="Özserbest Eğrisi"></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="chart-shell">
+                        <div class="chart-title">
+                            <span><i class="fas fa-chart-pie me-2"></i>İşlem Dağılımı</span>
+                            <span class="text-secondary small">Long vs Short</span>
+                        </div>
+                        <div class="chart-subtitle">Yön bazında yürütme karışımı. Yanlılık analizi ve rejim tespiti için kullanışlıdır.</div>
+                        <div class="svg-frame" aria-label="İşlem dağılımı grafik yer tutucusu">
+                            <svg id="dist-svg" viewBox="0 0 1000 260" width="100%" height="260" role="img" aria-label="İşlem Dağılımı"></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detaylı Günlükler -->
+            <div class="panel">
+                <div class="p-3 border-bottom" style="border-color: var(--border-color) !important;">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                        <h5 class="text-main mb-0"><i class="fas fa-file-lines me-2"></i>Detaylı Günlükler</h5>
+                        <div class="text-secondary small">Denetim tarzı yürütmeler, normalize getiriler ve tutma süresi.</div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th style="min-width: 180px;">Tarih/Saat</th>
+                                <th style="min-width: 220px;">Strateji Adı</th>
+                                <th style="min-width: 140px;">Sembol</th>
+                                <th style="min-width: 150px;">Sonuç</th>
+                                <th style="min-width: 160px;">Net Getiri (%)</th>
+                                <th style="min-width: 160px;">Süre</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logs-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="disclaimer mt-4">
+                <div class="d-flex align-items-start gap-3">
+                    <i class="fas fa-triangle-exclamation mt-1" style="color: #ffc107;"></i>
+                    <div class="small">
+                        Gösterilen performans metrikleri UI önizlemesi için gösterge niteliğindedir. Geçmiş performans gelecekteki sonuçların göstergesi değildir.
+                        Bu sayfayı kontrollü koşullar altında motor davranışını ve raporlama bütünlüğünü doğrulamak için kullanın.
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
+    <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        // Sample transaction data
-        const transactionData = {
-            '2026-04-18': [
-                { date: '2026-04-18 14:32:15', symbol: 'BTCUSDT', direction: 'BUY', amount: 0.025, usdt: 1081.42, entry: 43256.78, exit: 43890.45, pnl: 15.83, percent: 1.46 },
-                { date: '2026-04-18 15:45:22', symbol: 'ETHUSDT', direction: 'SELL', amount: 0.5, usdt: 1122.66, entry: 2245.32, exit: 2210.15, pnl: 17.59, percent: 1.57 },
-                { date: '2026-04-18 16:12:08', symbol: 'SOLUSDT', direction: 'BUY', amount: 10, usdt: 984.50, entry: 98.45, exit: 102.30, pnl: 38.50, percent: 3.91 },
-                { date: '2026-04-18 17:28:33', symbol: 'ADAUSDT', direction: 'SELL', amount: 500, usdt: 291.00, entry: 0.582, exit: 0.568, pnl: -7.00, percent: -2.41 },
-                { date: '2026-04-18 18:55:41', symbol: 'AVAXUSDT', direction: 'BUY', amount: 15, usdt: 535.05, entry: 35.67, exit: 37.89, pnl: 33.30, percent: 6.22 }
-            ],
-            '2026-04-17': [
-                { date: '2026-04-17 13:22:10', symbol: 'DOTUSDT', direction: 'BUY', amount: 50, usdt: 375.00, entry: 7.50, exit: 7.25, pnl: -12.50, percent: -3.33 },
-                { date: '2026-04-17 14:18:45', symbol: 'LINKUSDT', direction: 'SELL', amount: 20, usdt: 278.40, entry: 13.92, exit: 14.15, pnl: 4.60, percent: 1.65 },
-                { date: '2026-04-17 15:33:27', symbol: 'MATICUSDT', direction: 'BUY', amount: 200, usdt: 118.00, entry: 0.59, exit: 0.57, pnl: -4.00, percent: -3.39 }
-            ]
+        const fmtUsd = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+        const fmtNum = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
+
+        const state = {
+            preset: '30d',
+            strategy: 'all',
+            asset: 'all',
+            logs: [],
+            equity: [],
+            dist: { long: 0, short: 0 },
         };
 
-        function showDayDetails(date) {
-            const detailsTable = document.getElementById('detailsTable');
-            const detailsBody = document.getElementById('detailsBody');
-            const selectedDate = document.getElementById('selectedDate');
-            
-            // Update selected date
-            selectedDate.textContent = date.split('-').reverse().join('.');
-            
-            // Clear existing details
-            detailsBody.innerHTML = '';
-            
-            // Add transaction details
-            const transactions = transactionData[date] || [];
-            transactions.forEach(transaction => {
-                const row = document.createElement('tr');
-                row.className = transaction.pnl >= 0 ? 'profit-row' : 'loss-row';
-                
-                row.innerHTML = `
-                    <td>${transaction.date}</td>
-                    <td><strong>${transaction.symbol}</strong></td>
-                    <td class="${transaction.direction === 'BUY' ? 'direction-buy' : 'direction-sell'}">${transaction.direction}</td>
-                    <td>${transaction.amount}</td>
-                    <td>${transaction.usdt}</td>
-                    <td>${transaction.entry}</td>
-                    <td>${transaction.exit}</td>
-                    <td class="${transaction.pnl >= 0 ? 'pnl-positive' : 'pnl-negative'}">${transaction.pnl >= 0 ? '+' : ''}${transaction.pnl}</td>
-                    <td class="${transaction.pnl >= 0 ? 'pnl-positive' : 'pnl-negative'}">${transaction.percent >= 0 ? '+' : ''}${transaction.percent}%</td>
+        function initTooltips() {
+            const triggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            triggers.forEach((el) => new bootstrap.Tooltip(el));
+        }
+
+        function seedData() {
+            // Demo günlükler (veri bilimi aroması). Üretimde bu Sentralyx rapor motoru tarafından oluşturulur.
+            state.logs = [
+                { ts: '2026-05-06 03:12:45', strat: { key: 'trend', label: '[Trend-Follower] MTF Momentum Stack' }, symbol: 'BTCUSDT', outcome: 'Kazanç', ret: 1.42, dur: '02s 14d', asset: 'perp' },
+                { ts: '2026-05-06 01:44:10', strat: { key: 'mean', label: '[Mean-Reversion] Volatility Band Fade' }, symbol: 'ETHUSDT', outcome: 'Kayıp', ret: -0.68, dur: '00s 38d', asset: 'perp' },
+                { ts: '2026-05-05 22:26:33', strat: { key: 'break', label: '[Breakout] Range Expansion Trigger' }, symbol: 'SOLUSDT', outcome: 'Kazanç', ret: 2.05, dur: '01s 02d', asset: 'perp' },
+                { ts: '2026-05-05 19:08:51', strat: { key: 'trend', label: '[Trend-Follower] Trend Continuation' }, symbol: 'XRPUSDT', outcome: 'Kazanç', ret: 0.74, dur: '00s 51d', asset: 'perp' },
+                { ts: '2026-05-05 12:18:04', strat: { key: 'mean', label: '[Mean-Reversion] Liquidity Sweep Revert' }, symbol: 'BNBUSDT', outcome: 'Kayıp', ret: -1.12, dur: '03s 26d', asset: 'perp' },
+                { ts: '2026-05-04 18:22:19', strat: { key: 'trend', label: '[Trend-Follower] MTF Momentum Stack' }, symbol: 'ADAUSDT', outcome: 'Kazanç', ret: 1.10, dur: '05s 09d', asset: 'spot' },
+                { ts: '2026-05-04 13:05:02', strat: { key: 'break', label: '[Breakout] Range Expansion Trigger' }, symbol: 'LINKUSDT', outcome: 'Kazanç', ret: 0.88, dur: '00s 44d', asset: 'perp' },
+                { ts: '2026-05-03 10:51:20', strat: { key: 'mean', label: '[Mean-Reversion] Volatility Band Fade' }, symbol: 'DOTUSDT', outcome: 'Kazanç', ret: 0.36, dur: '01s 17d', asset: 'perp' },
+            ];
+        }
+
+        function computeEquityCurve(filtered) {
+            // Özserbest 10,000'den başlar ve işlem getirileriyle bileşikleşir (% olarak).
+            let equity = 10000;
+            const points = [];
+            filtered.forEach((t) => {
+                equity = equity * (1 + (t.ret / 100));
+                points.push(equity);
+            });
+            return points.length ? points : [10000];
+        }
+
+        function computeDistribution(filtered) {
+            // Demo dağılım: yönü strateji türünden vekil olarak çıkarın
+            let long = 0;
+            let short = 0;
+            filtered.forEach((t) => {
+                if (t.strat.key === 'mean') short += 1;
+                else long += 1;
+            });
+            return { long, short };
+        }
+
+        function computeMetrics(filtered, equityCurve) {
+            const trades = filtered.length;
+            const wins = filtered.filter((t) => t.outcome === 'Kazanç').length;
+            const losses = trades - wins;
+            const winRate = trades ? (wins / trades) * 100 : 0;
+
+            const grossProfit = filtered.filter((t) => t.ret > 0).reduce((a, t) => a + t.ret, 0);
+            const grossLoss = Math.abs(filtered.filter((t) => t.ret < 0).reduce((a, t) => a + t.ret, 0));
+            const profitFactor = grossLoss > 0 ? grossProfit / grossLoss : grossProfit > 0 ? 9.99 : 0;
+
+            const netReturnPct = filtered.reduce((a, t) => a + t.ret, 0);
+            const netProfitUsd = 10000 * (equityCurve[equityCurve.length - 1] / 10000 - 1);
+
+            // Maksimum düşüş (özserbest eğrisinde basit tepe-çukur)
+            let peak = equityCurve[0];
+            let mdd = 0;
+            equityCurve.forEach((v) => {
+                peak = Math.max(peak, v);
+                const dd = peak > 0 ? ((peak - v) / peak) * 100 : 0;
+                mdd = Math.max(mdd, dd);
+            });
+
+            const recovery = mdd > 0 ? (netReturnPct / mdd) : netReturnPct > 0 ? 9.99 : 0;
+            const expectancy = trades ? (netReturnPct / trades) : 0;
+
+            // Sharpe oranı (basitleştirilmiş): işlem getirilerinin ortalama / std
+            const mean = trades ? netReturnPct / trades : 0;
+            const variance = trades ? filtered.reduce((a, t) => a + Math.pow(t.ret - mean, 2), 0) / trades : 0;
+            const std = Math.sqrt(variance);
+            const sharpe = std > 0 ? mean / std : mean > 0 ? 2.5 : 0;
+
+            return {
+                trades,
+                winRate,
+                profitFactor,
+                sharpe,
+                maxDrawdown: mdd,
+                netProfitUsd,
+                recovery,
+                expectancy,
+            };
+        }
+
+        function badgeHtml(strat) {
+            const cls = strat.key === 'trend' ? 'tag-trend' : strat.key === 'mean' ? 'tag-mean' : 'tag-break';
+            return `<span class="strategy-badge ${cls}"><i class="fas fa-tag" style="color: var(--accent-blue);"></i>${strat.label}</span>`;
+        }
+
+        function renderLogs(filtered) {
+            const tbody = document.getElementById('logs-tbody');
+            if (!filtered.length) {
+                tbody.innerHTML = `
+                    <tr class="text-secondary">
+                        <td colspan="6">
+                            <div class="py-2 d-flex align-items-center gap-2">
+                                <i class="fas fa-wave-square"></i>
+                                <span>Seçilen aralıkta yürütme yok. Filtreleri ayarlayın veya zaman penceresini genişletin.</span>
+                            </div>
+                        </td>
+                    </tr>
                 `;
-                
-                detailsBody.appendChild(row);
-            });
-            
-            // Show details table
-            detailsTable.style.display = 'block';
-            
-            // Scroll to details
-            detailsTable.scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            tbody.innerHTML = filtered.map((t) => {
+                const outcomeClass = t.outcome === 'Kazanç' ? 'outcome-win' : 'outcome-loss';
+                const retClass = t.ret >= 0 ? 'outcome-win' : 'outcome-loss';
+                return `
+                    <tr>
+                        <td class="text-secondary">${t.ts}</td>
+                        <td>${badgeHtml(t.strat)}</td>
+                        <td class="fw-bold">${t.symbol}</td>
+                        <td class="${outcomeClass}">${t.outcome}</td>
+                        <td class="${retClass}">${t.ret >= 0 ? '+' : ''}${fmtNum.format(t.ret)}%</td>
+                        <td class="text-secondary">${t.dur}</td>
+                    </tr>
+                `;
+            }).join('');
         }
 
-        function setQuickFilter(period) {
-            // Remove active class from all buttons
-            document.querySelectorAll('.quick-filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-            
-            // Apply filter logic here
-            console.log('Quick filter set to:', period);
+        function renderEquitySvg(curve) {
+            const svg = document.getElementById('equity-svg');
+            if (!svg) return;
+
+            const w = 1000;
+            const h = 260;
+            const pad = 18;
+            const min = Math.min(...curve);
+            const max = Math.max(...curve);
+            const span = Math.max(1e-9, max - min);
+
+            const points = curve.map((v, i) => {
+                const x = pad + (i / Math.max(1, curve.length - 1)) * (w - pad * 2);
+                const y = pad + (1 - ((v - min) / span)) * (h - pad * 2);
+                return `${x.toFixed(2)},${y.toFixed(2)}`;
+            }).join(' ');
+
+            const last = curve[curve.length - 1];
+            const first = curve[0];
+            const up = last >= first;
+            const stroke = up ? 'var(--signal-buy)' : 'var(--signal-sell)';
+
+            svg.innerHTML = `
+                <defs>
+                    <linearGradient id="eqFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="${up ? '#2FB17F' : '#E74C3C'}" stop-opacity="0.35"/>
+                        <stop offset="100%" stop-color="${up ? '#2FB17F' : '#E74C3C'}" stop-opacity="0.02"/>
+                    </linearGradient>
+                </defs>
+                <polyline fill="none" stroke="${stroke}" stroke-width="3" points="${points}" />
+                <polyline fill="url(#eqFill)" stroke="none" points="${points} ${w - pad},${h - pad} ${pad},${h - pad}" opacity="0.8"/>
+                <text x="${pad}" y="22" fill="var(--text-secondary)" font-size="12">Başlangıç: ${fmtUsd.format(first)}</text>
+                <text x="${w - pad}" y="22" fill="var(--text-secondary)" font-size="12" text-anchor="end">Bitiş: ${fmtUsd.format(last)}</text>
+            `;
         }
 
-        function applyDateFilter() {
-            const startDate = document.getElementById('startDate').value;
-            const endDate = document.getElementById('endDate').value;
-            
-            console.log('Date filter applied:', startDate, 'to', endDate);
+        function renderDistributionSvg(dist) {
+            const svg = document.getElementById('dist-svg');
+            if (!svg) return;
+
+            const total = Math.max(1, dist.long + dist.short);
+            const longPct = (dist.long / total) * 100;
+            const shortPct = (dist.short / total) * 100;
+
+            const w = 1000;
+            const h = 260;
+            const pad = 22;
+
+            const barW = 300;
+            const gap = 120;
+            const baseY = 210;
+            const maxH = 140;
+
+            const longH = (longPct / 100) * maxH;
+            const shortH = (shortPct / 100) * maxH;
+
+            const longX = (w / 2) - barW - (gap / 2);
+            const shortX = (w / 2) + (gap / 2);
+
+            svg.innerHTML = `
+                <rect x="${longX}" y="${baseY - longH}" width="${barW}" height="${longH}" rx="12" fill="rgba(46, 204, 113, 0.25)" stroke="rgba(46, 204, 113, 0.55)" />
+                <rect x="${shortX}" y="${baseY - shortH}" width="${barW}" height="${shortH}" rx="12" fill="rgba(231, 76, 60, 0.25)" stroke="rgba(231, 76, 60, 0.55)" />
+
+                <text x="${longX + (barW / 2)}" y="${baseY + 28}" fill="var(--text-main)" font-size="14" text-anchor="middle">Long</text>
+                <text x="${shortX + (barW / 2)}" y="${baseY + 28}" fill="var(--text-main)" font-size="14" text-anchor="middle">Short</text>
+
+                <text x="${longX + (barW / 2)}" y="${baseY - longH - 10}" fill="var(--signal-buy)" font-size="16" font-weight="800" text-anchor="middle">${fmtNum.format(longPct)}%</text>
+                <text x="${shortX + (barW / 2)}" y="${baseY - shortH - 10}" fill="var(--signal-sell)" font-size="16" font-weight="800" text-anchor="middle">${fmtNum.format(shortPct)}%</text>
+
+                <text x="${pad}" y="24" fill="var(--text-secondary)" font-size="12">İşlem: ${dist.long + dist.short}</text>
+            `;
         }
 
-        function exportToCSV() {
-            // Create CSV content
-            let csvContent = "Tarih,İşlem Sayısı,Başarı Oranı,Toplam PnL,Ortalama PnL,En İyi İşlem,En Kötü İşlem\n";
-            
-            // Add sample data
-            csvContent += "18.04.2026,24,67.5%,+456.32,+19.01,+125.50,-23.80\n";
-            csvContent += "17.04.2026,18,55.6%,-89.45,-4.97,+67.20,-45.30\n";
-            csvContent += "16.04.2026,31,71.0%,+789.12,+25.46,+156.80,-34.20\n";
-            
-            // Create download link
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
+        function renderDashboard() {
+            const filtered = state.logs.filter((t) => (state.strategy === 'all' || t.strat.key === state.strategy) && (state.asset === 'all' || t.asset === state.asset));
+            state.equity = computeEquityCurve(filtered);
+            state.dist = computeDistribution(filtered);
+
+            const m = computeMetrics(filtered, state.equity);
+            document.getElementById('m-winrate').textContent = `${fmtNum.format(m.winRate)}%`;
+            document.getElementById('m-pf').textContent = fmtNum.format(m.profitFactor);
+            document.getElementById('m-sharpe').textContent = fmtNum.format(m.sharpe);
+            document.getElementById('m-mdd').textContent = `${fmtNum.format(m.maxDrawdown)}%`;
+
+            document.getElementById('k-net').textContent = fmtUsd.format(m.netProfitUsd);
+            document.getElementById('k-trades').textContent = String(m.trades);
+            document.getElementById('k-recovery').textContent = fmtNum.format(m.recovery);
+            document.getElementById('k-exp').textContent = `${m.expectancy >= 0 ? '+' : ''}${fmtNum.format(m.expectancy)}%`;
+
+            renderEquitySvg(state.equity);
+            renderDistributionSvg(state.dist);
+            renderLogs(filtered);
+
+            initTooltips();
+        }
+
+        function setRangePreset(preset) {
+            state.preset = preset;
+            const label = preset === '24h' ? 'Son 24s' : preset === '7d' ? 'Son 7 Gün' : 'Son 30 Gün';
+            document.getElementById('range-label').textContent = label;
+            document.getElementById('custom-range').style.display = 'none';
+            showToast(`Aralık güncellendi: ${label}`, 'info');
+            renderDashboard();
+        }
+
+        function toggleCustomRange() {
+            const el = document.getElementById('custom-range');
+            el.style.display = el.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        function applyCustomRange() {
+            const s = document.getElementById('start-date').value;
+            const e = document.getElementById('end-date').value;
+            if (!s || !e) {
+                showToast('Başlangıç ve bitiş tarihini seçin.', 'warning');
+                return;
+            }
+            document.getElementById('range-label').textContent = `Özel Aralık (${s} → ${e})`;
+            showToast('Özel aralık uygulandı (demo).', 'success');
+            renderDashboard();
+        }
+
+        function applyFilters() {
+            state.strategy = document.getElementById('strategy-filter').value;
+            state.asset = document.getElementById('asset-filter').value;
+            renderDashboard();
+        }
+
+        function exportExcelData() {
+            // CSV dışa aktarma (Excel uyumlu).
+            const header = ['DateTime', 'Strategy', 'Symbol', 'Outcome', 'NetReturnPct', 'Duration', 'AssetClass'];
+            const lines = [
+                header.join(','),
+                ...state.logs.map((t) => [
+                    t.ts,
+                    t.strat.label,
+                    t.symbol,
+                    t.outcome,
+                    t.ret,
+                    t.dur,
+                    t.asset,
+                ].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',')),
+            ];
+
+            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
             const url = URL.createObjectURL(blob);
-            link.setAttribute('href', url);
-            link.setAttribute('download', `sentralyx_rapor_${new Date().toISOString().split('T')[0]}.csv`);
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sentralyx-reports-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
         }
 
-        // Initialize with today's date
-        document.addEventListener('DOMContentLoaded', function() {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('endDate').value = today;
-            
-            const weekAgo = new Date();
-            weekAgo.setDate(weekAgo.getDate() - 7);
-            document.getElementById('startDate').value = weekAgo.toISOString().split('T')[0];
+        function downloadPdfReport() {
+            // Yerleşik tarayıcı yazdırma-PDF iş akışını kullanır.
+            window.print();
+        }
+
+        function showToast(message, type) {
+            const toast = document.createElement('div');
+            const bg = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
+            toast.className = `alert ${bg} position-fixed top-0 end-0 m-3`;
+            toast.style.zIndex = '9999';
+            toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>${message}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2400);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            seedData();
+            initTooltips();
+            renderDashboard();
         });
-    </script>
 
-    <div id="footer-container"></div>
-
-    <script>
-        // Load footer from components/footer.html
         fetch('../components/footer.html')
             .then(async (response) => {
                 const buffer = await response.arrayBuffer();
@@ -624,7 +693,7 @@
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
             })
-            .catch(error => console.error('Footer yuklenemedi:', error));
+            .catch(error => console.error('Footer yüklenemedi:', error));
     </script>
 </body>
 </html>

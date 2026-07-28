@@ -3,627 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Trading Bot and Automated Trading FAQ | Sentralyx</title>
+    <meta name="description" content="FAQ about crypto trading bots, automated trading, Binance and OKX connection, backtesting, API keys, risk settings, free version and Sentralyx licensing.">
     <link rel="canonical" href="https://www.sentralyx.com/en/faq.html">
-    
-    <title>Sentralyx | Frequently Asked Questions - Technical Support and User Guide</title>
-    <meta name="description" content="Frequently asked questions about Sentralyx trading terminal. Security, technical stability, Thread Watchdog, Atomic Write, HWID encryption and more.">
-    <meta name="keywords" content="sentralyx faq, frequently asked questions, security, technical support, thread watchdog, atomic write, hwid encryption, gtc orders">
-
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/faq.html">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/faq.html">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/faq.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/faq.html">
+    <meta property="og:title" content="Crypto Trading Bot and Automated Trading FAQ | Sentralyx">
+    <meta property="og:description" content="FAQ about crypto trading bots, automated trading, Binance and OKX connection, backtesting, API keys, risk settings, free version and Sentralyx licensing.">
+    <meta property="og:url" content="https://www.sentralyx.com/en/faq.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sentralyx.com/assets/logo.png">
     <link rel="icon" type="image/x-icon" href="../sentralyx_favicon.ico">
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    
-    <style>
-        /* FAQ Page Specific Styles */
-        .faq-hero {
-            padding: 120px 0 60px;
-            background: radial-gradient(circle at top right, rgba(47, 177, 127, 0.12), transparent);
-            position: relative;
-        }
-        
-        .faq-section {
-            padding: 80px 0;
-        }
-        
-        .faq-category {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .category-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--accent-blue);
-        }
-        
-        .category-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-            margin-right: 20px;
-        }
-        
-        .category-title {
-            color: var(--text-main);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0;
-        }
-        
-        .accordion-item {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            margin-bottom: 10px;
-            border-radius: 10px !important;
-            overflow: hidden;
-        }
-        
-        .accordion-button {
-            background: var(--panel-dark);
-            color: var(--text-main);
-            border: none;
-            font-weight: 600;
-            font-size: 1rem;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .accordion-button:not(.collapsed) {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            color: white;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-        }
-        
-        .accordion-button:focus {
-            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
-            border: none;
-        }
-        
-        .accordion-body {
-            background: var(--panel-dark);
-            color: var(--text-secondary);
-            padding: 25px;
-            line-height: 1.7;
-        }
-        
-        .technical-term {
-            background: rgba(52, 152, 219, 0.1);
-            border: 1px solid var(--accent-blue);
-            border-radius: 6px;
-            padding: 3px 8px;
-            color: var(--accent-blue);
-            font-weight: 600;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-        }
-        
-        .security-highlight {
-            background: rgba(231, 76, 60, 0.1);
-            border-left: 4px solid #e74c3c;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .stability-highlight {
-            background: rgba(46, 204, 113, 0.1);
-            border-left: 4px solid #2ecc71;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .cta-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, rgba(47, 177, 127, 0.1), rgba(52, 152, 219, 0.1));
-            text-align: center;
-        }
-        
-        .cta-button {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            color: white;
-            padding: 15px 40px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
-            color: white;
-        }
-        
-        @media (max-width: 768px) {
-            .faq-hero {
-                padding: 100px 0 40px;
-            }
-            
-            .faq-section {
-                padding: 60px 0;
-            }
-            
-            .faq-category {
-                padding: 20px;
-                margin-bottom: 20px;
-            }
-            
-            .category-header {
-                margin-bottom: 20px;
-            }
-            
-            .category-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-                margin-right: 15px;
-            }
-            
-            .category-title {
-                font-size: 1.2rem;
-            }
-            
-            .accordion-button {
-                padding: 15px;
-                font-size: 0.9rem;
-            }
-            
-            .accordion-body {
-                padding: 20px;
-            }
-        }
-    </style>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Sentralyx?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx is a Windows trading terminal built for crypto market workflows. A user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. It should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. For users searching for an AI trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings."}}, {"@type": "Question", "name": "Is Sentralyx a crypto trading bot?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx is a Windows trading terminal built for crypto market workflows. A user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. It should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. For users searching for an AI trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings."}}, {"@type": "Question", "name": "How does an automated trading bot work?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx is a Windows trading terminal built for crypto market workflows. A user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. It should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. For users searching for an AI trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings."}}, {"@type": "Question", "name": "Can algorithmic trading be done without coding?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx is a Windows trading terminal built for crypto market workflows. A user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. It should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. For users searching for an AI trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings."}}, {"@type": "Question", "name": "Is Sentralyx an AI trading bot?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx is a Windows trading terminal built for crypto market workflows. A user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. It should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. For users searching for an AI trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings."}}, {"@type": "Question", "name": "Does Sentralyx provide definite buy-sell signals?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx is a Windows trading terminal built for crypto market workflows. A user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. It should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. For users searching for an AI trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings."}}, {"@type": "Question", "name": "Which exchanges does Sentralyx work with?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly."}}, {"@type": "Question", "name": "How is a Binance or OKX account connected?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly."}}, {"@type": "Question", "name": "What is an API key?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly."}}, {"@type": "Question", "name": "Which API permissions should be enabled?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly."}}, {"@type": "Question", "name": "Is withdrawal permission required?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly."}}, {"@type": "Question", "name": "What happens if the API connection is interrupted?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly."}}, {"@type": "Question", "name": "How should API keys be protected?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly."}}, {"@type": "Question", "name": "What is backtesting?", "acceptedAnswer": {"@type": "Answer", "text": "Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions."}}, {"@type": "Question", "name": "How is a crypto strategy tested with Sentralyx?", "acceptedAnswer": {"@type": "Answer", "text": "Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions."}}, {"@type": "Question", "name": "Will a backtest result match live trading?", "acceptedAnswer": {"@type": "Answer", "text": "Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions."}}, {"@type": "Question", "name": "How do commission and slippage affect results?", "acceptedAnswer": {"@type": "Answer", "text": "Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions."}}, {"@type": "Question", "name": "What is MTF analysis?", "acceptedAnswer": {"@type": "Answer", "text": "Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions."}}, {"@type": "Question", "name": "Can a strategy be created without writing code?", "acceptedAnswer": {"@type": "Answer", "text": "Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions."}}, {"@type": "Question", "name": "How many trades make a backtest more meaningful?", "acceptedAnswer": {"@type": "Answer", "text": "Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions."}}, {"@type": "Question", "name": "Will a strategy that worked in the past work in the future?", "acceptedAnswer": {"@type": "Answer", "text": "Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions."}}, {"@type": "Question", "name": "Is automated trading required?", "acceptedAnswer": {"@type": "Answer", "text": "Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions."}}, {"@type": "Question", "name": "Does using a crypto bot remove trading risk?", "acceptedAnswer": {"@type": "Answer", "text": "Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions."}}, {"@type": "Question", "name": "Does Sentralyx guarantee profit?", "acceptedAnswer": {"@type": "Answer", "text": "Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions."}}, {"@type": "Question", "name": "How do stop-loss and target levels work?", "acceptedAnswer": {"@type": "Answer", "text": "Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions."}}, {"@type": "Question", "name": "How are open positions tracked?", "acceptedAnswer": {"@type": "Answer", "text": "Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions."}}, {"@type": "Question", "name": "What happens if the internet connection is interrupted?", "acceptedAnswer": {"@type": "Answer", "text": "Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions."}}, {"@type": "Question", "name": "How many trades can be opened at the same time?", "acceptedAnswer": {"@type": "Answer", "text": "Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions."}}, {"@type": "Question", "name": "Can users change risk settings?", "acceptedAnswer": {"@type": "Answer", "text": "Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions."}}, {"@type": "Question", "name": "Is Sentralyx free?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match."}}, {"@type": "Question", "name": "What are the differences between Free, Trial and Full versions?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match."}}, {"@type": "Question", "name": "Which operating system does Sentralyx run on?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match."}}, {"@type": "Question", "name": "How is Sentralyx downloaded and installed?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match."}}, {"@type": "Question", "name": "How is the license file received?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match."}}, {"@type": "Question", "name": "Can the license be received by email or Telegram?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match."}}, {"@type": "Question", "name": "Can the license be moved to another computer?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match."}}, {"@type": "Question", "name": "What should be done when the computer or device changes?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match."}}, {"@type": "Question", "name": "What should be done if the license file does not arrive?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match."}}, {"@type": "Question", "name": "Does Sentralyx provide investment advice?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access."}}, {"@type": "Question", "name": "Can beginners use Sentralyx?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access."}}, {"@type": "Question", "name": "What should be done before live trading?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access."}}, {"@type": "Question", "name": "Are demo or test data real trading results?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access."}}, {"@type": "Question", "name": "How is technical support received?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access."}}, {"@type": "Question", "name": "Does Sentralyx run on mobile devices?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access."}}, {"@type": "Question", "name": "Which security precautions should the user take?", "acceptedAnswer": {"@type": "Answer", "text": "Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access."}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sentralyx.com/en/"}, {"@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://www.sentralyx.com/en/faq.html"}]}</script>
+    <style>.faq-hero{padding:110px 0 44px;background:radial-gradient(circle at top right,rgba(47,177,127,.12),transparent 44%);}.faq-section{padding:48px 0 72px;}.faq-tools{display:grid;gap:16px;margin:28px 0;}.faq-search{width:100%;padding:14px 16px;border:1px solid var(--border-color);border-radius:8px;background:var(--panel-dark);color:var(--text-main);}.faq-filters{display:flex;flex-wrap:wrap;gap:10px;}.faq-filter{border:1px solid var(--border-color);background:var(--panel-dark);color:var(--text-main);border-radius:8px;padding:10px 14px;}.faq-filter.active{border-color:var(--accent-blue);color:#fff;background:var(--accent-blue);}.accordion-item{background:var(--panel-dark);border:1px solid var(--border-color);border-radius:8px!important;margin-bottom:10px;overflow:hidden;}.accordion-button,.accordion-button:not(.collapsed){background:var(--panel-dark);color:var(--text-main);box-shadow:none;}.accordion-body{color:var(--text-muted);line-height:1.7;}.faq-note,.faq-cta{border:1px solid var(--border-color);border-radius:8px;background:var(--panel-dark);padding:22px;margin-top:28px;}.related-links,.faq-cta-actions{display:flex;flex-wrap:wrap;gap:10px;}.related-links a,.faq-cta-actions a{display:inline-flex;align-items:center;gap:8px;padding:10px 13px;border:1px solid var(--border-color);border-radius:8px;text-decoration:none;}.no-results{display:none;color:var(--text-muted);padding:18px 0;}</style>
 </head>
 <body>
-
-    <header id="main-header"></header>
-
-    <!-- Legal Disclaimer -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="alert alert-warning" style="background: rgba(255, 193, 7, 0.1); border: 1px solid #ffc107; border-radius: 10px; padding: 20px;">
-                <div class="d-flex align-items-start">
-                    <i class="fas fa-exclamation-triangle me-3" style="color: #ffc107; font-size: 1.5rem; margin-top: 2px;"></i>
-                    <div>
-                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Legal Disclaimer</h5>
-                        <p class="mb-0 text-secondary">
-                            Sentralyx is a trading terminal and does not provide investment advisory services. The information contained herein is provided solely to explain the technical features of the software. It does not constitute investment advice. You are solely responsible for your financial decisions. Cryptocurrency markets involve high risk.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq-hero">
-        <div class="container">
-            <div class="text-center">
-                <h1 class="display-3 mb-4">Frequently Asked Questions</h1>
-                <p class="lead text-secondary mb-5">
-                    Technical and operational questions about Sentralyx trading terminal. 
-                    Security, stability, and user guide.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq-section">
-        <div class="container">
-            
-            <!-- Security & Privacy Category -->
-            <div class="faq-category">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h2 class="category-title">Security & Privacy</h2>
-                </div>
-                
-                <div class="accordion" id="securityAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#security1">
-                                What happens to my positions if my internet disconnects?
-                            </button>
-                        </h2>
-                        <div id="security1" class="accordion-collapse collapse show" data-bs-parent="#securityAccordion">
-                            <div class="accordion-body">
-                                <p>When your internet connection is lost, your positions remain completely secure. Sentralyx operates with <span class="technical-term">GTC Orders</span> (Good Till Canceled) and <span class="technical-term">Server-Side Protection</span> principles:</p>
-                                
-                                <div class="security-highlight">
-                                    <strong>✅ SL/TP Protection:</strong> Stop Loss and Take Profit orders are stored directly on the exchange server and remain active whether or not you have an internet connection.
-                                </div>
-                                
-                                <ul>
-                                    <li><strong>SL (Stop Loss):</strong> When price reaches your stop level, the position automatically closes.</li>
-                                    <li><strong>TP (Take Profit):</strong> When target price is reached, your profit is realized.</li>
-                                    <li><strong>Global Stop:</strong> In emergency situations, you can safely close all positions.</li>
-                                </ul>
-                                
-                                <p><strong>Important:</strong> During internet outages, new orders cannot be sent (security measure), but existing positions are protected on the server side.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#security2">
-                                How are my API keys protected?
-                            </button>
-                        </h2>
-                        <div id="security2" class="accordion-collapse collapse" data-bs-parent="#securityAccordion">
-                            <div class="accordion-body">
-                                <p>Your API keys are protected with maximum security using <span class="technical-term">HWID encryption</span>:</p>
-                                
-                                <div class="security-highlight">
-                                    <strong>🔐 Dual-Layer Encryption:</strong> Hardware ID (HWID) and Fernet symmetric encryption combination.
-                                </div>
-                                
-                                <ul>
-                                    <li><strong>HWID Binding:</strong> Each license is specific to a particular hardware. It won't work on different machines.</li>
-                                    <li><strong>Local Storage:</strong> API keys are never sent to cloud or third-party servers.</li>
-                                    <li><strong>Fernet Encryption:</strong> AES-128 based, URL-safe encryption standard is used.</li>
-                                    <li><strong>Regulatory Compliance:</strong> Fully compliant with GDPR and KVKK data protection laws.</li>
-                                </ul>
-                                
-                                <p><strong>Additional Security:</strong> Your API keys can only be decrypted with your machine's <span class="technical-term">HWID</span>, making unauthorized access impossible.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#security3">
-                                Is my data stored in the cloud?
-                            </button>
-                        </h2>
-                        <div id="security3" class="accordion-collapse collapse" data-bs-parent="#securityAccordion">
-                            <div class="accordion-body">
-                                <p><strong>No.</strong> Sentralyx operates with a <strong>Privacy-First</strong> design principle:</p>
-                                
-                                <ul>
-                                    <li><strong>Strategy Data:</strong> Your profit strategies and indicator settings are stored only locally.</li>
-                                    <li><strong>Trade History:</strong> Backtest results and optimization data remain confidential.</li>
-                                    <li><strong>Competitor Protection:</strong> Your algorithmic trading logic cannot be leaked to brokers or competitors.</li>
-                                    <li><strong>Data Transfer:</strong> Critical data is never transmitted over the internet.</li>
-                                </ul>
-                                
-                                <div class="security-highlight">
-                                    <strong>🛡️ Zero Intermediary Risk:</strong> All critical operations and data are kept locally for maximum security.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Technical Stability Category -->
-            <div class="faq-category">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h2 class="category-title">Technical Stability (Self-Healing)</h2>
-                </div>
-                
-                <div class="accordion" id="stabilityAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#stability1">
-                                How does the system recover from error conditions?
-                            </button>
-                        </h2>
-                        <div id="stability1" class="accordion-collapse collapse show" data-bs-parent="#stabilityAccordion">
-                            <div class="accordion-body">
-                                <p>Sentralyx has self-healing capabilities with the <span class="technical-term">ThreadWatchdog</span> system:</p>
-                                
-                                <div class="stability-highlight">
-                                    <strong>🔄 24/7 Automatic Monitoring:</strong> All critical threads are checked every 30 seconds.
-                                </div>
-                                
-                                <ul>
-                                    <li><strong>Heartbeat Control:</strong> Special heartbeat system for scanner thread, "frozen" alarm if no data for 60 seconds.</li>
-                                    <li><strong>Automatic Restart:</strong> If a crashed thread is detected, it's automatically restarted.</li>
-                                    <li><strong>Maximum Attempts:</strong> Each thread has a maximum of 3 restart attempts.</li>
-                                    <li><strong>State-Safe:</strong> Position data and strategy state are preserved during restarts.</li>
-                                </ul>
-                                
-                                <p><strong>Self-Healing Layers:</strong></p>
-                                <ol>
-                                    <li><strong>Pre-Trade Validation:</strong> Balance check, risk analysis, maximum position limit.</li>
-                                    <li><strong>Real-Time Monitoring:</strong> Price spike detection, anomaly detection, P&L tracking.</li>
-                                    <li><strong>Emergency Protocols:</strong> Global stop mechanism, force close capability.</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stability2">
-                                Are there measures against file corruption?
-                            </button>
-                        </h2>
-                        <div id="stability2" class="accordion-collapse collapse" data-bs-parent="#stabilityAccordion">
-                            <div class="accordion-body">
-                                <p>Yes, file integrity is ensured with <span class="technical-term">Atomic Write</span> I/O guarantee:</p>
-                                
-                                <div class="stability-highlight">
-                                    <strong>⚛️ Atomic Operations:</strong> Critical operations either completely succeed or are treated as if they never happened.
-                                </div>
-                                
-                                <ul>
-                                    <li><strong>Transactional File Operations:</strong> Write to temporary file, verify, then atomic swap.</li>
-                                    <li><strong>Crash Recovery:</strong> Data consistency is maintained even during power outages or system crashes.</li>
-                                    <li><strong>ACID Properties:</strong> Atomicity, Consistency, Isolation, Durability guarantee.</li>
-                                    <li><strong>Sync Guarantee:</strong> fsync is used to ensure data is written to disk.</li>
-                                </ul>
-                                
-                                <p><strong>Example Flow:</strong></p>
-                                <ol>
-                                    <li>Data is written to temporary file (.tmp)</li>
-                                    <li>Disk synchronization is performed (fsync)</li>
-                                    <li>Atomic replacement with original file (rename)</li>
-                                    <li>Temporary file is deleted on error</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stability3">
-                                How are "orphan" positions managed during connection interruptions?
-                            </button>
-                        </h2>
-                        <div id="stability3" class="accordion-collapse collapse" data-bs-parent="#stabilityAccordion">
-                            <div class="accordion-body">
-                                <p>The <span class="technical-term">Orphan Recovery</span> system automatically manages orphaned positions during connection interruptions:</p>
-                                
-                                <ul>
-                                    <li><strong>Fast Detection:</strong> Connection disconnection is detected within 5 seconds.</li>
-                                    <li><strong>Automatic Synchronization:</strong> When connection returns, position status is automatically synchronized.</li>
-                                    <li><strong>State Recovery:</strong> System state at crash time is preserved and can be restored.</li>
-                                    <li><strong>Manual Override:</strong> Manual intervention is provided when necessary.</li>
-                                </ul>
-                                
-                                <div class="stability-highlight">
-                                    <strong>🛡️ 100% Recovery Success:</strong> No position loss during connection interruptions.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- System Configuration & Technical Parameters Category -->
-            <div class="faq-category">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h2 class="category-title">System Configuration & Technical Parameters</h2>
-                </div>
-                
-                <div class="accordion" id="usageAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#usage1">
-                                What are Sentralyx timeframe configurations?
-                            </button>
-                        </h2>
-                        <div id="usage1" class="accordion-collapse collapse show" data-bs-parent="#usageAccordion">
-                            <div class="accordion-body">
-                                <p>Sentralyx <strong>Multi-Timeframe (MTF)</strong> analysis engine supports the following technical configurations:</p>
-                                
-                                <ul>
-                                    <li><strong>Scalping Modules (1m, 5m):</strong> Optimized for high-frequency data processing with low latency analysis.</li>
-                                    <li><strong>Intraday Modules (15m, 1h):</strong> Standard configuration for balanced signal density and trading frequency.</li>
-                                    <li><strong>Swing Modules (4h, 1d):</strong> High accuracy calculations for long-term trend analysis.</li>
-                                </ul>
-                                
-                                <p><strong>MTF Confirmation Algorithm:</strong> Mathematical correlation of signals from multiple timeframes calculates the confidence score of trading decisions.</p>
-                                
-                                <div class="stability-highlight">
-                                    <strong>📊 Technical Note:</strong> System defaults to running 15m and 1h modules synchronously.
-                                </div>
-                                
-                                <p class="text-muted mt-3"><em>These settings vary according to market conditions and are the user's responsibility.</em></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usage2">
-                                How are risk management parameters configured?
-                            </button>
-                        </h2>
-                        <div id="usage2" class="accordion-collapse collapse" data-bs-parent="#usageAccordion">
-                            <div class="accordion-body">
-                                <p>Technical literature-accepted parameter ranges for Sentralyx risk management engine:</p>
-                                
-                                <ul>
-                                    <li><strong>Stop Loss Threshold:</strong> 1.5% - 3.0% (can be automatically adjusted according to market volatility index)</li>
-                                    <li><strong>Take Profit Threshold:</strong> 3.0% - 6.0% (Risk/Reward ratio minimum 1:2)</li>
-                                    <li><strong>Position Size Algorithm:</strong> 2-5% of total capital (dynamic calculation)</li>
-                                    <li><strong>Daily Loss Limit:</strong> Daily maximum 5% capital protection limit</li>
-                                    <li><strong>Max Duration:</strong> 240 minutes (4 hours) automatic closing timer</li>
-                                </ul>
-                                
-                                <p><strong>System Validation:</strong> Risk parameters are checked by Pre-Trade Validation layer before each trade.</p>
-                                
-                                <p class="text-muted mt-3"><em>These settings vary according to market conditions and are the user's responsibility.</em></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usage3">
-                                Technical Analysis Modules Available with Sentralyx
-                            </button>
-                        </h2>
-                        <div id="usage3" class="accordion-collapse collapse" data-bs-parent="#usageAccordion">
-                            <div class="accordion-body">
-                                <p>Mathematical equivalents of technical analysis modules integrated in Sentralyx engine:</p>
-                                
-                                <p><strong>Trend Analysis Modules:</strong></p>
-                                <ul>
-                                    <li><span class="technical-term">MACD (12, 26, 9)</span> - Moving average convergence/divergence algorithm</li>
-                                    <li><span class="technical-term">Moving Averages (20, 50)</span> - Exponential and simple moving average calculation engine</li>
-                                    <li><span class="technical-term">ADX</span> - Average Directional Index trend strength measurement algorithm</li>
-                                </ul>
-                                
-                                <p><strong>Mean Reversion Modules:</strong></p>
-                                <ul>
-                                    <li><span class="technical-term">RSI (14)</span> - Relative Strength Index oscillator (30/70 threshold)</li>
-                                    <li><span class="technical-term">Bollinger Bands</span> - Standard deviation based price channel calculation</li>
-                                    <li><span class="technical-term">Stochastic Oscillator</span> - %K and %D lines momentum analysis</li>
-                                </ul>
-                                
-                                <p><strong>Volume Analysis Modules:</strong></p>
-                                <ul>
-                                    <li><span class="technical-term">Volume Profile</span> - Price/volume distribution histogram algorithm</li>
-                                    <li><span class="technical-term">On-Balance Volume</span> - Flow direction calculation engine</li>
-                                </ul>
-                                
-                                <div class="stability-highlight">
-                                    <strong>💡 Technical Note:</strong> Modules work not individually, but through signal correlation matrix.
-                                </div>
-                                
-                                <p class="text-muted mt-3"><em>These settings vary according to market conditions and are the user's responsibility.</em></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usage4">
-                                How does Sentralyx backtest engine work?
-                            </button>
-                        </h2>
-                        <div id="usage4" class="accordion-collapse collapse" data-bs-parent="#usageAccordion">
-                            <div class="accordion-body">
-                                <p>Technical validation procedure for Sentralyx backtest engine:</p>
-                                
-                                <ol>
-                                    <li><strong>Data Set Preparation:</strong> Minimum 6-month OHLCV data format (tick-by-tick supported)</li>
-                                    <li><strong>Strategy Definition:</strong> Algorithmic definition of entry/exit rules</li>
-                                    <li><strong>Parameter Optimization:</strong> Grid search algorithm for scanning parameter space</li>
-                                    <li><strong>Walk-Forward Validation:</strong> Out-of-sample test for overfitting control</li>
-                                    <li><strong>Risk Metrics:</strong> Maximum drawdown, Sharpe ratio, Sortino ratio calculations</li>
-                                </ol>
-                                
-                                <p><strong>Performance Metrics (Technical Reference):</strong></p>
-                                <ul>
-                                    <li>Win Rate: 60%+ (statistical significance threshold)</li>
-                                    <li>Profit Factor: 1.5+ (profit/loss ratio)</li>
-                                    <li>Max Drawdown: Below 20% (risk tolerance)</li>
-                                    <li>Sharpe Ratio: 1.0+ (risk-adjusted return)</li>
-                                </ul>
-                                
-                                <p class="text-muted mt-3"><em>These settings vary according to market conditions and are the user's responsibility.</em></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Mini Disclaimer -->
-                <div class="text-center mt-4">
-                    <small class="text-muted">
-                        <i class="fas fa-info-circle me-2"></i>
-                        Note: All values in this section are for example purposes. Sentralyx does not recommend any parameters.
-                    </small>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Legal Disclaimer -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="alert alert-warning" style="background: rgba(255, 193, 7, 0.1); border: 1px solid #ffc107; border-radius: 10px; padding: 20px;">
-                <div class="d-flex align-items-start">
-                    <i class="fas fa-exclamation-triangle me-3" style="color: #ffc107; font-size: 1.5rem; margin-top: 2px;"></i>
-                    <div>
-                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Legal Disclaimer</h5>
-                        <p class="mb-0 text-secondary">
-                            Sentralyx is a trading terminal and does not provide investment advisory services. The information contained herein is provided solely to explain the technical features of the software. It does not constitute investment advice. You are solely responsible for your financial decisions. Cryptocurrency markets involve high risk.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="display-5 mb-4">Still have questions?</h2>
-                <p class="lead text-secondary mb-4">
-                    For technical support and more information, reach us on Telegram.
-                </p>
-                <a href="https://t.me/sentralyx_bot" target="_blank" class="cta-button">
-                    <i class="fab fa-telegram-plane"></i>
-                    Contact on Telegram
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Legal Disclaimer -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="alert alert-warning" style="background: rgba(255, 193, 7, 0.1); border: 1px solid #ffc107; border-radius: 10px; padding: 20px;">
-                <div class="d-flex align-items-start">
-                    <i class="fas fa-exclamation-triangle me-3" style="color: #ffc107; font-size: 1.5rem; margin-top: 2px;"></i>
-                    <div>
-                        <h5 class="mb-2" style="color: #ffc107; font-weight: 600;">Legal Disclaimer</h5>
-                        <p class="mb-0 text-secondary">
-                            Sentralyx is a trading terminal and does not provide investment advisory services. The information contained herein is provided solely to explain the technical features of the software. It does not constitute investment advice. You are solely responsible for your financial decisions. Cryptocurrency markets involve high risk.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="footer-container"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/main.js"></script>
-    <script>
-        // Load header and footer
-        fetch('footer.html')
-            .then(async (response) => {
-                const buffer = await response.arrayBuffer();
-                return new TextDecoder('utf-8').decode(buffer);
-            })
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Footer loading failed:', error));
-    </script>
-</body>
-</html>
+<section class="faq-hero"><div class="container"><h1>Crypto Trading Bot and Automated Trading FAQ</h1><p class="lead">Sentralyx is a Windows trading terminal. This page explains crypto trading bot use, Binance and OKX connection, crypto backtesting, API key permissions, risk settings and licensing in clear language.</p></div></section>
+<main class="faq-section"><div class="container"><div class="faq-tools"><label for="faqSearch" class="visually-hidden">Search the FAQ</label><input id="faqSearch" class="faq-search" type="search" aria-label="Search the FAQ" placeholder="Search the FAQ"><div class="faq-filters" aria-label="FAQ categories"><button type="button" class="faq-filter active" data-category="all">All</button><button type="button" class="faq-filter" data-category="bot">Sentralyx and crypto bots</button>
+<button type="button" class="faq-filter" data-category="api">Binance, OKX and API connection</button>
+<button type="button" class="faq-filter" data-category="backtest">Strategy and backtesting</button>
+<button type="button" class="faq-filter" data-category="risk">Automated trading and risk management</button>
+<button type="button" class="faq-filter" data-category="license">Free version, license and setup</button>
+<button type="button" class="faq-filter" data-category="support">Use, support and responsibility</button></div></div><div class="accordion" id="faqAccordion"><div class="accordion-item faq-item" data-category="bot" data-text="what is sentralyx? sentralyx is a windows trading terminal built for crypto market workflows. a user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. it should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. for users searching for an ai trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings. sentralyx and crypto bots">
+<h3 class="accordion-header" id="heading-en-1"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-1" aria-expanded="false" aria-controls="faq-en-1">1. What is Sentralyx?</button></h3>
+<div id="faq-en-1" class="accordion-collapse collapse" aria-labelledby="heading-en-1" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx is a Windows trading terminal built for crypto market workflows. A user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. It should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. For users searching for an AI trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="bot" data-text="is sentralyx a crypto trading bot? sentralyx is a windows trading terminal built for crypto market workflows. a user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. it should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. for users searching for an ai trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings. sentralyx and crypto bots">
+<h3 class="accordion-header" id="heading-en-2"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-2" aria-expanded="false" aria-controls="faq-en-2">2. Is Sentralyx a crypto trading bot?</button></h3>
+<div id="faq-en-2" class="accordion-collapse collapse" aria-labelledby="heading-en-2" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx is a Windows trading terminal built for crypto market workflows. A user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. It should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. For users searching for an AI trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="bot" data-text="how does an automated trading bot work? sentralyx is a windows trading terminal built for crypto market workflows. a user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. it should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. for users searching for an ai trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings. sentralyx and crypto bots">
+<h3 class="accordion-header" id="heading-en-3"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-3" aria-expanded="false" aria-controls="faq-en-3">3. How does an automated trading bot work?</button></h3>
+<div id="faq-en-3" class="accordion-collapse collapse" aria-labelledby="heading-en-3" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx is a Windows trading terminal built for crypto market workflows. A user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. It should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. For users searching for an AI trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="bot" data-text="can algorithmic trading be done without coding? sentralyx is a windows trading terminal built for crypto market workflows. a user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. it should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. for users searching for an ai trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings. sentralyx and crypto bots">
+<h3 class="accordion-header" id="heading-en-4"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-4" aria-expanded="false" aria-controls="faq-en-4">4. Can algorithmic trading be done without coding?</button></h3>
+<div id="faq-en-4" class="accordion-collapse collapse" aria-labelledby="heading-en-4" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx is a Windows trading terminal built for crypto market workflows. A user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. It should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. For users searching for an AI trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="bot" data-text="is sentralyx an ai trading bot? sentralyx is a windows trading terminal built for crypto market workflows. a user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. it should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. for users searching for an ai trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings. sentralyx and crypto bots">
+<h3 class="accordion-header" id="heading-en-5"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-5" aria-expanded="false" aria-controls="faq-en-5">5. Is Sentralyx an AI trading bot?</button></h3>
+<div id="faq-en-5" class="accordion-collapse collapse" aria-labelledby="heading-en-5" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx is a Windows trading terminal built for crypto market workflows. A user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. It should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. For users searching for an AI trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="bot" data-text="does sentralyx provide definite buy-sell signals? sentralyx is a windows trading terminal built for crypto market workflows. a user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. it should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. for users searching for an ai trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings. sentralyx and crypto bots">
+<h3 class="accordion-header" id="heading-en-6"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-6" aria-expanded="false" aria-controls="faq-en-6">6. Does Sentralyx provide definite buy-sell signals?</button></h3>
+<div id="faq-en-6" class="accordion-collapse collapse" aria-labelledby="heading-en-6" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx is a Windows trading terminal built for crypto market workflows. A user can work with market scanning, rule-based crypto trading bot logic, algorithmic trading tests and strategy review from one interface. It should be understood as a tool for organizing rules and market data, not as a system that makes investment decisions on its own. For users searching for an AI trading bot, the practical point is that trading decisions should remain based on transparent rules, backtesting and user-defined settings.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="which exchanges does sentralyx work with? sentralyx provides tools for binance and okx market workflows. an api key lets a desktop terminal connect to an exchange account with selected permissions. if trading permission is needed, only the required api key permissions should be enabled, and withdrawal permission should stay disabled. a connection can be affected by internet access, exchange api status or local settings. to protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly. binance, okx and api connection">
+<h3 class="accordion-header" id="heading-en-7"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-7" aria-expanded="false" aria-controls="faq-en-7">7. Which exchanges does Sentralyx work with?</button></h3>
+<div id="faq-en-7" class="accordion-collapse collapse" aria-labelledby="heading-en-7" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="how is a binance or okx account connected? sentralyx provides tools for binance and okx market workflows. an api key lets a desktop terminal connect to an exchange account with selected permissions. if trading permission is needed, only the required api key permissions should be enabled, and withdrawal permission should stay disabled. a connection can be affected by internet access, exchange api status or local settings. to protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly. binance, okx and api connection">
+<h3 class="accordion-header" id="heading-en-8"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-8" aria-expanded="false" aria-controls="faq-en-8">8. How is a Binance or OKX account connected?</button></h3>
+<div id="faq-en-8" class="accordion-collapse collapse" aria-labelledby="heading-en-8" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="what is an api key? sentralyx provides tools for binance and okx market workflows. an api key lets a desktop terminal connect to an exchange account with selected permissions. if trading permission is needed, only the required api key permissions should be enabled, and withdrawal permission should stay disabled. a connection can be affected by internet access, exchange api status or local settings. to protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly. binance, okx and api connection">
+<h3 class="accordion-header" id="heading-en-9"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-9" aria-expanded="false" aria-controls="faq-en-9">9. What is an API key?</button></h3>
+<div id="faq-en-9" class="accordion-collapse collapse" aria-labelledby="heading-en-9" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="which api permissions should be enabled? sentralyx provides tools for binance and okx market workflows. an api key lets a desktop terminal connect to an exchange account with selected permissions. if trading permission is needed, only the required api key permissions should be enabled, and withdrawal permission should stay disabled. a connection can be affected by internet access, exchange api status or local settings. to protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly. binance, okx and api connection">
+<h3 class="accordion-header" id="heading-en-10"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-10" aria-expanded="false" aria-controls="faq-en-10">10. Which API permissions should be enabled?</button></h3>
+<div id="faq-en-10" class="accordion-collapse collapse" aria-labelledby="heading-en-10" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="is withdrawal permission required? sentralyx provides tools for binance and okx market workflows. an api key lets a desktop terminal connect to an exchange account with selected permissions. if trading permission is needed, only the required api key permissions should be enabled, and withdrawal permission should stay disabled. a connection can be affected by internet access, exchange api status or local settings. to protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly. binance, okx and api connection">
+<h3 class="accordion-header" id="heading-en-11"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-11" aria-expanded="false" aria-controls="faq-en-11">11. Is withdrawal permission required?</button></h3>
+<div id="faq-en-11" class="accordion-collapse collapse" aria-labelledby="heading-en-11" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="what happens if the api connection is interrupted? sentralyx provides tools for binance and okx market workflows. an api key lets a desktop terminal connect to an exchange account with selected permissions. if trading permission is needed, only the required api key permissions should be enabled, and withdrawal permission should stay disabled. a connection can be affected by internet access, exchange api status or local settings. to protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly. binance, okx and api connection">
+<h3 class="accordion-header" id="heading-en-12"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-12" aria-expanded="false" aria-controls="faq-en-12">12. What happens if the API connection is interrupted?</button></h3>
+<div id="faq-en-12" class="accordion-collapse collapse" aria-labelledby="heading-en-12" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="api" data-text="how should api keys be protected? sentralyx provides tools for binance and okx market workflows. an api key lets a desktop terminal connect to an exchange account with selected permissions. if trading permission is needed, only the required api key permissions should be enabled, and withdrawal permission should stay disabled. a connection can be affected by internet access, exchange api status or local settings. to protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly. binance, okx and api connection">
+<h3 class="accordion-header" id="heading-en-13"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-13" aria-expanded="false" aria-controls="faq-en-13">13. How should API keys be protected?</button></h3>
+<div id="faq-en-13" class="accordion-collapse collapse" aria-labelledby="heading-en-13" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx provides tools for Binance and OKX market workflows. An API key lets a desktop terminal connect to an exchange account with selected permissions. If trading permission is needed, only the required API key permissions should be enabled, and withdrawal permission should stay disabled. A connection can be affected by internet access, exchange API status or local settings. To protect keys, limit permissions, use two-factor authentication, secure the device and review exchange access regularly.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="what is backtesting? backtesting means testing a strategy on historical market data. in sentralyx, the user can define no-code trading strategy rules, review mtf analysis conditions and run crypto backtesting to compare ideas before live use. a backtest should not be treated as the same as live trading. commission, slippage, liquidity, latency and changing market behavior can affect results. more meaningful evaluation usually needs more than one trade sample and should include different market conditions. strategy and backtesting">
+<h3 class="accordion-header" id="heading-en-14"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-14" aria-expanded="false" aria-controls="faq-en-14">14. What is backtesting?</button></h3>
+<div id="faq-en-14" class="accordion-collapse collapse" aria-labelledby="heading-en-14" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="how is a crypto strategy tested with sentralyx? backtesting means testing a strategy on historical market data. in sentralyx, the user can define no-code trading strategy rules, review mtf analysis conditions and run crypto backtesting to compare ideas before live use. a backtest should not be treated as the same as live trading. commission, slippage, liquidity, latency and changing market behavior can affect results. more meaningful evaluation usually needs more than one trade sample and should include different market conditions. strategy and backtesting">
+<h3 class="accordion-header" id="heading-en-15"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-15" aria-expanded="false" aria-controls="faq-en-15">15. How is a crypto strategy tested with Sentralyx?</button></h3>
+<div id="faq-en-15" class="accordion-collapse collapse" aria-labelledby="heading-en-15" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="will a backtest result match live trading? backtesting means testing a strategy on historical market data. in sentralyx, the user can define no-code trading strategy rules, review mtf analysis conditions and run crypto backtesting to compare ideas before live use. a backtest should not be treated as the same as live trading. commission, slippage, liquidity, latency and changing market behavior can affect results. more meaningful evaluation usually needs more than one trade sample and should include different market conditions. strategy and backtesting">
+<h3 class="accordion-header" id="heading-en-16"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-16" aria-expanded="false" aria-controls="faq-en-16">16. Will a backtest result match live trading?</button></h3>
+<div id="faq-en-16" class="accordion-collapse collapse" aria-labelledby="heading-en-16" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="how do commission and slippage affect results? backtesting means testing a strategy on historical market data. in sentralyx, the user can define no-code trading strategy rules, review mtf analysis conditions and run crypto backtesting to compare ideas before live use. a backtest should not be treated as the same as live trading. commission, slippage, liquidity, latency and changing market behavior can affect results. more meaningful evaluation usually needs more than one trade sample and should include different market conditions. strategy and backtesting">
+<h3 class="accordion-header" id="heading-en-17"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-17" aria-expanded="false" aria-controls="faq-en-17">17. How do commission and slippage affect results?</button></h3>
+<div id="faq-en-17" class="accordion-collapse collapse" aria-labelledby="heading-en-17" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="what is mtf analysis? backtesting means testing a strategy on historical market data. in sentralyx, the user can define no-code trading strategy rules, review mtf analysis conditions and run crypto backtesting to compare ideas before live use. a backtest should not be treated as the same as live trading. commission, slippage, liquidity, latency and changing market behavior can affect results. more meaningful evaluation usually needs more than one trade sample and should include different market conditions. strategy and backtesting">
+<h3 class="accordion-header" id="heading-en-18"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-18" aria-expanded="false" aria-controls="faq-en-18">18. What is MTF analysis?</button></h3>
+<div id="faq-en-18" class="accordion-collapse collapse" aria-labelledby="heading-en-18" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="can a strategy be created without writing code? backtesting means testing a strategy on historical market data. in sentralyx, the user can define no-code trading strategy rules, review mtf analysis conditions and run crypto backtesting to compare ideas before live use. a backtest should not be treated as the same as live trading. commission, slippage, liquidity, latency and changing market behavior can affect results. more meaningful evaluation usually needs more than one trade sample and should include different market conditions. strategy and backtesting">
+<h3 class="accordion-header" id="heading-en-19"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-19" aria-expanded="false" aria-controls="faq-en-19">19. Can a strategy be created without writing code?</button></h3>
+<div id="faq-en-19" class="accordion-collapse collapse" aria-labelledby="heading-en-19" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="how many trades make a backtest more meaningful? backtesting means testing a strategy on historical market data. in sentralyx, the user can define no-code trading strategy rules, review mtf analysis conditions and run crypto backtesting to compare ideas before live use. a backtest should not be treated as the same as live trading. commission, slippage, liquidity, latency and changing market behavior can affect results. more meaningful evaluation usually needs more than one trade sample and should include different market conditions. strategy and backtesting">
+<h3 class="accordion-header" id="heading-en-20"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-20" aria-expanded="false" aria-controls="faq-en-20">20. How many trades make a backtest more meaningful?</button></h3>
+<div id="faq-en-20" class="accordion-collapse collapse" aria-labelledby="heading-en-20" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="backtest" data-text="will a strategy that worked in the past work in the future? backtesting means testing a strategy on historical market data. in sentralyx, the user can define no-code trading strategy rules, review mtf analysis conditions and run crypto backtesting to compare ideas before live use. a backtest should not be treated as the same as live trading. commission, slippage, liquidity, latency and changing market behavior can affect results. more meaningful evaluation usually needs more than one trade sample and should include different market conditions. strategy and backtesting">
+<h3 class="accordion-header" id="heading-en-21"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-21" aria-expanded="false" aria-controls="faq-en-21">21. Will a strategy that worked in the past work in the future?</button></h3>
+<div id="faq-en-21" class="accordion-collapse collapse" aria-labelledby="heading-en-21" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Backtesting means testing a strategy on historical market data. In Sentralyx, the user can define no-code trading strategy rules, review MTF analysis conditions and run crypto backtesting to compare ideas before live use. A backtest should not be treated as the same as live trading. Commission, slippage, liquidity, latency and changing market behavior can affect results. More meaningful evaluation usually needs more than one trade sample and should include different market conditions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="is automated trading required? automated trading is optional and crypto bot use still involves market risk. sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. the phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. the user remains responsible for trading decisions. automated trading and risk management">
+<h3 class="accordion-header" id="heading-en-22"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-22" aria-expanded="false" aria-controls="faq-en-22">22. Is automated trading required?</button></h3>
+<div id="faq-en-22" class="accordion-collapse collapse" aria-labelledby="heading-en-22" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="does using a crypto bot remove trading risk? automated trading is optional and crypto bot use still involves market risk. sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. the phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. the user remains responsible for trading decisions. automated trading and risk management">
+<h3 class="accordion-header" id="heading-en-23"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-23" aria-expanded="false" aria-controls="faq-en-23">23. Does using a crypto bot remove trading risk?</button></h3>
+<div id="faq-en-23" class="accordion-collapse collapse" aria-labelledby="heading-en-23" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="does sentralyx guarantee profit? automated trading is optional and crypto bot use still involves market risk. sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. the phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. the user remains responsible for trading decisions. automated trading and risk management">
+<h3 class="accordion-header" id="heading-en-24"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-24" aria-expanded="false" aria-controls="faq-en-24">24. Does Sentralyx guarantee profit?</button></h3>
+<div id="faq-en-24" class="accordion-collapse collapse" aria-labelledby="heading-en-24" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="how do stop-loss and target levels work? automated trading is optional and crypto bot use still involves market risk. sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. the phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. the user remains responsible for trading decisions. automated trading and risk management">
+<h3 class="accordion-header" id="heading-en-25"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-25" aria-expanded="false" aria-controls="faq-en-25">25. How do stop-loss and target levels work?</button></h3>
+<div id="faq-en-25" class="accordion-collapse collapse" aria-labelledby="heading-en-25" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="how are open positions tracked? automated trading is optional and crypto bot use still involves market risk. sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. the phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. the user remains responsible for trading decisions. automated trading and risk management">
+<h3 class="accordion-header" id="heading-en-26"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-26" aria-expanded="false" aria-controls="faq-en-26">26. How are open positions tracked?</button></h3>
+<div id="faq-en-26" class="accordion-collapse collapse" aria-labelledby="heading-en-26" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="what happens if the internet connection is interrupted? automated trading is optional and crypto bot use still involves market risk. sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. the phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. the user remains responsible for trading decisions. automated trading and risk management">
+<h3 class="accordion-header" id="heading-en-27"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-27" aria-expanded="false" aria-controls="faq-en-27">27. What happens if the internet connection is interrupted?</button></h3>
+<div id="faq-en-27" class="accordion-collapse collapse" aria-labelledby="heading-en-27" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="how many trades can be opened at the same time? automated trading is optional and crypto bot use still involves market risk. sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. the phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. the user remains responsible for trading decisions. automated trading and risk management">
+<h3 class="accordion-header" id="heading-en-28"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-28" aria-expanded="false" aria-controls="faq-en-28">28. How many trades can be opened at the same time?</button></h3>
+<div id="faq-en-28" class="accordion-collapse collapse" aria-labelledby="heading-en-28" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="risk" data-text="can users change risk settings? automated trading is optional and crypto bot use still involves market risk. sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. the phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. the user remains responsible for trading decisions. automated trading and risk management">
+<h3 class="accordion-header" id="heading-en-29"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-29" aria-expanded="false" aria-controls="faq-en-29">29. Can users change risk settings?</button></h3>
+<div id="faq-en-29" class="accordion-collapse collapse" aria-labelledby="heading-en-29" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Automated trading is optional and crypto bot use still involves market risk. Sentralyx helps users configure stop-loss levels, targets, position limits and other risk settings. Open position tracking and reports support review, but market moves, connection issues or incorrect settings may affect outcomes. The phrase automated risk management should be understood as user-configurable risk rules and controls, not as a promise that every situation will be protected. The user remains responsible for trading decisions.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="is sentralyx free? sentralyx runs on windows and may offer free, trial and full license models. for someone searching for a free crypto bot, the free version should be understood according to its actual scope; it does not mean every paid feature is included. the installer should be downloaded from the real release link, and the license file may be delivered by email, telegram or direct file transfer. a license can be device-bound, so a device change may require a reset of the device match. free version, license and setup">
+<h3 class="accordion-header" id="heading-en-30"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-30" aria-expanded="false" aria-controls="faq-en-30">30. Is Sentralyx free?</button></h3>
+<div id="faq-en-30" class="accordion-collapse collapse" aria-labelledby="heading-en-30" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="what are the differences between free, trial and full versions? sentralyx runs on windows and may offer free, trial and full license models. for someone searching for a free crypto bot, the free version should be understood according to its actual scope; it does not mean every paid feature is included. the installer should be downloaded from the real release link, and the license file may be delivered by email, telegram or direct file transfer. a license can be device-bound, so a device change may require a reset of the device match. free version, license and setup">
+<h3 class="accordion-header" id="heading-en-31"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-31" aria-expanded="false" aria-controls="faq-en-31">31. What are the differences between Free, Trial and Full versions?</button></h3>
+<div id="faq-en-31" class="accordion-collapse collapse" aria-labelledby="heading-en-31" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="which operating system does sentralyx run on? sentralyx runs on windows and may offer free, trial and full license models. for someone searching for a free crypto bot, the free version should be understood according to its actual scope; it does not mean every paid feature is included. the installer should be downloaded from the real release link, and the license file may be delivered by email, telegram or direct file transfer. a license can be device-bound, so a device change may require a reset of the device match. free version, license and setup">
+<h3 class="accordion-header" id="heading-en-32"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-32" aria-expanded="false" aria-controls="faq-en-32">32. Which operating system does Sentralyx run on?</button></h3>
+<div id="faq-en-32" class="accordion-collapse collapse" aria-labelledby="heading-en-32" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="how is sentralyx downloaded and installed? sentralyx runs on windows and may offer free, trial and full license models. for someone searching for a free crypto bot, the free version should be understood according to its actual scope; it does not mean every paid feature is included. the installer should be downloaded from the real release link, and the license file may be delivered by email, telegram or direct file transfer. a license can be device-bound, so a device change may require a reset of the device match. free version, license and setup">
+<h3 class="accordion-header" id="heading-en-33"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-33" aria-expanded="false" aria-controls="faq-en-33">33. How is Sentralyx downloaded and installed?</button></h3>
+<div id="faq-en-33" class="accordion-collapse collapse" aria-labelledby="heading-en-33" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="how is the license file received? sentralyx runs on windows and may offer free, trial and full license models. for someone searching for a free crypto bot, the free version should be understood according to its actual scope; it does not mean every paid feature is included. the installer should be downloaded from the real release link, and the license file may be delivered by email, telegram or direct file transfer. a license can be device-bound, so a device change may require a reset of the device match. free version, license and setup">
+<h3 class="accordion-header" id="heading-en-34"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-34" aria-expanded="false" aria-controls="faq-en-34">34. How is the license file received?</button></h3>
+<div id="faq-en-34" class="accordion-collapse collapse" aria-labelledby="heading-en-34" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="can the license be received by email or telegram? sentralyx runs on windows and may offer free, trial and full license models. for someone searching for a free crypto bot, the free version should be understood according to its actual scope; it does not mean every paid feature is included. the installer should be downloaded from the real release link, and the license file may be delivered by email, telegram or direct file transfer. a license can be device-bound, so a device change may require a reset of the device match. free version, license and setup">
+<h3 class="accordion-header" id="heading-en-35"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-35" aria-expanded="false" aria-controls="faq-en-35">35. Can the license be received by email or Telegram?</button></h3>
+<div id="faq-en-35" class="accordion-collapse collapse" aria-labelledby="heading-en-35" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="can the license be moved to another computer? sentralyx runs on windows and may offer free, trial and full license models. for someone searching for a free crypto bot, the free version should be understood according to its actual scope; it does not mean every paid feature is included. the installer should be downloaded from the real release link, and the license file may be delivered by email, telegram or direct file transfer. a license can be device-bound, so a device change may require a reset of the device match. free version, license and setup">
+<h3 class="accordion-header" id="heading-en-36"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-36" aria-expanded="false" aria-controls="faq-en-36">36. Can the license be moved to another computer?</button></h3>
+<div id="faq-en-36" class="accordion-collapse collapse" aria-labelledby="heading-en-36" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="what should be done when the computer or device changes? sentralyx runs on windows and may offer free, trial and full license models. for someone searching for a free crypto bot, the free version should be understood according to its actual scope; it does not mean every paid feature is included. the installer should be downloaded from the real release link, and the license file may be delivered by email, telegram or direct file transfer. a license can be device-bound, so a device change may require a reset of the device match. free version, license and setup">
+<h3 class="accordion-header" id="heading-en-37"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-37" aria-expanded="false" aria-controls="faq-en-37">37. What should be done when the computer or device changes?</button></h3>
+<div id="faq-en-37" class="accordion-collapse collapse" aria-labelledby="heading-en-37" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="license" data-text="what should be done if the license file does not arrive? sentralyx runs on windows and may offer free, trial and full license models. for someone searching for a free crypto bot, the free version should be understood according to its actual scope; it does not mean every paid feature is included. the installer should be downloaded from the real release link, and the license file may be delivered by email, telegram or direct file transfer. a license can be device-bound, so a device change may require a reset of the device match. free version, license and setup">
+<h3 class="accordion-header" id="heading-en-38"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-38" aria-expanded="false" aria-controls="faq-en-38">38. What should be done if the license file does not arrive?</button></h3>
+<div id="faq-en-38" class="accordion-collapse collapse" aria-labelledby="heading-en-38" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx runs on Windows and may offer Free, Trial and Full license models. For someone searching for a free crypto bot, the Free version should be understood according to its actual scope; it does not mean every paid feature is included. The installer should be downloaded from the real release link, and the license file may be delivered by email, Telegram or direct file transfer. A license can be device-bound, so a device change may require a reset of the device match.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="does sentralyx provide investment advice? sentralyx does not provide investment advice; users should make decisions with their own risk assessment. beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. demo or test data should not be treated as real trading results. technical support may be requested through contact or telegram channels. the product should be viewed as a windows trading terminal, and users should regularly check api permissions, device security and exchange account access. use, support and responsibility">
+<h3 class="accordion-header" id="heading-en-39"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-39" aria-expanded="false" aria-controls="faq-en-39">39. Does Sentralyx provide investment advice?</button></h3>
+<div id="faq-en-39" class="accordion-collapse collapse" aria-labelledby="heading-en-39" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="can beginners use sentralyx? sentralyx does not provide investment advice; users should make decisions with their own risk assessment. beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. demo or test data should not be treated as real trading results. technical support may be requested through contact or telegram channels. the product should be viewed as a windows trading terminal, and users should regularly check api permissions, device security and exchange account access. use, support and responsibility">
+<h3 class="accordion-header" id="heading-en-40"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-40" aria-expanded="false" aria-controls="faq-en-40">40. Can beginners use Sentralyx?</button></h3>
+<div id="faq-en-40" class="accordion-collapse collapse" aria-labelledby="heading-en-40" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="what should be done before live trading? sentralyx does not provide investment advice; users should make decisions with their own risk assessment. beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. demo or test data should not be treated as real trading results. technical support may be requested through contact or telegram channels. the product should be viewed as a windows trading terminal, and users should regularly check api permissions, device security and exchange account access. use, support and responsibility">
+<h3 class="accordion-header" id="heading-en-41"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-41" aria-expanded="false" aria-controls="faq-en-41">41. What should be done before live trading?</button></h3>
+<div id="faq-en-41" class="accordion-collapse collapse" aria-labelledby="heading-en-41" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="are demo or test data real trading results? sentralyx does not provide investment advice; users should make decisions with their own risk assessment. beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. demo or test data should not be treated as real trading results. technical support may be requested through contact or telegram channels. the product should be viewed as a windows trading terminal, and users should regularly check api permissions, device security and exchange account access. use, support and responsibility">
+<h3 class="accordion-header" id="heading-en-42"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-42" aria-expanded="false" aria-controls="faq-en-42">42. Are demo or test data real trading results?</button></h3>
+<div id="faq-en-42" class="accordion-collapse collapse" aria-labelledby="heading-en-42" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="how is technical support received? sentralyx does not provide investment advice; users should make decisions with their own risk assessment. beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. demo or test data should not be treated as real trading results. technical support may be requested through contact or telegram channels. the product should be viewed as a windows trading terminal, and users should regularly check api permissions, device security and exchange account access. use, support and responsibility">
+<h3 class="accordion-header" id="heading-en-43"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-43" aria-expanded="false" aria-controls="faq-en-43">43. How is technical support received?</button></h3>
+<div id="faq-en-43" class="accordion-collapse collapse" aria-labelledby="heading-en-43" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="does sentralyx run on mobile devices? sentralyx does not provide investment advice; users should make decisions with their own risk assessment. beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. demo or test data should not be treated as real trading results. technical support may be requested through contact or telegram channels. the product should be viewed as a windows trading terminal, and users should regularly check api permissions, device security and exchange account access. use, support and responsibility">
+<h3 class="accordion-header" id="heading-en-44"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-44" aria-expanded="false" aria-controls="faq-en-44">44. Does Sentralyx run on mobile devices?</button></h3>
+<div id="faq-en-44" class="accordion-collapse collapse" aria-labelledby="heading-en-44" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access.</p></div></div>
+</div><div class="accordion-item faq-item" data-category="support" data-text="which security precautions should the user take? sentralyx does not provide investment advice; users should make decisions with their own risk assessment. beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. demo or test data should not be treated as real trading results. technical support may be requested through contact or telegram channels. the product should be viewed as a windows trading terminal, and users should regularly check api permissions, device security and exchange account access. use, support and responsibility">
+<h3 class="accordion-header" id="heading-en-45"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-en-45" aria-expanded="false" aria-controls="faq-en-45">45. Which security precautions should the user take?</button></h3>
+<div id="faq-en-45" class="accordion-collapse collapse" aria-labelledby="heading-en-45" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sentralyx does not provide investment advice; users should make decisions with their own risk assessment. Beginners can explore the interface, but before live trading they should use demo review, limited tests, crypto backtesting and controlled risk settings. Demo or test data should not be treated as real trading results. Technical support may be requested through contact or Telegram channels. The product should be viewed as a Windows trading terminal, and users should regularly check API permissions, device security and exchange account access.</p></div></div>
+</div></div><p id="noResults" class="no-results">No matching questions found.</p><section class="faq-note"><h2>Risk and responsibility note</h2><p>Sentralyx does not provide investment advice or promise trading results. Crypto markets can move quickly; commission, slippage, liquidity, latency and user settings may change live outcomes. Before live trading, use limited tests, crypto backtesting and controlled risk settings.</p></section><section class="faq-note"><h2>Related pages</h2><div class="related-links"><a href="/en/what-is-sentralyx/">What is Sentralyx</a>
+<a href="/en/what-sentralyx-does/">What it does / does not do</a>
+<a href="/en/security/">Security</a>
+<a href="/en/scanner/">Scanner</a>
+<a href="/en/strategies/">Strategies</a>
+<a href="/en/backtest/">Backtesting</a>
+<a href="/en/pricing/">Pricing</a>
+<a href="/en/contact/">Contact</a></div></section><section class="faq-cta"><h2>Sentralyx</h2><div class="faq-cta-actions"><a href="/en/scanner/">Explore terminal features</a><a href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip">Download Windows version</a><a href="https://t.me/Sentralyx">Join the Telegram community</a></div></section></div></main>
+<div id="footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><script src="../assets/js/main.js"></script>
+<script>const searchInput=document.getElementById('faqSearch');const filterButtons=Array.from(document.querySelectorAll('.faq-filter'));const items=Array.from(document.querySelectorAll('.faq-item'));const noResults=document.getElementById('noResults');let activeCategory='all';function applyFaqFilters(){const term=searchInput.value.trim().toLowerCase();let visibleCount=0;items.forEach((item)=>{const categoryMatch=activeCategory==='all'||item.dataset.category===activeCategory;const textMatch=!term||item.dataset.text.includes(term);const show=categoryMatch&&textMatch;item.style.display=show?'':'none';if(show)visibleCount+=1;});noResults.style.display=visibleCount?'none':'block';}filterButtons.forEach((button)=>{button.addEventListener('click',()=>{activeCategory=button.dataset.category;filterButtons.forEach((item)=>item.classList.toggle('active',item===button));applyFaqFilters();});});searchInput.addEventListener('input',applyFaqFilters);fetch('footer.html').then(response=>response.text()).then(html=>{document.getElementById('footer').innerHTML=html;}).catch(()=>{});</script>
+</body></html>
