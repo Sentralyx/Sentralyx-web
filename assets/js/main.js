@@ -115,6 +115,15 @@ function getLanguageRedirectTarget(desiredLang, currentPathname) {
         '/fiyatlandirma/': { tr: '/fiyatlandirma/', en: '/en/pricing/', ru: '/ru/pricing/' },
         '/en/pricing/': { tr: '/fiyatlandirma/', en: '/en/pricing/', ru: '/ru/pricing/' },
         '/ru/pricing/': { tr: '/fiyatlandirma/', en: '/en/pricing/', ru: '/ru/pricing/' },
+        '/ne-yapar-ne-yapmaz/': { tr: '/ne-yapar-ne-yapmaz/', en: '/en/what-sentralyx-does/', ru: '/ru/chto-delaet-sentralyx/' },
+        '/en/what-sentralyx-does/': { tr: '/ne-yapar-ne-yapmaz/', en: '/en/what-sentralyx-does/', ru: '/ru/chto-delaet-sentralyx/' },
+        '/ru/chto-delaet-sentralyx/': { tr: '/ne-yapar-ne-yapmaz/', en: '/en/what-sentralyx-does/', ru: '/ru/chto-delaet-sentralyx/' },
+        '/sentralyx-nedir/': { tr: '/sentralyx-nedir/', en: '/en/what-is-sentralyx/', ru: '/ru/chto-takoe-sentralyx/' },
+        '/en/what-is-sentralyx/': { tr: '/sentralyx-nedir/', en: '/en/what-is-sentralyx/', ru: '/ru/chto-takoe-sentralyx/' },
+        '/ru/chto-takoe-sentralyx/': { tr: '/sentralyx-nedir/', en: '/en/what-is-sentralyx/', ru: '/ru/chto-takoe-sentralyx/' },
+        '/guvenlik/': { tr: '/guvenlik/', en: '/en/security/', ru: '/ru/bezopasnost/' },
+        '/en/security/': { tr: '/guvenlik/', en: '/en/security/', ru: '/ru/bezopasnost/' },
+        '/ru/bezopasnost/': { tr: '/guvenlik/', en: '/en/security/', ru: '/ru/bezopasnost/' },
     };
 
     if (exactRouteMap[pathname]) {
@@ -187,7 +196,7 @@ function applyLanguagePreference() {
         const currentLang = getCurrentLanguageFromPath(pathname);
         const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
 
-        // URL prefix (/en/, /ru/) is authoritative Ã¢â‚¬â€ user picked that locale in the nav.
+        // URL prefix (/en/, /ru/) is authoritative — user picked that locale in the nav.
         if (pathname.startsWith('/en/') || pathname.startsWith('/ru/')) {
             localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang);
             return;

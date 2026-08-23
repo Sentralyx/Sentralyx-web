@@ -722,7 +722,7 @@
 
     <script>
         // Load footer from components/footer.html
-        fetch('../../components/footer.html')
+        fetch('../footer.html')
             .then(async (response) => {
                 const buffer = await response.arrayBuffer();
                 return new TextDecoder('utf-8').decode(buffer);
