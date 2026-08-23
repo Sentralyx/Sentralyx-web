@@ -145,6 +145,9 @@ function getLanguageRedirectTarget(desiredLang, currentPathname) {
             '/contact/',
             '/partner/',
             '/technology.html',
+            '/what-is-sentralyx/',
+            '/what-sentralyx-does/',
+            '/security/',
         ]),
         ru: new Set([
             '/',
@@ -162,6 +165,9 @@ function getLanguageRedirectTarget(desiredLang, currentPathname) {
             '/contact/',
             '/partner/',
             '/technology.html',
+            '/chto-takoe-sentralyx/',
+            '/chto-delaet-sentralyx/',
+            '/bezopasnost/',
         ]),
     };
 
@@ -292,12 +298,14 @@ async function loadHeader() {
             currentLang === 'ru' ? 'header-ru.html' :
             'header-tr.html';
 
-        // Determine the correct path to header.html based on current page depth
-        const currentPath = window.location.pathname;
-        const pathDepth = currentPath.split('/').length - 1;
-        const relativePath = '../'.repeat(pathDepth) + 'assets/includes/' + headerFile;
+        // Use absolute path for header file
+        const headerPath = '/assets/includes/' + headerFile;
         
-        const response = await fetch(relativePath);
+        const response = await fetch(headerPath, {
+            headers: {
+                'Content-Type': 'text/html; charset=utf-8'
+            }
+        });
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
