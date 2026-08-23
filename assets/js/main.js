@@ -143,6 +143,7 @@ function getLanguageRedirectTarget(desiredLang, currentPathname) {
             '/indicators/',
             '/settings/',
             '/contact/',
+            '/partner/',
             '/technology.html',
         ]),
         ru: new Set([
@@ -159,6 +160,7 @@ function getLanguageRedirectTarget(desiredLang, currentPathname) {
             '/indicators/',
             '/settings/',
             '/contact/',
+            '/partner/',
             '/technology.html',
         ]),
     };
