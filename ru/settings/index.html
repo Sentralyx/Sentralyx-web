@@ -15,6 +15,7 @@
     <meta property="og:url" content="https://www.sentralyx.com/ru/settings/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png">
+    <meta name="twitter:card" content="summary">
 <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -350,7 +351,6 @@
         }
         
         .container {
-            max-width: 100%;
             padding-left: 15px;
             padding-right: 15px;
         }
@@ -364,14 +364,34 @@
             }
         }
     </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://www.sentralyx.com/ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Системные настройки",
+      "item": "https://www.sentralyx.com/ru/settings/"
+    }
+  ]
+}
+    </script>
 </head>
 <body>
     <header id="main-header"></header>
     
     <main class="settings-container">
         <div class="text-center mb-4">
-            <h1 class="text-main">Trading Sistemi Yapılandırması</h1>
-            <p class="text-secondary">Optimum performans için API entegrasyonu ve otomatik risk yönetimi ayarları</p>
+            <h1 class="text-main">Настройка торговой системы</h1>
+            <p class="text-secondary">Интеграция API и настройки автоматического управления рисками для оптимальной работы</p>
         </div>
         <h2 class="section-title">
             <i class="fas fa-cog"></i>Настройки
@@ -381,14 +401,14 @@
         <div class="settings-card">
             <div class="card-header-custom">
                 <h5 class="card-title">
-                    <i class="fas fa-globe"></i>Genel
+                    <i class="fas fa-globe"></i>Общие
                 </h5>
             </div>
             
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Tema</label>
+                        <label class="form-label">Тема</label>
                         <select class="form-select">
                             <option>dark</option>
                             <option>light</option>
@@ -397,7 +417,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Log Seviyesi</label>
+                        <label class="form-label">Уровень логов</label>
                         <select class="form-select">
                             <option>DEBUG</option>
                             <option>INFO</option>
@@ -408,9 +428,9 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">PnL Gösterimi</label>
+                        <label class="form-label">Отображение PnL</label>
                         <select class="form-select">
-                            <option>PARITE</option>
+                            <option>ПАРА</option>
                             <option>USDT</option>
                         </select>
                     </div>
@@ -422,21 +442,21 @@
         <div class="settings-card">
             <div class="card-header-custom">
                 <h5 class="card-title">
-                    <i class="fas fa-search"></i>Tarayıcı
+                    <i class="fas fa-search"></i>Сканер
                 </h5>
             </div>
             
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Сканирование Aralığı (sn)</label>
+                        <label class="form-label">Интервал сканирования (сек)</label>
                         <input type="number" class="form-control" value="5" min="1" max="300" />
-                        <div class="info-text">Сканированиеlar arasındaki bekleme süresi</div>
+                        <div class="info-text">Время ожидания между сканированиями</div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Диапазон времени</label>
+                        <label class="form-label">Таймфрейм</label>
                         <select class="form-select">
                             <option>1m</option>
                             <option>5m</option>
@@ -449,9 +469,9 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Coin Başına Gecikme (sn)</label>
+                        <label class="form-label">Задержка на монету (сек)</label>
                         <input type="number" class="form-control" value="0.5" min="0.1" max="10" step="0.1" />
-                        <div class="info-text">Her coin sorgusu arasında bekleme süresi</div>
+                        <div class="info-text">Время ожидания между запросами по каждой монете</div>
                     </div>
                 </div>
             </div>
@@ -463,11 +483,11 @@
                         <div class="radio-group">
                             <div class="radio-option">
                                 <input type="radio" name="signalTiming" id="candleClose" checked />
-                                <label for="candleClose">Mum Kapanışı (Önerilen)</label>
+                                <label for="candleClose">Закрытие свечи (рекомендуется)</label>
                             </div>
                             <div class="radio-option">
                                 <input type="radio" name="signalTiming" id="instantPrice" />
-                                <label for="instantPrice">Anlık Fiyat</label>
+                                <label for="instantPrice">Текущая цена</label>
                             </div>
                         </div>
                     </div>
@@ -488,9 +508,9 @@
                     <div class="form-group">
 	                        <label class="form-label">Активная стратегия</label>
 	                        <select class="form-select">
-	                            <option value="Majority Consensus">Çoğunluk Подтверждениеı</option>
-	                            <option value="Scoring System">Skorlama Sistemi</option>
-	                            <option value="Full Consensus">Tam Mutabakat</option>
+	                            <option value="Majority Consensus">Консенсус большинства</option>
+	                            <option value="Scoring System">Система баллов</option>
+	                            <option value="Full Consensus">Полный консенсус</option>
 	                        </select>
 	                    </div>
                 </div>
@@ -501,19 +521,19 @@
         <div class="settings-card">
             <div class="card-header-custom">
                 <h5 class="card-title">
-                    <i class="fas fa-exchange-alt"></i>Trade
+                    <i class="fas fa-exchange-alt"></i>Торговля
                     <button class="help-button" onclick="showHelp('trade')">
-                        <i class="fas fa-question-circle me-1"></i>Yardım
+                        <i class="fas fa-question-circle me-1"></i>Помощь
                     </button>
                 </h5>
             </div>
             
-            <div class="info-text mb-3">İşlemlerin nasıl açılıp kapanacağını anlatan kısa açıklama.</div>
+            <div class="info-text mb-3">Краткое описание того, как открываются и закрываются сделки.</div>
             
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Emir Типi</label>
+                        <label class="form-label">Тип ордера</label>
                         <select class="form-select">
                             <option>market</option>
                             <option>limit</option>
@@ -531,7 +551,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Ters Sinyal Gecikmesi (saniye)</label>
+                        <label class="form-label">Задержка обратного сигнала (секунды)</label>
                         <input type="number" class="form-control" value="5" min="0" max="300" />
                     </div>
                 </div>
@@ -540,7 +560,7 @@
             <div class="row mt-3">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">İşlem Sonrası Bekleme (dk)</label>
+                        <label class="form-label">Пауза после сделки (мин)</label>
                         <input type="number" class="form-control" value="10" min="0" max="1440" />
                     </div>
                 </div>
@@ -551,14 +571,14 @@
         <div class="settings-card">
             <div class="card-header-custom">
                 <h5 class="card-title">
-                    <i class="fas fa-shield-alt"></i>Risk
+                    <i class="fas fa-shield-alt"></i>Риск
                     <button class="help-button" onclick="showHelp('risk')">
-                        <i class="fas fa-question-circle me-1"></i>Yardım
+                        <i class="fas fa-question-circle me-1"></i>Помощь
                     </button>
                 </h5>
             </div>
             
-            <div class="info-text mb-3">Risk ve sermaye yönetimi hakkında kısa açıklama.</div>
+            <div class="info-text mb-3">Краткое описание управления рисками и капиталом.</div>
             
             <h6 class="text-main mb-3">Риск позиции</h6>
             <div class="row">
@@ -576,17 +596,17 @@
                 </div>
             </div>
             
-            <h6 class="text-main mb-3 mt-4">Çıkış & Koruma</h6>
+            <h6 class="text-main mb-3 mt-4">Выход и защита</h6>
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label class="form-label">Kısmi TP Tetik (%)</label>
+                        <label class="form-label">Триггер частичного TP (%)</label>
                         <input type="number" class="form-control" value="2.0" min="0.1" max="50" step="0.1" />
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label class="form-label">Kısmi Satış Oranı (%)</label>
+                        <label class="form-label">Доля частичной продажи (%)</label>
                         <input type="number" class="form-control" value="50" min="10" max="90" step="10" />
                     </div>
                 </div>
@@ -604,11 +624,11 @@
                 </div>
             </div>
             
-            <h6 class="text-main mb-3 mt-4">Limitler</h6>
+            <h6 class="text-main mb-3 mt-4">Лимиты</h6>
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label class="form-label">Günlük Zarar (USDT)</label>
+                        <label class="form-label">Дневной лимит убытка (USDT)</label>
                         <input type="number" class="form-control" value="100" min="10" max="10000" />
                     </div>
                 </div>
@@ -620,23 +640,23 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label class="form-label">Max Süre (dk)</label>
+                        <label class="form-label">Макс. длительность (мин)</label>
                         <input type="number" class="form-control" value="1440" min="60" max="10080" />
                     </div>
                 </div>
             </div>
             
-            <h6 class="text-main mb-3 mt-4">Sermaye Yönetimi</h6>
+            <h6 class="text-main mb-3 mt-4">Управление капиталом</h6>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Manuel Tutar (USDT)</label>
+                        <label class="form-label">Фиксированная сумма (USDT)</label>
                         <input type="number" class="form-control" value="100" min="10" max="10000" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Kullanılabilir Bakiye (%)</label>
+                        <label class="form-label">Доступный баланс (%)</label>
                         <input type="number" class="form-control" value="80" min="10" max="100" />
                     </div>
                 </div>
@@ -649,24 +669,24 @@
                 <h5 class="card-title">
                     <i class="fas fa-key"></i>API
                     <button class="help-button" onclick="showHelp('api')">
-                        <i class="fas fa-question-circle me-1"></i>Yardım
+                        <i class="fas fa-question-circle me-1"></i>Помощь
                     </button>
                 </h5>
             </div>
             
-            <div class="info-text mb-3">Биржа bağlantısı ve işlem modu hakkında kısa açıklama.</div>
+            <div class="info-text mb-3">Краткое описание подключения к бирже и режима торговли.</div>
             
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">API Key</label>
-                        <input type="password" class="form-control" placeholder="API anahtarınızı girin" />
+                        <input type="password" class="form-control" placeholder="Введите ваш API-ключ" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">API Secret</label>
-                        <input type="password" class="form-control" placeholder="Введите API secret" />
+                        <input type="password" class="form-control" placeholder="Введите ваш API secret" />
                     </div>
                 </div>
             </div>
@@ -675,13 +695,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">API Token</label>
-                        <input type="password" class="form-control" placeholder="API token'ınızı girin" />
+                        <input type="password" class="form-control" placeholder="Введите ваш API-токен" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">OKX Passphrase</label>
-                        <input type="password" class="form-control" placeholder="OKX passphrase'ınızı girin" />
+                        <input type="password" class="form-control" placeholder="Введите вашу OKX passphrase" />
                     </div>
                 </div>
             </div>
@@ -689,7 +709,7 @@
             <div class="row mt-4">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Çalışma Modu</label>
+                        <label class="form-label">Режим работы</label>
                         <div class="radio-group">
                             <div class="radio-option">
                                 <input type="radio" name="workMode" id="realMode" />
@@ -713,7 +733,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Kaldıraç</label>
+                        <label class="form-label">Кредитное плечо</label>
                         <select class="form-select">
                             <option>1x</option>
                             <option>2x</option>
@@ -726,7 +746,7 @@
                 </div>
             </div>
             
-            <h6 class="text-main mb-3 mt-4">İşlem Modu</h6>
+            <h6 class="text-main mb-3 mt-4">Режим торговли</h6>
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -750,11 +770,11 @@
             
             <!-- OKX Specific Settings -->
             <div class="okx-settings" id="okxSettings" style="display: none;">
-                <h6>OKX Настройкиı</h6>
+                <h6>Настройки OKX</h6>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="form-label">Sözleşme Türü</label>
+                            <label class="form-label">Тип контракта</label>
                             <select class="form-select">
                                 <option>SWAP</option>
                                 <option>FUTURES</option>
@@ -772,7 +792,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="form-label">Marjin Modu</label>
+                            <label class="form-label">Режим маржи</label>
                             <select class="form-select">
                                 <option>isolated</option>
                                 <option>cross</option>
@@ -783,7 +803,7 @@
                 <div class="row mt-3">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="form-label">İşlem Marjin Türü</label>
+                            <label class="form-label">Тип маржи для сделок</label>
                             <select class="form-select">
                                 <option>isolated</option>
                                 <option>cross</option>
@@ -792,7 +812,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="form-label">Zarar Стоп / Kâr Al Aktif</label>
+                            <label class="form-label">Stop Loss / Take Profit включены</label>
                             <label class="toggle-switch">
                                 <input type="checkbox" checked />
                                 <span class="toggle-slider"></span>
@@ -801,7 +821,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="form-label">Manuel Закрытьma Davranışı</label>
+                            <label class="form-label">Поведение при ручном закрытии</label>
                             <select class="form-select">
                                 <option>fail_fast</option>
                                 <option>cancel_then_close</option>
@@ -816,26 +836,26 @@
         <div class="settings-card">
             <div class="card-header-custom">
                 <h5 class="card-title">
-                    <i class="fas fa-file-alt"></i>Raporlar
+                    <i class="fas fa-file-alt"></i>Отчёты
                 </h5>
             </div>
             
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Log Klasörü</label>
+                        <label class="form-label">Папка логов</label>
                         <input type="text" class="form-control" value="./logs" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">CSV Dosyası</label>
+                        <label class="form-label">CSV-файл</label>
                         <input type="text" class="form-control" value="./reports" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Log Saklama Süresi (gün)</label>
+                        <label class="form-label">Срок хранения логов (дни)</label>
                         <input type="number" class="form-control" value="30" min="1" max="365" />
                     </div>
                 </div>
@@ -853,7 +873,7 @@
     <!-- Notification -->
     <div class="notification success" id="notification">
         <i class="fas fa-check-circle"></i>
-        <span id="notificationText">✓ Настройки başarıyla kaydedildi</span>
+        <span id="notificationText">✓ Настройки успешно сохранены</span>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -874,7 +894,7 @@
             // Show loading state
             const saveButton = document.querySelector('.btn-save');
             const originalText = saveButton.innerHTML;
-            saveButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Kaydediliyor...';
+            saveButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Сохранение...';
             saveButton.disabled = true;
             
             // Simulate save process
@@ -884,7 +904,7 @@
                 saveButton.disabled = false;
                 
                 // Show notification
-                showNotification('✓ Настройки başarıyla kaydedildi');
+                showNotification('✓ Настройки успешно сохранены');
             }, 1500);
         }
 
@@ -903,12 +923,12 @@
 
         function showHelp(section) {
             const helpMessages = {
-                trade: 'İşlem ayarları, pozisyonların nasıl açılacağını ve kapanacağını belirler. Emir tipi (market/limit), ters sinyalde kapatma ve zamanlama ayarlarını buradan yapabilirsiniz.',
-                risk: 'Risk yönetimi ayarları, kayıplarınızı korumak için önlemler belirler. Stop Loss, Take Profit ve pozisyon limitleri gibi önemli güvenlik ayarlarını içerir.',
-                api: 'API ayarları, borsa ile bağlantı kurmak için gereklidir. Güvenliğiniz için API anahtarlarınızı doğru girdiğinizden emin olun. Demo modunda test etmenizi öneririz.'
+                trade: 'Торговые настройки определяют, как открываются и закрываются позиции. Здесь можно задать тип ордера (market/limit), закрытие при обратном сигнале и параметры времени.',
+                risk: 'Настройки управления рисками задают меры защиты от убытков. Они включают важные параметры безопасности: Stop Loss, Take Profit и лимиты позиций.',
+                api: 'Настройки API необходимы для подключения к бирже. В целях безопасности убедитесь, что API-ключи введены правильно. Рекомендуем сначала протестировать в демо-режиме.'
             };
             
-            showNotification(helpMessages[section] || 'Yardım içeriı hazırlanıyor...');
+            showNotification(helpMessages[section] || 'Справка готовится...');
         }
 
         // Initialize radio button interactions
