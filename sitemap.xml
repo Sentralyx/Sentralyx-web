@@ -666,4 +666,80 @@
 
   </url>
 
+  <!-- Partner Pages -->
+
+  <url>
+
+    <loc>https://www.sentralyx.com/partner/</loc>
+
+    <lastmod>2026-08-23</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.60</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/partner/</loc>
+
+    <lastmod>2026-08-23</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.60</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/partner/</loc>
+
+    <lastmod>2026-08-23</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.60</priority>
+
+  </url>
+
+  <!-- Refund Policy Pages -->
+
+  <url>
+
+    <loc>https://www.sentralyx.com/iade-politikasi.html</loc>
+
+    <lastmod>2026-08-25</lastmod>
+
+    <changefreq>yearly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/refund-policy.html</loc>
+
+    <lastmod>2026-08-25</lastmod>
+
+    <changefreq>yearly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/politika-vozvrata.html</loc>
+
+    <lastmod>2026-08-25</lastmod>
+
+    <changefreq>yearly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
 </urlset>

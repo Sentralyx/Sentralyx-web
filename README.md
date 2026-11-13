@@ -1,1 +1,1 @@
-# Sentalyx-web
+# Sentralyx-web
