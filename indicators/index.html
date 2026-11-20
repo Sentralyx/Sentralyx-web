@@ -285,6 +285,34 @@
         </div>
     </main>
 
+    <section class="seo-content">
+        <div class="container">
+            <div class="seo-inner">
+                <h2>İndikatörler ve sinyal kuralları</h2>
+                <p>Sentralyx'te 30 indikatör için AL/SAT kurallarını ve parametreleri sen belirlersin. Her indikatör, ayarladığın kurala göre BUY, SELL ya da NONE sonucu üretir; strateji bu sonuçları birleştirerek sinyal oluşturur.</p>
+                <h3>İndikatör düzenleyici</h3>
+                <p>Her indikatörün parametrelerini ve hangi koşulda AL ya da SAT sayılacağını düzenleyebilirsin. Strateji sihirbazı ile indikatör seçerek yeni bir strateji de oluşturabilirsin.</p>
+                <h3>Strateji tipleri</h3>
+                <ul>
+                    <li>Puanlama Sistemi: Her indikatöre ağırlık verilir; toplam puan eşiği geçerse sinyal oluşur.</li>
+                    <li>Çoğunluk Oylaması: İndikatörlerin çoğunluğu aynı yönde sinyal verirse tetiklenir.</li>
+                    <li>Güçlü Çoğunluk: Daha yüksek eşikli çoğunluk.</li>
+                    <li>Tam Uyum: Tüm indikatörler aynı yönde sinyal vermelidir.</li>
+                </ul>
+                <h3>Filtreler</h3>
+                <ul>
+                    <li>Trend gücü (ADX)</li>
+                    <li>Volatilite (ATR)</li>
+                    <li>Piyasa rejimi: her koşul, trend, yatay, volatil</li>
+                    <li>Üst zaman dilimi onayı (MTF)</li>
+                    <li>Alt zaman dilimi onayı (LTF)</li>
+                </ul>
+                <h3>Sinyal neden oluşmadı?</h3>
+                <p>Tarayıcıdaki sinyal tablosu, sinyalin neden oluşmadığını da gösterir. Böylece hangi kuralın ya da filtrenin sinyali engellediğini görebilirsin.</p>
+                <p class="seo-note">Kuralları gerçek moda geçmeden önce backtest ve sanal modda dene. Backtest sonucu gelecekte aynı sonucu garanti etmez.</p>
+            </div>
+        </div>
+    </section>
     <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>

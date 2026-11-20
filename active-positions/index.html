@@ -681,6 +681,36 @@
         });
     </script>
 
+    <section class="seo-content">
+        <div class="container">
+            <div class="seo-inner">
+                <h2>Açık pozisyon yönetimi nasıl çalışır?</h2>
+                <p>Sinyal geldiğinde Sentralyx, ayarlarına göre sanal ya da gerçek modda pozisyon açar ve açık pozisyonları bu ekranda listeler. Gerçek modda stop (SL) ve kâr al (TP) emirleri pozisyon açılınca borsaya da gönderilir.</p>
+                <h3>Pozisyon işlemleri</h3>
+                <ul>
+                    <li>Kapat: Pozisyonun tamamını kapatır.</li>
+                    <li>%50: Pozisyonun yarısını kapatır.</li>
+                    <li>SL'yi piyasaya taşı ve limit SL</li>
+                    <li>TP ayarlama</li>
+                    <li>SL'yi giriş fiyatına taşı (başa baş)</li>
+                    <li>Tümünü kapat</li>
+                </ul>
+                <h3>Kâr koruma</h3>
+                <p>İzleyen stop (trailing) ile stop seviyesi fiyatın arkasından taşınır. Başa baş (break-even) ayarı ile stop seviyesi giriş fiyatına çekilir.</p>
+                <h3>Risk sınırları</h3>
+                <p>Günlük zarar limiti, maksimum açık pozisyon sayısı ve maksimum pozisyon süresi ayarlardan belirlenir. Süresi dolan pozisyon otomatik kapatılır.</p>
+                <h3>Yalnızca kendi pozisyonları</h3>
+                <p>Sentralyx yalnızca kendi açtığı pozisyonları yönetir. Borsada başka bir bota ya da sana ait bir pozisyon varsa ona dokunmaz.</p>
+                <h3>İşlem modları</h3>
+                <ul>
+                    <li>Sadece spot</li>
+                    <li>Hibrit: BUY spotta, SELL vadelide</li>
+                    <li>Tam vadeli; kaldıraç seçenekleri 1x, 2x, 3x, 5x, 10x ve 20x</li>
+                </ul>
+                <p>Pozisyonlar her modda takip edilmeye devam eder. Açık gerçek pozisyon varken işlem tipi ve borsa değiştirilemez; sanal ve gerçek mod arasında geçiş ise serbesttir.</p>
+            </div>
+        </div>
+    </section>
     <div id="footer-container"></div>
 
     <script>

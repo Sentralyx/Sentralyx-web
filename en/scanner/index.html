@@ -471,7 +471,8 @@
                             <div class="mb-3">
 	                                <label class="form-label text-main small">Strategy</label>
 	                                <select class="form-control form-control-custom">
-	                                    <option value="Majority Consensus">Majority Consensus</option>
+	                                    <option value="Majority Consensus">Majority Vote</option>
+	                                    <option value="Strong Majority">Strong Majority</option>
 	                                    <option value="Scoring System">Scoring System</option>
 	                                    <option value="Full Consensus">Full Consensus</option>
 	                                </select>
@@ -593,7 +594,7 @@
                     <div class="mt-3 p-2 bg-dark bg-opacity-25 rounded">
                         <div class="small text-secondary">
                             <i class="fas fa-info-circle me-1"></i>
-                            Active Strategy: Majority Consensus
+                            Active Strategy: Majority Vote
                         </div>
                     </div>
                 </div>
@@ -661,17 +662,21 @@
                         <div id="strategies" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
                             <div class="accordion-body">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <h6 class="text-accent-blue">Majority Consensus</h6>
-                                        <p class="text-secondary small">Majority voting system. Triggers when 2 of 3 indicators signal in the same direction.</p>
-                                    </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6 col-lg-3">
                                         <h6 class="text-accent-blue">Scoring System</h6>
-                                        <p class="text-secondary small">Scoring system. Each indicator is assigned a weight; a signal is generated when the total score exceeds the threshold.</p>
+                                        <p class="text-secondary small">Each indicator is weighted; a signal forms when the total score passes the threshold.</p>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6 col-lg-3">
+                                        <h6 class="text-accent-blue">Majority Vote</h6>
+                                        <p class="text-secondary small">Triggers when most indicators signal in the same direction (e.g. 2 of 3).</p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h6 class="text-accent-blue">Strong Majority</h6>
+                                        <p class="text-secondary small">A higher-threshold version of the majority vote; fewer but more selective signals.</p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
                                         <h6 class="text-accent-blue">Full Consensus</h6>
-                                        <p class="text-secondary small">Full consensus. All indicators must signal in the same direction. Highest accuracy.</p>
+                                        <p class="text-secondary small">All indicators must signal in the same direction. The strictest rule; signal count is low.</p>
                                     </div>
                                 </div>
                             </div>
@@ -733,6 +738,26 @@
         }
     </script>
 
+    <section class="seo-content">
+        <div class="container">
+            <div class="seo-inner">
+                <h2>How does the scanner work?</h2>
+                <p>The scanner goes through the coin list in rounds on the timeframe you choose. The default list has 347 coins: pairs available on both Binance spot and USDT futures, stablecoins excluded.</p>
+                <h3>Scan speed</h3>
+                <p>Speed depends on the number of coins and the wait settings. With 347 coins, the second and later rounds take about 100 seconds. Candle data is fetched from the exchange at intervals and cached on your computer; no continuous live data stream is used.</p>
+                <h3>Signal table</h3>
+                <p>For every coin it shows indicator results, the BUY/SELL/NONE signal and, if no signal formed, the reason why.</p>
+                <h3>Filters</h3>
+                <ul>
+                    <li>Higher timeframe (MTF) and lower timeframe (LTF) confirmation</li>
+                    <li>Trend strength (ADX) and volatility (ATR)</li>
+                    <li>Market regime: any, trend, sideways, volatile</li>
+                </ul>
+                <h3>From signal to position</h3>
+                <p>When a signal arrives, a position can be opened automatically in virtual or real mode according to your settings. The Free version does not open positions; it only scans and analyzes.</p>
+            </div>
+        </div>
+    </section>
     <div id="footer-container"></div>
 
     <script>

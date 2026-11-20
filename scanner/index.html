@@ -471,9 +471,10 @@
                             <div class="mb-3">
 	                                <label class="form-label text-main small">Strateji</label>
 	                                <select class="form-control form-control-custom">
-	                                    <option value="Majority Consensus">Çoğunluk Onayı</option>
-	                                    <option value="Scoring System">Skorlama Sistemi</option>
-	                                    <option value="Full Consensus">Tam Mutabakat</option>
+	                                    <option value="Majority Consensus">Çoğunluk Oylaması</option>
+	                                    <option value="Strong Majority">Güçlü Çoğunluk</option>
+	                                    <option value="Scoring System">Puanlama Sistemi</option>
+	                                    <option value="Full Consensus">Tam Uyum</option>
 	                                </select>
                             </div>
                             
@@ -593,7 +594,7 @@
                     <div class="mt-3 p-2 bg-dark bg-opacity-25 rounded">
                         <div class="small text-secondary">
                             <i class="fas fa-info-circle me-1"></i>
-                            Aktif Strateji: Çoğunluk Onayı
+                            Aktif Strateji: Çoğunluk Oylaması
                         </div>
                     </div>
                 </div>
@@ -661,17 +662,21 @@
                         <div id="strategies" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
                             <div class="accordion-body">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <h6 class="text-accent-blue">Çoğunluk Onayı</h6>
-                                        <p class="text-secondary small">Çoğunluk oylaması sistemi. 3 indikatörden 2'si aynı yönde sinyal verirse tetiklenir.</p>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h6 class="text-accent-blue">Puanlama Sistemi</h6>
+                                        <p class="text-secondary small">Her indikatöre ağırlık verilir; toplam puan eşik değerini geçerse sinyal oluşur.</p>
                                     </div>
-                                    <div class="col-md-4">
-                                        <h6 class="text-accent-blue">Skorlama Sistemi</h6>
-                                        <p class="text-secondary small">Puanlama sistemi. Her indikatöre ağırlık verilir, toplam puan eşik değerini geçerse sinyal.</p>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h6 class="text-accent-blue">Çoğunluk Oylaması</h6>
+                                        <p class="text-secondary small">İndikatörlerin çoğunluğu aynı yönde sinyal verirse tetiklenir (ör. 3 indikatörden 2'si).</p>
                                     </div>
-                                    <div class="col-md-4">
-                                        <h6 class="text-accent-blue">Tam Mutabakat</h6>
-                                        <p class="text-secondary small">Tam konsensüs. Tüm indikatörler aynı yönde sinyal vermelidir. En yüksek doğruluk.</p>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h6 class="text-accent-blue">Güçlü Çoğunluk</h6>
+                                        <p class="text-secondary small">Çoğunluk oylamasının daha yüksek eşikli hâli; daha az ama daha seçici sinyal.</p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h6 class="text-accent-blue">Tam Uyum</h6>
+                                        <p class="text-secondary small">Tüm indikatörler aynı yönde sinyal vermelidir. En katı kuraldır; sinyal sayısı düşüktür.</p>
                                     </div>
                                 </div>
                             </div>
@@ -733,6 +738,26 @@
         }
     </script>
 
+    <section class="seo-content">
+        <div class="container">
+            <div class="seo-inner">
+                <h2>Tarayıcı nasıl çalışır?</h2>
+                <p>Tarayıcı, coin listesini seçtiğin periyotta tur tur tarar. Varsayılan liste 347 coindir: Binance spot ve USDT vadelide ortak olan coinler, stabil coinler hariç.</p>
+                <h3>Tarama hızı</h3>
+                <p>Hız, coin sayısına ve bekleme ayarlarına bağlıdır. 347 coinde ikinci ve sonraki turlar yaklaşık 100 saniye sürer. Mum verisi borsadan belirli aralıklarla çekilir ve bilgisayarında önbelleklenir; sürekli canlı veri akışı kullanılmaz.</p>
+                <h3>Sinyal tablosu</h3>
+                <p>Her coin için indikatör sonuçları, BUY/SELL/NONE sinyali ve sinyal oluşmadıysa sebebi gösterilir.</p>
+                <h3>Filtreler</h3>
+                <ul>
+                    <li>Üst zaman dilimi onayı (MTF) ve alt zaman dilimi onayı (LTF)</li>
+                    <li>Trend gücü (ADX) ve volatilite (ATR)</li>
+                    <li>Piyasa rejimi: her koşul, trend, yatay, volatil</li>
+                </ul>
+                <h3>Sinyalden pozisyona</h3>
+                <p>Sinyal geldiğinde, ayarlarına göre sanal ya da gerçek modda otomatik pozisyon açılabilir. Free sürümde pozisyon açılmaz; yalnızca tarama ve analiz yapılır.</p>
+            </div>
+        </div>
+    </section>
     <div id="footer-container"></div>
 
     <script>

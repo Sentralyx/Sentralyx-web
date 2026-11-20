@@ -274,6 +274,34 @@
         </div>
     </main>
 
+    <section class="seo-content">
+        <div class="container">
+            <div class="seo-inner">
+                <h2>Indicators and signal rules</h2>
+                <p>In Sentralyx you define BUY/SELL rules and parameters for 30 indicators. Each indicator produces a BUY, SELL or NONE result based on your rule, and the strategy combines these results into a signal.</p>
+                <h3>Indicator editor</h3>
+                <p>You can edit each indicator's parameters and the conditions that count as BUY or SELL. With the strategy wizard you can also create a new strategy by selecting indicators.</p>
+                <h3>Strategy types</h3>
+                <ul>
+                    <li>Scoring System: each indicator is weighted; a signal forms when the total score passes the threshold.</li>
+                    <li>Majority Vote: triggers when most indicators signal in the same direction.</li>
+                    <li>Strong Majority: a majority with a higher threshold.</li>
+                    <li>Full Consensus: all indicators must signal in the same direction.</li>
+                </ul>
+                <h3>Filters</h3>
+                <ul>
+                    <li>Trend strength (ADX)</li>
+                    <li>Volatility (ATR)</li>
+                    <li>Market regime: any, trend, sideways, volatile</li>
+                    <li>Higher timeframe confirmation (MTF)</li>
+                    <li>Lower timeframe confirmation (LTF)</li>
+                </ul>
+                <h3>Why did no signal form?</h3>
+                <p>The signal table in the scanner also shows why a signal did not form, so you can see which rule or filter blocked it.</p>
+                <p class="seo-note">Test your rules with backtests and in virtual mode before switching to real mode. A backtest result does not guarantee the same result in the future.</p>
+            </div>
+        </div>
+    </section>
     <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/main.js"></script>

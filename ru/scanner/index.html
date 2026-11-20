@@ -471,9 +471,10 @@
                             <div class="mb-3">
 	                                <label class="form-label text-main small">Стратегия</label>
 	                                <select class="form-control form-control-custom">
-	                                    <option value="Majority Consensus">Согласие большинства</option>
+	                                    <option value="Majority Consensus">Голосование большинством</option>
+	                                    <option value="Strong Majority">Квалифицированное большинство</option>
 	                                    <option value="Scoring System">Балльная система</option>
-	                                    <option value="Full Consensus">Полное согласие</option>
+	                                    <option value="Full Consensus">Полное согласование</option>
 	                                </select>
                             </div>
                             
@@ -593,7 +594,7 @@
                     <div class="mt-3 p-2 bg-dark bg-opacity-25 rounded">
                         <div class="small text-secondary">
                             <i class="fas fa-info-circle me-1"></i>
-                            Активная стратегия: Согласие большинства
+                            Активная стратегия: Голосование большинством
                         </div>
                     </div>
                 </div>
@@ -661,17 +662,21 @@
                         <div id="strategies" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
                             <div class="accordion-body">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <h6 class="text-accent-blue">Согласие большинства</h6>
-                                        <p class="text-secondary small">Система голосования большинством. Срабатывает, когда 2 из 3 индикаторов подают сигнал в одном направлении.</p>
-                                    </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6 col-lg-3">
                                         <h6 class="text-accent-blue">Балльная система</h6>
-                                        <p class="text-secondary small">Балльная система. Каждому индикатору присваивается вес; сигнал формируется, когда общая сумма баллов превышает порог.</p>
+                                        <p class="text-secondary small">Каждому индикатору присваивается вес; сигнал формируется, когда сумма баллов превышает порог.</p>
                                     </div>
-                                    <div class="col-md-4">
-                                        <h6 class="text-accent-blue">Полное согласие</h6>
-                                        <p class="text-secondary small">Полное согласие. Все индикаторы должны подавать сигнал в одном направлении. Наивысшая точность.</p>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h6 class="text-accent-blue">Голосование большинством</h6>
+                                        <p class="text-secondary small">Срабатывает, когда большинство индикаторов подают сигнал в одном направлении (например, 2 из 3).</p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h6 class="text-accent-blue">Квалифицированное большинство</h6>
+                                        <p class="text-secondary small">Вариант голосования большинством с более высоким порогом: меньше сигналов, но более избирательных.</p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h6 class="text-accent-blue">Полное согласование</h6>
+                                        <p class="text-secondary small">Все индикаторы должны подавать сигнал в одном направлении. Самое строгое правило; сигналов мало.</p>
                                     </div>
                                 </div>
                             </div>
@@ -733,6 +738,26 @@
         }
     </script>
 
+    <section class="seo-content">
+        <div class="container">
+            <div class="seo-inner">
+                <h2>Как работает сканер?</h2>
+                <p>Сканер проходит список монет по кругу на выбранном таймфрейме. По умолчанию в списке 347 монет: общие для спота Binance и USDT-фьючерсов, без стейблкоинов.</p>
+                <h3>Скорость сканирования</h3>
+                <p>Скорость зависит от числа монет и настроек ожидания. Для 347 монет второй и последующие круги занимают около 100 секунд. Свечные данные загружаются с биржи с определёнными интервалами и кешируются на вашем компьютере; непрерывный поток данных в реальном времени не используется.</p>
+                <h3>Таблица сигналов</h3>
+                <p>Для каждой монеты показываются результаты индикаторов, сигнал BUY/SELL/NONE и, если сигнала нет, его причина.</p>
+                <h3>Фильтры</h3>
+                <ul>
+                    <li>Подтверждение старшего (MTF) и младшего (LTF) таймфрейма</li>
+                    <li>Сила тренда (ADX) и волатильность (ATR)</li>
+                    <li>Рыночный режим: любой, тренд, боковик, волатильный</li>
+                </ul>
+                <h3>От сигнала к позиции</h3>
+                <p>При появлении сигнала позиция может открываться автоматически в виртуальном или реальном режиме согласно вашим настройкам. Версия Free не открывает позиции — только сканирование и анализ.</p>
+            </div>
+        </div>
+    </section>
     <div id="footer-container"></div>
 
     <script>

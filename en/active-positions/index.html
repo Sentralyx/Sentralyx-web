@@ -681,6 +681,36 @@
         });
     </script>
 
+    <section class="seo-content">
+        <div class="container">
+            <div class="seo-inner">
+                <h2>How does open position management work?</h2>
+                <p>When a signal arrives, Sentralyx opens a position in virtual or real mode according to your settings and lists open positions on this screen. In real mode, stop-loss (SL) and take-profit (TP) orders are also sent to the exchange when the position opens.</p>
+                <h3>Position actions</h3>
+                <ul>
+                    <li>Close: closes the whole position.</li>
+                    <li>50%: closes half of the position.</li>
+                    <li>Move SL to market and limit SL</li>
+                    <li>Set TP</li>
+                    <li>Move SL to entry price (break-even)</li>
+                    <li>Close all</li>
+                </ul>
+                <h3>Profit protection</h3>
+                <p>With a trailing stop, the stop level follows the price. With the break-even setting, the stop level is moved to the entry price.</p>
+                <h3>Risk limits</h3>
+                <p>The daily loss limit, the maximum number of open positions and the maximum position duration are set in settings. A position whose time runs out is closed automatically.</p>
+                <h3>Only its own positions</h3>
+                <p>Sentralyx manages only the positions it opened itself. If another bot or you have a position on the exchange, it does not touch it.</p>
+                <h3>Trading modes</h3>
+                <ul>
+                    <li>Spot only</li>
+                    <li>Hybrid: BUY on spot, SELL on futures</li>
+                    <li>Full futures; leverage options 1x, 2x, 3x, 5x, 10x and 20x</li>
+                </ul>
+                <p>Positions keep being tracked in every mode. Trading type and exchange cannot be changed while a real position is open; switching between virtual and real mode is allowed.</p>
+            </div>
+        </div>
+    </section>
     <div id="footer-container"></div>
 
     <script>

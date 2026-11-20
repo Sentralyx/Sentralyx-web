@@ -354,9 +354,10 @@
                     <div class="form-section">
                         <label class="section-label">Strateji</label>
                         <select class="form-control form-control-custom">
-                            <option value="majority">Çoğunluk Onayı</option>
-                            <option value="scoring">Skorlama Sistemi</option>
-                            <option value="full">Tam Mutabakat</option>
+                            <option value="majority">Çoğunluk Oylaması</option>
+                            <option value="strong">Güçlü Çoğunluk</option>
+                            <option value="scoring">Puanlama Sistemi</option>
+                            <option value="full">Tam Uyum</option>
                         </select>
                     </div>
                     
@@ -680,21 +681,21 @@
                                     <tbody>
                                         <tr>
                                             <td>2024-02-28</td>
-                                            <td>Çoğunluk Onayı</td>
+                                            <td>Çoğunluk Oylaması</td>
                                             <td>BTCUSDT</td>
                                             <td class="text-success">+24.5%</td>
                                             <td>47</td>
                                         </tr>
                                         <tr>
                                             <td>2024-02-25</td>
-                                            <td>Skorlama Sistemi</td>
+                                            <td>Puanlama Sistemi</td>
                                             <td>ETHUSDT</td>
                                             <td class="text-success">+18.2%</td>
                                             <td>35</td>
                                         </tr>
                                         <tr>
                                             <td>2024-02-20</td>
-                                            <td>Tam Mutabakat</td>
+                                            <td>Tam Uyum</td>
                                             <td>SOLUSDT</td>
                                             <td class="text-success">+12.8%</td>
                                             <td>22</td>
@@ -739,6 +740,26 @@
         }
     </script>
 
+    <section class="seo-content">
+        <div class="container">
+            <div class="seo-inner">
+                <h2>Backtest ile stratejini geçmiş veride dene</h2>
+                <p>Backtest, stratejini geçmiş piyasa verisi üzerinde çalıştırarak nasıl davrandığını gösterir. Böylece gerçek moda geçmeden önce kurallarının zayıf noktalarını görebilirsin.</p>
+                <h3>Gerçekçi maliyetler</h3>
+                <p>Sonuçlar komisyon ve kayma (slippage) simülasyonuyla hesaplanır. Bu maliyetler gerçek işlemde daha yüksek olabilir.</p>
+                <h3>Monte Carlo ve detaylı analiz</h3>
+                <ul>
+                    <li>Monte Carlo analizi ile sonuçları farklı senaryolarla incelersin.</li>
+                    <li>Güne, saate ve yöne (long/short) göre analiz</li>
+                    <li>Equity grafiği ile bakiyenin zaman içindeki seyri</li>
+                </ul>
+                <h3>Veri aralığı</h3>
+                <p>Free sürümde backtest son 30 günlük veriyle sınırlıdır. Trial ve Full sürümlerde veri aralığı sınırsızdır.</p>
+                <h3>Sonuçları doğru yorumla</h3>
+                <p>Backtest sonucu gelecekte aynı sonucu garanti etmez. Farklı dönemlerde ve piyasa koşullarında test et, ardından stratejini sanal modda dene.</p>
+            </div>
+        </div>
+    </section>
     <div id="footer-container"></div>
 
     <script>
