@@ -372,7 +372,7 @@
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="value">12</div>
-                    <div class="text-secondary">Total Açik</div>
+                    <div class="text-secondary">Total Open</div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -399,7 +399,7 @@
                         <i class="fas fa-percentage"></i>
                     </div>
                     <div class="value">+2.45%</div>
-                    <div class="text-secondary">Mediumlama Getiri</div>
+                    <div class="text-secondary">Average Return</div>
                 </div>
             </div>
         </div>
@@ -409,13 +409,13 @@
             <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
                 <div class="d-flex gap-2">
                     <button class="btn-sentralyx-stop" onclick="closeAllPositions()">
-                        <i class="fas fa-times me-2"></i>Tümünü Close
+                        <i class="fas fa-times me-2"></i>Close All
                     </button>
                     <button class="btn-sentralyx-pause" onclick="refreshPositions()">
                         <i class="fas fa-sync me-2"></i>Refresh
                     </button>
                     <button class="btn-sentralyx-start" onclick="addSpotPosition()">
-                        <i class="fas fa-plus me-2"></i>Spot Position Tanımla
+                        <i class="fas fa-plus me-2"></i>Add Spot Position
                     </button>
                 </div>
                 <div class="d-flex gap-2 align-items-center">
@@ -436,14 +436,14 @@
                 <table class="table table-custom mb-0">
                     <thead>
                         <tr>
-                            <th>Sembol</th>
-                            <th>Yön</th>
-                            <th>Giriş Priceı</th>
-                            <th>Güncel Price</th>
+                            <th>Symbol</th>
+                            <th>Side</th>
+                            <th>Entry Price</th>
+                            <th>Current Price</th>
                             <th>PnL ($)</th>
                             <th>PnL (%)</th>
                             <th>SL/TP</th>
-                            <th>İşlemler</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody id="positionsTable">
@@ -462,8 +462,8 @@
                                 <div class="action-buttons">
                                     <button class="action-btn danger" onclick="closePosition('BTCUSDT')">Close</button>
                                     <button class="action-btn" onclick="halfClose('BTCUSDT')">%50</button>
-                                    <button class="action-btn" onclick="moveSLToMarket('BTCUSDT')">SL Market</button>
-                                    <button class="action-btn" onclick="moveSLToEntry('BTCUSDT')">SL Giriş</button>
+                                    <button class="action-btn" onclick="moveSLToMarket('BTCUSDT')">SL to Market</button>
+                                    <button class="action-btn" onclick="moveSLToEntry('BTCUSDT')">SL to Entry</button>
                                 </div>
                             </td>
                         </tr>
@@ -482,8 +482,8 @@
                                 <div class="action-buttons">
                                     <button class="action-btn danger" onclick="closePosition('ETHUSDT')">Close</button>
                                     <button class="action-btn" onclick="halfClose('ETHUSDT')">%50</button>
-                                    <button class="action-btn" onclick="moveSLToMarket('ETHUSDT')">SL Market</button>
-                                    <button class="action-btn" onclick="moveSLToEntry('ETHUSDT')">SL Giriş</button>
+                                    <button class="action-btn" onclick="moveSLToMarket('ETHUSDT')">SL to Market</button>
+                                    <button class="action-btn" onclick="moveSLToEntry('ETHUSDT')">SL to Entry</button>
                                 </div>
                             </td>
                         </tr>
@@ -502,8 +502,8 @@
                                 <div class="action-buttons">
                                     <button class="action-btn danger" onclick="closePosition('SOLUSDT')">Close</button>
                                     <button class="action-btn" onclick="halfClose('SOLUSDT')">%50</button>
-                                    <button class="action-btn" onclick="moveSLToMarket('SOLUSDT')">SL Market</button>
-                                    <button class="action-btn" onclick="moveSLToEntry('SOLUSDT')">SL Giriş</button>
+                                    <button class="action-btn" onclick="moveSLToMarket('SOLUSDT')">SL to Market</button>
+                                    <button class="action-btn" onclick="moveSLToEntry('SOLUSDT')">SL to Entry</button>
                                 </div>
                             </td>
                         </tr>
@@ -522,8 +522,8 @@
                                 <div class="action-buttons">
                                     <button class="action-btn danger" onclick="closePosition('ADAUSDT')">Close</button>
                                     <button class="action-btn" onclick="halfClose('ADAUSDT')">%50</button>
-                                    <button class="action-btn" onclick="moveSLToMarket('ADAUSDT')">SL Market</button>
-                                    <button class="action-btn" onclick="moveSLToEntry('ADAUSDT')">SL Giriş</button>
+                                    <button class="action-btn" onclick="moveSLToMarket('ADAUSDT')">SL to Market</button>
+                                    <button class="action-btn" onclick="moveSLToEntry('ADAUSDT')">SL to Entry</button>
                                 </div>
                             </td>
                         </tr>
@@ -542,8 +542,8 @@
                                 <div class="action-buttons">
                                     <button class="action-btn danger" onclick="closePosition('AVAXUSDT')">Close</button>
                                     <button class="action-btn" onclick="halfClose('AVAXUSDT')">%50</button>
-                                    <button class="action-btn" onclick="moveSLToMarket('AVAXUSDT')">SL Market</button>
-                                    <button class="action-btn" onclick="moveSLToEntry('AVAXUSDT')">SL Giriş</button>
+                                    <button class="action-btn" onclick="moveSLToMarket('AVAXUSDT')">SL to Market</button>
+                                    <button class="action-btn" onclick="moveSLToEntry('AVAXUSDT')">SL to Entry</button>
                                 </div>
                             </td>
                         </tr>
@@ -606,42 +606,42 @@
 
         // Position action functions
         function closePosition(symbol) {
-            if (confirm(`${symbol} pozisyonunu kapatmak istediğinizden emin misiniz?`)) {
-                showNotification(`${symbol} pozisyonu kapatılıyor...`, 'info');
+            if (confirm(`Are you sure you want to close the ${symbol} position?`)) {
+                showNotification(`Closing ${symbol} position...`, 'info');
                 setTimeout(() => {
-                    showNotification(`${symbol} pozisyonu başarıyla kapatıldı`, 'success');
+                    showNotification(`${symbol} position closed successfully`, 'success');
                 }, 1500);
             }
         }
 
         function halfClose(symbol) {
-            if (confirm(`${symbol} pozisyonunun %50'sini kapatmak istediğinizden emin misiniz?`)) {
-                showNotification(`${symbol} pozisyonunun %50'si kapatılıyor...`, 'info');
+            if (confirm(`Are you sure you want to close 50% of the ${symbol} position?`)) {
+                showNotification(`Closing 50% of ${symbol} position...`, 'info');
                 setTimeout(() => {
-                    showNotification(`${symbol} pozisyonunun %50'si başarıyla kapatıldı`, 'success');
+                    showNotification(`50% of ${symbol} position closed successfully`, 'success');
                 }, 1500);
             }
         }
 
         function moveSLToMarket(symbol) {
-            showNotification(`${symbol} SL seviyesi piyasa fiyatına taşınıyor...`, 'info');
+            showNotification(`Moving ${symbol} SL to market price...`, 'info');
             setTimeout(() => {
-                showNotification(`${symbol} SL seviyesi başarıyla güncellendi`, 'success');
+                showNotification(`${symbol} SL updated successfully`, 'success');
             }, 1000);
         }
 
         function moveSLToEntry(symbol) {
-            showNotification(`${symbol} SL seviyesi giriş fiyatına taşınıyor...`, 'info');
+            showNotification(`Moving ${symbol} SL to entry price...`, 'info');
             setTimeout(() => {
-                showNotification(`${symbol} SL seviyesi başarıyla giriş fiyatına taşındı`, 'success');
+                showNotification(`${symbol} SL moved to entry price successfully`, 'success');
             }, 1000);
         }
 
         function closeAllPositions() {
-            if (confirm('Tüm pozisyonları kapatmak istediğinizden emin misiniz? Bu işlem geri alınamaz!')) {
-                showNotification('Tüm pozisyonlar kapatılıyor...', 'warning');
+            if (confirm('Are you sure you want to close all positions? This cannot be undone!')) {
+                showNotification('Closing all positions...', 'warning');
                 setTimeout(() => {
-                    showNotification('Tüm pozisyonlar başarıyla kapatıldı', 'success');
+                    showNotification('All positions closed successfully', 'success');
                 }, 2000);
             }
         }
@@ -649,12 +649,12 @@
         function refreshPositions() {
             showNotification('Refreshing positions...', 'info');
             setTimeout(() => {
-                showNotification('Positions başarıyla güncellendi', 'success');
+                showNotification('Positions updated successfully', 'success');
             }, 1000);
         }
 
         function addSpotPosition() {
-            showNotification('Spot pozisyon ekleme paneli açılıyor...', 'info');
+            showNotification('Opening spot position panel...', 'info');
             // Here you would open a modal for adding spot positions
         }
 
