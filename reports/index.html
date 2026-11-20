@@ -263,9 +263,10 @@
                         <label class="form-label text-main small mb-1">Filtre: Strateji</label>
                         <select class="form-select form-control-custom" id="strategy-filter" onchange="applyFilters()">
                             <option value="all" selected>Tüm Stratejiler</option>
-                            <option value="trend">[Trend-Follower]</option>
-                            <option value="mean">[Mean-Reversion]</option>
-                            <option value="break">[Breakout]</option>
+                            <option value="trend">Puanlama Sistemi</option>
+                            <option value="mean">Çoğunluk Oylaması</option>
+                            <option value="strong">Güçlü Çoğunluk</option>
+                            <option value="break">Tam Uyum</option>
                         </select>
                         <div class="text-secondary small mt-2">Strateji etiketlerini performans rejimlerini ve yürütme davranışını izole etmek için kullanın.</div>
                     </div>
@@ -417,14 +418,14 @@
         function seedData() {
             // Demo günlükler (veri bilimi aroması). Üretimde bu Sentralyx rapor motoru tarafından oluşturulur.
             state.logs = [
-                { ts: '2026-05-06 03:12:45', strat: { key: 'trend', label: '[Trend-Follower] MTF Momentum Stack' }, symbol: 'BTCUSDT', outcome: 'Kazanç', ret: 1.42, dur: '02s 14d', asset: 'perp' },
-                { ts: '2026-05-06 01:44:10', strat: { key: 'mean', label: '[Mean-Reversion] Volatility Band Fade' }, symbol: 'ETHUSDT', outcome: 'Kayıp', ret: -0.68, dur: '00s 38d', asset: 'perp' },
-                { ts: '2026-05-05 22:26:33', strat: { key: 'break', label: '[Breakout] Range Expansion Trigger' }, symbol: 'SOLUSDT', outcome: 'Kazanç', ret: 2.05, dur: '01s 02d', asset: 'perp' },
-                { ts: '2026-05-05 19:08:51', strat: { key: 'trend', label: '[Trend-Follower] Trend Continuation' }, symbol: 'XRPUSDT', outcome: 'Kazanç', ret: 0.74, dur: '00s 51d', asset: 'perp' },
-                { ts: '2026-05-05 12:18:04', strat: { key: 'mean', label: '[Mean-Reversion] Liquidity Sweep Revert' }, symbol: 'BNBUSDT', outcome: 'Kayıp', ret: -1.12, dur: '03s 26d', asset: 'perp' },
-                { ts: '2026-05-04 18:22:19', strat: { key: 'trend', label: '[Trend-Follower] MTF Momentum Stack' }, symbol: 'ADAUSDT', outcome: 'Kazanç', ret: 1.10, dur: '05s 09d', asset: 'spot' },
-                { ts: '2026-05-04 13:05:02', strat: { key: 'break', label: '[Breakout] Range Expansion Trigger' }, symbol: 'LINKUSDT', outcome: 'Kazanç', ret: 0.88, dur: '00s 44d', asset: 'perp' },
-                { ts: '2026-05-03 10:51:20', strat: { key: 'mean', label: '[Mean-Reversion] Volatility Band Fade' }, symbol: 'DOTUSDT', outcome: 'Kazanç', ret: 0.36, dur: '01s 17d', asset: 'perp' },
+                { ts: '2026-05-06 03:12:45', strat: { key: 'trend', label: 'Puanlama Sistemi' }, symbol: 'BTCUSDT', outcome: 'Kazanç', ret: 1.42, dur: '02s 14d', asset: 'perp' },
+                { ts: '2026-05-06 01:44:10', strat: { key: 'mean', label: 'Çoğunluk Oylaması' }, symbol: 'ETHUSDT', outcome: 'Kayıp', ret: -0.68, dur: '00s 38d', asset: 'perp' },
+                { ts: '2026-05-05 22:26:33', strat: { key: 'break', label: 'Tam Uyum' }, symbol: 'SOLUSDT', outcome: 'Kazanç', ret: 2.05, dur: '01s 02d', asset: 'perp' },
+                { ts: '2026-05-05 19:08:51', strat: { key: 'trend', label: 'Puanlama Sistemi' }, symbol: 'XRPUSDT', outcome: 'Kazanç', ret: 0.74, dur: '00s 51d', asset: 'perp' },
+                { ts: '2026-05-05 12:18:04', strat: { key: 'mean', label: 'Çoğunluk Oylaması' }, symbol: 'BNBUSDT', outcome: 'Kayıp', ret: -1.12, dur: '03s 26d', asset: 'perp' },
+                { ts: '2026-05-04 18:22:19', strat: { key: 'strong', label: 'Güçlü Çoğunluk' }, symbol: 'ADAUSDT', outcome: 'Kazanç', ret: 1.10, dur: '05s 09d', asset: 'spot' },
+                { ts: '2026-05-04 13:05:02', strat: { key: 'break', label: 'Tam Uyum' }, symbol: 'LINKUSDT', outcome: 'Kazanç', ret: 0.88, dur: '00s 44d', asset: 'perp' },
+                { ts: '2026-05-03 10:51:20', strat: { key: 'strong', label: 'Güçlü Çoğunluk' }, symbol: 'DOTUSDT', outcome: 'Kazanç', ret: 0.36, dur: '01s 17d', asset: 'perp' },
             ];
         }
 

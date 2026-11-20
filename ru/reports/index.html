@@ -206,9 +206,10 @@
                         <label class="form-label text-main small mb-1">Фильтр: стратегия</label>
                         <select class="form-select form-control-custom" id="strategy-filter" onchange="applyFilters()">
                             <option value="all" selected>Все стратегии</option>
-                            <option value="trend">[Следование за трендом]</option>
-                            <option value="mean">[Возврат к среднему]</option>
-                            <option value="break">[Пробой]</option>
+                            <option value="trend">Балльная система</option>
+                            <option value="mean">Голосование большинством</option>
+                            <option value="strong">Квалифицированное большинство</option>
+                            <option value="break">Полное согласование</option>
                         </select>
                         <div class="text-secondary small mt-2">Сегментация по стратегиям помогает анализировать режимы и качество исполнения.</div>
                     </div>
@@ -346,14 +347,14 @@
 
         function seedData() {
             state.logs = [
-                { ts: '2026-05-06 03:12:45', strat: { key: 'trend', label: '[Следование за трендом] Совокупность импульсных сигналов MTF' }, symbol: 'BTCUSDT', outcome: 'Win', ret: 1.42, dur: '02ч 14м', asset: 'perp' },
-                { ts: '2026-05-06 01:44:10', strat: { key: 'mean', label: '[Возврат к среднему] Торговля на возврате от границ полос волатильности' }, symbol: 'ETHUSDT', outcome: 'Loss', ret: -0.68, dur: '00ч 38м', asset: 'perp' },
-                { ts: '2026-05-05 22:26:33', strat: { key: 'break', label: '[Пробой] Сигнал расширения диапазона' }, symbol: 'SOLUSDT', outcome: 'Win', ret: 2.05, dur: '01ч 02м', asset: 'perp' },
-                { ts: '2026-05-05 19:08:51', strat: { key: 'trend', label: '[Следование за трендом] Продолжение тренда' }, symbol: 'XRPUSDT', outcome: 'Win', ret: 0.74, dur: '00ч 51м', asset: 'perp' },
-                { ts: '2026-05-05 12:18:04', strat: { key: 'mean', label: '[Возврат к среднему] Возврат после сбора ликвидности' }, symbol: 'BNBUSDT', outcome: 'Loss', ret: -1.12, dur: '03ч 26м', asset: 'perp' },
-                { ts: '2026-05-04 18:22:19', strat: { key: 'trend', label: '[Следование за трендом] Совокупность импульсных сигналов MTF' }, symbol: 'ADAUSDT', outcome: 'Win', ret: 1.10, dur: '05ч 09м', asset: 'spot' },
-                { ts: '2026-05-04 13:05:02', strat: { key: 'break', label: '[Пробой] Сигнал расширения диапазона' }, symbol: 'LINKUSDT', outcome: 'Win', ret: 0.88, dur: '00ч 44м', asset: 'perp' },
-                { ts: '2026-05-03 10:51:20', strat: { key: 'mean', label: '[Возврат к среднему] Торговля на возврате от границ полос волатильности' }, symbol: 'DOTUSDT', outcome: 'Win', ret: 0.36, dur: '01ч 17м', asset: 'perp' }
+                { ts: '2026-05-06 03:12:45', strat: { key: 'trend', label: 'Балльная система' }, symbol: 'BTCUSDT', outcome: 'Win', ret: 1.42, dur: '02ч 14м', asset: 'perp' },
+                { ts: '2026-05-06 01:44:10', strat: { key: 'mean', label: 'Голосование большинством' }, symbol: 'ETHUSDT', outcome: 'Loss', ret: -0.68, dur: '00ч 38м', asset: 'perp' },
+                { ts: '2026-05-05 22:26:33', strat: { key: 'break', label: 'Полное согласование' }, symbol: 'SOLUSDT', outcome: 'Win', ret: 2.05, dur: '01ч 02м', asset: 'perp' },
+                { ts: '2026-05-05 19:08:51', strat: { key: 'trend', label: 'Балльная система' }, symbol: 'XRPUSDT', outcome: 'Win', ret: 0.74, dur: '00ч 51м', asset: 'perp' },
+                { ts: '2026-05-05 12:18:04', strat: { key: 'mean', label: 'Голосование большинством' }, symbol: 'BNBUSDT', outcome: 'Loss', ret: -1.12, dur: '03ч 26м', asset: 'perp' },
+                { ts: '2026-05-04 18:22:19', strat: { key: 'strong', label: 'Квалифицированное большинство' }, symbol: 'ADAUSDT', outcome: 'Win', ret: 1.10, dur: '05ч 09м', asset: 'spot' },
+                { ts: '2026-05-04 13:05:02', strat: { key: 'break', label: 'Полное согласование' }, symbol: 'LINKUSDT', outcome: 'Win', ret: 0.88, dur: '00ч 44м', asset: 'perp' },
+                { ts: '2026-05-03 10:51:20', strat: { key: 'strong', label: 'Квалифицированное большинство' }, symbol: 'DOTUSDT', outcome: 'Win', ret: 0.36, dur: '01ч 17м', asset: 'perp' }
             ];
         }
 
