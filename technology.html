@@ -10,10 +10,10 @@
     <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/technology.html">
     
     <title>Sentralyx | Mühendislik Manifestosu - Teknoloji ve Mimari</title>
-    <meta name="description" content="Sentralyx'in teknolojik üstünlüğünü kanıtlayan mühendislik manifestosu. Thread Watchdog, Atomic Write, Orphan Recovery ve 100% güvenlik altyapısı.">
+    <meta name="description" content="Sentralyx'in mühendislik yaklaşımı: Thread Watchdog, Atomic Write, pozisyon doğrulama, yerel API anahtarı şifreleme ve borsa tarafında SL/TP koruması.">
     <meta name="keywords" content="sentralyx teknoloji, mühendislik manifestosu, thread watchdog, atomic write, orphan recovery, güvenlik, stabilite, trading terminal">
     <meta property="og:title" content="Sentralyx | Mühendislik Manifestosu - Teknoloji ve Mimari">
-    <meta property="og:description" content="Sentralyx'in teknolojik üstünlüğünü kanıtlayan mühendislik manifestosu. Thread Watchdog, Atomic Write, Orphan Recovery ve 100% güvenlik altyapısı.">
+    <meta property="og:description" content="Sentralyx'in mühendislik yaklaşımı: Thread Watchdog, Atomic Write, pozisyon doğrulama, yerel API anahtarı şifreleme ve borsa tarafında SL/TP koruması.">
     <meta property="og:url" content="https://www.sentralyx.com/technology.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png">
@@ -216,14 +216,10 @@
     <section class="tech-hero">
         <div class="container">
             <div class="text-center">
-                <div class="reliability-badge">
-                    <i class="fas fa-check-circle"></i>
-                    626/626 Unit Tests Passed - %100 Reliability
-                </div>
                 <h1 class="display-3 mb-4">Mühendislik Manifestosu</h1>
                 <p class="lead text-secondary mb-5">
-                    Sentralyx'in teknolojik üstünlüğünü kanıtlayan mimari prensiplerimiz ve yenilikçi çözümlerimiz.
-                    Sıfır aracı riski, maksimum güvenlik ve %100 stabilite için tasarlandı.
+                    Sentralyx'in kararlılık, veri bütünlüğü ve güvenlik için kullandığı mimari prensipler.
+                    Hiçbir yazılım hatasız değildir; amaç hataları erken fark etmek ve kontrollü şekilde toparlanmaktır.
                 </p>
             </div>
         </div>
@@ -255,7 +251,7 @@
                             <li>Heartbeat kontrolü ile donmuş thread tespiti</li>
                             <li>Otomatik restart mekanizması</li>
                             <li>State-safe restart ile veri koruması</li>
-                            <li>7/24 sistem monitoring</li>
+                            <li>Uygulama çalıştığı sürece sürekli izleme</li>
                         </ul>
                     </div>
                 </div>
@@ -267,10 +263,6 @@
                     <div class="tech-stat mt-4">
                         <div class="tech-stat-number">3x</div>
                         <div class="tech-stat-label">Maksimum Restart Denemesi</div>
-                    </div>
-                    <div class="tech-stat mt-4">
-                        <div class="tech-stat-number">100%</div>
-                        <div class="tech-stat-label">Thread Kurtarma Başarısı</div>
                     </div>
                 </div>
             </div>
@@ -309,22 +301,18 @@
                             <li>Kesinti anında veri koruması</li>
                             <li>Transactional dosya işlemleri</li>
                             <li>Crash recovery desteği</li>
-                            <li>Veri tutarlılığı garantisi</li>
+                            <li>Yarım kalmış yazmalara karşı koruma</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-6 order-lg-1">
                     <div class="tech-stat">
-                        <div class="tech-stat-number">0%</div>
-                        <div class="tech-stat-label">Veri Kayıp Oranı</div>
+                        <div class="tech-stat-number">.tmp</div>
+                        <div class="tech-stat-label">Önce Geçici Dosyaya Yazma</div>
                     </div>
                     <div class="tech-stat mt-4">
-                        <div class="tech-stat-number">ACID</div>
-                        <div class="tech-stat-label">Transactional Özellikler</div>
-                    </div>
-                    <div class="tech-stat mt-4">
-                        <div class="tech-stat-number">100%</div>
-                        <div class="tech-stat-label">Veri Bütünlüğü</div>
+                        <div class="tech-stat-number">fsync</div>
+                        <div class="tech-stat-label">Diske Yazma Onayı</div>
                     </div>
                 </div>
             </div>
@@ -354,14 +342,14 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="tech-stat">
-                                    <div class="tech-stat-number">100%</div>
-                                    <div class="tech-stat-label">Kurtarma Başarısı</div>
+                                    <div class="tech-stat-number">Borsa</div>
+                                    <div class="tech-stat-label">Kayıtlarla Karşılaştırma</div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="tech-stat">
-                                    <div class="tech-stat-number">24/7</div>
-                                    <div class="tech-stat-label">Monitoring</div>
+                                    <div class="tech-stat-number">SL/TP</div>
+                                    <div class="tech-stat-label">Eksik Korumayı Yeniden Kurma</div>
                                 </div>
                             </div>
                         </div>
@@ -377,23 +365,23 @@
             <div class="security-shield">
                 <h3><i class="fas fa-lock me-3"></i>Güvenlik Mimarisi</h3>
                 <p class="text-secondary mb-4">
-                    API anahtarları lokalde HWID ile şifrelenir. Sunucu tarafı GTC emirleri 
-                    maksimum koruma sağlar.
+                    API anahtarları cihazın donanım kimliğinden (HWID) türetilen bir anahtarla şifrelenip yerelde saklanır.
+                    Stop ve kâr al emirleri borsaya da gönderilir; uygulama kapalıyken de borsada durur.
                 </p>
                 <div class="row">
                     <div class="col-md-6">
                         <h5 class="text-main mb-3">Lokal Şifreleme</h5>
                         <ul class="text-secondary text-start">
                             <li>HWID bazlı anahtar üretimi</li>
-                            <li>AES-256 şifreleme</li>
-                            <li>Donanım bağımlılığı</li>
+                            <li>Fernet şifreleme</li>
+                            <li>Başka cihaza kopyalanan ayar dosyası çözülemez</li>
                             <li>Lokal depolama</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h5 class="text-main mb-3">Sunucu Tarafı Koruma</h5>
+                        <h5 class="text-main mb-3">Borsa Tarafı Koruma</h5>
                         <ul class="text-secondary text-start">
-                            <li>SL/TP emirleri sunucuda</li>
+                            <li>SL/TP emirleri borsada</li>
                             <li>Kesinti anında koruma</li>
                             <li>Global stop mekanizması</li>
                             <li>Emergency protokoller</li>
@@ -492,42 +480,6 @@ signals = []
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Performance Stats -->
-    <section class="tech-section bg-dark">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="text-main">Performans Metrikleri</h2>
-                <p class="text-secondary">Sistem stabilitesi ve güvenilirlik göstergeleri</p>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="tech-stat">
-                        <div class="tech-stat-number">99.9%</div>
-                        <div class="tech-stat-label">Uptime</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="tech-stat">
-                        <div class="tech-stat-number">&lt;1ms</div>
-                        <div class="tech-stat-label">Response Time</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="tech-stat">
-                        <div class="tech-stat-number">626/626</div>
-                        <div class="tech-stat-label">Tests Passed</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="tech-stat">
-                        <div class="tech-stat-number">0</div>
-                        <div class="tech-stat-label">Critical Bugs</div>
                     </div>
                 </div>
             </div>

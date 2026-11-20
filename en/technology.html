@@ -9,9 +9,9 @@
     <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/technology.html">
     <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/technology.html">
     <title>Sentralyx | Engineering Manifesto</title>
-    <meta name="description" content="Engineering manifesto for Sentralyx: reliability primitives, data integrity guarantees, and operational resilience design.">
+    <meta name="description" content="Engineering manifesto for Sentralyx: reliability primitives, data integrity safeguards, and operational resilience design.">
     <meta property="og:title" content="Sentralyx | Engineering Manifesto">
-    <meta property="og:description" content="Engineering manifesto for Sentralyx: reliability primitives, data integrity guarantees, and operational resilience design.">
+    <meta property="og:description" content="Engineering manifesto for Sentralyx: reliability primitives, data integrity safeguards, and operational resilience design.">
     <meta property="og:url" content="https://www.sentralyx.com/en/technology.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png">
@@ -206,7 +206,7 @@
                 <ul class="mb-0">
                     <li><strong>Local-first security:</strong> keep sensitive strategy context and credentials on the user&apos;s device whenever possible.</li>
                     <li><strong>Deterministic recovery:</strong> define clear invariants and replayable state transitions.</li>
-                    <li><strong>Atomic persistence:</strong> avoid partial writes; guarantee consistency across interruptions.</li>
+                    <li><strong>Atomic persistence:</strong> avoid partial writes and preserve consistency across interruptions.</li>
                     <li><strong>Observable operations:</strong> track heartbeat, watchdogs, and error boundaries.</li>
                 </ul>
             </div>
@@ -299,7 +299,7 @@
                 <div class="col-lg-6 order-lg-2">
                     <div class="tech-card">
                         <div class="tech-icon"><i class="fas fa-atom"></i></div>
-                        <h3 class="text-main mb-3">Atomic Write Guarantees</h3>
+                        <h3 class="text-main mb-3">Atomic Write</h3>
                         <p class="text-secondary mb-3">For configuration, catalogs, and reports, Sentralyx uses a write-then-swap pattern. Critical artifacts are either fully written or unchanged—no partial states.</p>
                         <div class="code-block">
 <span class="comment"># Atomic write (concept)</span>
@@ -479,40 +479,6 @@ signals = [analyze(<span class="string">"15m"</span>), analyze(<span class="stri
         </div>
     </section>
 
-    <section class="tech-section bg-dark">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="text-main">Operational Metrics</h2>
-                <p class="text-secondary mb-0">High-level reliability and quality posture indicators.</p>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="tech-stat">
-                        <div class="tech-stat-number">99.9%</div>
-                        <div class="tech-stat-label">Uptime Target</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="tech-stat">
-                        <div class="tech-stat-number">&lt;1ms</div>
-                        <div class="tech-stat-label">UI Response Target</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="tech-stat">
-                        <div class="tech-stat-number">626/626</div>
-                        <div class="tech-stat-label">Tests Passed</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="tech-stat">
-                        <div class="tech-stat-number">0</div>
-                        <div class="tech-stat-label">Known Critical Issues</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <div id="footer-container"></div>
 
