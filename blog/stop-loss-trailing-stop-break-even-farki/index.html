@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/blog/stop-loss-trailing-stop-break-even-farki/">
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/blog/stop-loss-trailing-stop-break-even-farki/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/blog/stop-loss-trailing-stop-break-even/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/blog/stop-loss-treyling-stop-bezubytok/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/blog/stop-loss-trailing-stop-break-even-farki/">
+    <title>Stop-loss, Trailing Stop ve Break-even Farkı | Sentralyx Blog</title>
+    <meta name="description" content="Stop-loss zararı sınırlar, trailing stop kârı takip eder, break-even stopu girişe çeker. Üçünün farkı, avantajları ve birlikte nasıl kullanılacağı.">
+    <meta property="og:title" content="Stop-loss, Trailing Stop ve Break-even Farkı | Sentralyx Blog">
+    <meta property="og:description" content="Stop-loss zararı sınırlar, trailing stop kârı takip eder, break-even stopu girişe çeker. Üçünün farkı, avantajları ve birlikte nasıl kullanılacağı.">
+    <meta property="og:url" content="https://www.sentralyx.com/blog/stop-loss-trailing-stop-break-even-farki/">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Stop-loss, Trailing Stop ve Break-even Farkı",
+  "description": "Stop-loss zararı sınırlar, trailing stop kârı takip eder, break-even stopu girişe çeker. Üçünün farkı, avantajları ve birlikte nasıl kullanılacağı.",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "inLanguage": "tr",
+  "mainEntityOfPage": "https://www.sentralyx.com/blog/stop-loss-trailing-stop-break-even-farki/",
+  "image": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Sentralyx"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sentralyx",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png"
+    }
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Ana Sayfa",
+      "item": "https://www.sentralyx.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.sentralyx.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Stop-loss, Trailing Stop ve Break-even Farkı",
+      "item": "https://www.sentralyx.com/blog/stop-loss-trailing-stop-break-even-farki/"
+    }
+  ]
+}
+    </script>
+    <style>.info-page{padding:96px 20px 72px;background:var(--bg-dark);min-height:100vh}.info-hero{max-width:920px;margin:0 auto 36px;text-align:center}.info-hero h1{color:var(--text-main);font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:14px}.info-hero p{color:var(--text-secondary);line-height:1.7;font-size:1.05rem;margin:0}</style>
+</head>
+<body>
+    <header id="main-header"></header>
+    <main class="info-page">
+        <div class="container">
+            <article class="blog-article">
+                <nav class="blog-crumb" aria-label="breadcrumb"><a href="/">Ana Sayfa</a> / <a href="/blog/">Blog</a></nav>
+                <h1>Stop-loss, Trailing Stop ve Break-even Farkı</h1>
+                <p class="blog-meta">21 Kasım 2026 · 3 dk okuma</p>
+                <p class="blog-lead">Bir pozisyon açtıktan sonra asıl iş başlar: zararı sınırlamak ve kârı korumak. Bunun için en sık kullanılan üç araç stop-loss, trailing stop ve break-even&#x27;dır. Üçü de &quot;stop&quot; kelimesiyle anılsa da farklı işler yapar.</p>
+                <h2>Stop-loss: Zararı sınırlamak</h2>
+                <p>Stop-loss, fiyat belirlediğin seviyeye geldiğinde pozisyonu kapatan emirdir. Amacı, bir işlemdeki kaybı önceden belirlenmiş bir seviyede tutmaktır. Seviye pozisyon açılırken belirlenir ve sen değiştirmedikçe yerinde kalır.</p>
+                <p>Dikkat edilmesi gereken nokta: Ani fiyat hareketlerinde stop emri tam belirlediğin fiyattan değil, kayma (slippage) ile daha kötü bir fiyattan gerçekleşebilir. Stop-loss kaybı sınırlar ama tam fiyat garantisi vermez.</p>
+                <h2>Take-profit: Hedefte çıkmak</h2>
+                <p>Take-profit (kâr al), fiyat hedef seviyene ulaştığında pozisyonu kapatır. Stop-loss ile birlikte kullanıldığında işlemin iki ucu da önceden tanımlanmış olur.</p>
+                <h2>Trailing stop: Fiyatı takip eden stop</h2>
+                <p>Trailing stop (izleyen stop), fiyat lehine ilerledikçe stop seviyesini de belirli bir mesafeyle taşır. Fiyat geri döndüğünde stop yerinde kalır ve pozisyon bu seviyeden kapanır. Böylece trendin devam ettiği sürece pozisyonda kalıp, dönüşte kârın bir kısmını korumaya çalışırsın.</p>
+                <ul>
+                    <li>Mesafe çok dar olursa normal dalgalanmalar seni erken çıkarabilir.</li>
+                    <li>Mesafe çok geniş olursa dönüşte kârın büyük kısmını geri verebilirsin.</li>
+                    <li>Uygun mesafe, coinin oynaklığına ve kullandığın zaman dilimine göre değişir.</li>
+                </ul>
+                <h2>Break-even: Stopu giriş fiyatına çekmek</h2>
+                <p>Break-even (başa baş), fiyat belirli bir kâra ulaştıktan sonra stop seviyesini giriş fiyatına taşımaktır. Böylece işlem tersine dönerse en azından giriş fiyatından çıkmayı hedeflersin. Komisyon maliyetini karşılamak için stopu girişin biraz üzerine taşıyan bir pay (offset) kullanmak yaygın bir yöntemdir.</p>
+                <p>Break-even&#x27;ın bedeli de vardır: Stop girişe çok erken taşınırsa normal bir geri çekilme seni kârsız olarak işlemden çıkarabilir.</p>
+                <h2>Karşılaştırma</h2>
+                <div class="blog-table-wrap">
+                    <table>
+                        <thead><tr><th>Araç</th><th>Ne yapar?</th><th>Ne zaman faydalı?</th><th>Risk</th></tr></thead>
+                        <tbody>
+                            <tr><td>Stop-loss</td><td>Zararı önceden belirlenmiş seviyede sınırlar.</td><td>Her işlemde.</td><td>Ani hareketlerde kayma.</td></tr>
+                            <tr><td>Trailing stop</td><td>Stopu fiyatın arkasından taşır.</td><td>Trendin devam ettiği dönemlerde.</td><td>Mesafe yanlışsa erken çıkış ya da kâr kaybı.</td></tr>
+                            <tr><td>Break-even</td><td>Stopu giriş fiyatına çeker.</td><td>İşlem belirli bir kâra ulaştığında.</td><td>Erken uygulanırsa kârsız çıkış.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h2>Stop seviyesini nasıl belirlersin?</h2>
+                <p>Stop seviyesini belirlemenin tek doğru yolu yoktur; yaygın üç yaklaşım şunlardır:</p>
+                <ul>
+                    <li>Yüzde bazlı: Girişin belirli bir yüzde altına (ya da üstüne) konur. Basittir ama coinin oynaklığını dikkate almaz.</li>
+                    <li>Oynaklık bazlı: ATR gibi bir oynaklık ölçüsüne göre belirlenir. Oynak coinlerde daha geniş, sakin coinlerde daha dar bir stop verir.</li>
+                    <li>Grafik yapısına göre: Son dip ya da tepe gibi teknik seviyelerin biraz ötesine konur.</li>
+                </ul>
+                <p>Hangi yöntemi seçersen seç, stop mesafesi ile pozisyon büyüklüğünü birlikte düşünmelisin. Geniş bir stop kullanıyorsan daha küçük bir pozisyonla aynı riski taşıyabilirsin.</p>
+                <h2>Sık yapılan hatalar</h2>
+                <ul>
+                    <li>Stop-loss koymadan işlem açmak ya da &quot;sonra koyarım&quot; demek.</li>
+                    <li>Fiyat stopa yaklaşınca stopu uzaklaştırmak; bu, sınırlı kaybı sınırsız hale getirebilir.</li>
+                    <li>Trailing stop mesafesini coinin normal dalgalanmasından daha dar ayarlamak.</li>
+                    <li>Break-even&#x27;ı çok erken uygulayıp her küçük geri çekilmede kârsız çıkmak.</li>
+                    <li>Komisyonu hesaba katmadan stopu tam giriş fiyatına koymak.</li>
+                </ul>
+                <h2>Birlikte nasıl kullanılır?</h2>
+                <p>Bu araçlar birbirinin alternatifi değil, tamamlayıcısıdır. Yaygın bir akış şöyledir: İşlem bir stop-loss ve take-profit ile açılır; fiyat belirli bir kâra ulaşınca stop girişe çekilir; trend devam ederse trailing stop kârı takip eder. Pozisyonun bir kısmını hedefte kapatıp kalanını trailing stop ile taşımak da sık kullanılan bir yöntemdir.</p>
+                <h2>Sentralyx&#x27;te nasıl çalışır?</h2>
+                <ul>
+                    <li>Pozisyon açıldığında SL ve TP emirleri borsaya da gönderilir; uygulama kapalıyken de borsada durur.</li>
+                    <li>Borsa yeni bir stop emrini reddederse kayıttaki stop eski değerinde kalır.</li>
+                    <li>Açık pozisyonlarda SL&#x27;yi piyasaya taşıma, limit SL, TP ayarlama ve SL&#x27;yi giriş fiyatına taşıma işlemleri bulunur.</li>
+                    <li>Pozisyonun yarısını kapatma (%50) seçeneği vardır.</li>
+                    <li>Trailing stop ve başa baş (break-even) ayarları ile kâr korumayı kurallara bağlayabilirsin.</li>
+                </ul>
+                <p>Hiçbir stop yöntemi kârı garanti etmez. Ayarlarını önce backtest ve sanal modda denemen, gerçek parayla çalışmadan önce nasıl davrandıklarını görmeni sağlar.</p>
+                <div class="blog-cta">
+                    <h2>Pozisyonlarını kurallarla yönet</h2>
+                    <p>Sentralyx&#x27;te SL ve TP emirleri borsaya da gönderilir; trailing stop ve başa baş ayarları ile kârı korumaya çalışabilirsin.</p>
+                    <a href="/active-positions/" class="btn-sentralyx-start">Açık pozisyon yönetimini incele</a>
+                </div>
+                <div class="blog-related">
+                    <h2>Diğer yazılar</h2>
+                    <ul>
+                        <li><a href="/blog/backtest-sonuclari-nasil-okunur/">Backtest Sonuçları Nasıl Okunur?</a></li>
+                        <li><a href="/blog/binance-api-anahtari-guvenli-olusturma/">Binance API Anahtarı Güvenli Nasıl Oluşturulur?</a></li>
+                        <li><a href="/blog/mtf-ltf-onayi-nedir/">MTF ve LTF Onayı Nedir?</a></li>
+                        <li><a href="/blog/sanal-modda-strateji-deneme/">Sanal Modda Strateji Nasıl Denenir?</a></li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        fetch('../../components/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
+    </script>
+</body>
+</html>

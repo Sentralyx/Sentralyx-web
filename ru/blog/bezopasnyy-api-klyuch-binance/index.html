@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/ru/blog/bezopasnyy-api-klyuch-binance/">
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/blog/binance-api-anahtari-guvenli-olusturma/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/blog/binance-api-key-security/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/blog/bezopasnyy-api-klyuch-binance/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/blog/binance-api-anahtari-guvenli-olusturma/">
+    <title>Как создать безопасный API-ключ Binance | Sentralyx Blog</title>
+    <meta name="description" content="Какие разрешения включить, а какие оставить выключенными при создании API-ключа Binance для торгового приложения? Пошаговое руководство по безопасной настройке.">
+    <meta property="og:title" content="Как создать безопасный API-ключ Binance | Sentralyx Blog">
+    <meta property="og:description" content="Какие разрешения включить, а какие оставить выключенными при создании API-ключа Binance для торгового приложения? Пошаговое руководство по безопасной настройке.">
+    <meta property="og:url" content="https://www.sentralyx.com/ru/blog/bezopasnyy-api-klyuch-binance/">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" type="image/x-icon" href="../../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Как создать безопасный API-ключ Binance",
+  "description": "Какие разрешения включить, а какие оставить выключенными при создании API-ключа Binance для торгового приложения? Пошаговое руководство по безопасной настройке.",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "inLanguage": "ru",
+  "mainEntityOfPage": "https://www.sentralyx.com/ru/blog/bezopasnyy-api-klyuch-binance/",
+  "image": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Sentralyx"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sentralyx",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png"
+    }
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://www.sentralyx.com/ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.sentralyx.com/ru/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Как создать безопасный API-ключ Binance",
+      "item": "https://www.sentralyx.com/ru/blog/bezopasnyy-api-klyuch-binance/"
+    }
+  ]
+}
+    </script>
+    <style>.info-page{padding:96px 20px 72px;background:var(--bg-dark);min-height:100vh}.info-hero{max-width:920px;margin:0 auto 36px;text-align:center}.info-hero h1{color:var(--text-main);font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:14px}.info-hero p{color:var(--text-secondary);line-height:1.7;font-size:1.05rem;margin:0}</style>
+</head>
+<body>
+    <header id="main-header"></header>
+    <main class="info-page">
+        <div class="container">
+            <article class="blog-article">
+                <nav class="blog-crumb" aria-label="breadcrumb"><a href="/ru/">Главная</a> / <a href="/ru/blog/">Blog</a></nav>
+                <h1>Как создать безопасный API-ключ Binance</h1>
+                <p class="blog-meta">21 ноября 2026 · 3 мин чтения</p>
+                <p class="blog-lead">Чтобы приложение вроде Sentralyx могло торговать на вашем биржевом счёте, ему нужен API-ключ. API-ключ даёт доступ к счёту с определёнными разрешениями, поэтому создавать и хранить его нужно так же внимательно, как пароль.</p>
+                <h2>Что такое API-ключ?</h2>
+                <p>API-ключ состоит из двух частей: API Key и Secret Key. С их помощью приложение представляется бирже и может делать только то, что разрешено. Иными словами, возможности ключа определяются разрешениями, которые вы выбираете при его создании.</p>
+                <h2>Пошагово</h2>
+                <p>Интерфейс Binance время от времени меняется; шаги ниже описывают общий порядок действий.</p>
+                <ol>
+                    <li>Войдите в Binance и откройте раздел «Управление API» в меню профиля.</li>
+                    <li>Создайте новый API и выберите тип ключа, сгенерированного системой.</li>
+                    <li>Дайте ключу название, которое напомнит, для чего он (например, «Sentralyx»).</li>
+                    <li>Пройдите необходимые проверки безопасности.</li>
+                    <li>Сохраните API Key и Secret Key в надёжном месте. Secret Key обычно показывается только один раз.</li>
+                    <li>Настройте разрешения ключа (см. ниже) и сохраните.</li>
+                </ol>
+                <h2>Какие разрешения включать?</h2>
+                <ul>
+                    <li>Чтение: нужно для информации о балансе и позициях; обычно включено по умолчанию.</li>
+                    <li>Спотовая торговля: нужна для отправки ордеров на спотовом рынке.</li>
+                    <li>Фьючерсы: включайте, только если будете торговать фьючерсами (например, в гибридном или полностью фьючерсном режиме).</li>
+                    <li>Вывод средств: должен оставаться выключенным. Торговому приложению не нужно выводить средства.</li>
+                </ul>
+                <p>Правило простое: включайте только те разрешения, которыми действительно будете пользоваться. Каждое лишнее разрешение — это ненужный риск, если ключ будет скомпрометирован.</p>
+                <h2>Ограничение по IP</h2>
+                <p>Binance позволяет ограничить API-ключ так, чтобы им можно было пользоваться только с определённых IP-адресов. Если у вас статический IP-адрес, такое ограничение даёт дополнительный уровень защиты. Если нет, уточните в документации Binance, как эта настройка влияет на разрешения ключа.</p>
+                <h2>Как защитить ключ</h2>
+                <ul>
+                    <li>Никому не передавайте ключ и не отправляйте его скриншоты в сообщениях.</li>
+                    <li>Держите на биржевом счёте включённой двухфакторную аутентификацию (2FA).</li>
+                    <li>Удаляйте ключи, которыми больше не пользуетесь.</li>
+                    <li>Если подозреваете, что ключ скомпрометирован, сразу удалите его и создайте новый.</li>
+                    <li>Следите и за безопасностью компьютера, на котором используется ключ.</li>
+                </ul>
+                <h2>Что приложение делает с ключом?</h2>
+                <p>Торговое приложение использует API-ключ для запросов к бирже: чтения баланса и позиций, отправки ордеров, выставления и отмены стоп-ордеров и тейк-профитов. Пока разрешение на вывод выключено, ключом нельзя воспользоваться, чтобы отправить деньги со счёта. Поэтому отключённый вывод средств — самый важный шаг безопасности.</p>
+                <h2>Короткое замечание для OKX</h2>
+                <p>На OKX API-ключ создаётся похожим образом; отличие в том, что при создании ключа задаётся passphrase (кодовая фраза). Она так же важна, как API Key и Secret Key, и её нужно ввести в приложении. Правило для разрешений то же: только чтение и торговля, вывод выключен.</p>
+                <h2>Когда обновлять ключ?</h2>
+                <ul>
+                    <li>Если подозреваете, что передали ключ другому человеку или сервису.</li>
+                    <li>Если сменили или переустановили компьютер.</li>
+                    <li>Если видите на счёте незнакомую сделку или вход.</li>
+                    <li>Регулярно, как привычку безопасности.</li>
+                </ul>
+                <h2>Частые ошибки</h2>
+                <ul>
+                    <li>Включать вывод средств «на всякий случай».</li>
+                    <li>Хранить Secret Key открытым текстом в блокноте, письме или облачной заметке.</li>
+                    <li>Использовать один ключ в нескольких приложениях: при проблеме не понять, какое приложение её вызвало.</li>
+                    <li>Забывать удалять старые неиспользуемые ключи.</li>
+                </ul>
+                <h2>Как ввести ключ в Sentralyx</h2>
+                <p>API Key и Secret Key вводятся в разделе API настроек Sentralyx. Для OKX дополнительно нужна passphrase. Sentralyx шифрует ключи ключом, полученным из аппаратного идентификатора устройства, и хранит их на вашем компьютере; файл настроек, скопированный на другое устройство, расшифровать нельзя.</p>
+                <p>Без API-ключа реальный режим выбрать нельзя, а при переходе в него появляется окно подтверждения. Начиная работу с новым ключом, безопаснее всего сначала проверить настройки в виртуальном режиме.</p>
+                <div class="blog-cta">
+                    <h2>Ключи остаются зашифрованными на вашем устройстве</h2>
+                    <p>Sentralyx шифрует API-ключи ключом, полученным из аппаратного идентификатора устройства, хранит их локально и рекомендует отключить разрешение на вывод средств.</p>
+                    <a href="/ru/bezopasnost/" class="btn-sentralyx-start">Подробнее о безопасности</a>
+                </div>
+                <div class="blog-related">
+                    <h2>Другие статьи</h2>
+                    <ul>
+                        <li><a href="/ru/blog/kak-chitat-rezultaty-bektesta/">Как читать результаты бэктеста</a></li>
+                        <li><a href="/ru/blog/stop-loss-treyling-stop-bezubytok/">Стоп-лосс, трейлинг-стоп и безубыток: в чём разница</a></li>
+                        <li><a href="/ru/blog/mtf-ltf-podtverzhdenie/">Что такое подтверждение MTF и LTF?</a></li>
+                        <li><a href="/ru/blog/test-strategii-v-virtualnom-rezhime/">Как протестировать стратегию в виртуальном режиме</a></li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+    <script>
+        fetch('../../../ru/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
+    </script>
+</body>
+</html>

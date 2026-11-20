@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/en/blog/binance-api-key-security/">
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/blog/binance-api-anahtari-guvenli-olusturma/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/blog/binance-api-key-security/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/blog/bezopasnyy-api-klyuch-binance/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/blog/binance-api-anahtari-guvenli-olusturma/">
+    <title>How to Create a Secure Binance API Key | Sentralyx Blog</title>
+    <meta name="description" content="Which permissions should you enable and which should stay off when creating a Binance API key for a trading app? A step-by-step guide to a secure setup.">
+    <meta property="og:title" content="How to Create a Secure Binance API Key | Sentralyx Blog">
+    <meta property="og:description" content="Which permissions should you enable and which should stay off when creating a Binance API key for a trading app? A step-by-step guide to a secure setup.">
+    <meta property="og:url" content="https://www.sentralyx.com/en/blog/binance-api-key-security/">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" type="image/x-icon" href="../../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Create a Secure Binance API Key",
+  "description": "Which permissions should you enable and which should stay off when creating a Binance API key for a trading app? A step-by-step guide to a secure setup.",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "inLanguage": "en",
+  "mainEntityOfPage": "https://www.sentralyx.com/en/blog/binance-api-key-security/",
+  "image": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Sentralyx"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sentralyx",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png"
+    }
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.sentralyx.com/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.sentralyx.com/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How to Create a Secure Binance API Key",
+      "item": "https://www.sentralyx.com/en/blog/binance-api-key-security/"
+    }
+  ]
+}
+    </script>
+    <style>.info-page{padding:96px 20px 72px;background:var(--bg-dark);min-height:100vh}.info-hero{max-width:920px;margin:0 auto 36px;text-align:center}.info-hero h1{color:var(--text-main);font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:14px}.info-hero p{color:var(--text-secondary);line-height:1.7;font-size:1.05rem;margin:0}</style>
+</head>
+<body>
+    <header id="main-header"></header>
+    <main class="info-page">
+        <div class="container">
+            <article class="blog-article">
+                <nav class="blog-crumb" aria-label="breadcrumb"><a href="/en/">Home</a> / <a href="/en/blog/">Blog</a></nav>
+                <h1>How to Create a Secure Binance API Key</h1>
+                <p class="blog-meta">November 21, 2026 · 3 min read</p>
+                <p class="blog-lead">An app like Sentralyx needs an API key to trade on your exchange account. An API key gives access to your account with specific permissions, so you need to create and store it as carefully as a password.</p>
+                <h2>What is an API key?</h2>
+                <p>An API key has two parts: the API Key and the Secret Key. The app uses them to identify itself to the exchange and can only do what your permissions allow. In other words, the permissions you choose when creating a key decide what it can do.</p>
+                <h2>Step by step</h2>
+                <p>Binance&#x27;s interface changes from time to time; the steps below describe the general flow.</p>
+                <ol>
+                    <li>Log in to Binance and open API Management from the profile menu.</li>
+                    <li>Create a new API and choose the system-generated key type.</li>
+                    <li>Give the key a name that reminds you what it is for (e.g. &quot;Sentralyx&quot;).</li>
+                    <li>Complete the required security verifications.</li>
+                    <li>Save the API Key and Secret Key somewhere safe. The Secret Key is usually shown only once.</li>
+                    <li>Edit the key&#x27;s permissions (see below) and save.</li>
+                </ol>
+                <h2>Which permissions should be enabled?</h2>
+                <ul>
+                    <li>Read permission: needed for balance and position information; usually enabled by default.</li>
+                    <li>Spot trading permission: needed to send orders on the spot market.</li>
+                    <li>Futures permission: enable it only if you will trade futures (e.g. hybrid or full futures mode).</li>
+                    <li>Withdrawal permission: should stay disabled. A trading app does not need to withdraw funds.</li>
+                </ul>
+                <p>The rule is simple: enable only the permissions you will actually use. Every unused permission is unnecessary risk if the key is ever compromised.</p>
+                <h2>IP restriction</h2>
+                <p>Binance lets you restrict an API key so it can only be used from specific IP addresses. If you have a static IP address, this restriction adds an extra layer of security. If you do not, check Binance&#x27;s own documentation for how this option affects the key&#x27;s permissions.</p>
+                <h2>How to protect your key</h2>
+                <ul>
+                    <li>Do not share the key with anyone, and do not send screenshots of it in messages.</li>
+                    <li>Keep two-factor authentication (2FA) enabled on your exchange account.</li>
+                    <li>Delete keys you no longer use.</li>
+                    <li>If you suspect a key has been compromised, delete it immediately and create a new one.</li>
+                    <li>Also take care of the security of the computer where you use the key.</li>
+                </ul>
+                <h2>What does the app do with the key?</h2>
+                <p>A trading app uses the API key to send requests to the exchange: reading balance and position information, sending orders, and placing or cancelling stop and take-profit orders. As long as the withdrawal permission is disabled, the key cannot be used to send money out of your account. That is why keeping withdrawals disabled is the most important security step.</p>
+                <h2>A short note for OKX</h2>
+                <p>Creating an API key on OKX works in a similar way; the difference is that you set a passphrase when creating the key. This passphrase is as important as the API Key and Secret Key and must be entered in the app. The same rule applies to permissions: read and trade only, withdrawals disabled.</p>
+                <h2>When should you renew your key?</h2>
+                <ul>
+                    <li>If you suspect you shared the key with another person or place.</li>
+                    <li>If you changed or reset your computer.</li>
+                    <li>If you see a trade or login on your account that you do not recognize.</li>
+                    <li>At regular intervals, as a security habit.</li>
+                </ul>
+                <h2>Common mistakes</h2>
+                <ul>
+                    <li>Enabling the withdrawal permission &quot;just in case&quot;.</li>
+                    <li>Saving the Secret Key as plain text in a notepad, email or cloud note.</li>
+                    <li>Using the same key in several apps; when something goes wrong you cannot tell which app caused it.</li>
+                    <li>Forgetting to delete old keys that are no longer used.</li>
+                </ul>
+                <h2>How to enter it in Sentralyx</h2>
+                <p>The API Key and Secret Key are entered in the API section of the Sentralyx settings. If you use OKX, a passphrase is also required. Sentralyx encrypts the keys with a key derived from your device&#x27;s hardware ID and stores them on your computer; a settings file copied to another device cannot be decrypted.</p>
+                <p>Real mode cannot be selected without an API key, and a confirmation window appears when switching to real mode. When starting with a new key, trying it in virtual mode first is the safest way to make sure your settings work correctly.</p>
+                <div class="blog-cta">
+                    <h2>Keep your keys encrypted on your device</h2>
+                    <p>Sentralyx encrypts API keys with a key derived from your device&#x27;s hardware ID, stores them locally and recommends keeping the withdrawal permission disabled.</p>
+                    <a href="/en/security/" class="btn-sentralyx-start">Explore the security approach</a>
+                </div>
+                <div class="blog-related">
+                    <h2>More articles</h2>
+                    <ul>
+                        <li><a href="/en/blog/how-to-read-backtest-results/">How to Read Backtest Results</a></li>
+                        <li><a href="/en/blog/stop-loss-trailing-stop-break-even/">Stop-loss vs Trailing Stop vs Break-even</a></li>
+                        <li><a href="/en/blog/mtf-ltf-confirmation/">What Is MTF and LTF Confirmation?</a></li>
+                        <li><a href="/en/blog/strategy-testing-in-virtual-mode/">How to Test a Strategy in Virtual Mode</a></li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+    <script>
+        fetch('../../../en/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
+    </script>
+</body>
+</html>

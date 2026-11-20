@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/blog/binance-api-anahtari-guvenli-olusturma/">
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/blog/binance-api-anahtari-guvenli-olusturma/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/blog/binance-api-key-security/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/blog/bezopasnyy-api-klyuch-binance/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/blog/binance-api-anahtari-guvenli-olusturma/">
+    <title>Binance API Anahtarı Güvenli Nasıl Oluşturulur? | Sentralyx Blog</title>
+    <meta name="description" content="Bir trading uygulaması için Binance API anahtarı oluştururken hangi izinleri açmalı, hangilerini kapalı tutmalısın? Adım adım güvenli kurulum rehberi.">
+    <meta property="og:title" content="Binance API Anahtarı Güvenli Nasıl Oluşturulur? | Sentralyx Blog">
+    <meta property="og:description" content="Bir trading uygulaması için Binance API anahtarı oluştururken hangi izinleri açmalı, hangilerini kapalı tutmalısın? Adım adım güvenli kurulum rehberi.">
+    <meta property="og:url" content="https://www.sentralyx.com/blog/binance-api-anahtari-guvenli-olusturma/">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Binance API Anahtarı Güvenli Nasıl Oluşturulur?",
+  "description": "Bir trading uygulaması için Binance API anahtarı oluştururken hangi izinleri açmalı, hangilerini kapalı tutmalısın? Adım adım güvenli kurulum rehberi.",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "inLanguage": "tr",
+  "mainEntityOfPage": "https://www.sentralyx.com/blog/binance-api-anahtari-guvenli-olusturma/",
+  "image": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Sentralyx"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sentralyx",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png"
+    }
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Ana Sayfa",
+      "item": "https://www.sentralyx.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.sentralyx.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Binance API Anahtarı Güvenli Nasıl Oluşturulur?",
+      "item": "https://www.sentralyx.com/blog/binance-api-anahtari-guvenli-olusturma/"
+    }
+  ]
+}
+    </script>
+    <style>.info-page{padding:96px 20px 72px;background:var(--bg-dark);min-height:100vh}.info-hero{max-width:920px;margin:0 auto 36px;text-align:center}.info-hero h1{color:var(--text-main);font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:14px}.info-hero p{color:var(--text-secondary);line-height:1.7;font-size:1.05rem;margin:0}</style>
+</head>
+<body>
+    <header id="main-header"></header>
+    <main class="info-page">
+        <div class="container">
+            <article class="blog-article">
+                <nav class="blog-crumb" aria-label="breadcrumb"><a href="/">Ana Sayfa</a> / <a href="/blog/">Blog</a></nav>
+                <h1>Binance API Anahtarı Güvenli Nasıl Oluşturulur?</h1>
+                <p class="blog-meta">21 Kasım 2026 · 3 dk okuma</p>
+                <p class="blog-lead">Sentralyx gibi bir uygulamanın borsa hesabında işlem yapabilmesi için bir API anahtarına ihtiyacı vardır. API anahtarı, hesabına belirli izinlerle erişim sağlayan bir anahtardır; bu yüzden onu bir şifre kadar dikkatli oluşturman ve saklaman gerekir.</p>
+                <h2>API anahtarı nedir?</h2>
+                <p>Bir API anahtarı iki parçadan oluşur: API Key ve Secret Key. Uygulama bu ikisiyle borsaya kendini tanıtır ve yalnızca senin verdiğin izinler kadar işlem yapabilir. Yani bir anahtarın neler yapabileceğini, oluştururken seçtiğin izinler belirler.</p>
+                <h2>Adım adım oluşturma</h2>
+                <p>Binance&#x27;in arayüzü zaman zaman değişebilir; aşağıdaki adımlar genel akışı anlatır.</p>
+                <ol>
+                    <li>Binance hesabına giriş yap ve profil menüsünden API Yönetimi bölümünü aç.</li>
+                    <li>Yeni bir API oluştur ve sistem tarafından oluşturulan anahtar türünü seç.</li>
+                    <li>Anahtara ne için kullandığını hatırlatacak bir ad ver (ör. &quot;Sentralyx&quot;).</li>
+                    <li>İstenen güvenlik doğrulamalarını tamamla.</li>
+                    <li>Oluşan API Key ve Secret Key&#x27;i güvenli bir yere kaydet. Secret Key genellikle yalnızca bir kez gösterilir.</li>
+                    <li>Anahtarın izinlerini düzenle (aşağıya bak) ve kaydet.</li>
+                </ol>
+                <h2>Hangi izinler açılmalı?</h2>
+                <ul>
+                    <li>Okuma izni: Bakiye ve pozisyon bilgisi için gereklidir; genellikle varsayılan olarak açıktır.</li>
+                    <li>Spot işlem izni: Spot piyasada emir göndermek için gerekir.</li>
+                    <li>Vadeli işlem izni: Yalnızca vadeli işlem kullanacaksan (ör. hibrit ya da tam vadeli mod) aç.</li>
+                    <li>Para çekme izni: Kapalı kalmalı. Bir trading uygulamasının para çekmeye ihtiyacı yoktur.</li>
+                </ul>
+                <p>Kural basit: Yalnızca gerçekten kullanacağın izinleri aç. Kullanmadığın her izin, anahtar ele geçirildiğinde gereksiz bir risk demektir.</p>
+                <h2>IP kısıtlaması</h2>
+                <p>Binance, bir API anahtarını yalnızca belirli IP adreslerinden kullanılacak şekilde sınırlamana izin verir. Sabit bir IP adresin varsa bu kısıtlama ek bir güvenlik katmanı sağlar. Sabit IP&#x27;n yoksa bu seçeneğin anahtarın izinlerine etkisini Binance&#x27;in kendi açıklamalarından kontrol et.</p>
+                <h2>Anahtarını nasıl korursun?</h2>
+                <ul>
+                    <li>Anahtarı kimseyle paylaşma; ekran görüntüsünü mesaj olarak gönderme.</li>
+                    <li>Borsa hesabında iki aşamalı doğrulamayı (2FA) açık tut.</li>
+                    <li>Kullanmadığın anahtarları sil.</li>
+                    <li>Bir anahtarın ele geçirildiğinden şüphelenirsen hemen sil ve yenisini oluştur.</li>
+                    <li>Anahtarı kullandığın bilgisayarın güvenliğine de dikkat et.</li>
+                </ul>
+                <h2>Uygulama anahtarla ne yapar?</h2>
+                <p>Bir trading uygulaması API anahtarını borsaya istek göndermek için kullanır: bakiye ve pozisyon bilgisini okumak, emir göndermek, stop ve kâr al emirlerini yerleştirmek ya da iptal etmek. Para çekme izni kapalı olduğu sürece anahtar, hesabından dışarıya para göndermek için kullanılamaz. Bu yüzden para çekme iznini kapalı tutmak en önemli güvenlik adımıdır.</p>
+                <h2>OKX için kısa not</h2>
+                <p>OKX&#x27;te API anahtarı oluşturma mantığı benzerdir; fark, anahtar oluşturulurken bir passphrase (parola) belirlenmesidir. Bu parola da API Key ve Secret Key kadar önemlidir ve uygulamaya girilmesi gerekir. İzin seçiminde de aynı kural geçerlidir: Yalnızca okuma ve işlem izinleri, para çekme kapalı.</p>
+                <h2>Anahtarını ne zaman yenilemelisin?</h2>
+                <ul>
+                    <li>Anahtarı başka bir kişiyle ya da yerle paylaştığından şüpheleniyorsan.</li>
+                    <li>Bilgisayarını değiştirdiysen ya da sıfırladıysan.</li>
+                    <li>Hesabında tanımadığın bir işlem ya da giriş görürsen.</li>
+                    <li>Belirli aralıklarla, düzenli bir güvenlik alışkanlığı olarak.</li>
+                </ul>
+                <h2>Sık yapılan hatalar</h2>
+                <ul>
+                    <li>&quot;Lazım olur&quot; diye para çekme iznini açmak.</li>
+                    <li>Secret Key&#x27;i not defterine, e-postaya ya da bulut notlarına düz metin olarak kaydetmek.</li>
+                    <li>Aynı anahtarı birden fazla uygulamada kullanmak; bir sorun olduğunda hangi uygulamadan kaynaklandığını bilemezsin.</li>
+                    <li>Artık kullanılmayan eski anahtarları silmeyi unutmak.</li>
+                </ul>
+                <h2>Sentralyx&#x27;e nasıl girilir?</h2>
+                <p>API Key ve Secret Key, Sentralyx&#x27;in ayarlarındaki API bölümüne girilir. OKX kullanıyorsan ayrıca bir passphrase (parola) istenir. Sentralyx anahtarlarını cihazının donanım kimliğinden türetilen bir anahtarla şifreleyip bilgisayarında saklar; ayar dosyası başka bir cihaza kopyalansa bile çözülemez.</p>
+                <p>API anahtarı girilmeden gerçek mod seçilemez; gerçek moda geçerken de bir onay penceresi çıkar. Yeni bir anahtarla başlarken önce sanal modda denemek, ayarların doğru çalıştığından emin olmanın en güvenli yoludur.</p>
+                <div class="blog-cta">
+                    <h2>Anahtarların cihazında şifreli kalsın</h2>
+                    <p>Sentralyx, API anahtarlarını cihazının donanım kimliğinden türetilen bir anahtarla şifreleyip yerelde saklar ve para çekme izninin kapalı olmasını önerir.</p>
+                    <a href="/guvenlik/" class="btn-sentralyx-start">Güvenlik yaklaşımını incele</a>
+                </div>
+                <div class="blog-related">
+                    <h2>Diğer yazılar</h2>
+                    <ul>
+                        <li><a href="/blog/backtest-sonuclari-nasil-okunur/">Backtest Sonuçları Nasıl Okunur?</a></li>
+                        <li><a href="/blog/stop-loss-trailing-stop-break-even-farki/">Stop-loss, Trailing Stop ve Break-even Farkı</a></li>
+                        <li><a href="/blog/mtf-ltf-onayi-nedir/">MTF ve LTF Onayı Nedir?</a></li>
+                        <li><a href="/blog/sanal-modda-strateji-deneme/">Sanal Modda Strateji Nasıl Denenir?</a></li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        fetch('../../components/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
+    </script>
+</body>
+</html>

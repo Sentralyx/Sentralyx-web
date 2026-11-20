@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/en/blog/strategy-testing-in-virtual-mode/">
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/blog/sanal-modda-strateji-deneme/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/blog/strategy-testing-in-virtual-mode/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/blog/test-strategii-v-virtualnom-rezhime/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/blog/sanal-modda-strateji-deneme/">
+    <title>How to Test a Strategy in Virtual Mode | Sentralyx Blog</title>
+    <meta name="description" content="Virtual mode lets you try your strategy in today&#x27;s market without real money. How it differs from backtesting, a step-by-step guide and a checklist before going live.">
+    <meta property="og:title" content="How to Test a Strategy in Virtual Mode | Sentralyx Blog">
+    <meta property="og:description" content="Virtual mode lets you try your strategy in today&#x27;s market without real money. How it differs from backtesting, a step-by-step guide and a checklist before going live.">
+    <meta property="og:url" content="https://www.sentralyx.com/en/blog/strategy-testing-in-virtual-mode/">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" type="image/x-icon" href="../../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Test a Strategy in Virtual Mode",
+  "description": "Virtual mode lets you try your strategy in today's market without real money. How it differs from backtesting, a step-by-step guide and a checklist before going live.",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "inLanguage": "en",
+  "mainEntityOfPage": "https://www.sentralyx.com/en/blog/strategy-testing-in-virtual-mode/",
+  "image": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Sentralyx"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sentralyx",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png"
+    }
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.sentralyx.com/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.sentralyx.com/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How to Test a Strategy in Virtual Mode",
+      "item": "https://www.sentralyx.com/en/blog/strategy-testing-in-virtual-mode/"
+    }
+  ]
+}
+    </script>
+    <style>.info-page{padding:96px 20px 72px;background:var(--bg-dark);min-height:100vh}.info-hero{max-width:920px;margin:0 auto 36px;text-align:center}.info-hero h1{color:var(--text-main);font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:14px}.info-hero p{color:var(--text-secondary);line-height:1.7;font-size:1.05rem;margin:0}</style>
+</head>
+<body>
+    <header id="main-header"></header>
+    <main class="info-page">
+        <div class="container">
+            <article class="blog-article">
+                <nav class="blog-crumb" aria-label="breadcrumb"><a href="/en/">Home</a> / <a href="/en/blog/">Blog</a></nav>
+                <h1>How to Test a Strategy in Virtual Mode</h1>
+                <p class="blog-meta">November 21, 2026 · 3 min read</p>
+                <p class="blog-lead">A backtest shows the past, but the market changes every day. Virtual mode lets you run your strategy in today&#x27;s market without real money, giving you a forward-looking test. In this article we explain how to use virtual mode effectively.</p>
+                <h2>What is virtual mode?</h2>
+                <p>Virtual mode simulates trading with the same scanning, signal and position management flow, without sending real orders. The strategy works as it would in real mode; the difference is that no real order reaches the exchange and no real money is used.</p>
+                <h2>Isn&#x27;t a backtest enough?</h2>
+                <p>A backtest shows how the strategy behaved on historical data. Virtual mode tests it in market conditions that have not happened yet. A strategy tuned to the past may behave differently in today&#x27;s market; virtual mode lets you see that difference without paying for it with real money. They are not alternatives but consecutive steps.</p>
+                <h2>Step by step</h2>
+                <ol>
+                    <li>Build your strategy: choose the indicators, the strategy type (Scoring, Majority, Strong Majority or Full Consensus) and the filters.</li>
+                    <li>Test it on historical data with a backtest and review the results.</li>
+                    <li>Set your risk settings: stop-loss, take-profit, daily loss limit, maximum number of open positions and maximum position duration.</li>
+                    <li>Select virtual mode and start scanning.</li>
+                    <li>Run the strategy until enough trades have accumulated.</li>
+                    <li>Review the results in the closed positions and reports screens; export them as CSV, PDF or Excel if needed.</li>
+                    <li>Compare the virtual results with the backtest results.</li>
+                </ol>
+                <h2>How long should you test?</h2>
+                <p>There is no fixed duration; what matters is reaching enough trades and seeing different market conditions. A strategy tested only in a rising week can give very different results in a sideways or falling market. A few weeks and different conditions tell you much more than a single week.</p>
+                <h2>What should you track?</h2>
+                <p>While virtual mode runs, look beyond the total result and pay attention to:</p>
+                <ul>
+                    <li>The number of trades and which coins the signals concentrate on</li>
+                    <li>Win rate together with average win and average loss</li>
+                    <li>The longest losing streak and the largest drop in balance</li>
+                    <li>Whether trades closed by stop-loss, take-profit or because time ran out</li>
+                    <li>How far the results deviate from the backtest</li>
+                </ul>
+                <p>The reports screen shows a daily summary, win rate, total and average PnL, and the best and worst trade for the date range you choose. Noting these weekly makes it easier to see how the strategy behaves over time.</p>
+                <h2>Common mistakes</h2>
+                <ul>
+                    <li>Switching to real mode after a few good days.</li>
+                    <li>Keeping risk settings in virtual mode looser than you would ever use in real mode.</li>
+                    <li>Changing the strategy often during the test and losing track of which change mattered.</li>
+                    <li>Ignoring virtual losses because they are &quot;not real&quot;.</li>
+                </ul>
+                <h2>Limits of virtual results</h2>
+                <p>Virtual mode gives a picture close to reality, but not an identical one. In real trading, orders can fill with slippage, orders on low-liquidity coins may not fill at the expected price, and the exchange can reject some orders. So read virtual results with caution too.</p>
+                <h2>Before switching to real mode</h2>
+                <ul>
+                    <li>Are the virtual results consistent with the backtest?</li>
+                    <li>Could you live with the maximum drawdown using real money?</li>
+                    <li>Does your API key have only the permissions it needs, with withdrawals disabled?</li>
+                    <li>Are the daily loss limit and maximum number of positions set?</li>
+                    <li>Are you ready to start with a small amount?</li>
+                </ul>
+                <p>In Sentralyx, a confirmation window appears when switching to real mode, and real mode cannot be selected without an API key. No position is opened if the free balance is not enough. While a real position is open, the trading type and exchange cannot be changed; switching between virtual and real mode is allowed.</p>
+                <h2>Which version can use it?</h2>
+                <p>The Free version does not open positions, so trading simulation in virtual mode requires a Trial or Full license. You can try every feature for free with the 7-day Trial. Virtual mode does not use real money, but no test guarantees the same result in real trading.</p>
+                <div class="blog-cta">
+                    <h2>Try your strategy in virtual mode first</h2>
+                    <p>Sentralyx virtual mode simulates trading with the same flow without using real money. You can try every feature with the 7-day Trial.</p>
+                    <a href="/en/pricing/" class="btn-sentralyx-start">See the plans</a>
+                </div>
+                <div class="blog-related">
+                    <h2>More articles</h2>
+                    <ul>
+                        <li><a href="/en/blog/how-to-read-backtest-results/">How to Read Backtest Results</a></li>
+                        <li><a href="/en/blog/stop-loss-trailing-stop-break-even/">Stop-loss vs Trailing Stop vs Break-even</a></li>
+                        <li><a href="/en/blog/binance-api-key-security/">How to Create a Secure Binance API Key</a></li>
+                        <li><a href="/en/blog/mtf-ltf-confirmation/">What Is MTF and LTF Confirmation?</a></li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+    <script>
+        fetch('../../../en/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
+    </script>
+</body>
+</html>

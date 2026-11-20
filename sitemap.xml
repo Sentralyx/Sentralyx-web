@@ -742,4 +742,222 @@
 
   </url>
 
+  <!-- Blog -->
+
+  <url>
+
+    <loc>https://www.sentralyx.com/blog/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>weekly</changefreq>
+
+    <priority>0.80</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/blog/backtest-sonuclari-nasil-okunur/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/blog/stop-loss-trailing-stop-break-even-farki/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/blog/binance-api-anahtari-guvenli-olusturma/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/blog/mtf-ltf-onayi-nedir/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/blog/sanal-modda-strateji-deneme/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/blog/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>weekly</changefreq>
+
+    <priority>0.80</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/blog/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>weekly</changefreq>
+
+    <priority>0.80</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/blog/how-to-read-backtest-results/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/blog/kak-chitat-rezultaty-bektesta/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/blog/stop-loss-trailing-stop-break-even/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/blog/stop-loss-treyling-stop-bezubytok/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/blog/binance-api-key-security/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/blog/bezopasnyy-api-klyuch-binance/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/blog/mtf-ltf-confirmation/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/blog/mtf-ltf-podtverzhdenie/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/en/blog/strategy-testing-in-virtual-mode/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
+  <url>
+
+    <loc>https://www.sentralyx.com/ru/blog/test-strategii-v-virtualnom-rezhime/</loc>
+
+    <lastmod>2026-11-21</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.70</priority>
+
+  </url>
+
 </urlset>

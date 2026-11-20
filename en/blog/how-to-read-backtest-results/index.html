@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/en/blog/how-to-read-backtest-results/">
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/blog/backtest-sonuclari-nasil-okunur/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/blog/how-to-read-backtest-results/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/blog/kak-chitat-rezultaty-bektesta/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/blog/backtest-sonuclari-nasil-okunur/">
+    <title>How to Read Backtest Results | Sentralyx Blog</title>
+    <meta name="description" content="What do trade count, win rate, maximum drawdown and profit factor mean in a backtest report? A checklist to avoid misreading your results.">
+    <meta property="og:title" content="How to Read Backtest Results | Sentralyx Blog">
+    <meta property="og:description" content="What do trade count, win rate, maximum drawdown and profit factor mean in a backtest report? A checklist to avoid misreading your results.">
+    <meta property="og:url" content="https://www.sentralyx.com/en/blog/how-to-read-backtest-results/">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" type="image/x-icon" href="../../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Read Backtest Results",
+  "description": "What do trade count, win rate, maximum drawdown and profit factor mean in a backtest report? A checklist to avoid misreading your results.",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "inLanguage": "en",
+  "mainEntityOfPage": "https://www.sentralyx.com/en/blog/how-to-read-backtest-results/",
+  "image": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Sentralyx"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sentralyx",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png"
+    }
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.sentralyx.com/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.sentralyx.com/en/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How to Read Backtest Results",
+      "item": "https://www.sentralyx.com/en/blog/how-to-read-backtest-results/"
+    }
+  ]
+}
+    </script>
+    <style>.info-page{padding:96px 20px 72px;background:var(--bg-dark);min-height:100vh}.info-hero{max-width:920px;margin:0 auto 36px;text-align:center}.info-hero h1{color:var(--text-main);font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:14px}.info-hero p{color:var(--text-secondary);line-height:1.7;font-size:1.05rem;margin:0}</style>
+</head>
+<body>
+    <header id="main-header"></header>
+    <main class="info-page">
+        <div class="container">
+            <article class="blog-article">
+                <nav class="blog-crumb" aria-label="breadcrumb"><a href="/en/">Home</a> / <a href="/en/blog/">Blog</a></nav>
+                <h1>How to Read Backtest Results</h1>
+                <p class="blog-meta">November 21, 2026 · 4 min read</p>
+                <p class="blog-lead">A backtest shows how a strategy would have behaved on historical market data. Read well, it helps you catch weak rules before you risk real money; read badly, it gives you false confidence. In this article we explain the order in which to look at a backtest report.</p>
+                <h2>Start with the number of trades</h2>
+                <p>Before looking at the results, check how many trades were made. A test with 10–20 trades is heavily affected by a few lucky or unlucky trades. As a general rule, at least 100 trades make the results more meaningful. If the trade count is low, consider extending the test period or testing on more coins.</p>
+                <h2>Total return alone is misleading</h2>
+                <p>A high total return looks impressive at first glance, but if it comes from a few large trades the strategy may be fragile. Always read the total return together with the metrics below.</p>
+                <h2>Read win rate together with average win and loss</h2>
+                <p>Win rate is the percentage of trades closed in profit. On its own it means little; it has to be read together with the average win and the average loss.</p>
+                <p>Example: if 4 of 10 trades closed with an average gain of 30 USDT and 6 closed with an average loss of 10 USDT, the win rate is only 40%, yet the result is 120 − 60 = +60 USDT. Conversely, a strategy with a 70% win rate can lose money if its losses are much larger than its gains.</p>
+                <h2>Maximum drawdown</h2>
+                <p>Maximum drawdown is the largest drop from a balance peak to the lowest point that follows it. It shows how painful the strategy can be in bad periods. Ask yourself: if I lived through this loss with real money, would I keep running the strategy?</p>
+                <h2>Profit factor</h2>
+                <p>Profit factor is total gross profit divided by total gross loss. A value below 1 means the strategy loses money; a value just above 1 means small cost changes could flip the result.</p>
+                <h2>The shape of the equity curve</h2>
+                <p>The equity chart shows how the balance changes over time. A steadily rising curve and a curve that rises in a single jump can have the same total return, but the second is much riskier. Also watch for long flat or falling periods.</p>
+                <h2>Account for commission and slippage</h2>
+                <p>Every trade pays commission, and orders do not always fill at the expected price. For strategies that trade often, these small costs add up to a big difference. The Sentralyx backtest calculates results with commission and slippage simulation; even so, these costs can be higher in real trading.</p>
+                <h2>The overfitting trap</h2>
+                <p>Fine-tuning parameters to fit historical data perfectly can produce a strategy that looks great in the past but fails in the future. To reduce this risk:</p>
+                <ul>
+                    <li>Test the strategy in different periods and market conditions (trending, sideways, volatile).</li>
+                    <li>Try parameters tuned on one period on another period the strategy has never seen.</li>
+                    <li>Use a small number of understandable rules; every new rule increases the risk of overfitting.</li>
+                </ul>
+                <h2>Monte Carlo and detailed analysis</h2>
+                <p>Monte Carlo analysis is a general method that re-creates results with different random scenarios to show how much a strategy depends on luck. The Sentralyx backtest also breaks results down by day, hour and direction (long/short). For example, if your strategy only loses at certain hours, you can spot it in these analyses.</p>
+                <h2>Example: comparing two strategies</h2>
+                <p>Consider two strategies. Strategy A made a 35% total return over 60 trades with a 28% maximum drawdown. Strategy B made 22% over 180 trades with a 9% maximum drawdown. At first glance A looks better; but its result rests on few trades and at one point the balance lost almost a third. B earned less, but reached its result with more trades and a much calmer curve.</p>
+                <p>In this case it makes more sense to move B to virtual mode and to re-test A in different periods. The real question is not &quot;which one earned more?&quot; but &quot;whose result is more reliable?&quot;</p>
+                <h2>Common mistakes</h2>
+                <ul>
+                    <li>Deciding based only on total return.</li>
+                    <li>Testing on a single coin or a single period and generalizing the result.</li>
+                    <li>Assuming zero commission or ignoring slippage.</li>
+                    <li>Constantly changing parameters until the result looks good, searching for the &quot;best&quot; setting.</li>
+                    <li>Treating bad periods as &quot;exceptions&quot; and ignoring them.</li>
+                    <li>Taking a backtest result straight to real mode without trying it in virtual mode first.</li>
+                </ul>
+                <h2>Quick checklist</h2>
+                <ul>
+                    <li>Are there enough trades (at least 100)?</li>
+                    <li>Do win rate and average win/loss make sense together?</li>
+                    <li>Could you live with the maximum drawdown using real money?</li>
+                    <li>Is the profit factor comfortably above 1?</li>
+                    <li>Does the equity curve depend on a single trade?</li>
+                    <li>Are commission and slippage included?</li>
+                    <li>Does it give similar results in other periods?</li>
+                </ul>
+                <p>A backtest result does not guarantee the same result in the future. If the results are satisfying, the next step is to try the strategy in virtual mode without real money. Note: in the Free version backtests are limited to the last 30 days of data; in the Trial and Full versions the data range is unlimited.</p>
+                <div class="blog-cta">
+                    <h2>Test your strategy on historical data</h2>
+                    <p>The Sentralyx backtest offers commission and slippage simulation, Monte Carlo analysis, analysis by day, hour and direction, and an equity chart.</p>
+                    <a href="/en/backtest/" class="btn-sentralyx-start">Explore the backtest screen</a>
+                </div>
+                <div class="blog-related">
+                    <h2>More articles</h2>
+                    <ul>
+                        <li><a href="/en/blog/stop-loss-trailing-stop-break-even/">Stop-loss vs Trailing Stop vs Break-even</a></li>
+                        <li><a href="/en/blog/binance-api-key-security/">How to Create a Secure Binance API Key</a></li>
+                        <li><a href="/en/blog/mtf-ltf-confirmation/">What Is MTF and LTF Confirmation?</a></li>
+                        <li><a href="/en/blog/strategy-testing-in-virtual-mode/">How to Test a Strategy in Virtual Mode</a></li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+    <script>
+        fetch('../../../en/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
+    </script>
+</body>
+</html>

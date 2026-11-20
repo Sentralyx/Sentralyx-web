@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.sentralyx.com/blog/backtest-sonuclari-nasil-okunur/">
+    <link rel="alternate" hreflang="tr" href="https://www.sentralyx.com/blog/backtest-sonuclari-nasil-okunur/">
+    <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/blog/how-to-read-backtest-results/">
+    <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/blog/kak-chitat-rezultaty-bektesta/">
+    <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/blog/backtest-sonuclari-nasil-okunur/">
+    <title>Backtest Sonuçları Nasıl Okunur? | Sentralyx Blog</title>
+    <meta name="description" content="Backtest raporundaki işlem sayısı, başarı oranı, maksimum düşüş ve kâr faktörü ne anlama gelir? Sonuçları yanlış yorumlamamak için kontrol listesi.">
+    <meta property="og:title" content="Backtest Sonuçları Nasıl Okunur? | Sentralyx Blog">
+    <meta property="og:description" content="Backtest raporundaki işlem sayısı, başarı oranı, maksimum düşüş ve kâr faktörü ne anlama gelir? Sonuçları yanlış yorumlamamak için kontrol listesi.">
+    <meta property="og:url" content="https://www.sentralyx.com/blog/backtest-sonuclari-nasil-okunur/">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" type="image/x-icon" href="../../sentralyx_favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Backtest Sonuçları Nasıl Okunur?",
+  "description": "Backtest raporundaki işlem sayısı, başarı oranı, maksimum düşüş ve kâr faktörü ne anlama gelir? Sonuçları yanlış yorumlamamak için kontrol listesi.",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "inLanguage": "tr",
+  "mainEntityOfPage": "https://www.sentralyx.com/blog/backtest-sonuclari-nasil-okunur/",
+  "image": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Sentralyx"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sentralyx",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sentralyx.com/sentralyx_sx_monogram_whitebg.png"
+    }
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Ana Sayfa",
+      "item": "https://www.sentralyx.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.sentralyx.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Backtest Sonuçları Nasıl Okunur?",
+      "item": "https://www.sentralyx.com/blog/backtest-sonuclari-nasil-okunur/"
+    }
+  ]
+}
+    </script>
+    <style>.info-page{padding:96px 20px 72px;background:var(--bg-dark);min-height:100vh}.info-hero{max-width:920px;margin:0 auto 36px;text-align:center}.info-hero h1{color:var(--text-main);font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:14px}.info-hero p{color:var(--text-secondary);line-height:1.7;font-size:1.05rem;margin:0}</style>
+</head>
+<body>
+    <header id="main-header"></header>
+    <main class="info-page">
+        <div class="container">
+            <article class="blog-article">
+                <nav class="blog-crumb" aria-label="breadcrumb"><a href="/">Ana Sayfa</a> / <a href="/blog/">Blog</a></nav>
+                <h1>Backtest Sonuçları Nasıl Okunur?</h1>
+                <p class="blog-meta">21 Kasım 2026 · 4 dk okuma</p>
+                <p class="blog-lead">Backtest, bir stratejinin geçmiş piyasa verisinde nasıl davranacağını gösterir. İyi okunduğunda zayıf kuralları gerçek paraya geçmeden önce yakalamanı sağlar; kötü okunduğunda ise yanlış bir güven duygusu verir. Bu yazıda bir backtest raporuna hangi sırayla bakman gerektiğini anlatıyoruz.</p>
+                <h2>Önce işlem sayısına bak</h2>
+                <p>Sonuçlara bakmadan önce kaç işlem yapıldığını kontrol et. 10–20 işlemlik bir test, birkaç şanslı ya da şanssız işlemden çok etkilenir. Genel bir kural olarak en az 100 işlem, sonuçları daha anlamlı hale getirir. İşlem sayısı azsa test süresini uzatmayı ya da daha fazla coin üzerinde denemeyi düşün.</p>
+                <h2>Toplam getiri tek başına yanıltıcıdır</h2>
+                <p>Yüksek bir toplam getiri ilk bakışta etkileyicidir; ama bu getiri birkaç büyük işlemden geliyorsa strateji kırılgan olabilir. Toplam getiriyi her zaman aşağıdaki metriklerle birlikte değerlendir.</p>
+                <h2>Başarı oranı ve ortalama kazanç/kayıp birlikte okunur</h2>
+                <p>Başarı oranı (win rate), kazançla kapanan işlemlerin yüzdesidir. Tek başına bir anlam taşımaz; ortalama kazanç ve ortalama kayıpla birlikte okunmalıdır.</p>
+                <p>Örnek: 10 işlemin 4&#x27;ü ortalama 30 USDT kazançla, 6&#x27;sı ortalama 10 USDT kayıpla kapandıysa başarı oranı yalnızca %40&#x27;tır; ama sonuç 120 − 60 = +60 USDT&#x27;dir. Tersine, %70 başarı oranına sahip bir strateji, kayıpları kazançlarından çok büyükse zarar edebilir.</p>
+                <h2>Maksimum düşüş (drawdown)</h2>
+                <p>Maksimum düşüş, bakiyenin en yüksek noktasından sonraki en düşük noktasına kadar olan en büyük kayıptır. Bu değer, stratejinin kötü dönemlerde ne kadar acı verebileceğini gösterir. Kendine şunu sor: Bu kaybı gerçek parayla yaşasaydım stratejiye devam eder miydim?</p>
+                <h2>Kâr faktörü</h2>
+                <p>Kâr faktörü, toplam brüt kârın toplam brüt zarara bölünmesiyle bulunur. 1&#x27;in altındaki bir değer stratejinin zarar ettiğini, 1&#x27;in biraz üzerindeki bir değer ise küçük maliyet değişikliklerinin sonucu tersine çevirebileceğini gösterir.</p>
+                <h2>Equity grafiğinin şekli</h2>
+                <p>Equity grafiği, bakiyenin zaman içindeki seyrini gösterir. Düzenli yükselen bir eğri ile tek bir sıçramayla yükselen bir eğri aynı toplam getiriye sahip olabilir; ama ikincisi çok daha risklidir. Uzun süre yatay ya da düşüşte kalan dönemlere de dikkat et.</p>
+                <h2>Komisyon ve kaymayı (slippage) hesaba kat</h2>
+                <p>Her işlemde komisyon ödenir ve emir her zaman beklenen fiyattan gerçekleşmez. Sık işlem yapan stratejilerde bu küçük maliyetler toplamda büyük fark yaratır. Sentralyx backtest, sonuçları komisyon ve kayma simülasyonuyla hesaplar; yine de gerçek işlemde bu maliyetler daha yüksek olabilir.</p>
+                <h2>Aşırı uyum (overfitting) tuzağı</h2>
+                <p>Parametreleri geçmiş veriye mükemmel uyacak şekilde ince ayarlamak, geçmişte harika görünen ama gelecekte çalışmayan bir strateji üretebilir. Bunu azaltmak için:</p>
+                <ul>
+                    <li>Stratejiyi farklı dönemlerde ve piyasa koşullarında (trend, yatay, volatil) test et.</li>
+                    <li>Bir dönemde ayarladığın parametreleri, hiç görmediği başka bir dönemde dene.</li>
+                    <li>Az sayıda, anlaşılır kural kullan; her yeni kural aşırı uyum riskini artırır.</li>
+                </ul>
+                <h2>Monte Carlo ve detaylı analiz</h2>
+                <p>Monte Carlo analizi, sonuçları farklı rastgele senaryolarla yeniden üreterek stratejinin şansa ne kadar bağlı olduğunu görmeye yardım eden genel bir yöntemdir. Sentralyx backtest ayrıca sonuçları güne, saate ve yöne (long/short) göre ayırır. Örneğin stratejin yalnızca belirli saatlerde zarar ediyorsa bunu bu analizlerde fark edebilirsin.</p>
+                <h2>Örnek: İki stratejiyi karşılaştırmak</h2>
+                <p>İki strateji düşün. A stratejisi 60 işlemde %35 toplam getiri sağlamış, maksimum düşüşü %28. B stratejisi 180 işlemde %22 getiri sağlamış, maksimum düşüşü %9. İlk bakışta A daha iyi görünür; ama A&#x27;nın sonucu az sayıda işleme dayanıyor ve bakiye bir noktada neredeyse üçte bir erimiş. B daha az kazandırmış olsa da daha fazla işlemle ve çok daha sakin bir eğriyle bu sonuca ulaşmış.</p>
+                <p>Bu durumda B&#x27;yi sanal modda denemeye almak, A&#x27;yı ise farklı dönemlerde yeniden test etmek daha mantıklıdır. Asıl soru &quot;hangisi daha çok kazandırdı?&quot; değil, &quot;hangisinin sonucu daha güvenilir?&quot; olmalıdır.</p>
+                <h2>Sık yapılan hatalar</h2>
+                <ul>
+                    <li>Yalnızca toplam getiriye bakıp karar vermek.</li>
+                    <li>Tek bir coin ya da tek bir dönemde test edip sonucu genellemek.</li>
+                    <li>Komisyonu sıfır kabul etmek ya da kaymayı hesaba katmamak.</li>
+                    <li>Sonuç beğenilmeyince parametreleri sürekli değiştirip &quot;en iyi&quot; ayarı aramak.</li>
+                    <li>Kötü giden dönemleri &quot;istisna&quot; sayıp görmezden gelmek.</li>
+                    <li>Backtest sonucunu doğrudan gerçek moda taşımak, arada sanal modda denememek.</li>
+                </ul>
+                <h2>Kısa kontrol listesi</h2>
+                <ul>
+                    <li>Yeterli işlem sayısı var mı (en az 100)?</li>
+                    <li>Başarı oranı ile ortalama kazanç/kayıp birlikte mantıklı mı?</li>
+                    <li>Maksimum düşüşü gerçek parayla taşıyabilir misin?</li>
+                    <li>Kâr faktörü 1&#x27;in rahatça üzerinde mi?</li>
+                    <li>Equity grafiği tek bir işleme mi bağlı?</li>
+                    <li>Komisyon ve kayma dahil mi?</li>
+                    <li>Farklı dönemlerde de benzer sonuç veriyor mu?</li>
+                </ul>
+                <p>Backtest sonucu gelecekte aynı sonucu garanti etmez. Sonuçlar tatmin ediciyse bir sonraki adım, stratejiyi gerçek para kullanmadan sanal modda denemektir. Not: Free sürümde backtest son 30 günlük veriyle sınırlıdır; Trial ve Full sürümlerde veri aralığı sınırsızdır.</p>
+                <div class="blog-cta">
+                    <h2>Stratejini geçmiş veride dene</h2>
+                    <p>Sentralyx backtest; komisyon ve kayma simülasyonu, Monte Carlo analizi, güne, saate ve yöne göre analiz ile equity grafiği sunar.</p>
+                    <a href="/backtest/" class="btn-sentralyx-start">Backtest ekranını incele</a>
+                </div>
+                <div class="blog-related">
+                    <h2>Diğer yazılar</h2>
+                    <ul>
+                        <li><a href="/blog/stop-loss-trailing-stop-break-even-farki/">Stop-loss, Trailing Stop ve Break-even Farkı</a></li>
+                        <li><a href="/blog/binance-api-anahtari-guvenli-olusturma/">Binance API Anahtarı Güvenli Nasıl Oluşturulur?</a></li>
+                        <li><a href="/blog/mtf-ltf-onayi-nedir/">MTF ve LTF Onayı Nedir?</a></li>
+                        <li><a href="/blog/sanal-modda-strateji-deneme/">Sanal Modda Strateji Nasıl Denenir?</a></li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        fetch('../../components/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
+    </script>
+</body>
+</html>
