@@ -206,9 +206,9 @@
                         <label class="form-label text-main small mb-1">Фильтр: стратегия</label>
                         <select class="form-select form-control-custom" id="strategy-filter" onchange="applyFilters()">
                             <option value="all" selected>Все стратегии</option>
-                            <option value="trend">[Trend‑Follower]</option>
-                            <option value="mean">[Mean‑Reversion]</option>
-                            <option value="break">[Breakout]</option>
+                            <option value="trend">[Следование за трендом]</option>
+                            <option value="mean">[Возврат к среднему]</option>
+                            <option value="break">[Пробой]</option>
                         </select>
                         <div class="text-secondary small mt-2">Сегментация по стратегиям помогает анализировать режимы и качество исполнения.</div>
                     </div>
@@ -217,7 +217,7 @@
                         <select class="form-select form-control-custom" id="asset-filter" onchange="applyFilters()">
                             <option value="all" selected>Все</option>
                             <option value="perp">USDT‑маржинальные бессрочные</option>
-                            <option value="spot">Spot</option>
+                            <option value="spot">Спот</option>
                         </select>
                         <div class="text-secondary small mt-2">Сравнивайте результаты между рынками и условиями ликвидности.</div>
                     </div>
@@ -226,19 +226,19 @@
 
             <div class="panel p-3 mb-4">
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                    <h5 class="text-main mb-0"><i class="fas fa-microscope me-2"></i>Performance Metrics</h5>
+                    <h5 class="text-main mb-0"><i class="fas fa-microscope me-2"></i>Показатели эффективности</h5>
                     <div class="d-flex gap-2 flex-wrap">
-                        <span class="metric-badge"><i class="fas fa-percent"></i><span>Win Rate:</span> <strong id="m-winrate">—</strong></span>
-                        <span class="metric-badge"><i class="fas fa-scale-balanced"></i><span>Profit Factor:</span> <strong id="m-pf">—</strong></span>
-                        <span class="metric-badge"><i class="fas fa-wave-square"></i><span>Sharpe Ratio:</span> <strong id="m-sharpe">—</strong></span>
-                        <span class="metric-badge"><i class="fas fa-chart-area"></i><span>Max Drawdown:</span> <strong id="m-mdd">—</strong></span>
+                        <span class="metric-badge"><i class="fas fa-percent"></i><span>Доля прибыльных сделок:</span> <strong id="m-winrate">—</strong></span>
+                        <span class="metric-badge"><i class="fas fa-scale-balanced"></i><span>Фактор прибыли:</span> <strong id="m-pf">—</strong></span>
+                        <span class="metric-badge"><i class="fas fa-wave-square"></i><span>Коэффициент Шарпа:</span> <strong id="m-sharpe">—</strong></span>
+                        <span class="metric-badge"><i class="fas fa-chart-area"></i><span>Максимальная просадка:</span> <strong id="m-mdd">—</strong></span>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-3">
                         <div class="focus-card">
                             <div class="icon"><i class="fas fa-sack-dollar"></i></div>
-                            <div class="label">Net Profit</div>
+                            <div class="label">Чистая прибыль</div>
                             <div class="value" id="k-net">0 $</div>
                             <div class="meta">Суммарно за выбранный период</div>
                         </div>
@@ -246,7 +246,7 @@
                     <div class="col-md-3">
                         <div class="focus-card">
                             <div class="icon"><i class="fas fa-layer-group"></i></div>
-                            <div class="label">Total Trades</div>
+                            <div class="label">Всего сделок</div>
                             <div class="value" id="k-trades">0</div>
                             <div class="meta">Зарегистрированные исполнения</div>
                         </div>
@@ -254,17 +254,17 @@
                     <div class="col-md-3">
                         <div class="focus-card">
                             <div class="icon"><i class="fas fa-shield-halved"></i></div>
-                            <div class="label">Recovery Factor</div>
+                            <div class="label">Фактор восстановления</div>
                             <div class="value" id="k-recovery">0.00</div>
-                            <div class="meta">Net Profit / Max Drawdown</div>
+                            <div class="meta">Чистая прибыль / Максимальная просадка</div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="focus-card">
                             <div class="icon"><i class="fas fa-calculator"></i></div>
-                            <div class="label">Expectancy</div>
+                            <div class="label">Математическое ожидание</div>
                             <div class="value" id="k-exp">0.00%</div>
-                            <div class="meta">Средний edge на сделку</div>
+                            <div class="meta">Среднее преимущество на сделку</div>
                         </div>
                     </div>
                 </div>
@@ -274,12 +274,12 @@
                 <div class="col-lg-8">
                     <div class="chart-shell">
                         <div class="chart-title">
-                            <span><i class="fas fa-chart-line me-2"></i>Equity Curve</span>
-                            <span class="text-secondary small">Cumulative Returns</span>
+                            <span><i class="fas fa-chart-line me-2"></i>Кривая капитала</span>
+                            <span class="text-secondary small">Накопленная доходность</span>
                         </div>
                         <div class="chart-subtitle">Рост капитала во времени на основе реализованных результатов сделок.</div>
-                        <div class="svg-frame" aria-label="Equity curve chart placeholder">
-                            <svg id="equity-svg" viewBox="0 0 1000 260" width="100%" height="260" role="img" aria-label="Equity Curve"></svg>
+                        <div class="svg-frame" aria-label="Область графика капитала">
+                            <svg id="equity-svg" viewBox="0 0 1000 260" width="100%" height="260" role="img" aria-label="Кривая капитала"></svg>
                         </div>
                     </div>
                 </div>
@@ -287,11 +287,11 @@
                     <div class="chart-shell">
                         <div class="chart-title">
                             <span><i class="fas fa-chart-pie me-2"></i>Распределение сделок</span>
-                            <span class="text-secondary small">Long vs Short</span>
+                            <span class="text-secondary small">Лонги и шорты</span>
                         </div>
                         <div class="chart-subtitle">Микс направлений исполнения для оценки структурного уклона.</div>
-                        <div class="svg-frame" aria-label="Trade distribution chart placeholder">
-                            <svg id="dist-svg" viewBox="0 0 1000 260" width="100%" height="260" role="img" aria-label="Trade Distribution"></svg>
+                        <div class="svg-frame" aria-label="Область графика распределения сделок">
+                            <svg id="dist-svg" viewBox="0 0 1000 260" width="100%" height="260" role="img" aria-label="Распределение сделок"></svg>
                         </div>
                     </div>
                 </div>
@@ -312,7 +312,7 @@
                                 <th style="min-width: 220px;">Стратегия</th>
                                 <th style="min-width: 140px;">Символ</th>
                                 <th style="min-width: 150px;">Исход</th>
-                                <th style="min-width: 160px;">Net Return (%)</th>
+                                <th style="min-width: 160px;">Чистая доходность (%)</th>
                                 <th style="min-width: 160px;">Длительность</th>
                             </tr>
                         </thead>
@@ -346,14 +346,14 @@
 
         function seedData() {
             state.logs = [
-                { ts: '2026-05-06 03:12:45', strat: { key: 'trend', label: '[Trend‑Follower] MTF Momentum Stack' }, symbol: 'BTCUSDT', outcome: 'Win', ret: 1.42, dur: '02ч 14м', asset: 'perp' },
-                { ts: '2026-05-06 01:44:10', strat: { key: 'mean', label: '[Mean‑Reversion] Volatility Band Fade' }, symbol: 'ETHUSDT', outcome: 'Loss', ret: -0.68, dur: '00ч 38м', asset: 'perp' },
-                { ts: '2026-05-05 22:26:33', strat: { key: 'break', label: '[Breakout] Range Expansion Trigger' }, symbol: 'SOLUSDT', outcome: 'Win', ret: 2.05, dur: '01ч 02м', asset: 'perp' },
-                { ts: '2026-05-05 19:08:51', strat: { key: 'trend', label: '[Trend‑Follower] Trend Continuation' }, symbol: 'XRPUSDT', outcome: 'Win', ret: 0.74, dur: '00ч 51м', asset: 'perp' },
-                { ts: '2026-05-05 12:18:04', strat: { key: 'mean', label: '[Mean‑Reversion] Liquidity Sweep Revert' }, symbol: 'BNBUSDT', outcome: 'Loss', ret: -1.12, dur: '03ч 26м', asset: 'perp' },
-                { ts: '2026-05-04 18:22:19', strat: { key: 'trend', label: '[Trend‑Follower] MTF Momentum Stack' }, symbol: 'ADAUSDT', outcome: 'Win', ret: 1.10, dur: '05ч 09м', asset: 'spot' },
-                { ts: '2026-05-04 13:05:02', strat: { key: 'break', label: '[Breakout] Range Expansion Trigger' }, symbol: 'LINKUSDT', outcome: 'Win', ret: 0.88, dur: '00ч 44м', asset: 'perp' },
-                { ts: '2026-05-03 10:51:20', strat: { key: 'mean', label: '[Mean‑Reversion] Volatility Band Fade' }, symbol: 'DOTUSDT', outcome: 'Win', ret: 0.36, dur: '01ч 17м', asset: 'perp' }
+                { ts: '2026-05-06 03:12:45', strat: { key: 'trend', label: '[Следование за трендом] Совокупность импульсных сигналов MTF' }, symbol: 'BTCUSDT', outcome: 'Win', ret: 1.42, dur: '02ч 14м', asset: 'perp' },
+                { ts: '2026-05-06 01:44:10', strat: { key: 'mean', label: '[Возврат к среднему] Торговля на возврате от границ полос волатильности' }, symbol: 'ETHUSDT', outcome: 'Loss', ret: -0.68, dur: '00ч 38м', asset: 'perp' },
+                { ts: '2026-05-05 22:26:33', strat: { key: 'break', label: '[Пробой] Сигнал расширения диапазона' }, symbol: 'SOLUSDT', outcome: 'Win', ret: 2.05, dur: '01ч 02м', asset: 'perp' },
+                { ts: '2026-05-05 19:08:51', strat: { key: 'trend', label: '[Следование за трендом] Продолжение тренда' }, symbol: 'XRPUSDT', outcome: 'Win', ret: 0.74, dur: '00ч 51м', asset: 'perp' },
+                { ts: '2026-05-05 12:18:04', strat: { key: 'mean', label: '[Возврат к среднему] Возврат после сбора ликвидности' }, symbol: 'BNBUSDT', outcome: 'Loss', ret: -1.12, dur: '03ч 26м', asset: 'perp' },
+                { ts: '2026-05-04 18:22:19', strat: { key: 'trend', label: '[Следование за трендом] Совокупность импульсных сигналов MTF' }, symbol: 'ADAUSDT', outcome: 'Win', ret: 1.10, dur: '05ч 09м', asset: 'spot' },
+                { ts: '2026-05-04 13:05:02', strat: { key: 'break', label: '[Пробой] Сигнал расширения диапазона' }, symbol: 'LINKUSDT', outcome: 'Win', ret: 0.88, dur: '00ч 44м', asset: 'perp' },
+                { ts: '2026-05-03 10:51:20', strat: { key: 'mean', label: '[Возврат к среднему] Торговля на возврате от границ полос волатильности' }, symbol: 'DOTUSDT', outcome: 'Win', ret: 0.36, dur: '01ч 17м', asset: 'perp' }
             ];
         }
 
@@ -419,7 +419,7 @@
                         <td class="text-secondary">${t.ts}</td>
                         <td>${badgeHtml(t.strat)}</td>
                         <td class="fw-bold">${t.symbol}</td>
-                        <td class="${outcomeClass}">${t.outcome === 'Win' ? 'Win' : 'Loss'}</td>
+                        <td class="${outcomeClass}">${t.outcome === 'Win' ? 'Прибыль' : 'Убыток'}</td>
                         <td class="${retClass}">${t.ret >= 0 ? '+' : ''}${fmtNum.format(t.ret)}%</td>
                         <td class="text-secondary">${t.dur}</td>
                     </tr>
@@ -485,8 +485,8 @@
             svg.innerHTML = `
                 <rect x="${longX}" y="${baseY - longH}" width="${barW}" height="${longH}" rx="12" fill="rgba(46, 204, 113, 0.25)" stroke="rgba(46, 204, 113, 0.55)" />
                 <rect x="${shortX}" y="${baseY - shortH}" width="${barW}" height="${shortH}" rx="12" fill="rgba(231, 76, 60, 0.25)" stroke="rgba(231, 76, 60, 0.55)" />
-                <text x="${longX + (barW / 2)}" y="${baseY + 28}" fill="var(--text-main)" font-size="14" text-anchor="middle">Long</text>
-                <text x="${shortX + (barW / 2)}" y="${baseY + 28}" fill="var(--text-main)" font-size="14" text-anchor="middle">Short</text>
+                <text x="${longX + (barW / 2)}" y="${baseY + 28}" fill="var(--text-main)" font-size="14" text-anchor="middle">Лонг</text>
+                <text x="${shortX + (barW / 2)}" y="${baseY + 28}" fill="var(--text-main)" font-size="14" text-anchor="middle">Шорт</text>
                 <text x="${longX + (barW / 2)}" y="${baseY - longH - 10}" fill="var(--signal-buy)" font-size="16" font-weight="800" text-anchor="middle">${fmtNum.format(longPct)}%</text>
                 <text x="${shortX + (barW / 2)}" y="${baseY - shortH - 10}" fill="var(--signal-sell)" font-size="16" font-weight="800" text-anchor="middle">${fmtNum.format(shortPct)}%</text>
                 <text x="22" y="24" fill="var(--text-secondary)" font-size="12">Сделок: ${dist.long + dist.short}</text>

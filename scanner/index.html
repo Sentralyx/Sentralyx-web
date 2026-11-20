@@ -619,7 +619,7 @@
                                 <ul class="text-secondary">
                                     <li>Üst zaman dilimi (1h, 4h, 1d) trendini otomatik olarak algılar</li>
                                     <li>Ancak trend yönüyle uyumlu sinyallere izin verir</li>
-                                    <li>Yanlış sinyal oranını %60'a kadar azaltabilir</li>
+                                    <li>Üst zaman dilimindeki trend yönüyle uyumsuz sinyalleri filtreleyerek daha seçici bir sinyal değerlendirmesi sağlar.</li>
                                     <li>Özellikle volatil piyasalarda etkili koruma sağlar</li>
                                 </ul>
                             </div>
@@ -720,8 +720,8 @@
                     const randomSignal = signals[Math.floor(Math.random() * signals.length)];
                     
                     // Update first row with new data
-                    if (tbody.firstChild) {
-                        const firstRow = tbody.firstChild;
+                    if (tbody.firstElementChild) {
+                        const firstRow = tbody.firstElementChild;
                         firstRow.cells[0].textContent = randomSymbol;
                         firstRow.cells[1].textContent = randomPrice;
                         

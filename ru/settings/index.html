@@ -410,8 +410,8 @@
                     <div class="form-group">
                         <label class="form-label">Тема</label>
                         <select class="form-select">
-                            <option>dark</option>
-                            <option>light</option>
+                            <option value="dark">Тёмная</option>
+                            <option value="light">Светлая</option>
                         </select>
                     </div>
                 </div>
@@ -419,10 +419,10 @@
                     <div class="form-group">
                         <label class="form-label">Уровень логов</label>
                         <select class="form-select">
-                            <option>DEBUG</option>
-                            <option>INFO</option>
-                            <option>WARNING</option>
-                            <option>ERROR</option>
+                            <option value="DEBUG">Отладка</option>
+                            <option value="INFO">Информация</option>
+                            <option value="WARNING">Предупреждения</option>
+                            <option value="ERROR">Ошибки</option>
                         </select>
                     </div>
                 </div>
@@ -535,8 +535,8 @@
                     <div class="form-group">
                         <label class="form-label">Тип ордера</label>
                         <select class="form-select">
-                            <option>market</option>
-                            <option>limit</option>
+                            <option value="market">Рыночный</option>
+                            <option value="limit">Лимитный</option>
                         </select>
                     </div>
                 </div>
@@ -584,13 +584,13 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Stop Loss (%)</label>
+                        <label class="form-label">Стоп-лосс (%)</label>
                         <input type="number" class="form-control" value="2.0" min="0.1" max="50" step="0.1" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="form-label">Take Profit (%)</label>
+                        <label class="form-label">Тейк-профит (%)</label>
                         <input type="number" class="form-control" value="4.0" min="0.1" max="100" step="0.1" />
                     </div>
                 </div>
@@ -612,13 +612,13 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label class="form-label">Break Even Offset (%)</label>
+                        <label class="form-label">Смещение уровня безубыточности (%)</label>
                         <input type="number" class="form-control" value="1.0" min="0.1" max="10" step="0.1" />
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label class="form-label">Trailing Stop (%)</label>
+                        <label class="form-label">Трейлинг-стоп (%)</label>
                         <input type="number" class="form-control" value="1.5" min="0.1" max="20" step="0.1" />
                     </div>
                 </div>
@@ -679,14 +679,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label">API Key</label>
+                        <label class="form-label">API-ключ</label>
                         <input type="password" class="form-control" placeholder="Введите ваш API-ключ" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label">API Secret</label>
-                        <input type="password" class="form-control" placeholder="Введите ваш API secret" />
+                        <label class="form-label">Секретный ключ API</label>
+                        <input type="password" class="form-control" placeholder="Введите секретный ключ API" />
                     </div>
                 </div>
             </div>
@@ -694,14 +694,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label">API Token</label>
+                        <label class="form-label">API-токен</label>
                         <input type="password" class="form-control" placeholder="Введите ваш API-токен" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label">OKX Passphrase</label>
-                        <input type="password" class="form-control" placeholder="Введите вашу OKX passphrase" />
+                        <label class="form-label">Парольная фраза OKX</label>
+                        <input type="password" class="form-control" placeholder="Введите парольную фразу OKX" />
                     </div>
                 </div>
             </div>
@@ -713,11 +713,11 @@
                         <div class="radio-group">
                             <div class="radio-option">
                                 <input type="radio" name="workMode" id="realMode" />
-                                <label for="realMode">real</label>
+                                <label for="realMode">Реальная торговля</label>
                             </div>
                             <div class="radio-option selected">
                                 <input type="radio" name="workMode" id="demoMode" checked />
-                                <label for="demoMode">demo</label>
+                                <label for="demoMode">Демо</label>
                             </div>
                         </div>
                     </div>
@@ -753,15 +753,15 @@
                         <div class="radio-group">
                             <div class="radio-option selected">
                                 <input type="radio" name="tradeMode" id="spotOnly" checked />
-                                <label for="spotOnly">Spot Only</label>
+                                <label for="spotOnly">Только спот</label>
                             </div>
                             <div class="radio-option">
                                 <input type="radio" name="tradeMode" id="hybrid" />
-                                <label for="hybrid">Hybrid (Spot BUY / Futures SELL)</label>
+                                <label for="hybrid">Гибридный режим (BUY на споте / SELL на фьючерсах)</label>
                             </div>
                             <div class="radio-option">
                                 <input type="radio" name="tradeMode" id="fullFutures" />
-                                <label for="fullFutures">Full Futures</label>
+                                <label for="fullFutures">Только фьючерсы</label>
                             </div>
                         </div>
                     </div>
@@ -776,8 +776,8 @@
                         <div class="form-group">
                             <label class="form-label">Тип контракта</label>
                             <select class="form-select">
-                                <option>SWAP</option>
-                                <option>FUTURES</option>
+                                <option value="SWAP">Бессрочные контракты</option>
+                                <option value="FUTURES">Срочные фьючерсы</option>
                             </select>
                         </div>
                     </div>
@@ -785,8 +785,8 @@
                         <div class="form-group">
                             <label class="form-label">Режим позиции</label>
                             <select class="form-select">
-                                <option>net</option>
-                                <option>long_short</option>
+                                <option value="net">Односторонний</option>
+                                <option value="long_short">Хеджирование (лонг/шорт)</option>
                             </select>
                         </div>
                     </div>
@@ -794,8 +794,8 @@
                         <div class="form-group">
                             <label class="form-label">Режим маржи</label>
                             <select class="form-select">
-                                <option>isolated</option>
-                                <option>cross</option>
+                                <option value="isolated">Изолированная</option>
+                                <option value="cross">Кросс-маржа</option>
                             </select>
                         </div>
                     </div>
@@ -805,14 +805,14 @@
                         <div class="form-group">
                             <label class="form-label">Тип маржи для сделок</label>
                             <select class="form-select">
-                                <option>isolated</option>
-                                <option>cross</option>
+                                <option value="isolated">Изолированная</option>
+                                <option value="cross">Кросс-маржа</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="form-label">Stop Loss / Take Profit включены</label>
+                            <label class="form-label">Стоп-лосс / тейк-профит включены</label>
                             <label class="toggle-switch">
                                 <input type="checkbox" checked />
                                 <span class="toggle-slider"></span>
@@ -823,8 +823,8 @@
                         <div class="form-group">
                             <label class="form-label">Поведение при ручном закрытии</label>
                             <select class="form-select">
-                                <option>fail_fast</option>
-                                <option>cancel_then_close</option>
+                                <option value="fail_fast">Немедленно завершить при ошибке</option>
+                                <option value="cancel_then_close">Сначала отменить, затем закрыть</option>
                             </select>
                         </div>
                     </div>
@@ -923,8 +923,8 @@
 
         function showHelp(section) {
             const helpMessages = {
-                trade: 'Торговые настройки определяют, как открываются и закрываются позиции. Здесь можно задать тип ордера (market/limit), закрытие при обратном сигнале и параметры времени.',
-                risk: 'Настройки управления рисками задают меры защиты от убытков. Они включают важные параметры безопасности: Stop Loss, Take Profit и лимиты позиций.',
+                trade: 'Торговые настройки определяют, как открываются и закрываются позиции. Здесь можно задать тип ордера (рыночный/лимитный), закрытие при обратном сигнале и параметры времени.',
+                risk: 'Настройки управления рисками задают меры защиты от убытков. Они включают важные параметры безопасности: стоп-лосс, тейк-профит и лимиты позиций.',
                 api: 'Настройки API необходимы для подключения к бирже. В целях безопасности убедитесь, что API-ключи введены правильно. Рекомендуем сначала протестировать в демо-режиме.'
             };
             

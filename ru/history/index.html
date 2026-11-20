@@ -136,7 +136,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
                 <div>
                     <h1 class="text-main mb-1">История исполнения сделок и архивы</h1>
-                    <p class="text-secondary mb-0">Пост‑трейд анализ: реализованный P&amp;L, таймстемпы исполнения, Order ID и причина закрытия</p>
+                    <p class="text-secondary mb-0">Пост‑трейд анализ: реализованный P&amp;L, таймстемпы исполнения, ID ордера и причина закрытия</p>
                 </div>
                 <div class="d-flex gap-2 flex-wrap align-items-center">
                     <button class="toolbar-btn" onclick="downloadTradeLogTxt()" title="Скачать аудит‑лог в текстовом виде" data-bs-toggle="tooltip">
@@ -166,9 +166,9 @@
                         <label class="form-label text-main small mb-1">Исход</label>
                         <select id="outcome-filter" class="form-select form-control-custom" onchange="applyFilters()">
                             <option value="all" selected>Все</option>
-                            <option value="win">Win</option>
-                            <option value="loss">Loss</option>
-                            <option value="canceled">Canceled</option>
+                            <option value="win">Прибыль</option>
+                            <option value="loss">Убыток</option>
+                            <option value="canceled">Отменено</option>
                         </select>
                     </div>
                 </div>
@@ -180,17 +180,17 @@
                     <table class="table table-custom">
                         <thead>
                             <tr>
-                                <th style="min-width: 190px;">Execution Timestamp</th>
-                                <th style="min-width: 140px;">Symbol</th>
-                                <th style="min-width: 120px;">Side</th>
-                                <th style="min-width: 120px;">Entry</th>
-                                <th style="min-width: 120px;">Exit</th>
-                                <th style="min-width: 120px;">Quantity</th>
-                                <th style="min-width: 220px;">Realized P&amp;L ($/%)</th>
-                                <th style="min-width: 190px;">Reason for Closing</th>
-                                <th style="min-width: 170px;">Order ID</th>
-                                <th style="min-width: 150px;">Outcome</th>
-                                <th style="min-width: 150px;">Trade Duration</th>
+                                <th style="min-width: 190px;">Время исполнения</th>
+                                <th style="min-width: 140px;">Символ</th>
+                                <th style="min-width: 120px;">Направление</th>
+                                <th style="min-width: 120px;">Цена входа</th>
+                                <th style="min-width: 120px;">Цена выхода</th>
+                                <th style="min-width: 120px;">Количество</th>
+                                <th style="min-width: 220px;">Реализованный P&amp;L ($/%)</th>
+                                <th style="min-width: 190px;">Причина закрытия</th>
+                                <th style="min-width: 170px;">ID ордера</th>
+                                <th style="min-width: 150px;">Результат</th>
+                                <th style="min-width: 150px;">Длительность сделки</th>
                             </tr>
                         </thead>
                         <tbody id="history-tbody"></tbody>
@@ -256,14 +256,14 @@
         }
 
         function outcomeHtml(o) {
-            if (o === 'win') return `<span class="outcome-pill outcome-win"><i class="fas fa-circle-check"></i>Win</span>`;
-            if (o === 'loss') return `<span class="outcome-pill outcome-loss"><i class="fas fa-circle-xmark"></i>Loss</span>`;
-            return `<span class="outcome-pill outcome-canceled"><i class="fas fa-ban"></i>Canceled</span>`;
+            if (o === 'win') return `<span class="outcome-pill outcome-win"><i class="fas fa-circle-check"></i>Прибыль</span>`;
+            if (o === 'loss') return `<span class="outcome-pill outcome-loss"><i class="fas fa-circle-xmark"></i>Убыток</span>`;
+            return `<span class="outcome-pill outcome-canceled"><i class="fas fa-ban"></i>Отменено</span>`;
         }
 
         function sideHtml(side) {
-            if (side.toLowerCase() === 'long') return `<span class="side-badge side-long"><i class="fas fa-arrow-up"></i>Long</span>`;
-            return `<span class="side-badge side-short"><i class="fas fa-arrow-down"></i>Short</span>`;
+            if (side.toLowerCase() === 'long') return `<span class="side-badge side-long"><i class="fas fa-arrow-up"></i>Лонг</span>`;
+            return `<span class="side-badge side-short"><i class="fas fa-arrow-down"></i>Шорт</span>`;
         }
 
         function render() {
@@ -297,7 +297,7 @@
                         <td class="text-main fw-bold">$${fmtNum.format(t.exit)}</td>
                         <td class="text-secondary">${fmtNum.format(t.qty)}</td>
                         <td class="${pnlClass}">${pnlText}</td>
-                        <td class="text-secondary">${t.reason}</td>
+                        <td class="text-secondary">${({ 'Hit Take‑Profit': 'Достигнут тейк-профит', 'Stop‑Loss Triggered': 'Сработал стоп-лосс', 'Manual Close': 'Закрыто вручную', 'Canceled (Spread Spike)': 'Отменено (резкое расширение спреда)' })[t.reason] || t.reason}</td>
                         <td class="text-secondary mono">${t.orderId}</td>
                         <td>${outcomeHtml(t.outcome)}</td>
                         <td class="text-secondary">${t.duration}</td>

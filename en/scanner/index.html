@@ -8,8 +8,8 @@
     <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/scanner/">
     <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/scanner/">
     <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/scanner/">
-<title>Sentralyx | Market Scanner & Opportunity Detector</title>
-    <meta name="description" content="Sentralyx Market Scanner & Opportunity Detector with real-time data, multi-timeframe trend alignment, and indicator-driven signal scoring.">
+<title>Crypto Market Scanner for Binance &amp; OKX | Sentralyx</title>
+    <meta name="description" content="Scan Binance and OKX crypto markets with Sentralyx. Explore market signals, technical indicators and multi-timeframe trend analysis in one Windows terminal.">
     <meta property="og:title" content="Sentralyx | Market Scanner &amp; Opportunity Detector">
     <meta property="og:description" content="Sentralyx Market Scanner &amp; Opportunity Detector with real-time data, multi-timeframe trend alignment, and indicator-driven signal scoring.">
     <meta property="og:url" content="https://www.sentralyx.com/en/scanner/">
@@ -300,7 +300,7 @@
     <main class="scanner-container">
         <div class="text-center mb-4">
             <h1 class="text-main">Crypto Scanner and Market Scanning Tool</h1>
-            <p class="text-secondary">Binance ve OKX &#252;zerinde kripto sinyal tarama, Binance coin tarama ve MTF analiz ile piyasa ko&#351;ullar&#305;n&#305; tek ekrandan takip edin.</p>
+            <p class="text-secondary">Monitor market conditions on Binance and OKX from a single screen with crypto signal scanning, Binance coin scanning, and MTF analysis.</p>
         </div>
         
         <!-- Control Buttons -->
@@ -308,13 +308,13 @@
             <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
                 <div class="d-flex gap-2">
                     <button class="btn-sentralyx-start" onclick="startScanner()">
-                        <i class="fas fa-play me-2"></i>BAŞLAT
+                        <i class="fas fa-play me-2"></i>START
                     </button>
                     <button class="btn-sentralyx-pause" onclick="pauseScanner()">
-                        <i class="fas fa-pause me-2"></i>DURAKLAT
+                        <i class="fas fa-pause me-2"></i>PAUSE
                     </button>
                     <button class="btn-sentralyx-stop" onclick="stopScanner()">
-                        <i class="fas fa-stop me-2"></i>DURDUR
+                        <i class="fas fa-stop me-2"></i>STOP
                     </button>
                 </div>
                 <div class="d-flex gap-2 align-items-center">
@@ -331,24 +331,24 @@
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <div class="info-card">
-                            <h6>Scan Özeti</h6>
+                            <h6>Scan Summary</h6>
                             <div class="row text-center">
                                 <div class="col-4">
                                     <div class="text-main fw-bold">247</div>
-                                    <div class="text-secondary small">Sembol</div>
+                                    <div class="text-secondary small">Symbol</div>
                                 </div>
                                 <div class="col-4">
                                     <div class="text-main fw-bold">12</div>
-                                    <div class="text-secondary small">Sinyal</div>
+                                    <div class="text-secondary small">Signal</div>
                                 </div>
                                 <div class="col-4">
                                     <div class="text-main fw-bold">3</div>
-                                    <div class="text-secondary small">Tur</div>
+                                    <div class="text-secondary small">Round</div>
                                 </div>
                             </div>
                             <div class="mt-3">
                                 <div class="d-flex justify-content-between small mb-1">
-                                    <span class="text-secondary">İlerleme</span>
+                                    <span class="text-secondary">Progress</span>
                                     <span class="text-main">75%</span>
                                 </div>
                                 <div class="progress progress-custom">
@@ -359,21 +359,21 @@
                     </div>
                     <div class="col-md-6">
                         <div class="info-card">
-                            <h6>Son Tur Bilgisi</h6>
+                            <h6>Last Round Details</h6>
                             <div class="row text-center">
                                 <div class="col-6">
                                     <div class="text-main fw-bold">2.3s</div>
-                                    <div class="text-secondary small">Süre</div>
+                                    <div class="text-secondary small">Duration</div>
                                 </div>
                                 <div class="col-6">
                                     <div class="text-main fw-bold">107</div>
-                                    <div class="text-secondary small">Coin/sn</div>
+                                    <div class="text-secondary small">Coins/sec</div>
                                 </div>
                             </div>
                             <div class="mt-3">
                                 <div class="small text-secondary">
                                     <i class="fas fa-clock me-1"></i>
-                                    Son güncelleme: 14:32:15
+                                    Last updated: 14:32:15
                                 </div>
                             </div>
                         </div>
@@ -384,20 +384,20 @@
                 <div class="results-table">
                     <div class="p-3 border-bottom border-custom">
                         <h5 class="mb-0 text-main">
-                            <i class="fas fa-search me-2"></i>Scan Sonuçları
+                            <i class="fas fa-search me-2"></i>Scan Results
                         </h5>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-custom">
                             <thead>
                                 <tr>
-                                    <th>Sembol</th>
+                                    <th>Symbol</th>
                                     <th>Price</th>
                                     <th>CMF</th>
                                     <th>RSI</th>
                                     <th>SMI</th>
-                                    <th>Sinyal</th>
-                                    <th>Sebep</th>
+                                    <th>Signal</th>
+                                    <th>Reason</th>
                                 </tr>
                             </thead>
                             <tbody id="results-tbody">
@@ -408,7 +408,7 @@
                                     <td>65.4</td>
                                     <td>42.1</td>
                                     <td><span class="signal-buy">BUY</span></td>
-                                    <td class="text-secondary small">RSI oversold + CMF pozitif</td>
+                                    <td class="text-secondary small">RSI oversold + positive CMF</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ETHUSDT</strong></td>
@@ -417,7 +417,7 @@
                                     <td>72.8</td>
                                     <td>58.3</td>
                                     <td><span class="signal-sell">SELL</span></td>
-                                    <td class="text-secondary small">RSI overbought + CMF negatif</td>
+                                    <td class="text-secondary small">RSI overbought + negative CMF</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ADAUSDT</strong></td>
@@ -426,7 +426,7 @@
                                     <td>54.2</td>
                                     <td>35.7</td>
                                     <td><span class="signal-none">NONE</span></td>
-                                    <td class="text-secondary small">Indikatörler nötr</td>
+                                    <td class="text-secondary small">Neutral indicators</td>
                                 </tr>
                                 <tr>
                                     <td><strong>SOLUSDT</strong></td>
@@ -435,7 +435,7 @@
                                     <td>68.9</td>
                                     <td>45.2</td>
                                     <td><span class="signal-buy">BUY</span></td>
-                                    <td class="text-secondary small">SMI dip + CMF güçlü</td>
+                                    <td class="text-secondary small">SMI at a low + strong CMF</td>
                                 </tr>
                                 <tr>
                                     <td><strong>AVAXUSDT</strong></td>
@@ -444,7 +444,7 @@
                                     <td>76.3</td>
                                     <td>62.8</td>
                                     <td><span class="signal-sell">SELL</span></td>
-                                    <td class="text-secondary small">RSI extreme + CMF zayıf</td>
+                                    <td class="text-secondary small">RSI at an extreme + weak CMF</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -471,9 +471,9 @@
                             <div class="mb-3">
 	                                <label class="form-label text-main small">Strategy</label>
 	                                <select class="form-control form-control-custom">
-	                                    <option value="Majority Consensus">Çoğunluk Confirmationı</option>
-	                                    <option value="Scoring System">Skorlama Sistemi</option>
-	                                    <option value="Full Consensus">Tam Mutabakat</option>
+	                                    <option value="Majority Consensus">Majority Consensus</option>
+	                                    <option value="Scoring System">Scoring System</option>
+	                                    <option value="Full Consensus">Full Consensus</option>
 	                                </select>
                             </div>
                             
@@ -491,21 +491,21 @@
                             
                             <div class="mb-3">
                                 <label class="form-label text-main small">Max Round</label>
-                                <input type="number" class="form-control form-control-custom" value="0" placeholder="0 = sınırsız">
+                                <input type="number" class="form-control form-control-custom" value="0" placeholder="0 = unlimited">
                             </div>
                             
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="show-row" checked>
                                     <label class="form-check-label text-main small" for="show-row">
-                                        Sıra göster
+                                        Show row numbers
                                     </label>
                                 </div>
                             </div>
                             
                             <!-- Smart-Trend Filter -->
                             <div class="mb-3">
-                                <h6 class="text-main small mb-3">Smart-Trend Filter (MTF Confirmationı)</h6>
+                                <h6 class="text-main small mb-3">Smart-Trend Filter (MTF Confirmation)</h6>
                                 <div class="mb-2">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="mtf-filter">
@@ -525,30 +525,30 @@
                         <!-- Backtest Tab -->
                         <div class="tab-pane fade" id="backtest-tab">
                             <div class="mb-3">
-                                <label class="form-label text-main small">Süre</label>
+                                <label class="form-label text-main small">Duration</label>
                                 <select class="form-control form-control-custom">
-                                    <option>30 gün</option>
-                                    <option selected>60 gün</option>
-                                    <option>90 gün</option>
-                                    <option>180 gün</option>
+                                    <option>30 days</option>
+                                    <option selected>60 days</option>
+                                    <option>90 days</option>
+                                    <option>180 days</option>
                                 </select>
                             </div>
                             
                             <div class="mb-3">
                                 <label class="form-label text-main small">Scan</label>
                                 <select class="form-control form-control-custom">
-                                    <option selected>Hızlı Scan</option>
-                                    <option>Detaylı Scan</option>
+                                    <option selected>Quick Scan</option>
+                                    <option>Detailed Scan</option>
                                 </select>
                             </div>
                             
                             <div class="mb-3">
-                                <label class="form-label text-main small">Başarı %</label>
+                                <label class="form-label text-main small">Success rate %</label>
                                 <input type="number" class="form-control form-control-custom" value="65" min="0" max="100">
                             </div>
                             
                             <div class="mb-3">
-                                <label class="form-label text-main small">İşlem</label>
+                                <label class="form-label text-main small">Trades</label>
                                 <input type="number" class="form-control form-control-custom" value="10" min="1">
                             </div>
                             
@@ -561,7 +561,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="candidate-only">
                                     <label class="form-check-label text-main small" for="candidate-only">
-                                        Sadece aday coinler
+                                        Candidate coins only
                                     </label>
                                 </div>
                             </div>
@@ -571,29 +571,29 @@
 
                 <!-- Status Panel -->
                 <div class="info-card">
-                    <h6>Durum Paneli</h6>
+                    <h6>Status Panel</h6>
                     <div class="mb-2">
                         <div class="d-flex justify-content-between small">
-                            <span class="text-secondary">Scan hızı</span>
-                            <span class="text-main">107 coin/sn</span>
+                            <span class="text-secondary">Scan speed</span>
+                            <span class="text-main">107 coins/sec</span>
                         </div>
                     </div>
                     <div class="mb-2">
                         <div class="d-flex justify-content-between small">
-                            <span class="text-secondary">Bulunan sinyal</span>
+                            <span class="text-secondary">Signals found</span>
                             <span class="text-main">12 (5 BUY, 7 SELL)</span>
                         </div>
                     </div>
                     <div class="mb-2">
                         <div class="d-flex justify-content-between small">
-                            <span class="text-secondary">Açık pozisyon</span>
+                            <span class="text-secondary">Open positions</span>
                             <span class="text-main">3 (+2.45%)</span>
                         </div>
                     </div>
                     <div class="mt-3 p-2 bg-dark bg-opacity-25 rounded">
                         <div class="small text-secondary">
                             <i class="fas fa-info-circle me-1"></i>
-                            Active Strategy: Çoğunluk Confirmationı
+                            Active Strategy: Majority Consensus
                         </div>
                     </div>
                 </div>
@@ -604,23 +604,23 @@
         <div class="row mt-4">
             <div class="col-12">
                 <h5 class="text-main mb-3">
-                    <i class="fas fa-question-circle me-2"></i>Teknik Bilgiler
+                    <i class="fas fa-question-circle me-2"></i>Technical Information
                 </h5>
                 <div class="accordion accordion-custom" id="infoAccordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#smartTrend">
-                                Smart-Trend Filter (MTF Confirmationı) Nedir?
+                                What Is Smart-Trend Filter (MTF Confirmation)?
                             </button>
                         </h2>
                         <div id="smartTrend" class="accordion-collapse collapse show" data-bs-parent="#infoAccordion">
                             <div class="accordion-body">
-                                <p>Smart-Trend Filter, üst zaman dilimindeki trend yönünü analiz ederek mevcut sinyalleri filtreleyen gelişmiş bir sistemdir.</p>
+                                <p>Smart-Trend Filter is an advanced system that filters current signals by analyzing the trend direction on a higher timeframe.</p>
                                 <ul class="text-secondary">
-                                    <li>Üst zaman dilimi (1h, 4h, 1d) trendini otomatik olarak algılar</li>
-                                    <li>Ancak trend yönüyle uyumlu sinyallere izin verir</li>
-                                    <li>Yanlış sinyal oranını %60'a kadar azaltabilir</li>
-                                    <li>Özellikle volatil piyasalarda etkili koruma sağlar</li>
+                                    <li>Automatically detects the trend on a higher timeframe (1h, 4h, 1d)</li>
+                                    <li>Only allows signals that align with the trend direction</li>
+                                    <li>Enables more selective signal evaluation by filtering out signals that do not align with the trend direction on a higher timeframe.</li>
+                                    <li>Provides effective protection, especially in volatile markets</li>
                                 </ul>
                             </div>
                         </div>
@@ -629,7 +629,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#indicators">
-                                Kullanılan İndikatörler
+                                Indicators Used
                             </button>
                         </h2>
                         <div id="indicators" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
@@ -637,15 +637,15 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <h6 class="text-accent-blue">CMF (Chaikin Money Flow)</h6>
-                                        <p class="text-secondary small">Hacim aırlıklı akış göstergesi. 0.25 üzeri alış, -0.25 altı satış sinyali.</p>
+                                        <p class="text-secondary small">Volume-weighted flow indicator. Buy signals above 0.25, sell signals below -0.25.</p>
                                     </div>
                                     <div class="col-md-4">
                                         <h6 class="text-accent-blue">RSI (Relative Strength Index)</h6>
-                                        <p class="text-secondary small">Momentum göstergesi. 70 üzeri overbought, 30 altı oversold.</p>
+                                        <p class="text-secondary small">Momentum indicator. Overbought above 70, oversold below 30.</p>
                                     </div>
                                     <div class="col-md-4">
                                         <h6 class="text-accent-blue">SMI (Stochastic Momentum Index)</h6>
-                                        <p class="text-secondary small">Hızlı momentum göstergesi. +40 üzeri alış, -40 altı satış.</p>
+                                        <p class="text-secondary small">Fast momentum indicator. Buy signals above +40, sell signals below -40.</p>
                                     </div>
                                 </div>
                             </div>
@@ -655,23 +655,23 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#strategies">
-                                Strategy Türleri
+                                Strategy Types
                             </button>
                         </h2>
                         <div id="strategies" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <h6 class="text-accent-blue">Çoğunluk Confirmationı</h6>
-                                        <p class="text-secondary small">Çoğunluk oylaması sistemi. 3 indikatörden 2'si aynı yönde sinyal verirse tetiklenir.</p>
+                                        <h6 class="text-accent-blue">Majority Consensus</h6>
+                                        <p class="text-secondary small">Majority voting system. Triggers when 2 of 3 indicators signal in the same direction.</p>
                                     </div>
                                     <div class="col-md-4">
-                                        <h6 class="text-accent-blue">Skorlama Sistemi</h6>
-                                        <p class="text-secondary small">Puanlama sistemi. Her indikatöre ağırlık verilir, toplam puan eşik değerini geçerse sinyal.</p>
+                                        <h6 class="text-accent-blue">Scoring System</h6>
+                                        <p class="text-secondary small">Scoring system. Each indicator is assigned a weight; a signal is generated when the total score exceeds the threshold.</p>
                                     </div>
                                     <div class="col-md-4">
-                                        <h6 class="text-accent-blue">Tam Mutabakat</h6>
-                                        <p class="text-secondary small">Tam konsensüs. Tüm indikatörler aynı yönde sinyal vermelidir. En yüksek doğruluk.</p>
+                                        <h6 class="text-accent-blue">Full Consensus</h6>
+                                        <p class="text-secondary small">Full consensus. All indicators must signal in the same direction. Highest accuracy.</p>
                                     </div>
                                 </div>
                             </div>
@@ -687,12 +687,12 @@
     <script>
         // Scanner control functions
         function startScanner() {
-            updateStatus('active', 'Scan yapılıyor...');
+            updateStatus('active', 'Scanning...');
             simulateScanning();
         }
         
         function pauseScanner() {
-            updateStatus('paused', 'Pauseıldı');
+            updateStatus('paused', 'Paused');
         }
         
         function stopScanner() {
@@ -712,7 +712,7 @@
             const symbols = ['DOTUSDT', 'LINKUSDT', 'MATICUSDT', 'UNIUSDT', 'ATOMUSDT'];
             
             setInterval(() => {
-                if (document.getElementById('status-text').textContent === 'Scan yapılıyor...') {
+                if (document.getElementById('status-text').textContent === 'Scanning...') {
                     // Simulate new scan results
                     const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
                     const randomPrice = (Math.random() * 100 + 1).toFixed(2);
@@ -720,8 +720,8 @@
                     const randomSignal = signals[Math.floor(Math.random() * signals.length)];
                     
                     // Update first row with new data
-                    if (tbody.firstChild) {
-                        const firstRow = tbody.firstChild;
+                    if (tbody.firstElementChild) {
+                        const firstRow = tbody.firstElementChild;
                         firstRow.cells[0].textContent = randomSymbol;
                         firstRow.cells[1].textContent = randomPrice;
                         

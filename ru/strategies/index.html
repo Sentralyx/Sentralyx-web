@@ -8,8 +8,8 @@
     <link rel="alternate" hreflang="en" href="https://www.sentralyx.com/en/strategies/">
     <link rel="alternate" hreflang="ru" href="https://www.sentralyx.com/ru/strategies/">
     <link rel="alternate" hreflang="x-default" href="https://www.sentralyx.com/strategies/">
-<title>Sentralyx | Библиотека стратегий и логика исполнения</title>
-    <meta name="description" content="Каталог алгоритмических стратегий Sentralyx: логика входа/выхода, параметры, риск‑оверлей и статус оптимизации.">
+<title>Конструктор торговых стратегий без кода | Sentralyx</title>
+    <meta name="description" content="Создавайте торговые стратегии без программирования. Настраивайте индикаторы, условия входа и выхода, а также параметры управления рисками в Sentralyx.">
     <meta property="og:title" content="Sentralyx | Библиотека стратегий и логика исполнения">
     <meta property="og:description" content="Каталог алгоритмических стратегий Sentralyx: логика входа/выхода, параметры, риск‑оверлей и статус оптимизации.">
     <meta property="og:url" content="https://www.sentralyx.com/ru/strategies/">
@@ -458,16 +458,16 @@
     
     <main class="strategies-container">
         <div class="text-center mb-4">
-            <h1 class="text-main">Создание trade-стратегий без кода</h1>
-            <p class="text-secondary">Kripto al sat botu mant&#305;&#287;&#305;na uygun otomatik trade kurallar&#305; olu&#351;turun; algoritmik trade stratejilerini teknik indikat&#246;rler ve piyasa rejimiyle y&#246;netin.</p>
+            <h1 class="text-main">Создание торговых стратегий без кода</h1>
+            <p class="text-secondary">Создавайте правила автоматической торговли для криптовалютного бота; управляйте алгоритмическими торговыми стратегиями с помощью технических индикаторов и рыночных режимов.</p>
         </div>
         <!-- Header Section -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="section-title mb-0">
-                <i class="fas fa-layer-group"></i>Стратегия Yönetimi
+                <i class="fas fa-layer-group"></i>Управление стратегиями
             </h2>
             <button class="wizard-trigger" onclick="openWizard()">
-                <i class="fas fa-magic me-2"></i>✓ Hızlı Стратегия Oluştur
+                <i class="fas fa-magic me-2"></i>✓ Быстро создать стратегию
             </button>
         </div>
 
@@ -478,8 +478,8 @@
                 
                 <div class="strategy-card active">
                     <div class="strategy-header">
-                        <h5 class="strategy-title">Çoğunluk Oylaması</h5>
-                        <span class="strategy-badge">AKTİF</span>
+                        <h5 class="strategy-title">Голосование большинством</h5>
+                        <span class="strategy-badge">АКТИВНА</span>
                     </div>
                     <div class="indicators-list">
                         <span class="indicator-tag">RSI</span>
@@ -487,11 +487,11 @@
                         <span class="indicator-tag">SMI</span>
                     </div>
                     <div class="strategy-description">
-                        3 indikatörden 2'sinin aynı yönde sinyal vermesi durumunda işlem tetiklenir. Dengeli ve güvenilir yaklaşım ile trend takibi ve mean reverting stratejilerinde etkili performans gösterir.
+                        Сделка запускается, когда 2 из 3 индикаторов подают сигнал в одном направлении. Сбалансированный и надёжный подход обеспечивает эффективную работу в стратегиях следования за трендом и возврата к среднему.
                     </div>
                     <div class="action-buttons">
                         <button class="btn-action" onclick="editStrategy('majority')">
-                            <i class="fas fa-edit me-1"></i>Düzenle
+                            <i class="fas fa-edit me-1"></i>Редактировать
                         </button>
                         <button class="btn-action" onclick="testStrategy('majority')">
                             <i class="fas fa-play me-1"></i>Тест
@@ -504,8 +504,8 @@
 
                 <div class="strategy-card">
                     <div class="strategy-header">
-                        <h5 class="strategy-title">Puanlama Sistemi</h5>
-                        <span class="strategy-badge">PASİF</span>
+                        <h5 class="strategy-title">Балльная система</h5>
+                        <span class="strategy-badge">НЕАКТИВНА</span>
                     </div>
                     <div class="indicators-list">
                         <span class="indicator-tag">CMF</span>
@@ -514,11 +514,11 @@
                         <span class="indicator-tag">ATR</span>
                     </div>
                     <div class="strategy-description">
-                        Her indikatöre ağırlık atan puanlama sistemi. Toplam puan eşik değerini geçtiğinde sinyal üretir. Volatilite ve trend gücü filtreleri ile zenginleştirilmiş yapı.
+                        Балльная система, в которой каждому индикатору присваивается вес. Сигнал формируется, когда общая сумма баллов превышает порог. Система дополнена фильтрами волатильности и силы тренда.
                     </div>
                     <div class="action-buttons">
                         <button class="btn-action" onclick="editStrategy('scoring')">
-                            <i class="fas fa-edit me-1"></i>Düzenle
+                            <i class="fas fa-edit me-1"></i>Редактировать
                         </button>
                         <button class="btn-action" onclick="testStrategy('scoring')">
                             <i class="fas fa-play me-1"></i>Тест
@@ -531,8 +531,8 @@
 
                 <div class="strategy-card">
                     <div class="strategy-header">
-                        <h5 class="strategy-title">Tam Uyum</h5>
-                        <span class="strategy-badge">PASİF</span>
+                        <h5 class="strategy-title">Полное согласование</h5>
+                        <span class="strategy-badge">НЕАКТИВНА</span>
                     </div>
                     <div class="indicators-list">
                         <span class="indicator-tag">RSI</span>
@@ -541,11 +541,11 @@
                         <span class="indicator-tag">CMF</span>
                     </div>
                     <div class="strategy-description">
-                        Tüm indikatörlerin aynı yönde sinyal vermesi gerektiren en katı kurallı strateji. Düşük sinyal frekansı ama yüksek doğruluk oransı sağlar.
+                        Стратегия с наиболее строгими правилами: все индикаторы должны подавать сигнал в одном направлении. Обеспечивает низкую частоту сигналов, но высокую точность.
                     </div>
                     <div class="action-buttons">
                         <button class="btn-action" onclick="editStrategy('full')">
-                            <i class="fas fa-edit me-1"></i>Düzenle
+                            <i class="fas fa-edit me-1"></i>Редактировать
                         </button>
                         <button class="btn-action" onclick="testStrategy('full')">
                             <i class="fas fa-play me-1"></i>Тест
@@ -559,48 +559,48 @@
 
             <!-- Strategy Logic Cards -->
             <div class="col-lg-6">
-                <h4 class="text-main mb-3">Стратегия Mantıı</h4>
+                <h4 class="text-main mb-3">Логика стратегий</h4>
                 
                 <div class="logic-card">
-                    <h5><i class="fas fa-percentage"></i>Puanlama Sistemi</h5>
+                    <h5><i class="fas fa-percentage"></i>Балльная система</h5>
                     <div class="logic-content">
-                        Her indikatör belirli bir puanlama sistemiyle değerlendirilir. RSI oversold/overbought seviyelerine, MACD crossover sinyallerine, SMI momentum seviyelerine göre puan alır. Toplam puan 70'den yüksekse AL, 30'dan düşükse SAT sinyali üretir.
+                        Каждый индикатор оценивается по определённой балльной системе. Баллы начисляются по уровням перепроданности и перекупленности RSI, сигналам пересечения MACD и уровням импульса SMI. Если общая сумма баллов выше 70, формируется сигнал на покупку, если ниже 30 — на продажу.
                     </div>
                     <div class="market-regime">
-                        <div class="regime-title">Рыночный режим Uyumluluğu</div>
+                        <div class="regime-title">Совместимость с рыночным режимом</div>
                         <div class="regime-options">
-                            <div class="regime-option">TREND</div>
-                            <div class="regime-option">RANGE</div>
-                            <div class="regime-option">VOLATILE</div>
+                            <div class="regime-option">ТРЕНД</div>
+                            <div class="regime-option">БОКОВОЕ ДВИЖЕНИЕ</div>
+                            <div class="regime-option">ВЫСОКАЯ ВОЛАТИЛЬНОСТЬ</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="logic-card">
-                    <h5><i class="fas fa-users"></i>Çoğunluk Oylaması</h5>
+                    <h5><i class="fas fa-users"></i>Голосование большинством</h5>
                     <div class="logic-content">
-                        3 indikatörden 2'sinin aynı yönde sinyal vermesi yeterlidir. Esnek yaklaşım sayesinde daha fazla sinyal üretir. Yanlış sinyal riski daha yüksek ama fırsat kaçırma oransı düşüktür.
+                        Достаточно, чтобы 2 из 3 индикаторов подали сигнал в одном направлении. Гибкий подход позволяет получать больше сигналов. Риск ложных сигналов выше, но вероятность упустить возможность ниже.
                     </div>
                     <div class="market-regime">
-                        <div class="regime-title">Рыночный режим Uyumluluğu</div>
+                        <div class="regime-title">Совместимость с рыночным режимом</div>
                         <div class="regime-options">
-                            <div class="regime-option">TREND</div>
-                            <div class="regime-option">RANGE</div>
-                            <div class="regime-option">ANY</div>
+                            <div class="regime-option">ТРЕНД</div>
+                            <div class="regime-option">БОКОВОЕ ДВИЖЕНИЕ</div>
+                            <div class="regime-option">ЛЮБОЙ</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="logic-card">
-                    <h5><i class="fas fa-shield-alt"></i>Tam Uyum</h5>
+                    <h5><i class="fas fa-shield-alt"></i>Полное согласование</h5>
                     <div class="logic-content">
-                        Tüm indikatörlerin aynı yönde sinyal vermesi gerekir. En yüksek doğruluk oranı sağlar ancak sinyal frekansı düşüktür. Özellikle uzun vadeli ve yüksek sermaye işlemleri için uygundur.
+                        Все индикаторы должны подавать сигнал в одном направлении. Обеспечивает наивысшую точность, но частота сигналов низкая. Особенно подходит для долгосрочных сделок и сделок с крупным капиталом.
                     </div>
                     <div class="market-regime">
-                        <div class="regime-title">Рыночный режим Uyumluluğu</div>
+                        <div class="regime-title">Совместимость с рыночным режимом</div>
                         <div class="regime-options">
-                            <div class="regime-option">TREND</div>
-                            <div class="regime-option">ANY</div>
+                            <div class="regime-option">ТРЕНД</div>
+                            <div class="regime-option">ЛЮБОЙ</div>
                         </div>
                     </div>
                 </div>
@@ -610,12 +610,12 @@
                     <div class="logic-content">
                         Рыночный режим описывает текущее состояние рынка:
                         <ul class="mt-2">
-                            <li><strong>TREND:</strong> Yönü belirgin piyasa (yukarı/aşağı)</li>
-                            <li><strong>RANGE:</strong> Yatay seyreden piyasa</li>
-                            <li><strong>VOLATILE:</strong> Yüksek volatiliteli piyasa</li>
-                            <li><strong>ANY:</strong> Tüm piyasa koşulları</li>
+                            <li><strong>ТРЕНД:</strong> Рынок с выраженным направлением движения (вверх/вниз)</li>
+                            <li><strong>БОКОВОЕ ДВИЖЕНИЕ:</strong> Рынок с боковым движением</li>
+                            <li><strong>ВЫСОКАЯ ВОЛАТИЛЬНОСТЬ:</strong> Рынок с высокой волатильностью</li>
+                            <li><strong>ЛЮБОЙ:</strong> Любые рыночные условия</li>
                         </ul>
-                        Стратегияnin piyasa rejimine uygunluı, başarı oranını doğrudan etkiler.
+                        Соответствие стратегии рыночному режиму напрямую влияет на долю успешных сделок.
                     </div>
                 </div>
             </div>
@@ -628,7 +628,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        <i class="fas fa-magic me-2"></i>Стратегия Sihirbazı
+                        <i class="fas fa-magic me-2"></i>Мастер создания стратегий
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -637,7 +637,7 @@
                     <div class="wizard-steps">
                         <div class="wizard-step active" data-step="1">
                             <div class="step-circle">1</div>
-                            <div class="step-label">Temel Bilgiler</div>
+                            <div class="step-label">Основные сведения</div>
                         </div>
                         <div class="wizard-step" data-step="2">
                             <div class="step-circle">2</div>
@@ -645,15 +645,15 @@
                         </div>
                         <div class="wizard-step" data-step="3">
                             <div class="step-circle">3</div>
-                            <div class="step-label">Фильтрler</div>
+                            <div class="step-label">Фильтры</div>
                         </div>
                         <div class="wizard-step" data-step="4">
                             <div class="step-circle">4</div>
-                            <div class="step-label">İndikatörler</div>
+                            <div class="step-label">Индикаторы</div>
                         </div>
                         <div class="wizard-step" data-step="5">
                             <div class="step-circle">5</div>
-                            <div class="step-label">Özet</div>
+                            <div class="step-label">Сводка</div>
                         </div>
                     </div>
 
@@ -661,23 +661,23 @@
                     <div class="wizard-content">
                         <!-- Step 1: Basic Info -->
                         <div class="wizard-step-content" data-step="1">
-                            <h6 class="text-main mb-3">Стратегия Имяı</h6>
-                            <input type="text" class="form-control form-control-wizard mb-3" id="strategyName" placeholder="Yeni strateji adını girin...">
+                            <h6 class="text-main mb-3">Название стратегии</h6>
+                            <input type="text" class="form-control form-control-wizard mb-3" id="strategyName" placeholder="Введите название новой стратегии...">
                             
-                            <h6 class="text-main mb-3">Açıklama</h6>
-                            <textarea class="form-control form-control-wizard" id="strategyDescription" rows="3" placeholder="Стратегия hakkında kısa açıklama..."></textarea>
+                            <h6 class="text-main mb-3">Описание</h6>
+                            <textarea class="form-control form-control-wizard" id="strategyDescription" rows="3" placeholder="Краткое описание стратегии..."></textarea>
                         </div>
 
                         <!-- Step 2: Strategy Type -->
                         <div class="wizard-step-content" data-step="2" style="display: none;">
-                            <h6 class="text-main mb-3">Тип стратегии Seçin</h6>
+                            <h6 class="text-main mb-3">Выберите тип стратегии</h6>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <div class="indicator-checkbox">
                                         <input type="radio" name="strategyType" value="scoring" id="typeScoring">
                                         <label for="typeScoring">
-                                            <strong>Puanlama Sistemi</strong><br>
-                                            <small class="text-secondary">Her indikatöre ağırlık atan sistem</small>
+                                            <strong>Балльная система</strong><br>
+                                            <small class="text-secondary">Система с весами для каждого индикатора</small>
                                         </label>
                                     </div>
                                 </div>
@@ -685,8 +685,8 @@
                                     <div class="indicator-checkbox">
                                         <input type="radio" name="strategyType" value="majority" id="typeMajority">
                                         <label for="typeMajority">
-                                            <strong>Çoğunluk Oylaması</strong><br>
-                                            <small class="text-secondary">çoğunluk oylaması sistemi</small>
+                                            <strong>Голосование большинством</strong><br>
+                                            <small class="text-secondary">Система голосования большинством</small>
                                         </label>
                                     </div>
                                 </div>
@@ -694,8 +694,8 @@
                                     <div class="indicator-checkbox">
                                         <input type="radio" name="strategyType" value="strong_majority" id="typeStrong">
                                         <label for="typeStrong">
-                                            <strong>Güçlü Çoğunluk</strong><br>
-                                            <small class="text-secondary">Yüksek eşik değerli çoğunluk</small>
+                                            <strong>Квалифицированное большинство</strong><br>
+                                            <small class="text-secondary">Большинство с повышенным порогом согласия</small>
                                         </label>
                                     </div>
                                 </div>
@@ -703,8 +703,8 @@
                                     <div class="indicator-checkbox">
                                         <input type="radio" name="strategyType" value="majority_none_safe" id="typeFull">
                                         <label for="typeFull">
-                                            <strong>Tam Uyum</strong><br>
-                                            <small class="text-secondary">Tüm indikatörler uyumlu olmalı</small>
+                                            <strong>Полное согласование</strong><br>
+                                            <small class="text-secondary">Все индикаторы должны быть согласованы</small>
                                         </label>
                                     </div>
                                 </div>
@@ -713,14 +713,14 @@
 
                         <!-- Step 3: Filters -->
                         <div class="wizard-step-content" data-step="3" style="display: none;">
-                            <h6 class="text-main mb-3">Фильтрler</h6>
+                            <h6 class="text-main mb-3">Фильтры</h6>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <div class="indicator-checkbox">
                                         <input type="checkbox" id="trendFilter">
                                         <label for="trendFilter">
-                                            <strong>Trend Gücü Uygun mu? (ADX)</strong><br>
-                                            <small class="text-secondary">ADX tabanlı trend filtresi</small>
+                                            <strong>Достаточна ли сила тренда? (ADX)</strong><br>
+                                            <small class="text-secondary">Фильтр тренда на основе ADX</small>
                                         </label>
                                     </div>
                                 </div>
@@ -728,8 +728,8 @@
                                     <div class="indicator-checkbox">
                                         <input type="checkbox" id="volatilityFilter">
                                         <label for="volatilityFilter">
-                                            <strong>Volatilite Yeterli mi? (ATR)</strong><br>
-                                            <small class="text-secondary">ATR tabanlı volatilite filtresi</small>
+                                            <strong>Достаточна ли волатильность? (ATR)</strong><br>
+                                            <small class="text-secondary">Фильтр волатильности на основе ATR</small>
                                         </label>
                                     </div>
                                 </div>
@@ -737,75 +737,75 @@
                             
                             <h6 class="text-main mb-3 mt-4">Рыночный режим</h6>
                             <select class="form-select form-control-wizard" id="marketRegime">
-                                <option value="ANY">Tümü</option>
-                                <option value="TREND">Trend</option>
-                                <option value="RANGE">Range</option>
-                                <option value="VOLATILE">Volatile</option>
+                                <option value="ANY">Все</option>
+                                <option value="TREND">Тренд</option>
+                                <option value="RANGE">Боковое движение</option>
+                                <option value="VOLATILE">Высокая волатильность</option>
                             </select>
                         </div>
 
                         <!-- Step 4: Indicators -->
                         <div class="wizard-step-content" data-step="4" style="display: none;">
-                            <h6 class="text-main mb-3">İndikatör Seçimi</h6>
+                            <h6 class="text-main mb-3">Выбор индикаторов</h6>
                             <div class="indicator-checkbox">
                                 <input type="checkbox" id="rsiIndicator">
                                 <label for="rsiIndicator">
                                     <strong>RSI (Relative Strength Index)</strong><br>
-                                    <small class="text-secondary">Momentum ve overbought/oversold seviyeleri</small>
+                                    <small class="text-secondary">Импульс и уровни перекупленности/перепроданности</small>
                                 </label>
                             </div>
                             <div class="indicator-checkbox">
                                 <input type="checkbox" id="macdIndicator">
                                 <label for="macdIndicator">
                                     <strong>MACD</strong><br>
-                                    <small class="text-secondary">Trend ve momentum crossover sinyalleri</small>
+                                    <small class="text-secondary">Сигналы пересечения тренда и импульса</small>
                                 </label>
                             </div>
                             <div class="indicator-checkbox">
                                 <input type="checkbox" id="smiIndicator">
                                 <label for="smiIndicator">
                                     <strong>SMI (Stochastic Momentum Index)</strong><br>
-                                    <small class="text-secondary">Hızlı momentum göstergesi</small>
+                                    <small class="text-secondary">Быстрый индикатор импульса</small>
                                 </label>
                             </div>
                             <div class="indicator-checkbox">
                                 <input type="checkbox" id="cmfIndicator">
                                 <label for="cmfIndicator">
                                     <strong>CMF (Chaikin Money Flow)</strong><br>
-                                    <small class="text-secondary">Hacim ağırlıklı akış göstergesi</small>
+                                    <small class="text-secondary">Индикатор денежного потока, взвешенного по объёму</small>
                                 </label>
                             </div>
                             <div class="indicator-checkbox">
                                 <input type="checkbox" id="adxIndicator">
                                 <label for="adxIndicator">
                                     <strong>ADX</strong><br>
-                                    <small class="text-secondary">Trend gücü ölçüsü</small>
+                                    <small class="text-secondary">Показатель силы тренда</small>
                                 </label>
                             </div>
                             <div class="indicator-checkbox">
                                 <input type="checkbox" id="atrIndicator">
                                 <label for="atrIndicator">
                                     <strong>ATR</strong><br>
-                                    <small class="text-secondary">Volatilite ve ortalama true range</small>
+                                    <small class="text-secondary">Волатильность и средний истинный диапазон</small>
                                 </label>
                             </div>
                         </div>
 
                         <!-- Step 5: Summary -->
                         <div class="wizard-step-content" data-step="5" style="display: none;">
-                            <h6 class="text-main mb-3">Стратегия Özeti</h6>
+                            <h6 class="text-main mb-3">Сводка стратегии</h6>
                             <div class="alert alert-info">
                                 <i class="fas fa-info-circle me-2"></i>
-                                <span id="summaryContent">Стратегия bilgileri burada gösterilecek...</span>
+                                <span id="summaryContent">Здесь будут показаны сведения о стратегии...</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="previousStep()" id="prevBtn">Önceki</button>
+                    <button type="button" class="btn btn-secondary" onclick="previousStep()" id="prevBtn">Назад</button>
                     <button type="button" class="btn btn-primary" onclick="nextStep()" id="nextBtn">Далее</button>
                     <button type="button" class="btn btn-success" onclick="createStrategy()" id="createBtn" style="display: none;">
-                        <i class="fas fa-check me-2"></i>Oluştur
+                        <i class="fas fa-check me-2"></i>Создать
                     </button>
                 </div>
             </div>
@@ -877,19 +877,19 @@
             if (currentStep === 1) {
                 const name = document.getElementById('strategyName').value.trim();
                 if (!name) {
-                    showNotification('Lütfen strateji adını girin', 'warning');
+                    showNotification('Введите название стратегии', 'warning');
                     return false;
                 }
             } else if (currentStep === 2) {
                 const type = document.querySelector('input[name="strategyType"]:checked');
                 if (!type) {
-                    showNotification('Lütfen strateji tipi seçin', 'warning');
+                    showNotification('Выберите тип стратегии', 'warning');
                     return false;
                 }
             } else if (currentStep === 4) {
                 const indicators = document.querySelectorAll('.wizard-step-content[data-step="4"] input[type="checkbox"]:checked');
                 if (indicators.length === 0) {
-                    showNotification('Lütfen en az bir indikatör seçin', 'warning');
+                    showNotification('Выберите хотя бы один индикатор', 'warning');
                     return false;
                 }
             }
@@ -897,19 +897,19 @@
         }
 
         function updateSummary() {
-            const name = document.getElementById('strategyName').value || 'İsimsiz Стратегия';
-            const description = document.getElementById('strategyDescription').value || 'Açıklama yok';
-            const type = document.querySelector('input[name="strategyType"]:checked')?.value || 'Belirtilmemiş';
+            const name = document.getElementById('strategyName').value || 'Стратегия без названия';
+            const description = document.getElementById('strategyDescription').value || 'Нет описания';
+            const type = document.querySelector('input[name="strategyType"]:checked')?.value || 'Не указан';
             const regime = document.getElementById('marketRegime').value;
             const indicators = Array.from(document.querySelectorAll('.wizard-step-content[data-step="4"] input[type="checkbox"]:checked'))
                 .map(cb => cb.labels[0].textContent.trim());
             
             const summary = `
                 <strong>Имя:</strong> ${name}<br>
-                <strong>Açıklama:</strong> ${description}<br>
+                <strong>Описание:</strong> ${description}<br>
                 <strong>Тип:</strong> ${type}<br>
                 <strong>Рыночный режим:</strong> ${regime}<br>
-                <strong>İndikatörler:</strong> ${indicators.join(', ') || 'Seçilmedi'}
+                <strong>Индикаторы:</strong> ${indicators.join(', ') || 'Не выбраны'}
             `;
             
             document.getElementById('summaryContent').innerHTML = summary;
@@ -917,28 +917,28 @@
 
         function createStrategy() {
             const name = document.getElementById('strategyName').value;
-            showNotification(`"${name}" stratejisi oluşturuluyor...`, 'info');
+            showNotification(`Создаётся стратегия «${name}»...`, 'info');
             
             setTimeout(() => {
                 wizardModal.hide();
-                showNotification(`"${name}" stratejisi başarıyla oluşturuldu`, 'success');
+                showNotification(`Стратегия «${name}» успешно создана`, 'success');
                 // Here you would normally save the strategy and refresh the list
             }, 1500);
         }
 
         function editStrategy(type) {
-            showNotification(`${type} stratejisi düzenleniyor...`, 'info');
+            showNotification(`Редактируется стратегия «${type}»...`, 'info');
         }
 
         function testStrategy(type) {
-            showNotification(`${type} stratejisi test ediliyor...`, 'info');
+            showNotification(`Тестируется стратегия «${type}»...`, 'info');
         }
 
         function deleteStrategy(type) {
-            if (confirm(`${type} stratejisini silmek istediğinizden emin misiniz?`)) {
-                showNotification(`${type} stratejisi siliniyor...`, 'warning');
+            if (confirm(`Вы уверены, что хотите удалить стратегию «${type}»?`)) {
+                showNotification(`Удаляется стратегия «${type}»...`, 'warning');
                 setTimeout(() => {
-                    showNotification(`${type} stratejisi başarıyla silindi`, 'success');
+                    showNotification(`Стратегия «${type}» успешно удалена`, 'success');
                 }, 1000);
             }
         }

@@ -146,8 +146,8 @@
                     <p class="text-secondary mb-0">Тюнинг параметров, шаблоны правил и валидация для алгоритмических стратегий</p>
                 </div>
                 <div class="d-flex gap-2 flex-wrap align-items-center">
-                    <span class="chip" title="Движок правил" data-bs-toggle="tooltip"><i class="fas fa-diagram-project"></i><span>Engine:</span> <strong>Rule Composer</strong></span>
-                    <span class="chip" title="Статус валидации" data-bs-toggle="tooltip"><i class="fas fa-circle-check"></i><span>Status:</span> <strong id="chip-status">Ready</strong></span>
+                    <span class="chip" title="Движок правил" data-bs-toggle="tooltip"><i class="fas fa-diagram-project"></i><span>Движок:</span> <strong>Конструктор правил</strong></span>
+                    <span class="chip" title="Статус валидации" data-bs-toggle="tooltip"><i class="fas fa-circle-check"></i><span>Статус:</span> <strong id="chip-status">Готово</strong></span>
                     <button class="toolbar-btn" onclick="exportConfig()" title="Экспорт конфигурации индикаторов (CSV)" data-bs-toggle="tooltip">
                         <i class="fas fa-file-export me-2"></i>Экспорт
                     </button>
@@ -167,7 +167,7 @@
                     <div class="panel p-3">
                         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
                             <h5 class="text-main mb-0"><i class="fas fa-sliders-h me-2" style="color: var(--accent-blue);"></i>Выбранный индикатор · параметры</h5>
-                            <span class="pill-on" id="selected-pill"><i class="fas fa-check"></i>Active</span>
+                            <span class="pill-on" id="selected-pill"><i class="fas fa-check"></i>Активен</span>
                         </div>
                         <div class="text-secondary small mb-3">Настройте параметры и проверьте совместимость с логикой стратегии. Значения демонстрационные.</div>
                         <div class="table-responsive">
@@ -199,15 +199,15 @@
                         </div>
                         <div class="text-secondary small mb-3">Используйте шаблоны как стартовую точку для BUY/SELL триггеров и фильтров режима.</div>
                         <select id="template-select" class="form-select form-control-custom">
-                            <option selected>Momentum Confirmation (RSI + Trend)</option>
-                            <option>Mean Reversion Fade (Bands + RSI)</option>
-                            <option>Breakout Validation (ATR + Volume)</option>
+                            <option selected>Подтверждение импульса (RSI + тренд)</option>
+                            <option>Возврат к среднему (полосы + RSI)</option>
+                            <option>Подтверждение пробоя (ATR + объём)</option>
                         </select>
                     </div>
 
                     <div class="panel p-3">
                         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                            <h5 class="text-main mb-0"><i class="fas fa-sitemap me-2" style="color: var(--accent-blue);"></i>Превью Rule Composer</h5>
+                            <h5 class="text-main mb-0"><i class="fas fa-sitemap me-2" style="color: var(--accent-blue);"></i>Предпросмотр конструктора правил</h5>
                             <button class="toolbar-btn" onclick="validateRules()" title="Запустить проверки валидации" data-bs-toggle="tooltip">
                                 <i class="fas fa-circle-check me-2"></i>Валидировать
                             </button>
@@ -215,28 +215,28 @@
                         <div class="rule-shell">
                             <div class="rule-line mb-2">
                                 <div>
-                                    <div class="label">BUY Trigger</div>
-                                    <div class="hint" id="buy-rule">RSI &lt; 30 AND Trend = Aligned</div>
+                                    <div class="label">Условие BUY</div>
+                                    <div class="hint" id="buy-rule">RSI &lt; 30 AND Тренд = Согласован</div>
                                 </div>
-                                <div class="text-secondary small">Priority: High</div>
+                                <div class="text-secondary small">Приоритет: высокий</div>
                             </div>
                             <div class="rule-line mb-2">
                                 <div>
-                                    <div class="label">SELL Trigger</div>
-                                    <div class="hint" id="sell-rule">RSI &gt; 70 OR Trend = Misaligned</div>
+                                    <div class="label">Условие SELL</div>
+                                    <div class="hint" id="sell-rule">RSI &gt; 70 OR Тренд = Не согласован</div>
                                 </div>
-                                <div class="text-secondary small">Priority: Medium</div>
+                                <div class="text-secondary small">Приоритет: средний</div>
                             </div>
                             <div class="rule-line">
                                 <div>
-                                    <div class="label">Regime Filter</div>
-                                    <div class="hint" id="regime-rule">Volatility = Normal AND Liquidity = OK</div>
+                                    <div class="label">Фильтр рыночного режима</div>
+                                    <div class="hint" id="regime-rule">Волатильность = Нормальная AND Ликвидность = OK</div>
                                 </div>
-                                <div class="text-secondary small">Safety Gate</div>
+                                <div class="text-secondary small">Проверка безопасности</div>
                             </div>
                         </div>
                         <div class="mt-3 small text-secondary">
-                            Для управления стратегиями используйте <a class="text-accent-blue text-decoration-none" href="/ru/strategies/">библиотеку стратегий</a> и <a class="text-accent-blue text-decoration-none" href="/ru/settings/">risk‑параметры</a>.
+                            Для управления стратегиями используйте <a class="text-accent-blue text-decoration-none" href="/ru/strategies/">библиотеку стратегий</a> и <a class="text-accent-blue text-decoration-none" href="/ru/settings/">параметры риска</a>.
                         </div>
                     </div>
                 </div>
@@ -252,25 +252,25 @@
             indicators: [
                 { id: 'rsi', name: 'RSI (Relative Strength Index)', icon: 'fa-gauge-high', desc: 'Осциллятор импульса для определения режима и истощения.', params: [
                     { k: 'Период', v: 14, note: 'Стандартное окно расчёта RSI.' },
-                    { k: 'Oversold Threshold', v: 30, note: 'Ниже уровня считается oversold (потенциал mean reversion).' },
-                    { k: 'Overbought Threshold', v: 70, note: 'Выше уровня считается overbought.' },
+                    { k: 'Порог перепроданности', v: 30, note: 'Ниже этого уровня — зона перепроданности (возможен возврат к среднему).' },
+                    { k: 'Порог перекупленности', v: 70, note: 'Выше этого уровня — зона перекупленности.' },
                 ]},
-                { id: 'bb', name: 'Bollinger Bands', icon: 'fa-arrows-left-right-to-line', desc: 'Волатильностный конверт для mean reversion и breakout‑контекста.', params: [
+                { id: 'bb', name: 'Bollinger Bands', icon: 'fa-arrows-left-right-to-line', desc: 'Полосы волатильности для оценки возврата к среднему и пробоев.', params: [
                     { k: 'Период', v: 20, note: 'Период средней линии полос.' },
-                    { k: 'Std. Dev Multiplier', v: 2, note: 'Множитель ширины полос.' },
+                    { k: 'Множитель стандартного отклонения', v: 2, note: 'Множитель ширины полос.' },
                 ]},
                 { id: 'cmf', name: 'CMF (Chaikin Money Flow)', icon: 'fa-water', desc: 'Прокси притока/оттока капитала на основе объёмов.', params: [
                     { k: 'Период', v: 20, note: 'Окно агрегации денежного потока.' },
-                    { k: 'Buy Bias Threshold', v: 0.25, note: 'Выше — устойчивые притоки.' },
-                    { k: 'Sell Bias Threshold', v: -0.25, note: 'Ниже — устойчивые оттоки.' },
+                    { k: 'Порог перевеса в пользу покупки', v: 0.25, note: 'Выше — устойчивые притоки.' },
+                    { k: 'Порог перевеса в пользу продажи', v: -0.25, note: 'Ниже — устойчивые оттоки.' },
                 ]},
                 { id: 'atr', name: 'ATR (Average True Range)', icon: 'fa-wave-square', desc: 'Базовый примитив для нормализации волатильности и сайзинга.', params: [
                     { k: 'Период', v: 14, note: 'Окно оценки волатильности.' },
-                    { k: 'Stop Multiplier', v: 2.0, note: 'Дистанция для ATR‑трейлинга.' },
+                    { k: 'Множитель стопа', v: 2.0, note: 'Дистанция для ATR‑трейлинга.' },
                 ]},
                 { id: 'trend', name: 'MTF Trend Layer', icon: 'fa-layer-group', desc: 'Фильтр согласования старшего таймфрейма для качества сигналов.', params: [
                     { k: 'Старший таймфрейм', v: '1h', note: 'HTF для определения направления.' },
-                    { k: 'Строгость согласования', v: 'Medium', note: 'Насколько строго требуется совпадение bias.' },
+                    { k: 'Строгость согласования', v: 'Средняя', note: 'Насколько строго требуется совпадение направленности сигналов.' },
                 ]},
             ],
             selectedId: 'rsi',
@@ -329,23 +329,23 @@
 
         function applyTemplate() {
             const t = document.getElementById('template-select').value;
-            if (t.includes('Momentum')) {
-                document.getElementById('buy-rule').textContent = 'RSI < 35 AND Trend = Aligned AND CMF > 0.10';
-                document.getElementById('sell-rule').textContent = 'RSI > 65 OR Trend = Misaligned';
-                document.getElementById('regime-rule').textContent = 'Volatility = Normal AND Liquidity = OK';
-            } else if (t.includes('Mean')) {
-                document.getElementById('buy-rule').textContent = 'Price < Lower Band AND RSI < 30 AND CMF Divergence = Positive';
-                document.getElementById('sell-rule').textContent = 'Price > Upper Band OR Time Stop Hit';
-                document.getElementById('regime-rule').textContent = 'Regime = Ranging AND Spread < Threshold';
+            if (t.includes('Подтверждение импульса')) {
+                document.getElementById('buy-rule').textContent = 'RSI < 35 AND Тренд = Согласован AND CMF > 0.10';
+                document.getElementById('sell-rule').textContent = 'RSI > 65 OR Тренд = Не согласован';
+                document.getElementById('regime-rule').textContent = 'Волатильность = Нормальная AND Ликвидность = OK';
+            } else if (t.includes('Возврат к среднему')) {
+                document.getElementById('buy-rule').textContent = 'Цена < Нижняя полоса AND RSI < 30 AND Дивергенция CMF = Положительная';
+                document.getElementById('sell-rule').textContent = 'Цена > Верхняя полоса OR Достигнут временной стоп';
+                document.getElementById('regime-rule').textContent = 'Режим = Боковой AND Спред < Порог';
             } else {
-                document.getElementById('buy-rule').textContent = 'Structure Break = Confirmed AND ATR Expansion = True';
-                document.getElementById('sell-rule').textContent = 'Failed Follow-through OR Volatility Spike';
-                document.getElementById('regime-rule').textContent = 'Liquidity = OK AND Slippage Model = Acceptable';
+                document.getElementById('buy-rule').textContent = 'Пробой структуры = Подтверждён AND Расширение ATR = Да';
+                document.getElementById('sell-rule').textContent = 'Отсутствие продолжения движения OR Скачок волатильности';
+                document.getElementById('regime-rule').textContent = 'Ликвидность = OK AND Модель проскальзывания = Допустимая';
             }
             toast('Шаблон применён к превью.', 'info');
         }
 
-        function validateRules() { document.getElementById('chip-status').textContent = 'Validated'; toast('Валидация пройдена (демо).', 'success'); }
+        function validateRules() { document.getElementById('chip-status').textContent = 'Проверено'; toast('Валидация пройдена (демо).', 'success'); }
 
         function exportConfig() {
             const header = ['Indicator', 'Parameter', 'Value'];
