@@ -320,6 +320,20 @@ body {
     transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
+/* Sample data label */
+.demo-badge {
+    display: inline-block;
+    background: rgba(255, 193, 7, 0.15);
+    border: 1px solid rgba(255, 193, 7, 0.4);
+    color: #ffc107;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
 /* Wide screens: wider content area */
 @media (min-width: 1600px) {
     .container {
