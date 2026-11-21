@@ -21,256 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
 
-    <style>
-        .scanner-container {
-            padding: 20px;
-            background: var(--bg-dark);
-            min-height: 100vh;
-        }
-        
-        .control-panel {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .results-table {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .table-custom {
-            color: var(--text-main);
-            margin-bottom: 0;
-        }
-        
-        .table-custom thead {
-            background: rgba(52, 152, 219, 0.1);
-            border-bottom: 2px solid var(--accent-blue);
-        }
-        
-        .table-custom th {
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            padding: 12px;
-            border: none;
-        }
-        
-        .table-custom td {
-            padding: 10px 12px;
-            border: none;
-            border-bottom: 1px solid rgba(42, 49, 66, 0.3);
-            vertical-align: middle;
-        }
-        
-        .table-custom tbody tr:hover {
-            background: rgba(52, 152, 219, 0.05);
-        }
-        
-        .signal-buy {
-            color: var(--signal-buy);
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
-        }
-        
-        .signal-sell {
-            color: var(--signal-sell);
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
-        }
-        
-        .signal-none {
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-        
-        .info-card {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .info-card h6 {
-            color: var(--accent-blue);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-        
-        .progress-custom {
-            background: rgba(42, 49, 66, 0.5);
-            border-radius: 10px;
-            height: 8px;
-        }
-        
-        .progress-bar-custom {
-            background: linear-gradient(90deg, var(--accent-blue), var(--signal-buy));
-            border-radius: 10px;
-        }
-        
-        .filter-section {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .tab-custom {
-            border-bottom: 2px solid var(--border-color);
-        }
-        
-        .tab-custom .nav-link {
-            color: var(--text-main);
-            border: none;
-            padding: 10px 20px;
-            background: transparent;
-        }
-        
-        .tab-custom .nav-link.active {
-            color: var(--accent-blue);
-            background: transparent;
-            border-bottom: 2px solid var(--accent-blue);
-        }
-        
-        .form-control-custom {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-radius: 6px;
-        }
-        
-        .form-control-custom:focus {
-            background: rgba(42, 49, 66, 0.5);
-            border-color: var(--accent-blue);
-            color: var(--text-main);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
-        }
-        
-        .accordion-custom .accordion-button {
-            background: var(--panel-dark);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-        
-        .accordion-custom .accordion-button:not(.collapsed) {
-            background: rgba(52, 152, 219, 0.1);
-            color: var(--accent-blue);
-        }
-        
-        .accordion-custom .accordion-body {
-            background: var(--bg-dark);
-            color: var(--text-main);
-        }
-        
-        .status-indicator {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-        
-        .status-active { background: var(--signal-buy); }
-        .status-paused { background: #f39c12; }
-        .status-stopped { background: var(--signal-sell); }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .scanner-container {
-                padding: 20px 15px;
-            }
-            
-            .control-panel {
-                padding: 20px 15px;
-                margin-bottom: 20px;
-            }
-            
-            .filter-section {
-                margin-bottom: 20px;
-            }
-            
-            .table-custom {
-                font-size: 14px;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-            
-            .table-custom th,
-            .table-custom td {
-                padding: 8px 6px;
-                font-size: 13px;
-            }
-            
-            .info-card {
-                padding: 15px;
-                margin-bottom: 15px;
-            }
-            
-            .btn-sentralyx {
-                padding: 12px 20px;
-                font-size: 14px;
-                margin-bottom: 10px;
-                width: 100%;
-            }
-            
-            .progress-custom {
-                height: 6px;
-                margin-bottom: 10px;
-            }
-            
-            h1 {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .lead {
-                font-size: 1rem;
-                margin-bottom: 20px;
-            }
-        }
-        
-        /* Prevent Horizontal Scroll */
-        * {
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-        
-        body {
-            overflow-x: hidden;
-            min-width: 320px;
-        }
-        
-        .container {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        
-        /* Touch Targets for Mobile */
-        @media (max-width: 768px) {
-            .btn, .form-control, .form-select {
-                min-height: 44px;
-                min-width: 44px;
-            }
-            
-            .table-custom tbody tr {
-                cursor: pointer;
-            }
-            
-            .table-custom td {
-                padding: 12px 8px;
-            }
-        }
-    </style>
 
     <script type="application/ld+json">
 {
@@ -292,485 +42,93 @@
   ]
 }
     </script>
-
+    <link rel="stylesheet" href="../../assets/css/home.css">
 </head>
 <body>
     <header id="main-header"></header>
-    
-    <main class="scanner-container">
-        <div class="text-center mb-4">
-            <h1 class="text-main">Crypto Scanner and Market Scanning Tool</h1>
-            <p class="text-secondary">Monitor market conditions on Binance and OKX from a single screen with crypto signal scanning, Binance coin scanning, and MTF analysis. <span class="demo-badge">DEMO DATA</span></p>
-        </div>
-        
-        <!-- Control Buttons -->
-        <div class="control-panel">
-            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-                <div class="d-flex gap-2">
-                    <button class="btn-sentralyx-start" onclick="startScanner()">
-                        <i class="fas fa-play me-2"></i>START
-                    </button>
-                    <button class="btn-sentralyx-pause" onclick="pauseScanner()">
-                        <i class="fas fa-pause me-2"></i>PAUSE
-                    </button>
-                    <button class="btn-sentralyx-stop" onclick="stopScanner()">
-                        <i class="fas fa-stop me-2"></i>STOP
-                    </button>
-                </div>
-                <div class="d-flex gap-2 align-items-center">
-                    <span class="status-indicator status-stopped"></span>
-                    <span class="text-main">Status: <span id="status-text">Stopped</span></span>
-                </div>
+    <main class="home h-page">
+        <section class="h-hero"><div class="h-wrap">
+            <nav class="h-crumb" aria-label="breadcrumb"><a href="/en/">Home</a><span>/</span>Market Scanner</nav>
+            <p class="h-eyebrow"><span class="h-dot"></span> Scanner</p>
+            <h1>Crypto Scanner and Market Scanning Tool</h1>
+            <p class="h-lead">Scan 347 coins on Binance and OKX by default, in rounds on your chosen timeframe. See indicator results, the BUY/SELL/NONE signal and the reason when no signal formed, all in one table.</p>
+            <div class="h-cta-row">
+                <a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Free download for Windows</a>
+                <a class="h-btn h-btn-ghost" href="#nasil"><i class="fas fa-play-circle"></i> How does it work?</a>
             </div>
-        </div>
-
-        <div class="row">
-            <!-- Results Table Section (Left/Wide) -->
-            <div class="col-lg-8">
-                <!-- Summary Cards -->
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="info-card">
-                            <h6>Scan Summary</h6>
-                            <div class="row text-center">
-                                <div class="col-4">
-                                    <div class="text-main fw-bold">347</div>
-                                    <div class="text-secondary small">Symbol</div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="text-main fw-bold">12</div>
-                                    <div class="text-secondary small">Signal</div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="text-main fw-bold">3</div>
-                                    <div class="text-secondary small">Round</div>
-                                </div>
-                            </div>
-                            <div class="mt-3">
-                                <div class="d-flex justify-content-between small mb-1">
-                                    <span class="text-secondary">Progress</span>
-                                    <span class="text-main">75%</span>
-                                </div>
-                                <div class="progress progress-custom">
-                                    <div class="progress-bar progress-bar-custom" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="info-card">
-                            <h6>Last Round Details</h6>
-                            <div class="row text-center">
-                                <div class="col-6">
-                                    <div class="text-main fw-bold">~100s</div>
-                                    <div class="text-secondary small">Duration</div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-main fw-bold">3.5</div>
-                                    <div class="text-secondary small">Coins/sec</div>
-                                </div>
-                            </div>
-                            <div class="mt-3">
-                                <div class="small text-secondary">
-                                    <i class="fas fa-clock me-1"></i>
-                                    Last updated: 14:32:15
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Results Table -->
-                <div class="results-table">
-                    <div class="p-3 border-bottom border-custom">
-                        <h5 class="mb-0 text-main">
-                            <i class="fas fa-search me-2"></i>Scan Results
-                        </h5>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-custom">
-                            <thead>
-                                <tr>
-                                    <th>Symbol</th>
-                                    <th>Price</th>
-                                    <th>CMF</th>
-                                    <th>RSI</th>
-                                    <th>SMI</th>
-                                    <th>Signal</th>
-                                    <th>Reason</th>
-                                </tr>
-                            </thead>
-                            <tbody id="results-tbody">
-                                <tr>
-                                    <td><strong>BTCUSDT</strong></td>
-                                    <td>43,256.78</td>
-                                    <td>0.23</td>
-                                    <td>65.4</td>
-                                    <td>42.1</td>
-                                    <td><span class="signal-buy">BUY</span></td>
-                                    <td class="text-secondary small">RSI oversold + positive CMF</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ETHUSDT</strong></td>
-                                    <td>2,245.32</td>
-                                    <td>-0.15</td>
-                                    <td>72.8</td>
-                                    <td>58.3</td>
-                                    <td><span class="signal-sell">SELL</span></td>
-                                    <td class="text-secondary small">RSI overbought + negative CMF</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ADAUSDT</strong></td>
-                                    <td>0.582</td>
-                                    <td>0.08</td>
-                                    <td>54.2</td>
-                                    <td>35.7</td>
-                                    <td><span class="signal-none">NONE</span></td>
-                                    <td class="text-secondary small">Neutral indicators</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>SOLUSDT</strong></td>
-                                    <td>98.45</td>
-                                    <td>0.31</td>
-                                    <td>68.9</td>
-                                    <td>45.2</td>
-                                    <td><span class="signal-buy">BUY</span></td>
-                                    <td class="text-secondary small">SMI at a low + strong CMF</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>AVAXUSDT</strong></td>
-                                    <td>35.67</td>
-                                    <td>-0.22</td>
-                                    <td>76.3</td>
-                                    <td>62.8</td>
-                                    <td><span class="signal-sell">SELL</span></td>
-                                    <td class="text-secondary small">RSI at an extreme + weak CMF</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <div class="h-shot"><div class="h-shot-inner">
+                <div class="h-shot-bar"><span></span><span></span><span></span><em>Sentralyx &#8212; Scanner &#183; Virtual mode</em></div>
+                <img src="../../assets/img/home/hero-scanner.webp" alt="Sentralyx scanner: 347-coin scan, signal table and reason column" width="1600" height="848" fetchpriority="high">
+            </div></div>
+            <p class="h-cap">Real app screen, captured in virtual mode.</p>
+        </div></section>
+        <section class="h-stats"><div class="h-wrap"><div class="h-stats-grid">
+            <div class="h-stat"><b class="h-mono h-grad">347</b><span>coins by default</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">~100 s</b><span>one round of 347 coins</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">30</b><span>editable indicators</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">4</b><span>strategy types</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">MTF + LTF</b><span>timeframe confirmation</span></div>
+        </div></div></section>
+        <section class="h-block" id="nasil"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">How does it work?</div><h2 class="h-title">Scan, filter, see the signal</h2><p class="h-sub">The scanner applies your strategy to the whole list every round and shows the result with an explanation.</p></div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">01 &#183; Set up</span><h3>Choose strategy, timeframe and filters</h3><p>In the scan settings you choose which strategy runs, which timeframe to scan (e.g. 15m) and how many rounds to run.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Higher timeframe confirmation (MTF): e.g. 4h trend direction</li><li><i class="fas fa-circle-check"></i>Lower timeframe confirmation (LTF): entry timing</li><li><i class="fas fa-circle-check"></i>Maximum number of rounds or continuous scanning</li></ul></div>
+                <div class="h-frame h-tall"><img src="../../assets/img/pages/scanner-settings.webp" alt="Sentralyx scan settings panel" width="560" height="974" loading="lazy"></div>
             </div>
-
-            <!-- Filters and Settings Section (Right/Narrow) -->
-            <div class="col-lg-4">
-                <!-- Filter Tabs -->
-                <div class="filter-section">
-                    <ul class="nav nav-tabs tab-custom" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#scan-tab">Scan</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#backtest-tab">Backtest</a>
-                        </li>
-                    </ul>
-                    
-                    <div class="tab-content mt-3">
-                        <!-- Scan Tab -->
-                        <div class="tab-pane fade show active" id="scan-tab">
-                            <div class="mb-3">
-	                                <label class="form-label text-main small">Strategy</label>
-	                                <select class="form-control form-control-custom">
-	                                    <option value="Majority Consensus">Majority Vote</option>
-	                                    <option value="Strong Majority">Strong Majority</option>
-	                                    <option value="Scoring System">Scoring System</option>
-	                                    <option value="Full Consensus">Full Consensus</option>
-	                                </select>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Period (Timeframe)</label>
-                                <select class="form-control form-control-custom">
-                                    <option>1m</option>
-                                    <option>5m</option>
-                                    <option selected>15m</option>
-                                    <option>1h</option>
-                                    <option>4h</option>
-                                    <option>1d</option>
-                                </select>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Max Round</label>
-                                <input type="number" class="form-control form-control-custom" value="0" placeholder="0 = unlimited">
-                            </div>
-                            
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="show-row" checked>
-                                    <label class="form-check-label text-main small" for="show-row">
-                                        Show row numbers
-                                    </label>
-                                </div>
-                            </div>
-                            
-                            <!-- Smart-Trend Filter -->
-                            <div class="mb-3">
-                                <h6 class="text-main small mb-3">Smart-Trend Filter (MTF Confirmation)</h6>
-                                <div class="mb-2">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="mtf-filter">
-                                        <label class="form-check-label text-main small" for="mtf-filter">
-                                            Use Higher Timeframe Filter
-                                        </label>
-                                    </div>
-                                </div>
-                                <select class="form-control form-control-custom">
-                                    <option>1h</option>
-                                    <option selected>4h</option>
-                                    <option>1d</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <!-- Backtest Tab -->
-                        <div class="tab-pane fade" id="backtest-tab">
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Duration</label>
-                                <select class="form-control form-control-custom">
-                                    <option>30 days</option>
-                                    <option selected>60 days</option>
-                                    <option>90 days</option>
-                                    <option>180 days</option>
-                                </select>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Scan</label>
-                                <select class="form-control form-control-custom">
-                                    <option selected>Quick Scan</option>
-                                    <option>Detailed Scan</option>
-                                </select>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Success rate %</label>
-                                <input type="number" class="form-control form-control-custom" value="65" min="0" max="100">
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Trades</label>
-                                <input type="number" class="form-control form-control-custom" value="10" min="1">
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Candle</label>
-                                <input type="number" class="form-control form-control-custom" value="24" min="1">
-                            </div>
-                            
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="candidate-only">
-                                    <label class="form-check-label text-main small" for="candidate-only">
-                                        Candidate coins only
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Status Panel -->
-                <div class="info-card">
-                    <h6>Status Panel</h6>
-                    <div class="mb-2">
-                        <div class="d-flex justify-content-between small">
-                            <span class="text-secondary">Scan speed</span>
-                            <span class="text-main">~3.5 coins/sec</span>
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <div class="d-flex justify-content-between small">
-                            <span class="text-secondary">Signals found</span>
-                            <span class="text-main">12 (5 BUY, 7 SELL)</span>
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <div class="d-flex justify-content-between small">
-                            <span class="text-secondary">Open positions</span>
-                            <span class="text-main">3 (+2.45%)</span>
-                        </div>
-                    </div>
-                    <div class="mt-3 p-2 bg-dark bg-opacity-25 rounded">
-                        <div class="small text-secondary">
-                            <i class="fas fa-info-circle me-1"></i>
-                            Active Strategy: Majority Vote
-                        </div>
-                    </div>
-                </div>
+            <div class="h-step h-rev">
+                <div class="h-step-text"><span class="h-step-num">02 &#183; Scan</span><h3>Result and reason for every coin</h3><p>The table shows indicator results and the strategy&#x27;s signal for every coin. When no signal forms, the reason column explains why, e.g. &quot;Weak trend (ADX &lt; 20)&quot;.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>BUY / SELL / NONE signal</li><li><i class="fas fa-circle-check"></i>The rule or filter that blocked the signal is visible</li><li><i class="fas fa-circle-check"></i>BUY, SELL and no-signal filters plus symbol search</li></ul></div>
+                <div class="h-frame"><img src="../../assets/img/pages/scanner-table.webp" alt="Sentralyx signal table with reason column" width="1400" height="470" loading="lazy"></div>
             </div>
-        </div>
-
-        <!-- Information Cards Section -->
-        <div class="row mt-4">
-            <div class="col-12">
-                <h5 class="text-main mb-3">
-                    <i class="fas fa-question-circle me-2"></i>Technical Information
-                </h5>
-                <div class="accordion accordion-custom" id="infoAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#smartTrend">
-                                What Is Smart-Trend Filter (MTF Confirmation)?
-                            </button>
-                        </h2>
-                        <div id="smartTrend" class="accordion-collapse collapse show" data-bs-parent="#infoAccordion">
-                            <div class="accordion-body">
-                                <p>Smart-Trend Filter is an advanced system that filters current signals by analyzing the trend direction on a higher timeframe.</p>
-                                <ul class="text-secondary">
-                                    <li>Automatically detects the trend on a higher timeframe (1h, 4h, 1d)</li>
-                                    <li>Only allows signals that align with the trend direction</li>
-                                    <li>Enables more selective signal evaluation by filtering out signals that do not align with the trend direction on a higher timeframe.</li>
-                                    <li>Provides effective protection, especially in volatile markets</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#indicators">
-                                Indicators Used
-                            </button>
-                        </h2>
-                        <div id="indicators" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <h6 class="text-accent-blue">CMF (Chaikin Money Flow)</h6>
-                                        <p class="text-secondary small">Volume-weighted flow indicator. Buy signals above 0.25, sell signals below -0.25.</p>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h6 class="text-accent-blue">RSI (Relative Strength Index)</h6>
-                                        <p class="text-secondary small">Momentum indicator. Overbought above 70, oversold below 30.</p>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h6 class="text-accent-blue">SMI (Stochastic Momentum Index)</h6>
-                                        <p class="text-secondary small">Fast momentum indicator. Buy signals above +40, sell signals below -40.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#strategies">
-                                Strategy Types
-                            </button>
-                        </h2>
-                        <div id="strategies" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-3">
-                                        <h6 class="text-accent-blue">Scoring System</h6>
-                                        <p class="text-secondary small">Each indicator is weighted; a signal forms when the total score passes the threshold.</p>
-                                    </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <h6 class="text-accent-blue">Majority Vote</h6>
-                                        <p class="text-secondary small">Triggers when most indicators signal in the same direction (e.g. 2 of 3).</p>
-                                    </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <h6 class="text-accent-blue">Strong Majority</h6>
-                                        <p class="text-secondary small">A higher-threshold version of the majority vote; fewer but more selective signals.</p>
-                                    </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <h6 class="text-accent-blue">Full Consensus</h6>
-                                        <p class="text-secondary small">All indicators must signal in the same direction. The strictest rule; signal count is low.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">03 &#183; Act</span><h3>From signal to position</h3><p>When a signal arrives, a position can open automatically in virtual or real mode according to your settings. Positions are then managed with SL/TP on the Active Positions screen.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Virtual mode uses no real money</li><li><i class="fas fa-circle-check"></i>SL and TP orders are also sent to the exchange</li><li><i class="fas fa-circle-check"></i>The Free version does not open positions; scanning and analysis are available</li></ul></div>
+                <div class="h-frame"><img src="../../assets/img/home/positions.webp" alt="Sentralyx open positions screen" width="1400" height="494" loading="lazy"></div>
             </div>
-        </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Features</div><h2 class="h-title">What&#x27;s in the scanner?</h2><p class="h-sub">Not just the signal, but the rule behind it.</p></div>
+            <div class="h-grid-3">
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-list-check"></i></div><h3>347 coins by default</h3><p>Coins available on both Binance spot and USDT futures; stablecoins excluded.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-magnifying-glass-chart"></i></div><h3>Reason column</h3><p>Shows which rule or filter blocked a signal.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-layer-group"></i></div><h3>MTF and LTF confirmation</h3><p>The higher timeframe checks trend direction, the lower timeframe checks entry timing.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-filter"></i></div><h3>ADX, ATR and market regime</h3><p>Trend strength, volatility and regime (any, trend, sideways, volatile) filters.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-scale-balanced"></i></div><h3>4 strategy types</h3><p>Scoring, Majority, Strong Majority and Full Consensus turn indicator results into signals.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-database"></i></div><h3>Data method</h3><p>Candle data is fetched from the exchange at intervals and cached on your computer; no continuous live data stream is used.</p></div>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">FAQ</div><h2 class="h-title">Frequently asked questions</h2></div>
+            <div class="h-faq">
+                <details open><summary>How many coins does the scanner scan?</summary><p>The default list has 347 coins: those available on both Binance spot and USDT futures, stablecoins excluded.</p></details>
+                <details><summary>How long does one round take?</summary><p>It depends on the number of coins and the wait settings. With 347 coins, the second and later rounds take about 100 seconds.</p></details>
+                <details><summary>Does the scanner use a live data stream?</summary><p>No. Candle data is fetched from the exchange at intervals and cached locally. Signals update every round.</p></details>
+                <details><summary>Can I use the scanner in the Free version?</summary><p>Yes. Scanning and analysis are available in Free; opening positions requires Trial or Full.</p></details>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Next</div><h2 class="h-title">Related pages</h2></div>
+            <div class="h-related">
+                <a class="h-card h-feature" href="/en/blog/mtf-ltf-confirmation/"><h3>What is MTF and LTF confirmation?</h3><p>A guide to higher and lower timeframe confirmation.</p><span class="h-more">Explore <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/en/backtest/"><h3>Backtest</h3><p>Test your strategy on history including commission and slippage.</p><span class="h-more">Explore <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/en/active-positions/"><h3>Active positions</h3><p>Manage positions with SL/TP, trailing stop and break-even.</p><span class="h-more">Explore <i class="fas fa-arrow-right"></i></span></a>
+            </div>
+        </div></section>
+        <section class="h-cta-wrap"><div class="h-wrap"><div class="h-cta">
+            <h2>Try your strategy in virtual mode today</h2><p>Download the app, build your strategy and see how it works without using real money.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Free download for Windows</a><a class="h-btn h-btn-ghost" href="/en/pricing/">See plans</a></div>
+        </div></div></section>
     </main>
 
+    <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/main.js"></script>
     <script>
-        // Scanner control functions
-        function startScanner() {
-            updateStatus('active', 'Scanning...');
-            simulateScanning();
-        }
-        
-        function pauseScanner() {
-            updateStatus('paused', 'Paused');
-        }
-        
-        function stopScanner() {
-            updateStatus('stopped', 'Stopped');
-        }
-        
-        function updateStatus(status, text) {
-            const statusIndicator = document.querySelector('.status-indicator');
-            const statusText = document.getElementById('status-text');
-            
-            statusIndicator.className = 'status-indicator status-' + status;
-            statusText.textContent = text;
-        }
-        
-        function simulateScanning() {
-            const tbody = document.getElementById('results-tbody');
-            const symbols = ['DOTUSDT', 'LINKUSDT', 'MATICUSDT', 'UNIUSDT', 'ATOMUSDT'];
-            
-            setInterval(() => {
-                if (document.getElementById('status-text').textContent === 'Scanning...') {
-                    // Simulate new scan results
-                    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-                    const randomPrice = (Math.random() * 100 + 1).toFixed(2);
-                    const signals = ['BUY', 'SELL', 'NONE'];
-                    const randomSignal = signals[Math.floor(Math.random() * signals.length)];
-                    
-                    // Update first row with new data
-                    if (tbody.firstElementChild) {
-                        const firstRow = tbody.firstElementChild;
-                        firstRow.cells[0].textContent = randomSymbol;
-                        firstRow.cells[1].textContent = randomPrice;
-                        
-                        const signalCell = firstRow.cells[5];
-                        signalCell.innerHTML = `<span class="signal-${randomSignal.toLowerCase()}">${randomSignal}</span>`;
-                    }
-                }
-            }, 3000);
-        }
-    </script>
-
-    <section class="seo-content">
-        <div class="container">
-            <div class="seo-inner">
-                <h2>How does the scanner work?</h2>
-                <p>The scanner goes through the coin list in rounds on the timeframe you choose. The default list has 347 coins: pairs available on both Binance spot and USDT futures, stablecoins excluded.</p>
-                <h3>Scan speed</h3>
-                <p>Speed depends on the number of coins and the wait settings. With 347 coins, the second and later rounds take about 100 seconds. Candle data is fetched from the exchange at intervals and cached on your computer; no continuous live data stream is used.</p>
-                <h3>Signal table</h3>
-                <p>For every coin it shows indicator results, the BUY/SELL/NONE signal and, if no signal formed, the reason why.</p>
-                <h3>Filters</h3>
-                <ul>
-                    <li>Higher timeframe (MTF) and lower timeframe (LTF) confirmation</li>
-                    <li>Trend strength (ADX) and volatility (ATR)</li>
-                    <li>Market regime: any, trend, sideways, volatile</li>
-                </ul>
-                <h3>From signal to position</h3>
-                <p>When a signal arrives, a position can be opened automatically in virtual or real mode according to your settings. The Free version does not open positions; it only scans and analyzes.</p>
-            </div>
-        </div>
-    </section>
-    <div id="footer-container"></div>
-
-    <script>
-        // Load footer from components/footer.html
-        fetch('../footer.html')
-            .then(async (response) => {
-                const buffer = await response.arrayBuffer();
-                return new TextDecoder('utf-8').decode(buffer);
-            })
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Footer yuklenemedi:', error));
+        fetch('/en/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>

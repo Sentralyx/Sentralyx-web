@@ -21,102 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
 
-    <style>
-        .history-container {
-            padding: 20px;
-            background: var(--bg-dark);
-            min-height: 100vh;
-        }
-
-        .panel {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-        }
-
-        .toolbar-btn {
-            padding: 10px 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-main);
-            font-weight: 700;
-        }
-        .toolbar-btn:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
-
-        .form-control-custom {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-radius: 10px;
-        }
-        .form-control-custom:focus {
-            background: rgba(42, 49, 66, 0.5);
-            border-color: var(--accent-blue);
-            color: var(--text-main);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
-        }
-
-        .table-custom { color: var(--text-main); margin-bottom: 0; }
-        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
-        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
-        .table-custom td { padding: 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
-        .table-custom tbody tr:hover { background: rgba(52, 152, 219, 0.05); box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.08); }
-
-        .side-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            font-weight: 800;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-        .side-long { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); color: var(--signal-buy); }
-        .side-short { border-color: rgba(231, 76, 60, 0.35); background: rgba(231, 76, 60, 0.08); color: var(--signal-sell); }
-
-        .outcome-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            font-weight: 800;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-        .outcome-win { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); color: var(--signal-buy); }
-        .outcome-loss { border-color: rgba(231, 76, 60, 0.35); background: rgba(231, 76, 60, 0.08); color: var(--signal-sell); opacity: 0.9; }
-        .outcome-canceled { border-color: rgba(255, 193, 7, 0.35); background: rgba(255, 193, 7, 0.08); color: #ffc107; }
-
-        .pnl-positive { color: var(--signal-buy); font-weight: 900; }
-        .pnl-negative { color: rgba(231, 76, 60, 0.9); font-weight: 800; }
-
-        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-
-        .pager {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            padding: 12px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-        }
-
-        .empty-state {
-            background: rgba(42, 49, 66, 0.25);
-            border: 1px dashed rgba(52, 152, 219, 0.35);
-            border-radius: 12px;
-            padding: 22px;
-            color: var(--text-secondary);
-        }
-    </style>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -137,346 +41,85 @@
   ]
 }
     </script>
+    <link rel="stylesheet" href="../../assets/css/home.css">
 </head>
 <body>
-
     <header id="main-header"></header>
-
-    <main class="history-container">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                <div>
-                    <h1 class="text-main mb-1">Trade Execution History &amp; Archives</h1>
-                    <p class="text-secondary mb-0">Post-trade analysis with realized P&amp;L, execution timestamps, order IDs, and closing rationale <span class="demo-badge">DEMO DATA</span></p>
-                </div>
-                <div class="d-flex gap-2 flex-wrap align-items-center">
-                    <button class="toolbar-btn" onclick="downloadTradeLogTxt()" title="Download a plain-text audit log" data-bs-toggle="tooltip">
-                        <i class="fas fa-file-lines me-2"></i>Download Trade Log (.txt)
-                    </button>
-                    <button class="toolbar-btn" onclick="exportHistoryCsv()" title="Export current view to CSV" data-bs-toggle="tooltip">
-                        <i class="fas fa-file-export me-2"></i>Export to CSV
-                    </button>
-                </div>
+    <main class="home h-page">
+        <section class="h-hero"><div class="h-wrap">
+            <nav class="h-crumb" aria-label="breadcrumb"><a href="/en/">Home</a><span>/</span>Trade History</nav>
+            <p class="h-eyebrow"><span class="h-dot"></span> Closed positions</p>
+            <h1>Trade Execution History &amp; Archives</h1>
+            <p class="h-lead">See every closed position with entry and exit price, PnL, duration and close reason. Filter by symbol, side, PnL and date; export as CSV.</p>
+            <div class="h-cta-row">
+                <a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Free download for Windows</a>
+                <a class="h-btn h-btn-ghost" href="#nasil"><i class="fas fa-play-circle"></i> How does it work?</a>
             </div>
-
-            <!-- Search & Filters -->
-            <div class="panel p-3 mb-3">
-                <div class="row g-3 align-items-end">
-                    <div class="col-lg-3">
-                        <label class="form-label text-main small mb-1">Search by Symbol</label>
-                        <input id="symbol-search" type="text" class="form-control form-control-custom" placeholder="e.g., BTCUSDT" oninput="applyFilters()">
-                    </div>
-                    <div class="col-lg-3">
-                        <label class="form-label text-main small mb-1">Filter by Date (Start)</label>
-                        <input id="date-start" type="date" class="form-control form-control-custom" onchange="applyFilters()">
-                    </div>
-                    <div class="col-lg-3">
-                        <label class="form-label text-main small mb-1">Filter by Date (End)</label>
-                        <input id="date-end" type="date" class="form-control form-control-custom" onchange="applyFilters()">
-                    </div>
-                    <div class="col-lg-3">
-                        <label class="form-label text-main small mb-1">Filter by Outcome</label>
-                        <select id="outcome-filter" class="form-select form-control-custom" onchange="applyFilters()">
-                            <option value="all" selected>All</option>
-                            <option value="win">Win</option>
-                            <option value="loss">Loss</option>
-                            <option value="canceled">Canceled</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="text-secondary small mt-3">
-                    Tip: Use exports for audit trails and compliance reviews. Execution timestamps are in 24h format.
-                </div>
+            <div class="h-shot"><div class="h-shot-inner">
+                <div class="h-shot-bar"><span></span><span></span><span></span><em>Sentralyx &#8212; Closed positions &#183; Virtual mode</em></div>
+                <img src="../../assets/img/pages/closed-full.webp" alt="Sentralyx closed positions screen" width="1600" height="814" fetchpriority="high">
+            </div></div>
+            <p class="h-cap">Real app screen, captured in virtual mode.</p>
+        </div></section>
+        <section class="h-block" id="nasil"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">How does it work?</div><h2 class="h-title">Learn from your history</h2><p class="h-sub">Every closed trade is recorded; summary cards show total trades, winners, losers and total PnL.</p></div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">01 &#183; Record</span><h3>Every trade in full detail</h3><p>Symbol, side, entry and exit price, PnL in percent and USDT, duration, open and close time are recorded for each closed position.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Close reason is visible: Stop Loss, Maximum Duration and more</li><li><i class="fas fa-circle-check"></i>Summary: total trades, winners, losers, total PnL</li><li><i class="fas fa-circle-check"></i>Virtual and real trades in the same flow</li></ul></div>
+                <div class="h-frame"><img src="../../assets/img/pages/closed-table.webp" alt="Closed trades table" width="1400" height="420" loading="lazy"></div>
             </div>
-
-            <!-- History Table -->
-            <div class="panel">
-                <div class="table-responsive">
-                    <table class="table table-custom">
-                        <thead>
-                            <tr>
-                                <th style="min-width: 190px;">Execution Timestamp</th>
-                                <th style="min-width: 140px;">Symbol</th>
-                                <th style="min-width: 120px;">Side</th>
-                                <th style="min-width: 120px;">Entry Price</th>
-                                <th style="min-width: 120px;">Exit Price</th>
-                                <th style="min-width: 120px;">Quantity</th>
-                                <th style="min-width: 220px;">Realized P&amp;L ($/%)</th>
-                                <th style="min-width: 190px;">Reason for Closing</th>
-                                <th style="min-width: 170px;">Order ID</th>
-                                <th style="min-width: 150px;">Outcome</th>
-                                <th style="min-width: 150px;">Trade Duration</th>
-                            </tr>
-                        </thead>
-                        <tbody id="history-tbody"></tbody>
-                    </table>
-                </div>
-                <div class="pager">
-                    <div>
-                        <span id="pager-label">Showing 0-0 of 0 trades</span>
-                    </div>
-                    <div class="d-flex gap-2">
-                        <button class="toolbar-btn" onclick="prevPage()"><i class="fas fa-chevron-left me-2"></i>Prev</button>
-                        <button class="toolbar-btn" onclick="nextPage()">Next<i class="fas fa-chevron-right ms-2"></i></button>
-                    </div>
-                </div>
+            <div class="h-step h-rev">
+                <div class="h-step-text"><span class="h-step-num">02 &#183; Filter</span><h3>Find what you need</h3><p>Combine symbol search with side, PnL and date filters to focus on specific trades.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Side: BUY or SELL</li><li><i class="fas fa-circle-check"></i>PnL: in profit or in loss</li><li><i class="fas fa-circle-check"></i>Narrow down by date range</li></ul></div>
+                <div class="h-frame"><img src="../../assets/img/pages/closed-full.webp" alt="Filters and closed positions list" width="1600" height="814" loading="lazy"></div>
             </div>
-
-            <div id="empty-results" style="display:none;">
-                <div class="empty-state mt-3">
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="fas fa-wave-square"></i>
-                        <span>No executions matched the selected filters. Adjust date range or clear the outcome filter.</span>
-                    </div>
-                </div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">03 &#183; Export</span><h3>Run your own analysis</h3><p>Export the records as CSV to review them in a spreadsheet. Use the Reports screen for the overall picture.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>CSV export</li><li><i class="fas fa-circle-check"></i>Reports: daily summary and win rate</li><li><i class="fas fa-circle-check"></i>CSV, PDF and Excel in Reports</li></ul></div>
+                <div class="h-frame"><img src="../../assets/img/pages/reports-table.webp" alt="Daily report table" width="1000" height="335" loading="lazy"></div>
             </div>
-        </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Features</div><h2 class="h-title">What&#x27;s in the trade history?</h2><p class="h-sub">Details in the history, the overall picture in reports.</p></div>
+            <div class="h-grid-3">
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-receipt"></i></div><h3>Trade details</h3><p>Entry, exit, PnL %, PnL USDT, duration, open and close time.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-circle-info"></i></div><h3>Close reason</h3><p>Why the trade closed: stop loss, maximum duration and others.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-filter"></i></div><h3>Filters</h3><p>Symbol, side, PnL and date filters.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-file-csv"></i></div><h3>CSV export</h3><p>Export records to review them in a spreadsheet.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-chart-pie"></i></div><h3>Summary cards</h3><p>Total trades, number of winners and losers, total PnL.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-toggle-on"></i></div><h3>Virtual mode</h3><p>Trades opened in virtual mode are tracked in the same flow.</p></div>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">FAQ</div><h2 class="h-title">Frequently asked questions</h2></div>
+            <div class="h-faq">
+                <details open><summary>Can I export my trade history?</summary><p>Yes. You can export closed positions as CSV; the Reports screen also offers CSV, PDF and Excel.</p></details>
+                <details><summary>What is the close reason for?</summary><p>It shows whether a trade closed by stop loss or because time ran out, helping you understand how your strategy and risk settings behave.</p></details>
+                <details><summary>Are past results an indicator of the future?</summary><p>No. Past results are not an indicator of future results.</p></details>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Next</div><h2 class="h-title">Related pages</h2></div>
+            <div class="h-related">
+                <a class="h-card h-feature" href="/en/reports/"><h3>Reports</h3><p>Daily summary, win rate and PnL by date range.</p><span class="h-more">Explore <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/en/active-positions/"><h3>Active positions</h3><p>Manage open positions with SL/TP and profit protection.</p><span class="h-more">Explore <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/en/blog/strategy-testing-in-virtual-mode/"><h3>Testing a strategy in virtual mode</h3><p>Review results before using real money.</p><span class="h-more">Explore <i class="fas fa-arrow-right"></i></span></a>
+            </div>
+        </div></section>
+        <section class="h-cta-wrap"><div class="h-wrap"><div class="h-cta">
+            <h2>Try your strategy in virtual mode today</h2><p>Download the app, build your strategy and see how it works without using real money.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Free download for Windows</a><a class="h-btn h-btn-ghost" href="/en/pricing/">See plans</a></div>
+        </div></div></section>
     </main>
 
-    <section class="seo-content">
-        <div class="container">
-            <div class="seo-inner">
-                <h2>Closed positions and trade history</h2>
-                <p>Closed positions are collected in the trade history. On this screen you can filter past trades and export them as a CSV file.</p>
-                <h3>Filtering and CSV</h3>
-                <p>Filter trades to focus on specific results, and export the records as CSV to review them in a spreadsheet.</p>
-                <h3>Use it with reports</h3>
-                <p>The reports screen shows a daily summary, win rate, total and average PnL, and the best and worst trade for the date range you choose. The trade history gives the details; the reports give the overall picture.</p>
-                <h3>Try virtual mode first</h3>
-                <p>Virtual mode works with the same flow without using real money, so you can evaluate your strategy before switching to real mode.</p>
-                <p class="seo-note">Past results are not an indicator of future results.</p>
-            </div>
-        </div>
-    </section>
     <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/main.js"></script>
     <script>
-        const fmtUsd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
-        const fmtNum = new Intl.NumberFormat('en-US', { maximumFractionDigits: 4 });
-        const fmtPct = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 });
-
-        const state = {
-            all: [],
-            filtered: [],
-            page: 1,
-            pageSize: 20,
-        };
-
-        function initTooltips() {
-            const triggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            triggers.forEach((el) => new bootstrap.Tooltip(el));
-        }
-
-        function seedTrades() {
-            state.all = [
-                { ts: '2026-05-06 03:12:45', symbol: 'BTCUSDT', side: 'Long', entry: 43000, exit: 43610, qty: 0.15, pnlUsd: 91.50, pnlPct: 1.42, reason: 'Hit Take-Profit', orderId: 'OKX-84319201', outcome: 'win', duration: '02h 14m' },
-                { ts: '2026-05-06 01:44:10', symbol: 'ETHUSDT', side: 'Short', entry: 2685, exit: 2703, qty: 1.6, pnlUsd: -28.80, pnlPct: -0.68, reason: 'Stop-Loss Triggered', orderId: 'OKX-84317110', outcome: 'loss', duration: '00h 38m' },
-                { ts: '2026-05-05 22:26:33', symbol: 'SOLUSDT', side: 'Long', entry: 96.20, exit: 98.17, qty: 42, pnlUsd: 82.74, pnlPct: 2.05, reason: 'Hit Take-Profit', orderId: 'OKX-84300877', outcome: 'win', duration: '01h 02m' },
-                { ts: '2026-05-05 19:08:51', symbol: 'XRPUSDT', side: 'Long', entry: 0.5121, exit: 0.5159, qty: 4800, pnlUsd: 18.24, pnlPct: 0.74, reason: 'Manual Close', orderId: 'OKX-84290113', outcome: 'win', duration: '00h 51m' },
-                { ts: '2026-05-05 12:18:04', symbol: 'BNBUSDT', side: 'Short', entry: 585.10, exit: 591.66, qty: 7, pnlUsd: -45.92, pnlPct: -1.12, reason: 'Stop-Loss Triggered', orderId: 'OKX-84254099', outcome: 'loss', duration: '03h 26m' },
-                { ts: '2026-05-04 18:22:19', symbol: 'ADAUSDT', side: 'Long', entry: 0.4352, exit: 0.4400, qty: 12000, pnlUsd: 57.60, pnlPct: 1.10, reason: 'Hit Take-Profit', orderId: 'OKX-84189018', outcome: 'win', duration: '05h 09m' },
-                { ts: '2026-05-04 13:05:02', symbol: 'LINKUSDT', side: 'Long', entry: 15.44, exit: 15.58, qty: 350, pnlUsd: 49.00, pnlPct: 0.88, reason: 'Time-Based Exit', orderId: 'OKX-84170122', outcome: 'win', duration: '00h 44m' },
-                { ts: '2026-05-03 10:51:20', symbol: 'DOTUSDT', side: 'Short', entry: 6.82, exit: 6.845, qty: 980, pnlUsd: 24.50, pnlPct: 0.36, reason: 'Manual Close', orderId: 'OKX-84012014', outcome: 'win', duration: '01h 17m' },
-                { ts: '2026-05-03 09:15:02', symbol: 'AVAXUSDT', side: 'Long', entry: 34.50, exit: 34.49, qty: 120, pnlUsd: -1.20, pnlPct: -0.03, reason: 'Canceled (Spread Spike)', orderId: 'OKX-84008111', outcome: 'canceled', duration: '00h 05m' },
-            ];
-
-            // Duplicate with slight variations to populate pagination for UI preview
-            const base = [...state.all];
-            for (let i = 0; i < 55; i++) {
-                const t = base[i % base.length];
-                const ts = new Date(`${t.ts.replace(' ', 'T')}Z`);
-                ts.setMinutes(ts.getMinutes() - (i * 11));
-                const iso = ts.toISOString().slice(0, 16).replace('T', ' ');
-                state.all.push({
-                    ...t,
-                    ts: iso,
-                    orderId: `${t.orderId.split('-')[0]}-${Number(t.orderId.split('-')[1]) + i + 1}`,
-                    pnlUsd: Number((t.pnlUsd * (0.85 + Math.random() * 0.4)).toFixed(2)),
-                    pnlPct: Number((t.pnlPct * (0.9 + Math.random() * 0.3)).toFixed(2)),
-                });
-            }
-
-            // Sort descending by timestamp (string sortable in this format)
-            state.all.sort((a, b) => (a.ts < b.ts ? 1 : a.ts > b.ts ? -1 : 0));
-        }
-
-        function outcomeHtml(o) {
-            if (o === 'win') return `<span class="outcome-pill outcome-win"><i class="fas fa-circle-check"></i>Win</span>`;
-            if (o === 'loss') return `<span class="outcome-pill outcome-loss"><i class="fas fa-circle-xmark"></i>Loss</span>`;
-            return `<span class="outcome-pill outcome-canceled"><i class="fas fa-ban"></i>Canceled</span>`;
-        }
-
-        function sideHtml(side) {
-            if (side.toLowerCase() === 'long') return `<span class="side-badge side-long"><i class="fas fa-arrow-up"></i>Long</span>`;
-            return `<span class="side-badge side-short"><i class="fas fa-arrow-down"></i>Short</span>`;
-        }
-
-        function render() {
-            const total = state.filtered.length;
-            const startIdx = (state.page - 1) * state.pageSize;
-            const endIdx = Math.min(total, startIdx + state.pageSize);
-
-            document.getElementById('pager-label').textContent = total
-                ? `Showing ${startIdx + 1}-${endIdx} of ${total} trades`
-                : 'Showing 0-0 of 0 trades';
-
-            const tbody = document.getElementById('history-tbody');
-            const empty = document.getElementById('empty-results');
-
-            if (!total) {
-                tbody.innerHTML = `
-                    <tr class="text-secondary">
-                        <td colspan="11">
-                            <div class="py-2 d-flex align-items-center gap-2">
-                                <i class="fas fa-wave-square"></i>
-                                <span>No executions matched the selected filters.</span>
-                            </div>
-                        </td>
-                    </tr>
-                `;
-                empty.style.display = 'block';
-                return;
-            }
-
-            empty.style.display = 'none';
-
-            tbody.innerHTML = state.filtered.slice(startIdx, endIdx).map((t) => {
-                const pnlClass = t.pnlUsd >= 0 ? 'pnl-positive' : 'pnl-negative';
-                const pnlText = `${t.pnlUsd >= 0 ? '+' : ''}${fmtUsd.format(t.pnlUsd)} / ${t.pnlPct >= 0 ? '+' : ''}${fmtPct.format(t.pnlPct)}%`;
-                return `
-                    <tr>
-                        <td class="text-secondary mono">${t.ts}</td>
-                        <td class="fw-bold">${t.symbol}</td>
-                        <td>${sideHtml(t.side)}</td>
-                        <td class="text-main fw-bold">$${fmtNum.format(t.entry)}</td>
-                        <td class="text-main fw-bold">$${fmtNum.format(t.exit)}</td>
-                        <td class="text-secondary">${fmtNum.format(t.qty)}</td>
-                        <td class="${pnlClass}">${pnlText}</td>
-                        <td class="text-secondary">${t.reason}</td>
-                        <td class="text-secondary mono">${t.orderId}</td>
-                        <td>${outcomeHtml(t.outcome)}</td>
-                        <td class="text-secondary">${t.duration}</td>
-                    </tr>
-                `;
-            }).join('');
-
-            initTooltips();
-        }
-
-        function applyFilters() {
-            const sym = (document.getElementById('symbol-search').value || '').trim().toUpperCase();
-            const start = document.getElementById('date-start').value;
-            const end = document.getElementById('date-end').value;
-            const outcome = document.getElementById('outcome-filter').value;
-
-            state.filtered = state.all.filter((t) => {
-                if (sym && !t.symbol.includes(sym)) return false;
-                if (outcome !== 'all' && t.outcome !== outcome) return false;
-
-                if (start) {
-                    const d = t.ts.slice(0, 10);
-                    if (d < start) return false;
-                }
-                if (end) {
-                    const d = t.ts.slice(0, 10);
-                    if (d > end) return false;
-                }
-                return true;
-            });
-
-            state.page = 1;
-            render();
-        }
-
-        function prevPage() {
-            state.page = Math.max(1, state.page - 1);
-            render();
-        }
-
-        function nextPage() {
-            const maxPage = Math.max(1, Math.ceil(state.filtered.length / state.pageSize));
-            state.page = Math.min(maxPage, state.page + 1);
-            render();
-        }
-
-        function exportHistoryCsv() {
-            if (!state.filtered.length) return;
-            const header = ['ExecutionTimestamp', 'Symbol', 'Side', 'EntryPrice', 'ExitPrice', 'Quantity', 'RealizedPnL_USD', 'RealizedPnL_Pct', 'ReasonForClosing', 'OrderId', 'Outcome', 'TradeDuration'];
-            const lines = [
-                header.join(','),
-                ...state.filtered.map((t) => [
-                    t.ts,
-                    t.symbol,
-                    t.side,
-                    t.entry,
-                    t.exit,
-                    t.qty,
-                    t.pnlUsd,
-                    t.pnlPct,
-                    t.reason,
-                    t.orderId,
-                    t.outcome,
-                    t.duration,
-                ].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',')),
-            ];
-
-            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `sentralyx-execution-history-${new Date().toISOString().slice(0, 10)}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            URL.revokeObjectURL(url);
-        }
-
-        function downloadTradeLogTxt() {
-            const lines = state.filtered.map((t) => {
-                const pnl = `${t.pnlUsd >= 0 ? '+' : ''}${t.pnlUsd} USD (${t.pnlPct >= 0 ? '+' : ''}${t.pnlPct}%)`;
-                return [
-                    `[${t.ts}]`,
-                    `Symbol=${t.symbol}`,
-                    `Side=${t.side}`,
-                    `Entry=${t.entry}`,
-                    `Exit=${t.exit}`,
-                    `Qty=${t.qty}`,
-                    `RealizedPnL=${pnl}`,
-                    `Outcome=${t.outcome.toUpperCase()}`,
-                    `Reason="${t.reason}"`,
-                    `OrderID=${t.orderId}`,
-                    `Duration=${t.duration}`,
-                ].join(' ');
-            });
-
-            const blob = new Blob([lines.join('\n') + '\n'], { type: 'text/plain;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `sentralyx-trade-log-${new Date().toISOString().slice(0, 10)}.txt`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            URL.revokeObjectURL(url);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            seedTrades();
-            state.filtered = [...state.all];
-            initTooltips();
-            render();
-        });
-
-        fetch('../footer.html')
-            .then(async (response) => {
-                const buffer = await response.arrayBuffer();
-                return new TextDecoder('utf-8').decode(buffer);
-            })
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Footer loading failed:', error));
+        fetch('/en/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>

@@ -21,274 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     
-    <style>
-        .backtest-container {
-            padding: 20px;
-            background: var(--bg-dark);
-            min-height: 100vh;
-        }
-        
-        .settings-panel {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .results-panel {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            min-height: 600px;
-        }
-        
-        .panel-title {
-            color: var(--accent-blue);
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .panel-title i {
-            margin-right: 10px;
-        }
-        
-        .form-section {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .form-section:last-child {
-            border-bottom: none;
-        }
-        
-        .section-label {
-            color: var(--text-main);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .form-control-custom {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-radius: 6px;
-        }
-        
-        .form-control-custom:focus {
-            background: rgba(42, 49, 66, 0.5);
-            border-color: var(--accent-blue);
-            color: var(--text-main);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
-        }
-        
-        .tab-custom {
-            border-bottom: 2px solid var(--border-color);
-        }
-        
-        .tab-custom .nav-link {
-            color: var(--text-main);
-            border: none;
-            padding: 10px 20px;
-            background: transparent;
-        }
-        
-        .tab-custom .nav-link.active {
-            color: var(--accent-blue);
-            background: transparent;
-            border-bottom: 2px solid var(--accent-blue);
-        }
-        
-        .info-box {
-            background: rgba(52, 152, 219, 0.1);
-            border: 1px solid var(--accent-blue);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .info-box h6 {
-            color: var(--accent-blue);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .info-box p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 0;
-        }
-        
-        .summary-card {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .summary-card h6 {
-            color: var(--text-main);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .summary-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-blue);
-        }
-        
-        .summary-value.positive {
-            color: var(--signal-buy);
-        }
-        
-        .summary-value.negative {
-            color: var(--signal-sell);
-        }
-        
-        .btn-sentralyx {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            border: none;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-        }
-        
-        .btn-sentralyx:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-            color: white;
-        }
-        
-        .btn-sentralyx-secondary {
-            background: rgba(42, 49, 66, 0.5);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-sentralyx-secondary:hover {
-            background: rgba(52, 152, 219, 0.2);
-            border-color: var(--accent-blue);
-            color: var(--accent-blue);
-        }
-        
-        .table-custom {
-            color: var(--text-main);
-            margin-bottom: 0;
-        }
-        
-        .table-custom thead {
-            background: rgba(52, 152, 219, 0.1);
-            border-bottom: 2px solid var(--accent-blue);
-        }
-        
-        .table-custom th {
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
-            padding: 10px;
-            border: none;
-        }
-        
-        .table-custom td {
-            padding: 8px 10px;
-            border: none;
-            border-bottom: 1px solid rgba(42, 49, 66, 0.3);
-            vertical-align: middle;
-            font-size: 0.85rem;
-        }
-        
-        .table-custom tbody tr:hover {
-            background: rgba(52, 152, 219, 0.05);
-        }
-        
-        .chart-placeholder {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .backtest-container {
-                padding: 20px 15px;
-            }
-            
-            .settings-panel,
-            .results-panel {
-                padding: 15px;
-            }
-            
-            .panel-title {
-                font-size: 1rem;
-            }
-            
-            .btn-sentralyx,
-            .btn-sentralyx-secondary {
-                padding: 12px 20px;
-                font-size: 14px;
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            
-            h1 {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .lead {
-                font-size: 1rem;
-                margin-bottom: 20px;
-            }
-        }
-        
-        /* Prevent Horizontal Scroll */
-        * {
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-        
-        body {
-            overflow-x: hidden;
-            min-width: 320px;
-        }
-        
-        .container {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        
-        /* Touch Targets for Mobile */
-        @media (max-width: 768px) {
-            .btn, .form-control, .form-select {
-                min-height: 44px;
-                min-width: 44px;
-                padding: 12px 16px;
-            }
-        }
-    </style>
 
     <script type="application/ld+json">
 {
@@ -310,469 +42,92 @@
   ]
 }
     </script>
-
+    <link rel="stylesheet" href="../assets/css/home.css">
 </head>
 <body>
     <header id="main-header"></header>
-    
-    <main class="backtest-container">
-        <div class="text-center mb-4">
-            <h1 class="text-main">Kripto Strateji Testi ve Backtest</h1>
-            <p class="text-secondary">Stratejilerinizi geçmiş verilerle test edin, performansınızı analiz edin <span class="demo-badge">DEMO VER&#304;</span></p>
-        </div>
-        
-        <div class="row">
-            <!-- Left Panel: Backtest Settings -->
-            <div class="col-lg-4">
-                <div class="settings-panel">
-                    <h5 class="panel-title">
-                        <i class="fas fa-cog"></i>Backtest Ayarları
-                    </h5>
-                    
-                    <!-- Symbol Section -->
-                    <div class="form-section">
-                        <label class="section-label">Sembol</label>
-                        <select class="form-control form-control-custom mb-2">
-                            <option value="BTCUSDT">BTCUSDT</option>
-                            <option value="ETHUSDT">ETHUSDT</option>
-                            <option value="BNBUSDT">BNBUSDT</option>
-                            <option value="SOLUSDT">SOLUSDT</option>
-                            <option value="ADAUSDT">ADAUSDT</option>
-                            <option value="DOTUSDT">DOTUSDT</option>
-                            <option value="MATICUSDT">MATICUSDT</option>
-                            <option value="LINKUSDT">LINKUSDT</option>
-                        </select>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="allSymbols">
-                            <label class="form-check-label text-secondary small" for="allSymbols">
-                                Tüm sembolleri test et
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <!-- Strategy Section -->
-                    <div class="form-section">
-                        <label class="section-label">Strateji</label>
-                        <select class="form-control form-control-custom">
-                            <option value="majority">Çoğunluk Oylaması</option>
-                            <option value="strong">Güçlü Çoğunluk</option>
-                            <option value="scoring">Puanlama Sistemi</option>
-                            <option value="full">Tam Uyum</option>
-                        </select>
-                    </div>
-                    
-                    <!-- Time Interval Section -->
-                    <div class="form-section">
-                        <label class="section-label">Zaman Aralığı</label>
-                        <select class="form-control form-control-custom">
-                            <option value="1m">1m</option>
-                            <option value="5m">5m</option>
-                            <option value="15m" selected>15m</option>
-                            <option value="1h">1h</option>
-                            <option value="4h">4h</option>
-                            <option value="1d">1d</option>
-                        </select>
-                    </div>
-                    
-                    <!-- Lookback Section -->
-                    <div class="form-section">
-                        <label class="section-label">Lookback</label>
-                        <select class="form-control form-control-custom">
-                            <option value="30">30 gün</option>
-                            <option value="60" selected>60 gün</option>
-                            <option value="90">90 gün</option>
-                            <option value="180">180 gün</option>
-                            <option value="365">1 yıl</option>
-                        </select>
-                    </div>
-                    
-                    <!-- Date Range Section -->
-                    <div class="form-section">
-                        <label class="section-label">Tarih Aralığı</label>
-                        <div class="row">
-                            <div class="col-6">
-                                <label class="text-secondary small">Başlangıç</label>
-                                <input type="date" class="form-control form-control-custom" value="2024-01-01">
-                            </div>
-                            <div class="col-6">
-                                <label class="text-secondary small">Bitiş</label>
-                                <input type="date" class="form-control form-control-custom" value="2024-03-01">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Risk Management Section -->
-                    <div class="form-section">
-                        <label class="section-label">Risk Yönetimi</label>
-                        <div class="mb-2">
-                            <label class="text-secondary small">Stop Loss (%)</label>
-                            <input type="number" class="form-control form-control-custom" value="2" min="0" max="50">
-                        </div>
-                        <div class="mb-2">
-                            <label class="text-secondary small">Take Profit (%)</label>
-                            <input type="number" class="form-control form-control-custom" value="4" min="0" max="100">
-                        </div>
-                        <div>
-                            <label class="text-secondary small">Pozisyon Boyutu (USDT)</label>
-                            <input type="number" class="form-control form-control-custom" value="100" min="10">
-                        </div>
-                    </div>
-                    
-                    <!-- Simulation Section -->
-                    <div class="form-section">
-                        <label class="section-label">Simülasyon</label>
-                        <div class="mb-2">
-                            <label class="text-secondary small">Başlangıç Sermayesi (USDT)</label>
-                            <input type="number" class="form-control form-control-custom" value="10000" min="100">
-                        </div>
-                        <div class="mb-2">
-                            <label class="text-secondary small">Komisyon (%)</label>
-                            <input type="number" class="form-control form-control-custom" value="0.1" min="0" max="1" step="0.01">
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="slippage" checked>
-                            <label class="form-check-label text-secondary small" for="slippage">
-                                Slippage simülasyonu (%0.1)
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <!-- Action Buttons -->
-                    <div class="d-flex gap-2">
-                        <button class="btn-sentralyx flex-grow-1" onclick="runBacktest()">
-                            <i class="fas fa-play me-2"></i>Çalıştır
-                        </button>
-                        <button class="btn-sentralyx-secondary flex-grow-1" onclick="resetBacktest()">
-                            <i class="fas fa-redo me-2"></i>Sıfırla
-                        </button>
-                    </div>
-                </div>
+    <main class="home h-page">
+        <section class="h-hero"><div class="h-wrap">
+            <nav class="h-crumb" aria-label="breadcrumb"><a href="/">Ana Sayfa</a><span>/</span>Backtest</nav>
+            <p class="h-eyebrow"><span class="h-dot"></span> Backtest</p>
+            <h1>Kripto Strateji Testi ve Backtest</h1>
+            <p class="h-lead">Stratejini gerçek paraya geçmeden önce komisyon ve kayma dahil geçmiş veride dene. Özet, analiz, işlemler, equity grafiği ve Monte Carlo sekmeleriyle sonucu her yönden incele.</p>
+            <div class="h-cta-row">
+                <a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Windows için ücretsiz indir</a>
+                <a class="h-btn h-btn-ghost" href="#nasil"><i class="fas fa-play-circle"></i> Nasıl çalışır?</a>
             </div>
-            
-            <!-- Right Panel: Backtest Results -->
-            <div class="col-lg-8">
-                <div class="results-panel">
-                    <h5 class="panel-title">
-                        <i class="fas fa-chart-bar"></i>Backtest Sonuçları
-                    </h5>
-                    
-                    <!-- Result Tabs -->
-                    <ul class="nav nav-tabs tab-custom mb-3" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#summary-tab">Özet</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#analysis-tab">Analiz</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#trades-tab">İşlemler</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#equity-tab">Equity Grafiği</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#history-tab">Geçmiş</a>
-                        </li>
-                    </ul>
-                    
-                    <div class="tab-content">
-                        <!-- Summary Tab -->
-                        <div class="tab-pane fade show active" id="summary-tab">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="summary-card">
-                                        <h6>Toplam Kâr</h6>
-                                        <div class="summary-value positive">+$2,450</div>
-                                        <div class="text-secondary small">+24.5%</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="summary-card">
-                                        <h6>Toplam İşlem</h6>
-                                        <div class="summary-value">47</div>
-                                        <div class="text-secondary small">32 Başarılı / 15 Başarısız</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="summary-card">
-                                        <h6>Başarı Oranı</h6>
-                                        <div class="summary-value">68.1%</div>
-                                        <div class="text-secondary small">Win Rate</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="row mt-3">
-                                <div class="col-md-4">
-                                    <div class="summary-card">
-                                        <h6>Max Drawdown</h6>
-                                        <div class="summary-value negative">-8.2%</div>
-                                        <div class="text-secondary small">Maksimum düşüş</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="summary-card">
-                                        <h6>Sharpe Ratio</h6>
-                                        <div class="summary-value">2.34</div>
-                                        <div class="text-secondary small">Risk ayarlı getiri</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="summary-card">
-                                        <h6>Ortalama Kâr</h6>
-                                        <div class="summary-value positive">+$52.1</div>
-                                        <div class="text-secondary small">İşlem başına</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="info-box mt-3">
-                                <h6><i class="fas fa-lightbulb me-2"></i>İyi bir Backtest için İpuçları</h6>
-                                <p>• En az 100 işlem örneği kullanın • Lookback periyodu stratejiye uygun olmalı • Farklı piyasa koşullarında test edin • Overfitting'den kaçının • Gerçek ticaret koşullarını simüle edin</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Analysis Tab -->
-                        <div class="tab-pane fade" id="analysis-tab">
-                            <div class="summary-card">
-                                <h6>Performans Analizi</h6>
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span class="text-secondary">Kârlı İşlemler</span>
-                                        <span class="text-main">68.1%</span>
-                                    </div>
-                                    <div class="progress" style="height: 8px; background: rgba(42, 49, 66, 0.5);">
-                                        <div class="progress-bar" style="width: 68.1%; background: var(--signal-buy);"></div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span class="text-secondary">Zararlı İşlemler</span>
-                                        <span class="text-main">31.9%</span>
-                                    </div>
-                                    <div class="progress" style="height: 8px; background: rgba(42, 49, 66, 0.5);">
-                                        <div class="progress-bar" style="width: 31.9%; background: var(--signal-sell);"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="summary-card">
-                                <h6>Risk Metrikleri</h6>
-                                <table class="table table-custom">
-                                    <tbody>
-                                        <tr>
-                                            <td>Max Drawdown</td>
-                                            <td class="text-end">-8.2%</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sharpe Ratio</td>
-                                            <td class="text-end">2.34</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sortino Ratio</td>
-                                            <td class="text-end">3.12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Calmar Ratio</td>
-                                            <td class="text-end">2.99</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Profit Factor</td>
-                                            <td class="text-end">2.45</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <!-- Trades Tab -->
-                        <div class="tab-pane fade" id="trades-tab">
-                            <div class="table-responsive">
-                                <table class="table table-custom">
-                                    <thead>
-                                        <tr>
-                                            <th>Tarih</th>
-                                            <th>Sembol</th>
-                                            <th>Yön</th>
-                                            <th>Giriş</th>
-                                            <th>Çıkış</th>
-                                            <th>PnL</th>
-                                            <th>Süre</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>2024-02-28</td>
-                                            <td><strong>BTCUSDT</strong></td>
-                                            <td><span class="text-success">LONG</span></td>
-                                            <td>43,250</td>
-                                            <td>44,100</td>
-                                            <td class="text-success">+$850</td>
-                                            <td>2d 4h</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2024-02-27</td>
-                                            <td><strong>ETHUSDT</strong></td>
-                                            <td><span class="text-success">LONG</span></td>
-                                            <td>2,240</td>
-                                            <td>2,310</td>
-                                            <td class="text-success">+$700</td>
-                                            <td>1d 8h</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2024-02-26</td>
-                                            <td><strong>SOLUSDT</strong></td>
-                                            <td><span class="text-danger">SHORT</span></td>
-                                            <td>98.50</td>
-                                            <td>96.20</td>
-                                            <td class="text-danger">-$230</td>
-                                            <td>12h</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2024-02-25</td>
-                                            <td><strong>BNBUSDT</strong></td>
-                                            <td><span class="text-success">LONG</span></td>
-                                            <td>310</td>
-                                            <td>325</td>
-                                            <td class="text-success">+$1,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2024-02-24</td>
-                                            <td><strong>ADAUSDT</strong></td>
-                                            <td><span class="text-success">LONG</span></td>
-                                            <td>0.58</td>
-                                            <td>0.62</td>
-                                            <td class="text-success">+$400</td>
-                                            <td>3d</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <!-- Equity Chart Tab -->
-                        <div class="tab-pane fade" id="equity-tab">
-                            <div class="summary-card">
-                                <h6>Equity Curve</h6>
-                                <div class="chart-placeholder">
-                                    <div class="text-center">
-                                        <i class="fas fa-chart-line fa-3x mb-3" style="color: var(--accent-blue);"></i>
-                                        <p>Equity grafiği burada görüntülenecek</p>
-                                        <small class="text-secondary">Backtest çalıştırıldığında grafik oluşturulur</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- History Tab -->
-                        <div class="tab-pane fade" id="history-tab">
-                            <div class="summary-card">
-                                <h6>Backtest Geçmişi</h6>
-                                <table class="table table-custom">
-                                    <thead>
-                                        <tr>
-                                            <th>Tarih</th>
-                                            <th>Strateji</th>
-                                            <th>Sembol</th>
-                                            <th>Sonuç</th>
-                                            <th>İşlem</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>2024-02-28</td>
-                                            <td>Çoğunluk Oylaması</td>
-                                            <td>BTCUSDT</td>
-                                            <td class="text-success">+24.5%</td>
-                                            <td>47</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2024-02-25</td>
-                                            <td>Puanlama Sistemi</td>
-                                            <td>ETHUSDT</td>
-                                            <td class="text-success">+18.2%</td>
-                                            <td>35</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2024-02-20</td>
-                                            <td>Tam Uyum</td>
-                                            <td>SOLUSDT</td>
-                                            <td class="text-success">+12.8%</td>
-                                            <td>22</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="h-shot"><div class="h-shot-inner">
+                <div class="h-shot-bar"><span></span><span></span><span></span><em>Sentralyx — Backtest · Sanal mod</em></div>
+                <img src="../assets/img/pages/backtest-full.webp" alt="Sentralyx backtest ekranı: ayarlar ve sonuç özeti" width="1600" height="814" fetchpriority="high">
+            </div></div>
+            <p class="h-cap">Uygulamanın gerçek ekranı, sanal modda çekilmiştir.</p>
+        </div></section>
+        <section class="h-stats"><div class="h-wrap"><div class="h-stats-grid">
+            <div class="h-stat"><b class="h-mono h-grad">6</b><span>sonuç sekmesi</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">1000</b><span>Monte Carlo simülasyonu</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">%0,10</b><span>örnek komisyon ayarı</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">%0,05</b><span>örnek kayma ayarı</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">30 gün</b><span>Free sürümde veri sınırı</span></div>
+        </div></div></section>
+        <section class="h-block" id="nasil"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Nasıl çalışır?</div><h2 class="h-title">Ayarla, çalıştır, dürüst sonucu gör</h2><p class="h-sub">Backtest sonucu iyi ya da kötü olabilir; amaç gerçek parayı riske atmadan bunu öğrenmek.</p></div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">01 · Ayarla</span><h3>Sembol, strateji ve maliyetler</h3><p>Sembolü, stratejiyi, zaman aralığını ve geriye bakış süresini seçersin. Take profit, stop loss, komisyon, başlangıç bakiyesi ve kayma oranını girersin.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Geriye bakış süresi (ör. son 90 gün) ya da tarih aralığı</li><li><i class="fas fa-circle-check"></i>Take profit ve stop loss yüzdesi</li><li><i class="fas fa-circle-check"></i>Komisyon ve kayma (slippage)</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/pages/backtest-settings.webp" alt="Backtest ayarları" width="740" height="610" loading="lazy"></div>
             </div>
-        </div>
+            <div class="h-step h-rev">
+                <div class="h-step-text"><span class="h-step-num">02 · İncele</span><h3>Özet ve equity grafiği</h3><p>Toplam işlem, kazanma oranı, toplam PnL, kârlılık katsayısı, maksimum düşüş ve ortalama kazanç/kayıp hesaplanır. Equity grafiği bakiyenin seyrini işlem işlem gösterir.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Karar alanı sonucu açıkça yorumlar (ör. Kötü Performans)</li><li><i class="fas fa-circle-check"></i>Analiz: güne, saate ve yöne göre</li><li><i class="fas fa-circle-check"></i>İşlemler ve geçmiş sekmeleri</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/home/backtest.webp" alt="Backtest equity grafiği" width="1200" height="976" loading="lazy"></div>
+            </div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">03 · Sına</span><h3>Monte Carlo ile şansı ayıkla</h3><p>Bootstrap yöntemiyle 1000 simülasyon çalıştırılır; medyan, en iyi %5 ve en kötü %5 senaryo karşılaştırılır.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Medyan final bakiye</li><li><i class="fas fa-circle-check"></i>En kötü ve en iyi %5 senaryo</li><li><i class="fas fa-circle-check"></i>Simülasyon sayısı ayarlanabilir</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/pages/backtest-montecarlo.webp" alt="Monte Carlo simülasyon grafiği" width="1200" height="976" loading="lazy"></div>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Özellikler</div><h2 class="h-title">Backtestte neler var?</h2><p class="h-sub">Gerçekçi maliyetler ve dürüst yorum.</p></div>
+            <div class="h-grid-3">
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-coins"></i></div><h3>Komisyon ve kayma</h3><p>Sonuçlar komisyon ve kayma simülasyonuyla hesaplanır.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-chart-line"></i></div><h3>Equity grafiği</h3><p>Bakiyenin zaman içindeki seyri ve her işlemin ayrıntısı.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-dice"></i></div><h3>Monte Carlo</h3><p>1000 simülasyonla olası sonuç dağılımı.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-calendar-week"></i></div><h3>Gün, saat, yön analizi</h3><p>Stratejinin hangi koşullarda zayıfladığını gör.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-gavel"></i></div><h3>Karar alanı</h3><p>Sonucun kalitesi ve güvenilirliği açıkça yorumlanır.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-lock-open"></i></div><h3>Veri aralığı</h3><p>Free sürümde son 30 gün; Trial ve Full sürümde sınırsız.</p></div>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">SSS</div><h2 class="h-title">Sık sorulan sorular</h2></div>
+            <div class="h-faq">
+                <details open><summary>Backtest sonucu gelecekte de aynı olur mu?</summary><p>Hayır. Backtest sonucu gelecekte aynı sonucu garanti etmez; stratejinin geçmiş koşullardaki davranışını gösterir.</p></details>
+                <details><summary>Free sürümde backtest var mı?</summary><p>Evet, ancak Free sürümde backtest son 30 günlük veriyle sınırlıdır. Trial ve Full sürümlerde veri aralığı sınırsızdır.</p></details>
+                <details><summary>Kötü sonuç çıkarsa ne yapmalıyım?</summary><p>Bu backtestin işe yaradığını gösterir: stratejini gerçek paraya geçmeden önce değiştirebilir, farklı dönemlerde yeniden test edebilirsin.</p></details>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Devamı</div><h2 class="h-title">İlgili sayfalar</h2></div>
+            <div class="h-related">
+                <a class="h-card h-feature" href="/blog/backtest-sonuclari-nasil-okunur/"><h3>Backtest sonuçları nasıl okunur?</h3><p>Metrikleri doğru yorumlamak için kontrol listesi.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/strategies/"><h3>Strateji yönetimi</h3><p>Test edeceğin stratejiyi kur.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/blog/sanal-modda-strateji-deneme/"><h3>Sanal modda strateji deneme</h3><p>Backtest&#x27;ten sonraki adım.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+            </div>
+        </div></section>
+        <section class="h-cta-wrap"><div class="h-wrap"><div class="h-cta">
+            <h2>Stratejini bugün sanal modda dene</h2><p>Uygulamayı indir, stratejini kur ve gerçek para kullanmadan nasıl çalıştığını gör.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Windows için ücretsiz indir</a><a class="h-btn h-btn-ghost" href="/fiyatlandirma/">Paketleri gör</a></div>
+        </div></div></section>
     </main>
 
+    <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        function runBacktest() {
-            // Simulate backtest execution
-            const btn = document.querySelector('.btn-sentralyx');
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Çalışıyor...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check me-2"></i>Tamamlandı';
-                setTimeout(() => {
-                    btn.innerHTML = '<i class="fas fa-play me-2"></i>Çalıştır';
-                    btn.disabled = false;
-                }, 2000);
-            }, 3000);
-        }
-        
-        function resetBacktest() {
-            // Reset form fields
-            document.querySelectorAll('.form-control-custom').forEach(input => {
-                if (input.type === 'checkbox') {
-                    input.checked = false;
-                } else if (input.type !== 'date') {
-                    input.value = input.defaultValue;
-                }
-            });
-        }
-    </script>
-
-    <section class="seo-content">
-        <div class="container">
-            <div class="seo-inner">
-                <h2>Backtest ile stratejini geçmiş veride dene</h2>
-                <p>Backtest, stratejini geçmiş piyasa verisi üzerinde çalıştırarak nasıl davrandığını gösterir. Böylece gerçek moda geçmeden önce kurallarının zayıf noktalarını görebilirsin.</p>
-                <h3>Gerçekçi maliyetler</h3>
-                <p>Sonuçlar komisyon ve kayma (slippage) simülasyonuyla hesaplanır. Bu maliyetler gerçek işlemde daha yüksek olabilir.</p>
-                <h3>Monte Carlo ve detaylı analiz</h3>
-                <ul>
-                    <li>Monte Carlo analizi ile sonuçları farklı senaryolarla incelersin.</li>
-                    <li>Güne, saate ve yöne (long/short) göre analiz</li>
-                    <li>Equity grafiği ile bakiyenin zaman içindeki seyri</li>
-                </ul>
-                <h3>Veri aralığı</h3>
-                <p>Free sürümde backtest son 30 günlük veriyle sınırlıdır. Trial ve Full sürümlerde veri aralığı sınırsızdır.</p>
-                <h3>Sonuçları doğru yorumla</h3>
-                <p>Backtest sonucu gelecekte aynı sonucu garanti etmez. Farklı dönemlerde ve piyasa koşullarında test et, ardından stratejini sanal modda dene.</p>
-            </div>
-        </div>
-    </section>
-    <div id="footer-container"></div>
-
-    <script>
-        // Load footer from components/footer.html
-        fetch('../components/footer.html')
-            .then(async (response) => {
-                const buffer = await response.arrayBuffer();
-                return new TextDecoder('utf-8').decode(buffer);
-            })
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Footer yuklenemedi:', error));
+        fetch('/components/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>

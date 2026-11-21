@@ -21,256 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
 
-    <style>
-        .scanner-container {
-            padding: 20px;
-            background: var(--bg-dark);
-            min-height: 100vh;
-        }
-        
-        .control-panel {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .results-table {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .table-custom {
-            color: var(--text-main);
-            margin-bottom: 0;
-        }
-        
-        .table-custom thead {
-            background: rgba(52, 152, 219, 0.1);
-            border-bottom: 2px solid var(--accent-blue);
-        }
-        
-        .table-custom th {
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            padding: 12px;
-            border: none;
-        }
-        
-        .table-custom td {
-            padding: 10px 12px;
-            border: none;
-            border-bottom: 1px solid rgba(42, 49, 66, 0.3);
-            vertical-align: middle;
-        }
-        
-        .table-custom tbody tr:hover {
-            background: rgba(52, 152, 219, 0.05);
-        }
-        
-        .signal-buy {
-            color: var(--signal-buy);
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
-        }
-        
-        .signal-sell {
-            color: var(--signal-sell);
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
-        }
-        
-        .signal-none {
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-        
-        .info-card {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .info-card h6 {
-            color: var(--accent-blue);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-        
-        .progress-custom {
-            background: rgba(42, 49, 66, 0.5);
-            border-radius: 10px;
-            height: 8px;
-        }
-        
-        .progress-bar-custom {
-            background: linear-gradient(90deg, var(--accent-blue), var(--signal-buy));
-            border-radius: 10px;
-        }
-        
-        .filter-section {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .tab-custom {
-            border-bottom: 2px solid var(--border-color);
-        }
-        
-        .tab-custom .nav-link {
-            color: var(--text-main);
-            border: none;
-            padding: 10px 20px;
-            background: transparent;
-        }
-        
-        .tab-custom .nav-link.active {
-            color: var(--accent-blue);
-            background: transparent;
-            border-bottom: 2px solid var(--accent-blue);
-        }
-        
-        .form-control-custom {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-radius: 6px;
-        }
-        
-        .form-control-custom:focus {
-            background: rgba(42, 49, 66, 0.5);
-            border-color: var(--accent-blue);
-            color: var(--text-main);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
-        }
-        
-        .accordion-custom .accordion-button {
-            background: var(--panel-dark);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-        
-        .accordion-custom .accordion-button:not(.collapsed) {
-            background: rgba(52, 152, 219, 0.1);
-            color: var(--accent-blue);
-        }
-        
-        .accordion-custom .accordion-body {
-            background: var(--bg-dark);
-            color: var(--text-main);
-        }
-        
-        .status-indicator {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-        
-        .status-active { background: var(--signal-buy); }
-        .status-paused { background: #f39c12; }
-        .status-stopped { background: var(--signal-sell); }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .scanner-container {
-                padding: 20px 15px;
-            }
-            
-            .control-panel {
-                padding: 20px 15px;
-                margin-bottom: 20px;
-            }
-            
-            .filter-section {
-                margin-bottom: 20px;
-            }
-            
-            .table-custom {
-                font-size: 14px;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-            
-            .table-custom th,
-            .table-custom td {
-                padding: 8px 6px;
-                font-size: 13px;
-            }
-            
-            .info-card {
-                padding: 15px;
-                margin-bottom: 15px;
-            }
-            
-            .btn-sentralyx {
-                padding: 12px 20px;
-                font-size: 14px;
-                margin-bottom: 10px;
-                width: 100%;
-            }
-            
-            .progress-custom {
-                height: 6px;
-                margin-bottom: 10px;
-            }
-            
-            h1 {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .lead {
-                font-size: 1rem;
-                margin-bottom: 20px;
-            }
-        }
-        
-        /* Prevent Horizontal Scroll */
-        * {
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-        
-        body {
-            overflow-x: hidden;
-            min-width: 320px;
-        }
-        
-        .container {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        
-        /* Touch Targets for Mobile */
-        @media (max-width: 768px) {
-            .btn, .form-control, .form-select {
-                min-height: 44px;
-                min-width: 44px;
-            }
-            
-            .table-custom tbody tr {
-                cursor: pointer;
-            }
-            
-            .table-custom td {
-                padding: 12px 8px;
-            }
-        }
-    </style>
 
     <script type="application/ld+json">
 {
@@ -292,485 +42,93 @@
   ]
 }
     </script>
-
+    <link rel="stylesheet" href="../../assets/css/home.css">
 </head>
 <body>
     <header id="main-header"></header>
-    
-    <main class="scanner-container">
-        <div class="text-center mb-4">
-            <h1 class="text-main">Крипто-сканер и инструмент анализа рынка</h1>
-            <p class="text-secondary">Отслеживайте рыночную ситуацию на Binance и OKX на одном экране с помощью сканирования криптовалютных сигналов, сканирования монет Binance и MTF-анализа. <span class="demo-badge">ДЕМО-ДАННЫЕ</span></p>
-        </div>
-        
-        <!-- Control Buttons -->
-        <div class="control-panel">
-            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-                <div class="d-flex gap-2">
-                    <button class="btn-sentralyx-start" onclick="startScanner()">
-                        <i class="fas fa-play me-2"></i>ЗАПУСТИТЬ
-                    </button>
-                    <button class="btn-sentralyx-pause" onclick="pauseScanner()">
-                        <i class="fas fa-pause me-2"></i>ПРИОСТАНОВИТЬ
-                    </button>
-                    <button class="btn-sentralyx-stop" onclick="stopScanner()">
-                        <i class="fas fa-stop me-2"></i>ОСТАНОВИТЬ
-                    </button>
-                </div>
-                <div class="d-flex gap-2 align-items-center">
-                    <span class="status-indicator status-stopped"></span>
-                    <span class="text-main">Статус: <span id="status-text">Остановлено</span></span>
-                </div>
+    <main class="home h-page">
+        <section class="h-hero"><div class="h-wrap">
+            <nav class="h-crumb" aria-label="breadcrumb"><a href="/ru/">Главная</a><span>/</span>Сканер рынка</nav>
+            <p class="h-eyebrow"><span class="h-dot"></span> Сканер</p>
+            <h1>Крипто-сканер и инструмент анализа рынка</h1>
+            <p class="h-lead">Сканируйте по умолчанию 347 монет на Binance и OKX по кругу на выбранном таймфрейме. Результаты индикаторов, сигнал BUY/SELL/NONE и причина отсутствия сигнала — в одной таблице.</p>
+            <div class="h-cta-row">
+                <a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Скачать бесплатно для Windows</a>
+                <a class="h-btn h-btn-ghost" href="#nasil"><i class="fas fa-play-circle"></i> Как это работает?</a>
             </div>
-        </div>
-
-        <div class="row">
-            <!-- Results Table Section (Left/Wide) -->
-            <div class="col-lg-8">
-                <!-- Summary Cards -->
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="info-card">
-                            <h6>Сводка сканирования</h6>
-                            <div class="row text-center">
-                                <div class="col-4">
-                                    <div class="text-main fw-bold">347</div>
-                                    <div class="text-secondary small">Символ</div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="text-main fw-bold">12</div>
-                                    <div class="text-secondary small">Сигнал</div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="text-main fw-bold">3</div>
-                                    <div class="text-secondary small">Цикл</div>
-                                </div>
-                            </div>
-                            <div class="mt-3">
-                                <div class="d-flex justify-content-between small mb-1">
-                                    <span class="text-secondary">Прогресс</span>
-                                    <span class="text-main">75%</span>
-                                </div>
-                                <div class="progress progress-custom">
-                                    <div class="progress-bar progress-bar-custom" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="info-card">
-                            <h6>Данные последнего цикла</h6>
-                            <div class="row text-center">
-                                <div class="col-6">
-                                    <div class="text-main fw-bold">~100s</div>
-                                    <div class="text-secondary small">Длительность</div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-main fw-bold">3.5</div>
-                                    <div class="text-secondary small">Монет/с</div>
-                                </div>
-                            </div>
-                            <div class="mt-3">
-                                <div class="small text-secondary">
-                                    <i class="fas fa-clock me-1"></i>
-                                    Последнее обновление: 14:32:15
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Results Table -->
-                <div class="results-table">
-                    <div class="p-3 border-bottom border-custom">
-                        <h5 class="mb-0 text-main">
-                            <i class="fas fa-search me-2"></i>Результаты сканирования
-                        </h5>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-custom">
-                            <thead>
-                                <tr>
-                                    <th>Символ</th>
-                                    <th>Цена</th>
-                                    <th>CMF</th>
-                                    <th>RSI</th>
-                                    <th>SMI</th>
-                                    <th>Сигнал</th>
-                                    <th>Причина</th>
-                                </tr>
-                            </thead>
-                            <tbody id="results-tbody">
-                                <tr>
-                                    <td><strong>BTCUSDT</strong></td>
-                                    <td>43,256.78</td>
-                                    <td>0.23</td>
-                                    <td>65.4</td>
-                                    <td>42.1</td>
-                                    <td><span class="signal-buy">BUY</span></td>
-                                    <td class="text-secondary small">RSI в зоне перепроданности + положительный CMF</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ETHUSDT</strong></td>
-                                    <td>2,245.32</td>
-                                    <td>-0.15</td>
-                                    <td>72.8</td>
-                                    <td>58.3</td>
-                                    <td><span class="signal-sell">SELL</span></td>
-                                    <td class="text-secondary small">RSI в зоне перекупленности + отрицательный CMF</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ADAUSDT</strong></td>
-                                    <td>0.582</td>
-                                    <td>0.08</td>
-                                    <td>54.2</td>
-                                    <td>35.7</td>
-                                    <td><span class="signal-none">NONE</span></td>
-                                    <td class="text-secondary small">Нейтральные индикаторы</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>SOLUSDT</strong></td>
-                                    <td>98.45</td>
-                                    <td>0.31</td>
-                                    <td>68.9</td>
-                                    <td>45.2</td>
-                                    <td><span class="signal-buy">BUY</span></td>
-                                    <td class="text-secondary small">SMI на минимуме + сильный CMF</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>AVAXUSDT</strong></td>
-                                    <td>35.67</td>
-                                    <td>-0.22</td>
-                                    <td>76.3</td>
-                                    <td>62.8</td>
-                                    <td><span class="signal-sell">SELL</span></td>
-                                    <td class="text-secondary small">RSI на экстремуме + слабый CMF</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <div class="h-shot"><div class="h-shot-inner">
+                <div class="h-shot-bar"><span></span><span></span><span></span><em>Sentralyx — Сканер · Виртуальный режим</em></div>
+                <img src="../../assets/img/home/hero-scanner.webp" alt="Сканер Sentralyx: сканирование 347 монет, таблица сигналов и столбец причин" width="1600" height="848" fetchpriority="high">
+            </div></div>
+            <p class="h-cap">Реальный экран приложения, снят в виртуальном режиме.</p>
+        </div></section>
+        <section class="h-stats"><div class="h-wrap"><div class="h-stats-grid">
+            <div class="h-stat"><b class="h-mono h-grad">347</b><span>монет по умолчанию</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">~100 с</b><span>один круг из 347 монет</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">30</b><span>настраиваемых индикаторов</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">4</b><span>типа стратегий</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">MTF + LTF</b><span>подтверждение таймфрейма</span></div>
+        </div></div></section>
+        <section class="h-block" id="nasil"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Как это работает?</div><h2 class="h-title">Сканируйте, фильтруйте, смотрите сигнал</h2><p class="h-sub">Каждый круг сканер применяет вашу стратегию ко всему списку и показывает результат с пояснением.</p></div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">01 · Настройка</span><h3>Стратегия, таймфрейм и фильтры</h3><p>В настройках сканирования вы выбираете стратегию, таймфрейм (например, 15m) и количество кругов.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Подтверждение старшего таймфрейма (MTF): например, тренд на 4h</li><li><i class="fas fa-circle-check"></i>Подтверждение младшего таймфрейма (LTF): момент входа</li><li><i class="fas fa-circle-check"></i>Максимум кругов или непрерывное сканирование</li></ul></div>
+                <div class="h-frame h-tall"><img src="../../assets/img/pages/scanner-settings.webp" alt="Панель настроек сканирования Sentralyx" width="560" height="974" loading="lazy"></div>
             </div>
-
-            <!-- Filters and Settings Section (Right/Narrow) -->
-            <div class="col-lg-4">
-                <!-- Filter Tabs -->
-                <div class="filter-section">
-                    <ul class="nav nav-tabs tab-custom" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#scan-tab">Сканирование</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#backtest-tab">Бэктест</a>
-                        </li>
-                    </ul>
-                    
-                    <div class="tab-content mt-3">
-                        <!-- Scan Tab -->
-                        <div class="tab-pane fade show active" id="scan-tab">
-                            <div class="mb-3">
-	                                <label class="form-label text-main small">Стратегия</label>
-	                                <select class="form-control form-control-custom">
-	                                    <option value="Majority Consensus">Голосование большинством</option>
-	                                    <option value="Strong Majority">Квалифицированное большинство</option>
-	                                    <option value="Scoring System">Балльная система</option>
-	                                    <option value="Full Consensus">Полное согласование</option>
-	                                </select>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Период (таймфрейм)</label>
-                                <select class="form-control form-control-custom">
-                                    <option>1m</option>
-                                    <option>5m</option>
-                                    <option selected>15m</option>
-                                    <option>1h</option>
-                                    <option>4h</option>
-                                    <option>1d</option>
-                                </select>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Макс. циклов</label>
-                                <input type="number" class="form-control form-control-custom" value="0" placeholder="0 = без ограничений">
-                            </div>
-                            
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="show-row" checked>
-                                    <label class="form-check-label text-main small" for="show-row">
-                                        Показывать номера строк
-                                    </label>
-                                </div>
-                            </div>
-                            
-                            <!-- Smart-Trend Filter -->
-                            <div class="mb-3">
-                                <h6 class="text-main small mb-3">Smart-Trend Filter (MTF-подтверждение)</h6>
-                                <div class="mb-2">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="mtf-filter">
-                                        <label class="form-check-label text-main small" for="mtf-filter">
-                                            Использовать фильтр старшего таймфрейма
-                                        </label>
-                                    </div>
-                                </div>
-                                <select class="form-control form-control-custom">
-                                    <option>1h</option>
-                                    <option selected>4h</option>
-                                    <option>1d</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <!-- Backtest Tab -->
-                        <div class="tab-pane fade" id="backtest-tab">
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Длительность</label>
-                                <select class="form-control form-control-custom">
-                                    <option>30 дней</option>
-                                    <option selected>60 дней</option>
-                                    <option>90 дней</option>
-                                    <option>180 дней</option>
-                                </select>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Сканирование</label>
-                                <select class="form-control form-control-custom">
-                                    <option selected>Быстрое сканирование</option>
-                                    <option>Подробное сканирование</option>
-                                </select>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Успешность %</label>
-                                <input type="number" class="form-control form-control-custom" value="65" min="0" max="100">
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Сделки</label>
-                                <input type="number" class="form-control form-control-custom" value="10" min="1">
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label text-main small">Свечи</label>
-                                <input type="number" class="form-control form-control-custom" value="24" min="1">
-                            </div>
-                            
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="candidate-only">
-                                    <label class="form-check-label text-main small" for="candidate-only">
-                                        Только монеты-кандидаты
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Status Panel -->
-                <div class="info-card">
-                    <h6>Панель состояния</h6>
-                    <div class="mb-2">
-                        <div class="d-flex justify-content-between small">
-                            <span class="text-secondary">Скорость сканирования</span>
-                            <span class="text-main">~3,5 монет/с</span>
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <div class="d-flex justify-content-between small">
-                            <span class="text-secondary">Найденные сигналы</span>
-                            <span class="text-main">12 (5 BUY, 7 SELL)</span>
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <div class="d-flex justify-content-between small">
-                            <span class="text-secondary">Открытые позиции</span>
-                            <span class="text-main">3 (+2.45%)</span>
-                        </div>
-                    </div>
-                    <div class="mt-3 p-2 bg-dark bg-opacity-25 rounded">
-                        <div class="small text-secondary">
-                            <i class="fas fa-info-circle me-1"></i>
-                            Активная стратегия: Голосование большинством
-                        </div>
-                    </div>
-                </div>
+            <div class="h-step h-rev">
+                <div class="h-step-text"><span class="h-step-num">02 · Сканирование</span><h3>Результат и причина для каждой монеты</h3><p>Таблица показывает результаты индикаторов и сигнал стратегии для каждой монеты. Если сигнала нет, столбец причин объясняет почему, например «Слабый тренд (ADX &lt; 20)».</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Сигнал BUY / SELL / NONE</li><li><i class="fas fa-circle-check"></i>Видно правило или фильтр, заблокировавший сигнал</li><li><i class="fas fa-circle-check"></i>Фильтры BUY, SELL и «нет сигнала», поиск по символу</li></ul></div>
+                <div class="h-frame"><img src="../../assets/img/pages/scanner-table.webp" alt="Таблица сигналов Sentralyx со столбцом причин" width="1400" height="470" loading="lazy"></div>
             </div>
-        </div>
-
-        <!-- Information Cards Section -->
-        <div class="row mt-4">
-            <div class="col-12">
-                <h5 class="text-main mb-3">
-                    <i class="fas fa-question-circle me-2"></i>Техническая информация
-                </h5>
-                <div class="accordion accordion-custom" id="infoAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#smartTrend">
-                                Что такое Smart-Trend Filter (MTF-подтверждение)?
-                            </button>
-                        </h2>
-                        <div id="smartTrend" class="accordion-collapse collapse show" data-bs-parent="#infoAccordion">
-                            <div class="accordion-body">
-                                <p>Smart-Trend Filter — это усовершенствованная система, которая фильтрует текущие сигналы, анализируя направление тренда на старшем таймфрейме.</p>
-                                <ul class="text-secondary">
-                                    <li>Автоматически определяет тренд на старшем таймфрейме (1h, 4h, 1d)</li>
-                                    <li>Пропускает только сигналы, совпадающие с направлением тренда</li>
-                                    <li>Обеспечивает более избирательную оценку сигналов, отфильтровывая сигналы, не совпадающие с направлением тренда на старшем таймфрейме.</li>
-                                    <li>Обеспечивает эффективную защиту, особенно на волатильных рынках</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#indicators">
-                                Используемые индикаторы
-                            </button>
-                        </h2>
-                        <div id="indicators" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <h6 class="text-accent-blue">CMF (Chaikin Money Flow)</h6>
-                                        <p class="text-secondary small">Индикатор денежного потока, взвешенного по объёму. Сигнал на покупку выше 0.25, на продажу ниже -0.25.</p>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h6 class="text-accent-blue">RSI (Relative Strength Index)</h6>
-                                        <p class="text-secondary small">Индикатор импульса. Перекупленность выше 70, перепроданность ниже 30.</p>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h6 class="text-accent-blue">SMI (Stochastic Momentum Index)</h6>
-                                        <p class="text-secondary small">Быстрый индикатор импульса. Сигнал на покупку выше +40, на продажу ниже -40.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#strategies">
-                                Типы стратегий
-                            </button>
-                        </h2>
-                        <div id="strategies" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-3">
-                                        <h6 class="text-accent-blue">Балльная система</h6>
-                                        <p class="text-secondary small">Каждому индикатору присваивается вес; сигнал формируется, когда сумма баллов превышает порог.</p>
-                                    </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <h6 class="text-accent-blue">Голосование большинством</h6>
-                                        <p class="text-secondary small">Срабатывает, когда большинство индикаторов подают сигнал в одном направлении (например, 2 из 3).</p>
-                                    </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <h6 class="text-accent-blue">Квалифицированное большинство</h6>
-                                        <p class="text-secondary small">Вариант голосования большинством с более высоким порогом: меньше сигналов, но более избирательных.</p>
-                                    </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <h6 class="text-accent-blue">Полное согласование</h6>
-                                        <p class="text-secondary small">Все индикаторы должны подавать сигнал в одном направлении. Самое строгое правило; сигналов мало.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">03 · Действие</span><h3>От сигнала к позиции</h3><p>При появлении сигнала позиция может открыться автоматически в виртуальном или реальном режиме согласно настройкам. Далее она сопровождается с SL/TP на экране открытых позиций.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>В виртуальном режиме реальные деньги не используются</li><li><i class="fas fa-circle-check"></i>Ордера SL и TP отправляются и на биржу</li><li><i class="fas fa-circle-check"></i>Версия Free не открывает позиции; сканирование и анализ доступны</li></ul></div>
+                <div class="h-frame"><img src="../../assets/img/home/positions.webp" alt="Экран открытых позиций Sentralyx" width="1400" height="494" loading="lazy"></div>
             </div>
-        </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Возможности</div><h2 class="h-title">Что есть в сканере?</h2><p class="h-sub">Не только сигнал, но и правило за ним.</p></div>
+            <div class="h-grid-3">
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-list-check"></i></div><h3>347 монет по умолчанию</h3><p>Монеты, общие для спота Binance и USDT-фьючерсов; без стейблкоинов.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-magnifying-glass-chart"></i></div><h3>Столбец причин</h3><p>Показывает, какое правило или фильтр заблокировали сигнал.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-layer-group"></i></div><h3>Подтверждение MTF и LTF</h3><p>Старший таймфрейм проверяет направление тренда, младший — момент входа.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-filter"></i></div><h3>ADX, ATR и рыночный режим</h3><p>Фильтры силы тренда, волатильности и режима (любой, тренд, боковик, волатильный).</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-scale-balanced"></i></div><h3>4 типа стратегий</h3><p>Балльная система, большинство, квалифицированное большинство и полное согласование.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-database"></i></div><h3>Получение данных</h3><p>Свечи загружаются с биржи с интервалами и кешируются на компьютере; непрерывный поток данных в реальном времени не используется.</p></div>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">FAQ</div><h2 class="h-title">Частые вопросы</h2></div>
+            <div class="h-faq">
+                <details open><summary>Сколько монет сканирует сканер?</summary><p>По умолчанию 347 монет: общие для спота Binance и USDT-фьючерсов, без стейблкоинов.</p></details>
+                <details><summary>Сколько длится один круг?</summary><p>Зависит от числа монет и настроек ожидания. Для 347 монет второй и последующие круги занимают около 100 секунд.</p></details>
+                <details><summary>Использует ли сканер поток данных в реальном времени?</summary><p>Нет. Свечи загружаются с биржи с интервалами и кешируются локально. Сигналы обновляются каждый круг.</p></details>
+                <details><summary>Доступен ли сканер в версии Free?</summary><p>Да. В Free доступны сканирование и анализ; открытие позиций — в Trial и Full.</p></details>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Дальше</div><h2 class="h-title">Связанные страницы</h2></div>
+            <div class="h-related">
+                <a class="h-card h-feature" href="/ru/blog/mtf-ltf-podtverzhdenie/"><h3>Что такое подтверждение MTF и LTF?</h3><p>Руководство по подтверждению старшего и младшего таймфрейма.</p><span class="h-more">Подробнее <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/ru/backtest/"><h3>Бэктест</h3><p>Проверьте стратегию на истории с учётом комиссии и проскальзывания.</p><span class="h-more">Подробнее <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/ru/active-positions/"><h3>Открытые позиции</h3><p>Сопровождайте позиции с SL/TP, трейлинг-стопом и безубытком.</p><span class="h-more">Подробнее <i class="fas fa-arrow-right"></i></span></a>
+            </div>
+        </div></section>
+        <section class="h-cta-wrap"><div class="h-wrap"><div class="h-cta">
+            <h2>Проверьте стратегию в виртуальном режиме уже сегодня</h2><p>Скачайте приложение, соберите стратегию и посмотрите, как она работает, без реальных денег.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Скачать бесплатно для Windows</a><a class="h-btn h-btn-ghost" href="/ru/pricing/">Тарифы</a></div>
+        </div></div></section>
     </main>
 
+    <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/main.js"></script>
     <script>
-        // Scanner control functions
-        function startScanner() {
-            updateStatus('active', 'Идёт сканирование...');
-            simulateScanning();
-        }
-        
-        function pauseScanner() {
-            updateStatus('paused', 'Приостановлено');
-        }
-        
-        function stopScanner() {
-            updateStatus('stopped', 'Остановлено');
-        }
-        
-        function updateStatus(status, text) {
-            const statusIndicator = document.querySelector('.status-indicator');
-            const statusText = document.getElementById('status-text');
-            
-            statusIndicator.className = 'status-indicator status-' + status;
-            statusText.textContent = text;
-        }
-        
-        function simulateScanning() {
-            const tbody = document.getElementById('results-tbody');
-            const symbols = ['DOTUSDT', 'LINKUSDT', 'MATICUSDT', 'UNIUSDT', 'ATOMUSDT'];
-            
-            setInterval(() => {
-                if (document.getElementById('status-text').textContent === 'Идёт сканирование...') {
-                    // Simulate new scan results
-                    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-                    const randomPrice = (Math.random() * 100 + 1).toFixed(2);
-                    const signals = ['BUY', 'SELL', 'NONE'];
-                    const randomSignal = signals[Math.floor(Math.random() * signals.length)];
-                    
-                    // Update first row with new data
-                    if (tbody.firstElementChild) {
-                        const firstRow = tbody.firstElementChild;
-                        firstRow.cells[0].textContent = randomSymbol;
-                        firstRow.cells[1].textContent = randomPrice;
-                        
-                        const signalCell = firstRow.cells[5];
-                        signalCell.innerHTML = `<span class="signal-${randomSignal.toLowerCase()}">${randomSignal}</span>`;
-                    }
-                }
-            }, 3000);
-        }
-    </script>
-
-    <section class="seo-content">
-        <div class="container">
-            <div class="seo-inner">
-                <h2>Как работает сканер?</h2>
-                <p>Сканер проходит список монет по кругу на выбранном таймфрейме. По умолчанию в списке 347 монет: общие для спота Binance и USDT-фьючерсов, без стейблкоинов.</p>
-                <h3>Скорость сканирования</h3>
-                <p>Скорость зависит от числа монет и настроек ожидания. Для 347 монет второй и последующие круги занимают около 100 секунд. Свечные данные загружаются с биржи с определёнными интервалами и кешируются на вашем компьютере; непрерывный поток данных в реальном времени не используется.</p>
-                <h3>Таблица сигналов</h3>
-                <p>Для каждой монеты показываются результаты индикаторов, сигнал BUY/SELL/NONE и, если сигнала нет, его причина.</p>
-                <h3>Фильтры</h3>
-                <ul>
-                    <li>Подтверждение старшего (MTF) и младшего (LTF) таймфрейма</li>
-                    <li>Сила тренда (ADX) и волатильность (ATR)</li>
-                    <li>Рыночный режим: любой, тренд, боковик, волатильный</li>
-                </ul>
-                <h3>От сигнала к позиции</h3>
-                <p>При появлении сигнала позиция может открываться автоматически в виртуальном или реальном режиме согласно вашим настройкам. Версия Free не открывает позиции — только сканирование и анализ.</p>
-            </div>
-        </div>
-    </section>
-    <div id="footer-container"></div>
-
-    <script>
-        // Load footer from components/footer.html
-        fetch('../footer.html')
-            .then(async (response) => {
-                const buffer = await response.arrayBuffer();
-                return new TextDecoder('utf-8').decode(buffer);
-            })
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Footer yuklenemedi:', error));
+        fetch('/ru/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>

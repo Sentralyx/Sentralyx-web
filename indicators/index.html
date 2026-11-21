@@ -21,137 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 
-    <style>
-        .indicators-container {
-            padding: 20px;
-            background: var(--bg-dark);
-            min-height: 100vh;
-        }
-
-        .panel {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-        }
-
-        .toolbar-btn {
-            padding: 10px 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-main);
-            font-weight: 700;
-        }
-        .toolbar-btn:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
-
-        .form-control-custom {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-radius: 10px;
-        }
-        .form-control-custom:focus {
-            background: rgba(42, 49, 66, 0.5);
-            border-color: var(--accent-blue);
-            color: var(--text-main);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
-        }
-
-        .indicator-card {
-            background: rgba(42, 49, 66, 0.18);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 16px;
-            height: 100%;
-            transition: all 0.25s ease;
-        }
-        .indicator-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 10px 26px rgba(52, 152, 219, 0.15);
-        }
-
-        .indicator-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(52, 152, 219, 0.12);
-            border: 1px solid rgba(52, 152, 219, 0.25);
-            color: var(--accent-blue);
-            font-size: 1.2rem;
-        }
-
-        .indicator-name { color: var(--text-main); font-weight: 900; margin: 0; }
-        .indicator-desc { color: var(--text-secondary); margin: 6px 0 0 0; line-height: 1.6; }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-        .chip strong { color: var(--text-main); font-weight: 900; }
-        .chip i { color: var(--accent-blue); }
-
-        .table-custom { color: var(--text-main); margin-bottom: 0; }
-        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
-        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
-        .table-custom td { padding: 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
-
-        .rule-shell {
-            background: rgba(42, 49, 66, 0.18);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 14px;
-        }
-
-        .rule-line {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 10px 12px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.22);
-        }
-
-        .rule-line .label { color: var(--text-main); font-weight: 900; }
-        .rule-line .hint { color: var(--text-secondary); font-size: 0.9rem; }
-
-        .pill-on {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid rgba(46, 204, 113, 0.35);
-            background: rgba(46, 204, 113, 0.08);
-            color: var(--signal-buy);
-            font-weight: 900;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-
-        .demo-badge {
-            background: rgba(255, 193, 7, 0.15);
-            border: 1px solid rgba(255, 193, 7, 0.4);
-            color: #ffc107;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-    </style>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -172,316 +41,92 @@
   ]
 }
     </script>
+    <link rel="stylesheet" href="../assets/css/home.css">
 </head>
 <body>
-
     <header id="main-header"></header>
-
-    <main class="indicators-container">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                <div>
-                    <h1 class="text-main mb-1">İndikatör Ayarları ve Sinyal Kuralları</h1>
-                    <p class="text-secondary mb-0">Parametre ayarlama, kural şablonları ve strateji motorları için yürütme sınıfı doğrulamaları <span class="demo-badge">DEMO VERİ</span></p>
-                </div>
-                <div class="d-flex gap-2 flex-wrap align-items-center">
-                    <span class="chip" title="Kural motoru" data-bs-toggle="tooltip"><i class="fas fa-diagram-project"></i><span>Motor:</span> <strong>Kural Oluşturucu</strong></span>
-                    <span class="chip" title="Doğrulama durumu" data-bs-toggle="tooltip"><i class="fas fa-circle-check"></i><span>Durum:</span> <strong id="chip-status">Hazır</strong></span>
-                    <button class="toolbar-btn" onclick="exportConfig()" title="İndikatör yapılandırmasını dışa aktar (CSV)" data-bs-toggle="tooltip">
-                        <i class="fas fa-file-export me-2"></i>Yapılandırma Dışa Aktar
-                    </button>
-                </div>
+    <main class="home h-page">
+        <section class="h-hero"><div class="h-wrap">
+            <nav class="h-crumb" aria-label="breadcrumb"><a href="/">Ana Sayfa</a><span>/</span>İndikatör Ayarları</nav>
+            <p class="h-eyebrow"><span class="h-dot"></span> İndikatör</p>
+            <h1>İndikatör Ayarları ve Sinyal Kuralları</h1>
+            <p class="h-lead">30 indikatör için AL/SAT kurallarını ve parametreleri sen belirle. Değer karşılaştırma, aralık kontrolü ve yön kontrolü gibi kuralları birleştir. Hazır sinyal yok, kontrol sende.</p>
+            <div class="h-cta-row">
+                <a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Windows için ücretsiz indir</a>
+                <a class="h-btn h-btn-ghost" href="#nasil"><i class="fas fa-play-circle"></i> Nasıl çalışır?</a>
             </div>
-
-            <div class="row g-3">
-                <!-- İndikatör Kütüphanesi -->
-                <div class="col-xl-7">
-                    <div class="panel p-3 mb-3">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                            <h5 class="text-main mb-0"><i class="fas fa-layer-group me-2" style="color: var(--accent-blue);"></i>İndikatör Kütüphanesi</h5>
-                            <input id="indicator-search" class="form-control form-control-custom" style="max-width: 320px;" placeholder="İndikatör ara…" oninput="renderIndicators()">
-                        </div>
-                        <div class="row g-3" id="indicator-grid"></div>
-                    </div>
-
-                    <div class="panel p-3">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                            <h5 class="text-main mb-0"><i class="fas fa-sliders-h me-2" style="color: var(--accent-blue);"></i>Seçilen İndikatör · Parametreler</h5>
-                            <span class="pill-on" id="selected-pill"><i class="fas fa-check"></i>Aktif</span>
-                        </div>
-                        <div class="text-secondary small mb-3">Parametreleri ayarlayın ve strateji gereksinimlerine göre doğrulayın. Gösterilen değerler UI önizlemesi içindir.</div>
-                        <div class="table-responsive">
-                            <table class="table table-custom">
-                                <thead>
-                                    <tr>
-                                        <th style="min-width: 180px;">Parametre</th>
-                                        <th style="min-width: 220px;">Değer</th>
-                                        <th style="min-width: 280px;">Notlar</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="params-tbody"></tbody>
-                            </table>
-                        </div>
-                        <div class="d-flex justify-content-end gap-2 mt-3 flex-wrap">
-                            <button class="btn btn-outline-light" onclick="resetParams()"><i class="fas fa-rotate-left me-2"></i>Sıfırla</button>
-                            <button class="btn btn-primary" onclick="saveParams()"><i class="fas fa-floppy-disk me-2"></i>Parametreleri Kaydet</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kural Şablonları / Önizleme -->
-                <div class="col-xl-5">
-                    <div class="panel p-3 mb-3">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                            <h5 class="text-main mb-0"><i class="fas fa-code-branch me-2" style="color: var(--accent-blue);"></i>Sinyal Kural Şablonları</h5>
-                            <button class="toolbar-btn" onclick="applyTemplate()" title="Şablonu kural oluşturucuya uygula" data-bs-toggle="tooltip">
-                                <i class="fas fa-wand-magic-sparkles me-2"></i>Şablon Uygula
-                            </button>
-                        </div>
-                        <div class="text-secondary small mb-3">AL/SAT tetikleyicileri ve rejim filtreleri için şablonları başlangıç noktası olarak kullanın.</div>
-                        <select id="template-select" class="form-select form-control-custom">
-                            <option selected>Momentum Onayı (RSI + Trend)</option>
-                            <option>Ortalama Dönüşü Sönümlemesi (Bantlar + RSI)</option>
-                            <option>Kırılma Doğrulaması (ATR + Hacim)</option>
-                        </select>
-                    </div>
-
-                    <div class="panel p-3">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                            <h5 class="text-main mb-0"><i class="fas fa-sitemap me-2" style="color: var(--accent-blue);"></i>Kural Oluşturucu Önizlemesi</h5>
-                            <button class="toolbar-btn" onclick="validateRules()" title="Kural doğrulama kontrollerini çalıştır" data-bs-toggle="tooltip">
-                                <i class="fas fa-circle-check me-2"></i>Doğrula
-                            </button>
-                        </div>
-                        <div class="rule-shell">
-                            <div class="rule-line mb-2">
-                                <div>
-                                    <div class="label">AL Tetikleyici</div>
-                                    <div class="hint" id="buy-rule">RSI < 30 AND Trend = Hizalı</div>
-                                </div>
-                                <div class="text-secondary small">Öncelik: Yüksek</div>
-                            </div>
-                            <div class="rule-line mb-2">
-                                <div>
-                                    <div class="label">SAT Tetikleyici</div>
-                                    <div class="hint" id="sell-rule">RSI > 70 OR Trend = Hizalanmamış</div>
-                                </div>
-                                <div class="text-secondary small">Öncelik: Orta</div>
-                            </div>
-                            <div class="rule-line">
-                                <div>
-                                    <div class="label">Rejim Filtresi</div>
-                                    <div class="hint" id="regime-rule">Volatilite = Normal AND Likidite = Tamam</div>
-                                </div>
-                                <div class="text-secondary small">Güvenlik Kapısı</div>
-                            </div>
-                        </div>
-                        <div class="mt-3 small text-secondary">
-                            Strateji düzeyi kontroller için <a class="text-accent-blue text-decoration-none" href="/strategies/">Strateji Kütüphanesi</a> ve <a class="text-accent-blue text-decoration-none" href="/settings/">Risk Yönetimi</a> kullanın.
-                        </div>
-                    </div>
-                </div>
+            <div class="h-shot"><div class="h-shot-inner">
+                <div class="h-shot-bar"><span></span><span></span><span></span><em>Sentralyx — İndikatör · Sanal mod</em></div>
+                <img src="../assets/img/pages/indicators-full.webp" alt="Sentralyx indikatör kuralları ekranı" width="1600" height="814" fetchpriority="high">
+            </div></div>
+            <p class="h-cap">Uygulamanın gerçek ekranı, sanal modda çekilmiştir.</p>
+        </div></section>
+        <section class="h-stats"><div class="h-wrap"><div class="h-stats-grid">
+            <div class="h-stat"><b class="h-mono h-grad">30</b><span>indikatör</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">AL / SAT</b><span>ayrı kural setleri</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">3</b><span>kural tipi</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">5</b><span>düzenleme sekmesi</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">Sihirbaz</b><span>kural oluşturma</span></div>
+        </div></div></section>
+        <section class="h-block" id="nasil"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Nasıl çalışır?</div><h2 class="h-title">Her indikatörün kuralı sende</h2><p class="h-sub">Bir indikatör, senin kurallarına göre BUY, SELL ya da NONE sonucu üretir.</p></div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">01 · Seç</span><h3>İndikatörü seç</h3><p>Soldaki listeden indikatörü seçersin; her indikatörün rolü ve kısa açıklaması görünür. Örneğin Bollinger Bands, fiyatın bantlar içindeki konumunu gösterir.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>ADX, ATR, Bollinger, CCI, CMF, DEMA, Donchian, EMA ve diğerleri</li><li><i class="fas fa-circle-check"></i>İndikatör bilgisi ve rolü</li><li><i class="fas fa-circle-check"></i>Temel ve gelişmiş kural görünümü</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/pages/indicators-full.webp" alt="İndikatör listesi ve bilgi paneli" width="1600" height="814" loading="lazy"></div>
             </div>
-        </div>
+            <div class="h-step h-rev">
+                <div class="h-step-text"><span class="h-step-num">02 · Kuralı yaz</span><h3>AL ve SAT kuralları</h3><p>AL ve SAT için ayrı kural setleri kurarsın. Koşul mantığını (ör. biri yeterli) ve kural tiplerini seçersin.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Değer karşılaştırma (ör. fiyat alt bandın altındaysa)</li><li><i class="fas fa-circle-check"></i>Aralık kontrolü (min / max)</li><li><i class="fas fa-circle-check"></i>Yön kontrolü (son N mumda yükseliyor/düşüyor)</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/pages/indicator-rules.webp" alt="AL ve SAT kural düzenleyici" width="1400" height="540" loading="lazy"></div>
+            </div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">03 · Test et</span><h3>Kural testi ve parametreler</h3><p>Parametreler, kural testi ve görünüm sekmeleriyle ayarları inceler, sonra stratejide kullanırsın.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Temel kurallar ve parametreler</li><li><i class="fas fa-circle-check"></i>Kural testi sekmesi</li><li><i class="fas fa-circle-check"></i>Strateji sihirbazında kullanma</li></ul></div>
+                <div class="h-frame h-tall"><img src="../assets/img/home/strategy-wizard.webp" alt="Strateji sihirbazında indikatör seçimi" width="620" height="936" loading="lazy"></div>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Özellikler</div><h2 class="h-title">İndikatör düzenleyicide neler var?</h2><p class="h-sub">Sinyalin nasıl oluştuğunu tamamen sen tanımlarsın.</p></div>
+            <div class="h-grid-3">
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-list"></i></div><h3>30 indikatör</h3><p>Trend, momentum, bant/kanal ve hacim indikatörleri.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-code-compare"></i></div><h3>Değer karşılaştırma</h3><p>Fiyat ya da değer belirli bir seviyenin altında/üstünde mi?</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-arrows-left-right-to-line"></i></div><h3>Aralık kontrolü</h3><p>Değer belirlediğin min-max aralığında mı?</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-arrow-trend-up"></i></div><h3>Yön kontrolü</h3><p>Değer son N mumda yükseliyor mu, düşüyor mu?</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-diagram-project"></i></div><h3>Koşul mantığı</h3><p>Kuralları &quot;biri yeterli&quot; gibi mantıklarla birleştir.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-wand-magic-sparkles"></i></div><h3>Sihirbaz</h3><p>Kural oluşturmaya sihirbazla başla.</p></div>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">SSS</div><h2 class="h-title">Sık sorulan sorular</h2></div>
+            <div class="h-faq">
+                <details open><summary>Hazır AL/SAT sinyalleri geliyor mu?</summary><p>Hayır. Hazır sinyal yok; her indikatörün AL/SAT kuralını ve parametrelerini sen belirlersin.</p></details>
+                <details><summary>Kaç indikatör var?</summary><p>İndikatör düzenleyicide 30 indikatör için kural ve parametre tanımlanabilir.</p></details>
+                <details><summary>Kuralları nasıl denerim?</summary><p>Kural testi sekmesiyle ayarları inceleyebilir, ardından stratejiyi backtest ve sanal modda deneyebilirsin.</p></details>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Devamı</div><h2 class="h-title">İlgili sayfalar</h2></div>
+            <div class="h-related">
+                <a class="h-card h-feature" href="/strategies/"><h3>Strateji yönetimi</h3><p>İndikatörleri stratejide birleştir.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/scanner/"><h3>Kripto scanner</h3><p>Kurallarının sonucunu sinyal tablosunda gör.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/backtest/"><h3>Backtest</h3><p>Kurallarını geçmiş veride test et.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+            </div>
+        </div></section>
+        <section class="h-cta-wrap"><div class="h-wrap"><div class="h-cta">
+            <h2>Stratejini bugün sanal modda dene</h2><p>Uygulamayı indir, stratejini kur ve gerçek para kullanmadan nasıl çalıştığını gör.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Windows için ücretsiz indir</a><a class="h-btn h-btn-ghost" href="/fiyatlandirma/">Paketleri gör</a></div>
+        </div></div></section>
     </main>
 
-    <section class="seo-content">
-        <div class="container">
-            <div class="seo-inner">
-                <h2>İndikatörler ve sinyal kuralları</h2>
-                <p>Sentralyx'te 30 indikatör için AL/SAT kurallarını ve parametreleri sen belirlersin. Her indikatör, ayarladığın kurala göre BUY, SELL ya da NONE sonucu üretir; strateji bu sonuçları birleştirerek sinyal oluşturur.</p>
-                <h3>İndikatör düzenleyici</h3>
-                <p>Her indikatörün parametrelerini ve hangi koşulda AL ya da SAT sayılacağını düzenleyebilirsin. Strateji sihirbazı ile indikatör seçerek yeni bir strateji de oluşturabilirsin.</p>
-                <h3>Strateji tipleri</h3>
-                <ul>
-                    <li>Puanlama Sistemi: Her indikatöre ağırlık verilir; toplam puan eşiği geçerse sinyal oluşur.</li>
-                    <li>Çoğunluk Oylaması: İndikatörlerin çoğunluğu aynı yönde sinyal verirse tetiklenir.</li>
-                    <li>Güçlü Çoğunluk: Daha yüksek eşikli çoğunluk.</li>
-                    <li>Tam Uyum: Tüm indikatörler aynı yönde sinyal vermelidir.</li>
-                </ul>
-                <h3>Filtreler</h3>
-                <ul>
-                    <li>Trend gücü (ADX)</li>
-                    <li>Volatilite (ATR)</li>
-                    <li>Piyasa rejimi: her koşul, trend, yatay, volatil</li>
-                    <li>Üst zaman dilimi onayı (MTF)</li>
-                    <li>Alt zaman dilimi onayı (LTF)</li>
-                </ul>
-                <h3>Sinyal neden oluşmadı?</h3>
-                <p>Tarayıcıdaki sinyal tablosu, sinyalin neden oluşmadığını da gösterir. Böylece hangi kuralın ya da filtrenin sinyali engellediğini görebilirsin.</p>
-                <p class="seo-note">Kuralları gerçek moda geçmeden önce backtest ve sanal modda dene. Backtest sonucu gelecekte aynı sonucu garanti etmez.</p>
-            </div>
-        </div>
-    </section>
     <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        const state = {
-            indicators: [
-                { id: 'rsi', name: 'RSI (Relative Strength Index)', icon: 'fa-gauge-high', desc: 'Rejim ve tükenme tespiti için momentum osilatörü.', params: [
-                    { k: 'Periyot', v: 14, note: 'RSI hesaplaması için standart geriye bakma penceresi.' },
-                    { k: 'Aşırı Satış Eşiği', v: 30, note: 'Bu seviyenin altı aşırı satış olarak kabul edilir (potansiyel ortalama dönüşü).' },
-                    { k: 'Aşırı Alış Eşiği', v: 70, note: 'Bu seviyenin üstü aşırı alış olarak kabul edilir.' },
-                ]},
-                { id: 'bb', name: 'Bollinger Bantları', icon: 'fa-arrows-left-right-to-line', desc: 'Ortalama dönüşü vs kırılma bağlamı için volatilite zarfı.', params: [
-                    { k: 'Periyot', v: 20, note: 'Bant merkezi için hareketli ortalama periyodu.' },
-                    { k: 'Std. Sapma Çarpanı', v: 2, note: 'Bant genişliği çarpanı.' },
-                ]},
-                { id: 'cmf', name: 'CMF (Chaikin Money Flow)', icon: 'fa-water', desc: 'Akış eğilimi için hacim ağırlıklı birikim/dağıtım vekili.', params: [
-                    { k: 'Periyot', v: 20, note: 'Para akışı birikimi için geriye bakma.' },
-                    { k: 'Alış Eğilimi Eşiği', v: 0.25, note: 'Bunun üstü sürdürülebilir girişleri gösterir.' },
-                    { k: 'Satış Eğilimi Eşiği', v: -0.25, note: 'Bunun altı sürdürülebilir çıkışları gösterir.' },
-                ]},
-                { id: 'atr', name: 'ATR (Average True Range)', icon: 'fa-wave-square', desc: 'Volatilite normalizasyonu ve risk boyutlandırma ilkel.', params: [
-                    { k: 'Periyot', v: 14, note: 'Volatilite tahmini için kullanılan geriye bakma.' },
-                    { k: 'Stop Çarpanı', v: 2.0, note: 'ATR tabanlı takip eden stop mesafesi için kullanılır.' },
-                ]},
-                { id: 'trend', name: 'MTF Trend Katmanı', icon: 'fa-layer-group', desc: 'Sinyal kalitesi için daha yüksek zaman dilimi hizalama kapısı.', params: [
-                    { k: 'Daha Yüksek Zaman Dilimi', v: '1s', note: 'Yönlü eğilim türetmek için kullanılan HTF.' },
-                    { k: 'Hizalama Katılığı', v: 'Orta', note: 'Girişler için eğilim eşleşme katılığı.' },
-                ]},
-            ],
-            selectedId: 'rsi',
-        };
-
-        function initTooltips() {
-            const triggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            triggers.forEach((el) => new bootstrap.Tooltip(el));
-        }
-
-        function selectIndicator(id) {
-            state.selectedId = id;
-            renderIndicators();
-            renderParams();
-        }
-
-        function renderIndicators() {
-            const q = (document.getElementById('indicator-search')?.value || '').trim().toLowerCase();
-            const grid = document.getElementById('indicator-grid');
-            const list = state.indicators.filter((x) => !q || `${x.name} ${x.desc}`.toLowerCase().includes(q));
-
-            grid.innerHTML = list.map((x) => {
-                const active = x.id === state.selectedId;
-                return `
-                    <div class="col-md-6">
-                        <div class="indicator-card" style="${active ? 'border-color: var(--accent-blue);' : ''}" role="button" onclick="selectIndicator('${x.id}')">
-                            <div class="d-flex gap-3 align-items-start">
-                                <div class="indicator-icon"><i class="fas ${x.icon}"></i></div>
-                                <div>
-                                    <p class="indicator-name mb-1">${x.name}</p>
-                                    <p class="indicator-desc mb-0">${x.desc}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function renderParams() {
-            const tbody = document.getElementById('params-tbody');
-            const ind = state.indicators.find((x) => x.id === state.selectedId) || state.indicators[0];
-            tbody.innerHTML = ind.params.map((p, idx) => {
-                const input = typeof p.v === 'number'
-                    ? `<input class="form-control form-control-custom" type="number" step="any" value="${p.v}" data-idx="${idx}">`
-                    : `<input class="form-control form-control-custom" type="text" value="${p.v}" data-idx="${idx}">`;
-                return `
-                    <tr>
-                        <td class="text-main fw-bold">${p.k}</td>
-                        <td>${input}</td>
-                        <td class="text-secondary">${p.note}</td>
-                    </tr>
-                `;
-            }).join('');
-        }
-
-        function resetParams() {
-            // UI önizlemesi: sadece varsayılanlardan yeniden oluştur.
-            renderParams();
-            toast('Parametreler sıfırlandı.', 'warning');
-        }
-
-        function saveParams() {
-            const ind = state.indicators.find((x) => x.id === state.selectedId);
-            if (!ind) return;
-            const inputs = document.querySelectorAll('#params-tbody input');
-            inputs.forEach((el) => {
-                const idx = Number(el.getAttribute('data-idx'));
-                const val = el.value;
-                const num = Number(val);
-                ind.params[idx].v = Number.isFinite(num) && val.trim() !== '' && !isNaN(num) ? num : val;
-            });
-            toast('İndikatör parametreleri kaydedildi (demo).', 'success');
-        }
-
-        function applyTemplate() {
-            const t = document.getElementById('template-select').value;
-            if (t.includes('Momentum')) {
-                document.getElementById('buy-rule').textContent = 'RSI < 35 AND Trend = Hizalı AND CMF > 0.10';
-                document.getElementById('sell-rule').textContent = 'RSI > 65 OR Trend = Hizalanmamış';
-                document.getElementById('regime-rule').textContent = 'Volatilite = Normal AND Likidite = Tamam';
-            } else if (t.includes('Ortalama')) {
-                document.getElementById('buy-rule').textContent = 'Fiyat < Alt Bant AND RSI < 30 AND CMF Diverjansı = Pozitif';
-                document.getElementById('sell-rule').textContent = 'Fiyat > Üst Bant OR Zaman Stopu Isabetli';
-                document.getElementById('regime-rule').textContent = 'Rejim = Aralıkta AND Spread < Eşik';
-            } else {
-                document.getElementById('buy-rule').textContent = 'Yapı Kırılması = Doğrulandı AND ATR Genişlemesi = Doğru';
-                document.getElementById('sell-rule').textContent = 'Başarısız Takip OR Volatilite Artışı';
-                document.getElementById('regime-rule').textContent = 'Likidite = Tamam AND Kayma Modeli = Kabul Edilebilir';
-            }
-            toast('Şablon oluşturucu önizlemesine uygulandı.', 'info');
-        }
-
-        function validateRules() {
-            document.getElementById('chip-status').textContent = 'Doğrulandı';
-            toast('Kural doğrulaması geçti (demo).', 'success');
-        }
-
-        function exportConfig() {
-            const header = ['İndikatör', 'Parametre', 'Değer'];
-            const lines = [header.join(',')];
-            state.indicators.forEach((i) => {
-                i.params.forEach((p) => {
-                    lines.push([i.name, p.k, p.v].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(','));
-                });
-            });
-            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `sentralyx-indicators-${new Date().toISOString().slice(0, 10)}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            URL.revokeObjectURL(url);
-        }
-
-        function toast(message, type) {
-            const alert = document.createElement('div');
-            const bg = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
-            alert.className = `alert ${bg} position-fixed top-0 end-0 m-3`;
-            alert.style.zIndex = '9999';
-            alert.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>${message}`;
-            document.body.appendChild(alert);
-            setTimeout(() => alert.remove(), 2400);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initTooltips();
-            renderIndicators();
-            renderParams();
-        });
-
-        fetch('../components/footer.html')
-            .then(async (response) => {
-                const buffer = await response.arrayBuffer();
-                return new TextDecoder('utf-8').decode(buffer);
-            })
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Footer yüklenemedi:', error));
+        fetch('/components/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>

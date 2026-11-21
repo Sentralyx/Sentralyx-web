@@ -21,113 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 
-    <style>
-        .history-container {
-            padding: 20px;
-            background: var(--bg-dark);
-            min-height: 100vh;
-        }
-
-        .panel {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-        }
-
-        .toolbar-btn {
-            padding: 10px 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-main);
-            font-weight: 700;
-        }
-        .toolbar-btn:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
-
-        .form-control-custom {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-radius: 10px;
-        }
-        .form-control-custom:focus {
-            background: rgba(42, 49, 66, 0.5);
-            border-color: var(--accent-blue);
-            color: var(--text-main);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
-        }
-
-        .table-custom { color: var(--text-main); margin-bottom: 0; }
-        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
-        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
-        .table-custom td { padding: 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
-        .table-custom tbody tr:hover { background: rgba(52, 152, 219, 0.05); box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.08); }
-
-        .side-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            font-weight: 800;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-        .side-long { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); color: var(--signal-buy); }
-        .side-short { border-color: rgba(231, 76, 60, 0.35); background: rgba(231, 76, 60, 0.08); color: var(--signal-sell); }
-
-        .outcome-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            font-weight: 800;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-        .outcome-win { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); color: var(--signal-buy); }
-        .outcome-loss { border-color: rgba(231, 76, 60, 0.35); background: rgba(231, 76, 60, 0.08); color: var(--signal-sell); opacity: 0.9; }
-        .outcome-canceled { border-color: rgba(255, 193, 7, 0.35); background: rgba(255, 193, 7, 0.08); color: #ffc107; }
-
-        .pnl-positive { color: var(--signal-buy); font-weight: 900; }
-        .pnl-negative { color: rgba(231, 76, 60, 0.9); font-weight: 800; }
-
-        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-
-        .pager {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            padding: 12px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-        }
-
-        .empty-state {
-            background: rgba(42, 49, 66, 0.25);
-            border: 1px dashed rgba(52, 152, 219, 0.35);
-            border-radius: 12px;
-            padding: 22px;
-            color: var(--text-secondary);
-        }
-
-        .demo-badge {
-            background: rgba(255, 193, 7, 0.15);
-            border: 1px solid rgba(255, 193, 7, 0.4);
-            color: #ffc107;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-    </style>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -148,347 +41,85 @@
   ]
 }
     </script>
+    <link rel="stylesheet" href="../assets/css/home.css">
 </head>
 <body>
-
     <header id="main-header"></header>
-
-    <main class="history-container">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                <div>
-                    <h1 class="text-main mb-1">İşlem Geçmişi ve Arşivler</h1>
-                    <p class="text-secondary mb-0">İşlem sonrası analiz: gerçekleşmiş P&L, işlem zaman damgaları, sipariş ID'leri ve kapanış gerekçeleri <span class="demo-badge">DEMO VERİ</span></p>
-                </div>
-                <div class="d-flex gap-2 flex-wrap align-items-center">
-                    <button class="toolbar-btn" onclick="downloadTradeLogTxt()" title="Düz metin denetim günlüğü indir" data-bs-toggle="tooltip">
-                        <i class="fas fa-file-lines me-2"></i>İşlem Günlüğü İndir (.txt)
-                    </button>
-                    <button class="toolbar-btn" onclick="exportHistoryCsv()" title="Geçerli görünümü CSV olarak dışa aktar" data-bs-toggle="tooltip">
-                        <i class="fas fa-file-export me-2"></i>CSV Dışa Aktar
-                    </button>
-                </div>
+    <main class="home h-page">
+        <section class="h-hero"><div class="h-wrap">
+            <nav class="h-crumb" aria-label="breadcrumb"><a href="/">Ana Sayfa</a><span>/</span>İşlem Geçmişi</nav>
+            <p class="h-eyebrow"><span class="h-dot"></span> Kapalı pozisyonlar</p>
+            <h1>İşlem Geçmişi ve Arşivler</h1>
+            <p class="h-lead">Kapanan her pozisyonu giriş ve çıkış fiyatı, PnL, süre ve kapanış nedeniyle gör. Sembol, yön, PnL ve tarihe göre filtrele; CSV olarak dışa aktar.</p>
+            <div class="h-cta-row">
+                <a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Windows için ücretsiz indir</a>
+                <a class="h-btn h-btn-ghost" href="#nasil"><i class="fas fa-play-circle"></i> Nasıl çalışır?</a>
             </div>
-
-            <!-- Arama & Filtreler -->
-            <div class="panel p-3 mb-3">
-                <div class="row g-3 align-items-end">
-                    <div class="col-lg-3">
-                        <label class="form-label text-main small mb-1">Sembol ile Ara</label>
-                        <input id="symbol-search" type="text" class="form-control form-control-custom" placeholder="örn: BTCUSDT" oninput="applyFilters()">
-                    </div>
-                    <div class="col-lg-3">
-                        <label class="form-label text-main small mb-1">Tarih Filtresi (Başlangıç)</label>
-                        <input id="date-start" type="date" class="form-control form-control-custom" onchange="applyFilters()">
-                    </div>
-                    <div class="col-lg-3">
-                        <label class="form-label text-main small mb-1">Tarih Filtresi (Bitiş)</label>
-                        <input id="date-end" type="date" class="form-control form-control-custom" onchange="applyFilters()">
-                    </div>
-                    <div class="col-lg-3">
-                        <label class="form-label text-main small mb-1">Sonuç Filtresi</label>
-                        <select id="outcome-filter" class="form-select form-control-custom" onchange="applyFilters()">
-                            <option value="all" selected>Tümü</option>
-                            <option value="win">Kazanç</option>
-                            <option value="loss">Kayıp</option>
-                            <option value="canceled">İptal</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="text-secondary small mt-3">
-                    İpucu: Dışa aktarmaları denetim izleri ve uyumluluk incelemeleri için kullanın. İşlem zaman damgaları 24 saat formatındadır.
-                </div>
+            <div class="h-shot"><div class="h-shot-inner">
+                <div class="h-shot-bar"><span></span><span></span><span></span><em>Sentralyx — Kapalı pozisyonlar · Sanal mod</em></div>
+                <img src="../assets/img/pages/closed-full.webp" alt="Sentralyx kapalı pozisyonlar ekranı" width="1600" height="814" fetchpriority="high">
+            </div></div>
+            <p class="h-cap">Uygulamanın gerçek ekranı, sanal modda çekilmiştir.</p>
+        </div></section>
+        <section class="h-block" id="nasil"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Nasıl çalışır?</div><h2 class="h-title">Geçmişten öğren</h2><p class="h-sub">Her kapanan işlem kaydedilir; özet kartlar toplam işlem, kazanan, kaybeden ve toplam PnL&#x27;i gösterir.</p></div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">01 · Kaydet</span><h3>Her işlem tüm ayrıntısıyla</h3><p>Kapanan pozisyonun sembolü, yönü, giriş ve çıkış fiyatı, yüzde ve USDT olarak PnL&#x27;i, süresi, açılış ve kapanış zamanı kaydedilir.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Kapanış nedeni görünür: Stop Loss, Maksimum Süre gibi</li><li><i class="fas fa-circle-check"></i>Özet: toplam işlem, kazanan, kaybeden, toplam PnL</li><li><i class="fas fa-circle-check"></i>Sanal ve gerçek işlemler aynı akışla</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/pages/closed-table.webp" alt="Kapanan işlemler tablosu" width="1400" height="420" loading="lazy"></div>
             </div>
-
-            <!-- Geçmiş Tablosu -->
-            <div class="panel">
-                <div class="table-responsive">
-                    <table class="table table-custom">
-                        <thead>
-                            <tr>
-                                <th style="min-width: 190px;">İşlem Zaman Damgası</th>
-                                <th style="min-width: 140px;">Sembol</th>
-                                <th style="min-width: 120px;">Yön</th>
-                                <th style="min-width: 120px;">Giriş Fiyatı</th>
-                                <th style="min-width: 120px;">Çıkış Fiyatı</th>
-                                <th style="min-width: 120px;">Miktar</th>
-                                <th style="min-width: 220px;">Gerçekleşmiş P&L ($/%)</th>
-                                <th style="min-width: 190px;">Kapanış Nedeni</th>
-                                <th style="min-width: 170px;">Sipariş ID</th>
-                                <th style="min-width: 150px;">Sonuç</th>
-                                <th style="min-width: 150px;">İşlem Süresi</th>
-                            </tr>
-                        </thead>
-                        <tbody id="history-tbody"></tbody>
-                    </table>
-                </div>
-                <div class="pager">
-                    <div>
-                        <span id="pager-label">0-0 / 0 işlem gösteriliyor</span>
-                    </div>
-                    <div class="d-flex gap-2">
-                        <button class="toolbar-btn" onclick="prevPage()"><i class="fas fa-chevron-left me-2"></i>Önceki</button>
-                        <button class="toolbar-btn" onclick="nextPage()">Sonraki<i class="fas fa-chevron-right ms-2"></i></button>
-                    </div>
-                </div>
+            <div class="h-step h-rev">
+                <div class="h-step-text"><span class="h-step-num">02 · Filtrele</span><h3>Aradığını bul</h3><p>Sembol arama ile Yön, PnL ve Tarih filtrelerini birlikte kullanarak belirli işlemlere odaklanabilirsin.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Yön: BUY ya da SELL</li><li><i class="fas fa-circle-check"></i>PnL: kârda ya da zararda</li><li><i class="fas fa-circle-check"></i>Tarih aralığına göre daraltma</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/pages/closed-full.webp" alt="Filtreler ve kapalı pozisyon listesi" width="1600" height="814" loading="lazy"></div>
             </div>
-
-            <div id="empty-results" style="display:none;">
-                <div class="empty-state mt-3">
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="fas fa-wave-square"></i>
-                        <span>Seçilen filtrelerle eşleşen işlem bulunamadı. Tarih aralığını ayarlayın veya sonuç filtresini temizleyin.</span>
-                    </div>
-                </div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">03 · Dışa aktar</span><h3>Kendi analizini yap</h3><p>Kayıtları CSV olarak dışa aktarıp bir tablo programında inceleyebilirsin. Genel tablo için Raporlar ekranını kullan.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>CSV dışa aktarma</li><li><i class="fas fa-circle-check"></i>Raporlar: günlük özet ve başarı oranı</li><li><i class="fas fa-circle-check"></i>Raporlarda CSV, PDF ve Excel</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/pages/reports-table.webp" alt="Günlük rapor tablosu" width="1000" height="335" loading="lazy"></div>
             </div>
-        </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Özellikler</div><h2 class="h-title">İşlem geçmişinde neler var?</h2><p class="h-sub">Ayrıntı işlem geçmişinde, genel tablo raporlarda.</p></div>
+            <div class="h-grid-3">
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-receipt"></i></div><h3>İşlem ayrıntıları</h3><p>Giriş, çıkış, PnL %, PnL USDT, süre, açılış ve kapanış zamanı.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-circle-info"></i></div><h3>Kapanış nedeni</h3><p>İşlemin neden kapandığı: stop loss, maksimum süre ve diğerleri.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-filter"></i></div><h3>Filtreler</h3><p>Sembol, yön, PnL ve tarih filtreleri.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-file-csv"></i></div><h3>CSV dışa aktarma</h3><p>Kayıtları tablo programında incelemek için dışa aktar.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-chart-pie"></i></div><h3>Özet kartlar</h3><p>Toplam işlem, kazanan ve kaybeden sayısı, toplam PnL.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-toggle-on"></i></div><h3>Sanal mod</h3><p>Sanal modda açılan işlemler de aynı akışla takip edilir.</p></div>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">SSS</div><h2 class="h-title">Sık sorulan sorular</h2></div>
+            <div class="h-faq">
+                <details open><summary>İşlem geçmişini dışa aktarabilir miyim?</summary><p>Evet. Kapalı pozisyonları CSV olarak dışa aktarabilirsin; raporlar ekranında CSV, PDF ve Excel seçenekleri de vardır.</p></details>
+                <details><summary>Kapanış nedeni ne işe yarar?</summary><p>İşlemin stop loss ile mi, süre dolduğu için mi kapandığını gösterir; stratejinin ve risk ayarlarının nasıl çalıştığını anlamana yardım eder.</p></details>
+                <details><summary>Geçmiş sonuçlar gelecek için bir gösterge midir?</summary><p>Hayır. Geçmiş sonuçlar gelecekteki sonuçların göstergesi değildir.</p></details>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Devamı</div><h2 class="h-title">İlgili sayfalar</h2></div>
+            <div class="h-related">
+                <a class="h-card h-feature" href="/reports/"><h3>Raporlar</h3><p>Tarih aralığına göre günlük özet, başarı oranı ve PnL.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/active-positions/"><h3>Açık pozisyonlar</h3><p>Açık pozisyonları SL/TP ve kâr koruma ile yönet.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/blog/sanal-modda-strateji-deneme/"><h3>Sanal modda strateji deneme</h3><p>Gerçek paraya geçmeden önce sonuçları değerlendir.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+            </div>
+        </div></section>
+        <section class="h-cta-wrap"><div class="h-wrap"><div class="h-cta">
+            <h2>Stratejini bugün sanal modda dene</h2><p>Uygulamayı indir, stratejini kur ve gerçek para kullanmadan nasıl çalıştığını gör.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Windows için ücretsiz indir</a><a class="h-btn h-btn-ghost" href="/fiyatlandirma/">Paketleri gör</a></div>
+        </div></div></section>
     </main>
 
-    <section class="seo-content">
-        <div class="container">
-            <div class="seo-inner">
-                <h2>Kapalı pozisyonlar ve işlem geçmişi</h2>
-                <p>Kapanan pozisyonlar işlem geçmişinde toplanır. Bu ekranda geçmiş işlemlerini filtreleyebilir ve CSV dosyası olarak dışa aktarabilirsin.</p>
-                <h3>Filtreleme ve CSV</h3>
-                <p>İşlemleri filtreleyerek belirli sonuçlara odaklanabilir, kayıtları CSV olarak dışa aktarıp bir tablo programında inceleyebilirsin.</p>
-                <h3>Raporlarla birlikte kullan</h3>
-                <p>Raporlar ekranı, seçtiğin tarih aralığı için günlük özet, başarı oranı, toplam ve ortalama PnL ile en iyi ve en kötü işlemi gösterir. İşlem geçmişi ayrıntıyı, raporlar genel tabloyu verir.</p>
-                <h3>Önce sanal modda dene</h3>
-                <p>Sanal mod, gerçek para kullanmadan aynı akışla çalışır. Stratejini gerçek moda geçmeden önce bu şekilde değerlendirebilirsin.</p>
-                <p class="seo-note">Geçmiş sonuçlar gelecekteki sonuçların göstergesi değildir.</p>
-            </div>
-        </div>
-    </section>
     <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        const fmtUsd = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
-        const fmtNum = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 4 });
-        const fmtPct = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
-
-        const state = {
-            all: [],
-            filtered: [],
-            page: 1,
-            pageSize: 20,
-        };
-
-        function initTooltips() {
-            const triggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            triggers.forEach((el) => new bootstrap.Tooltip(el));
-        }
-
-        function seedTrades() {
-            // DEMO VERİ - Üretim ortamında Sentralyx rapor motoru tarafından oluşturulur
-            state.all = [
-                { ts: '2026-05-06 03:12:45', symbol: 'BTCUSDT', side: 'Long', entry: 43000, exit: 43610, qty: 0.15, pnlUsd: 91.50, pnlPct: 1.42, reason: 'Take-Profit Hedefi', orderId: 'OKX-84319201', outcome: 'win', duration: '02s 14d' },
-                { ts: '2026-05-06 01:44:10', symbol: 'ETHUSDT', side: 'Short', entry: 2685, exit: 2703, qty: 1.6, pnlUsd: -28.80, pnlPct: -0.68, reason: 'Stop-Loss Tetiklendi', orderId: 'OKX-84317110', outcome: 'loss', duration: '00s 38d' },
-                { ts: '2026-05-05 22:26:33', symbol: 'SOLUSDT', side: 'Long', entry: 96.20, exit: 98.17, qty: 42, pnlUsd: 82.74, pnlPct: 2.05, reason: 'Take-Profit Hedefi', orderId: 'OKX-84300877', outcome: 'win', duration: '01s 02d' },
-                { ts: '2026-05-05 19:08:51', symbol: 'XRPUSDT', side: 'Long', entry: 0.5121, exit: 0.5159, qty: 4800, pnlUsd: 18.24, pnlPct: 0.74, reason: 'Manuel Kapanış', orderId: 'OKX-84290113', outcome: 'win', duration: '00s 51d' },
-                { ts: '2026-05-05 12:18:04', symbol: 'BNBUSDT', side: 'Short', entry: 585.10, exit: 591.66, qty: 7, pnlUsd: -45.92, pnlPct: -1.12, reason: 'Stop-Loss Tetiklendi', orderId: 'OKX-84254099', outcome: 'loss', duration: '03s 26d' },
-                { ts: '2026-05-04 18:22:19', symbol: 'ADAUSDT', side: 'Long', entry: 0.4352, exit: 0.4400, qty: 12000, pnlUsd: 57.60, pnlPct: 1.10, reason: 'Take-Profit Hedefi', orderId: 'OKX-84189018', outcome: 'win', duration: '05s 09d' },
-                { ts: '2026-05-04 13:05:02', symbol: 'LINKUSDT', side: 'Long', entry: 15.44, exit: 15.58, qty: 350, pnlUsd: 49.00, pnlPct: 0.88, reason: 'Zaman Bazlı Çıkış', orderId: 'OKX-84170122', outcome: 'win', duration: '00s 44d' },
-                { ts: '2026-05-03 10:51:20', symbol: 'DOTUSDT', side: 'Short', entry: 6.82, exit: 6.845, qty: 980, pnlUsd: 24.50, pnlPct: 0.36, reason: 'Manuel Kapanış', orderId: 'OKX-84012014', outcome: 'win', duration: '01s 17d' },
-                { ts: '2026-05-03 09:15:02', symbol: 'AVAXUSDT', side: 'Long', entry: 34.50, exit: 34.49, qty: 120, pnlUsd: -1.20, pnlPct: -0.03, reason: 'İptal (Spread Artışı)', orderId: 'OKX-84008111', outcome: 'canceled', duration: '00s 05d' },
-            ];
-
-            // Sayfalama için varyasyonlarla çoğalt (UI önizlemesi için)
-            const base = [...state.all];
-            for (let i = 0; i < 55; i++) {
-                const t = base[i % base.length];
-                const ts = new Date(`${t.ts.replace(' ', 'T')}Z`);
-                ts.setMinutes(ts.getMinutes() - (i * 11));
-                const iso = ts.toISOString().slice(0, 16).replace('T', ' ');
-                state.all.push({
-                    ...t,
-                    ts: iso,
-                    orderId: `${t.orderId.split('-')[0]}-${Number(t.orderId.split('-')[1]) + i + 1}`,
-                    pnlUsd: Number((t.pnlUsd * (0.85 + Math.random() * 0.4)).toFixed(2)),
-                    pnlPct: Number((t.pnlPct * (0.9 + Math.random() * 0.3)).toFixed(2)),
-                });
-            }
-
-            // Zaman damgasına göre azalan sırala
-            state.all.sort((a, b) => (a.ts < b.ts ? 1 : a.ts > b.ts ? -1 : 0));
-        }
-
-        function outcomeHtml(o) {
-            if (o === 'win') return `<span class="outcome-pill outcome-win"><i class="fas fa-circle-check"></i>Kazanç</span>`;
-            if (o === 'loss') return `<span class="outcome-pill outcome-loss"><i class="fas fa-circle-xmark"></i>Kayıp</span>`;
-            return `<span class="outcome-pill outcome-canceled"><i class="fas fa-ban"></i>İptal</span>`;
-        }
-
-        function sideHtml(side) {
-            if (side.toLowerCase() === 'long') return `<span class="side-badge side-long"><i class="fas fa-arrow-up"></i>Long</span>`;
-            return `<span class="side-badge side-short"><i class="fas fa-arrow-down"></i>Short</span>`;
-        }
-
-        function render() {
-            const total = state.filtered.length;
-            const startIdx = (state.page - 1) * state.pageSize;
-            const endIdx = Math.min(total, startIdx + state.pageSize);
-
-            document.getElementById('pager-label').textContent = total
-                ? `${startIdx + 1}-${endIdx} / ${total} işlem gösteriliyor`
-                : '0-0 / 0 işlem gösteriliyor';
-
-            const tbody = document.getElementById('history-tbody');
-            const empty = document.getElementById('empty-results');
-
-            if (!total) {
-                tbody.innerHTML = `
-                    <tr class="text-secondary">
-                        <td colspan="11">
-                            <div class="py-2 d-flex align-items-center gap-2">
-                                <i class="fas fa-wave-square"></i>
-                                <span>Seçilen filtrelerle eşleşen işlem bulunamadı.</span>
-                            </div>
-                        </td>
-                    </tr>
-                `;
-                empty.style.display = 'block';
-                return;
-            }
-
-            empty.style.display = 'none';
-
-            tbody.innerHTML = state.filtered.slice(startIdx, endIdx).map((t) => {
-                const pnlClass = t.pnlUsd >= 0 ? 'pnl-positive' : 'pnl-negative';
-                const pnlText = `${t.pnlUsd >= 0 ? '+' : ''}${fmtUsd.format(t.pnlUsd)} / ${t.pnlPct >= 0 ? '+' : ''}${fmtPct.format(t.pnlPct)}%`;
-                return `
-                    <tr>
-                        <td class="text-secondary mono">${t.ts}</td>
-                        <td class="fw-bold">${t.symbol}</td>
-                        <td>${sideHtml(t.side)}</td>
-                        <td class="text-main fw-bold">$${fmtNum.format(t.entry)}</td>
-                        <td class="text-main fw-bold">$${fmtNum.format(t.exit)}</td>
-                        <td class="text-secondary">${fmtNum.format(t.qty)}</td>
-                        <td class="${pnlClass}">${pnlText}</td>
-                        <td class="text-secondary">${t.reason}</td>
-                        <td class="text-secondary mono">${t.orderId}</td>
-                        <td>${outcomeHtml(t.outcome)}</td>
-                        <td class="text-secondary">${t.duration}</td>
-                    </tr>
-                `;
-            }).join('');
-
-            initTooltips();
-        }
-
-        function applyFilters() {
-            const sym = (document.getElementById('symbol-search').value || '').trim().toUpperCase();
-            const start = document.getElementById('date-start').value;
-            const end = document.getElementById('date-end').value;
-            const outcome = document.getElementById('outcome-filter').value;
-
-            state.filtered = state.all.filter((t) => {
-                if (sym && !t.symbol.includes(sym)) return false;
-                if (outcome !== 'all' && t.outcome !== outcome) return false;
-
-                if (start) {
-                    const d = t.ts.slice(0, 10);
-                    if (d < start) return false;
-                }
-                if (end) {
-                    const d = t.ts.slice(0, 10);
-                    if (d > end) return false;
-                }
-                return true;
-            });
-
-            state.page = 1;
-            render();
-        }
-
-        function prevPage() {
-            state.page = Math.max(1, state.page - 1);
-            render();
-        }
-
-        function nextPage() {
-            const maxPage = Math.max(1, Math.ceil(state.filtered.length / state.pageSize));
-            state.page = Math.min(maxPage, state.page + 1);
-            render();
-        }
-
-        function exportHistoryCsv() {
-            if (!state.filtered.length) return;
-            const header = ['İşlemZamanDamgası', 'Sembol', 'Yön', 'GirişFiyatı', 'ÇıkışFiyatı', 'Miktar', 'GerçekleşmişPnL_USD', 'GerçekleşmişPnL_Yüzde', 'KapanışNedeni', 'SiparişId', 'Sonuç', 'İşlemSüresi'];
-            const lines = [
-                header.join(','),
-                ...state.filtered.map((t) => [
-                    t.ts,
-                    t.symbol,
-                    t.side,
-                    t.entry,
-                    t.exit,
-                    t.qty,
-                    t.pnlUsd,
-                    t.pnlPct,
-                    t.reason,
-                    t.orderId,
-                    t.outcome,
-                    t.duration,
-                ].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',')),
-            ];
-
-            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `sentralyx-islem-gecmisi-${new Date().toISOString().slice(0, 10)}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            URL.revokeObjectURL(url);
-        }
-
-        function downloadTradeLogTxt() {
-            const lines = state.filtered.map((t) => {
-                const pnl = `${t.pnlUsd >= 0 ? '+' : ''}${t.pnlUsd} USD (${t.pnlPct >= 0 ? '+' : ''}${t.pnlPct}%)`;
-                return [
-                    `[${t.ts}]`,
-                    `Sembol=${t.symbol}`,
-                    `Yön=${t.side}`,
-                    `Giriş=${t.entry}`,
-                    `Çıkış=${t.exit}`,
-                    `Miktar=${t.qty}`,
-                    `GerçekleşmişPnL=${pnl}`,
-                    `Sonuç=${t.outcome.toUpperCase()}`,
-                    `Neden="${t.reason}"`,
-                    `SiparişID=${t.orderId}`,
-                    `Süre=${t.duration}`,
-                ].join(' ');
-            });
-
-            const blob = new Blob([lines.join('\n') + '\n'], { type: 'text/plain;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `sentralyx-islem-gunlugu-${new Date().toISOString().slice(0, 10)}.txt`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            URL.revokeObjectURL(url);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            seedTrades();
-            state.filtered = [...state.all];
-            initTooltips();
-            render();
-        });
-
-        fetch('../components/footer.html')
-            .then(async (response) => {
-                const buffer = await response.arrayBuffer();
-                return new TextDecoder('utf-8').decode(buffer);
-            })
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Footer yüklenemedi:', error));
+        fetch('/components/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>

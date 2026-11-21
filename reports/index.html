@@ -21,182 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 
-    <style>
-        .reports-container {
-            padding: 20px;
-            background: var(--bg-dark);
-            min-height: 100vh;
-        }
-
-        .panel {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-        }
-
-        .focus-card {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 18px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-
-        .focus-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.18);
-        }
-
-        .focus-card .label {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.9px;
-            margin-bottom: 6px;
-        }
-
-        .focus-card .value {
-            font-size: 1.85rem;
-            font-weight: 800;
-            color: var(--text-main);
-            line-height: 1.1;
-        }
-
-        .focus-card .meta {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 6px;
-        }
-
-        .focus-card .icon {
-            position: absolute;
-            right: 14px;
-            top: 14px;
-            font-size: 1.4rem;
-            color: var(--accent-blue);
-            opacity: 0.9;
-        }
-
-        .metric-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-
-        .metric-badge strong { color: var(--text-main); font-weight: 800; }
-        .metric-badge i { color: var(--accent-blue); }
-
-        .toolbar-btn {
-            padding: 9px 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-main);
-        }
-        .toolbar-btn:hover { border-color: var(--accent-blue); background: rgba(52, 152, 219, 0.12); color: white; }
-
-        .form-control-custom {
-            background: rgba(42, 49, 66, 0.3);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            border-radius: 10px;
-        }
-        .form-control-custom:focus {
-            background: rgba(42, 49, 66, 0.5);
-            border-color: var(--accent-blue);
-            color: var(--text-main);
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
-        }
-
-        .table-custom { color: var(--text-main); margin-bottom: 0; }
-        .table-custom thead { background: rgba(52, 152, 219, 0.1); border-bottom: 2px solid var(--accent-blue); }
-        .table-custom th { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; padding: 12px; border: none; }
-        .table-custom td { padding: 12px; border: none; border-bottom: 1px solid rgba(42, 49, 66, 0.3); vertical-align: middle; }
-        .table-custom tbody tr:hover { background: rgba(52, 152, 219, 0.05); box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.08); }
-
-        .strategy-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(42, 49, 66, 0.25);
-            color: var(--text-main);
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-
-        .tag-trend { border-color: rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.08); }
-        .tag-mean { border-color: rgba(52, 152, 219, 0.35); background: rgba(52, 152, 219, 0.08); }
-        .tag-break { border-color: rgba(168, 85, 247, 0.35); background: rgba(168, 85, 247, 0.08); }
-
-        .outcome-win { color: var(--signal-buy); font-weight: 800; }
-        .outcome-loss { color: var(--signal-sell); font-weight: 800; }
-
-        .chart-shell {
-            background: rgba(42, 49, 66, 0.25);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px;
-            height: 100%;
-        }
-
-        .chart-title {
-            color: var(--text-main);
-            font-weight: 800;
-            font-size: 1.05rem;
-            margin-bottom: 8px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .chart-subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 14px; }
-
-        .svg-frame {
-            width: 100%;
-            height: 260px;
-            border-radius: 10px;
-            border: 1px solid rgba(52, 152, 219, 0.18);
-            background:
-                linear-gradient(to right, rgba(52, 152, 219, 0.08) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(52, 152, 219, 0.08) 1px, transparent 1px);
-            background-size: 40px 40px;
-            overflow: hidden;
-        }
-
-        .disclaimer {
-            background: rgba(255, 193, 7, 0.08);
-            border: 1px solid rgba(255, 193, 7, 0.25);
-            border-radius: 12px;
-            padding: 14px;
-            color: var(--text-secondary);
-        }
-
-        .demo-badge {
-            background: rgba(255, 193, 7, 0.15);
-            border: 1px solid rgba(255, 193, 7, 0.4);
-            color: #ffc107;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-    </style>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -217,505 +41,85 @@
   ]
 }
     </script>
+    <link rel="stylesheet" href="../assets/css/home.css">
 </head>
 <body>
-
     <header id="main-header"></header>
-
-    <main class="reports-container">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                <div>
-                    <h1 class="text-main mb-1">Performans Analitiği ve Strateji Raporları</h1>
-                    <p class="text-secondary mb-0">Nicel performans metrikleri, kümülatif getiriler ve yürütme düzeyi raporlama <span class="demo-badge">DEMO VERİ</span></p>
-                </div>
-                <div class="d-flex gap-2 flex-wrap align-items-center">
-                    <button class="toolbar-btn" onclick="downloadPdfReport()" title="Tarayıcı yazdırma ile PDF oluştur" data-bs-toggle="tooltip">
-                        <i class="fas fa-file-pdf me-2"></i>PDF Rapor İndir
-                    </button>
-                    <button class="toolbar-btn" onclick="exportExcelData()" title="Rapor verisini dışa aktar (CSV uyumlu)" data-bs-toggle="tooltip">
-                        <i class="fas fa-file-excel me-2"></i>Excel Verisi Dışa Aktar
-                    </button>
-                </div>
+    <main class="home h-page">
+        <section class="h-hero"><div class="h-wrap">
+            <nav class="h-crumb" aria-label="breadcrumb"><a href="/">Ana Sayfa</a><span>/</span>Raporlar</nav>
+            <p class="h-eyebrow"><span class="h-dot"></span> Raporlar</p>
+            <h1>Performans Analitiği ve Strateji Raporları</h1>
+            <p class="h-lead">Seçtiğin tarih aralığı için günlük özet, başarı oranı, toplam ve ortalama PnL ile en iyi ve en kötü işlemi gör. Sonuçları CSV, PDF ya da Excel olarak dışa aktar.</p>
+            <div class="h-cta-row">
+                <a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Windows için ücretsiz indir</a>
+                <a class="h-btn h-btn-ghost" href="#nasil"><i class="fas fa-play-circle"></i> Nasıl çalışır?</a>
             </div>
-
-            <!-- Filtreler / Tarih Aralığı -->
-            <div class="panel p-3 mb-4">
-                <div class="row g-3 align-items-end">
-                    <div class="col-lg-4">
-                        <label class="form-label text-main small mb-1">Tarih Aralığı</label>
-                        <div class="d-flex gap-2 flex-wrap">
-                            <button class="toolbar-btn" onclick="setRangePreset('24h')">Son 24s</button>
-                            <button class="toolbar-btn" onclick="setRangePreset('7d')">Son 7 Gün</button>
-                            <button class="toolbar-btn" onclick="setRangePreset('30d')">Son 30 Gün</button>
-                            <button class="toolbar-btn" onclick="toggleCustomRange()">Özel Aralık</button>
-                        </div>
-                        <div class="d-flex gap-2 mt-2 flex-wrap" id="custom-range" style="display:none;">
-                            <input type="date" class="form-control form-control-custom" id="start-date" aria-label="Başlangıç tarihi">
-                            <input type="date" class="form-control form-control-custom" id="end-date" aria-label="Bitiş tarihi">
-                            <button class="toolbar-btn" onclick="applyCustomRange()"><i class="fas fa-filter me-2"></i>Uygula</button>
-                        </div>
-                        <div class="text-secondary small mt-2">
-                            Aktif aralık: <strong class="text-main" id="range-label">Son 30 Gün</strong>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <label class="form-label text-main small mb-1">Filtre: Strateji</label>
-                        <select class="form-select form-control-custom" id="strategy-filter" onchange="applyFilters()">
-                            <option value="all" selected>Tüm Stratejiler</option>
-                            <option value="trend">Puanlama Sistemi</option>
-                            <option value="mean">Çoğunluk Oylaması</option>
-                            <option value="strong">Güçlü Çoğunluk</option>
-                            <option value="break">Tam Uyum</option>
-                        </select>
-                        <div class="text-secondary small mt-2">Strateji etiketlerini performans rejimlerini ve yürütme davranışını izole etmek için kullanın.</div>
-                    </div>
-                    <div class="col-lg-4">
-                        <label class="form-label text-main small mb-1">Filtre: Varlık Sınıfı</label>
-                        <select class="form-select form-control-custom" id="asset-filter" onchange="applyFilters()">
-                            <option value="all" selected>Tümü</option>
-                            <option value="perp">USDT-Marjinal Perpetuals</option>
-                            <option value="spot">Spot</option>
-                        </select>
-                        <div class="text-secondary small mt-2">Raporlar araştırma sınıfı karşılaştırması için piyasa evrenine göre bölünebilir.</div>
-                    </div>
-                </div>
+            <div class="h-shot"><div class="h-shot-inner">
+                <div class="h-shot-bar"><span></span><span></span><span></span><em>Sentralyx — Raporlar · Sanal mod</em></div>
+                <img src="../assets/img/pages/reports-full.webp" alt="Sentralyx raporlar ekranı" width="1600" height="564" fetchpriority="high">
+            </div></div>
+            <p class="h-cap">Uygulamanın gerçek ekranı, sanal modda çekilmiştir.</p>
+        </div></section>
+        <section class="h-block" id="nasil"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Nasıl çalışır?</div><h2 class="h-title">Sonuçları günlere böl, eğilimi gör</h2><p class="h-sub">Raporlar, işlem geçmişini gün gün özetler; böylece stratejinin hangi günlerde nasıl çalıştığını görürsün.</p></div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">01 · Aralığı seç</span><h3>Tarih aralığı ve hızlı seçimler</h3><p>Başlangıç ve bitiş tarihi girebilir ya da hızlı seçimleri kullanabilirsin: son 1, 4 ve 12 saat; son 1, 3 ve 7 gün; tümü.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>AL, SAT ya da tümü</li><li><i class="fas fa-circle-check"></i>Kârda, zararda ya da tümü</li><li><i class="fas fa-circle-check"></i>Tek tıkla yenile</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/pages/reports-filters.webp" alt="Rapor tarih aralığı ve filtreleri" width="1400" height="117" loading="lazy"></div>
             </div>
-
-            <!-- Nicel Metrikler -->
-            <div class="panel p-3 mb-4">
-                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-                    <h5 class="text-main mb-0"><i class="fas fa-microscope me-2"></i>Performans Metrikleri</h5>
-                    <div class="d-flex gap-2 flex-wrap">
-                        <span class="metric-badge"><i class="fas fa-percent"></i><span>Kazanma Oranı:</span> <strong id="m-winrate">—</strong></span>
-                        <span class="metric-badge"><i class="fas fa-scale-balanced"></i><span>Kâr Faktörü:</span> <strong id="m-pf">—</strong></span>
-                        <span class="metric-badge"><i class="fas fa-wave-square"></i><span>Sharpe Oranı:</span> <strong id="m-sharpe">—</strong></span>
-                        <span class="metric-badge"><i class="fas fa-chart-area"></i><span>Maksimum Düşüş:</span> <strong id="m-mdd">—</strong></span>
-                    </div>
-                </div>
-                <div class="row g-3 mt-1">
-                    <div class="col-md-3">
-                        <div class="focus-card">
-                            <div class="icon"><i class="fas fa-sack-dollar"></i></div>
-                            <div class="label">Net Kâr</div>
-                            <div class="value" id="k-net">$0</div>
-                            <div class="meta">Seçilen aralıkta toplam</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="focus-card">
-                            <div class="icon"><i class="fas fa-layer-group"></i></div>
-                            <div class="label">Toplam İşlem</div>
-                            <div class="value" id="k-trades">0</div>
-                            <div class="meta">Kaydedilen yürütmeler</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="focus-card">
-                            <div class="icon"><i class="fas fa-shield-halved"></i></div>
-                            <div class="label">İyileşme Faktörü</div>
-                            <div class="value" id="k-recovery">0.00</div>
-                            <div class="meta">Net Kâr / Maksimum Düşüş</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="focus-card">
-                            <div class="icon"><i class="fas fa-calculator"></i></div>
-                            <div class="label">Beklenti</div>
-                            <div class="value" id="k-exp">0.00%</div>
-                            <div class="meta">İşlem başına ortalama avantaj</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="h-step h-rev">
+                <div class="h-step-text"><span class="h-step-num">02 · Oku</span><h3>Günlük özet tablosu</h3><p>Her gün için işlem sayısı, başarı oranı, toplam PnL, ortalama PnL, en iyi ve en kötü işlem tek satırda görünür.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Başarı oranı yüzde olarak</li><li><i class="fas fa-circle-check"></i>Toplam ve ortalama PnL</li><li><i class="fas fa-circle-check"></i>En iyi ve en kötü işlem</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/pages/reports-table.webp" alt="Günlük rapor tablosu" width="1000" height="335" loading="lazy"></div>
             </div>
-
-            <!-- Grafikler -->
-            <div class="row g-3 mb-4">
-                <div class="col-lg-8">
-                    <div class="chart-shell">
-                        <div class="chart-title">
-                            <span><i class="fas fa-chart-line me-2"></i>Özsermaye Eğrisi</span>
-                            <span class="text-secondary small">Kümülatif Getiriler</span>
-                        </div>
-                        <div class="chart-subtitle">Seçilen aralıktaki gerçekleşmiş işlem sonuçlarına dayalı özsermayenin zaman içindeki büyümesi.</div>
-                        <div class="svg-frame" aria-label="Özsermaye eğrisi grafik yer tutucusu">
-                            <svg id="equity-svg" viewBox="0 0 1000 260" width="100%" height="260" role="img" aria-label="Özsermaye Eğrisi"></svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="chart-shell">
-                        <div class="chart-title">
-                            <span><i class="fas fa-chart-pie me-2"></i>İşlem Dağılımı</span>
-                            <span class="text-secondary small">Long vs Short</span>
-                        </div>
-                        <div class="chart-subtitle">Yön bazında yürütme karışımı. Yanlılık analizi ve rejim tespiti için kullanışlıdır.</div>
-                        <div class="svg-frame" aria-label="İşlem dağılımı grafik yer tutucusu">
-                            <svg id="dist-svg" viewBox="0 0 1000 260" width="100%" height="260" role="img" aria-label="İşlem Dağılımı"></svg>
-                        </div>
-                    </div>
-                </div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">03 · Dışa aktar</span><h3>Raporu paylaş ya da sakla</h3><p>Raporları CSV, PDF ya da Excel olarak dışa aktarabilir, işlem ayrıntılarını işlem geçmişinden inceleyebilirsin.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>CSV, PDF ve Excel</li><li><i class="fas fa-circle-check"></i>İşlem ayrıntıları için kapalı pozisyonlar</li><li><i class="fas fa-circle-check"></i>Sanal ve gerçek mod sonuçları</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/pages/closed-table.webp" alt="Kapalı pozisyon ayrıntıları" width="1400" height="420" loading="lazy"></div>
             </div>
-
-            <!-- Detaylı Günlükler -->
-            <div class="panel">
-                <div class="p-3 border-bottom" style="border-color: var(--border-color) !important;">
-                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-                        <h5 class="text-main mb-0"><i class="fas fa-file-lines me-2"></i>Detaylı Günlükler</h5>
-                        <div class="text-secondary small">Denetim tarzı yürütmeler, normalize getiriler ve tutma süresi.</div>
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-custom">
-                        <thead>
-                            <tr>
-                                <th style="min-width: 180px;">Tarih/Saat</th>
-                                <th style="min-width: 220px;">Strateji Adı</th>
-                                <th style="min-width: 140px;">Sembol</th>
-                                <th style="min-width: 150px;">Sonuç</th>
-                                <th style="min-width: 160px;">Net Getiri (%)</th>
-                                <th style="min-width: 160px;">Süre</th>
-                            </tr>
-                        </thead>
-                        <tbody id="logs-tbody"></tbody>
-                    </table>
-                </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Özellikler</div><h2 class="h-title">Raporlarda neler var?</h2><p class="h-sub">Özet, filtre ve dışa aktarma tek ekranda.</p></div>
+            <div class="h-grid-3">
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-calendar-days"></i></div><h3>Tarih aralığı</h3><p>Elle tarih girme ya da hızlı seçimler.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-percent"></i></div><h3>Başarı oranı</h3><p>Günlük ve toplam başarı oranı.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-coins"></i></div><h3>PnL özeti</h3><p>Toplam PnL, ortalama PnL, en iyi ve en kötü işlem.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-filter"></i></div><h3>Filtreler</h3><p>AL/SAT ve kârda/zararda filtreleri.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-file-export"></i></div><h3>Dışa aktarma</h3><p>CSV, PDF ve Excel.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-chart-pie"></i></div><h3>Özet kartlar</h3><p>Toplam işlem, kazanan, kaybeden ve toplam PnL.</p></div>
             </div>
-
-            <div class="disclaimer mt-4">
-                <div class="d-flex align-items-start gap-3">
-                    <i class="fas fa-triangle-exclamation mt-1" style="color: #ffc107;"></i>
-                    <div class="small">
-                        Gösterilen performans metrikleri UI önizlemesi için gösterge niteliğindedir. Geçmiş performans gelecekteki sonuçların göstergesi değildir.
-                        Bu sayfayı kontrollü koşullar altında motor davranışını ve raporlama bütünlüğünü doğrulamak için kullanın.
-                    </div>
-                </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">SSS</div><h2 class="h-title">Sık sorulan sorular</h2></div>
+            <div class="h-faq">
+                <details open><summary>Raporları hangi formatlarda dışa aktarabilirim?</summary><p>CSV, PDF ve Excel olarak dışa aktarabilirsin.</p></details>
+                <details><summary>Raporlar gerçek ve sanal işlemleri ayırır mı?</summary><p>Raporlar, kullandığın moddaki işlem geçmişini özetler. Sanal mod sonuçları gerçek işlem sonucu değildir.</p></details>
+                <details><summary>Raporlar gelecekteki performansı gösterir mi?</summary><p>Hayır. Raporlar geçmiş işlemleri özetler; gelecekteki sonuçları garanti etmez.</p></details>
             </div>
-        </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Devamı</div><h2 class="h-title">İlgili sayfalar</h2></div>
+            <div class="h-related">
+                <a class="h-card h-feature" href="/history/"><h3>İşlem geçmişi</h3><p>Her kapanan işlemin ayrıntısı ve kapanış nedeni.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/backtest/"><h3>Backtest</h3><p>Stratejini geçmiş veride test et.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/blog/backtest-sonuclari-nasil-okunur/"><h3>Backtest sonuçları nasıl okunur?</h3><p>Başarı oranı, düşüş ve kâr faktörünü doğru yorumla.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+            </div>
+        </div></section>
+        <section class="h-cta-wrap"><div class="h-wrap"><div class="h-cta">
+            <h2>Stratejini bugün sanal modda dene</h2><p>Uygulamayı indir, stratejini kur ve gerçek para kullanmadan nasıl çalıştığını gör.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Windows için ücretsiz indir</a><a class="h-btn h-btn-ghost" href="/fiyatlandirma/">Paketleri gör</a></div>
+        </div></div></section>
     </main>
 
     <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        const fmtUsd = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
-        const fmtNum = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
-
-        const state = {
-            preset: '30d',
-            strategy: 'all',
-            asset: 'all',
-            logs: [],
-            equity: [],
-            dist: { long: 0, short: 0 },
-        };
-
-        function initTooltips() {
-            const triggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            triggers.forEach((el) => new bootstrap.Tooltip(el));
-        }
-
-        function seedData() {
-            // Demo günlükler (veri bilimi aroması). Üretimde bu Sentralyx rapor motoru tarafından oluşturulur.
-            state.logs = [
-                { ts: '2026-05-06 03:12:45', strat: { key: 'trend', label: 'Puanlama Sistemi' }, symbol: 'BTCUSDT', outcome: 'Kazanç', ret: 1.42, dur: '02s 14d', asset: 'perp' },
-                { ts: '2026-05-06 01:44:10', strat: { key: 'mean', label: 'Çoğunluk Oylaması' }, symbol: 'ETHUSDT', outcome: 'Kayıp', ret: -0.68, dur: '00s 38d', asset: 'perp' },
-                { ts: '2026-05-05 22:26:33', strat: { key: 'break', label: 'Tam Uyum' }, symbol: 'SOLUSDT', outcome: 'Kazanç', ret: 2.05, dur: '01s 02d', asset: 'perp' },
-                { ts: '2026-05-05 19:08:51', strat: { key: 'trend', label: 'Puanlama Sistemi' }, symbol: 'XRPUSDT', outcome: 'Kazanç', ret: 0.74, dur: '00s 51d', asset: 'perp' },
-                { ts: '2026-05-05 12:18:04', strat: { key: 'mean', label: 'Çoğunluk Oylaması' }, symbol: 'BNBUSDT', outcome: 'Kayıp', ret: -1.12, dur: '03s 26d', asset: 'perp' },
-                { ts: '2026-05-04 18:22:19', strat: { key: 'strong', label: 'Güçlü Çoğunluk' }, symbol: 'ADAUSDT', outcome: 'Kazanç', ret: 1.10, dur: '05s 09d', asset: 'spot' },
-                { ts: '2026-05-04 13:05:02', strat: { key: 'break', label: 'Tam Uyum' }, symbol: 'LINKUSDT', outcome: 'Kazanç', ret: 0.88, dur: '00s 44d', asset: 'perp' },
-                { ts: '2026-05-03 10:51:20', strat: { key: 'strong', label: 'Güçlü Çoğunluk' }, symbol: 'DOTUSDT', outcome: 'Kazanç', ret: 0.36, dur: '01s 17d', asset: 'perp' },
-            ];
-        }
-
-        function computeEquityCurve(filtered) {
-            // Özsermaye 10,000'den başlar ve işlem getirileriyle bileşikleşir (% olarak).
-            let equity = 10000;
-            const points = [];
-            filtered.forEach((t) => {
-                equity = equity * (1 + (t.ret / 100));
-                points.push(equity);
-            });
-            return points.length ? points : [10000];
-        }
-
-        function computeDistribution(filtered) {
-            // Demo dağılım: yönü strateji türünden vekil olarak çıkarın
-            let long = 0;
-            let short = 0;
-            filtered.forEach((t) => {
-                if (t.strat.key === 'mean') short += 1;
-                else long += 1;
-            });
-            return { long, short };
-        }
-
-        function computeMetrics(filtered, equityCurve) {
-            const trades = filtered.length;
-            const wins = filtered.filter((t) => t.outcome === 'Kazanç').length;
-            const losses = trades - wins;
-            const winRate = trades ? (wins / trades) * 100 : 0;
-
-            const grossProfit = filtered.filter((t) => t.ret > 0).reduce((a, t) => a + t.ret, 0);
-            const grossLoss = Math.abs(filtered.filter((t) => t.ret < 0).reduce((a, t) => a + t.ret, 0));
-            const profitFactor = grossLoss > 0 ? grossProfit / grossLoss : grossProfit > 0 ? 9.99 : 0;
-
-            const netReturnPct = filtered.reduce((a, t) => a + t.ret, 0);
-            const netProfitUsd = 10000 * (equityCurve[equityCurve.length - 1] / 10000 - 1);
-
-            // Maksimum düşüş (özsermaye eğrisinde basit tepe-çukur)
-            let peak = equityCurve[0];
-            let mdd = 0;
-            equityCurve.forEach((v) => {
-                peak = Math.max(peak, v);
-                const dd = peak > 0 ? ((peak - v) / peak) * 100 : 0;
-                mdd = Math.max(mdd, dd);
-            });
-
-            const recovery = mdd > 0 ? (netReturnPct / mdd) : netReturnPct > 0 ? 9.99 : 0;
-            const expectancy = trades ? (netReturnPct / trades) : 0;
-
-            // Sharpe oranı (basitleştirilmiş): işlem getirilerinin ortalama / std
-            const mean = trades ? netReturnPct / trades : 0;
-            const variance = trades ? filtered.reduce((a, t) => a + Math.pow(t.ret - mean, 2), 0) / trades : 0;
-            const std = Math.sqrt(variance);
-            const sharpe = std > 0 ? mean / std : mean > 0 ? 2.5 : 0;
-
-            return {
-                trades,
-                winRate,
-                profitFactor,
-                sharpe,
-                maxDrawdown: mdd,
-                netProfitUsd,
-                recovery,
-                expectancy,
-            };
-        }
-
-        function badgeHtml(strat) {
-            const cls = strat.key === 'trend' ? 'tag-trend' : strat.key === 'mean' ? 'tag-mean' : 'tag-break';
-            return `<span class="strategy-badge ${cls}"><i class="fas fa-tag" style="color: var(--accent-blue);"></i>${strat.label}</span>`;
-        }
-
-        function renderLogs(filtered) {
-            const tbody = document.getElementById('logs-tbody');
-            if (!filtered.length) {
-                tbody.innerHTML = `
-                    <tr class="text-secondary">
-                        <td colspan="6">
-                            <div class="py-2 d-flex align-items-center gap-2">
-                                <i class="fas fa-wave-square"></i>
-                                <span>Seçilen aralıkta yürütme yok. Filtreleri ayarlayın veya zaman penceresini genişletin.</span>
-                            </div>
-                        </td>
-                    </tr>
-                `;
-                return;
-            }
-
-            tbody.innerHTML = filtered.map((t) => {
-                const outcomeClass = t.outcome === 'Kazanç' ? 'outcome-win' : 'outcome-loss';
-                const retClass = t.ret >= 0 ? 'outcome-win' : 'outcome-loss';
-                return `
-                    <tr>
-                        <td class="text-secondary">${t.ts}</td>
-                        <td>${badgeHtml(t.strat)}</td>
-                        <td class="fw-bold">${t.symbol}</td>
-                        <td class="${outcomeClass}">${t.outcome}</td>
-                        <td class="${retClass}">${t.ret >= 0 ? '+' : ''}${fmtNum.format(t.ret)}%</td>
-                        <td class="text-secondary">${t.dur}</td>
-                    </tr>
-                `;
-            }).join('');
-        }
-
-        function renderEquitySvg(curve) {
-            const svg = document.getElementById('equity-svg');
-            if (!svg) return;
-
-            const w = 1000;
-            const h = 260;
-            const pad = 18;
-            const min = Math.min(...curve);
-            const max = Math.max(...curve);
-            const span = Math.max(1e-9, max - min);
-
-            const points = curve.map((v, i) => {
-                const x = pad + (i / Math.max(1, curve.length - 1)) * (w - pad * 2);
-                const y = pad + (1 - ((v - min) / span)) * (h - pad * 2);
-                return `${x.toFixed(2)},${y.toFixed(2)}`;
-            }).join(' ');
-
-            const last = curve[curve.length - 1];
-            const first = curve[0];
-            const up = last >= first;
-            const stroke = up ? 'var(--signal-buy)' : 'var(--signal-sell)';
-
-            svg.innerHTML = `
-                <defs>
-                    <linearGradient id="eqFill" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="${up ? '#2FB17F' : '#E74C3C'}" stop-opacity="0.35"/>
-                        <stop offset="100%" stop-color="${up ? '#2FB17F' : '#E74C3C'}" stop-opacity="0.02"/>
-                    </linearGradient>
-                </defs>
-                <polyline fill="none" stroke="${stroke}" stroke-width="3" points="${points}" />
-                <polyline fill="url(#eqFill)" stroke="none" points="${points} ${w - pad},${h - pad} ${pad},${h - pad}" opacity="0.8"/>
-                <text x="${pad}" y="22" fill="var(--text-secondary)" font-size="12">Başlangıç: ${fmtUsd.format(first)}</text>
-                <text x="${w - pad}" y="22" fill="var(--text-secondary)" font-size="12" text-anchor="end">Bitiş: ${fmtUsd.format(last)}</text>
-            `;
-        }
-
-        function renderDistributionSvg(dist) {
-            const svg = document.getElementById('dist-svg');
-            if (!svg) return;
-
-            const total = Math.max(1, dist.long + dist.short);
-            const longPct = (dist.long / total) * 100;
-            const shortPct = (dist.short / total) * 100;
-
-            const w = 1000;
-            const h = 260;
-            const pad = 22;
-
-            const barW = 300;
-            const gap = 120;
-            const baseY = 210;
-            const maxH = 140;
-
-            const longH = (longPct / 100) * maxH;
-            const shortH = (shortPct / 100) * maxH;
-
-            const longX = (w / 2) - barW - (gap / 2);
-            const shortX = (w / 2) + (gap / 2);
-
-            svg.innerHTML = `
-                <rect x="${longX}" y="${baseY - longH}" width="${barW}" height="${longH}" rx="12" fill="rgba(46, 204, 113, 0.25)" stroke="rgba(46, 204, 113, 0.55)" />
-                <rect x="${shortX}" y="${baseY - shortH}" width="${barW}" height="${shortH}" rx="12" fill="rgba(231, 76, 60, 0.25)" stroke="rgba(231, 76, 60, 0.55)" />
-
-                <text x="${longX + (barW / 2)}" y="${baseY + 28}" fill="var(--text-main)" font-size="14" text-anchor="middle">Long</text>
-                <text x="${shortX + (barW / 2)}" y="${baseY + 28}" fill="var(--text-main)" font-size="14" text-anchor="middle">Short</text>
-
-                <text x="${longX + (barW / 2)}" y="${baseY - longH - 10}" fill="var(--signal-buy)" font-size="16" font-weight="800" text-anchor="middle">${fmtNum.format(longPct)}%</text>
-                <text x="${shortX + (barW / 2)}" y="${baseY - shortH - 10}" fill="var(--signal-sell)" font-size="16" font-weight="800" text-anchor="middle">${fmtNum.format(shortPct)}%</text>
-
-                <text x="${pad}" y="24" fill="var(--text-secondary)" font-size="12">İşlem: ${dist.long + dist.short}</text>
-            `;
-        }
-
-        function renderDashboard() {
-            const filtered = state.logs.filter((t) => (state.strategy === 'all' || t.strat.key === state.strategy) && (state.asset === 'all' || t.asset === state.asset));
-            state.equity = computeEquityCurve(filtered);
-            state.dist = computeDistribution(filtered);
-
-            const m = computeMetrics(filtered, state.equity);
-            document.getElementById('m-winrate').textContent = `${fmtNum.format(m.winRate)}%`;
-            document.getElementById('m-pf').textContent = fmtNum.format(m.profitFactor);
-            document.getElementById('m-sharpe').textContent = fmtNum.format(m.sharpe);
-            document.getElementById('m-mdd').textContent = `${fmtNum.format(m.maxDrawdown)}%`;
-
-            document.getElementById('k-net').textContent = fmtUsd.format(m.netProfitUsd);
-            document.getElementById('k-trades').textContent = String(m.trades);
-            document.getElementById('k-recovery').textContent = fmtNum.format(m.recovery);
-            document.getElementById('k-exp').textContent = `${m.expectancy >= 0 ? '+' : ''}${fmtNum.format(m.expectancy)}%`;
-
-            renderEquitySvg(state.equity);
-            renderDistributionSvg(state.dist);
-            renderLogs(filtered);
-
-            initTooltips();
-        }
-
-        function setRangePreset(preset) {
-            state.preset = preset;
-            const label = preset === '24h' ? 'Son 24s' : preset === '7d' ? 'Son 7 Gün' : 'Son 30 Gün';
-            document.getElementById('range-label').textContent = label;
-            document.getElementById('custom-range').style.display = 'none';
-            showToast(`Aralık güncellendi: ${label}`, 'info');
-            renderDashboard();
-        }
-
-        function toggleCustomRange() {
-            const el = document.getElementById('custom-range');
-            el.style.display = el.style.display === 'none' ? 'flex' : 'none';
-        }
-
-        function applyCustomRange() {
-            const s = document.getElementById('start-date').value;
-            const e = document.getElementById('end-date').value;
-            if (!s || !e) {
-                showToast('Başlangıç ve bitiş tarihini seçin.', 'warning');
-                return;
-            }
-            document.getElementById('range-label').textContent = `Özel Aralık (${s} → ${e})`;
-            showToast('Özel aralık uygulandı (demo).', 'success');
-            renderDashboard();
-        }
-
-        function applyFilters() {
-            state.strategy = document.getElementById('strategy-filter').value;
-            state.asset = document.getElementById('asset-filter').value;
-            renderDashboard();
-        }
-
-        function exportExcelData() {
-            // CSV dışa aktarma (Excel uyumlu).
-            const header = ['DateTime', 'Strategy', 'Symbol', 'Outcome', 'NetReturnPct', 'Duration', 'AssetClass'];
-            const lines = [
-                header.join(','),
-                ...state.logs.map((t) => [
-                    t.ts,
-                    t.strat.label,
-                    t.symbol,
-                    t.outcome,
-                    t.ret,
-                    t.dur,
-                    t.asset,
-                ].map((v) => `"${String(v).replace(/\"/g, '""')}"`).join(',')),
-            ];
-
-            const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `sentralyx-reports-${new Date().toISOString().slice(0, 10)}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            URL.revokeObjectURL(url);
-        }
-
-        function downloadPdfReport() {
-            // Yerleşik tarayıcı yazdırma-PDF iş akışını kullanır.
-            window.print();
-        }
-
-        function showToast(message, type) {
-            const toast = document.createElement('div');
-            const bg = type === 'success' ? 'bg-success' : type === 'warning' ? 'bg-warning' : type === 'info' ? 'bg-info' : 'bg-danger';
-            toast.className = `alert ${bg} position-fixed top-0 end-0 m-3`;
-            toast.style.zIndex = '9999';
-            toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>${message}`;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2400);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            seedData();
-            initTooltips();
-            renderDashboard();
-        });
-
-        fetch('../components/footer.html')
-            .then(async (response) => {
-                const buffer = await response.arrayBuffer();
-                return new TextDecoder('utf-8').decode(buffer);
-            })
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Footer yüklenemedi:', error));
+        fetch('/components/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>
