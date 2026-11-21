@@ -59,879 +59,118 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
-    
-    <style>
-        /* Override Bootstrap with Sentralyx variables */
-        .navbar {
-            background: rgba(11, 17, 27, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-        }
-        .navbar-brand img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 140px 0 80px;
-            background: radial-gradient(circle at top right, rgba(47, 177, 127, 0.15), transparent);
-            text-align: center;
-            position: relative;
-        }
-        .hero .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, var(--accent-green), var(--accent-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0;
-        }
-
-        /* Screenshot Styling */
-        .terminal-img-wrapper {
-            position: relative;
-            display: inline-block;
-            margin: 50px auto 0;
-            max-width: 1000px;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
-            background: var(--bg-dark);
-        }
-        
-        .terminal-img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
-            transform: scale(1.02);
-            transition: transform 0.3s ease;
-        }
-        
-        .terminal-img-wrapper::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 80px;
-            background: linear-gradient(to bottom, transparent, rgba(11, 17, 27, 0.8));
-            pointer-events: none;
-        }
-        
-        .terminal-img-wrapper:hover {
-            border-color: rgba(255,255,255,0.2);
-            box-shadow: 0 50px 120px rgba(0,0,0,0.7);
-        }
-        
-        .terminal-img-wrapper:hover .terminal-img {
-            transform: scale(1.03);
-        }
-
-        /* Sections */
-        .section-padding { padding: 80px 0; }
-        
-        /* Terminal Feature Cards */
-        .terminal-feature-card {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            padding: 30px;
-            height: 100%;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .terminal-feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
-            border-color: var(--accent-blue);
-        }
-        
-        .terminal-feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
-            transition: left 0.5s;
-        }
-        
-        .terminal-feature-card:hover::before {
-            left: 100%;
-        }
-        
-        .feature-icon { 
-            color: var(--accent-blue); 
-            font-size: 2.5rem; 
-            margin-bottom: 20px;
-            display: block;
-        }
-        
-        .feature-title {
-            color: var(--text-main);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .feature-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-        
-        .feature-action-btn {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .feature-action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-            color: white;
-        }
-        
-        /* Hero Buttons Common Styles */
-        .hero-main-btn,
-        .hero-secondary-btn {
-            padding: 0 30px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-            width: 360px;
-            max-width: 100%;
-            height: 56px;
-            box-sizing: border-box;
-            white-space: nowrap;
-        }
-
-        .hero-main-btn i,
-        .hero-secondary-btn i {
-            font-size: 1.1rem;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-
-        .hero-main-btn {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            border: none;
-            color: white;
-            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
-        }
-
-        .hero-secondary-btn {
-            background: transparent;
-            border: 1px solid #3DD9C9;
-            color: white;
-        }
-
-        /* Hero Buttons Wrapper */
-        .hero-buttons-wrapper {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        /* Supported Exchanges Section */
-        .supported-exchanges {
-            padding: 60px 0;
-            background: linear-gradient(180deg, rgba(11, 17, 27, 0) 0%, rgba(11, 17, 27, 0.3) 50%, rgba(11, 17, 27, 0) 100%);
-            text-align: center;
-        }
-
-        .supported-exchanges h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 40px;
-            background: linear-gradient(45deg, var(--accent-green), var(--accent-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .exchanges-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        .exchange-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .exchange-logo img {
-            width: 180px;
-            height: auto;
-            filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
-            transition: all 0.3s ease;
-            opacity: 0.8;
-        }
-
-        .exchange-logo:hover img {
-            filter: brightness(0) invert(1) drop-shadow(0 0 30px rgba(61, 217, 201, 0.6));
-            transform: translateY(-5px) scale(1.05);
-            opacity: 1;
-        }
-
-        .exchange-logo span {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .hero-main-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
-            color: white;
-        }
-
-        .hero-secondary-btn:hover {
-            background: linear-gradient(135deg, var(--accent-blue), var(--signal-buy));
-            border-color: transparent;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(61, 217, 201, 0.4);
-        }
-
-        .footer {
-            border-top: 1px solid var(--border-color);
-            padding: 40px 0;
-            color: var(--text-secondary);
-        }
-        
-        /* Footer Social Media Links */
-        .social-link-footer {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-        
-        .social-link-footer:hover {
-            transform: translateY(-3px);
-        }
-        
-        /* Telegram - Original Blue */
-        .telegram-link-footer:hover {
-            color: #0088cc;
-            filter: drop-shadow(0 0 10px rgba(0, 136, 204, 0.5));
-        }
-        
-        /* X (Twitter) - Electric Blue */
-        .x-link-footer:hover {
-            color: #1DA1F2;
-            filter: drop-shadow(0 0 10px rgba(29, 161, 242, 0.5));
-        }
-        
-        /* YouTube - Classic Red */
-        .youtube-link-footer:hover {
-            color: #ff0000;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
-        }
-        
-        /* Instagram - Pink-Purple Gradient */
-        .instagram-link-footer:hover {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            filter: drop-shadow(0 0 10px rgba(228, 64, 95, 0.5));
-        }
-        
-        /* Smooth Scroll */
-        html { scroll-behavior: smooth; }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            /* Hero Section Mobile */
-            .hero {
-                padding: 100px 0 60px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem !important;
-                line-height: 1.2;
-            }
-            
-            .hero .lead {
-                font-size: 1rem;
-                margin-bottom: 2rem;
-            }
-            
-            .hero-buttons-wrapper {
-                flex-direction: column;
-                gap: 12px;
-                width: 100%;
-            }
-
-            .beta-trust-indicators {
-                flex-direction: column;
-                gap: 8px;
-                font-size: 0.75rem;
-            }
-
-            .beta-trust-indicators span {
-                display: block;
-                margin: 4px 0 !important;
-            }
-
-            .hero-main-btn,
-            .hero-secondary-btn {
-                width: 100%;
-                max-width: 360px;
-                height: 50px;
-                padding: 0 30px;
-                white-space: nowrap;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                line-height: 1;
-            }
-
-            .hero-main-btn i,
-            .hero-secondary-btn i {
-                margin-right: 12px;
-                flex-shrink: 0;
-            }
-            
-            .terminal-img-wrapper {
-                max-width: 95vw;
-                margin: 50px auto 0;
-                border-radius: 12px;
-            }
-            
-            .terminal-img-wrapper::after {
-                height: 60px;
-                background: linear-gradient(to bottom, transparent, rgba(11, 17, 27, 0.9));
-            }
-            
-            .terminal-img {
-                transform: scale(1.02);
-            }
-            
-            /* Sections Mobile */
-            .section-padding {
-                padding: 60px 0;
-            }
-            
-            /* Feature Cards Mobile */
-            .terminal-feature-card {
-                padding: 25px 20px;
-                margin-bottom: 1.5rem;
-            }
-            
-            .feature-icon {
-                font-size: 2rem;
-                margin-bottom: 15px;
-            }
-            
-            .feature-title {
-                font-size: 1.1rem;
-                margin-bottom: 12px;
-                line-height: 1.3;
-            }
-            
-            .feature-description {
-                font-size: 0.9rem;
-                line-height: 1.5;
-                margin-bottom: 20px;
-            }
-            
-            .feature-action-btn {
-                padding: 12px 20px;
-                font-size: 0.9rem;
-                display: block;
-                width: 100%;
-                text-align: center;
-            }
-            
-            /* Quick Navigation Mobile */
-            .panel-dark {
-                padding: 1.5rem;
-            }
-            
-            .btn-sentralyx-start,
-            .btn-sentralyx-pause,
-            .btn-sentralyx-stop {
-                padding: 12px 20px;
-                font-size: 0.9rem;
-                margin-bottom: 0.75rem;
-                display: block;
-                width: 100%;
-            }
-        }
-        
-        /* Prevent Horizontal Scroll */
-        * {
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-        
-        body {
-            overflow-x: hidden;
-            min-width: 320px;
-        }
-        
-        .container {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        
-        /* Typography Mobile Optimizations */
-        @media (max-width: 768px) {
-            body {
-                font-size: 16px;
-                line-height: 1.5;
-            }
-            
-            h1, h2, h3, h4, h5, h6 {
-                font-size: clamp(1.2rem, 4vw, 2rem);
-                line-height: 1.3;
-            }
-            
-            p, .lead {
-                font-size: clamp(0.9rem, 3vw, 1rem);
-                line-height: 1.6;
-            }
-            
-            .text-secondary {
-                font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-            }
-        }
-        
-        /* Touch Targets for Mobile */
-        @media (max-width: 768px) {
-            .btn, .nav-link, .dropdown-item, .feature-action-btn {
-                min-height: 44px;
-                min-width: 44px;
-                padding: 12px 16px;
-            }
-            
-            .navbar-toggler {
-                min-height: 44px;
-                min-width: 44px;
-            }
-
-            /* Supported Exchanges Mobile */
-            .supported-exchanges {
-                padding: 40px 0;
-            }
-
-            .supported-exchanges h2 {
-                font-size: 1.5rem;
-                margin-bottom: 30px;
-            }
-
-            .exchanges-logos {
-                gap: 40px;
-            }
-
-            .exchange-logo img {
-                width: 140px;
-            }
-
-            .exchange-logo span {
-                font-size: 0.8rem;
-            }
-        }
-    
-
-        /* Unified multilingual hero layout */
-        .hero {
-            padding: 124px 0 64px;
-            text-align: center;
-            position: relative;
-        }
-        .hero .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 22px;
-        }
-        .hero h1 {
-            max-width: 980px;
-            font-size: clamp(2.4rem, 4.4vw, 3rem);
-            line-height: 1.15;
-            margin: 0 auto;
-            text-align: center;
-            font-weight: 700;
-        }
-        .hero .lead {
-            max-width: 720px;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin: 0 auto;
-        }
-        .hero-buttons-wrapper {
-            display: flex;
-            gap: 16px;
-            width: 100%;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-        .hero-main-btn,
-        .hero-secondary-btn {
-            width: 360px;
-            max-width: 100%;
-            min-height: 56px;
-            height: auto;
-            padding: 0 24px;
-            line-height: 1.2;
-            text-align: center;
-            white-space: normal;
-            box-sizing: border-box;
-        }
-        .terminal-img-wrapper {
-            max-width: 1000px;
-            width: 100%;
-            margin: 50px auto 0;
-        }
-        @media (max-width: 768px) {
-            .hero {
-                padding: 96px 0 56px;
-            }
-            .hero h1 {
-                max-width: 100%;
-                font-size: 1.9rem !important;
-                line-height: 1.2;
-                margin: 0 auto;
-            }
-            .hero .lead {
-                max-width: 100%;
-                font-size: 1.05rem;
-                line-height: 1.7;
-                margin: 0 auto;
-            }
-            .hero-buttons-wrapper {
-                flex-direction: column;
-                gap: 12px;
-                width: 100%;
-                justify-content: center;
-                align-items: center;
-            }
-            .hero-main-btn,
-            .hero-secondary-btn {
-                width: 100%;
-                max-width: 360px;
-                min-height: 50px;
-                padding: 0 24px;
-                white-space: normal;
-            }
-            .terminal-img-wrapper {
-                max-width: 95vw;
-                margin: 50px auto 0;
-                border-radius: 12px;
-            }
-        }
-
-    </style>
+    <link rel="stylesheet" href="../assets/css/home.css">
 </head>
 <body>
-
     <header id="main-header"></header>
-
-    <header class="hero">
-        <div class="container">
-            <h1 class="display-3">Crypto Trading Terminal: Scanner, Backtest and Strategy Automation on One Screen</h1>
-            <p class="lead text-secondary mb-0">Continuous market scanning, no-code strategy creation, Multi Time Frame (MTF) filtering, advanced backtest, risk management, and open/closed position tracking for an advanced trading experience.</p>
-            <div class="hero-buttons-wrapper">
-                <a href="scanner/" class="hero-main-btn">
-                    <i class="fas fa-rocket"></i> Explore Terminal
-                </a>
-                <a href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download class="hero-secondary-btn">
-                    <i class="fas fa-download"></i> Download for Windows
-                </a>
-                <a href="https://t.me/Sentralyx" target="_blank" rel="noopener" class="hero-secondary-btn">
-                    <i class="fab fa-telegram-plane"></i> Join Telegram Community
-                </a>
+    <main class="home">
+        <section class="h-hero">
+            <div class="h-wrap">
+                <p class="h-eyebrow"><span class="h-dot"></span> Windows trading terminal for Binance and OKX</p>
+                <h1>Your own rules.<br><span class="h-grad">Automated scanning, controlled risk.</span></h1>
+                <p class="h-lead">Sentralyx is a crypto trading bot and automated trading terminal for Binance and OKX. It scans the market in rounds based on the strategy you build, generates signals when your rules are met and manages your positions with SL/TP. It does not sell signals; your strategy produces them.</p>
+                <div class="h-cta-row">
+                    <a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Free download for Windows</a>
+                    <a class="h-btn h-btn-ghost" href="#nasil"><i class="fas fa-play-circle"></i> How does it work?</a>
+                </div>
+                <div class="h-note"><span><i class="fas fa-check"></i>Free version with no time limit</span><span><i class="fas fa-check"></i>7-day free Trial</span><span><i class="fas fa-check"></i>No credit card required</span></div>
+                <div class="h-shot"><div class="h-shot-inner">
+                    <div class="h-shot-bar"><span></span><span></span><span></span><em>Sentralyx &#8212; Scanner &#183; Virtual mode</em></div>
+                    <img src="../assets/img/home/hero-scanner.webp" alt="Sentralyx scanner screen: 347-coin scan, signal table and signal reasons" width="1600" height="848" fetchpriority="high">
+                </div></div>
             </div>
-
-            <div class="terminal-img-wrapper">
-                <img src="/scanner.png" alt="Sentralyx Scanner" class="terminal-img">
+        </section>
+        <section class="h-stats"><div class="h-wrap"><div class="h-stats-grid">
+            <div class="h-stat"><b class="h-mono h-grad">347</b><span>coins scanned by default</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">30</b><span>editable indicators</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">4</b><span>strategy types</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">2</b><span>exchanges: Binance and OKX</span></div>
+            <div class="h-stat"><b class="h-mono h-grad">3</b><span>languages: TR &#183; EN &#183; RU</span></div>
+        </div></div></section>
+        <section class="h-block"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Why Sentralyx?</div><h2 class="h-title">A trader&#x27;s three big problems</h2><p class="h-sub">The market is open 24/7; you are not. Sentralyx applies your rules for you.</p></div>
+            <div class="h-grid-3">
+                <div class="h-card"><div class="h-ico h-ico-red"><i class="fas fa-binoculars"></i></div><h3>You cannot scan the whole market all the time</h3><p>Searching hundreds of coins for opportunities takes hours, and you are often too late.</p><div class="h-fix"><i class="fas fa-check"></i><span>The scanner goes through 347 coins in rounds on your timeframe and generates signals.</span></div></div>
+                <div class="h-card"><div class="h-ico h-ico-red"><i class="fas fa-crosshairs"></i></div><h3>You cannot watch SL and TP all the time</h3><p>Managing stop and target levels of open positions by hand is tiring and error-prone.</p><div class="h-fix"><i class="fas fa-check"></i><span>SL/TP are also sent to the exchange; trailing stop and break-even try to protect profit.</span></div></div>
+                <div class="h-card"><div class="h-ico h-ico-red"><i class="fas fa-desktop"></i></div><h3>You cannot sit in front of the screen all day</h3><p>Emotional decisions and missed signals are often the biggest cost.</p><div class="h-fix"><i class="fas fa-check"></i><span>When your rules are met, positions open and are managed according to your settings.</span></div></div>
             </div>
-        </div>
-    </header>
-
-    <!-- Supported Exchanges Section -->
-    <section class="supported-exchanges">
-        <div class="container">
-            <h2>Supported Exchanges</h2>
-            <div class="exchanges-logos">
-                <div class="exchange-logo">
-                    <img src="/Binance.svg" alt="Binance">
-                    <span>Binance</span>
-                </div>
-                <div class="exchange-logo">
-                    <img src="/OKX.svg" alt="OKX">
-                    <span>OKX</span>
-                </div>
+        </div></section>
+        <section class="h-block h-tight" id="nasil"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">How does it work?</div><h2 class="h-title">Your own trading system in three steps</h2><p class="h-sub">No coding needed. Build your strategy, test it on history and in virtual mode, then run it automatically.</p></div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">01 &#183; Build</span><h3>Build your strategy by choosing indicators</h3><p>In the strategy wizard you choose the strategy type, market regime and indicators. You define the BUY/SELL rule for each indicator.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Scoring, Majority, Strong Majority and Full Consensus</li><li><i class="fas fa-circle-check"></i>ADX, ATR and market regime filters</li><li><i class="fas fa-circle-check"></i>Editable rules for 30 indicators</li></ul></div>
+                <div class="h-frame h-tall"><img src="../assets/img/home/strategy-wizard.webp" alt="Sentralyx strategy wizard" width="620" height="936" loading="lazy"></div>
             </div>
-        </div>
-    </section>
-
-    <section id="sentralyx-intro" class="product-intro section-padding">
-        <div class="container">
-            <div class="row g-4 align-items-start">
-                <div class="col-lg-5">
-                    <p class="intro-kicker">Sentralyx</p>
-                    <h2 class="intro-title">Algorithmic trading software that scans crypto markets 24/7.</h2>
-                    <p class="intro-copy">Sentralyx continuously monitors the market, evaluates opportunities based on defined strategy rules, and turns the trading process into a more systematic workflow.</p>
-                </div>
-                <div class="col-lg-7">
-                    <div class="intro-panel">
-                        <h3>What does it do?</h3>
-                        <ul class="intro-list">
-                            <li>Automatically scans crypto markets.</li>
-                            <li>Detects trade opportunities that match strategy conditions.</li>
-                            <li>Manages entry, stop-loss, and target levels in a systematic way.</li>
-                            <li>Aims to reduce the need to manually watch charts for hours.</li>
-                            <li>Applies risk and position management according to defined rules.</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="h-step h-rev">
+                <div class="h-step-text"><span class="h-step-num">02 &#183; Test</span><h3>Try it before using real money</h3><p>The backtest runs your strategy on historical data including commission and slippage. Then you try it in virtual mode in today&#x27;s market without real money.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Commission and slippage simulation</li><li><i class="fas fa-circle-check"></i>Monte Carlo, day/hour/direction analysis, equity chart</li><li><i class="fas fa-circle-check"></i>Virtual mode: same flow, no real orders</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/home/backtest.webp" alt="Sentralyx backtest results" width="1200" height="422" loading="lazy"></div>
             </div>
-
-            <div class="row g-4 mt-4">
-                <div class="col-lg-6">
-                    <div class="intro-panel">
-                        <h3>Who is it for?</h3>
-                        <p class="intro-text mb-0">Sentralyx is built for users who want to trade crypto markets more systematically, connect their decisions to clear rules, and avoid constantly monitoring the market manually.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="intro-panel">
-                        <h3>A real product</h3>
-                        <p class="intro-text mb-0">Sentralyx is not just an idea or a signal group. It is an actively developed, independent desktop trading application.</p>
-                    </div>
-                </div>
+            <div class="h-step">
+                <div class="h-step-text"><span class="h-step-num">03 &#183; Run</span><h3>From signal to position, by rules</h3><p>When a signal arrives, a position opens according to your settings. Manage open positions from one screen: close, close half, move SL, set TP.</p>
+                    <ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Spot only, hybrid or full futures mode</li><li><i class="fas fa-circle-check"></i>Daily loss limit and maximum number of positions</li><li><i class="fas fa-circle-check"></i>Manages only the positions it opened</li></ul></div>
+                <div class="h-frame"><img src="../assets/img/home/positions.webp" alt="Sentralyx open positions screen" width="1400" height="494" loading="lazy"></div>
             </div>
-
-        </div>
-    </section>
-
-    <section id="features" class="section-padding">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="text-main">Terminal Modules</h2>
-                <p class="text-secondary">All the tools a trader needs are gathered in a single terminal.</p>
+        </div></section>
+        <section class="h-block h-tight" id="ozellikler"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Features</div><h2 class="h-title">The whole workflow in one terminal</h2><p class="h-sub">Scanning, strategy, testing, position management and reporting in the same app.</p></div>
+            <div class="h-grid-3">
+                <a class="h-card h-feature" href="/en/scanner/"><div class="h-ico h-ico-blue"><i class="fas fa-satellite-dish"></i></div><h3>Scanner and signal table</h3><p>Indicator results, the BUY/SELL/NONE signal and the reason when no signal formed, for every coin.</p><div class="h-tags"><span class="h-tag">347 COINS</span><span class="h-tag">REASON</span></div><span class="h-more">Learn more <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/en/blog/mtf-ltf-confirmation/"><div class="h-ico h-ico-blue"><i class="fas fa-layer-group"></i></div><h3>Multiple timeframes</h3><p>More selective signals with higher timeframe (MTF) and lower timeframe (LTF) confirmation.</p><div class="h-tags"><span class="h-tag">MTF</span><span class="h-tag">LTF</span><span class="h-tag">ADX</span><span class="h-tag">ATR</span></div><span class="h-more">Learn more <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/en/backtest/"><div class="h-ico h-ico-blue"><i class="fas fa-flask"></i></div><h3>Realistic backtest</h3><p>Testing on historical data including commission and slippage, Monte Carlo and detailed analysis.</p><div class="h-tags"><span class="h-tag">MONTE CARLO</span><span class="h-tag">EQUITY</span></div><span class="h-more">Learn more <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/en/active-positions/"><div class="h-ico h-ico-blue"><i class="fas fa-shield-halved"></i></div><h3>Profit protection</h3><p>Trailing stop, break-even, closing half and moving SL to entry.</p><div class="h-tags"><span class="h-tag">TRAILING</span><span class="h-tag">BREAK-EVEN</span></div><span class="h-more">Learn more <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/en/blog/strategy-testing-in-virtual-mode/"><div class="h-ico h-ico-blue"><i class="fas fa-toggle-on"></i></div><h3>Virtual mode</h3><p>Trading simulation with the same flow without real money. Switch freely between virtual and real mode.</p><div class="h-tags"><span class="h-tag">VIRTUAL</span><span class="h-tag">REAL</span></div><span class="h-more">Learn more <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/en/reports/"><div class="h-ico h-ico-blue"><i class="fas fa-chart-column"></i></div><h3>Reports and export</h3><p>Daily summary, win rate, total/average PnL, best and worst trade. CSV, PDF and Excel.</p><div class="h-tags"><span class="h-tag">CSV</span><span class="h-tag">PDF</span><span class="h-tag">EXCEL</span></div><span class="h-more">Learn more <i class="fas fa-arrow-right"></i></span></a>
             </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
-                        <i class="fas fa-search feature-icon"></i>
-                        <h4 class="feature-title">Crypto Scanner</h4>
-                        <p class="feature-description">Scan hundreds of coins on Binance and OKX in recurring rounds. Filter by technical criteria and get signals updated every round.</p>
-                        <a href="scanner/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Explore
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
-                        <i class="fas fa-layer-group feature-icon"></i>
-                        <h4 class="feature-title">No-Code Strategy Creation</h4>
-                        <p class="feature-description">Create strategies visually without programming knowledge. Scoring, Majority Vote, Strong Majority and Full Consensus methods.</p>
-                        <a href="strategies/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Details
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
-                        <i class="fas fa-chart-line feature-icon"></i>
-                        <h4 class="feature-title">Advanced Backtest Engine</h4>
-                        <p class="feature-description">Test strategies with historical data. Commission, slippage simulation, and detailed performance metrics.</p>
-                        <a href="backtest/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Test
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
-                        <i class="fas fa-wave-square feature-icon"></i>
-                        <h4 class="feature-title">MTF Trend Filter</h4>
-                        <p class="feature-description">Multi Time Frame analysis for trend confirmation. Signal validation across different timeframes.</p>
-                        <a href="scanner/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Explore
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
-                        <i class="fas fa-shield-alt feature-icon"></i>
-                        <h4 class="feature-title">Risk Management</h4>
-                        <p class="feature-description">Stop loss, take profit levels, and position size management. Automated risk control mechanisms.</p>
-                        <a href="settings/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Configure
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
-                        <i class="fas fa-exchange-alt feature-icon"></i>
-                        <h4 class="feature-title">Open / Closed Position Tracking</h4>
-                        <p class="feature-description">Track all positions with regularly updated P&L. Entry/exit prices and trade history analysis.</p>
-                        <a href="active-positions/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Manage
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
-                        <i class="fas fa-file-alt feature-icon"></i>
-                        <h4 class="feature-title">Reporting and CSV Records</h4>
-                        <p class="feature-description">Detailed trade reports and CSV export. Performance analysis and profit/loss tracking.</p>
-                        <a href="reports/" class="feature-action-btn">
-                            <i class="fas fa-arrow-right me-2"></i>Details
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="terminal-feature-card">
-                        <i class="fas fa-desktop feature-icon"></i>
-                        <h4 class="feature-title">Local Desktop Terminal</h4>
-                        <p class="feature-description">Not a web panel, but a fully local desktop application. API keys are encrypted with a device-bound key and stored locally.</p>
-                        <a href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download class="feature-action-btn">
-                            <i class="fas fa-download me-2"></i>Download for Windows
-                        </a>
-                    </div>
-                </div>
+        </div></section>
+        <section class="h-block h-security" id="guvenlik"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Security</div><h2 class="h-title">Your keys, your control</h2><p class="h-sub">Sentralyx is a desktop application that runs on your computer. Measures designed to reduce risk:</p></div>
+            <div class="h-sec-grid">
+                <div class="h-card h-sec-item"><div class="h-ico h-ico-green"><i class="fas fa-key"></i></div><div><h3>Encrypted API keys</h3><p>Keys are encrypted with a key derived from your device&#x27;s hardware ID and stored locally. A settings file copied to another device cannot be decrypted.</p></div></div>
+                <div class="h-card h-sec-item"><div class="h-ico h-ico-green"><i class="fas fa-ban"></i></div><div><h3>No withdrawal permission needed</h3><p>The app recommends keeping the withdrawal permission disabled on your API key. Read and trade permissions are enough.</p></div></div>
+                <div class="h-card h-sec-item"><div class="h-ico h-ico-green"><i class="fas fa-building-columns"></i></div><div><h3>SL/TP stay on the exchange</h3><p>Stop and take-profit orders are also sent to the exchange and remain there even when the app is closed.</p></div></div>
+                <div class="h-card h-sec-item"><div class="h-ico h-ico-green"><i class="fas fa-fingerprint"></i></div><div><h3>Only its own orders</h3><p>Works with &quot;SX&quot;-prefixed orders; it does not touch another bot&#x27;s or your own positions on the same account.</p></div></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Screenshot Section -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="text-main">Terminal Screenshots</h2>
-                <p class="text-secondary">Examples from the Sentralyx terminal interface</p>
+            <div class="h-frame h-sec-shot"><img src="../assets/img/home/security.webp" alt="Sentralyx API settings and security warning" width="1400" height="383" loading="lazy"></div>
+            <div class="h-faq-more"><a href="/en/security/">Explore the security approach <i class="fas fa-arrow-right"></i></a></div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Straight talk</div><h2 class="h-title">What Sentralyx is not</h2></div>
+            <div class="h-honest">
+                <div class="h-card"><i class="fas fa-triangle-exclamation"></i><b>Not a signal service</b><span>It does not sell signals; your strategy produces them.</span></div>
+                <div class="h-card"><i class="fas fa-triangle-exclamation"></i><b>No profit guarantee</b><span>No strategy guarantees continuous gains; the final decision is yours.</span></div>
+                <div class="h-card"><i class="fas fa-triangle-exclamation"></i><b>Windows only</b><span>There is no macOS, Linux or mobile version.</span></div>
+                <div class="h-card"><i class="fas fa-triangle-exclamation"></i><b>Binance and OKX</b><span>Works on spot and USDT futures markets; other exchanges are not supported.</span></div>
             </div>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="terminal-feature-card">
-                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../scanner.webp')">
-                            <img src="../scanner.webp" alt="Scanner" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
-                        </div>
-                        <h4 class="feature-title">Scanner</h4>
-                        <p class="feature-description">Continuous market scanning and signal generation.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="terminal-feature-card">
-                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../backtest.webp')">
-                            <img src="../backtest.webp" alt="Backtest" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
-                        </div>
-                        <h4 class="feature-title">Backtest</h4>
-                        <p class="feature-description">Strategy tests, equity curve and Monte Carlo analysis.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="terminal-feature-card">
-                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../acik-pozisyon.webp')">
-                            <img src="../acik-pozisyon.webp" alt="Open Positions" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
-                        </div>
-                        <h4 class="feature-title">Open Positions</h4>
-                        <p class="feature-description">Position management, stop-loss and take-profit control.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="terminal-feature-card">
-                        <div style="background: var(--bg-dark); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border-color); cursor: pointer;" onclick="openImagePreview('../raporlar.webp')">
-                            <img src="../raporlar.webp" alt="Reports" style="width: 100%; height: 250px; object-fit: cover; display: block;" loading="lazy">
-                        </div>
-                        <h4 class="feature-title">Reports</h4>
-                        <p class="feature-description">Performance statistics and trade history analysis.</p>
-                    </div>
-                </div>
+            <div class="h-faq-more"><a href="/en/what-sentralyx-does/">What it does and does not do <i class="fas fa-arrow-right"></i></a></div>
+        </div></section>
+        <section class="h-block h-tight" id="fiyat"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Pricing</div><h2 class="h-title">Start free, upgrade when you are ready</h2><p class="h-sub">Licenses are requested from inside the app and bound to your device.</p></div>
+            <div class="h-plans">
+                <div class="h-card h-plan"><h3>Free</h3><div class="h-price h-mono">0 <small>USDT</small></div><div class="h-per">no time limit</div><ul><li><i class="fas fa-check"></i>Scanning and analysis</li><li><i class="fas fa-check"></i>Backtest (last 30 days of data)</li><li class="h-no"><i class="fas fa-xmark"></i>No position opening</li><li class="h-no"><i class="fas fa-xmark"></i>Real mode locked</li></ul><a class="h-btn h-btn-ghost" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Free download</a></div>
+                <div class="h-card h-plan h-featured"><span class="h-badge">Try free for 7 days</span><h3>Full</h3><div class="h-price h-mono">49 <small>USDT / month</small></div><div class="h-per">6 months 279 USDT &#183; yearly 399 USDT</div><ul><li><i class="fas fa-check"></i>Automated positions in virtual and real mode</li><li><i class="fas fa-check"></i>Unlimited backtest data range</li><li><i class="fas fa-check"></i>Position management and profit protection</li><li><i class="fas fa-check"></i>Reports and export</li></ul><a class="h-btn h-btn-primary" href="/en/pricing/"><i class="fas fa-bolt"></i> Start with Trial</a></div>
+                <div class="h-card h-plan"><h3>Trial</h3><div class="h-price h-mono">0 <small>USDT</small></div><div class="h-per">7 days</div><ul><li><i class="fas fa-check"></i>All Full features</li><li><i class="fas fa-check"></i>Positions in virtual and real mode</li><li><i class="fas fa-check"></i>Unlimited backtest</li><li><i class="fas fa-check"></i>No credit card required</li></ul><a class="h-btn h-btn-ghost" href="/en/pricing/">See details</a></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Quick Navigation Section -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="text-main">Quick Access</h2>
-                <p class="text-secondary">Quickly access the most used terminal features</p>
+            <p class="h-plan-note">Payments are made in USDT (TRC20). Every plan is licensed for a single device.</p>
+        </div></section>
+        <section class="h-block h-tight" id="sss"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">FAQ</div><h2 class="h-title">Frequently asked questions</h2></div>
+            <div class="h-faq">
+                <details open><summary>Is Sentralyx a signal group?</summary><p>No. Sentralyx does not sell or distribute signals. Signals are produced by the strategy and rules you build.</p></details>
+                <details><summary>Do I need to know how to code?</summary><p>No. You build your strategy in the strategy wizard by choosing indicators and edit BUY/SELL rules in the interface.</p></details>
+                <details><summary>Does the free version open trades automatically?</summary><p>No. The Free version scans and analyzes but does not open positions. You can try every feature for free with the 7-day Trial.</p></details>
+                <details><summary>Are my API keys safe?</summary><p>Keys are encrypted with a key derived from your device&#x27;s hardware ID and stored locally. Keeping the withdrawal permission disabled on your API key is recommended.</p></details>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-auto">
-                    <div class="panel-dark p-4 text-center">
-                        <h5 class="text-main mb-4">Terminal Control</h5>
-                        <div class="d-flex gap-3 justify-content-center flex-wrap">
-                            <a href="scanner/" class="btn-sentralyx-start">
-                                <i class="fas fa-search me-2"></i>Scanner
-                            </a>
-                            <a href="active-positions/" class="btn-sentralyx-pause">
-                                <i class="fas fa-exchange-alt me-2"></i>Positions
-                            </a>
-                            <a href="settings/" class="btn-sentralyx-stop">
-                                <i class="fas fa-cog me-2"></i>Settings
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="h-faq-more"><a href="/en/faq.html">See all questions <i class="fas fa-arrow-right"></i></a></div>
+        </div></section>
+        <section class="h-cta-wrap"><div class="h-wrap"><div class="h-cta">
+            <h2>Try your strategy in virtual mode today</h2><p>Download the app, build your strategy and see how it works without using real money.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Free download for Windows</a><a class="h-btn h-btn-ghost" href="https://t.me/Sentralyx" target="_blank" rel="noopener"><i class="fab fa-telegram"></i> Telegram community</a></div>
+        </div></div></section>
+    </main>
 
     <div id="footer-container"></div>
-
-    <!-- Image Preview Modal -->
-    <div id="imagePreviewModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 9999; align-items: center; justify-content: center; cursor: pointer;" onclick="closeImagePreview()">
-        <img id="previewImage" src="" alt="Preview" style="max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 10px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);">
-        <div style="position: absolute; top: 20px; right: 30px; color: white; font-size: 30px; cursor: pointer;">&times;</div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
