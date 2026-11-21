@@ -40,297 +40,76 @@
   ]
 }
     </script>
-    <style>
-        .info-page {
-            padding: 96px 20px 72px;
-            background: var(--bg-dark);
-            min-height: 100vh;
-        }
-        .info-hero {
-            max-width: 920px;
-            margin: 0 auto 36px;
-            text-align: center;
-        }
-        .info-hero h1 {
-            color: var(--text-main);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            margin-bottom: 14px;
-        }
-        .info-hero p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 1.05rem;
-            margin: 0;
-        }
-        .info-grid {
-            max-width: 1120px;
-            margin: 0 auto;
-        }
-        .info-card {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-            height: 100%;
-        }
-        .info-card h2 {
-            color: var(--text-main);
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .info-card p, .info-card li {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-        .info-card ul {
-            padding-left: 1.2rem;
-            margin-bottom: 0;
-        }
-        .info-card h3 {
-            color: var(--text-main);
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-        .screenshot-placeholder {
-            background: var(--panel-dark);
-            border: 2px dashed var(--border-color);
-            border-radius: 12px;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 16px;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .screenshot-placeholder i {
-            font-size: 3rem;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            opacity: 0.5;
-        }
-        .screenshot-placeholder p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin: 0;
-        }
-        .notice-box {
-            max-width: 1120px;
-            margin: 28px auto 0;
-            border: 1px solid #ffc107;
-            background: rgba(255, 193, 7, 0.08);
-            border-radius: 12px;
-            padding: 18px 20px;
-            color: var(--text-secondary);
-        }
-        .cta-section {
-            max-width: 1120px;
-            margin: 40px auto 0;
-            text-align: center;
-        }
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .cta-btn {
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-        .cta-btn-primary {
-            background: linear-gradient(135deg, #00D2FF, #0033FF);
-            color: white;
-            border: none;
-        }
-        .cta-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 210, 255, 0.3);
-        }
-        .cta-btn-secondary {
-            background: var(--panel-dark);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-        .cta-btn-secondary:hover {
-            border-color: var(--accent-blue);
-            color: var(--accent-blue);
-        }
-        @media (max-width: 768px) {
-            .cta-buttons {
-                flex-direction: column;
-            }
-            .cta-btn {
-                width: 100%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../assets/css/home.css">
 </head>
 <body>
     <header id="main-header"></header>
-    <main class="info-page">
-        <div class="container">
-            <div class="info-hero">
-                <h1>Как работает Sentralyx — Что он делает и чего не делает</h1>
-                <p>Sentralyx — это настольное торговое программное обеспечение, которое анализирует криптовалютные рынки, создает стратегии, проводит бэктесты и автоматизирует торговые процессы.</p>
+    <main class="home h-page">
+        <section class="h-hero"><div class="h-wrap">
+            <nav class="h-crumb" aria-label="breadcrumb"><a href="/ru/">Главная</a><span>/</span>Что делает и чего не делает</nav>
+            <p class="h-eyebrow"><span class="h-dot"></span> Принцип работы</p>
+            <h1>Как работает Sentralyx — Что он делает и чего не делает</h1>
+            <p class="h-lead">Sentralyx — это настольное торговое программное обеспечение, которое анализирует криптовалютные рынки, создает стратегии, проводит бэктесты и автоматизирует торговые процессы.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Скачать бесплатно для Windows</a><a class="h-btn h-btn-ghost" href="#detay"><i class="fas fa-arrow-down"></i> Подробнее</a></div>
+        </div></section>
+        <section class="h-block" id="detay"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Как это работает?</div><h2 class="h-title">Когда правила выполнены, система действует</h2><p class="h-sub">Цель — освободить пользователя от постоянного мониторинга графиков, связать процесс принятия решений с определенными правилами и обеспечить дисциплинированное применение одной и той же стратегии.</p></div>
+            <div class="h-step"><div class="h-step-text"><span class="h-step-num">Сканирование → Сигнал → Позиция</span><h3>При возникновении подходящих условий он:</h3><p>Sentralyx непрерывно сканирует рынок и проверяет условия стратегии, определенные пользователем.</p><ul class="h-ticks"><li><i class="fas fa-circle-check"></i>Выявляет торговые возможности</li><li><i class="fas fa-circle-check"></i>Определяет уровни входа</li><li><i class="fas fa-circle-check"></i>Рассчитывает уровни стоп-лосса</li><li><i class="fas fa-circle-check"></i>Создает целевые уровни</li><li><i class="fas fa-circle-check"></i>Защищает прибыль с помощью трейлинг-стопа и безубытка</li><li><i class="fas fa-circle-check"></i>Отслеживает открытые позиции</li><li><i class="fas fa-circle-check"></i>Отчитывается о результатах и торговой истории</li></ul><p>В этом процессе пользователь может видеть, по каким правилам система ищет возможности для торговли и при каких условиях она не открывает сделки.</p></div>
+                <div class="h-frame"><img src="../../assets/img/home/positions.webp" alt="Экран открытых позиций Sentralyx" width="1400" height="494" loading="lazy"></div></div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Возможности</div><h2 class="h-title">Что можно делать с Sentralyx?</h2><p class="h-sub">Sentralyx — это настольное торговое программное обеспечение, разработанное для систематического анализа криптовалютных рынков, создания правил стратегий, тестирования на исторических данных и подключения торговых процессов к автоматизации.</p></div>
+            <div class="h-grid-3">
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-magnifying-glass-chart"></i></div><h3>Сканирование рынка</h3><p>Отслеживает несколько криптовалют одновременно для поиска возможностей, соответствующих условиям стратегии.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-chess"></i></div><h3>Создание стратегии</h3><p>Пользователи могут связать свою собственную торговую логику с определенными правилами. Цель — работать с определенными правилами вместо мгновенных эмоций или прогнозов.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-clock-rotate-left"></i></div><h3>Бэктест</h3><p>Подготовленные стратегии можно протестировать на исторических рыночных данных.</p><p>Результаты бэктеста не гарантируют ту же производительность в будущем; они используются для анализа поведения стратегии при прошлых условиях.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-scale-balanced"></i></div><h3>Торговля и управление рисками</h3><p>Торговые компоненты, такие как вход, стоп-лосс, цель и размер позиции, обрабатываются систематически.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-chart-line"></i></div><h3>Отслеживание открытых позиций</h3><p>Открытые сделки отслеживаются и могут управляться в соответствии с определенными торговыми правилами.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-file-lines"></i></div><h3>Отчетность</h3><p>Торговая история, результаты стратегий и данные о производительности могут быть проанализированы.</p></div>
             </div>
-
-            <div class="info-grid">
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <section class="info-card">
-                            <h2>Что такое Sentralyx?</h2>
-                            <p>Sentralyx — это настольное торговое программное обеспечение, разработанное для систематического анализа криптовалютных рынков, создания правил стратегий, тестирования на исторических данных и подключения торговых процессов к автоматизации.</p>
-                            <p>Цель — освободить пользователя от постоянного мониторинга графиков, связать процесс принятия решений с определенными правилами и обеспечить дисциплинированное применение одной и той же стратегии.</p>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <section class="info-card">
-                            <h2>Как это работает?</h2>
-                            <p>Sentralyx непрерывно сканирует рынок и проверяет условия стратегии, определенные пользователем.</p>
-                            <p>При возникновении подходящих условий он:</p>
-                            <ul>
-                                <li>Выявляет торговые возможности</li>
-                                <li>Определяет уровни входа</li>
-                                <li>Рассчитывает уровни стоп-лосса</li>
-                                <li>Создает целевые уровни</li>
-                                <li>Защищает прибыль с помощью трейлинг-стопа и безубытка</li>
-                                <li>Отслеживает открытые позиции</li>
-                                <li>Отчитывается о результатах и торговой истории</li>
-                            </ul>
-                            <p>В этом процессе пользователь может видеть, по каким правилам система ищет возможности для торговли и при каких условиях она не открывает сделки.</p>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <section class="info-card">
-                            <h2>Что можно делать с Sentralyx?</h2>
-                            
-                            <h3>Сканирование рынка</h3>
-                            <p>Отслеживает несколько криптовалют одновременно для поиска возможностей, соответствующих условиям стратегии.</p>
-                            
-                            <h3>Создание стратегии</h3>
-                            <p>Пользователи могут связать свою собственную торговую логику с определенными правилами. Цель — работать с определенными правилами вместо мгновенных эмоций или прогнозов.</p>
-                            
-                            <h3>Бэктест</h3>
-                            <p>Подготовленные стратегии можно протестировать на исторических рыночных данных.</p>
-                            <p>Результаты бэктеста не гарантируют ту же производительность в будущем; они используются для анализа поведения стратегии при прошлых условиях.</p>
-                            
-                            <h3>Торговля и управление рисками</h3>
-                            <p>Торговые компоненты, такие как вход, стоп-лосс, цель и размер позиции, обрабатываются систематически.</p>
-                            
-                            <h3>Отслеживание открытых позиций</h3>
-                            <p>Открытые сделки отслеживаются и могут управляться в соответствии с определенными торговыми правилами.</p>
-                            
-                            <h3>Отчетность</h3>
-                            <p>Торговая история, результаты стратегий и данные о производительности могут быть проанализированы.</p>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <section class="info-card">
-                            <h2>Реальный продукт</h2>
-                            <p>Sentralyx — это не просто идея, сигнальная группа или теоретический проект.</p>
-                            <p>Это независимое настольное торговое программное обеспечение, активно разрабатываемое с реальными пользовательскими рабочими процессами.</p>
-                            
-                            <div class="row mt-4">
-                                <div class="col-md-6 mb-3">
-                                    <h3>Экран сканирования рынка</h3>
-                                    <img src="/scanner.png" alt="Sentralyx Экран сканирования рынка" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; display: block;" loading="lazy">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <h3>Экран стратегии</h3>
-                                    <img src="/strategy.png" alt="Sentralyx Экран стратегии" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; display: block;" loading="lazy">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <h3>Экран бэктеста</h3>
-                                    <img src="/backtest-main.png" alt="Sentralyx Экран бэктеста" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; display: block;" loading="lazy">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <h3>Экран открытых позиций / управления сделками</h3>
-                                    <img src="/open_position.png" alt="Sentralyx Экран открытых позиций" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; display: block;" loading="lazy">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <h3>Экран отчетности</h3>
-                                    <img src="/reports.png" alt="Sentralyx Экран отчетности" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; display: block;" loading="lazy">
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <section class="info-card">
-                            <h2>Что Sentralyx не делает</h2>
-                            <p>Sentralyx:</p>
-                            <ul>
-                                <li>Не гарантирует прибыль</li>
-                                <li>Не утверждает, что точно предсказывает будущие цены</li>
-                                <li>Не предоставляет инвестиционные консультационные услуги</li>
-                                <li>Не обещает прибыль при любых рыночных условиях</li>
-                                <li>Не проводит безрисковую торговлю от имени пользователя</li>
-                            </ul>
-                            <p>Как и в любой торговой стратегии, существует возможность убытка.</p>
-                            <p>Цель Sentralyx — не устранить риск, а сделать торговый процесс более систематическим, измеримым и основанным на правилах.</p>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <section class="info-card">
-                            <h2>Контроль пользователя</h2>
-                            <p>Пользователь решает, какую стратегию использовать, на каких рынках работать и какие уровни риска принимать.</p>
-                            <p>Sentralyx — это инструмент поддержки принятия решений и автоматизации; окончательная ответственность за торговлю лежит на пользователе.</p>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="cta-section">
-                    <div class="cta-buttons">
-                        <a href="/ru/chto-takoe-sentralyx/" class="cta-btn cta-btn-primary">Изучить Sentralyx</a>
-                        <a href="/ru/scanner/" class="cta-btn cta-btn-secondary">Ознакомиться со сканером</a>
-                    </div>
-                </div>
-
-                <div class="notice-box">
-                    Информация на этой странице предназначена для объяснения объема продукта; это не инвестиционный совет.
-                </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Реальный продукт</div><h2 class="h-title">Не идея, а работающее приложение</h2><p class="h-sub">Sentralyx — это не просто идея, сигнальная группа или теоретический проект. Это независимое настольное торговое программное обеспечение, активно разрабатываемое с реальными пользовательскими рабочими процессами.</p></div>
+            <div class="h-gallery">
+                <figure><div class="h-frame"><img src="../../assets/img/home/hero-scanner.webp" alt="Экран сканирования рынка Sentralyx" width="1600" height="848" loading="lazy"></div><figcaption>Экран сканирования рынка</figcaption></figure>
+                <figure><div class="h-frame"><img src="../../assets/img/pages/strategy-full.webp" alt="Экран стратегии Sentralyx" width="1600" height="814" loading="lazy"></div><figcaption>Экран стратегии</figcaption></figure>
+                <figure><div class="h-frame"><img src="../../assets/img/pages/backtest-full.webp" alt="Экран бэктеста Sentralyx" width="1600" height="814" loading="lazy"></div><figcaption>Экран бэктеста</figcaption></figure>
+                <figure><div class="h-frame"><img src="../../assets/img/pages/positions-full.webp" alt="Экран открытых позиций Sentralyx" width="1600" height="564" loading="lazy"></div><figcaption>Экран открытых позиций / управления сделками</figcaption></figure>
+                <figure><div class="h-frame"><img src="../../assets/img/pages/reports-full.webp" alt="Экран отчетности Sentralyx" width="1600" height="564" loading="lazy"></div><figcaption>Экран отчетности</figcaption></figure>
             </div>
-        </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Ограничения и контроль</div><h2 class="h-title">Что Sentralyx не делает</h2></div>
+            <div class="h-grid-2">
+                <div class="h-card"><div class="h-ico h-ico-red"><i class="fas fa-ban"></i></div><h3>Sentralyx:</h3><ul class="h-ticks h-cross"><li><i class="fas fa-circle-xmark"></i>Не гарантирует прибыль</li><li><i class="fas fa-circle-xmark"></i>Не утверждает, что точно предсказывает будущие цены</li><li><i class="fas fa-circle-xmark"></i>Не предоставляет инвестиционные консультационные услуги</li><li><i class="fas fa-circle-xmark"></i>Не обещает прибыль при любых рыночных условиях</li><li><i class="fas fa-circle-xmark"></i>Не проводит безрисковую торговлю от имени пользователя</li></ul><p>Как и в любой торговой стратегии, существует возможность убытка. Цель Sentralyx — не устранить риск, а сделать торговый процесс более систематическим, измеримым и основанным на правилах.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-green"><i class="fas fa-user-shield"></i></div><h3>Контроль пользователя</h3><p>Пользователь решает, какую стратегию использовать, на каких рынках работать и какие уровни риска принимать.</p><p>Sentralyx — это инструмент поддержки принятия решений и автоматизации; окончательная ответственность за торговлю лежит на пользователе.</p></div>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-notebox"><i class="fas fa-circle-info"></i><div><p>Информация на этой странице предназначена для объяснения объема продукта; это не инвестиционный совет.</p></div></div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Дальше</div><h2 class="h-title">Связанные страницы</h2></div>
+            <div class="h-related">
+                <a class="h-card h-feature" href="/ru/chto-takoe-sentralyx/"><h3>Изучить Sentralyx</h3><p>Возможности и охват продукта.</p><span class="h-more">Подробнее <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/ru/scanner/"><h3>Ознакомиться со сканером</h3><p>Настройки сканирования и таблица сигналов.</p><span class="h-more">Подробнее <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/ru/bezopasnost/"><h3>Безопасность</h3><p>API-ключи и контроль риска.</p><span class="h-more">Подробнее <i class="fas fa-arrow-right"></i></span></a>
+            </div>
+        </div></section>
+        <section class="h-cta-wrap"><div class="h-wrap"><div class="h-cta">
+            <h2>Проверьте стратегию в виртуальном режиме уже сегодня</h2><p>Скачайте приложение, соберите стратегию и посмотрите, как она работает, без реальных денег.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Скачать бесплатно для Windows</a><a class="h-btn h-btn-ghost" href="/ru/pricing/">Тарифы</a></div>
+        </div></div></section>
     </main>
+
     <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/main.js"></script>
+    <script src="../../assets/js/main.js"></script>
     <script>
-        fetch('../footer.html')
-            .then(async function(response) {
-                var buffer = await response.arrayBuffer();
-                return new TextDecoder('utf-8').decode(buffer);
-            })
-            .then(function(data) {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(function(error) {
-                console.error('Не удалось загрузить футер:', error);
-            });
+        fetch('/ru/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>

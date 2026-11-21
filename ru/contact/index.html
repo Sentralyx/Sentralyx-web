@@ -21,194 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     
-    <style>
-        .contact-container {
-            padding: 20px;
-            background: var(--bg-dark);
-            min-height: 100vh;
-        }
-        
-        .social-card {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .social-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
-        }
-        
-        .social-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
-            transition: left 0.5s;
-        }
-        
-        .social-card:hover::before {
-            left: 100%;
-        }
-        
-        .social-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link {
-            color: var(--text-main);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-        
-        /* Telegram - Original Blue */
-        .telegram-icon {
-            color: #0088cc;
-        }
-        
-        .telegram-link:hover .telegram-icon {
-            color: #00a8e8;
-            filter: drop-shadow(0 0 10px rgba(0, 136, 204, 0.5));
-        }
-        
-        /* X (Twitter) - Electric Blue */
-        .x-icon {
-            color: #1DA1F2;
-        }
-        
-        .x-link:hover .x-icon {
-            color: #4ab8f5;
-            filter: drop-shadow(0 0 10px rgba(29, 161, 242, 0.5));
-        }
-        
-        /* YouTube - Classic Red */
-        .youtube-icon {
-            color: #ff0000;
-        }
-        
-        .youtube-link:hover .youtube-icon {
-            color: #ff3333;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
-        }
-        
-        /* Instagram - Pink-Purple Gradient */
-        .instagram-icon {
-            color: #E4405F;
-        }
-        
-        .instagram-link:hover .instagram-icon {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 0 10px rgba(228, 64, 95, 0.5));
-        }
-        
-        .social-title {
-            color: var(--text-main);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .social-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-        
-        .social-url {
-            color: var(--accent-blue);
-            font-family: monospace;
-            font-size: 0.85rem;
-            background: rgba(52, 152, 219, 0.1);
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .contact-container {
-                padding: 20px 15px;
-            }
-            
-            .social-cards {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .social-card {
-                padding: 25px 20px;
-            }
-            
-            .social-icon {
-                font-size: 2.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .social-title {
-                font-size: 1.3rem;
-                margin-bottom: 12px;
-            }
-            
-            .social-description {
-                font-size: 1rem;
-                margin-bottom: 15px;
-            }
-            
-            .social-url {
-                font-size: 0.9rem;
-                padding: 8px 12px;
-            }
-        }
-        
-        /* Prevent Horizontal Scroll */
-        * {
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-        
-        body {
-            overflow-x: hidden;
-            min-width: 320px;
-        }
-        
-        .container {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        
-        /* Touch Targets for Mobile */
-        @media (max-width: 768px) {
-            .btn, .form-control, .form-select {
-                min-height: 44px;
-                min-width: 44px;
-                padding: 12px 16px;
-            }
-        }
-    </style>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -229,91 +41,48 @@
   ]
 }
     </script>
+    <link rel="stylesheet" href="../../assets/css/home.css">
 </head>
 <body>
     <header id="main-header"></header>
-    
-    <main class="contact-container">
-        <div class="text-center mb-4">
-            <h1 class="text-main">Контакты и социальные сети</h1>
-            <p class="text-secondary">Свяжитесь с нами через социальные сети</p>
-        </div>
-        
-        <div class="row g-4">
-            <!-- Telegram -->
-            <div class="col-md-6">
-                <div class="social-card">
-                    <a href="https://t.me/Sentralyx" target="_blank" class="social-link telegram-link">
-                        <i class="fab fa-telegram social-icon telegram-icon"></i>
-                        <div>
-                            <h3 class="social-title">Telegram</h3>
-                            <p class="social-description">Сообщество и объявления</p>
-                            <span class="social-url">t.me/Sentralyx</span>
-                        </div>
-                    </a>
-                </div>
+    <main class="home h-page">
+        <section class="h-hero"><div class="h-wrap">
+            <nav class="h-crumb" aria-label="breadcrumb"><a href="/ru/">Главная</a><span>/</span>Контакты</nav>
+            <p class="h-eyebrow"><span class="h-dot"></span> Сообщество</p>
+            <h1>Контакты и социальные сети</h1>
+            <p class="h-lead">Свяжитесь с нами через социальные сети</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://t.me/Sentralyx" target="_blank" rel="noopener"><i class="fab fa-telegram"></i> Telegram</a><a class="h-btn h-btn-ghost" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Скачать бесплатно для Windows</a></div>
+        </div></section>
+        <section class="h-block" id="detay"><div class="h-wrap">
+            <div class="h-grid-4">
+                <a class="h-card h-feature h-social" href="https://t.me/Sentralyx" target="_blank" rel="noopener"><div class="h-ico h-ico-blue"><i class="fab fa-telegram"></i></div><h3>Telegram</h3><p>Сообщество и объявления</p><span class="h-handle h-mono">t.me/Sentralyx</span></a>
+                <a class="h-card h-feature h-social" href="https://x.com/Sentralyx" target="_blank" rel="noopener"><div class="h-ico h-ico-blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.292 19.494h2.039L6.486 3.24H4.298l13.311 17.407z"/></svg></div><h3>X (Twitter)</h3><p>Анонсы и обновления</p><span class="h-handle h-mono">x.com/Sentralyx</span></a>
+                <a class="h-card h-feature h-social" href="https://youtube.com/@Sentralyx" target="_blank" rel="noopener"><div class="h-ico h-ico-red"><i class="fab fa-youtube"></i></div><h3>YouTube</h3><p>Обучающие видео</p><span class="h-handle h-mono">youtube.com/@Sentralyx</span></a>
+                <a class="h-card h-feature h-social" href="https://instagram.com/sentralyx/" target="_blank" rel="noopener"><div class="h-ico h-ico-blue"><i class="fab fa-instagram"></i></div><h3>Instagram</h3><p>Визуальные обновления</p><span class="h-handle h-mono">instagram.com/sentralyx/</span></a>
             </div>
-            
-            <!-- X (Twitter) -->
-            <div class="col-md-6">
-                <div class="social-card">
-                    <a href="https://x.com/Sentralyx" target="_blank" class="social-link x-link">
-                        <i class="fab fa-x-twitter social-icon x-icon"></i>
-                        <div>
-                            <h3 class="social-title">X (Twitter)</h3>
-                            <p class="social-description">Анонсы и обновления</p>
-                            <span class="social-url">x.com/Sentralyx</span>
-                        </div>
-                    </a>
-                </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Дальше</div><h2 class="h-title">Связанные страницы</h2></div>
+            <div class="h-related">
+                <a class="h-card h-feature" href="/ru/pricing/"><h3>Тарифы</h3><p>Пакеты Free, Trial и Full.</p><span class="h-more">Подробнее <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/ru/partner/"><h3>Партнерская программа</h3><p>Работайте вместе с Sentralyx.</p><span class="h-more">Подробнее <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/ru/chto-takoe-sentralyx/"><h3>Что такое Sentralyx?</h3><p>Возможности и охват продукта.</p><span class="h-more">Подробнее <i class="fas fa-arrow-right"></i></span></a>
             </div>
-            
-            <!-- YouTube -->
-            <div class="col-md-6">
-                <div class="social-card">
-                    <a href="https://youtube.com/@Sentralyx" target="_blank" class="social-link youtube-link">
-                        <i class="fab fa-youtube social-icon youtube-icon"></i>
-                        <div>
-                            <h3 class="social-title">YouTube</h3>
-                            <p class="social-description">Обучающие видео</p>
-                            <span class="social-url">youtube.com/@Sentralyx</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Instagram -->
-            <div class="col-md-6">
-                <div class="social-card">
-                    <a href="https://instagram.com/sentralyx/" target="_blank" class="social-link instagram-link">
-                        <i class="fab fa-instagram social-icon instagram-icon"></i>
-                        <div>
-                            <h3 class="social-title">Instagram</h3>
-                            <p class="social-description">Визуальные обновления</p>
-                            <span class="social-url">instagram.com/sentralyx/</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        </div></section>
+        <section class="h-cta-wrap"><div class="h-wrap"><div class="h-cta">
+            <h2>Проверьте стратегию в виртуальном режиме уже сегодня</h2><p>Скачайте приложение, соберите стратегию и посмотрите, как она работает, без реальных денег.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Скачать бесплатно для Windows</a><a class="h-btn h-btn-ghost" href="/ru/pricing/">Тарифы</a></div>
+        </div></div></section>
     </main>
 
     <div id="footer-container"></div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/main.js"></script>
     <script>
-        // Load footer from ../footer.html
-        fetch('../footer.html')
-            .then(async (response) => {
-                const buffer = await response.arrayBuffer();
-                return new TextDecoder('utf-8').decode(buffer);
-            })
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Не удалось загрузить футер:', error));
+        fetch('/ru/footer.html')
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>
-

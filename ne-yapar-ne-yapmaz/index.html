@@ -40,297 +40,76 @@
   ]
 }
     </script>
-    <style>
-        .info-page {
-            padding: 96px 20px 72px;
-            background: var(--bg-dark);
-            min-height: 100vh;
-        }
-        .info-hero {
-            max-width: 920px;
-            margin: 0 auto 36px;
-            text-align: center;
-        }
-        .info-hero h1 {
-            color: var(--text-main);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            margin-bottom: 14px;
-        }
-        .info-hero p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 1.05rem;
-            margin: 0;
-        }
-        .info-grid {
-            max-width: 1120px;
-            margin: 0 auto;
-        }
-        .info-card {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-            height: 100%;
-        }
-        .info-card h2 {
-            color: var(--text-main);
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .info-card p, .info-card li {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-        .info-card ul {
-            padding-left: 1.2rem;
-            margin-bottom: 0;
-        }
-        .info-card h3 {
-            color: var(--text-main);
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-        .screenshot-placeholder {
-            background: var(--panel-dark);
-            border: 2px dashed var(--border-color);
-            border-radius: 12px;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 16px;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .screenshot-placeholder i {
-            font-size: 3rem;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            opacity: 0.5;
-        }
-        .screenshot-placeholder p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin: 0;
-        }
-        .notice-box {
-            max-width: 1120px;
-            margin: 28px auto 0;
-            border: 1px solid #ffc107;
-            background: rgba(255, 193, 7, 0.08);
-            border-radius: 12px;
-            padding: 18px 20px;
-            color: var(--text-secondary);
-        }
-        .cta-section {
-            max-width: 1120px;
-            margin: 40px auto 0;
-            text-align: center;
-        }
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .cta-btn {
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-        .cta-btn-primary {
-            background: linear-gradient(135deg, #00D2FF, #0033FF);
-            color: white;
-            border: none;
-        }
-        .cta-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 210, 255, 0.3);
-        }
-        .cta-btn-secondary {
-            background: var(--panel-dark);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-        .cta-btn-secondary:hover {
-            border-color: var(--accent-blue);
-            color: var(--accent-blue);
-        }
-        @media (max-width: 768px) {
-            .cta-buttons {
-                flex-direction: column;
-            }
-            .cta-btn {
-                width: 100%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/home.css">
 </head>
 <body>
     <header id="main-header"></header>
-    <main class="info-page">
-        <div class="container">
-            <div class="info-hero">
-                <h1>Sentralyx Nasıl Çalışır? — Ne Yapar, Ne Yapmaz?</h1>
-                <p>Sentralyx, kripto piyasalarını analiz eden, strateji kuran, backtest yapan ve işlem süreçlerini otomasyona bağlayan masaüstü trading yazılımıdır.</p>
+    <main class="home h-page">
+        <section class="h-hero"><div class="h-wrap">
+            <nav class="h-crumb" aria-label="breadcrumb"><a href="/">Ana Sayfa</a><span>/</span>Ne Yapar, Ne Yapmaz?</nav>
+            <p class="h-eyebrow"><span class="h-dot"></span> Çalışma mantığı</p>
+            <h1>Sentralyx Nasıl Çalışır? — Ne Yapar, Ne Yapmaz?</h1>
+            <p class="h-lead">Sentralyx, kripto piyasalarını analiz eden, strateji kuran, backtest yapan ve işlem süreçlerini otomasyona bağlayan masaüstü trading yazılımıdır.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Windows için ücretsiz indir</a><a class="h-btn h-btn-ghost" href="#detay"><i class="fas fa-arrow-down"></i> Detayları gör</a></div>
+        </div></section>
+        <section class="h-block" id="detay"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Nasıl çalışır?</div><h2 class="h-title">Kurallar sağlanınca sistem devreye girer</h2><p class="h-sub">Amaç; kullanıcıyı sürekli grafik izlemekten kurtarmak, karar sürecini belirli kurallara bağlamak ve aynı stratejiyi disiplinli şekilde uygulayabilmesini sağlamaktır.</p></div>
+            <div class="h-step"><div class="h-step-text"><span class="h-step-num">Tarama → Sinyal → Pozisyon</span><h3>Uygun koşullar oluştuğunda</h3><p>Sentralyx piyasayı sürekli tarar ve kullanıcının belirlediği strateji koşullarını kontrol eder.</p><ul class="h-ticks"><li><i class="fas fa-circle-check"></i>İşlem fırsatlarını tespit eder</li><li><i class="fas fa-circle-check"></i>Giriş seviyesini belirler</li><li><i class="fas fa-circle-check"></i>Stop-loss seviyesini hesaplar</li><li><i class="fas fa-circle-check"></i>Hedef seviyesini oluşturur</li><li><i class="fas fa-circle-check"></i>Trailing stop ve başa baş ile kârı korumaya çalışır</li><li><i class="fas fa-circle-check"></i>Açık pozisyonları takip eder</li><li><i class="fas fa-circle-check"></i>Sonuçları ve işlem geçmişini raporlar</li></ul><p>Bu süreçte kullanıcı, sistemin hangi kurallara göre işlem aradığını ve hangi koşullarda işlem açmadığını görebilir.</p></div>
+                <div class="h-frame"><img src="../assets/img/home/positions.webp" alt="Sentralyx açık pozisyonlar ekranı" width="1400" height="494" loading="lazy"></div></div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Neler yapılabilir?</div><h2 class="h-title">Sentralyx ile neler yapılabilir?</h2><p class="h-sub">Sentralyx, kripto piyasalarını sistematik şekilde analiz etmek, strateji kuralları oluşturmak, geçmiş veriler üzerinde test etmek ve işlem süreçlerini otomasyona bağlamak için geliştirilen masaüstü bir trading yazılımıdır.</p></div>
+            <div class="h-grid-3">
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-magnifying-glass-chart"></i></div><h3>Piyasa tarama</h3><p>Birden fazla kripto parayı aynı anda takip ederek strateji koşullarına uyan fırsatları arar.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-chess"></i></div><h3>Strateji oluşturma</h3><p>Kullanıcı kendi işlem mantığını belirli kurallara bağlayabilir. Amaç, anlık duygu veya tahmin yerine tanımlanmış kurallarla çalışmaktır.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-clock-rotate-left"></i></div><h3>Backtest</h3><p>Hazırlanan stratejiler geçmiş piyasa verileri üzerinde test edilebilir.</p><p>Backtest sonuçları gelecekte aynı performansın garanti edildiği anlamına gelmez; stratejinin geçmiş koşullardaki davranışını analiz etmek için kullanılır.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-scale-balanced"></i></div><h3>İşlem ve risk yönetimi</h3><p>Giriş, stop-loss, hedef ve pozisyon büyüklüğü gibi işlem bileşenleri sistematik şekilde ele alınır.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-chart-line"></i></div><h3>Açık pozisyon takibi</h3><p>Açık işlemler takip edilir ve tanımlanan işlem kurallarına göre yönetilebilir.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-blue"><i class="fas fa-file-lines"></i></div><h3>Raporlama</h3><p>İşlem geçmişi, strateji sonuçları ve performans verileri analiz edilebilir.</p></div>
             </div>
-
-            <div class="info-grid">
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <section class="info-card">
-                            <h2>Sentralyx nedir?</h2>
-                            <p>Sentralyx, kripto piyasalarını sistematik şekilde analiz etmek, strateji kuralları oluşturmak, geçmiş veriler üzerinde test etmek ve işlem süreçlerini otomasyona bağlamak için geliştirilen masaüstü bir trading yazılımıdır.</p>
-                            <p>Amaç; kullanıcıyı sürekli grafik izlemekten kurtarmak, karar sürecini belirli kurallara bağlamak ve aynı stratejiyi disiplinli şekilde uygulayabilmesini sağlamaktır.</p>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <section class="info-card">
-                            <h2>Nasıl çalışır?</h2>
-                            <p>Sentralyx piyasayı sürekli tarar ve kullanıcının belirlediği strateji koşullarını kontrol eder.</p>
-                            <p>Uygun koşullar oluştuğunda:</p>
-                            <ul>
-                                <li>İşlem fırsatlarını tespit eder</li>
-                                <li>Giriş seviyesini belirler</li>
-                                <li>Stop-loss seviyesini hesaplar</li>
-                                <li>Hedef seviyesini oluşturur</li>
-                                <li>Trailing stop ve başa baş ile kârı korumaya çalışır</li>
-                                <li>Açık pozisyonları takip eder</li>
-                                <li>Sonuçları ve işlem geçmişini raporlar</li>
-                            </ul>
-                            <p>Bu süreçte kullanıcı, sistemin hangi kurallara göre işlem aradığını ve hangi koşullarda işlem açmadığını görebilir.</p>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <section class="info-card">
-                            <h2>Sentralyx ile neler yapılabilir?</h2>
-                            
-                            <h3>Piyasa tarama</h3>
-                            <p>Birden fazla kripto parayı aynı anda takip ederek strateji koşullarına uyan fırsatları arar.</p>
-                            
-                            <h3>Strateji oluşturma</h3>
-                            <p>Kullanıcı kendi işlem mantığını belirli kurallara bağlayabilir. Amaç, anlık duygu veya tahmin yerine tanımlanmış kurallarla çalışmaktır.</p>
-                            
-                            <h3>Backtest</h3>
-                            <p>Hazırlanan stratejiler geçmiş piyasa verileri üzerinde test edilebilir.</p>
-                            <p>Backtest sonuçları gelecekte aynı performansın garanti edildiği anlamına gelmez; stratejinin geçmiş koşullardaki davranışını analiz etmek için kullanılır.</p>
-                            
-                            <h3>İşlem ve risk yönetimi</h3>
-                            <p>Giriş, stop-loss, hedef ve pozisyon büyüklüğü gibi işlem bileşenleri sistematik şekilde ele alınır.</p>
-                            
-                            <h3>Açık pozisyon takibi</h3>
-                            <p>Açık işlemler takip edilir ve tanımlanan işlem kurallarına göre yönetilebilir.</p>
-                            
-                            <h3>Raporlama</h3>
-                            <p>İşlem geçmişi, strateji sonuçları ve performans verileri analiz edilebilir.</p>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <section class="info-card">
-                            <h2>Gerçek bir ürün</h2>
-                            <p>Sentralyx yalnızca bir fikir, sinyal grubu veya teorik proje değildir.</p>
-                            <p>Aktif olarak geliştirilen ve gerçek kullanıcı akışları bulunan bağımsız bir masaüstü trading yazılımıdır.</p>
-                            
-                            <div class="row mt-4">
-                                <div class="col-md-6 mb-3">
-                                    <h3>Piyasa tarama ekranı</h3>
-                                    <img src="/scanner.png" alt="Sentralyx Piyasa Tarama Ekranı" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; display: block;" loading="lazy">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <h3>Strateji ekranı</h3>
-                                    <img src="/strategy.png" alt="Sentralyx Strateji Ekranı" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; display: block;" loading="lazy">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <h3>Backtest ekranı</h3>
-                                    <img src="/backtest-main.png" alt="Sentralyx Backtest Ekranı" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; display: block;" loading="lazy">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <h3>Açık pozisyon / işlem yönetimi ekranı</h3>
-                                    <img src="/open_position.png" alt="Sentralyx Açık Pozisyon Ekranı" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; display: block;" loading="lazy">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <h3>Raporlama ekranı</h3>
-                                    <img src="/reports.png" alt="Sentralyx Raporlama Ekranı" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; display: block;" loading="lazy">
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <section class="info-card">
-                            <h2>Sentralyx ne yapmaz?</h2>
-                            <p>Sentralyx:</p>
-                            <ul>
-                                <li>Kâr garantisi vermez</li>
-                                <li>Gelecekteki fiyatı kesin olarak tahmin ettiğini iddia etmez</li>
-                                <li>Yatırım danışmanlığı hizmeti sunmaz</li>
-                                <li>Her piyasa koşulunda kazanç sağlayacağını vaat etmez</li>
-                                <li>Kullanıcı adına risksiz işlem yapmaz</li>
-                            </ul>
-                            <p>Her trading stratejisinde olduğu gibi zarar ihtimali vardır.</p>
-                            <p>Sentralyx'in amacı riski ortadan kaldırmak değil; işlem sürecini daha sistematik, ölçülebilir ve kurallı hale getirmektir.</p>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <section class="info-card">
-                            <h2>Kullanıcının kontrolü</h2>
-                            <p>Kullanıcı hangi stratejiyi kullanacağına, hangi piyasalarda çalışacağına ve hangi risk seviyelerini kabul edeceğine kendisi karar verir.</p>
-                            <p>Sentralyx bir karar destek ve otomasyon aracıdır; nihai işlem sorumluluğu kullanıcıya aittir.</p>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="cta-section">
-                    <div class="cta-buttons">
-                        <a href="/sentralyx-nedir/" class="cta-btn cta-btn-primary">Sentralyx'i Keşfet</a>
-                        <a href="/scanner/" class="cta-btn cta-btn-secondary">Scanner'ı İncele</a>
-                    </div>
-                </div>
-
-                <div class="notice-box">
-                    Bu sayfadaki bilgiler ürün kapsamını açıklamak içindir; yatırım tavsiyesi değildir.
-                </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Gerçek bir ürün</div><h2 class="h-title">Fikir değil, çalışan bir uygulama</h2><p class="h-sub">Sentralyx yalnızca bir fikir, sinyal grubu veya teorik proje değildir. Aktif olarak geliştirilen ve gerçek kullanıcı akışları bulunan bağımsız bir masaüstü trading yazılımıdır.</p></div>
+            <div class="h-gallery">
+                <figure><div class="h-frame"><img src="../assets/img/home/hero-scanner.webp" alt="Sentralyx piyasa tarama ekranı" width="1600" height="848" loading="lazy"></div><figcaption>Piyasa tarama ekranı</figcaption></figure>
+                <figure><div class="h-frame"><img src="../assets/img/pages/strategy-full.webp" alt="Sentralyx strateji ekranı" width="1600" height="814" loading="lazy"></div><figcaption>Strateji ekranı</figcaption></figure>
+                <figure><div class="h-frame"><img src="../assets/img/pages/backtest-full.webp" alt="Sentralyx backtest ekranı" width="1600" height="814" loading="lazy"></div><figcaption>Backtest ekranı</figcaption></figure>
+                <figure><div class="h-frame"><img src="../assets/img/pages/positions-full.webp" alt="Sentralyx açık pozisyon ekranı" width="1600" height="564" loading="lazy"></div><figcaption>Açık pozisyon / işlem yönetimi ekranı</figcaption></figure>
+                <figure><div class="h-frame"><img src="../assets/img/pages/reports-full.webp" alt="Sentralyx raporlama ekranı" width="1600" height="564" loading="lazy"></div><figcaption>Raporlama ekranı</figcaption></figure>
             </div>
-        </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Sınırlar ve kontrol</div><h2 class="h-title">Sentralyx ne yapmaz?</h2></div>
+            <div class="h-grid-2">
+                <div class="h-card"><div class="h-ico h-ico-red"><i class="fas fa-ban"></i></div><h3>Sentralyx:</h3><ul class="h-ticks h-cross"><li><i class="fas fa-circle-xmark"></i>Kâr garantisi vermez</li><li><i class="fas fa-circle-xmark"></i>Gelecekteki fiyatı kesin olarak tahmin ettiğini iddia etmez</li><li><i class="fas fa-circle-xmark"></i>Yatırım danışmanlığı hizmeti sunmaz</li><li><i class="fas fa-circle-xmark"></i>Her piyasa koşulunda kazanç sağlayacağını vaat etmez</li><li><i class="fas fa-circle-xmark"></i>Kullanıcı adına risksiz işlem yapmaz</li></ul><p>Her trading stratejisinde olduğu gibi zarar ihtimali vardır. Sentralyx&#x27;in amacı riski ortadan kaldırmak değil; işlem sürecini daha sistematik, ölçülebilir ve kurallı hale getirmektir.</p></div>
+                <div class="h-card"><div class="h-ico h-ico-green"><i class="fas fa-user-shield"></i></div><h3>Kullanıcının kontrolü</h3><p>Kullanıcı hangi stratejiyi kullanacağına, hangi piyasalarda çalışacağına ve hangi risk seviyelerini kabul edeceğine kendisi karar verir.</p><p>Sentralyx bir karar destek ve otomasyon aracıdır; nihai işlem sorumluluğu kullanıcıya aittir.</p></div>
+            </div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-notebox"><i class="fas fa-circle-info"></i><div><p>Bu sayfadaki bilgiler ürün kapsamını açıklamak içindir; yatırım tavsiyesi değildir.</p></div></div>
+        </div></section>
+        <section class="h-block h-tight"><div class="h-wrap">
+            <div class="h-center"><div class="h-kicker">Devamı</div><h2 class="h-title">İlgili sayfalar</h2></div>
+            <div class="h-related">
+                <a class="h-card h-feature" href="/sentralyx-nedir/"><h3>Sentralyx&#x27;i Keşfet</h3><p>Ürünün kapsamı ve temel özellikleri.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/scanner/"><h3>Scanner&#x27;ı İncele</h3><p>Tarama ayarları ve sinyal tablosu.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+                <a class="h-card h-feature" href="/guvenlik/"><h3>Güvenlik</h3><p>API anahtarları ve risk önlemleri.</p><span class="h-more">İncele <i class="fas fa-arrow-right"></i></span></a>
+            </div>
+        </div></section>
+        <section class="h-cta-wrap"><div class="h-wrap"><div class="h-cta">
+            <h2>Stratejini bugün sanal modda dene</h2><p>Uygulamayı indir, stratejini kur ve gerçek para kullanmadan nasıl çalıştığını gör.</p>
+            <div class="h-cta-row"><a class="h-btn h-btn-primary" href="https://github.com/Sentralyx/sentralyx-pro/releases/download/v1.0.0/Sentralyx-Pro-Windows.zip" download><i class="fab fa-windows"></i> Windows için ücretsiz indir</a><a class="h-btn h-btn-ghost" href="/fiyatlandirma/">Paketleri gör</a></div>
+        </div></div></section>
     </main>
+
     <div id="footer-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
     <script>
         fetch('/components/footer.html')
-            .then(async function(response) {
-                var buffer = await response.arrayBuffer();
-                return new TextDecoder('utf-8').decode(buffer);
-            })
-            .then(function(data) {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(function(error) {
-                console.error('Footer yüklenemedi:', error);
-            });
+            .then(async (response) => new TextDecoder('utf-8').decode(await response.arrayBuffer()))
+            .then((data) => { document.getElementById('footer-container').innerHTML = data; })
+            .catch((error) => console.error('Footer yuklenemedi:', error));
     </script>
 </body>
 </html>
