@@ -376,6 +376,13 @@ body {
     }
 }
 
+.footer-logo {
+    display: block;
+    height: 28px;
+    width: auto;
+    margin: 0 auto 10px;
+}
+
 /* Sample data label */
 .demo-badge {
     display: inline-block;
